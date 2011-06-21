@@ -1,0 +1,1 @@
+﻿22.06.2011Phuc: hoan thanh database đến chiều. Tối phân công việc khác.Thinh: hoan thanh template đến trưa. Chiều làm phần *Lam: Làm DAO. Sau đó làm phần ** Trong Estate_Form.xlsxLàm Bảng 1 và Bảng 2:+ Kết nối database+ Show lên trang web.Đến 11h59 hoàn thành Bảng 1 và Bảng 2.
