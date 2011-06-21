@@ -1,0 +1,9 @@
+﻿1. Đăng thông tin người cần mua nhà
+2. Đăng thông tin người cần bán nhà
+3. Login ,log out
+4. Quảng cáo
+5. Các chức năng search  người mua nhà, người bán nhà và tư vấn
+6. Thu chi cho kế toán
+7. Tạo kế hoạch cho manager
+8. Bản đồ ngôi nhà cần bán
+9. Phần admin: gồm nhiều chức năng.....
