@@ -25,7 +25,7 @@
 	DISPLAY: block
 }
 
-*{font-family:verdana; font-size:11px; color:#333333}
+*{font-family:verdana; font-size:11px; color:#000;}
 p{margin-top:10px; margin-bottom:10px; font-family:verdana; font-size:12px; color:#1E1E1E; line-height:23px; text-align:justify}
 
 a{text-decoration:none; color:#024BA6; font-size:13px; font-family:verdana}
@@ -84,3 +84,5 @@ li{font-family:verdana; font-size:11px; line-height:18px}
 .newstitle:visited{text-decoration:none; color:#846433; font-size:13px; font-family:verdana; font-weight:bold}
 .newstitle:active{text-decoration:none; color:#015e79; font-size:13px; font-family:verdana; font-weight:bold}
 .newstitle:hover{text-decoration:none; color:#0152E7; font-size:13px; font-family:verdana; font-weight:bold}
+
+.box_left{margin:10px;padding:0 10px 10px 10px;background:#EBF6F8;border:1px solid #6899AA;border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px;border-color:#AFAFAF;}
