@@ -51,7 +51,7 @@
 										<img src="../images/menu1.gif" id="t1" style="" border="0"></a>
 								</td>
 								<td>
-									<a href="http://ankhanhjvc.com/index.php?menuid=118" onmouseover='bt("t2","../images/menu/e/menu2_on.gif")'
+									<a href="dichvu.php" onmouseover='bt("t2","../images/menu/e/menu2_on.gif")'
 										onmouseout='bt("t2","../images/menu2.gif")' onfocus="this.blur();">
 										<img src="../images/menu2.gif" id="t2" style="" border="0"></a>
 								</td>

@@ -103,76 +103,28 @@
 							<div style="width: 686px; padding-top:20px;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29;">
-									CẦN MUA</div>
+									Bán căn hộ the everich Q11 gia rẻ vào ở ngay</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content">
 									<table width="100%" border="0" style="border:solid 1px #D3D3D3;" cellpadding="0" cellspacing="0">
-										<tr style="height:36px; font-weight:bold; font-size:13px; background:#8BC5F4;">
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;" align="center">Hình Ảnh</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Mô Tả</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Loại Hình</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Ngày Cập Nhật</td>
-											<td style="padding:4px;" align="center">Giá</td>
-										</tr>
-										<tr style="background:#EFEFEF;">
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;" width="150px">
-												<a href="chitietdiaoc.php"><img src="../admin/upload/diaoc/thegioicanho (10).jpg" width="150px" /></a></td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">
-												<a href="chitietdiaoc.php"><b style="color:blue;">Bán căn hộ the everich Q11 gia rẻ vào ở ngay</b></a><br>
-												Vị trí: Quận 11, Tp.Hồ Chí Minh<br>
-												Diện tích: 115m²<br>
-												Số phòng ngủ:<br>
-												Tầng: 17<br><br>
-												<img src="../images/icon_promotion.gif" /> <span style="position:relative; top:-6px;">Tặng nội thất vào ở ngay</span>
+										<tr>
+											<td style="width:450px;"><img src="../admin/upload/diaoc/2.png" /></td>
+											<td style="padding:6px;" valign="top">
+												Địa chỉ: <b>Quận 11, TP Hồ Chí Minh</b><br>
+												Giá: 1.444.000 vnd/m²<br>
+												<img src="../images/icon_promotion.gif" /> <span style="position:relative; top:-6px;">Tặng nội thất vào ở ngay</span><br><br>
+												THÔNG TIN LIÊN HỆ<br>
+												Tên: Nguyễn Được<br>
+												ĐT: 0934.100286
 											</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Cần mua</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">22/06/2011</td>
-											<td style="padding:4px;">32.085.000 vnd/m²</td>
 										</tr>
 										<tr>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;" width="150px">
-												<a href="chitietdiaoc.php"><img src="../admin/upload/diaoc/thegioicanho (3).jpg" width="150px" /></a></td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">
-												<a href="chitietdiaoc.php"><b style="color:blue;">Bán căn hộ the everich Q11 gia rẻ vào ở ngay</b></a><br>
-												Vị trí: Quận 11, Tp.Hồ Chí Minh<br>
-												Diện tích: 115m²<br>
-												Số phòng ngủ:<br>
-												Tầng: 17<br><br>
-												<img src="../images/icon_promotion.gif" /> <span style="position:relative; top:-6px;">Tặng nội thất vào ở ngay</span>
+											<td colspan="2" style="padding-top:20px;">
+												<fieldset>
+													<legend>Thông tin tài sản</legend>
+													AAA
+												</fieldset>
 											</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Cần mua</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">22/06/2011</td>
-											<td style="padding:4px;">32.085.000 vnd/m²</td>
-										</tr>
-										<tr style="background:#EFEFEF;">
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;" width="150px">
-												<a href="chitietdiaoc.php"><img src="../admin/upload/diaoc/thegioicanho (13).jpg" width="150px" /></a></td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">
-												<a href="chitietdiaoc.php"><b style="color:blue;">Bán căn hộ the everich Q11 gia rẻ vào ở ngay</b></a><br>
-												Vị trí: Quận 11, Tp.Hồ Chí Minh<br>
-												Diện tích: 115m²<br>
-												Số phòng ngủ:<br>
-												Tầng: 17<br><br>
-												<img src="../images/icon_promotion.gif" /> <span style="position:relative; top:-6px;">Tặng nội thất vào ở ngay</span>
-											</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Cần mua</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">22/06/2011</td>
-											<td style="padding:4px;">32.085.000 vnd/m²</td>
-										</tr>
-										<tr>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;" width="150px">
-												<a href="chitietdiaoc.php"><img src="../admin/upload/diaoc/thegioicanho (11).jpg" width="150px" /></a></td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">
-												<a href="chitietdiaoc.php"><b style="color:blue;">Bán căn hộ the everich Q11 gia rẻ vào ở ngay</b></a><br>
-												Vị trí: Quận 11, Tp.Hồ Chí Minh<br>
-												Diện tích: 115m²<br>
-												Số phòng ngủ:<br>
-												Tầng: 17<br><br>
-												<img src="../images/icon_promotion.gif" /> <span style="position:relative; top:-6px;">Tặng nội thất vào ở ngay</span>
-											</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Cần mua</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">22/06/2011</td>
-											<td style="padding:4px;">32.085.000 vnd/m²</td>
 										</tr>
 									</table>
 								</div>
