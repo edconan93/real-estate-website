@@ -4,6 +4,7 @@
 	<title>Real Estate - Hoa Phuong</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="../css/default.css">
+	<!--link rel="stylesheet" type="text/css" href="../css/nbo20.css"-->
 	<script type="text/javascript" src="scripts/load.js"></script>
 </head>
 <body style="margin: 0pt; padding: 0pt;" bgcolor="#000c1c">
