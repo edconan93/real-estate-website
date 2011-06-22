@@ -1,6 +1,7 @@
 ﻿<?php
 	include("../include/header.php");
 ?>
+
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
 			<td width="986">
@@ -206,141 +207,166 @@
 							<div style="width: 686px;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29; text-transform:uppercase;">
-									GIỚI THIỆU CÔNG TY</div>
+									Đăng Ký Thành Viên</div>
+								<div style="margin:5px 0px 0px 0px;padding:8px;background:#FFFFCC;border:solid 2px red;color:#ff0000;">
+									<b>Chú ý:</b>
+									<br>
+									+ Hãy điền vào Họ và tên phải lớn hơn 5 ký tự
+									<br>
+									+ Hãy điền vào địa chỉ liên lạc phải lớn hơn 10 ký tự
+									<br>
+									+ Hãy điền vào số điện thoại, chỉ nhập vào là số không dùng khoảng trắng, dấu chấm, dấu phẩy...
+									<br>
+									+ Hãy điền vào email liên lạc
+									<br>
+									+ Hãy điền vào Tên truy cập, tên truy cập phải lớn hơn 5 ký tự
+									<br>
+									+ Hãy điền vào mật khẩu truy cập, mật khẩu truy cập phải lớn hơn 5 ký tự
+									<br>
+									+ Hãy điền 5 số mã an toàn trên hình vào ô bên cạnh
+									<br>
+								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div style="padding:20px 0;">
-									<table cellspacing="0" cellpadding="0" border="0" align="center" width="700">
-										<tbody>
-										<tr>
-										<td>
-										<br>
-										<img height="450" width="693" src="../images/gioithieu1.jpg" alt="">
+									<table id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="780"></br>
+									<tbody>
+									<tr>
+										<td align="left" colspan="2">
+										<p></p>
+										<h5>
+										Nếu bạn đã đăng ký tài khoản thành viên tại realestate_hoaphuong.com? 
+										<a style="color:red;" href="login.php">Nhấn đăng nhập</a>
+										</h5>
+										<p></p>
 										</td>
-										</tr>
-										</tbody>
-									</table>
-									<table cellspacing="0" cellpadding="0" border="0" align="center" width="700">
-										<div style="text-align: justify;">
-											<br>
-											Tiền thân là công ty địa ốc
-											<a href="http://hunghungthinh.com">
-											<strong>Hưng Hưng Thịnh</strong>
-											</a>
-											được thành lập từ năm 2003. Trải qua quá trình hình thành và phát triển, đến nay với mong muốn phục vụ nhu cầu thiết yếu của khách hàng ngày một chuyên nghiệp hơn, chúng tôi cho ra đời
-											<a href="http://www.thegioicanho.com">
-											<strong>Công ty Cổ Phần Thế Giới Căn Hộ</strong>
-											</a>
-											tập trung chính vào lĩnh vực bất động sản là
-											<a href="http://thegioicanho.com/san-giao-dich/">căn hộ </a>
-											như:
-										</div>
-										<ul>
-										<li>
-										Đầu tư kinh doanh
-										<a href="http://thegioicanho.com/san-giao-dich/"> căn hộ</a>
-										.
-										</li>
-										<li>
-										Cho thuê và quản lí
-										<a href="http://thegioicanho.com/san-giao-dich/">căn hộ </a>
-										- văn phòng.
-										</li>
-										<li>
-										Tư vấn, môi giới và tiếp thị
-										<a href="http://thegioicanho.com/san-giao-dich/"> căn hộ</a>
-										.
-										</li>
-										<li>
-										Lập và quản lí
-										<a href="http://thegioicanho.com/du-an/"> dự án </a>
-										căn hộ.
-										</li>
-										<li>
-										Tư vấn thiết kế và xây dựng
-										<a href="http://thegioicanho.com/san-giao-dich/"> căn hộ</a>
-										…
-										</li>
-										</ul>
-										<div style="text-align: justify;">
-											Tháng 11/2009,
-											<a href="http://thegioicanho.com/du-an/"> dự án </a>
-											cao ốc văn phòng cho thuê do Công ty Cổ Phần
-											<strong>Thế Giới Căn Hộ</strong>
-											làm chủ đầu tư đã hoàn thành và đưa vào hoạt động tại số 42/37-38 Hoàng Diệu, Phường 12, Quận 04, TP.HCM. Tại đây cũng chính là sàn giao dịch chuyên về
-											<a href="http://thegioicanho.com/san-giao-dich/">căn hộ </a>
-											của công ty chúng tôi.
-											<br>
-											<br>
-											Founded in 2003, 
-											<a href="http://hunghungthinh.com">
-											<strong>Hung Hung Thinh</strong>
-											</a>
-											Real Estate Limited Company, has recently launched its new Apartment business segment in January 2009. In November of 2009, we opened our Real Estate trading center located at 42/37-38 Hoang Dieu Street, Ward 12, District 4 in Ho Chi Minh City.
-											<br>
-											Located in the
-											<a href="http://www.thegioicanho.com">
-											<strong>Apartment World Corporation</strong>
-											</a>
-											office Building, this marks the first step of our company’s officially offering of office building management &amp; leasing services.
-										</div>
-											<ul>
-												<li>Development &amp; Investment</li>
-												<li>Apartment &amp; Offices Management and Services</li>
-												<li>Brokerage, Sales, Marketing and Consultancy</li>
-												<li>Strategic plan &amp; Management of Project Investment</li>
-												<li>Evaluation and Advisory</li>
-												<li>Transaction Managements</li>
-												<li>Construction &amp; Design Consultancy</li>
-												</ul>
-												</td>
-										<div style="text-align: justify;">
-											Khả năng phân tích chuyên sâu và nắm bắt xu hướng
-											<a href="http://thegioicanho.com/c/148/thi-truong-bds/">thị trường </a>
-											nhạy bén của Hội Đồng Quản Trị,
-											
-											Ban Tổng Giám Đốc là thế mạnh của chúng tôi. Bên cạnh đó, đội ngũ nhân sự đầy nhiệt huyết, năng
-											
-											động, sáng tạo, tâm huyết với nghề là một phần không thể thiếu trong bộ máy hoạt động của
-											
-											<a href="http://www.thegioicanho.com">
-											<strong>Thế Giới Căn Hộ</strong>
-											</a>
-											.
-											<br>
-											Hơn thế nữa với tiềm lực tài chính hùng mạnh, khả năng huy động vốn nhanh chóng là sự đảm bảo
-											
-											cho các nhu cầu về vốn cho quá trình đầu tư và mở rộng hoạt động kinh doanh
-											<a href="http://thegioicanho.com/san-giao-dich/">căn hộ </a>
-											trong những
-											
-											<a href="http://thegioicanho.com/du-an/"> dự án </a>
-											sắp tới.
-											
-											<br>
-											<br>
-											Our staffs with dynamism, creativity, enthusiansm, intensive market knowledge and sharp skills in analysing
-											
-											&amp; picturing the market conditions and trends.
-											
-											Our network of specialist service teams strive to deliver levels of service and success beyond our clients'
-											
-											expectations.
-											
-											With a strong financial potential and capability in capital raise, we are in a strong position for an expansion
-											
-											and further growth in apartment investment and development.
-											<br>
-											<br>
-											<br>
-											<br>
-											<br>
-											<br>
-										</div>
-										
-								</div>
-										
-									</table>
+									</tr>
+									<tr>
+										<td align="left" colspan="2">
+										<h1>THÔNG TIN LIÊN LẠC</h1>
+										</td>
+									</tr>
+									<tr>
+										<td align="right">
+										Họ và tên:
+										<span class="required_star">*</span>
+										</td>
+										<td align="left">
+										<input type="text" style="width:280px;" value="" name="realtor_name">
+										</td>
+									</tr>
 									
+									<tr>
+										<td align="right">
+										Địa chỉ liên lạc:
+										<span class="required_star">*</span>
+										</td>
+										<td align="left">
+										<input type="text" style="width:280px;" value="" name="realtor_address">
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="right">
+										Điện thoại:
+										<span class="required_star">*</span>
+										</td>
+										<td align="left">
+										<input type="text" style="width:115px;" maxlength="15" value="" name="realtor_phone">
+										Di động:
+										<input type="text" style="width:102px;" maxlength="15" value="" name="realtor_mobile">
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="right">
+										E-mail liên lạc:
+										<span class="required_star">*</span>
+										</td>
+										<td align="left">
+										<input type="text" onkeyup="copy()" style="width:280px;" maxlength="50" value="" name="realtor_e_mail">
+										<br>
+										<span style="font-size:10px;">Hãy điền chính xác địa chỉ email để nhận được thư kích hoạt</span>
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="left" colspan="2">
+										<h1>THÔNG TIN TÀI KHOẢN TRUY CẬP</h1>
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="right">
+										Tên truy cập:
+										<span class="required_star">*</span>
+										</td>
+										<td align="left">
+										<input type="text" style="width:280px;" maxlength="50" value="" name="realtor_login">
+										<br>
+										<span style="font-size:10px;">Tên truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="right">
+										Mật khẩu:
+										<span class="required_star">*</span>
+										</td>
+										<td align="left">
+										<input type="password" style="width:280px;" maxlength="50" name="realtor_password">
+										<br>
+										<span style="font-size:10px;">Mật khẩu truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="right">
+										Nhập lại mật khẩu:
+										<span class="required_star">*</span>
+										</td>
+										<td align="left">
+										<input type="password" style="width:280px;" maxlength="50" name="realtor_password_2">
+										<br>
+										<span style="font-size:10px;">Nhập lại mật khẩu như đã điền ở ô trên</span>
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="right">
+										Mã an toàn:
+										<span class="required_star">*</span>
+										</td>
+										<td align="left">
+										<img class="border" border="0" align="left" alt="Ma an toan" src="http://www.nhaban.com/member/security.php?rand=795392">
+										<input type="text" style="width:175px; height:26px;font-size:18px; font-wieght:bold;" maxlength="5" value="" name="security" size="12">
+										<br>
+										<br>
+										<span style="font-size:10px;">Hãy điền năm chữ số của hình bên cạnh vào ô này</span>
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="right"></td>
+										<td align="left">
+										<input type="checkbox" checked="" name="terms">
+										<span class="required_star">*</span>
+										<a onclick="Terms_Of_Service();" href="#">Tôi đồng ý với các quy định của realestate_hoaphuong.com</a>
+										</td>
+									</tr>
+									
+									<tr>
+										<td align="right"></td>
+										<td align="left" style="padding-left:100px;">
+										<span class="action-button-left"></span>
+										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" name="submit_realtor">
+										<span class="action-button-right"></span>
+										</td>
+									</tr>
+
+		
+									</tbody>
+										
+									</table><br/>
 								</div>
 							</div>
 						</td>

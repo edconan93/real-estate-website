@@ -1,0 +1,234 @@
+html{display:inline;}
+
+body{margin:0;	padding:0;	line-height: 1.5em;	font-family:Arial, Helvetica, sans-serif;	font-size:12px;	background:#EDEDED url(../images/bg/bgcolor.gif) repeat-x top;}
+#maincontainer{width: 1000px; /*Width of main container*/	margin: 0 auto; /*Center container on page*/	font-family:Arial, Helvetica, sans-serif;	font-size:12px;}
+
+a{color:#0D5DA8;text-decoration:none;}
+a:hover {color:#ff6500;text-decoration: underline;} 
+
+h1,h2,h3,h4 {margin:0px;font-size:12px;}
+ul,li {list-style: none; margin:0px;padding-left:5px;font-size:12px;}
+#footer{clear: left;width: 1000px; /*Width of footer container*/height:100%;margin: 0 auto; /*Center container on page*/padding:0px;background: #FFFFFF/*#E8F1FA8*/;border-top:solid 3px #73ACE3;text-align: left;font-family:Arial, Helvetica, sans-serif;font-size:11px;}
+#footer a{color: #000000;}#footer .footer_text{padding:5px 5px 5px 8px; text-align:left;}
+#footer .linkin a{color: #20c;}
+
+#menu{background: #1B6DB3;height: 30px; /*Height of top section*/margin-bottom:1px;padding: 0px 0px 0px 0px;color:#FFFFFF;font-weight:bold;border-bottom:solid 1px #8FB2CC;}#hottitle{float: left;margin:3px 3px 0px 0px;padding:0px 0px 0px 0px;width: 195px; /*Width of left column in pixel*/height:25px;background:#FFFFFF;}#hottitle span.n2{ background:url(ti_cor_tright_news.gif) no-repeat top right; float:right; height:5px; width:5px;}#recentnews{background:#FFFFFF url(../images/bg/b7_toplist.gif) repeat-x top; width:99%; border: solid 1px #CCCCCC;padding:1px;}
+b {font-weight:bold;font-size: 12px;}
+.small_text_black {font-size: 11px;}
+.small_text_gray {font-size: 11px;color:#acacac;}
+table {font-size: 12px;};
+
+#recentnewsx {float:left;border: solid 1px #ffffff; font-size:12px; padding:5px;}
+#recentnews a{text-decoration:none;color:#000000;margin:0px 0px 0px 0px;font-size:12px;}
+#recentnews span{background:url(../images/icon/dot_blue.png) no-repeat top left; width:6px;height:6px; padding:0px 0px 0px 0px; margin:0 0px 0 0;}
+
+#searchbox{float: left;	margin:3px 0px 0px 0px;	padding:5px 5px 5px 5px;	width: 296px; /*Width of left column in pixel*/	height:345px;	background:#0D5DA8;	color:#ffffff;	font-size:bold;	border-left: solid 1px #CCCCCC;border-bottom: solid 1px #CCCCCC;	font-size:12px;}
+
+#r_box{float: left;padding:5px 5px 5px 5px;width: 99%;background:#FFFFFF url(../images/bg/newswin_bg.gif) repeat-x top left;border: solid 1px #ACACAC;font-size:12px;}
+
+#r_box img{border: solid 1px #ACACAC;}#r_box h1{margin: 0px;padding:0px;font-size:16px;color:#336699;}
+
+#r_box_500{float: right;margin:3px 0px 0px 0px;padding:5px 5px 5px 5px;width: 493px;background:#FFFFFF url(../images/bg/newswin_bg.gif) repeat-x top left;border: solid 1px #ACACAC;}
+
+/* #r_box h1, h2{text-shadow:#999 1px 1px 1px;}*/
+
+#newsduan {float: left;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;width: 493px; /*Width of left column in pixel*/height:142px;background:#FFFFFF;border:solid 1px #CCCCCC;}#newsduan img {border:solid 1px #CCCCCC;}#newsduan a{text-decoration:none;color:#000000;	font-size:12px;}#newsduan .box_1{float:left;margin:0px;padding:5px; width:155px;background:#FFFFFF; text-align:center;border:solid 1px #ACACAC;}#newsduan .box_2{float:left;margin-left:3px;padding:5px; width:155px;background:#FFFFFF; text-align:center;border:solid 1px #ACACAC;}#newsduan .box_3{float:left;margin-left:3px;padding:5px; width:155px;background:#FFFFFF; text-align:center;border:solid 1px #ACACAC;}#lastnews{float: left;margin:0px 0px 0px 0px;padding:4px;width:98%;height:192px;}#lastnews a{text-decoration:none;color:#0D5DA8;}#lastnews h1{font-size:15px;}#border_conner {float: left;margin:3px 0px 0px 0px;padding:0px;width:496px;height:195px;background: #FFFFFF;border-bottom:solid 1px #ACACAC;}#border_conner span.tl{ background:url(ti_cor_tleft_news.gif) no-repeat top left; float:left; height:5px; width:5px;}
+
+FORM {border-width : 0; padding : 0; margin : 0; display:inline;font-size: 12px;} 
+RADIO {border-top:1px solid #555;border-left:1px solid #555;border-bottom:1px solid #ccc;border-right:1px solid #ccc;padding:1px;color:#333;}
+CHECKBOX {border-top:1px solid #555;border-left:1px solid #555;border-bottom:1px solid #ccc;border-right:1px solid #ccc;padding:1px;color:#333;}
+TEXTAREA {border-top:1px solid #555;border-left:1px solid #555;border-bottom:1px solid #ccc;border-right:1px solid #ccc;padding:1px;color:#333;} 
+INPUT {font-size: 12px;border-top:1px solid #555;border-left:1px solid #555;border-bottom:1px solid #ccc;border-right:1px solid #ccc;padding:1px;color:#333;}
+INPUT.button {font-weight: bold;}
+SELECT {border: solid 1px gray;}
+
+.button_submit{
+	background:#ffffff url(../images/bg/bg_button_orange.gif) repeat-x top left;border:outset 1px #ccc;
+	font-family:Arial, Helvetica;color:#994800;	font-weight:bold; font-size:14px;margin:0px;padding:0px 5px 2px 5px; height:26px;	cursor:pointer
+}
+.button_contact{
+	background:#d9f7ff url(../images/bg/bgbutton.gif) repeat-x top center;
+	border:1px solid #7bb1cb;	color:#0086c4;	font-weight:bold;
+	font-size:12px;	padding:1px; height:20px;	cursor:pointer
+}
+.required_star {font:bold 14px;color:#ff0000; }
+
+/*buttons*/
+.action-button-left, .action-button, .action-button-right {cursor: pointer; float: left; display: block; height: 25px; background: url(../images/images-button/btn_bg.png);}
+.action-button-left {margin:0px;width: 5px; background: url(../images/images-button/btn_l.png);}
+.action-button-right {margin:0px;width: 5px; background: url(../images/images-button/btn_r.png);}
+.action-button {font-family:Arial, Helvetica;padding: 5px 0px 0px 0px; height: 25px; font-size: 12px; font-weight: bold; color: #994800;}
+input.submitYellow {margin:0px; font-family:Arial, Helvetica;cursor: pointer; border: 0px; float: left; display: block; padding: 0px 0px 0px 0px; height: 25px; font-size: 12px; font-weight: bold; color: #994800; background: url(../images/images-button/btn_bg.png);}
+/* MainBanner */
+
+/*#topsection{background: #E8F1FA url(../images/bg/nhaban.com_header_lunar_year.gif) no-repeat right bottom;height: 132px; } */
+
+#topsection{background: #E8F1FA url(../images/bg/nhaban.com_header.gif) no-repeat right bottom;height: 110px;}
+#topsection6138{background: #E8F1FA url(../images/bg/nhaban.com_header.gif) no-repeat right bottom;height: 132px;}*/
+
+#topsection h1{margin: 0;padding-top: 15px;}
+
+#topmain{margin-right: 300px; /*Margin for content column. Should be (RightColumnWidth + LeftColumnWidth)*//*border:solid 1px #73ACE3;*/height:338px;}#topmain h1{margin: 0;font-size:14px;}
+
+#mainlisting{margin-right: 300px; /*Margin for content column. Should be (RightColumnWidth + LeftColumnWidth)*//*border:solid 1px #73ACE3;*/}
+
+#contentwrapper{float: left;width: 100%;}#contentcolumn{margin-right: 483px; /*Margin for content column. Should be (RightColumnWidth + LeftColumnWidth)*/margin-top:2px;/*margin-left: -200px;*/}
+#contentcolumn a{text-decoration:none;}#contentcolumn h1, h2, h3, h4, h5{margin: 0px;padding-left:10px;font-size:14px;color:#336699;}#leftcolumn{float: left;width: 297px; /*Width of left column in pixel*/margin-left: -680px; /*Set margin to -(LeftColumnWidth + RightColumnWidth)*//*background: #C8FC98;*/}#rightcolumn{float: left;width: 180px; /*Width of right column in pixels*/margin-left: -180px; /*Set margin to -RightColumnWidth*/margin-top:2px;background: #1B6DB3;}.innertube{margin: 10px; /*Margins for inner DIV inside each column (to provide padding)*/margin-top: 0;}
+
+#content_listing {width:99%;margin:0px;padding:0px 0px 5px 5px;}
+#content_listing a{padding-left:5px;text-decoration:none;text-transform:uppercase;font-size:12px;color:#000000;}
+#content_listing .linkz a{text-decoration:none;font-size:12px;color:#000000;}
+#content_listing h1, h2, h3, h4, h5{margin: 0px;font-size:13px;color:#336699;}
+#content_listing .dotted {padding-top:2px;border-bottom:dotted 1px #ACACAC;}
+#content_listing .line {padding-top:2px;border-bottom:solid 1px #ffffff;}
+#content_listing td,tr{padding:0px; margin:0px;}
+
+.date {float:left;padding-left:1px;font-size:11px; text-align:center;}
+.size {float:left;padding-left:5px;font-size:11px; color:#CC0000;}
+.local {font-size:12px;}
+.count {font-size:10px; color:#CC0000;}
+.img{float:left;width:70px;padding-right:5px;}
+#type {width:60px;background:#FF0000;color:#ffffff;margin:0px;padding:1px 2px 1px 2px;text-align:center;font-size:10px;font-weight: bold;}
+#type2 {width:60px;background:#FF0000;color:#ffffff;margin:0px;padding:2px 5px 2px 2px;text-align:center;font-size:11px;font-weight: bold;float:right;}/* Border Light*/
+/*Menu Navigation*/img {border: none;}
+
+#tabs4 {background: url(../images/bg/bg_menu.gif) repeat-y right bottom !important;float:right; width:100%;font-size:93%;line-height:normal;font-family:Arial, Helvetica, sans-serif;font-size:12px;}
+#tabs4 ul {margin:0;padding:2px 10px 0 30px;list-style:none;}
+#tabs4 li {display:inline;margin:0;padding:0;}
+#tabs4 a {float:left;background:url("../images/navigation/tableft.gif") no-repeat left top;margin:0;padding:0 5px 0 7px;text-decoration:none;font-weight:bold;}
+#tabs4 a span {float:left;display:block;background:url("../images/navigation/tabright.gif") no-repeat right top;padding:5px 15px 4px 6px;color:#000000;}/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#tabs4 a span {float:none;}/* End IE5-Mac hack */
+#tabs4 a:hover span {color:#FFFFFF;}#tabs4 a:hover {background-position:0% -42px;}
+#tabs4 a:hover span {background-position:100% -42px;}
+#tabs4 #current a {background-position:0% -42px;}
+#tabs4 #current a span {background-position:100% -42px;	color:#FFFFFF;}
+#submenu {float:right;margin:0px;padding:5px 0px 0px 0px;width:100%;height:25px;background-color:#1B6DB3;	 border-bottom:0px solid #acacac;color:#FFFFFF;}
+#submenu a {color:#FFFFFF;text-decoration:none;font-weight:bold;padding:4px; }
+#submenu a:hover {color:#FFFFFF;text-decoration:none;font-weight:bold;background-color:#6DA6FF;	padding:4px; }
+#submenu span {color:#FFFFFF;margin-left:5px;padding-left:10px;}
+
+span.vip { background :url(../images/icon/VIP-1.gif) no-repeat right; float:right;padding:0px; margin:0px; height:19px; width:34px;cursor: pointer;}
+span.lvip { background :url(../images/icon/vip.png) no-repeat right; float:right;padding:0px; margin:0px; height:38px; width:34px;cursor: pointer;}
+span.vip_short { background :url(../images/icon/VIP-1.gif) no-repeat right; float:left;padding:0px; margin-bottom:2px; height:14px; width:34px;cursor: pointer;}
+span.vip_s { background :url(../images/icon/vip_icon.gif) no-repeat; float:left;padding:0px; margin:0px; height:50px; width:50px;cursor: pointer;}
+span.featured_around { background :url(../images/icon/vip_around.png) no-repeat; float:right;padding-right:10px; margin:0px; height:79px; width:75px;cursor: pointer;}
+
+/* sidebox_300*/
+#sidebox_300 {margin:1px 0px 0px 0px;padding:0px;font-size:12px;width:99%;height:99%;}
+
+#sidebox_300 a {font-size:12px;}div.sidebox_300 {background: url(../images/sidebox_300/sidebox_bottom_right.gif) no-repeat right bottom !important;margin-bottom:2px;width: 100%;float: left;clear: both;}
+
+div.sidebox_300 h3 {font-size: 100%;padding: 0;position: relative;text-transform: uppercase;margin: 0 5px 5px;height: 30px;line-height: 32px;text-indent: 10px;}
+div.sidebox_300 div {background: url(../images/sidebox_300/sidebox_bottom_left.gif) no-repeat left bottom;margin: 0;}
+div.sidebox_300 div div {background: url(../images/sidebox_300/sidebox_top_right.gif) no-repeat right top;}
+div.sidebox_300 div div div {background: url(../images/sidebox_300/sidebox_top_left.gif) no-repeat left top;padding: 0 5px 5px;overflow: hidden;display: block;}
+div.sidebox_300 div div div div {background: none;padding: 0;}.clr {clear: both;}div.jr_divider {border-bottom:0px;clear:both;height:1px;margin-bottom:10px;margin-top:10px;width:100%;}	/*end sidebix_300*//*Sidebox 500*/#l500{background:#ffffff url(../images/sidebox_300/sidebox_top_left.gif) no-repeat top left;}#r500{margin:0;background:#ffffff url(../images/sidebox_300/sidebox_top_right.gif) no-repeat top right;}#x300x {background:#FFFFFF url(../images/bg/newswin_bg.gif) repeat-x top left;border-left:solid 1px #CCCCCC;border-right:solid 1px #CCCCCC;border-bottom:solid 1px #CCCCCC;font-size:12px;}
+.border {border:solid 1px #CCCCCC;}
+
+#pagenate {margin:5px 0px 0px 0px;padding:0px;font-size:12px;font-weight:bold;}
+#pagenate span{margin: 0px;padding:0px;font-size:12px;color:#000000;border:solid 1px #CCCCCC;}
+#pagenate a {margin: 0px;padding:0px;font-size:12px;color:#336699;text-decoration:none;}
+#pagenate a:hover{border:solid 2px #73ACE3;text-decoration:none;}
+#pagenate .selected {border:solid 2px #73ACE3;color:red;}
+
+/*Module News*/
+#m_news {margin: 0px 0px 0px 0px;padding:0px;border:solid 1px #CCCCCC;background:#FFFFFF url(../images/bg/newswin_bg.gif) repeat-x top left;width:495px;}
+#m_news span{margin: 0px;padding:0px;font-size:12px;color:#000000;}
+#m_news h1{margin: 0px;padding:0px;font-size:16px;color:#336699;text-transform: uppercase;}
+#m_news h2, h3, h4, h5{margin: 0px;padding:0px;font-size:14px;color:#336699;}
+#m_news a {margin: 0px;padding:0px;font-size:12px;color:#336699;}
+
+#nhaban_box {margin: 5px 0px 0px 0px;padding:5px 0px 0px 0px;border:solid 1px #CCCCCC;background:#FFFFFF url(../images/bg/newswin_bg.gif) repeat-x top left;}#nhaban_box h1{margin: 4px;padding:0px;font-size:14px;color:#336699;}.blink a {margin: 0px;padding:0px;font-size:12px;color:#000000;}
+
+#mx {margin: 5px 0px 0px 0px;padding:0px;border:solid 1px #CCCCCC;background:#FFFFFF url(../images/bg/newswin_bg.gif) repeat-x top left;width:100%;}#mx span{margin: 0px;padding:0px;font-size:11px;}#mx h1{margin: 0px;padding:0px;font-size:16px;color:#336699;}#mx h2, h3, h4, h5{margin: 0px;padding:0px;font-size:14px;color:#336699;}#mx a {margin: 0px;padding:0px;font-size:12px;color:#000000;}/*Module News*/
+.black a {text-decoration:none;color:#000000;font-size:12px;}
+#boxX a {text-decoration:none;font-size:12px;color:#000000;}
+#boxX a:hover {color:#FF0000;text-decoration: underline;}
+#boxX h1{margin: 0px;padding:0px;font-size:14px;color:#336699;text-transform: uppercase;}
+#date{font-size:12px;color:#cccccc;}
+#header_top_box {margin: 0px 0px 0px 0px;padding:5px;background:#FFFFFF url(../images/bg/bg_top_box.gif) repeat-x top left;}
+.bg_r {background:#FFFFFF url(../images/bg/newswin_bg.gif) repeat-x top left;}
+.aroowz{background:url(../images/icon/arrowbullet.png) no-repeat center ;width:12px;height:12px;margin:2px 2px 0px 2px;padding-left:5px;padding-right:5px;} 
+.b8 {background:#FFFFFF url(../images/bg/b8.gif) repeat-x bottom; font-size:12px;text-align:left;border:solid 1px #ACACAC;padding:5px;margin:5px 0px 5px 0px;}
+// Member menu
+.membermenu{width: 170px; /*width of menu*/}
+
+.membermenu ul{list-style-type: none;margin: 5px 0;padding: 0;border: 1px solid #9A9A9A;}
+.membermenu ul li a{background: white url(./images/icon/arrowbullet.png) no-repeat 2px center;font: bold 13px "Arial", "Trebuchet MS", Verdana, Helvetica, sans-serif;color: #00014e;display: block;width: auto;padding: 3px 0;padding-left: 10px;text-decoration: none;border-bottom: 1px solid #B5B5B5;}
+* html .membermenu ul li a{ /*IE only. Actual menu width minus left padding of LINK (20px) */width: 160px;}
+.membermenu ul li a:visited, .membermenu ul li a:active{color: #00014e;}
+.membermenu ul li a:hover{color: black;background-color: #E8F1FA;background-image:url(./images/icon/arrowbullet.png); /*onMouseover image change. Remove if none*/}
+/* Holly Hack for IE \*/
+* html .membermenu ul li { height: 1%; }
+* html .membermenu ul li a { height: 1%; }
+/* End */
+
+.step {border-bottom:solid 2px #ACACAC;color:#cccccc;}
+.step_selected {border-bottom:solid 2px #ACACAC;color:#000000;}
+
+#member_tool {border-bottom:solid 1px #acacac;}
+#member_tool a {margin:0px;text-decoration:none;padding:4px;border:solid 0px #ffffff;}
+#member_tool a:hover {text-decoration:none;background-color:#e1e9f1;padding:4px;border:solid 1px #acacac;}
+#member_tool span {margin-left:5px;padding-left:10px;}
+#member_tool img {margin:0px;border:0px}
+
+#tool_box {font-size:14px;font-weight:bold;cursor: pointer;border-top:1px solid #ccc;border-left:1px solid #ccc;border-bottom:1px solid #555;border-right:1px solid #333;padding:5px 4px 2px 4px;height:22px;background:#FFFFFF url(../images/bg/newswin_bg.gif) repeat-x top left;}
+
+#tool_box_yellow {text-shadow:#888 1px 1px 1px;color:#994800;font-size:14px;font-weight:bold;cursor: pointer;border-top:1px solid #ccc;border-left:1px solid #ccc;border-bottom:1px solid #555;border-right:1px solid #333;padding:5px 4px 2px 4px;height:22px;background-color:#fce264;}
+
+#tool_box2 {cursor: pointer;margin:0px;padding:4px;height:30px; widht:150px;background:#FFFFFF url(../images/bg/newswin_bg.gif) repeat-x top left;}
+#tool_box2 a{border-top:1px solid #ccc;border-left:1px solid #ccc;border-bottom:1px solid #555;border-right:1px solid #333;}
+#tool_box2 a:hover{border:solid 2px #ACACAC;}
+#tool_box2 span{margin:0px;padding:4px;}
+
+#top_listing_box_2 {border:solid 1px #acacac;margin:0px;padding:4px;background:#1B6DB3 url(../images/bg/btop2.jpg) repeat-x top left;}
+#top_listing_box2 td {text-decoration:none;font-size:12px;}
+#top_listing_box2 a{cursor: pointer;text-decoration:none;font-size:12px;}
+
+
+#top_listing_box {border:solid 1px #acacac; margin:0px;padding:4px;background:#1B6DB3 url(../images/bg/btop2.jpg) repeat-x top left;color:#ffffff;}
+#top_listing_box td {text-decoration:none;font-size:12px;color:#ffffff;}
+#top_listing_box a{cursor: pointer;text-decoration:none;font-size:12px;color:#ffffff;}
+.class_bgtop3 {border:solid 1px #acacac; margin:0px;padding:4px;background:#1B6DB3 url(../images/bg/btop3.gif) repeat-x top left;color:#ffffff;}
+
+#box_types {margin:0px;}
+#box_types a{border-bottom:solid 1px #cccccc;color:#ffffff;border:solid 1px #cccccc;padding:2px 5px 0px 5px;text-decoration:none;color:#000000;background-color:#ffffff;}
+#box_types a:hover{border-bottom:solid 2px yellow;text-decoration:none;}
+
+.announcement {color:#ffffff;text-shadow:#888 1px 1px 1px;}
+.announcement a {color:#ffffff;}
+
+.camera {background:url(http://www.nhaban.com/images/camera.gif) no-repeat right; margin-left:3px; float:left;padding:0px; height:14px; width:16px;}
+
+#arrowlist li{background:url(../images/icon/arrowbullet.png) no-repeat center ;width:12px;height:12px;margin:2px 2px 0px 2px;padding-left:5px;padding-right:5px;} 
+#arrowlist {margin:0px; padding:2px; display:inline; color:#000000;font-weight:normal;font-size:12px;}
+
+.l_main a {color:#000000;}
+.nhaban_loading {position:absolute; top:10px; left:10px; padding: 5px; vertical-align:middle; text-align:center; background-color:#DD7575; width:120px; color:#FFFFFF; font-weight:bold; font-size:10px; font-family: Arial;}
+
+/************* Banner Adsense **************/
+#banner_adsense {float:right;margin: 5px 0px 0px 0px;padding:0px;width:185px;}
+#banner_adsense img{margin-bottom:5px;border:solid 1px #ACACAC;}
+
+#banner_adsense .adsense_diaockimoanh {background:#ffffff url(http://www.nhaban.com/quangcao/banner/kimoanh/banner_kimoanh_01152010.gif) no-repeat top right; border:solid 1px #acacac; margin-bottom:8px; float:right;padding:0px; width:180px;height:156px;cursor: pointer; }
+
+#banner_adsense .adsense_nhapho {background:#ffffff url(http://www.nhaban.com/quangcao/banner/2.gif) no-repeat top right;  border:solid 1px #acacac; margin-bottom:8px;  float:right;padding:0px; width:180px;height:157px;cursor: pointer; }
+#banner_adsense .adsense_namluat {background:#ffffff url(http://www.nhaban.com/quangcao/banner/Nam_Luat_08312009-2.gif) no-repeat top left;  border:solid 0px #acacac; margin-bottom:8px;  float:right;padding:0px; width:180px;height:156px;cursor: pointer; }
+#banner_adsense .adsense_nhaxuong {background:#ffffff url(http://www.nhaban.com/quangcao/banner/nha_xuong_tan_phu_28082009.gif) no-repeat top right;  border:solid 1px #acacac; margin-bottom:8px;  float:right;padding:0px; width:180px;height:156px;cursor: pointer; }
+#banner_adsense .adsense_bachai {background:#ffffff url(http://www.nhaban.com/quangcao/banner/nha_cu_xa.gif) no-repeat top right;  border:solid 1px #acacac; margin-bottom:8px;  float:right;padding:0px; width:180px;height:156px;cursor: pointer; }
+#banner_adsense .adsense_datcaphe {background:#ffffff url(http://www.nhaban.com/quangcao/banner/dat_ca_phe.gif) no-repeat top right;  border:solid 1px #acacac; margin-bottom:8px;  float:right;padding:0px; width:180px;height:156px;cursor: pointer; }
+#banner_adsense .adsense_raovat {background:#ffffff url(http://www.nhaban.com/quangcao/logo/logo_rvmp.gif) no-repeat top right;  border:solid 1px #acacac; margin-bottom:8px;  float:right;padding:0px; width:180px;height:156px;cursor: pointer; }
+#banner_adsense .adsense_giaca {background:#ffffff url(http://www.nhaban.com/quangcao/logo/logo_giaca2.gif) no-repeat top right;  border:solid 1px #acacac; margin-bottom:8px;  float:right;padding:0px; width:180px;height:156px;cursor: pointer; }
+#banner_adsense .adsense_search {background:#ffffff url(http://www.nhaban.com/quangcao/logo/logo_search.gif) no-repeat top right;  border:solid 0px #acacac; margin-bottom:8px;  float:right;padding:0px; width:181px;height:156px;cursor: pointer; }
+#banner_adsense .adsense_biethu {background:#ffffff url(http://www.nhaban.com/quangcao/banner/biet-thu.gif) no-repeat top right;  border:solid 1px #acacac; margin-bottom:8px;  float:right;padding:0px; width:180px;height:156px;cursor: pointer; }
+#banner_adsense .adsense_chungcu {background:#ffffff url(http://www.nhaban.com/quangcao/banner/chung-cu.gif) no-repeat top right; border:solid 1px #acacac; margin-bottom:8px; float:right;padding:0px; width:180px;height:156px;cursor: pointer; }
+.adsense_right_large {background:#ffffff url(http://www.nhaban.com/quangcao/banner/b1.gif) no-repeat top left; border:solid 1px #acacac; margin-left:0px; float:left;padding:0px; width:309px;height:235px;cursor: pointer; }
+
+#listing_result {float:left;width:99%; margin:0 auto; padding:0px; float:right; border-bottom:dotted 1px #acacac;color:#000000; clear: both;}
+.l_type {float:left; position:relative;  width: 60px; height:25px; padding:5px 2px 2px 2px; margin-top:4px; background: red; text-align:center; color:#ffffff;}
+.l_local{float: right; position:relative; width: 90px; padding:2px; text-align:right; font-size:11px;margin-right:3px;text-transform: uppercase;}
+.l_date {float:left; position:relative; width: 42px; padding:2px;}
+.l_title {float:left; position:relative; width:270px; padding:2px; text-align:left;}
+.l_title a{font-weight:bold; text-transform: uppercase;}
+.l_bg {background-color:#F4F4F4;}
+/************* End Banner Adsense **********/
