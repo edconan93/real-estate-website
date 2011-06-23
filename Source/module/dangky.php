@@ -15,17 +15,12 @@
 						<td style="border-right: 1px solid rgb(180, 215, 232); background-repeat: repeat-y;"
 							background="1_files/menubg_all.jpg" valign="top" width="270">
 							<div class="box_left">
-								<table>
-								    <tr>
-										<td width="200" valign="top">
-											
-										</td>		
-									</tr>
+								<table width="100%">
 									<tr>
-										<td width="2px">
+										<td width="30px">
 											<img src="../images/search.png">
 										</td>
-										<td width="200px" align="left">
+										<td align="left">
 											<p style="font-size:20pt;"><b>TÌM KIẾM ĐỊA ỐC</b></p>
 										</td>
 									</tr>

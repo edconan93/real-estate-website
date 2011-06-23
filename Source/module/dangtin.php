@@ -13,60 +13,7 @@
 					<tr>
 						<td style="border-right: 1px solid rgb(180, 215, 232); background-repeat: repeat-y;"
 							background="1_files/menubg_all.jpg" valign="top" width="270">
-							<div class="box_left">
-								<table width="100%">
-									<tr>
-										<td width="30px">
-											<img src="../images/male3.png">
-										</td>
-										<td>
-											<p style="font-size:20pt;"><h1>Thông tin thành viên<h1></p>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2">
-											Tài khoản:<br><center><b style="color:blue;">lchone.hum@yahoo.com</b></center><br>
-											Họ tên: Nguyễn Đức Thịnh<br>
-											Email: ducthinh0333@gmail.com<br>
-											ĐT: 0934100286<br><br>
-											<center>( Thoát )</center>
-										</td>
-									</tr>
-								</table>
-							</div>
-							<div class="box_left">
-								<table width="100%">
-									<tr>
-										<td width="30px">
-											<img src="../images/male3.png">
-										</td>
-										<td>
-											<p style="font-size:20pt;"><h1>Chức năng</h1></p>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2" align="center">
-											<p class="menu_item">
-												<a href="">Thông tin thành viên</a>
-											</p>
-											<p class="menu_item">
-												<a href="">Thay đổi mật khẩu</a>
-											</p>
-											<p class="menu_item">
-												<a href="noiquidangtin.php">Đăng tin nhà đất</a>
-											</p>
-											<p class="menu_item">
-												<a href="">Các tin đã đăng</a><br>
-												<span>
-													<a href="">- Tin đã duyệt (0)</a><br>
-													<a href="">- Tin chờ duyệt (3)</a><br>
-													<a href="">- Tin hết hạn (0)</a><br>
-												</span>
-											</p>
-										</td>
-									</tr>
-								</table>
-							</div>
+							<?php include("../include/box_left_thanhvien.php"); ?>
 						</td>
 						<td style="padding: 10px;" valign="top">
 							<div style="width: 686px;">

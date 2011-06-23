@@ -169,15 +169,6 @@ body {
     margin: 0;
     padding: 0;
 }
-h1 {
-    color: #336699;
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-}
-.required_star {
-    color: #FF0000;
-}
 .popup {	filter: alpha(opacity=100);	opacity: 0;}
 .transparent {background:black;filter:alpha(opacity=40);	opacity: 0.4;}
 .mid_transparent {height:295px;}
@@ -218,7 +209,7 @@ img {border:0;}
     width: 684px;
 }
 table tr {height:26px;}
-table tr td {padding:4px;}
+
 .ButtonWithbackground {
     background: url("../images/btn_background.jpg") repeat-x scroll left center transparent;
     border: medium none;
