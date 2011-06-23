@@ -199,9 +199,34 @@ p.menu_item span a {color:blue;font-weight:normal;}
     background: url("../images/newswin_bg.gif") repeat-x scroll left top #FFFFFF;
 }
 img {border:0;}
-
-
-
+.badge {
+    background-image: url("../images/icon-badge.png");
+    background-repeat: no-repeat;
+    height: 46px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 45px;
+}
+.notice {
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    clear: both;
+    margin: 0 0 10px;
+    padding: 0;
+    position: relative;
+    width: 684px;
+}
+table tr {height:26px;}
+table tr td {padding:4px;}
+.ButtonWithbackground {
+    background: url("../images/btn_background.jpg") repeat-x scroll left center transparent;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2px 10px;
+}
 
 
 
