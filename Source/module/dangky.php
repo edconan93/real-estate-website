@@ -16,11 +16,16 @@
 							background="1_files/menubg_all.jpg" valign="top" width="270">
 							<div class="box_left">
 								<table>
+								    <tr>
+										<td width="200" valign="top">
+											
+										</td>		
+									</tr>
 									<tr>
-										<td width="30px">
+										<td width="2px">
 											<img src="../images/search.png">
 										</td>
-										<td>
+										<td width="200px" align="left">
 											<p style="font-size:20pt;"><b>TÌM KIẾM ĐỊA ỐC</b></p>
 										</td>
 									</tr>
@@ -228,7 +233,7 @@
 								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div style="padding:20px 0;">
-									<table id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="780"></br>
+									<table id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
 									<tbody>
 									<tr>
 										<td align="left" colspan="2">
@@ -338,7 +343,7 @@
 										</td>
 										<td align="left">
 										<img class="border" border="0" align="left" alt="Ma an toan" src="http://www.nhaban.com/member/security.php?rand=795392">
-										<input type="text" style="width:175px; height:26px;font-size:18px; font-wieght:bold;" maxlength="5" value="" name="security" size="12">
+										<input type="text" style="width:175px; height:18px;font-size:18px; font-wieght:bold;" maxlength="5" value="" name="security" size="12">
 										<br>
 										<br>
 										<span style="font-size:10px;">Hãy điền năm chữ số của hình bên cạnh vào ô này</span>
