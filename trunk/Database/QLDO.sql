@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2011 at 03:07 PM
+-- Generation Time: Jun 23, 2011 at 04:05 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -541,7 +541,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `hoten` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `gioitinh` bit(1) NOT NULL,
