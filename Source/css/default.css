@@ -143,6 +143,41 @@ element.style {
     margin: 0;
     padding: 0;
 }
+body {
+    background: none repeat scroll 0 0 #001A3B;
+    color: #222222;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+.button_submit {
+    background: url("../images/bg_button_orange.gif") repeat-x scroll left top #FFFFFF;
+    border: 1px outset #CCCCCC;
+    color: #994800;
+    cursor: pointer;
+    font-family: Arial,Helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    height: 26px;
+    margin: 0;
+    padding: 0 5px 2px;
+}
+#r_box h1 {
+    color: #336699;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: #336699;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+.required_star {
+    color: #FF0000;
+}
 .popup {	filter: alpha(opacity=100);	opacity: 0;}
 .transparent {background:black;filter:alpha(opacity=40);	opacity: 0.4;}
 .mid_transparent {height:295px;}
