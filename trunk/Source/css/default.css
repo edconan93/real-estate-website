@@ -194,3 +194,14 @@ h1 {
 .clear { clear:both;}
 p.menu_item a {color:#0D5DA8;font-weight:bold;}
 p.menu_item a:hover {color:orange;text-decoration:underline;}
+p.menu_item span a {color:blue;font-weight:normal;}
+.bg_r  {
+    background: url("../images/newswin_bg.gif") repeat-x scroll left top #FFFFFF;
+}
+
+
+
+
+
+
+
