@@ -36,9 +36,9 @@
 											<img src="../images/home.png" style="vertical-align: middle;">
 											<a href="dichvu.php" class="a_small">Home</a>&nbsp;&nbsp;&nbsp;
 											<img src="../images/kgpg_key1.png" style="vertical-align: middle;">
-											<a href="http://ankhanhjvc.com/index.php" class="a_small">Đăng Nhập</a>&nbsp;&nbsp;&nbsp;<img
+											<a href="" class="a_small" onclick="return press_DangNhap();">Đăng Nhập</a>&nbsp;&nbsp;&nbsp;<img
 												src="../images/sign-up.png" style="vertical-align: middle;">
-											<a href="http://ankhanhjvc.com/index.php?setlang=e" class="a_small">Đăng Ký</a></div>
+											<a href="dangky.php" class="a_small">Đăng Ký</a></div>
 									</td>
 								</tr>
                             </table>

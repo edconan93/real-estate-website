@@ -252,8 +252,7 @@
 									</tr>
 									<tr>
 										<td align="right">
-										Họ và tên:
-										<span class="required_star">*</span>
+										Họ và tên:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
 										<input type="text" style="width:280px;" value="" name="realtor_name">
@@ -262,8 +261,7 @@
 									
 									<tr>
 										<td align="right">
-										Địa chỉ liên lạc:
-										<span class="required_star">*</span>
+										Địa chỉ liên lạc:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
 										<input type="text" style="width:280px;" value="" name="realtor_address">
@@ -272,8 +270,7 @@
 									
 									<tr>
 										<td align="right">
-										Điện thoại:
-										<span class="required_star">*</span>
+										Điện thoại:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
 										<input type="text" style="width:115px;" maxlength="15" value="" name="realtor_phone">
@@ -283,9 +280,8 @@
 									</tr>
 									
 									<tr>
-										<td align="right">
-										E-mail liên lạc:
-										<span class="required_star">*</span>
+										<td align="right" valign="top" style="padding-top:6px;">
+										E-mail liên lạc:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
 										<input type="text" onkeyup="copy()" style="width:280px;" maxlength="50" value="" name="realtor_e_mail">
@@ -301,9 +297,8 @@
 									</tr>
 									
 									<tr>
-										<td align="right">
-										Tên truy cập:
-										<span class="required_star">*</span>
+										<td align="right" valign="top" style="padding-top:6px;">
+										Tên truy cập:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
 										<input type="text" style="width:280px;" maxlength="50" value="" name="realtor_login">
@@ -313,9 +308,8 @@
 									</tr>
 									
 									<tr>
-										<td align="right">
-										Mật khẩu:
-										<span class="required_star">*</span>
+										<td align="right" valign="top" style="padding-top:6px;">
+										Mật khẩu:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
 										<input type="password" style="width:280px;" maxlength="50" name="realtor_password">
@@ -325,9 +319,8 @@
 									</tr>
 									
 									<tr>
-										<td align="right">
-										Nhập lại mật khẩu:
-										<span class="required_star">*</span>
+										<td align="right" valign="top" style="padding-top:6px;">
+										Nhập lại mật khẩu:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
 										<input type="password" style="width:280px;" maxlength="50" name="realtor_password_2">
@@ -337,16 +330,13 @@
 									</tr>
 									
 									<tr>
-										<td align="right">
-										Mã an toàn:
-										<span class="required_star">*</span>
+										<td align="right" valign="top" style="padding-top:10px;">
+										Mã an toàn:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
 										<img class="border" border="0" align="left" alt="Ma an toan" src="http://www.nhaban.com/member/security.php?rand=795392">
 										<input type="text" style="width:175px; height:18px;font-size:18px; font-wieght:bold;" maxlength="5" value="" name="security" size="12">
-										<br>
-										<br>
-										<span style="font-size:10px;">Hãy điền năm chữ số của hình bên cạnh vào ô này</span>
+										<div style="position:relative; left:-100px;"><span style="font-size:10px;">Hãy điền năm chữ số của hình bên cạnh vào ô này</span></div>
 										</td>
 									</tr>
 									
@@ -354,7 +344,6 @@
 										<td align="right"></td>
 										<td align="left">
 										<input type="checkbox" checked="" name="terms">
-										<span class="required_star">*</span>
 										<a onclick="Terms_Of_Service();" href="#">Tôi đồng ý với các quy định của realestate_hoaphuong.com</a>
 										</td>
 									</tr>
