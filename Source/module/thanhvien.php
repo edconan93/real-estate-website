@@ -20,7 +20,7 @@
 											<img src="../images/male3.png">
 										</td>
 										<td>
-											<p style="font-size:20pt;"><b>Thông tin thành viên</b></p>
+											<p style="font-size:20pt;"><h1>Thông tin thành viên<h1></p>
 										</td>
 									</tr>
 									<tr>
@@ -41,7 +41,7 @@
 											<img src="../images/male3.png">
 										</td>
 										<td>
-											<p style="font-size:20pt;"><b>Chức năng</b></p>
+											<p style="font-size:20pt;"><h1>Chức năng</h1></p>
 										</td>
 									</tr>
 									<tr>
@@ -53,14 +53,14 @@
 												<a href="">Thay đổi mật khẩu</a>
 											</p>
 											<p class="menu_item">
-												<a href="dangtin.php">Đăng tin nhà đất</a>
+												<a href="noiquidangtin.php">Đăng tin nhà đất</a>
 											</p>
 											<p class="menu_item">
 												<a href="">Các tin đã đăng</a><br>
 												<span>
-													_ <a href="">Tin đã duyệt (0)</a><br>
-													_ <a href="">Tin chờ duyệt (3)</a><br>
-													_ <a href="">Tin hết hạn (0)</a><br>
+													<a href="">- Tin đã duyệt (0)</a><br>
+													<a href="">- Tin chờ duyệt (3)</a><br>
+													<a href="">- Tin hết hạn (0)</a><br>
 												</span>
 											</p>
 										</td>
