@@ -54,15 +54,15 @@ rgb(33, 91, 135); text-align: center;">
 						<p class="form_text">
 							Tên đăng nhập</p>
 						<p class="form_input_BG">
-							<input type="text"></p>
+							<input id="txtUsername" type="text"></p>
 						<p class="clear"></p>
 						<p class="form_text">
 							Mật khẩu</p>
 						<p class="form_input_BG">
-							<input type="text"></p>
+							<input id="txtPassword" type="text"></p>
 						<p class="clear"></p>
 						<p class="form_login_signup_btn" style="text-align: right; margin-right: 186px;">
-							<img src="../images/login_btn.png" />
+							<a href=""><img style="border:0;" onclick="return press_btLogin();" src="../images/login_btn.png" /></a>
 							<br />
 							<br />
 							<a style="color:yellow;" href="">Quên mật khẩu?</a>
@@ -90,9 +90,9 @@ rgb(33, 91, 135); text-align: center;">
 		function press_DangNhap()
         {
             document.getElementById("popup").style.visibility = "visible";
-            //document.getElementById('<%=txtUsername.ClientID %>').value = "";
-            //document.getElementById('<%=txtPassword.ClientID %>').value = "";
-            //document.getElementById('<%=txtUsername.ClientID %>').focus();
+            document.getElementById("txtUsername").value = "";
+            document.getElementById("txtPassword").value = "";
+            document.getElementById("txtUsername").focus();
             return false;
         }
         function press_closeLogIn()
@@ -100,6 +100,11 @@ rgb(33, 91, 135); text-align: center;">
             document.getElementById("popup").style.visibility = "hidden";
             return false;
         }
+		function press_btLogin()
+		{
+			window.location = "thanhvien.php";
+			return false;
+		}
 	</script>
 </body>
 </html>

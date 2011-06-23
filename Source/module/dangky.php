@@ -213,7 +213,8 @@
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29; text-transform:uppercase;">
 									Đăng Ký Thành Viên</div>
-								<div style="margin:5px 0px 0px 0px;padding:8px;background:#FFFFCC;border:solid 2px red;color:#ff0000;">
+								<hr style="color: rgb(211, 232, 248);" width="680" size="1">	
+								<div style="margin-top:10px;padding:8px;background:#FFFFCC;border:solid 2px red;color:#ff0000;">
 									<b>Chú ý:</b>
 									<br>
 									+ Hãy điền vào Họ và tên phải lớn hơn 5 ký tự
@@ -231,7 +232,6 @@
 									+ Hãy điền 5 số mã an toàn trên hình vào ô bên cạnh
 									<br>
 								</div>
-								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div style="padding:20px 0;">
 									<table id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
 									<tbody>
@@ -240,7 +240,7 @@
 										<p></p>
 										<h5>
 										Nếu bạn đã đăng ký tài khoản thành viên tại realestate_hoaphuong.com? 
-										<a style="color:red;" href="login.php">Nhấn đăng nhập</a>
+										<a style="color:red;" href="" onclick="return press_DangNhap();">Nhấn đăng nhập</a>
 										</h5>
 										<p></p>
 										</td>
