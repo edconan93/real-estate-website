@@ -41,7 +41,7 @@
 											<img src="../images/kgpg_key1.png" style="vertical-align: middle;">
 											<a href="http://ankhanhjvc.com/index.php" class="a_small">Đăng Nhập</a>&nbsp;&nbsp;&nbsp;<img
 												src="../images/sign-up.png" style="vertical-align: middle;">
-											<a href="http://ankhanhjvc.com/index.php?setlang=e" class="a_small">Đăng Ký</a></div>
+											<a href="../../module/dangky.php" class="a_small">Đăng Ký</a></div>
 									</td>
 								</tr>
                             </table>

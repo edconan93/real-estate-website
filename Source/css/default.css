@@ -85,7 +85,7 @@ li{font-family:verdana; font-size:11px; line-height:18px}
 .newstitle:active{text-decoration:none; color:#015e79; font-size:13px; font-family:verdana; font-weight:bold}
 .newstitle:hover{text-decoration:none; color:#0152E7; font-size:13px; font-family:verdana; font-weight:bold}
 
-.box_left{margin:10px;padding:0 10px 10px 10px;background:#D4E8F9;border:1px solid #6899AA;border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px;border-color:#AFAFAF;}
+.box_left{margin:10px;padding:0 10px 10px 10px;background:#F2F9FF;border:1px solid #6899AA;border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px;border-color:#AFAFAF;}
 
 p.menu_item {
 	background:url(../images/bullet.png) no-repeat;
@@ -143,5 +143,17 @@ element.style {
     margin: 0;
     padding: 0;
 }
-
-
+.popup {	filter: alpha(opacity=100);	opacity: 0;}
+.transparent {background:black;filter:alpha(opacity=40);	opacity: 0.4;}
+.mid_transparent {height:295px;}
+#login_body {width:526px;text-align:left;height:290px;background-image:url(../images/form_BG.png);padding:26px 0px 0px 20px }
+#login_body p {margin-top:0; margin-bottom:0;font-family: arial;}
+.form_title{text-align:left;margin-left:0px;font-size:12pt;font-weight:bold;color:#2F2E29;font-family: arial;}
+.form_box{padding-top:65px;color:#ffffff;font-size:12px;}
+.form_text{color:#ffffff;font-size:13px;float:left;font-weight:bold;width:100px;text-align:right;}
+.form_input_BG{width:210px; background:url(../images/form_input.png) center left no-repeat; margin-left:30px;border:0px;height:42px;float:left;}
+.form_input_BG input[type="text"]{margin:5px 0px 0px 5px;border:none;width:200px;background:none;}
+.form_input_BG input[type="password"]{margin:5px 0px 0px 5px;border:none;width:200px;background:none;}
+.form_check_box{margin-left:220px;margin-top:-7px;}
+.form_login_signup_btn input{margin-left:28px;margin-top:18px;}
+.clear { clear:both;}
