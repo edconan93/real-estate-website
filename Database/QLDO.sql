@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2011 at 02:50 PM
+-- Generation Time: Jun 23, 2011 at 03:07 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -252,12 +252,35 @@ CREATE TABLE IF NOT EXISTS `phuong` (
   `idquan` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_phuong_quan` (`idquan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `phuong`
 --
 
+INSERT INTO `phuong` (`id`, `ten`, `idquan`) VALUES
+(1, 'BÌNH THỌ', 24),
+(2, 'TRƯỜNG THỌ', 24),
+(3, 'LINH CHIỂU', 24),
+(4, ' LINH TRUNG', 24),
+(5, 'LINH TÂY', 24),
+(6, 'LINH XUÂN', 24),
+(7, ' LINH ĐÔNG', 24),
+(8, 'HIỆP BÌNH CHÁNH', 24),
+(9, 'HIỆP BÌNH PHƯỚC', 24),
+(10, 'TAM BÌNH', 24),
+(11, 'TAM PHÚ', 24),
+(12, ' BÌNH CHIỂU', 24),
+(13, 'CÁC XÃ PHƯỜNG KHÁC', 24),
+(14, 'HIỆP PHÚ', 9),
+(15, 'TĂNG NHƠN PHÚ A', 9),
+(16, 'TĂNG NHƠN PHÚ B', 9),
+(17, 'LONG THẠNH MỸ', 9),
+(18, 'PHƯỚC LONG A', 9),
+(19, 'PHƯỚC LONG B', 9),
+(20, 'TÂN PHÚ', 9),
+(21, 'PHƯỚC BÌNH', 9),
+(22, 'CÁC XÃ PHƯỜNG KHÁC', 9);
 
 -- --------------------------------------------------------
 
@@ -272,12 +295,37 @@ CREATE TABLE IF NOT EXISTS `quan` (
   `idtinh` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_quan_tinh` (`idtinh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `quan`
 --
 
+INSERT INTO `quan` (`id`, `ten`, `idtinh`) VALUES
+(1, 'Quận 1', 1),
+(2, 'Quận 2', 1),
+(3, 'Quận 3', 1),
+(4, 'Quận 4', 1),
+(5, 'Quận 5', 1),
+(6, 'Quận 6', 1),
+(7, 'Quận 7', 1),
+(8, 'Quận 8', 1),
+(9, 'Quận 9', 1),
+(10, 'Quận 10', 1),
+(11, 'Quận 11', 1),
+(12, 'Quận 12', 1),
+(13, 'Huyện Bình Chánh', 1),
+(14, 'Quận Bình Tân', 1),
+(15, 'Quận Bình Thạnh', 1),
+(16, 'Huyện Cần Giờ', 1),
+(17, 'Huyện Củ Chi', 1),
+(18, 'Quận Gò Vấp', 1),
+(19, 'Huyện Hóc Môn', 1),
+(20, 'Huyện Nhà Bè', 1),
+(21, 'Quận Phú Nhuận', 1),
+(22, 'Quận Tân Bình', 1),
+(23, 'Quận Tân Phú', 1),
+(24, 'Quận Thủ Đức', 1);
 
 -- --------------------------------------------------------
 
@@ -438,12 +486,23 @@ CREATE TABLE IF NOT EXISTS `tinh` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tinh`
 --
 
+INSERT INTO `tinh` (`id`, `ten`) VALUES
+(1, 'TP Hồ Chí Minh'),
+(2, 'Hà Nội'),
+(3, 'Bình Dương'),
+(4, 'Bình Thuận'),
+(5, 'Cần Thơ'),
+(6, 'Đà Nẵng'),
+(7, 'Đăk Lăk'),
+(8, 'Đồng Nai'),
+(9, 'Lâm Đồng'),
+(10, 'Vũng Tàu');
 
 -- --------------------------------------------------------
 
