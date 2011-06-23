@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2011 at 04:05 PM
+-- Generation Time: Jun 23, 2011 at 04:21 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -545,6 +545,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `hoten` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `gioitinh` bit(1) NOT NULL,
+  `diachi` text COLLATE utf8_unicode_ci NOT NULL,
   `sdt1` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sdt2` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `role` int(11) DEFAULT NULL,
