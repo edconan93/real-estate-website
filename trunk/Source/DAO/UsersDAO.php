@@ -42,7 +42,7 @@
 	{
     	public static function Add ($password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status)
         {
-            $strSQL = "Insert into khgiaodich values (NULL, '$password', '$email', '$hoten','$gioitinh', '$diachi','$sdt1','$sdt2','$role','$level','$status')";
+            $strSQL = "Insert into user values (NULL, '$password', '$email', '$hoten','$gioitinh', '$diachi','$sdt1','$sdt2','$role','$level','$status')";
 		    $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			
