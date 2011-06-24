@@ -4,24 +4,23 @@
 <script src="../js/common.js" language="javascript" type="text/javascript"></script>
 <script src="../js/jquery-1.js" language="javascript" type="text/javascript"></script>
 <script type="text/javascript">
-function copy()
-{
- document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
-}
+
 
 $(document).ready(function()
 	{
 		$("#frmRegister").submit(function()
 		{
+		    alert("aaa");
 			var strUsername = $("#txtUsername").attr("value");
 			var strPassword = $("#txtPassword").attr("value");
 			var strRePassword = $("#txtRePassword").attr("value");
 			var strEmail = $("#txtEmail").attr("value");
-			var strAnswer = $("#txtAnswer").attr("value");
+			//var strAnswer = $("#txtAnswer").attr("value");
 			
-			var flag=true;
+			var flag=true;			
+			//alert(strUsername);
 			if(strUsername.length<6 || strUsername.length > 50)
-			{				
+			{				//alert(strUsername);
 				flag=false;
 				$("#messUsername").attr("innerHTML","tên đăng nhập từ 6-50 ký tự");
 				$("#messUsername").css("color","red");
@@ -33,44 +32,54 @@ $(document).ready(function()
 				$("#messUsername").css("color","red");
 			}
 			
-			if(strPassword.length<6 || strPassword.length > 50)
+			
+			if(txtPassword.length <6 || txtPassword.length > 50)
+			{				//alert(strUsername);
+				flag=false;
+				$("#messPassword").attr("innerHTML","5< Password <50");
+				$("#messPassword").css("color","red");
+			}else if(HaveSpecialChar(strPassword))
 			{
 				flag=false;
-				$("#messPassword").attr("innerHTML","mật khẩu từ 6-50 ký tự");
+				$("#messPassword").attr("innerHTML","Mật khẩu có chứa ký tự lạ");
 				$("#messPassword").css("color","red");
-			}
-			else if(HaveSpecialChar(strPassword))
+			}			
+			else
 			{
-				flag=false;
-				$("#messPassword").attr("innerHTML","mật khẩu có chứa ký tự lạ");
-				$("#messPassword").css("color","red");
+				//$("#messPassword").attr("innerHTML", "");
+				var serverURL = "checkPassword.php?txtPassword=" + txtPassword;
+				$("#messPassword").load(serverURL);
 			}
+			
+			
 			if(strPassword != strRePassword)
 			{
 				flag=false;
-				$("#messRePassword").attr("innerHTML","mật khẩu nhập lại không khớp");
+				$("#messRePassword").attr("innerHTML","Mật khẩu nhập lại không khớp");
 				$("#messRePassword").css("color","red");
+			}			
+			else
+			{
+				var serverURL = "checkPassword.php?txtRePassword=" + txtRePassword;
+				$("#messRePassword").load(serverURL);
 			}
 			
 			if(IsEmail(strEmail)==false)
 			{
 				flag=false;
-				$("#messEmail").attr("innerHTML","email không hợp lệ");
+				$("#messEmail").attr("innerHTML","Email không hợp lệ");
 				$("#messEmail").css("color","red");
 			}
-			if(trim(strAnswer) == "")
+			else
 			{
-				flag=false;
-				$("#messAnswer").attr("innerHTML","nhập câu trả lời");
-				$("#messAnswer").css("color","red");
+				var serverURL = "checkEmail.php?txtEmail=" + strEmail;
+				$("#messEmail").load(serverURL);
 			}
+			
+			
 			if(flag==false)
 				alert ("Có lỗi trong thông tin đăng ký. Xin kiểm tra lại");
-			if(flag==true && $("#hdError").attr("value") == "true")
-			{
-				flag=false;
-				alert ("Tên đăng nhập đã này đã được sử dụng. Xin chọn tên khác");
-			}
+
 			if(flag==true && $("#hdEmailError").attr("value") == "true")
 			{
 				flag=false;
@@ -87,37 +96,123 @@ $(document).ready(function()
 		
 		$("#txtUsername").blur(function ()
 		{
-			//alert("1111!");
+
 			var strUsername = $("#txtUsername").attr("value");
-			alert(strUsername);
-			if(strUsername.length<6 || strUsername.length > 50)
+			//alert(strUsername);
+			if(strUsername.length< 6 || strUsername.length > 50)
 			{				//alert(strUsername);
 				flag=false;
-				$("#messUsername").attr("innerHTML","tên đăng nhập từ 6-50 ký tự");
+				$("#messUsername").attr("innerHTML","Tên đăng nhập từ 6-50 ký tự");
 				$("#messUsername").css("color","red");
 			}
-			// else if(HaveSpecialChar(strUsername))
-			// {
-				// flag=false;
-				// $("#messUsername").attr("innerHTML", "tên đăng nhập có chứa ký tự lạ");
-				// $("#messUsername").css("color","red");
-			// }
-			// else
-			// {
-				// var serverURL = "modules/home_modules/checkUsername.php?txtUsername=" + strUsername;
-				// $("#messUsername").load(serverURL);
-			// }
+			else if(HaveSpecialChar(strUsername))
+			{
+				flag=false;
+				$("#messUsername").attr("innerHTML", "Tên đăng nhập có chứa ký tự lạ");
+				$("#messUsername").css("color","red");
+			}
+
+		});
+		
+		$("#txtPhone").blur(function ()
+		{
+			//alert("phone!");
+			var strPhone = $("#txtPhone").attr("value");
+			var strMobile = $("#txtMobile").attr("value");
+			//alert(strUsername);
+			if(strPhone.length < 10 || strPhone.length > 12 )
+			{	
+			   // alert("<10");
+				flag=false;
+				$("#messPhone").attr("innerHTML","10<= SDT <=12");
+				$("#messPhone").css("color","red");
+			}
+			else if(CheckPhoneNumber(strPhone,strMobile))
+			{
+				flag=false;
+				$("#messPhone").attr("innerHTML", "Số điện thoại ko hợp lệ");
+				$("#messPhone").css("color","red");
+			}
+			else
+			{
+				$("#messPhone").attr("innerHTML", "");
+			}
+		});
+		$("#txtMobile").blur(function ()
+		{
+			//alert("mobile	!");
+			var strPhone = $("#txtPhone").attr("value");
+			var strMobile = $("#txtMobile").attr("value");
+			//alert(strUsername);
+			if(strPhone.length<10 || strPhone.length > 12 || strMobile.length<10 || strMobile.length>12)
+			{				//alert(strUsername);
+				flag=false;
+				$("#messPhone").attr("innerHTML","10<= SDT <=12");
+				$("#messPhone").css("color","red");
+			}
+			else if(CheckPhoneNumber(strPhone,strMobile))
+			{
+			//alert("chu");
+				flag=false;
+				$("#messPhone").attr("innerHTML", "Số điện thoại ko hợp lệ");
+				$("#messPhone").css("color","red");
+			}
+			else
+			{
+				$("#messPhone").attr("innerHTML", "");
+			}
+		});
+		
+		$("#txtPassword").blur(function ()
+		{
+			
+			var txtPassword = $("#txtPassword").attr("value");
+			//alert(strUsername);
+			//alert("passwr	!"+txtPassword.length);
+			if(txtPassword.length <6 || txtPassword.length > 50)
+			{				//alert(strUsername);
+				flag=false;
+				$("#messPassword").attr("innerHTML","5< Password <50");
+				$("#messPassword").css("color","red");
+			}
+			
+			else
+			{
+				//$("#messPassword").attr("innerHTML", "");
+				var serverURL = "checkPassword.php?txtPassword=" + txtPassword;
+				$("#messPassword").load(serverURL);
+			}
+		});
+		$("#txtRePassword").blur(function ()
+		{
+			//alert("pass	!");
+			var txtPassword = $("#txtPassword").attr("value");
+			var txtRePassword = $("#txtRePassword").attr("value");
+			//alert(strUsername);
+			if(txtPassword != txtRePassword)
+			{				//alert(strUsername);
+				flag=false;
+				$("#messRePassword").attr("innerHTML","Sai password");
+				$("#messRePassword").css("color","red");
+			}
+			
+			else
+			{
+				//$("#messPassword").attr("innerHTML", "");
+				var serverURL = "checkPassword.php?txtRePassword=" + txtRePassword;
+				$("#messRePassword").load(serverURL);
+			}
 		});
 		
 		$("#txtEmail").blur(function ()
 		{
 			var strEmail = $("#txtEmail").attr("value");
 			
-			//$("#messEmail").attr("innerHTML","email không hợp lệ");
+			//$("#messEmail").attr("innerHTML","Email không hợp lệ");
 			if(IsEmail(strEmail)==false)
 			{
 				flag=false;
-				$("#messEmail").attr("innerHTML","email không hợp lệ");
+				$("#messEmail").attr("innerHTML","Email không hợp lệ");
 				$("#messEmail").css("color","red");
 			}
 			else
@@ -126,41 +221,51 @@ $(document).ready(function()
 				$("#messEmail").load(serverURL);
 			}
 		});
+		
 	});
-<<<<<<< .mine
+	function passwordStrength(password)
+	{
+		var desc = new Array();
+		desc[0] = "Very Weak";
+		desc[1] = "Weak";
+		desc[2] = "Better";
+		desc[3] = "Medium";
+		desc[4] = "Strong";
+		desc[5] = "Strongest";
+
+		var score   = 0;
+
+		//if password bigger than 6 give 1 point
+		if (password.length > 6) score++;
+
+		//if password has both lower and uppercase characters give 1 point	
+		if ( ( password.match(/[a-z]/) ) && ( password.match(/[A-Z]/) ) ) score++;
+
+		//if password has at least one number give 1 point
+		if (password.match(/\d+/)) score++;
+
+		//if password has at least one special caracther give 1 point
+		if ( password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/) )	score++;
+
+		//if password bigger than 12 give another 1 point
+		if (password.length > 12) score++;
+
+		 document.getElementById("passwordDescription").innerHTML = desc[score];
+		 document.getElementById("passwordStrength").className = "strength" + score;
+	}
+	function copy()
+	{
+	//alert("copy");
+	$a=document.frmRegister.txtEmail.value;
+	alert($a);
+	 document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
+	
+	
+	}
+
 	</script>
-	<script>
-		function passwordStrength(password)
-		{
-			var desc = new Array();
-			desc[0] = "Very Weak";
-			desc[1] = "Weak";
-			desc[2] = "Better";
-			desc[3] = "Medium";
-			desc[4] = "Strong";
-			desc[5] = "Strongest";
-
-			var score   = 0;
-
-			//if password bigger than 6 give 1 point
-			if (password.length > 6) score++;
-
-			//if password has both lower and uppercase characters give 1 point	
-			if ( ( password.match(/[a-z]/) ) && ( password.match(/[A-Z]/) ) ) score++;
-
-			//if password has at least one number give 1 point
-			if (password.match(/\d+/)) score++;
-
-			//if password has at least one special caracther give 1 point
-			if ( password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/) )	score++;
-
-			//if password bigger than 12 give another 1 point
-			if (password.length > 12) score++;
-
-			 document.getElementById("passwordDescription").innerHTML = desc[score];
-			 document.getElementById("passwordStrength").className = "strength" + score;
-		}
-	</script>
+	
+	
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
 			<td width="986">
@@ -339,26 +444,9 @@ $(document).ready(function()
 									Đăng Ký Thành Viên</div>
 								
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">	
-								<div style="margin-top:10px;padding:8px;background:#FFFFCC;border:solid 2px red;color:#ff0000;">
-									<b>Chú ý:</b>
-									<br>
-									+ Hãy điền vào Họ và tên phải lớn hơn 5 ký tự
-									<br>
-									+ Hãy điền vào địa chỉ liên lạc phải lớn hơn 10 ký tự
-									<br>
-									+ Hãy điền vào số điện thoại, chỉ nhập vào là số không dùng khoảng trắng, dấu chấm, dấu phẩy...
-									<br>
-									+ Hãy điền vào email liên lạc
-									<br>
-									+ Hãy điền vào Tên truy cập, tên truy cập phải lớn hơn 5 ký tự
-									<br>
-									+ Hãy điền vào mật khẩu truy cập, mật khẩu truy cập phải lớn hơn 5 ký tự
-									<br>
-									+ Hãy điền 5 số mã an toàn trên hình vào ô bên cạnh
-									<br>
-								</div>
+								
 							<div style="padding:20px 0;" id="frmRegister">
-							<form action="" method="post" name="frmRegister" id="frmRegister" >
+							<form action="" method="post" name="frmRegister " id="frmRegister" >
 								<table border="0" id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
 									<tr>
 										<td align="left" colspan="2">
@@ -380,7 +468,8 @@ $(document).ready(function()
 										Họ và tên:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" style="width:280px;" value="" name="txtUsername" id="txtUsername">
+										<input type="text" style="width:280px;" value="" name="txtUsername" id="txtUsername" onkeyup="javascript:this.value=this.value.toUpperCase();" 
+>
 										(6-50 ký tự)
 										</td>
 									</tr>
@@ -390,9 +479,11 @@ $(document).ready(function()
 										Địa chỉ liên lạc:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" style="width:280px;" value="" name="realtor_address">
+										<div style="float:left;">
+										<input type="text" style="width:280px;" value="" name="txtAddress">
+										<div id="messAdress" name="messAddress" class="mess"></div>
+										</div>
 										</td>
-										<td><div id="messAdress" name="messAdress" class="mess"></div></td>
 									</tr>
 									
 									<tr>
@@ -400,11 +491,14 @@ $(document).ready(function()
 										Điện thoại:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" style="width:115px;" maxlength="15" value="" name="txtPhone">
-										Di động:
-										<input type="text" style="width:102px;" maxlength="15" value="" name="txtMobile">
+										<div style="float:left;">
+											<input type="text" style="width:115px;" maxlength="15" value="" name="txtPhone" id="txtPhone">
+											Di động:
+											<input type="text" style="width:102px;" maxlength="15" value="" name="txtMobile" id="txtMobile">											
+										</div>
+										<div id="messPhone" name="messPhone" style="width:140px;float:left;" class="mess"></div>
 										</td>
-										<td><div id="messPhone" name="messPhone" class="mess"></div></td>
+										
 									</tr>
 									
 									<tr>
@@ -412,11 +506,16 @@ $(document).ready(function()
 										E-mail liên lạc:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" name="txtEmail" id="txtEmail" onkeyup="copy()" value="" style="width:280px;" maxlength="50">
+											<div style="float:left;">
+												<input type="text" name="txtEmail" id="txtEmail" onkeyup="copy()" value="" style="width:280px;" maxlength="50">
+											</div>
+											<div id="messEmail" style="width:140px;float:left;" class="mess"></div>
 										<br>
-										<span style="font-size:10px;">Hãy điền chính xác địa chỉ email để nhận được thư kích hoạt</span>
+										<div>
+										<span style="font-size:10px;float:left;">Hãy điền chính xác địa chỉ email để nhận được thư kích hoạt</span>
+										</div>
 										</td>
-										<td><div id="messEmail" class="mess"></div></td>
+										
 									</tr>
 									
 									<tr>
@@ -430,9 +529,11 @@ $(document).ready(function()
 										Tên truy cập:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" name="txtAccess" style="width:280px;" maxlength="50" value="" >
+										<div style="float:left;">
+										<input type="text" disabled="disabled"  id="txtAccess" name="txtAccess"  style="width:280px;" maxlength="50" value="" >
+										</div>
 										<br>
-										<span style="font-size:10px;">Tên truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
+										
 										</td>
 									</tr>
 									
@@ -441,9 +542,14 @@ $(document).ready(function()
 										Mật khẩu:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-											<input name="pass" style="width:280px;" id="pass" onkeyup="passwordStrength(this.value)" type="password">
-										<br>
-										<span style="font-size:10px;">Mật khẩu truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
+											<div style="float:left;">
+												<input name="txtPassword" id="txtPassword" style="width:280px;"  onkeyup="passwordStrength(this.value)" type="password">
+											</div>
+											<div id="messPassword" name="messPassword" style="width:140px;float:left;" class="mess"></div>
+											<br>
+											<div style="float:left;">
+												<span style="font-size:10px;">Mật khẩu truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
+											</div>
 										</td>
 										
 									</tr>
@@ -460,11 +566,16 @@ $(document).ready(function()
 										Nhập lại mật khẩu:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="password" style="width:280px;" maxlength="50" name="txtRePassword">
-										<br>
-										<span style="font-size:10px;">Nhập lại mật khẩu như đã điền ở ô trên</span>
+											<div style="float:left;">
+												<input type="password" style="width:280px;" maxlength="50" name="txtRePassword" id="txtRePassword">
+											</div>
+											<div id="messRePassword" name="messRePassword" style="width:140px;float:left;" class="mess"></div>
+											<br>
+											<div style="float:left;width:300px;">
+												<span style="font-size:10px;">Nhập lại mật khẩu như đã điền ở ô trên</span>
+											</div>
 										</td>
-										<td><div id="messRePassword" class="mess"></div></td>
+										
 									</tr>
 									
 									<tr>
@@ -490,13 +601,13 @@ $(document).ready(function()
 										<td align="right"></td>
 										<td align="left" style="padding-left:100px;">
 										<span class="action-button-left"></span>
-										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" name="submit_realtor">
+										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" name="btSubmit" name="btSubmit">
 										<span class="action-button-right"></span>
 										</td>
 									</tr>
 								</table><br>
 									</form>
-								</div>
+							</div>
 							</div>
 						</td>
 					</tr>
