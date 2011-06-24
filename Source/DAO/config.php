@@ -5,5 +5,4 @@
    	$password = "";	
 	$maxPages=5;
 	$maxItems = 10;
-
 ?>
