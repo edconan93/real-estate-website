@@ -3,8 +3,19 @@
 ?>
 <script src="../js/common.js" language="javascript" type="text/javascript"></script>
 <script src="../js/jquery-1.js" language="javascript" type="text/javascript"></script>
+ <script type="text/javascript">
+ function copy()
+ { 
+ document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
+ }
+ </script>
 <script type="text/javascript">
 
+// function copy()
+	// {
+	//alert("copy");
+	 // document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
+	// }
 
 $(document).ready(function()
 	{
@@ -253,15 +264,6 @@ $(document).ready(function()
 		 document.getElementById("passwordDescription").innerHTML = desc[score];
 		 document.getElementById("passwordStrength").className = "strength" + score;
 	}
-	function copy()
-	{
-	//alert("copy");
-
-	 document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
-	
-	
-	}
-
 	</script>
 	
 	
@@ -444,8 +446,8 @@ $(document).ready(function()
 								
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">	
 								
-							<div style="padding:20px 0;" id="frmRegister">
-							<form action="" method="post" name="frmRegister " id="frmRegister" >
+							<div style="padding:20px 0;" id="frmRegister" name="frmRegister">
+							<form action="" method="post" name="frmRegister" id="frmRegister" >
 								<table border="0" id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
 									<tr>
 										<td align="left" colspan="2">
