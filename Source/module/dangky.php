@@ -1,6 +1,127 @@
 ﻿<?php
 	include("../include/header.php");
 ?>
+<script src="../js/common.js" language="javascript" type="text/javascript"></script>
+<script type="text/javascript">
+function copy()
+{
+ document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
+}
+$(document).ready(function()
+	{
+		$("#frmRegister").submit(function()
+		{
+			var strUsername = $("#txtUsername").attr("value");
+			var strPassword = $("#txtPassword").attr("value");
+			var strRePassword = $("#txtRePassword").attr("value");
+			var strEmail = $("#txtEmail").attr("value");
+			var strAnswer = $("#txtAnswer").attr("value");
+			
+			var flag=true;
+			if(strUsername.length<6 || strUsername.length > 50)
+			{				
+				flag=false;
+				$("#messUsername").attr("innerHTML","tên đăng nhập từ 6-50 ký tự");
+				$("#messUsername").css("color","red");
+			}
+			else if(HaveSpecialChar(strUsername))
+			{
+				flag=false;
+				$("#messUsername").attr("innerHTML", "tên đăng nhập có chứa ký tự lạ");
+				$("#messUsername").css("color","red");
+			}
+			
+			if(strPassword.length<6 || strPassword.length > 50)
+			{
+				flag=false;
+				$("#messPassword").attr("innerHTML","mật khẩu từ 6-50 ký tự");
+				$("#messPassword").css("color","red");
+			}
+			else if(HaveSpecialChar(strPassword))
+			{
+				flag=false;
+				$("#messPassword").attr("innerHTML","mật khẩu có chứa ký tự lạ");
+				$("#messPassword").css("color","red");
+			}
+			if(strPassword != strRePassword)
+			{
+				flag=false;
+				$("#messRePassword").attr("innerHTML","mật khẩu nhập lại không khớp");
+				$("#messRePassword").css("color","red");
+			}
+			
+			if(IsEmail(strEmail)==false)
+			{
+				flag=false;
+				$("#messEmail").attr("innerHTML","email không hợp lệ");
+				$("#messEmail").css("color","red");
+			}
+			if(trim(strAnswer) == "")
+			{
+				flag=false;
+				$("#messAnswer").attr("innerHTML","nhập câu trả lời");
+				$("#messAnswer").css("color","red");
+			}
+			if(flag==false)
+				alert ("Có lỗi trong thông tin đăng ký. Xin kiểm tra lại");
+			if(flag==true && $("#hdError").attr("value") == "true")
+			{
+				flag=false;
+				alert ("Tên đăng nhập đã này đã được sử dụng. Xin chọn tên khác");
+			}
+			if(flag==true && $("#hdEmailError").attr("value") == "true")
+			{
+				flag=false;
+				alert ("Email này đã được sử dụng. Xin chọn email khác");
+			}
+			
+			if(flag==true && $("#cbAgree").attr("checked") == false)
+			{
+				flag=false;
+				alert ("Bạn phải đồng ý với thỏa thuận sử dụng");
+			}
+			return flag;
+		});
+		
+		$("#txtUsername").blur(function ()
+		{
+			var strUsername = $("#txtUsername").attr("value");
+			if(strUsername.length<6 || strUsername.length > 50)
+			{				
+				flag=false;
+				$("#messUsername").attr("innerHTML","tên đăng nhập từ 6-50 ký tự");
+				$("#messUsername").css("color","red");
+			}
+			else if(HaveSpecialChar(strUsername))
+			{
+				flag=false;
+				$("#messUsername").attr("innerHTML", "tên đăng nhập có chứa ký tự lạ");
+				$("#messUsername").css("color","red");
+			}
+			else
+			{
+				var serverURL = "modules/home_modules/checkUsername.php?txtUsername=" + strUsername;
+				$("#messUsername").load(serverURL);
+			}
+		});
+		
+		$("#txtEmail").blur(function ()
+		{
+			var strEmail = $("#txtEmail").attr("value");
+			if(IsEmail(strEmail)==false)
+			{
+				flag=false;
+				$("#messEmail").attr("innerHTML","email không hợp lệ");
+				$("#messEmail").css("color","red");
+			}
+			else
+			{
+				var serverURL = "modules/home_modules/checkEmail.php?txtEmail=" + strEmail;
+				$("#messEmail").load(serverURL);
+			}
+		});
+	});
+</script>
 
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
@@ -171,43 +292,14 @@
 									</tr>
 								</table>
 							</div>
-							<!--<div style="width: 270px; min-height: 500px; background-image: url(&quot;images/menubg_top.jpg&quot;);
-								background-repeat: no-repeat;">
-								<div style="width: 270px; min-height: 500px; background-image: url(&quot;images/sidebg.jpg&quot;);
-									background-repeat: no-repeat; background-position: center bottom;">
-									<div style="height: 20px;">
-									</div>
-									<div class="menulv1">
-										<a class="a_menu" href="http://ankhanhjvc.com/index.php?menuid=119">Introduction</a></div>
-									<div class="menulv2_active">
-										<a class="a_menu2" href="http://ankhanhjvc.com/index.php?menuid=123" style="color: rgb(0, 
-0, 0);">About the Company</a></div>
-									<div class="menulv2">
-										<a class="a_menu2" href="http://ankhanhjvc.com/index.php?menuid=122">Video Clips</a></div>
-								</div>
-							</div>
-							<div style="margin-top: 20px; padding-top: 18px; padding-left: 10px; width: 168px;
-								height: 86px; background-image: url(&quot;images/hitbg.gif&quot;); background-repeat: no-repeat;">
-								<div style="font-family: tahoma; font-size: 12px; font-weight: bold; color: rgb(14, 58, 95);"
-									title="Tính từ 14:15:46 - 21/08/2009">
-									Số lượt truy cập: <span id="hittotal" style="font-family: tahoma; font-size: 12px;
-										color: rgb(14, 58, 95);">74349</span></div>
-								<div style="font-family: tahoma; font-size: 12px; font-weight: bold; color: rgb(14, 58, 95);">
-									Hôm nay: <span id="hittoday" style="font-family: tahoma; font-size: 12px; color: rgb(118, 125, 152);">
-										60112</span></div>
-								<div style="font-family: tahoma; font-size: 11px; font-weight: normal; color: rgb(14, 58, 95);">
-									Có <span id="onlineloc" style="font-family: tahoma; font-size: 12px; color: rgb(14, 58, 95);">
-										5</span> người đang online</div>
-
-							</div>
-							<div style="height: 30px;">
-							</div>-->
+							
 						</td>
 						<td style="padding: 10px;" valign="top">
 							<div style="width: 686px;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29; text-transform:uppercase;">
 									Đăng Ký Thành Viên</div>
+								
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">	
 								<div style="margin-top:10px;padding:8px;background:#FFFFCC;border:solid 2px red;color:#ff0000;">
 									<b>Chú ý:</b>
@@ -227,7 +319,9 @@
 									+ Hãy điền 5 số mã an toàn trên hình vào ô bên cạnh
 									<br>
 								</div>
-								<div style="padding:20px 0;">
+							<div style="padding:20px 0;" id="frmRegister">
+							<form action="" method="post" name="frmRegister" id="frmRegister" >
+								
 									<table id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
 									<tbody>
 									<tr>
@@ -250,8 +344,9 @@
 										Họ và tên:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" style="width:280px;" value="" name="realtor_name">
+										<input type="text" style="width:280px;" value="" name="txtUsername" id="txtUsername">
 										</td>
+										<td width="166"><div id="messHoTen" class="mess">(6-50 ký tự)</div></td>
 									</tr>
 									
 									<tr>
@@ -261,6 +356,7 @@
 										<td align="left">
 										<input type="text" style="width:280px;" value="" name="realtor_address">
 										</td>
+										<td><div id="messAdress" name="messAdress" class="mess"></div></td>
 									</tr>
 									
 									<tr>
@@ -268,10 +364,11 @@
 										Điện thoại:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" style="width:115px;" maxlength="15" value="" name="realtor_phone">
+										<input type="text" style="width:115px;" maxlength="15" value="" name="txtPhone">
 										Di động:
-										<input type="text" style="width:102px;" maxlength="15" value="" name="realtor_mobile">
+										<input type="text" style="width:102px;" maxlength="15" value="" name="txtMobile">
 										</td>
+										<td><div id="messPhone" name="messPhone" class="mess"></div></td>
 									</tr>
 									
 									<tr>
@@ -279,10 +376,11 @@
 										E-mail liên lạc:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" onkeyup="copy()" style="width:280px;" maxlength="50" value="" name="realtor_e_mail">
+										<input type="text" name="txtEmail" onkeyup="copy()" value="" style="width:280px;" maxlength="50">
 										<br>
 										<span style="font-size:10px;">Hãy điền chính xác địa chỉ email để nhận được thư kích hoạt</span>
 										</td>
+										<td><div id="messEmail" class="mess"></div></td>
 									</tr>
 									
 									<tr>
@@ -296,7 +394,7 @@
 										Tên truy cập:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" style="width:280px;" maxlength="50" value="" name="realtor_login">
+										<input type="text" name="txtAccess" style="width:280px;" maxlength="50" value="" >
 										<br>
 										<span style="font-size:10px;">Tên truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
 										</td>
@@ -307,10 +405,11 @@
 										Mật khẩu:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="password" style="width:280px;" maxlength="50" name="realtor_password">
+										<input type="password" style="width:280px;" maxlength="50" name="txtPassword">
 										<br>
 										<span style="font-size:10px;">Mật khẩu truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
 										</td>
+										<td><div id="messPassword" class="mess"></div></td>
 									</tr>
 									
 									<tr>
@@ -318,10 +417,11 @@
 										Nhập lại mật khẩu:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="password" style="width:280px;" maxlength="50" name="realtor_password_2">
+										<input type="password" style="width:280px;" maxlength="50" name="txtRePassword">
 										<br>
 										<span style="font-size:10px;">Nhập lại mật khẩu như đã điền ở ô trên</span>
 										</td>
+										<td><div id="messPassword2" class="mess"></div></td>
 									</tr>
 									
 									<tr>
@@ -338,7 +438,7 @@
 									<tr>
 										<td align="right"></td>
 										<td align="left">
-										<input type="checkbox" checked="" name="terms">
+										<input type="checkbox" checked="" name="cbAgree" id="cbAgree">
 										<a onclick="Terms_Of_Service();" href="#">Tôi đồng ý với các quy định của realestate_hoaphuong.com</a>
 										</td>
 									</tr>
@@ -352,10 +452,12 @@
 										</td>
 									</tr>
 
-		
+
 									</tbody>
 										
 									</table><br/>
+									
+									</form>
 								</div>
 							</div>
 						</td>
