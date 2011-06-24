@@ -24,107 +24,105 @@
 								<div class="mid_content">
 									<div id="content" class="bg_r">
 										<table cellspacing="0" cellpadding="0" border="0" align="center" width="655">
-											<tbody>
-												<tr>
-													<td align="left" colspan="2">
-													<br>
+											<tr>
+												<td align="left" colspan="2">
+												<br>
+												
+												<br>
+												<p align="left">
+												<div align="Left" style="text-align:center;">
+													<a href="dangtinban.php">
+													<b class="button_submit" style="padding:5px;">Đăng Tin Cần Bán</b>
+													</a>&nbsp;&nbsp;&nbsp;
+													<a href="dangtinmua.php">
+													<b class="button_submit" style="padding:5px;">Đăng Tin Cần Mua</b>
+													</a>
 													
+													</div>
 													<br>
-													<p align="left">
-													<div align="Left">
-														<a href="dangtin.php">
-														<b class="button_submit" style="padding:5px; margin-right:10px;">Đăng Tin Cần Bán</b>
-														</a>
-														<a href="dangtin.php">
-														<b class="button_submit" style="padding:5px; margin-right:10px;">Đăng Tin Cần Mua</b>
-														</a>
-														
-														</div>
-														<br>
-													</p>
-													<p>
-													<strong>Dưới đây là một số quy định bắt buộc đối với các thành viên đăng tin tại Realestate_hoaphuong.com:</strong>
-													<br>
-													<br>
-													1. Tin đăng phải đúng danh mục, không đăng tin có nội dung trùng lặp (spam), hãy dùng chức năng&nbsp;&nbsp;
-													<strong>cập nhật lên trang chủ</strong>
-													&nbsp;hàng ngày để trành lỗi này...
-													<br>
-													<br>
-													2. Các tin đăng phải có tiêu đề viết hoa và nội dung rõ ràng, đầy đủ, phải dùng tiếng Việt có dấu. Tránh gây hiểu lầm, phải điền đầy đủ thông tin như mức giá, kích thước, diện tích...
-													<br>
-													<br>
-													3. Tất cả thông tin muốn đăng tải trên Realestate_hoaphuong.com phải là thông tin mua, bán, thuê và cho thuê bất động sản, không đăng tin quảng cáo giới thiệu doanh nghiệp, đại lý....
-													<br>
-													<br>
-													4. Đăng tải hình ảnh đại diện phải là hình của tài sản đang rao, không dùng hình ảnh có nội dung không liên quan, không đăng logo, banner quảng cáo thay cho hình ảnh của tài sản.
-													<br>
-													<br>
-													- Các tin đăng sẽ được Realestate_hoaphuong.com kiểm duyệt nội dung, nếu tin rao có đủ 3 yếu tố (1, 2, 3, 4) trên mới được Realestate_hoaphuong.com cho phép đăng tải
-													<br>
-													<br>
-													- Thành viên hãy kiểm tra thường xuyên email và đọc nội dung cảnh báo những lỗi vi phạm từ Realestate_hoaphuong.com
-													<br>
-													<br>
-													- Nếu thành viên cố tình vi phạm tài khoản đăng tin của bạn sẽ bị khoá hoặc vi phạm ở mức nặng xóa bỏ vĩnh viễn tại hệ thống Realestate_hoaphuong.com.
-													<br>
-													<br>
-													<strong>Ngoài thông báo trên bạn phải tuân thủ những quy định sau:</strong>
-													<br>
-													<strong></strong>
-													- Thành viên sử dụng&nbsp;nhắn tin nội bộ để gửi tin&nbsp;có nội dung quảng cáo sẽ bị khoá và xoá tài khoản vĩnh viễn
-													<br>
-													<br>
-													- Realestate_hoaphuong.com toàn quyền quyết định về việc lưu giữ hay loại bỏ tin đã đăng trên trang web này mà không cần báo trước.
-													<br>
-													<br>
-													- Realestate_hoaphuong.com không bảo đảm về tính chính xác cũng như Realestate_hoaphuong.com không chịu trách nhiệm về những thông tin từ các thành viên đăng ...
-													<br>
-													<br>
-													- Realestate_hoaphuong.com không chịu bất cứ trách nhiệm pháp lý hoặc bồi thường thiệt hại nào về việc mất mát hay hư hỏng đối với những tin đã đăng...
-													<br>
-													<br>
-													- Không đăng tin liên quan tới chính trị, tôn giáo, chống phá nhà nước CHXHCN VIỆT NAM.
-													<br>
-													<br>
-													- Không đăng tin, hình ảnh liên quan tới sex..
-													<br>
-													<br>
-													- Không quảng bá, giới thiệu các phần mềm crack, hack...
-													<br>
-													<br>
-													- Không dùng từ ngữ thiếu văn hóa, không thách thức, nói xấu lẫn nhau.
-													<br>
-													<br>
-													- Không đăng những tin vi phạm pháp luật Việt nam cũng như thuần phong mỹ tục của người Việt Nam.
-													<br>
-													- Các trang web có nội dung tương tự Realestate_hoaphuong.com không được đăng quảng cáo trên site này.
-													<br>
-													<br>
-													- Realestate_hoaphuong.com có toàn quyền thay đổi một hay nhiều điều khoản có trong quy định này mà không cần giải thích lý do và cũng không cần phải thông báo trước.
-													<br>
-													<br>
-													- Mọi thành viên, khách hàng, đối tác có trách nhiệm thường xuyên truy cập trang quy định này, xem mọi sự thay đổi, bổ sung, trong quy định, xác nhận và đồng ý với mọi phần sửa đổi, bổ sung.
-													<br>
-													<br>
-													<em>Xin cám ơn sự hợp tác của các bạn.</em>
-													<br>
-													<strong>BQT - Realestate_hoaphuong.com</strong>
-													</p>
-													<p></p>
-													<table cellspacing="0" cellpadding="0" border="0" align="center" width="100%">
-														<tbody>
-														<tr>
-														<td align="center" colspan="4"> </td>
-														</tr>
-														<tr>
-														<td align="left" colspan="4"> </td>
-														</tr>
-														</tbody>
-													</table>
-												</td>
-											</tr>
-										</tbody>
+												</p>
+												<p>
+												<strong>Dưới đây là một số quy định bắt buộc đối với các thành viên đăng tin tại Realestate_hoaphuong.com:</strong>
+												<br>
+												<br>
+												1. Tin đăng phải đúng danh mục, không đăng tin có nội dung trùng lặp (spam), hãy dùng chức năng&nbsp;&nbsp;
+												<strong>cập nhật lên trang chủ</strong>
+												&nbsp;hàng ngày để trành lỗi này...
+												<br>
+												<br>
+												2. Các tin đăng phải có tiêu đề viết hoa và nội dung rõ ràng, đầy đủ, phải dùng tiếng Việt có dấu. Tránh gây hiểu lầm, phải điền đầy đủ thông tin như mức giá, kích thước, diện tích...
+												<br>
+												<br>
+												3. Tất cả thông tin muốn đăng tải trên Realestate_hoaphuong.com phải là thông tin mua, bán, thuê và cho thuê bất động sản, không đăng tin quảng cáo giới thiệu doanh nghiệp, đại lý....
+												<br>
+												<br>
+												4. Đăng tải hình ảnh đại diện phải là hình của tài sản đang rao, không dùng hình ảnh có nội dung không liên quan, không đăng logo, banner quảng cáo thay cho hình ảnh của tài sản.
+												<br>
+												<br>
+												- Các tin đăng sẽ được Realestate_hoaphuong.com kiểm duyệt nội dung, nếu tin rao có đủ 3 yếu tố (1, 2, 3, 4) trên mới được Realestate_hoaphuong.com cho phép đăng tải
+												<br>
+												<br>
+												- Thành viên hãy kiểm tra thường xuyên email và đọc nội dung cảnh báo những lỗi vi phạm từ Realestate_hoaphuong.com
+												<br>
+												<br>
+												- Nếu thành viên cố tình vi phạm tài khoản đăng tin của bạn sẽ bị khoá hoặc vi phạm ở mức nặng xóa bỏ vĩnh viễn tại hệ thống Realestate_hoaphuong.com.
+												<br>
+												<br>
+												<strong>Ngoài thông báo trên bạn phải tuân thủ những quy định sau:</strong>
+												<br>
+												<strong></strong>
+												- Thành viên sử dụng&nbsp;nhắn tin nội bộ để gửi tin&nbsp;có nội dung quảng cáo sẽ bị khoá và xoá tài khoản vĩnh viễn
+												<br>
+												<br>
+												- Realestate_hoaphuong.com toàn quyền quyết định về việc lưu giữ hay loại bỏ tin đã đăng trên trang web này mà không cần báo trước.
+												<br>
+												<br>
+												- Realestate_hoaphuong.com không bảo đảm về tính chính xác cũng như Realestate_hoaphuong.com không chịu trách nhiệm về những thông tin từ các thành viên đăng ...
+												<br>
+												<br>
+												- Realestate_hoaphuong.com không chịu bất cứ trách nhiệm pháp lý hoặc bồi thường thiệt hại nào về việc mất mát hay hư hỏng đối với những tin đã đăng...
+												<br>
+												<br>
+												- Không đăng tin liên quan tới chính trị, tôn giáo, chống phá nhà nước CHXHCN VIỆT NAM.
+												<br>
+												<br>
+												- Không đăng tin, hình ảnh liên quan tới sex..
+												<br>
+												<br>
+												- Không quảng bá, giới thiệu các phần mềm crack, hack...
+												<br>
+												<br>
+												- Không dùng từ ngữ thiếu văn hóa, không thách thức, nói xấu lẫn nhau.
+												<br>
+												<br>
+												- Không đăng những tin vi phạm pháp luật Việt nam cũng như thuần phong mỹ tục của người Việt Nam.
+												<br>
+												- Các trang web có nội dung tương tự Realestate_hoaphuong.com không được đăng quảng cáo trên site này.
+												<br>
+												<br>
+												- Realestate_hoaphuong.com có toàn quyền thay đổi một hay nhiều điều khoản có trong quy định này mà không cần giải thích lý do và cũng không cần phải thông báo trước.
+												<br>
+												<br>
+												- Mọi thành viên, khách hàng, đối tác có trách nhiệm thường xuyên truy cập trang quy định này, xem mọi sự thay đổi, bổ sung, trong quy định, xác nhận và đồng ý với mọi phần sửa đổi, bổ sung.
+												<br>
+												<br>
+												<em>Xin cám ơn sự hợp tác của các bạn.</em>
+												<br>
+												<strong>BQT - Realestate_hoaphuong.com</strong>
+												</p>
+												<p></p>
+												<table cellspacing="0" cellpadding="0" border="0" align="center" width="100%">
+													<tbody>
+													<tr>
+													<td align="center" colspan="4"> </td>
+													</tr>
+													<tr>
+													<td align="left" colspan="4"> </td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
 									  </table>
 									</div>
 								</div>

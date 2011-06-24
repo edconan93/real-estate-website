@@ -5,7 +5,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="../css/default.css">
 	<link rel="stylesheet" type="text/css" href="../css/user.css">
-	<script type="text/javascript" src="scripts/load.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/ui-lightness/jquery-ui-1.8.9.custom.css" />
+	<script type="text/javascript" src="../js/utilities.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.9.custom.min.js"></script>
 </head>
 <body style="margin: 0pt; padding: 0pt;" bgcolor="#000c1c">
 	<div style="width: 100%; background-image: url(&quot;../images/bg_top.gif&quot;); background-repeat: repeat-x; text-align: center;">
