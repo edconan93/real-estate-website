@@ -36,7 +36,7 @@
 											</ul>
 										</div>
 									</div>
-									<table width="100%" cellpadding="0" cellspacing="0" border="0">
+									<table class="table" width="100%" cellpadding="0" cellspacing="0" border="0">
 										<tr style="background:#00397C;height:30px;">
 											<td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN</td>
 										</tr>
@@ -161,7 +161,7 @@
 											<td><input type="text" style="width:70px;" value="20/10/2011"></td>
 										</tr>
 									</table><br>
-									<table width="100%" cellpadding="0" cellspacing="0">
+									<table class="table" width="100%" cellpadding="0" cellspacing="0">
 										<tr style="background:#00397C;height:30px;">
 											<td colspan="4" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN BẤT ĐỘNG SẢN</td>
 										</tr>
@@ -222,7 +222,7 @@
 											</td>
 										</tr>
 									</table><br>
-									<table width="100%" cellpadding="0" cellspacing="0">
+									<table class="table" width="100%" cellpadding="0" cellspacing="0">
 										<tr style="background:#00397C;height:30px;">
 											<td colspan="4" style="color:#FFF;font-weight:bold;padding-left:4px;">CÁC TIỆN ÍCH</td>
 										</tr>
@@ -260,18 +260,28 @@
 											<td> </td>
 										</tr>
 									</table><br>
-									<table width="100%" cellpadding="0" cellspacing="0">
+									<table class="table" width="100%" cellpadding="0" cellspacing="0">
 										<tr style="background:#00397C;height:30px;">
 											<td colspan="4" style="color:#FFF;font-weight:bold;padding-left:4px;">MÔ TẢ NGẮN (DƯỚI 500 KÝ TỰ)</td>
 										</tr>
 										<tr>
-											<td>Hình ảnh (450px * 300px)
+											<td>
+											<?php
+												$path = rtrim($_SERVER['PHP_SELF'],"e/module/dangtin.php/")."e/library/fckeditor/";
+												include("../library/fckeditor/fckeditor.php");
+												$summary = new FCKeditor("summary");
+												$summary->BasePath = $path;
+												$summary->Height=300;
+												$summary->Value = "";
+												$summary->Create();
+											?>
+											Hình ảnh (450px * 300px)
 												<input id="FileUpload1" type="file" name="FileUpload1">
 												<input id="btUpload" type="submit" value="Upload" name="btUpload">
 											</td>
 										</tr>
 									</table><br>
-									<table width="100%" cellpadding="0" cellspacing="0" border="0">
+									<table class="table" width="100%" cellpadding="0" cellspacing="0" border="0">
 										<tr style="background:#00397C;height:30px;">
 											<td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN LIÊN HỆ</td>
 										</tr>

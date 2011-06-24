@@ -208,7 +208,7 @@ img {border:0;}
     position: relative;
     width: 684px;
 }
-table tr {height:26px;}
+table.table tr {height:26px;}
 
 .ButtonWithbackground {
     background: url("../images/btn_background.jpg") repeat-x scroll left center transparent;
