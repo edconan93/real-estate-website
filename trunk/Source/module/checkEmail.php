@@ -3,8 +3,8 @@
 	if(!empty($txtEmail))
 	{
 		$PATH_BASE = str_replace('//','/',dirname(__FILE__).'/');
-		echo $PATH_BASE;
-		include_once ($PATH_BASE . '../../BUS/UsersBUS.php');
+		//echo $PATH_BASE;
+		include_once ($PATH_BASE . '../BUS/UsersBUS.php');
 		$user = UsersBUS::GetUserByEmail($txtEmail);
 		if(empty($user))
 		{
