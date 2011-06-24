@@ -1,6 +1,6 @@
 <?php
 	$hostName = "localhost";
-   	$databaseName = "blogdb";
+   	$databaseName = "qldo";
    	$username = "root";
    	$password = "";	
 	$maxPages=5;
