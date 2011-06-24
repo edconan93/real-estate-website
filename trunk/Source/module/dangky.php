@@ -127,27 +127,40 @@ $(document).ready(function()
 			}
 		});
 	});
-	// function CheckMail(email)
-	// {
-		// var rs = new RegExp("([A-Za-z0-9_.-]){2,}@([A-Za-z0-9_.-]){2,}.([A-Za-z0-9_.-]){2,}");
-		// if(email.match(rs) == null)
-		// {
-			// alert("Email không hợp lệ. Vui lòng kiểm tra lại !");
-			// document.getElementById("txtEmail").focus();
-			// return 1;
-		// }
-		// return 0;
-	// }
-	// function kiemtraEmail()
-	// {
-		// var email = document.getElementById("txtEmail").value;
-		// var kq = CheckMail(email);
-		// if (kq == 1)
-			// return;
-				
-		// return false;
-	// }
-</script>
+<<<<<<< .mine
+	</script>
+	<script>
+		function passwordStrength(password)
+		{
+			var desc = new Array();
+			desc[0] = "Very Weak";
+			desc[1] = "Weak";
+			desc[2] = "Better";
+			desc[3] = "Medium";
+			desc[4] = "Strong";
+			desc[5] = "Strongest";
+
+			var score   = 0;
+
+			//if password bigger than 6 give 1 point
+			if (password.length > 6) score++;
+
+			//if password has both lower and uppercase characters give 1 point	
+			if ( ( password.match(/[a-z]/) ) && ( password.match(/[A-Z]/) ) ) score++;
+
+			//if password has at least one number give 1 point
+			if (password.match(/\d+/)) score++;
+
+			//if password has at least one special caracther give 1 point
+			if ( password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/) )	score++;
+
+			//if password bigger than 12 give another 1 point
+			if (password.length > 12) score++;
+
+			 document.getElementById("passwordDescription").innerHTML = desc[score];
+			 document.getElementById("passwordStrength").className = "strength" + score;
+		}
+	</script>
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
 			<td width="986">
@@ -346,9 +359,7 @@ $(document).ready(function()
 								</div>
 							<div style="padding:20px 0;" id="frmRegister">
 							<form action="" method="post" name="frmRegister" id="frmRegister" >
-								
-									<table id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
-									<tbody>
+								<table border="0" id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
 									<tr>
 										<td align="left" colspan="2">
 										<p></p>
@@ -361,7 +372,7 @@ $(document).ready(function()
 									</tr>
 									<tr>
 										<td align="left" colspan="2">
-										<h1>THÔNG TIN LIÊN LẠC</h1>
+											<h1>THÔNG TIN LIÊN LẠC</h1>
 										</td>
 									</tr>
 									<tr>
@@ -370,8 +381,8 @@ $(document).ready(function()
 										</td>
 										<td align="left">
 										<input type="text" style="width:280px;" value="" name="txtUsername" id="txtUsername">
+										(6-50 ký tự)
 										</td>
-										<td width="166"><div id="messUsername" class="mess">(6-50 ký tự)</div></td>
 									</tr>
 									
 									<tr>
@@ -430,13 +441,20 @@ $(document).ready(function()
 										Mật khẩu:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="password" style="width:280px;" maxlength="50" name="txtPassword">
+											<input name="pass" style="width:280px;" id="pass" onkeyup="passwordStrength(this.value)" type="password">
 										<br>
 										<span style="font-size:10px;">Mật khẩu truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
 										</td>
-										<td><div id="messPassword" class="mess"></div></td>
+										
 									</tr>
-									
+									<tr>
+										<td align="right" valign="top" style="padding-top:6px;">
+											Độ an toàn mật khẩu</td>
+										<td>
+											<div id="passwordDescription">Very Weak</div>
+											<div id="passwordStrength" class="strength0"></div>
+										</td>
+									</tr>
 									<tr>
 										<td align="right" valign="top" style="padding-top:6px;">
 										Nhập lại mật khẩu:<span style="color:red;"> (*)</span>
@@ -476,12 +494,7 @@ $(document).ready(function()
 										<span class="action-button-right"></span>
 										</td>
 									</tr>
-
-
-									</tbody>
-										
-									</table><br/>
-									
+								</table><br>
 									</form>
 								</div>
 							</div>
