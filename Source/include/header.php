@@ -10,6 +10,17 @@
 	<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui-1.8.9.custom.min.js"></script>
 </head>
+<?php
+   session_start ();
+   	if(isset($_GET["do"])&&$_GET["do"]=="logout")
+     {
+           unset($_SESSION["curUser"]);
+     }
+   $curUser=null;
+   if(isset($_SESSION["curUser"]) && !empty($_SESSION["curUser"]))
+        $curUser=$_SESSION["curUser"];
+   include ("../DAO/config.php");
+?>
 <body style="margin: 0pt; padding: 0pt;" bgcolor="#000c1c">
 	<div style="width: 100%; background-image: url(&quot;../images/bg_top.gif&quot;); background-repeat: repeat-x; text-align: center;">
 		<center>
@@ -36,11 +47,17 @@
 									</td>
 									<td valign="bottom">
 										<div style="margin-bottom: 3px;">
-											<img src="../images/home.png" style="vertical-align: middle;">
+											<img src="../images/home.png" style="vertical-align: middle;"/>
 											<a href="dichvu.php" class="a_small">Home</a>&nbsp;&nbsp;&nbsp;
-											<img src="../images/kgpg_key1.png" style="vertical-align: middle;">
-											<a href="" class="a_small" onclick="return press_DangNhap();">Đăng Nhập</a>&nbsp;&nbsp;&nbsp;<img
-												src="../images/sign-up.png" style="vertical-align: middle;">
+											<img src="../images/kgpg_key1.png" style="vertical-align: middle;"/>
+                                            <?php
+                                            if($curUser==null)                                      
+                                           	    echo "<a href='' class='a_small' onclick='return press_DangNhap();'>Đăng Nhập</a>";
+                                            else
+                                                echo "<a href='dichvu.php?do=logout' class='a_small'>Đăng Xuất</a>";
+                                            ?>
+                                           &nbsp;&nbsp;&nbsp;<img
+												src="../images/sign-up.png" style="vertical-align: middle;"/>
 											<a href="dangky.php" class="a_small">Đăng Ký</a></div>
 									</td>
 								</tr>
@@ -73,3 +90,4 @@
                     </center>
                 </div>
                 <center>
+                

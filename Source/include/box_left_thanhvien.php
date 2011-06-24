@@ -10,12 +10,24 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				Tài khoản:<br><center><b style="color:blue;">lchone.hum@yahoo.com</b></center><br>
-				Họ tên: Nguyễn Đức Thịnh<br>
-				Email: ducthinh0333@gmail.com<br>
-				ĐT: 0934100286<br>
-				<p style="text-align:center;font-size:9px;margin:0;">( <a style="font-size:11px;" href="dichvu.php">Thoát</a> )</p>
-			</td>
+            <?php
+                if($curUser==null)
+                {
+                    //echo "Tài khoản:<br><center><b style='color:blue;'>Chua dang nhap</b></center><br>";
+                    header("Location:dichvu.php");
+                }
+                else
+                {
+                    echo "Tài khoản:<br><center><b style='color:blue;'>".$curUser['email']."</b></center><br>";
+				    echo "Họ tên: ".$curUser['hoten']."<br>";
+				    echo "Email: ".$curUser['email']."<br>";
+			 	    echo "ĐT: ".$curUser['sdt1']."<br>";
+				    
+                }
+			
+			?>
+            <p style="text-align:center;font-size:9px;margin:0;">( <a style="font-size:11px;" name="linkout" href="dichvu.php?do=logout">Thoát</a> )</p>
+            </td>
 		</tr>
 	</table>
 </div>

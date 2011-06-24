@@ -50,19 +50,52 @@ rgb(33, 91, 135); text-align: center;">
 					<div class="form_title">
 						THÀNH VIÊN ĐĂNG NHẬP
 					</div>
+                    <div class='form_error' id="frmError"></div>
+                    <?php
+                        //xu ly dang nhap
+                        if(isset($_POST["btn_Login"]))
+                        {   
+                            include("../BUS/UsersBUS.php");
+                            $user=$_POST["txtUsername"];
+                            $pass=$_POST["txtPassword"];
+                            echo $user;
+                            echo $pass;
+                            $result=UsersBus::Login($user,$pass);
+                            if($result==null)
+                            {
+                                $fLogin=false;
+                            }
+                            else
+                            {
+                                $_SESSION["curUser"] = $result;
+                                header("Location:thanhvien.php?id=".$result['id']);
+                            }
+                        }?>
+                       <?php
+                            if(isset($fLogin)&&$fLogin==false)
+                            {                            
+                                 echo "<script language='javascript' type='text/javascript'>";
+                                 echo "document.getElementById('frmError').innerHTML='Bạn đã nhập sai username hoặc password';";
+                                 echo "document.getElementById('popup').style.visibility = 'visible';";
+                                 echo "</script>";
+                            }
+                               
+                        ?>
+                    <form action="" method="POST" name="frmDangnhap"  onsubmit="return press_btLogin();">
 					<div class="form_box">
+                   
 						<p class="form_text">
 							Tên đăng nhập</p>
 						<p class="form_input_BG">
-							<input id="txtUsername" type="text"></p>
+							<input id="txtUsername" name="txtUsername" type="text"></p>
 						<p class="clear"></p>
 						<p class="form_text">
 							Mật khẩu</p>
 						<p class="form_input_BG">
-							<input id="txtPassword" type="text"></p>
+							<input type="password" id="txtPassword" name="txtPassword" type="text"></p>
 						<p class="clear"></p>
 						<p class="form_login_signup_btn" style="text-align: right; margin-right: 186px;">
-							<a href=""><img style="border:0;" onclick="return press_btLogin();" src="../images/login_btn.png" /></a>
+						<input type="submit" name="btn_Login" value=""/>	
 							<br />
 							<br />
 							<a style="color:yellow;" href="">Quên mật khẩu?</a>
@@ -70,10 +103,11 @@ rgb(33, 91, 135); text-align: center;">
 							<a style="color:yellow;" href="">Đăng ký thành viên</a>
 						</p>
 						<p style="text-align: right; padding: 0px 10px 0 0; float: right; width: 100px; position: relative;">
-							<a href="">
-								<img style="border:0;" onclick="return press_closeLogIn();" src="../images/fileclose.png" alt="" /></a>
+							<a href="">	<img style="border:0;" onclick="return press_closeLogIn();" src="../images/fileclose.png" alt="" /></a>
+                                                   
 						</p>
 					</div>
+                    </form>
 				</div>
 			</td>
 			<td class="transparent" style="width: 30%;">
@@ -102,9 +136,22 @@ rgb(33, 91, 135); text-align: center;">
         }
 		function press_btLogin()
 		{
-			window.location = "thanhvien.php";
-			return false;
+		      if(document.getElementById("txtUsername").value == "")
+		      {
+                    alert("Username không được để trống");
+                    return false;
+		      }
+              if(document.getElementById("txtPassword").value == "")
+		      {
+                    alert("Password không được để trống");
+                    return false;
+		      }
+			   return true; 
 		}
 	</script>
+    
+   
+
+
 </body>
 </html>

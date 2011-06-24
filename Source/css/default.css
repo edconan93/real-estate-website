@@ -121,7 +121,6 @@ a.chnoibat:hover {color:red;}
     margin: 0;
     padding: 0;
 }
-
 element.style {
     background: none repeat scroll 0 0 #FFFFCC;
     border: 2px solid red;
@@ -175,13 +174,14 @@ body {
 #login_body {width:526px;text-align:left;height:290px;background-image:url(../images/form_BG.png);padding:26px 0px 0px 20px }
 #login_body p {margin-top:0; margin-bottom:0;font-family: arial;}
 .form_title{text-align:left;margin-left:0px;font-size:12pt;font-weight:bold;color:#2F2E29;font-family: arial;}
-.form_box{padding-top:65px;color:#ffffff;font-size:12px;}
+.form_box{padding-top:20px;color:#ffffff;font-size:12px;}
+.form_error{padding-top:30px;color:#ffffff;font-size:15px;text-align:left;}
 .form_text{color:#ffffff;font-size:13px;float:left;font-weight:bold;width:100px;text-align:right;}
 .form_input_BG{width:210px; background:url(../images/form_input.png) center left no-repeat; margin-left:30px;border:0px;height:42px;float:left;}
 .form_input_BG input[type="text"]{margin:5px 0px 0px 5px;border:none;width:200px;background:none;}
 .form_input_BG input[type="password"]{margin:5px 0px 0px 5px;border:none;width:200px;background:none;}
 .form_check_box{margin-left:220px;margin-top:-7px;}
-.form_login_signup_btn input{margin-left:28px;margin-top:18px;}
+.form_login_signup_btn input{margin-left:28px;margin-top:18px;cursor:pointer; width:100px;height:28px; background: url("../images/login_btn.png") no-repeat transparent;}
 .clear { clear:both;}
 p.menu_item a {color:#0D5DA8;font-weight:bold;}
 p.menu_item a:hover {color:orange;text-decoration:underline;}
