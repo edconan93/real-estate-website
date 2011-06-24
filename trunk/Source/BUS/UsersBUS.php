@@ -39,7 +39,7 @@ Lớp UsersBUS
 <?php 
 	class UsersBUS
 	{
-		public static function Add($password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status=1)
+		public static function Add($password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status)
 		{
 			$password=trim($password);
 			$password = md5 ($password);
