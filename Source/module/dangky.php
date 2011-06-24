@@ -2,11 +2,13 @@
 	include("../include/header.php");
 ?>
 <script src="../js/common.js" language="javascript" type="text/javascript"></script>
+<script src="../js/jquery-1.js" language="javascript" type="text/javascript"></script>
 <script type="text/javascript">
 function copy()
 {
  document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
 }
+
 $(document).ready(function()
 	{
 		$("#frmRegister").submit(function()
@@ -85,29 +87,33 @@ $(document).ready(function()
 		
 		$("#txtUsername").blur(function ()
 		{
+			//alert("1111!");
 			var strUsername = $("#txtUsername").attr("value");
+			alert(strUsername);
 			if(strUsername.length<6 || strUsername.length > 50)
-			{				
+			{				//alert(strUsername);
 				flag=false;
 				$("#messUsername").attr("innerHTML","tên đăng nhập từ 6-50 ký tự");
 				$("#messUsername").css("color","red");
 			}
-			else if(HaveSpecialChar(strUsername))
-			{
-				flag=false;
-				$("#messUsername").attr("innerHTML", "tên đăng nhập có chứa ký tự lạ");
-				$("#messUsername").css("color","red");
-			}
-			else
-			{
-				var serverURL = "modules/home_modules/checkUsername.php?txtUsername=" + strUsername;
-				$("#messUsername").load(serverURL);
-			}
+			// else if(HaveSpecialChar(strUsername))
+			// {
+				// flag=false;
+				// $("#messUsername").attr("innerHTML", "tên đăng nhập có chứa ký tự lạ");
+				// $("#messUsername").css("color","red");
+			// }
+			// else
+			// {
+				// var serverURL = "modules/home_modules/checkUsername.php?txtUsername=" + strUsername;
+				// $("#messUsername").load(serverURL);
+			// }
 		});
 		
 		$("#txtEmail").blur(function ()
 		{
 			var strEmail = $("#txtEmail").attr("value");
+			
+			//$("#messEmail").attr("innerHTML","email không hợp lệ");
 			if(IsEmail(strEmail)==false)
 			{
 				flag=false;
@@ -116,13 +122,32 @@ $(document).ready(function()
 			}
 			else
 			{
-				var serverURL = "modules/home_modules/checkEmail.php?txtEmail=" + strEmail;
+				var serverURL = "checkEmail.php?txtEmail=" + strEmail;
 				$("#messEmail").load(serverURL);
 			}
 		});
 	});
+	// function CheckMail(email)
+	// {
+		// var rs = new RegExp("([A-Za-z0-9_.-]){2,}@([A-Za-z0-9_.-]){2,}.([A-Za-z0-9_.-]){2,}");
+		// if(email.match(rs) == null)
+		// {
+			// alert("Email không hợp lệ. Vui lòng kiểm tra lại !");
+			// document.getElementById("txtEmail").focus();
+			// return 1;
+		// }
+		// return 0;
+	// }
+	// function kiemtraEmail()
+	// {
+		// var email = document.getElementById("txtEmail").value;
+		// var kq = CheckMail(email);
+		// if (kq == 1)
+			// return;
+				
+		// return false;
+	// }
 </script>
-
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
 			<td width="986">
@@ -346,7 +371,7 @@ $(document).ready(function()
 										<td align="left">
 										<input type="text" style="width:280px;" value="" name="txtUsername" id="txtUsername">
 										</td>
-										<td width="166"><div id="messHoTen" class="mess">(6-50 ký tự)</div></td>
+										<td width="166"><div id="messUsername" class="mess">(6-50 ký tự)</div></td>
 									</tr>
 									
 									<tr>
@@ -376,7 +401,7 @@ $(document).ready(function()
 										E-mail liên lạc:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" name="txtEmail" onkeyup="copy()" value="" style="width:280px;" maxlength="50">
+										<input type="text" name="txtEmail" id="txtEmail" onkeyup="copy()" value="" style="width:280px;" maxlength="50">
 										<br>
 										<span style="font-size:10px;">Hãy điền chính xác địa chỉ email để nhận được thư kích hoạt</span>
 										</td>
@@ -421,7 +446,7 @@ $(document).ready(function()
 										<br>
 										<span style="font-size:10px;">Nhập lại mật khẩu như đã điền ở ô trên</span>
 										</td>
-										<td><div id="messPassword2" class="mess"></div></td>
+										<td><div id="messRePassword" class="mess"></div></td>
 									</tr>
 									
 									<tr>
