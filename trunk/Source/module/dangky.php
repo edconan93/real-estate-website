@@ -21,70 +21,69 @@ $(document).ready(function()
 	{
 		$("#frmRegister").submit(function()
 		{
-		    alert("aaa");
+		   
 			var strUsername = $("#txtUsername").attr("value");
 			var strPassword = $("#txtPassword").attr("value");
 			var strRePassword = $("#txtRePassword").attr("value");
 			var strEmail = $("#txtEmail").attr("value");
-			//var strAnswer = $("#txtAnswer").attr("value");
 			
 			var flag=true;			
-			//alert(strUsername);
-			if(strUsername.length<6 || strUsername.length > 50)
+			// alert("aaa");
+			if(strUsername.length<3 || strUsername.length > 50)
 			{				//alert(strUsername);
+			
 				flag=false;
 				$("#messUsername").attr("innerHTML","tên đăng nhập từ 6-50 ký tự");
 				$("#messUsername").css("color","red");
-			}
-			else if(HaveSpecialChar(strUsername))
-			{
-				flag=false;
-				$("#messUsername").attr("innerHTML", "tên đăng nhập có chứa ký tự lạ");
-				$("#messUsername").css("color","red");
+				//alert ("Tên đăng nhập từ 6-50 ký tự");
 			}
 			
-			
-			if(txtPassword.length <6 || txtPassword.length > 50)
-			{				//alert(strUsername);
+			 if(strPassword.length <6 || strPassword.length > 50)
+			 {
 				flag=false;
-				$("#messPassword").attr("innerHTML","5< Password <50");
+				$("#messPassword").attr("innerHTML","6< Password <50");
 				$("#messPassword").css("color","red");
-			}else if(HaveSpecialChar(strPassword))
-			{
+			 }
+			 else if(HaveSpecialChar(strPassword))
+			 {
 				flag=false;
 				$("#messPassword").attr("innerHTML","Mật khẩu có chứa ký tự lạ");
 				$("#messPassword").css("color","red");
-			}			
-			else
-			{
-				//$("#messPassword").attr("innerHTML", "");
-				var serverURL = "checkPassword.php?txtPassword=" + txtPassword;
-				$("#messPassword").load(serverURL);
-			}
-			
+			 }			
+			 // else
+			 // {
+				// $("#messPassword").attr("innerHTML", "");
+				 // var serverURL = "checkPassword.php?txtPassword=" + txtPassword;
+				// $("#messPassword").load(serverURL);
+			 // }
 			
 			if(strPassword != strRePassword)
 			{
 				flag=false;
-				$("#messRePassword").attr("innerHTML","Mật khẩu nhập lại không khớp");
+				$("#messRePassword").attr("innerHTML","Mật khẩu nhập không khớp");
 				$("#messRePassword").css("color","red");
 			}			
-			else
-			{
-				var serverURL = "checkPassword.php?txtRePassword=" + txtRePassword;
-				$("#messRePassword").load(serverURL);
-			}
-			
+			 else
+			 {
+				 var serverURL = "checkPassword.php?txtRePassword=" + strRePassword;
+				 $("#messRePassword").load(serverURL);
+			 }
 			if(IsEmail(strEmail)==false)
 			{
 				flag=false;
 				$("#messEmail").attr("innerHTML","Email không hợp lệ");
 				$("#messEmail").css("color","red");
+				
 			}
 			else
 			{
 				var serverURL = "checkEmail.php?txtEmail=" + strEmail;
-				$("#messEmail").load(serverURL);
+				 $("#messEmail").load(serverURL);
+				// var checkMessEmail = $("#messEmail").attr("value");
+				// if(checkMessEmail == "Đã được sử dụng")
+				// {
+				//alert("Đã được sử dụng");
+				// }
 			}
 			
 			
@@ -102,6 +101,7 @@ $(document).ready(function()
 				flag=false;
 				alert ("Bạn phải đồng ý với thỏa thuận sử dụng");
 			}
+			
 			return flag;
 		});
 		
@@ -138,7 +138,7 @@ $(document).ready(function()
 				$("#messPhone").attr("innerHTML","10<= SDT <=12");
 				$("#messPhone").css("color","red");
 			}
-			else if(CheckPhoneNumber(strPhone,strMobile))
+			else if(CheckPhoneNumber(strPhone))
 			{
 				flag=false;
 				$("#messPhone").attr("innerHTML", "Số điện thoại ko hợp lệ");
@@ -149,21 +149,34 @@ $(document).ready(function()
 				$("#messPhone").attr("innerHTML", "");
 			}
 		});
+		
+		function CheckPhoneNumber(strText)
+		{
+			var strTemp="0123456789";
+			for (var i=0; i<strText.length; i++)
+			if (strTemp.indexOf (strText.charAt(i))==-1)//==-1 ko bao gio xay ra
+			{
+				return true;
+			}	
+			return false;
+
+		}
+
 		$("#txtMobile").blur(function ()
 		{
 			//alert("mobile	!");
 			var strPhone = $("#txtPhone").attr("value");
 			var strMobile = $("#txtMobile").attr("value");
-			//alert(strUsername);
-			if(strPhone.length<10 || strPhone.length > 12 || strMobile.length<10 || strMobile.length>12)
-			{				//alert(strUsername);
-				flag=false;
-				$("#messPhone").attr("innerHTML","10<= SDT <=12");
-				$("#messPhone").css("color","red");
-			}
-			else if(CheckPhoneNumber(strPhone,strMobile))
+			
+			//alert(strPhone +" "+strMobile );
+			 if(strPhone.length<10 || strPhone.length > 12 || strMobile.length<10 || strMobile.length>12)
+			 {				//alert(strUsername);
+				 flag=false;
+				 $("#messPhone").attr("innerHTML","10<= SDT <=12");
+				 $("#messPhone").css("color","red");
+			 }
+			 else if(CheckPhoneNumber(strMobile))
 			{
-			//alert("chu");
 				flag=false;
 				$("#messPhone").attr("innerHTML", "Số điện thoại ko hợp lệ");
 				$("#messPhone").css("color","red");
@@ -469,9 +482,12 @@ $(document).ready(function()
 										Họ và tên:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
-										<input type="text" style="width:280px;" value="" name="txtUsername" id="txtUsername" onkeyup="javascript:this.value=this.value.toUpperCase();" 
->
-										(6-50 ký tự)
+										<div style="float:left;">
+										<input type="text" style="width:280px;" value="" name="txtUsername" id="txtUsername" onkeyup="javascript:this.value=this.value.toUpperCase();" ></div>
+										<div id="messUsername" name="messUsername" class="mess"></div>
+										<div style="float:left;">
+												<span style="font-size:10px;">Họ tên phải lớn hơn 3 và nhỏ hơn 50 ký tự</span>
+											</div>
 										</td>
 									</tr>
 									
