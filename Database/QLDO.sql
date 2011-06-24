@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2011 at 04:21 PM
+-- Generation Time: Jun 24, 2011 at 05:20 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -384,6 +384,8 @@ INSERT INTO `role` (`id`, `ten`) VALUES
 DROP TABLE IF EXISTS `thongtinnhaban`;
 CREATE TABLE IF NOT EXISTS `thongtinnhaban` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tieude` text COLLATE utf8_unicode_ci NOT NULL,
+  `mota` text COLLATE utf8_unicode_ci,
   `chusohuu` int(11) NOT NULL,
   `phuong` int(11) DEFAULT NULL,
   `quan` int(11) DEFAULT NULL,
@@ -404,6 +406,7 @@ CREATE TABLE IF NOT EXISTS `thongtinnhaban` (
   `phaply` int(11) DEFAULT NULL,
   `huongnha` int(11) DEFAULT NULL,
   `tienich` int(11) DEFAULT NULL,
+  `khuyenmai` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `fk_thongtinnhadat_phuong` (`phuong`),
   KEY `fk_thongtinnhadat_khanangban` (`khanangban`),
@@ -429,6 +432,7 @@ CREATE TABLE IF NOT EXISTS `thongtinnhaban` (
 DROP TABLE IF EXISTS `thongtinnhamua`;
 CREATE TABLE IF NOT EXISTS `thongtinnhamua` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tieude` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `khachhang` int(11) NOT NULL,
   `giamuatu` float NOT NULL,
   `giamuaden` float NOT NULL,
@@ -540,7 +544,6 @@ INSERT INTO `tinhtrangphaply` (`id`, `ten`) VALUES
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `hoten` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -608,12 +611,12 @@ ALTER TABLE `quan`
 -- Constraints for table `thongtinnhaban`
 --
 ALTER TABLE `thongtinnhaban`
-  ADD CONSTRAINT `fk_thongtinnhaban_quan` FOREIGN KEY (`quan`) REFERENCES `quan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_thongtinnhaban_tinh` FOREIGN KEY (`tinh`) REFERENCES `tinh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_thongtinhnhaban_phaply` FOREIGN KEY (`phaply`) REFERENCES `tinhtrangphaply` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_thongtinhnhadat_khachhang` FOREIGN KEY (`chusohuu`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `FK_thongtinnhaban_huongnha` FOREIGN KEY (`huongnha`) REFERENCES `huongnha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_thongtinnhaban_loainha` FOREIGN KEY (`loainha`) REFERENCES `loainha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_thongtinnhaban_quan` FOREIGN KEY (`quan`) REFERENCES `quan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_thongtinnhaban_tinh` FOREIGN KEY (`tinh`) REFERENCES `tinh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_thongtinnhadat_khanangban` FOREIGN KEY (`khanangban`) REFERENCES `khanangban` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_thongtinnhadat_phuong` FOREIGN KEY (`phuong`) REFERENCES `phuong` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
