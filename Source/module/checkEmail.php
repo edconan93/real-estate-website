@@ -14,7 +14,7 @@
 		else
 		{
 			echo "<img src='../images/user/incorrect.png' alt='Đã được sử dụng' title='Đã được sử dụng' width=20 height=20>";
-			echo "<span class='incorrect'> đã được sử dụng</span>";
+			echo "<span style='position:relative;top:-6px;color:red;'> đã được sử dụng</span>";
 			echo "<input type='hidden' id='hdEmailError' value='true' />";
 		}
 	}

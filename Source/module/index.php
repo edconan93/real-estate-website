@@ -1,6 +1,6 @@
 <?php
 	session_start ();
-	include ("DAO/config.php");
+	include ("../DAO/config.php");
 
 ?>
 
