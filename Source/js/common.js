@@ -51,18 +51,14 @@ function HaveSpecialChar(strText)
 		}	
 	return false;
 }
-function CheckPhoneNumber(str1,str2)
+function CheckPhoneNumber(strText)
 {
+alert("check");
 	var strTemp="0123456789";
-	for (var i=0; i<str1.length; i++)
-		if (strTemp.indexOf (str1.charAt(i))==-1 )
+	for (var i=0; i<strText.length; i++)
+		if (strTemp.indexOf (strText.charAt(i))==-1)//==-1 co xay ra
 		{
 			return true;
-		}
-   for (var i=0; i<str2.length; i++)
-		if ( strTemp.indexOf (str2.charAt(i))==-1)
-		{
-			return true;
-		}			
+		}	
 	return false;
 }
