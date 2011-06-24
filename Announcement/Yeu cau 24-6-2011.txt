@@ -1,0 +1,4 @@
+Phuc:
+	_ Thongtinnhaban/nhamua : phai co tieu de tin, thieu phan mo ta, thong tin khuyen mai
+	_ Xu ly dang nhap, hien thi thong tin thanh vien o ben trai, dang xuat
+	_ Add code xu ly vo trang "dangtinban.php" cho thong tin nha ban

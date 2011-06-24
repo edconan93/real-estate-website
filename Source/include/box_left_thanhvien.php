@@ -5,7 +5,7 @@
 				<img src="../images/male3.png">
 			</td>
 			<td>
-				<p style="font-size:20pt;"><h1>Thông tin thành viên<h1></p>
+				<p style="font-size:20pt;"><h1>THÔNG TIN THÀNH VIÊN<h1></p>
 			</td>
 		</tr>
 		<tr>
@@ -26,13 +26,13 @@
 				<img width="16px" src="../images/ServiceManager.png">
 			</td>
 			<td>
-				<p style="font-size:20pt;"><h1>Chức năng</h1></p>
+				<p style="font-size:20pt;"><h1>CHỨC NĂNG</h1></p>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
 				<p class="menu_item">
-					<a href="">Thông tin thành viên</a>
+					<a href="thongtinkhachhang.php">Thông tin thành viên</a>
 				</p>
 				<p class="menu_item">
 					<a href="">Thay đổi mật khẩu</a>

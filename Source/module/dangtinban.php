@@ -19,7 +19,7 @@
 							<div style="width: 686px;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29;">
-									Đăng Tin Cần Mua / Đăng Tin Cần Bán</div>
+									Đăng Tin Cần Bán</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content">
 									<div class="notice">
@@ -41,18 +41,9 @@
 											<td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN</td>
 										</tr>
 										<tr>
-											<td width="200px"><b>Tiêu đề tin:</b><span style="color:red;"> *</span></td>
-											<td><input type="text" style="width:300px;"></td>
-										</tr>
-										<tr>
 											<td width="200px"><b>Loại giao dịch:</b><span style="color:red;"> *</span></td>
 											<td>
-												<select id="ctl00_MainContent_ctl00_ddlTransactionType" class="DropDownList" name="ddlTransactionType">
-													<option value="1">Cần bán</option>
-													<option value="2">Cần mua</option>
-													<option value="3">Cho thuê</option>
-													<option value="4">Cần thuê</option>
-												</select>
+												<b>Cần bán</b>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loại bđs :
 												<select id="ctl00_MainContent_ctl00_ddlPropertyType" class="DropDownList" name="ddlPropertyType">
 													<option value="1">Biệt Thự</option>
@@ -64,11 +55,11 @@
 												</td>
 										</tr>
 										<tr>
-											<td>Số nhà / Số lô, Tên đường:</td>
+											<td width="200px"><b>Tiêu đề tin:</b><span style="color:red;"> *</span></td>
 											<td><input type="text" style="width:300px;"></td>
 										</tr>
 										<tr>
-											<td>Thuộc dự án:</td>
+											<td>Số nhà / Số lô, Tên đường:</td>
 											<td><input type="text" style="width:300px;"></td>
 										</tr>
 										<tr>
@@ -135,10 +126,6 @@
 													<option value="1">Tổng diện tích</option>
 												</select>
 											</td>
-										</tr>
-										<tr>
-											<td>Khuyến mãi:</td>
-											<td><input type="text" style="width:300px;"></td>
 										</tr>
 										<tr>
 											<td>Thời hạn đăng tin:</td>
@@ -267,7 +254,7 @@
 										<tr>
 											<td>
 											<?php
-												$path = rtrim($_SERVER['PHP_SELF'],"e/module/dangtin.php/")."e/library/fckeditor/";
+												$path = rtrim($_SERVER['PHP_SELF'],"e/module/dangtinban.php/")."e/library/fckeditor/";
 												include("../library/fckeditor/fckeditor.php");
 												$summary = new FCKeditor("summary");
 												$summary->BasePath = $path;
