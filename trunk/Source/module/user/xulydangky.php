@@ -2,7 +2,7 @@
 echo "first";
 		// if(isset($_POST["btRegister"]))
 		// {
-		echo "seconde";
+		    echo "seconde";
 			 include ("../../BUS/UsersBUS.php");
 			// include ("BUS/User_Personal_InformationBUS.php");
 			// include ("BUS/User_Contact_InformationBUS.php");
@@ -11,9 +11,10 @@ echo "first";
 			// include ("BUS/AlbumsBUS.php");
 			// include ("BUS/PicturesBUS.php");
 			
-			$username = $_POST["txtUsername"];			
+						
 			$password = $_POST["txtPassword"];
-			$repassword = $_POST["txtRePassword"];
+			//$repassword = $_POST["txtRePassword"];
+			$username = $_POST["txtUsername"];
 			$dt1 = $_POST["txtPhone"];
 			$dt2 = $_POST["txtMobile"];
 			$email = $_POST["txtEmail"];
@@ -39,7 +40,7 @@ echo "first";
 				//User_StatusBUS::Add($user_id, null, $now,0);
 				//AlbumsBUS::Add("Avatar",null,$now,$user_id,null);
 				$fRegister="true";
-				header("Location:../../index.php?");
+				header("Location:../dichvu.php?");
 			}
 			
 			//$leftFile = "modules/home_modules/register_home.php";

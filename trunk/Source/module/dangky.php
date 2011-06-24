@@ -115,12 +115,12 @@ $(document).ready(function()
 				flag=false;
 				$("#messUsername").attr("innerHTML","Tên đăng nhập từ 6-50 ký tự");
 				$("#messUsername").css("color","red");
-			}
-			else if(HaveSpecialChar(strUsername))
+			}		
+			else
 			{
-				flag=false;
-				$("#messUsername").attr("innerHTML", "Tên đăng nhập có chứa ký tự lạ");
-				$("#messUsername").css("color","red");
+			  //  flag=true;
+			    $("#messUsername").attr("innerHTML","");
+				//$("#messUsername").css("color","red");
 			}
 
 		});
@@ -146,6 +146,7 @@ $(document).ready(function()
 			}
 			else
 			{
+				
 				$("#messPhone").attr("innerHTML", "");
 			}
 		});
@@ -460,7 +461,7 @@ $(document).ready(function()
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">	
 								
 							<div style="padding:20px 0;" id="frmRegister" name="frmRegister">
-							<form action="" method="post" name="frmRegister" id="frmRegister" >
+							<form action="user/xulydangky.php" method="post" name="frmRegister" id="frmRegister" >
 								<table border="0" id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
 									<tr>
 										<td align="left" colspan="2">
