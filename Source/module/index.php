@@ -1,4 +1,12 @@
+<?php
+	session_start ();
+	include ("DAO/config.php");
+
+?>
+
 <?php 
+ 	
+	
 	include("../include/header.php");
 ?>
                     <div style="width: 986px; height: 529px; background-color: rgb(65, 65,
