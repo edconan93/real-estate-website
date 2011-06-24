@@ -135,7 +135,7 @@
 		
 		public static function Login ($email, $password)
         {
-            $strSQL = "select * from user where email='$email' and password='$password' and status=1";
+            $strSQL = "select * from user where email='$email' and password='$password'";
 		    $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
 				return null;
