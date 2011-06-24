@@ -256,8 +256,7 @@ $(document).ready(function()
 	function copy()
 	{
 	//alert("copy");
-	$a=document.frmRegister.txtEmail.value;
-	alert($a);
+
 	 document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
 	
 	
