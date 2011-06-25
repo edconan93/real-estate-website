@@ -142,10 +142,10 @@
 												var imgAr1 = new Array();
 												var rImg1 = new Array();
 
-												imgAr1[0] = "../images/menu1.gif";
-												imgAr1[1] = "../images/menu2.gif";
-												imgAr1[2] = "../images/menu3.gif";
-												imgAr1[3] = "../images/menu4.gif";
+												imgAr1[0] = "../images/user/1.png";
+												imgAr1[1] = "../images/user/2.jpg";
+												imgAr1[2] = "../images/user/3.png";
+												imgAr1[3] = "../images/user/4.jpg";
 												for(var j = 0; j < imgAr1.length; j++)
 												{
 													rImg1[j] = new Image();
