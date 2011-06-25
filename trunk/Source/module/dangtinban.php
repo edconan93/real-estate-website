@@ -15,10 +15,11 @@
 							background="1_files/menubg_all.jpg" valign="top" width="270">
 							<?php include("../include/box_left_thanhvien.php"); ?>
 						</td>
-						<td style="padding: 10px;" valign="top">
+<!--BEGIN -->		
+<div id="frmDangTin" name ="frmDangTin">				
+						<td style="padding: 10px;" valign="top">						
 							<div style="width: 686px;">
-								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
-									font-weight: bold; color:#890C29;">
+								<div id="messLoaiDangTin" name="messLoaiDangTin" style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;font-weight: bold; color:#890C29;">
 									Đăng Tin Cần Bán</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content">
@@ -28,7 +29,7 @@
 											<ul style="list-style: none outside none;padding-left:0;">
 												<li><b>Để sử dụng các tính năng nâng cao và dễ dàng quản lý tin đăng, xin vui lòng đăng nhập trước khi đăng tin.</b>
 												</li>
-												<li><b>Xin vui lòng tham khảo các <a href="" style="text-decoration:underline;color:red;font-size:11px;"> 
+												<li><b>Xin vui lòng tham khảo các <a href="noiquidangtin.php" style="text-decoration:underline;color:red;font-size:11px;"> 
 												   quy định đăng tin</a> trước khi đăng tin.</b></li>
 												<li><b>Không đăng tin trùng lắp, lặp lại từ khóa nhiều lần trong bài viết.</b></li>
 												<li><b style="color:red;">Mọi trường hợp đăng tin không đúng quy định sẽ bị xóa mà không cần báo
@@ -43,9 +44,9 @@
 										<tr>
 											<td width="200px">Loại giao dịch:</td>
 											<td>
-												<b>Cần bán</b>
+												<p id="messTenLoai" name="messTenLoai"><b>Cần bán</b>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loại bđs :
-												<select id="ctl00_MainContent_ctl00_ddlPropertyType" class="DropDownList" name="ddlPropertyType">
+												<select id="cbbLoaiGiaoDich" name="cbbLoaiGiaoDich" class="DropDownList" >
 													<option value="1">Biệt Thự</option>
 													<option value="2" selected="selected">Căn hộ chung cư</option>
 													<option value="3">Căn hộ cao cấp</option>
@@ -56,16 +57,16 @@
 										</tr>
 										<tr>
 											<td width="200px"><b>Tiêu đề tin:</b><span style="color:red;"> *</span></td>
-											<td><input type="text" style="width:300px;"></td>
+											<td><input name="txtTieuDeTin" id="TieuDeTin" type="text" style="width:300px;" value=""></td>
 										</tr>
 										<tr>
 											<td>Số nhà / Số lô, Tên đường:</td>
-											<td><input type="text" style="width:300px;"></td>
+											<td><input name="txtTenDuong" id="txtTenDuong" type="text" style="width:300px;" value=""></td>
 										</tr>
 										<tr>
 											<td width="200px"><b>Tỉnh/Thành Phố:</b><span style="color:red;"> *</span></td>
 											<td>
-												<select id="ctl00_MainContent_ctl00_ddlCity" class="DropDownList" onchange="javascript:setTimeout('__doPostBack(\'ddlCity\',\'\')', 0)" name="ddlCity">
+												<select id="cbbTinhTP" name="cbbTinhTP" class="DropDownList" onchange="javascript:setTimeout('__doPostBack(\'ddlCity\',\'\')', 0)" name="ddlCity">
 													<option value="1" selected="selected">TP Hồ Chí Minh</option>
 													<option value="2">Hà Nội</option>
 													<option value="6">Bình Dương</option>
@@ -82,7 +83,7 @@
 										<tr>
 											<td width="200px"><b>Quận/Huyện:</b><span style="color:red;"> *</span></td>
 											<td>
-												<select id="ctl00_MainContent_ctl00_ddlDistric" class="DropDownList" name="ddlDistric">
+												<select id="cbbQuanHuyen" id="cbbQuanHuyen" class="DropDownList" name="ddlDistric">
 													<option value="-1">Chọn quận/huyện</option>
 													<option value="7">Quận 1</option>
 													<option value="2">Quận 2 </option>
@@ -114,13 +115,13 @@
 										<tr>
 											<td width="200px"><b>Giá:</b><span style="color:red;"> *</span></td>
 											<td>
-												<input id="tbPrice" class="Textbox" type="text" style="width:150px;text-align: right;" onkeyup="this.value = FormatNumber(this.value);" name="tbPrice">
-												<select id="ddlMoneyUnit" class="DropDownList" name="ddlMoneyUnit">
+												<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:150px;text-align: right;" onkeyup="this.value = FormatNumber(this.value);" >
+												<select id="cbbLoaiTien" class="DropDownList" name="cbbLoaiTien">
 													<option value="1" selected="selected">VNĐ</option>
 													<option value="2">USD</option>
 													<option value="3">SJC</option>
 												</select>
-												<select id="ddlPricingType" class="DropDownList" name="ddlPricingType">
+												<select id="cbbDonViTinh" name="cbbDonViTinh" class="DropDownList" >
 													<option value="3" selected="selected">Tháng</option>
 													<option value="2">m²</option>
 													<option value="1">Tổng diện tích</option>
@@ -130,7 +131,7 @@
 										<tr>
 											<td>Thời hạn đăng tin:</td>
 											<td>
-												<select id="ctl00_MainContent_ctl00_ddlExpireDate" class="DropDownList" onchange="javascript:setTimeout('__doPostBack(\'ddlExpireDate\',\'\')', 0)" name="ddlExpireDate">
+												<select id="cbbThoiGianThue" name="cbbThoiGianThue" class="DropDownList" onchange="javascript:setTimeout('__doPostBack(\'ddlExpireDate\',\'\')', 0)" >
 													<option value="10">10 ngày</option>
 													<option value="20">20 ngày</option>
 													<option value="30">30 ngày</option>
@@ -145,7 +146,7 @@
 										</tr>
 										<tr>
 											<td>Ngày hết hạn:</td>
-											<td><input type="text" style="width:70px;" value="20/10/2011"></td>
+											<td><input type="text" id="txtNgayHetHan" name="txtNgayHetHan" style="width:70px;" value="" disabled="disabled"></td>
 										</tr>
 									</table><br>
 									<table class="table" width="100%" cellpadding="0" cellspacing="0">
@@ -155,32 +156,32 @@
 										<tr>
 											<td width="200px"><b>Diện tích:</b><span style="color:red;"> *</span></td>
 											<td>
-												<input id="tb_dientich" class="Textbox" type="text" style="width:40px;" name="tb_dientich">
+												<input id="txtDienTich" name="txtDienTich" class="Textbox" type="text" style="width:40px;" >
 													m<sup>2</sup>
 											</td>
 											<td>
 												Tầng:<span style="color:red;"> *</span>
 											</td>
 											<td>
-												<input id="tbTang" class="Textbox" type="text" style="width:40px;" name="tbTang">
+												<input id="txtTang" name="txtTang" class="Textbox" type="text" style="width:40px;" >
 											</td>
 										</tr>
 										<tr>
 											<td width="200px">Số phòng ngủ:</td>
 											<td>
-												<input id="tb_dientich" class="Textbox" type="text" style="width:40px;" name="tb_dientich">
+												<input id="txtPhongNgu" name="txtPhongNgu" class="Textbox" type="text" style="width:40px;" >
 											</td>
 											<td>
 												Số phòng WC/Tắm:
 											</td>
 											<td>
-												<input id="tbTang" class="Textbox" type="text" style="width:40px;" name="tbTang">
+												<input id="txtPhongTam"  name="txtPhongTam" class="Textbox" type="text" style="width:40px;">
 											</td>
 										</tr>
 										<tr>
 											<td width="200px">Tình trạng pháp lý:</td>
 											<td>
-												<select id="ddlLegalStatus" class=" DropDownList" name="ddlLegalStatus">
+												<select id="cbbPhapLy" name="cbbPhapLy" class=" DropDownList" >
 													<option value="6">Chủ quyền tư nhân</option>
 													<option value="4">Đang hợp thức hoá</option>
 													<option value="3">Giấy tay</option>
@@ -195,7 +196,7 @@
 												Hướng nhà:
 											</td>
 											<td>
-												<select id="ddlDirection" class="DropDownList" name="ddlDirection">
+												<select id="cbbHuongNha" name="cbbHuongNha" class="DropDownList" >
 													<option value="1">Đông</option>
 													<option value="2">Tây</option>
 													<option value="3">Nam</option>
@@ -263,35 +264,50 @@
 												$summary->Create();
 											?>
 											Hình ảnh (450px * 300px)
-												<input id="FileUpload1" type="file" name="FileUpload1">
-												<input id="btUpload" type="submit" value="Upload" name="btUpload">
+												<input id="txtUpload" type="file" name="txtUpload" class="button_submit">
+												<input id="bttUpload" type="submit" value="Upload" name="bttUpload" class="ButtonWithbackground">
 											</td>
 										</tr>
 									</table><br>
-									<table class="table" width="100%" cellpadding="0" cellspacing="0" border="0">
+									<table class="table" width="100%" cellpadding="2" cellspacing="2" border="0">
+									<!--table cellspacing="2" cellpadding="2" width="98%"-->
 										<tr style="background:#00397C;height:30px;">
 											<td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN LIÊN HỆ</td>
 										</tr>
-										<tr>
-											<td width="200px">Tên:</td>
-											<td><input type="text" style="width:300px;"></td>
+										
+										<tr bgcolor="#F2F5F9">
+											<td align="left">Thông tin liên hệ:</td>
+											<td align="left" colspan="3"></td>
 										</tr>
-										<tr>
-											<td width="200px">Điện thoại:</td>
-											<td><input type="text" style="width:300px;"></td>
+										<tr bgcolor="#F2F5F9">
+											<td align="left">Họ và Tên: </td>
+											<td align="left" colspan="3">attackA0</td>
 										</tr>
-										<tr>
-											<td width="200px">Email:</td>
-											<td><input type="text" style="width:300px;"></td>
+										<tr bgcolor="#F2F5F9">
+											<td align="left">Địa chỉ liên lạc: </td>
+											<td id="tdDiaChi" name="tdDiaChi">763/5/4/30 đường Trường Chinh,P.Tây Thạnh, Quận Tân Phú</td>
 										</tr>
+										<tr bgcolor="#F2F5F9">
+											<td align="left">Số điện thoại: </td>
+											<td align="left" colspan="3">0976937118 - Mobile: 0976937118</td>
+										</tr>
+										<tr bgcolor="#F2F5F9">
+											<td align="left">Email liên lạc: </td>
+											<td></td>
+										</tr>
+										
+										
 									</table>
+									
 									<div class="submit" style="border-top: 1px solid #999; padding: 10px 0 0 0; margin: 15px 0 0 0;">
 									<center>
 										<input id="btSave" class="ButtonWithbackground" type="submit" value="Đăng tin" name="btSave">
 									</center>
-								</div>
+								    </div>
 							</div>
-						</td>
+						</td>				
+<!--END PROCESS-->
+</div>
 					</tr>
 				</table>
 			</td>
