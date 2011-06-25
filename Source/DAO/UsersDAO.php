@@ -152,18 +152,6 @@
 				return null;
 			return mysql_fetch_array ($result);	
 		}
-		
-		// public static function GetUserByName ($username)
-		// {
-			// $strSQL = "select id , hoten, email, gioitinh, sdt1, sdt2, loaikh, status 
-						// from khgiaodich
-						// where hoten='$username' ";
-            // $result = DataProvider::Query($strSQL);
-			// if(mysql_num_rows($result)==0)
-				// return null;
-            // return mysql_fetch_array ($result);
-		// }
-		
 		public static function GetUserByEmail ($email)
 		{
 			$strSQL = "select * 
@@ -175,6 +163,18 @@
 				return null;
             return mysql_fetch_array ($result);
 		}
+		// public static function GetUserByName ($username)
+		// {
+			// $strSQL = "select id , hoten, email, gioitinh, sdt1, sdt2, loaikh, status 
+						// from khgiaodich
+						// where hoten='$username' ";
+            // $result = DataProvider::Query($strSQL);
+			// if(mysql_num_rows($result)==0)
+				// return null;
+            // return mysql_fetch_array ($result);
+		// }
+		
+		
 		
 		public static function FindByName ($keyWord,$index=0,$limit=10)
 		{
