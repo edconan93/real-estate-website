@@ -41,7 +41,7 @@
 											<td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN</td>
 										</tr>
 										<tr>
-											<td width="200px"><b>Loại giao dịch:</b><span style="color:red;"> *</span></td>
+											<td width="200px">Loại giao dịch:</td>
 											<td>
 												<b>Cần bán</b>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loại bđs :
