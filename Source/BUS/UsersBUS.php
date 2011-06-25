@@ -102,6 +102,10 @@ Lớp UsersBUS
 			$user[7] = stripcslashes($user[7]);
 			return $user;
 		}
+		public static function GetUserByEmail ($email)
+		{
+			return UsersDAO::GetUserByEmail ($email);
+		}
 		
 		public static function GetUserByName ($username)
 		{
@@ -130,10 +134,7 @@ Lớp UsersBUS
 			return UsersDAO::FindByEmail ($keyWord,$index,$limit);
 		}
 		
-		public static function GetUserByEmail ($email)
-		{
-			return UsersDAO::GetUserByEmail ($email);
-		}
+		
 		// public static function countResultByEmail ($keyWord)
 		// {
 			// $keyWord =addslashes($keyWord);
