@@ -19,8 +19,12 @@
      }
 	 
    $curUser=null;
+   $curUserEmail=null;
    if(isset($_SESSION["curUser"]) && !empty($_SESSION["curUser"]))
+   {
+		$curUserEmail=$_SESSION["curUser"][2];
         $curUser=$_SESSION["curUser"];
+	}
 	//echo "<script language=javascript>alert('zyz')</script>";	
 		//if(isset($_GET["do"]))
 	 if(isset($_GET["do"])&& $_GET["do"]=="login" && $curUser==null)
