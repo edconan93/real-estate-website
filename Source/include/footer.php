@@ -104,7 +104,7 @@ rgb(33, 91, 135); text-align: center;">
                             if(isset($fLogin)&&$fLogin==false)
                             {                            
                                  echo "<script language='javascript' type='text/javascript'>";
-                                 echo "document.getElementById('messRegister').innerHTML='Bạn đã nhập sai username hoặc password';";
+                                 echo "document.getElementById('messRegister').innerHTML='Bạn đã nhập sai tên hoặc mật khẩu';";
                                  echo "document.getElementById('popup').style.visibility = 'visible';";
                                  echo "</script>";
                             }
