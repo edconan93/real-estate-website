@@ -24,7 +24,6 @@
 			 	    echo "ĐT: ".$curUser['sdt1']."<br>";
 				    
                 }
-			
 			?>
             <p style="text-align:center;font-size:9px;margin:0;">( <a style="font-size:11px;" name="linkout" href="dichvu.php?do=logout">Thoát</a> )</p>
             </td>
@@ -47,7 +46,7 @@
 					<a href="thongtinkhachhang.php">Thông tin thành viên</a>
 				</p>
 				<p class="menu_item">
-					<a href="">Thay đổi mật khẩu</a>
+					<a href="doimatkhau.php">Thay đổi mật khẩu</a>
 				</p>
 				<p class="menu_item">
 					<a href="noiquidangtin.php">Đăng tin nhà đất</a>

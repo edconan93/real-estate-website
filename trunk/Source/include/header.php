@@ -56,10 +56,10 @@
 												width="530" height="48"></div>
 
 										<script type="text/javascript">
-			var fo = new FlashObject("../images/slogan.swf", "mymovie", "600", "48", "6", "#000000"); 
-			fo.addParam("loop", "true"); 
-			fo.addParam("wmode", "transparent"); 
-			fo.write("slogan"); 
+											var fo = new FlashObject("../images/slogan.swf", "mymovie", "600", "48", "6", "#000000"); 
+											fo.addParam("loop", "true"); 
+											fo.addParam("wmode", "transparent"); 
+											fo.write("slogan"); 
 										</script>
 
 									</td>
