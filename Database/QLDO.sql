@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 24, 2011 at 05:20 PM
+-- Generation Time: Jun 25, 2011 at 09:52 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -23,11 +23,70 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `canho_tienich`
+-- Table structure for table `dichvu`
 --
 
-DROP TABLE IF EXISTS `canho_tienich`;
-CREATE TABLE IF NOT EXISTS `canho_tienich` (
+DROP TABLE IF EXISTS `dichvu`;
+CREATE TABLE IF NOT EXISTS `dichvu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tieude` text COLLATE utf8_unicode_ci NOT NULL,
+  `mota` text COLLATE utf8_unicode_ci,
+  `chusohuu` int(11) DEFAULT NULL,
+  `phuong` int(11) DEFAULT NULL,
+  `quan` int(11) DEFAULT NULL,
+  `tinh` int(11) DEFAULT NULL,
+  `ngaydang` date DEFAULT NULL,
+  `duong` text COLLATE utf8_unicode_ci,
+  `rong` float DEFAULT NULL,
+  `dai` float DEFAULT NULL,
+  `tang` int(11) DEFAULT NULL,
+  `sophongngu` int(11) DEFAULT NULL,
+  `sophongtam` int(11) DEFAULT NULL,
+  `giaban` float DEFAULT NULL,
+  `donvitien` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `thoihantin` int(11) DEFAULT NULL,
+  `loainha` int(11) DEFAULT NULL,
+  `phaply` int(11) DEFAULT NULL,
+  `huongnha` int(11) DEFAULT NULL,
+  `tienich` int(11) DEFAULT NULL,
+  `khuyenmai` text COLLATE utf8_unicode_ci,
+  `loaidv` int(11) DEFAULT NULL,
+  `donvidv` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_thongtinnhadat_phuong` (`phuong`),
+  KEY `fk_thongtinhnhadat_khachhang` (`chusohuu`),
+  KEY `fk_thongtinnhaban_loainha` (`loainha`),
+  KEY `fk_thongtinhnhaban_phaply` (`phaply`),
+  KEY `FK_thongtinnhaban_huongnha` (`huongnha`),
+  KEY `fk_thongtinnhaban_quan` (`quan`),
+  KEY `fk_thongtinnhaban_tinh` (`tinh`),
+  KEY `fk_dichvu_user` (`chusohuu`),
+  KEY `fk_dichvu_loaidv` (`loaidv`),
+  KEY `fk_dichvu` (`donvitien`),
+  KEY `fk_dichvu_huong` (`huongnha`),
+  KEY `fk_dichvu_loaicanho` (`loainha`),
+  KEY `fk_dichvu_tinh` (`tinh`),
+  KEY `fk_dichvu_quan` (`quan`),
+  KEY `fk_dichvu_phuong` (`phuong`),
+  KEY `fk_dichvu_phaply` (`phaply`),
+  KEY `fk_dichvu_tienich` (`tienich`),
+  KEY `fk_dichvu_donvidv` (`donvidv`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `dichvu`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dichvu_tienich`
+--
+
+DROP TABLE IF EXISTS `dichvu_tienich`;
+CREATE TABLE IF NOT EXISTS `dichvu_tienich` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idcanho` int(11) DEFAULT NULL,
   `idtienich` int(11) DEFAULT NULL,
@@ -37,9 +96,53 @@ CREATE TABLE IF NOT EXISTS `canho_tienich` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `canho_tienich`
+-- Dumping data for table `dichvu_tienich`
 --
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `donvidichvu`
+--
+
+DROP TABLE IF EXISTS `donvidichvu`;
+CREATE TABLE IF NOT EXISTS `donvidichvu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `donvidichvu`
+--
+
+INSERT INTO `donvidichvu` (`id`, `ten`) VALUES
+(1, 'm2'),
+(2, 'Tổng diện tích'),
+(3, 'Tháng');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `donvitien`
+--
+
+DROP TABLE IF EXISTS `donvitien`;
+CREATE TABLE IF NOT EXISTS `donvitien` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `donvitien`
+--
+
+INSERT INTO `donvitien` (`id`, `ten`) VALUES
+(1, 'USD'),
+(2, 'VND'),
+(3, 'SJC');
 
 -- --------------------------------------------------------
 
@@ -101,55 +204,6 @@ INSERT INTO `huongnha` (`id`, `ten`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khanangban`
---
-
-DROP TABLE IF EXISTS `khanangban`;
-CREATE TABLE IF NOT EXISTS `khanangban` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ten` text COLLATE utf8_unicode_ci NOT NULL,
-  `status` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `khanangban`
---
-
-INSERT INTO `khanangban` (`id`, `ten`, `status`) VALUES
-(1, 'THẤP', NULL),
-(2, 'TRUNG BÌNH', NULL),
-(3, 'CAO', NULL),
-(4, 'ĐÃ BÁN 1', NULL),
-(5, 'ĐÃ BÁN 2', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `khanangmua`
---
-
-DROP TABLE IF EXISTS `khanangmua`;
-CREATE TABLE IF NOT EXISTS `khanangmua` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ten` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `khanangmua`
---
-
-INSERT INTO `khanangmua` (`id`, `ten`) VALUES
-(1, 'CAO'),
-(2, 'TRUNG BÌNH'),
-(3, 'THẤP'),
-(4, 'ĐÃ MUA1'),
-(5, 'ĐÃ MUA2');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `level`
 --
 
@@ -175,6 +229,24 @@ INSERT INTO `level` (`idlevel`, `ten`, `chitiet`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `loaidichvu`
+--
+
+DROP TABLE IF EXISTS `loaidichvu`;
+CREATE TABLE IF NOT EXISTS `loaidichvu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `loaidichvu`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `loainha`
 --
 
@@ -195,28 +267,6 @@ INSERT INTO `loainha` (`id`, `ten`) VALUES
 (3, 'Căn hộ cao cấp'),
 (4, 'Nhà Phố'),
 (5, 'Văn phòng cho thuê');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nhadatgioithieu`
---
-
-DROP TABLE IF EXISTS `nhadatgioithieu`;
-CREATE TABLE IF NOT EXISTS `nhadatgioithieu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idgiaodichmua` int(11) NOT NULL,
-  `idthongtinnhadat` int(11) NOT NULL,
-  `status` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_nhadatgiothieu_thongtinnhadat` (`idthongtinnhadat`),
-  KEY `fk_nhadatgioithieu_chitietgiaodinhmua` (`idgiaodichmua`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `nhadatgioithieu`
---
-
 
 -- --------------------------------------------------------
 
@@ -371,86 +421,8 @@ CREATE TABLE IF NOT EXISTS `role` (
 
 INSERT INTO `role` (`id`, `ten`) VALUES
 (1, 'Admin'),
-(2, 'User mua'),
-(3, 'User bán'),
+(2, 'User'),
 (4, 'Nhân viên');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `thongtinnhaban`
---
-
-DROP TABLE IF EXISTS `thongtinnhaban`;
-CREATE TABLE IF NOT EXISTS `thongtinnhaban` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tieude` text COLLATE utf8_unicode_ci NOT NULL,
-  `mota` text COLLATE utf8_unicode_ci,
-  `chusohuu` int(11) NOT NULL,
-  `phuong` int(11) DEFAULT NULL,
-  `quan` int(11) DEFAULT NULL,
-  `tinh` int(11) DEFAULT NULL,
-  `ngaydang` date NOT NULL,
-  `duong` text COLLATE utf8_unicode_ci NOT NULL,
-  `rong` float NOT NULL,
-  `dai` float NOT NULL,
-  `tang` int(11) DEFAULT NULL,
-  `sophongngu` int(11) DEFAULT NULL,
-  `sophongtam` int(11) DEFAULT NULL,
-  `giaban` float NOT NULL,
-  `donvi` int(11) NOT NULL,
-  `khanangban` int(11) NOT NULL,
-  `status` int(11) DEFAULT NULL,
-  `thoihantin` int(11) DEFAULT NULL,
-  `loainha` int(11) DEFAULT NULL,
-  `phaply` int(11) DEFAULT NULL,
-  `huongnha` int(11) DEFAULT NULL,
-  `tienich` int(11) DEFAULT NULL,
-  `khuyenmai` text COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`),
-  KEY `fk_thongtinnhadat_phuong` (`phuong`),
-  KEY `fk_thongtinnhadat_khanangban` (`khanangban`),
-  KEY `fk_thongtinhnhadat_khachhang` (`chusohuu`),
-  KEY `fk_thongtinnhaban_loainha` (`loainha`),
-  KEY `fk_thongtinhnhaban_phaply` (`phaply`),
-  KEY `FK_thongtinnhaban_huongnha` (`huongnha`),
-  KEY `fk_thongtinnhaban_quan` (`quan`),
-  KEY `fk_thongtinnhaban_tinh` (`tinh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `thongtinnhaban`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `thongtinnhamua`
---
-
-DROP TABLE IF EXISTS `thongtinnhamua`;
-CREATE TABLE IF NOT EXISTS `thongtinnhamua` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tieude` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `khachhang` int(11) NOT NULL,
-  `giamuatu` float NOT NULL,
-  `giamuaden` float NOT NULL,
-  `donvi` int(11) NOT NULL,
-  `ngay` date NOT NULL,
-  `tieuchi` text COLLATE utf8_unicode_ci NOT NULL,
-  `khanangmua` int(11) NOT NULL,
-  `status` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_chitietgiaodich_khachhang` (`khachhang`),
-  KEY `fk` (`khachhang`),
-  KEY `fk_chitietgiaodich_khanangmua` (`khanangmua`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `thongtinnhamua`
---
-
 
 -- --------------------------------------------------------
 
@@ -557,36 +529,47 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   KEY `fk_taikhoan_role` (`role`),
   KEY `fk_taikhoan_level` (`level`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `user`
 --
 
+INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `sdt1`, `sdt2`, `role`, `level`, `status`) VALUES
+(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc@gmail.com', 'phuc0903@gmail.com', b'0', 'gterte', '143242353425', '', 4, 4, 0),
+(3, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'FASFREWRWERW', b'0', 'fsadf', '1224324232', '', 4, 4, 0);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `canho_tienich`
+-- Constraints for table `dichvu`
 --
-ALTER TABLE `canho_tienich`
-  ADD CONSTRAINT `fk_canhotienich_canho` FOREIGN KEY (`idcanho`) REFERENCES `thongtinnhaban` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_canhotienich_tienich` FOREIGN KEY (`idtienich`) REFERENCES `tienich` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `dichvu`
+  ADD CONSTRAINT `fk_dichvu_donvidv` FOREIGN KEY (`donvidv`) REFERENCES `donvidichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu` FOREIGN KEY (`donvitien`) REFERENCES `donvitien` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_huong` FOREIGN KEY (`huongnha`) REFERENCES `huongnha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_loaicanho` FOREIGN KEY (`loainha`) REFERENCES `loainha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_loaidv` FOREIGN KEY (`loaidv`) REFERENCES `loaidichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_phaply` FOREIGN KEY (`phaply`) REFERENCES `tinhtrangphaply` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_phuong` FOREIGN KEY (`phuong`) REFERENCES `phuong` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_quan` FOREIGN KEY (`quan`) REFERENCES `quan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_tienich` FOREIGN KEY (`tienich`) REFERENCES `tienich` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_tinh` FOREIGN KEY (`tinh`) REFERENCES `tinh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_user` FOREIGN KEY (`chusohuu`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `dichvu_tienich`
+--
+ALTER TABLE `dichvu_tienich`
+  ADD CONSTRAINT `fk_canhotienich_canho` FOREIGN KEY (`idcanho`) REFERENCES `dichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `hinhanh`
 --
 ALTER TABLE `hinhanh`
-  ADD CONSTRAINT `fk_hinhanh_thongtinnhadat` FOREIGN KEY (`idthongtinnhadat`) REFERENCES `thongtinnhaban` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `nhadatgioithieu`
---
-ALTER TABLE `nhadatgioithieu`
-  ADD CONSTRAINT `fk_nhadatgioithieu_chitietgiaodinhmua` FOREIGN KEY (`idgiaodichmua`) REFERENCES `thongtinnhamua` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_nhadatgiothieu_thongtinnhadat` FOREIGN KEY (`idthongtinnhadat`) REFERENCES `thongtinnhaban` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_hinhanh_thongtinnhadat` FOREIGN KEY (`idthongtinnhadat`) REFERENCES `dichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `nhanvien_quyenhan`
@@ -606,26 +589,6 @@ ALTER TABLE `phuong`
 --
 ALTER TABLE `quan`
   ADD CONSTRAINT `fk_quan_tinh` FOREIGN KEY (`idtinh`) REFERENCES `tinh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `thongtinnhaban`
---
-ALTER TABLE `thongtinnhaban`
-  ADD CONSTRAINT `fk_thongtinhnhaban_phaply` FOREIGN KEY (`phaply`) REFERENCES `tinhtrangphaply` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_thongtinhnhadat_khachhang` FOREIGN KEY (`chusohuu`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FK_thongtinnhaban_huongnha` FOREIGN KEY (`huongnha`) REFERENCES `huongnha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_thongtinnhaban_loainha` FOREIGN KEY (`loainha`) REFERENCES `loainha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_thongtinnhaban_quan` FOREIGN KEY (`quan`) REFERENCES `quan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_thongtinnhaban_tinh` FOREIGN KEY (`tinh`) REFERENCES `tinh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_thongtinnhadat_khanangban` FOREIGN KEY (`khanangban`) REFERENCES `khanangban` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_thongtinnhadat_phuong` FOREIGN KEY (`phuong`) REFERENCES `phuong` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `thongtinnhamua`
---
-ALTER TABLE `thongtinnhamua`
-  ADD CONSTRAINT `fk_chitietgiaodich_khachhang` FOREIGN KEY (`khachhang`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_chitietgiaodich_khanangmua` FOREIGN KEY (`khanangmua`) REFERENCES `khanangmua` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user`
