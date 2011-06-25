@@ -52,11 +52,11 @@
 					<a href="noiquidangtin.php">Đăng tin nhà đất</a>
 				</p>
 				<p class="menu_item">
-					<a href="">Các tin đã đăng</a><br>
+					<a href="tindadang.php">Các tin đã đăng (6)</a><br>
 					<span>
-						<a href="">- Tin đã duyệt (0)</a><br>
-						<a href="">- Tin chờ duyệt (3)</a><br>
-						<a href="">- Tin hết hạn (0)</a><br>
+						<a href="tindadang.php?type=1">- Tin đã duyệt (1)</a><br>
+						<a href="tindadang.php?type=2">- Tin chờ duyệt (3)</a><br>
+						<a href="tindadang.php?type=3" style="color:red;">- Tin hết hạn (2)</a><br>
 					</span>
 				</p>
 			</td>
