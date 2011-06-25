@@ -294,3 +294,28 @@ div.registerBuy {
 .ajax__tab_plain .ajax__tab_header {text-align: center; vertical-align: middle;}
 .ajax__tab_plain .ajax__tab_active .ajax__tab_outer {background:#FFFFE1;}
 
+.action-button-left {
+    background: url("../images/btn_l.png") repeat scroll 0 0 transparent;
+    margin: 0;
+    width: 5px;
+}
+.action-button-right {
+    background: url("../images/btn_r.png") repeat scroll 0 0 transparent;
+    margin: 0;
+    width: 5px;
+}
+input.submitYellow {
+    background: url("../images/btn_bg.png") repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #994800;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: Arial,Helvetica;
+    font-size: 12px;
+    font-weight: bold;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+}
+
