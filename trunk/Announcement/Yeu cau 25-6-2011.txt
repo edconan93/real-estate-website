@@ -1,0 +1,2 @@
+Phuc:
+	_ Cung` la trang dang tin thi dangtinmua.php phai co Ngay dang va Ngay het han giong ben dangtinban.php
