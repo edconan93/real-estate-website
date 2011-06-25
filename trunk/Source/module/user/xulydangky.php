@@ -1,8 +1,8 @@
 <?php
-echo "first";
+//echo "first";
 		// if(isset($_POST["btRegister"]))
 		// {
-		    echo "seconde";
+
 			 include ("../../BUS/UsersBUS.php");
 			// include ("BUS/User_Personal_InformationBUS.php");
 			// include ("BUS/User_Contact_InformationBUS.php");
@@ -29,7 +29,7 @@ echo "first";
 			// $security_question = $_POST["lbSecurityQuestion"];
 			// $answer = $_POST["txtAnswer"];
 			$fRegister="false";
-			echo "xulyabac";
+			
 			$id = UsersBUS::Add($password,$email,$username,null,$address,$dt1,$dt2,4,4,0);
 			echo "id="+ $id;
 			if(!empty ($id))
@@ -40,7 +40,11 @@ echo "first";
 				//User_StatusBUS::Add($user_id, null, $now,0);
 				//AlbumsBUS::Add("Avatar",null,$now,$user_id,null);
 				$fRegister="true";
-				header("Location:../dichvu.php?");
+				header("Location:../dichvu.php?do=login");
+			}
+			else
+			{
+				//header("Location:../dangky.php?do="$fRegister);
 			}
 			
 			//$leftFile = "modules/home_modules/register_home.php";
