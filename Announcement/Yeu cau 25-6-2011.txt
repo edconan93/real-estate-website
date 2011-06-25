@@ -1,2 +1,5 @@
-Phuc:
+﻿Phuc:
 	_ Cung` la trang dang tin thi dangtinmua.php phai co Ngay dang va Ngay het han giong ben dangtinban.php
+	_Sua lại phần đăng nhập. Nếu ko có csdl=> thì báo là bạn chưa đăng ký (chứ ko báo là username ko được để trống)
+Thinh: 
+	_khi đang ở trang thành viên đi ra trang dich vụ => ko có link trở về trang thành viên. Đề nghị ở menu chính (Dich vu,Liên Hệ) thêm Menu Trang Thành viên.

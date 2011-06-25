@@ -460,8 +460,8 @@ $(document).ready(function()
 								
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">	
 								
-							<div style="padding:20px 0;" id="frmRegister" name="frmRegister">
-							<form action="user/xulydangky.php" method="post" name="frmRegister" id="frmRegister" >
+							<div style="padding:20px;" id="frmRegister" name="frmRegister">
+<!--form -->							<form action="user/xulydangky.php" method="post" name="frmRegister" id="frmRegister" >
 								<table border="0" id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
 									<tr>
 										<td align="left" colspan="2">

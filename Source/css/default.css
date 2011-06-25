@@ -212,11 +212,17 @@ table.table tr {height:26px;}
 
 .ButtonWithbackground {
     background: url("../images/btn_background.jpg") repeat-x scroll left center transparent;
-    border: medium none;
+    border: 1px outset #CCCCCC;
     color: #FFFFFF;
     cursor: pointer;
     font-weight: bold;
     padding: 2px 10px;
+	height: 26px;
+    font-family: Arial,Helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 5px 2px
 }
 #passwordStrength{height:10px;display:block;float:left;}
 #passwordStrength{height:10px;display:block;float:left;}
