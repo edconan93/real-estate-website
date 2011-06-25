@@ -50,40 +50,12 @@ rgb(33, 91, 135); text-align: center;">
 					<div class="form_title">
 						THÀNH VIÊN ĐĂNG NHẬP
 					</div>
-                    <div class='form_error' id="frmError"></div>
-                    <?php
-                        //xu ly dang nhap
-                        if(isset($_POST["btn_Login"]))
-                        {   
-                            include("../BUS/UsersBUS.php");
-                            $user=$_POST["txtUsername"];
-                            $pass=$_POST["txtPassword"];
-                            echo $user;
-                            echo $pass;
-                            $result=UsersBus::Login($user,$pass);
-                            if($result==null)
-                            {
-                                $fLogin=false;
-                            }
-                            else
-                            {
-                                $_SESSION["curUser"] = $result;
-                                header("Location:thanhvien.php?id=".$result['id']);
-                            }
-                        }?>
-                       <?php
-                            if(isset($fLogin)&&$fLogin==false)
-                            {                            
-                                 echo "<script language='javascript' type='text/javascript'>";
-                                 echo "document.getElementById('frmError').innerHTML='Bạn đã nhập sai username hoặc password';";
-                                 echo "document.getElementById('popup').style.visibility = 'visible';";
-                                 echo "</script>";
-                            }
-                               
-                        ?>
-                    <form action="" method="POST" name="frmDangnhap"  onsubmit="return press_btLogin();">
+                    <!--div class='form_error' id="frmError"></div-->
+					<!--div  id="messRegister" name="messRegister" class="form_text" style="width:340px;float:left;"></div-->
+					 <form action="" method="POST" name="frmDangnhap"  onsubmit="return press_btLogin();">
 					<div class="form_box">
-                   
+						<div  id="messRegister" name="messRegister" class="form_text" style="width:340px;float:left;"></div>
+						<br><br>
 						<p class="form_text">
 							Tên đăng nhập</p>
 						<p class="form_input_BG">
@@ -108,6 +80,37 @@ rgb(33, 91, 135); text-align: center;">
 						</p>
 					</div>
                     </form>
+                    <?php
+                        //xu ly dang nhap
+                        if(isset($_POST["btn_Login"]))
+                        {   
+                            include("../BUS/UsersBUS.php");
+                            $user=$_POST["txtUsername"];
+                            $pass=$_POST["txtPassword"];
+                            //echo $user;
+                            //echo $pass;
+                            $result=UsersBus::Login($user,$pass);
+                            if($result==null)
+                            {
+                                $fLogin=false;
+                            }
+                            else
+                            {
+                                $_SESSION["curUser"] = $result;
+                                header("Location:thanhvien.php?id=".$result['id']);
+                            }
+                        }?>
+                       <?php
+                            if(isset($fLogin)&&$fLogin==false)
+                            {                            
+                                 echo "<script language='javascript' type='text/javascript'>";
+                                 echo "document.getElementById('messRegister').innerHTML='Bạn đã nhập sai username hoặc password';";
+                                 echo "document.getElementById('popup').style.visibility = 'visible';";
+                                 echo "</script>";
+                            }
+                               
+                        ?>
+                   
 				</div>
 			</td>
 			<td class="transparent" style="width: 30%;">
@@ -129,6 +132,24 @@ rgb(33, 91, 135); text-align: center;">
             document.getElementById("txtUsername").focus();
             return false;
         }
+		function press_DangNhapRegister()
+        {
+            document.getElementById("popup").style.visibility = "visible";
+            // document.getElementById("txtUsername").value = "";
+            // document.getElementById("txtPassword").value = "";
+            // document.getElementById("txtUsername").focus();
+			$("#messRegister").attr("innerHTML","Đăng ký thành công.Mời bạn đăng nhập!");
+			$("#messRegister").css("color","blue");
+			
+            return false;
+        }
+		// function show_SuccessRegister()
+		// {
+		//alert("sucess");
+			// $("#messRegister").attr("innerHTML","Đăng ký thành công.Mời bạn đăng nhập!");
+			// $("#messRegister").css("color","blue");
+			// return false;
+		// }
         function press_closeLogIn()
         {
             document.getElementById("popup").style.visibility = "hidden";
