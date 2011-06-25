@@ -59,12 +59,12 @@ rgb(33, 91, 135); text-align: center;">
 						<p class="form_text">
 							Tên đăng nhập</p>
 						<p class="form_input_BG">
-							<input id="txtUsername" name="txtUsername" type="text"></p>
+							<input id="txtUsernameLogin" name="txtUsernameLogin" type="text"></p>
 						<p class="clear"></p>
 						<p class="form_text">
 							Mật khẩu</p>
 						<p class="form_input_BG">
-							<input type="password" id="txtPassword" name="txtPassword" type="text"></p>
+							<input type="password" id="txtPasswordLogin" name="txtPasswordLogin" type="text"></p>
 						<p class="clear"></p>
 						<p class="form_login_signup_btn" style="text-align: right; margin-right: 186px;">
 						<input type="submit" name="btn_Login" value=""/>	
@@ -72,7 +72,7 @@ rgb(33, 91, 135); text-align: center;">
 							<br />
 							<a style="color:yellow;" href="">Quên mật khẩu?</a>
 							|
-							<a style="color:yellow;" href="">Đăng ký thành viên</a>
+							<a style="color:yellow;" href="dangky.php">Đăng ký thành viên</a>
 						</p>
 						<p style="text-align: right; padding: 0px 10px 0 0; float: right; width: 100px; position: relative;">
 							<a href="">	<img style="border:0;" onclick="return press_closeLogIn();" src="../images/fileclose.png" alt="" /></a>
@@ -85,8 +85,8 @@ rgb(33, 91, 135); text-align: center;">
                         if(isset($_POST["btn_Login"]))
                         {   
                             include("../BUS/UsersBUS.php");
-                            $user=$_POST["txtUsername"];
-                            $pass=$_POST["txtPassword"];
+                            $user=$_POST["txtUsernameLogin"];
+                            $pass=$_POST["txtPasswordLogin"];
                             //echo $user;
                             //echo $pass;
                             $result=UsersBus::Login($user,$pass);
@@ -127,9 +127,9 @@ rgb(33, 91, 135); text-align: center;">
 		function press_DangNhap()
         {
             document.getElementById("popup").style.visibility = "visible";
-            document.getElementById("txtUsername").value = "";
-            document.getElementById("txtPassword").value = "";
-            document.getElementById("txtUsername").focus();
+            document.getElementById("txtUsernameLogin").value = "";
+            document.getElementById("txtPasswordLogin").value = "";
+            document.getElementById("txtUsernameLogin").focus();
             return false;
         }
 		function press_DangNhapRegister()
@@ -157,12 +157,12 @@ rgb(33, 91, 135); text-align: center;">
         }
 		function press_btLogin()
 		{
-		      if(document.getElementById("txtUsername").value == "")
+		      if(document.getElementById("txtUsernameLogin").value == "")
 		      {
                     alert("Username không được để trống");
                     return false;
 		      }
-              if(document.getElementById("txtPassword").value == "")
+              if(document.getElementById("txtPasswordLogin").value == "")
 		      {
                     alert("Password không được để trống");
                     return false;
