@@ -1,6 +1,16 @@
 ﻿<?php
 	include("../include/header.php");
 ?>
+<!--script -->
+<script src="../js/common.js" language="javascript" type="text/javascript"></script>
+<script src="../js/jquery-1.js" language="javascript" type="text/javascript"></script>
+ <script type="text/javascript">
+ function copy()
+ { 
+ document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
+ }
+ </script>
+ 
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
 			<td width="986">
@@ -16,7 +26,8 @@
 							<?php include("../include/box_left_thanhvien.php"); ?>
 						</td>
 <!--BEGIN -->		
-<div id="frmDangTin" name ="frmDangTin">				
+<div id="frmDichVu" name ="frmDichVu">
+<form action="" method="post" name="frmDichVu" id="frmDichVu" >	
 						<td style="padding: 10px;" valign="top">						
 							<div style="width: 686px;">
 								<div id="messLoaiDangTin" name="messLoaiDangTin" style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;font-weight: bold; color:#890C29;">
@@ -39,7 +50,7 @@
 									</div>
 									<table class="table" width="100%" cellpadding="0" cellspacing="0" border="0">
 										<tr style="background:#00397C;height:30px;">
-											<td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN</td>
+<!--THÔNG TIN -->			<td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN</td>
 										</tr>
 										<tr>
 											<td width="200px">Loại giao dịch:</td>
@@ -50,8 +61,8 @@
 													<option value="1">Biệt Thự</option>
 													<option value="2" selected="selected">Căn hộ chung cư</option>
 													<option value="3">Căn hộ cao cấp</option>
-													<option value="8">Nhà Phố</option>
-													<option value="9">Văn phòng cho thuê</option>
+													<option value="4">Nhà Phố</option>
+													<option value="5">Văn phòng cho thuê</option>
 												</select>
 												</td>
 										</tr>
@@ -59,10 +70,7 @@
 											<td width="200px"><b>Tiêu đề tin:</b><span style="color:red;"> *</span></td>
 											<td><input name="txtTieuDeTin" id="TieuDeTin" type="text" style="width:300px;" value=""></td>
 										</tr>
-										<tr>
-											<td>Số nhà / Số lô, Tên đường:</td>
-											<td><input name="txtTenDuong" id="txtTenDuong" type="text" style="width:300px;" value=""></td>
-										</tr>
+										
 										<tr>
 											<td width="200px"><b>Tỉnh/Thành Phố:</b><span style="color:red;"> *</span></td>
 											<td>
@@ -113,7 +121,34 @@
 											</td>
 										</tr>
 										<tr>
-											<td width="200px"><b>Giá:</b><span style="color:red;"> *</span></td>
+											<td width="200px"><b>Phường/ Xã:</b><span style="color:red;"> *</span></td>
+											<td>
+												<select id="cbbPhuong" id="cbbPhuong" class="DropDownList" name="ddlDistric">
+													<option value="-1">Chọn phường/xã</option>
+													<option value="7">Quận 1</option>
+													<option value="2">Quận 2 </option>
+													
+												</select>
+											</td>
+										</tr>
+										
+										<tr>
+											<td width="200px"><b>Đường/Phố:</b><span style="color:red;"> *</span></td>
+											<td>
+												<select id="cbbPhuong" id="cbbPhuong" class="DropDownList" name="ddlDistric">
+													<option value="-1">Chọn đường/phố</option>
+													<option value="2">Nguyễn Trãi</option>
+													<option value="1">Nguyễn Thị Minh Khai </option>
+													
+												</select>
+											</td>
+										</tr>
+										<tr>
+											<td><b>Số nhà / Số lô:</b><span style="color:red;"> *</span></td>
+											<td><input name="txtSoNha" id="txtSoNha" type="text" style="width:300px;" value=""></td>
+										</tr>
+										<tr>
+											<td width="200px" ><b>Giá:</b><span style="color:red;"> *</span></td>
 											<td>
 												<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:150px;text-align: right;" onkeyup="this.value = FormatNumber(this.value);" >
 												<select id="cbbLoaiTien" class="DropDownList" name="cbbLoaiTien">
@@ -122,9 +157,9 @@
 													<option value="3">SJC</option>
 												</select>
 												<select id="cbbDonViTinh" name="cbbDonViTinh" class="DropDownList" >
-													<option value="3" selected="selected">Tháng</option>
-													<option value="2">m²</option>
-													<option value="1">Tổng diện tích</option>
+													<option value="1" selected="selected">m2</option>
+													<option value="2">Tháng</option>
+													<option value="3">Tổng diện tích</option>
 												</select>
 											</td>
 										</tr>
@@ -151,7 +186,7 @@
 									</table><br>
 									<table class="table" width="100%" cellpadding="0" cellspacing="0">
 										<tr style="background:#00397C;height:30px;">
-											<td colspan="4" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN BẤT ĐỘNG SẢN</td>
+<!--THÔNG TIN BẤT ĐỘNG SẢN -->				<td colspan="4" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN BẤT ĐỘNG SẢN</td>
 										</tr>
 										<tr>
 											<td width="200px"><b>Diện tích:</b><span style="color:red;"> *</span></td>
@@ -182,14 +217,14 @@
 											<td width="200px">Tình trạng pháp lý:</td>
 											<td>
 												<select id="cbbPhapLy" name="cbbPhapLy" class=" DropDownList" >
-													<option value="6">Chủ quyền tư nhân</option>
-													<option value="4">Đang hợp thức hoá</option>
+													<option value="1">Chủ quyền tư nhân</option>
+													<option value="2">Đang hợp thức hoá</option>
 													<option value="3">Giấy tay</option>
-													<option value="5">Giấy tờ hợp lệ</option>
-													<option value="7">Hợp đồng</option>
-													<option value="8">Không xác định</option>
-													<option value="2">Sổ đỏ</option>
-													<option value="1">Sổ hồng</option>
+													<option value="4">Giấy tờ hợp lệ</option>
+													<option value="5">Hợp đồng</option>
+													<option value="6">Không xác định</option>
+													<option value="7">Sổ đỏ</option>
+													<option value="8">Sổ hồng</option>
 												</select>
 											</td>
 											<td>
@@ -205,15 +240,25 @@
 													<option value="6">Đông Nam</option>
 													<option value="7">Tây Bắc</option>
 													<option value="8">Tây Nam</option>
-													<option value="9">Không xác định</option>
+													<option value="9" selected>Không xác định</option>
 												</select>
 											</td>
 										</tr>
 									</table><br>
 									<table class="table" width="100%" cellpadding="0" cellspacing="0">
 										<tr style="background:#00397C;height:30px;">
-											<td colspan="4" style="color:#FFF;font-weight:bold;padding-left:4px;">CÁC TIỆN ÍCH</td>
+<?php
+include("../BUS/TienIchBUS.php");
+$tienich=TienIchBUS::GetAllTienIch();
+
+
+?>										
+<!--CÁC TIỆN ÍCH -->					<td colspan="4" class="ButtonWithbackground">CÁC TIỆN ÍCH</td>
 										</tr>
+										<?php
+										for($i=0;$i<count($tienich);$i++)
+										{
+										?>
 										<tr>
 											<td>
 											<input id="cbTienNghi" type="checkbox" name="cbTienNghi">
@@ -231,7 +276,8 @@
 											<input id="cbHoBoi" type="checkbox" name="cbHoBoi">
 											<label for="cbHoBoi"> Hồ bơi</label>
 											</td>
-											</tr>
+										</tr>
+										<?php } ?>
 									   <tr>
 									   <td>
 											<input id="cbGanCongVien" type="checkbox" name="cbGanCongVien">
@@ -250,7 +296,7 @@
 									</table><br>
 									<table class="table" width="100%" cellpadding="0" cellspacing="0">
 										<tr style="background:#00397C;height:30px;">
-											<td colspan="4" style="color:#FFF;font-weight:bold;padding-left:4px;">MÔ TẢ NGẮN (DƯỚI 500 KÝ TỰ)</td>
+<!--MÔ TẢ NGẮN (DƯỚI 500 KÝ TỰ) -->					<td colspan="4" class="ButtonWithbackground">MÔ TẢ NGẮN (DƯỚI 500 KÝ TỰ)</td>
 										</tr>
 										<tr>
 											<td>
@@ -271,42 +317,61 @@
 									</table><br>
 									<table class="table" width="100%" cellpadding="2" cellspacing="2" border="0">
 									<!--table cellspacing="2" cellpadding="2" width="98%"-->
+<?php
+if($curUser != null)
+{
+	include("../BUS/UsersBUS.php");
+	$result=UsersBus::GetUserByEmail($curUserEmail);
+//	if($result == null)
+		//return false;
+		//echo $curUserEmail;
+		//echo $result;
+	//echo $result[2];
+}
+?>										
 										<tr style="background:#00397C;height:30px;">
-											<td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN LIÊN HỆ</td>
+<!--THÔNG TIN LIÊN HỆ -->		<td colspan="2" class="ButtonWithbackground">THÔNG TIN LIÊN HỆ</td>
 										</tr>
 										
 										<tr bgcolor="#F2F5F9">
-											<td align="left">Thông tin liên hệ:</td>
-											<td align="left" colspan="3"></td>
-										</tr>
-										<tr bgcolor="#F2F5F9">
 											<td align="left">Họ và Tên: </td>
-											<td align="left" colspan="3">attackA0</td>
+											<td align="left" colspan="3"><p id="infoHoTen" name="infoHoTen" value="">
+											<?php
+											echo $result['hoten'];
+											?></td>
 										</tr>
 										<tr bgcolor="#F2F5F9">
 											<td align="left">Địa chỉ liên lạc: </td>
-											<td id="tdDiaChi" name="tdDiaChi">763/5/4/30 đường Trường Chinh,P.Tây Thạnh, Quận Tân Phú</td>
+											<td align="left"><p id="infoDiaChi" name="infoDiaChi" value="">763/5/4/30 đường Trường Chinh,P.Tây Thạnh, Quận Tân Phú</p></td>
 										</tr>
 										<tr bgcolor="#F2F5F9">
 											<td align="left">Số điện thoại: </td>
-											<td align="left" colspan="3">0976937118 - Mobile: 0976937118</td>
+											<td align="left" colspan="3"><p id="infoSDT" name="infoSDT" value="">
+											<?php
+											echo $result['sdt1'];
+											echo "- Mobile:";
+											echo $result['sdt2']; 
+											?>
+											</p></td>
 										</tr>
 										<tr bgcolor="#F2F5F9">
 											<td align="left">Email liên lạc: </td>
-											<td></td>
+											<td align="left"><p id="infoSDT" name="infoSDT" value="">
+											<?php
+											echo $result['email'];
+											?>
+											</p></td>
 										</tr>
-										
-										
-									</table>
-									
+									</table>								
 									<div class="submit" style="border-top: 1px solid #999; padding: 10px 0 0 0; margin: 15px 0 0 0;">
 									<center>
-										<input id="btSave" class="ButtonWithbackground" type="submit" value="Đăng tin" name="btSave">
+										<input id="btnSubmit" class="ButtonWithbackground" type="submit" value="Đăng tin" name="btnSubmit">
 									</center>
 								    </div>
 							</div>
 						</td>				
 <!--END PROCESS-->
+</form>
 </div>
 					</tr>
 				</table>
