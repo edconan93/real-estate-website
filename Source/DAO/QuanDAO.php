@@ -15,8 +15,10 @@
 					from quan";
             $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
-				return null;
-			return mysql_fetch_array ($result);	
+				 return null;
+			while($row = mysql_fetch_row($result))
+			    $temp[]= $row;
+			return $temp;
 		}
 		public static function GetAllQuanById($id)
 		{

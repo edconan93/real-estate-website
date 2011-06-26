@@ -1,5 +1,5 @@
 <?php
-/*Lớp TienIchDAO
+/*Lớp PhapLyDAO
 	
 */?>
 <?php 
@@ -7,27 +7,27 @@
 ?>
 
 <?php
-	class TienIchDAO
+	class PhapLyDAO
 	{
-    	public static function GetAllTienIch()
+    	public static function GetAllPhapLy()
 		{
-			$strSQL = "select * from tienich";
-			$result = DataProvider::Query($strSQL);
+			$strSQL = "select *
+					from tinhtrangphaply";
+            $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
 				 return null;
 			while($row = mysql_fetch_row($result))
 			    $temp[]= $row;
 			return $temp;
 		}
-		
-		public static function GetAllTienIchId($id)
+		public static function GetAllPhapLyById($id)
 		{
 			$strSQL = "select *
-					   from tienich where id='$id'";
+					from tinhtrangphaply where id='$id'";
             $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
 				return null;
-			return mysql_fetch_array ($result);
+			return mysql_fetch_array ($result);	
 		}
      	
 	}
