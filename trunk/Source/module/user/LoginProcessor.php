@@ -22,6 +22,7 @@
                          {                            
                               echo "<script language='javascript' type='text/javascript'>";
                               echo "document.getElementById('messRegister').innerHTML='Bạn đã nhập sai tên hoặc mật khẩu';";
+                              echo "document.getElementById('messRegister').style.color='blue';";
                               echo "document.getElementById('popup').style.visibility = 'visible';";
                               echo "</script>";
                          }

@@ -15,7 +15,7 @@ class HinhAnhBUS
     }
     public static function getAllHinhAnhByDichVu($dichvu)
     {
-        return HinhAnhDAO::getAllHinhAnhByDichVu($dichvu);
+        return HinhAnhDAO::getHinhAnhByDichVu($dichvu);
     }
 }
 

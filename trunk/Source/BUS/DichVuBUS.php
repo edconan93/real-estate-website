@@ -22,6 +22,14 @@ class DichVuBUS
     {
         return DichVuDAO::find($sql);
     }
+    public static function getALLDichVuByLoai($idLoai,$offset,$numrow)
+    {
+        return DichVuDAO::getDichVuByLoai($idLoai,$offset,$numrow);
+    }
+    public static function countAllDichVuByLoai($idLoai)
+    {
+        return DichVuDAO::countAllDichVuByLoai($idLoai);
+    }
 }
 
 ?>

@@ -15,11 +15,11 @@ class HinhAnhDAO
     }
     public static function getHinhAnhByDichVu($idDichVu)
     {
-        $strSQL = "select * from hinhanh where iddichvu=$id";
+        $strSQL = "select * from hinhanh where iddichvu=$idDichVu";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
 				return null;
-         while($row= mysql_fetch_row($result))
+         while($row= mysql_fetch_row($result,MYSQL_BOTH))
             $return[]=$row;
          return $return;
     }
