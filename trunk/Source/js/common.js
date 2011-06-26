@@ -51,3 +51,14 @@ function HaveSpecialChar(strText)
 		}	
 	return false;
 }
+function CheckPhoneNumber(strText)
+{
+	var strTemp="0123456789";
+	for (var i=0; i<strText.length; i++)
+	if (strTemp.indexOf (strText.charAt(i))==-1)//==-1 ko bao gio xay ra
+	{
+		return true;
+	}	
+	return false;
+
+}
