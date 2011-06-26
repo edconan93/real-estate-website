@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 25, 2011 at 09:52 AM
+-- Generation Time: Jun 26, 2011 at 09:36 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -49,10 +49,11 @@ CREATE TABLE IF NOT EXISTS `dichvu` (
   `loainha` int(11) DEFAULT NULL,
   `phaply` int(11) DEFAULT NULL,
   `huongnha` int(11) DEFAULT NULL,
-  `tienich` int(11) DEFAULT NULL,
   `khuyenmai` text COLLATE utf8_unicode_ci,
   `loaidv` int(11) DEFAULT NULL,
   `donvidv` int(11) DEFAULT NULL,
+  `x` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `y` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_thongtinnhadat_phuong` (`phuong`),
   KEY `fk_thongtinhnhadat_khachhang` (`chusohuu`),
@@ -70,14 +71,15 @@ CREATE TABLE IF NOT EXISTS `dichvu` (
   KEY `fk_dichvu_quan` (`quan`),
   KEY `fk_dichvu_phuong` (`phuong`),
   KEY `fk_dichvu_phaply` (`phaply`),
-  KEY `fk_dichvu_tienich` (`tienich`),
   KEY `fk_dichvu_donvidv` (`donvidv`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `dichvu`
 --
 
+INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tinh`, `ngaydang`, `duong`, `rong`, `dai`, `tang`, `sophongngu`, `sophongtam`, `giaban`, `donvitien`, `status`, `thoihantin`, `loainha`, `phaply`, `huongnha`, `khuyenmai`, `loaidv`, `donvidv`, `x`, `y`) VALUES
+(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03', 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, 1, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -92,7 +94,8 @@ CREATE TABLE IF NOT EXISTS `dichvu_tienich` (
   `idtienich` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_canhotienich_canho` (`idcanho`),
-  KEY `fk_canhotienich_tienich` (`idtienich`)
+  KEY `fk_canhotienich_tienich` (`idtienich`),
+  KEY `fk_vdtienich_tienich` (`idtienich`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -153,20 +156,11 @@ INSERT INTO `donvitien` (`id`, `ten`) VALUES
 DROP TABLE IF EXISTS `hinhanh`;
 CREATE TABLE IF NOT EXISTS `hinhanh` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `path1` text COLLATE utf8_unicode_ci,
-  `path2` text COLLATE utf8_unicode_ci,
-  `path3` text COLLATE utf8_unicode_ci,
-  `path4` text COLLATE utf8_unicode_ci,
-  `path5` text COLLATE utf8_unicode_ci,
-  `path6` text COLLATE utf8_unicode_ci,
-  `path7` text COLLATE utf8_unicode_ci,
-  `path8` text COLLATE utf8_unicode_ci,
-  `path9` text COLLATE utf8_unicode_ci,
-  `path10` text COLLATE utf8_unicode_ci,
-  `idthongtinnhadat` int(11) NOT NULL,
+  `path` text COLLATE utf8_unicode_ci,
+  `iddichvu` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_hinhanh_thongtinnhadat` (`idthongtinnhadat`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  KEY `fk_hinhanh_thongtinnhadat` (`iddichvu`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `hinhanh`
@@ -237,12 +231,17 @@ CREATE TABLE IF NOT EXISTS `loaidichvu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `loaidichvu`
 --
 
+INSERT INTO `loaidichvu` (`id`, `ten`) VALUES
+(1, 'Cần bán'),
+(2, 'Cần mua'),
+(3, 'Cho thuê'),
+(4, 'Cần cho thuê');
 
 -- --------------------------------------------------------
 
@@ -547,29 +546,29 @@ INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `s
 -- Constraints for table `dichvu`
 --
 ALTER TABLE `dichvu`
-  ADD CONSTRAINT `fk_dichvu_donvidv` FOREIGN KEY (`donvidv`) REFERENCES `donvidichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_user` FOREIGN KEY (`chusohuu`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu` FOREIGN KEY (`donvitien`) REFERENCES `donvitien` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_donvidv` FOREIGN KEY (`donvidv`) REFERENCES `donvidichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_huong` FOREIGN KEY (`huongnha`) REFERENCES `huongnha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_loaicanho` FOREIGN KEY (`loainha`) REFERENCES `loainha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_loaidv` FOREIGN KEY (`loaidv`) REFERENCES `loaidichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_phaply` FOREIGN KEY (`phaply`) REFERENCES `tinhtrangphaply` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_phuong` FOREIGN KEY (`phuong`) REFERENCES `phuong` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_quan` FOREIGN KEY (`quan`) REFERENCES `quan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_dichvu_tienich` FOREIGN KEY (`tienich`) REFERENCES `tienich` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_dichvu_tinh` FOREIGN KEY (`tinh`) REFERENCES `tinh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_dichvu_user` FOREIGN KEY (`chusohuu`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_dichvu_tinh` FOREIGN KEY (`tinh`) REFERENCES `tinh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `dichvu_tienich`
 --
 ALTER TABLE `dichvu_tienich`
+  ADD CONSTRAINT `fk_vdtienich_tienich` FOREIGN KEY (`idtienich`) REFERENCES `tienich` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_canhotienich_canho` FOREIGN KEY (`idcanho`) REFERENCES `dichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `hinhanh`
 --
 ALTER TABLE `hinhanh`
-  ADD CONSTRAINT `fk_hinhanh_thongtinnhadat` FOREIGN KEY (`idthongtinnhadat`) REFERENCES `dichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_hinhanh_thongtinnhadat` FOREIGN KEY (`iddichvu`) REFERENCES `dichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `nhanvien_quyenhan`
