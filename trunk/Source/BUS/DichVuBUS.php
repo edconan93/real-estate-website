@@ -14,6 +14,10 @@ class DichVuBUS
     {
         return DichVuDAO::getAll($offset,$numrow);
     }
+    public static function select($id)
+    {
+        return DichVuDAO::select($id);
+    }
     public static function countAll()
     {
         return DichVuDAO::countAll();

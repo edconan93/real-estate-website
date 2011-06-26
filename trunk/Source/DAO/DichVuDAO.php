@@ -15,6 +15,15 @@ class DichVuDAO
              $return[]=$row;
          return $return;
     }
+    public static function select($id)
+    {
+         $strSQL = "select * from dichvu where id=$id";
+         $result = DataProvider::Query($strSQL);
+         if(mysql_num_rows($result)==0)
+				return null;
+         $row=mysql_fetch_row($result,MYSQL_BOTH);
+         return $row;
+    }
     //use to search dichvu
     public static function getAllBySQL($strSQL)
     {

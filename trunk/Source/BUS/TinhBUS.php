@@ -13,6 +13,9 @@ Lớp TinhBUS
 		{
 			return TinhDAO::GetAllTinh ();
 		}
-		
+		public static function getTinhById($tinh)
+        {
+            return TinhDAO::getTinhById($tinh);
+        }
 	}
 ?>
