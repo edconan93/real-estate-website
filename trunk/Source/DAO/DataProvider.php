@@ -35,7 +35,7 @@ class DataProvider
 			
 		if (!(@mysql_select_db($databaseName,$connection)))
 			showError();
-		
+		mysql_query("SET character_set_results=utf8", $connection);
 		//Thực thi câu truy vấn SQL
 		if (!($result = @mysql_query($sql, $connection)))
 			showError();
@@ -62,6 +62,7 @@ class DataProvider
 	{
 		include_once('error.php');
 		//Thực thi câu truy vấn SQL
+		mysql_query("SET character_set_results=utf8", $connection);
 		if (!($result = @mysql_query($sql, $connection)))
 			showError();
 		return $result;
