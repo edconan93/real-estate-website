@@ -14,6 +14,29 @@ class DichVuDAO
              $return[]=$row;
          return $return;
     }
+    //use to search dichvu
+    public static function getAllBySQL($strSQL)
+    {
+         $result = DataProvider::Query($strSQL);
+         if(mysql_num_rows($result)==0)
+				return null;
+         while($row=mysql_fetch_row($result))
+             $return[]=$row;
+         return $return;
+    }
+    public static function countAllBySQL($strSQL)
+    {
+        $result = DataProvider::Query($strSQL);
+        $resultSet=mysql_fetch_array ($result);
+        return $resultSet[0];
+    }
+    public static function countAll()
+    {
+        $strSQL = "select count(*) from dichvu";
+        $result = DataProvider::Query($strSQL);
+        $resultSet=mysql_fetch_array ($result);
+        return $resultSet[0];
+    }
 }
 
 ?>
