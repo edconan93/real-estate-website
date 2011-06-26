@@ -26,16 +26,16 @@
 									<tr>
 										<td colspan="2" align="center">
 											<p class="menu_item">
-												<a href="">Cần Mua</a>
+												<a href="dichvu.php?loaidv=2">Cần Mua</a>
 											</p>
 											<p class="menu_item">
-												<a href="">Cần Bán</a>
+												<a href="dichvu.php?loaidv=1">Cần Bán</a>
 											</p>
 											<p class="menu_item">
-												<a href="">Cần Thuê</a>
+												<a href="dichvu.php?loaidv=3">Cần Thuê</a>
 											</p>
 											<p class="menu_item">
-												<a href="">Cho Thuê</a>
+												<a href="dichvu.php?loaidv=4">Cho Thuê</a>
 											</p>
 										</td>
 									</tr>
@@ -103,9 +103,17 @@
 							<div style="width: 686px; padding-top:20px;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29;">
-									CẦN MUA</div>
+                                    <?php
+                                     include_once("/business/BussinessProcessor.php");
+                                     echo BusinessProcessor::getLoaiDichVu();       
+                                    ?>
+								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content">
+                                <?php                         
+                                echo BusinessProcessor::loadAllBusiness();
+                                ?>
+                                <!--
 									<table id="tblist" width="100%" border="0" style="border:solid 1px #D3D3D3;" cellpadding="0" cellspacing="0">
 										<tr style="height:36px; font-weight:bold; font-size:13px; background:#8BC5F4;">
 											<td style="border-right:solid 1px #D3D3D3; padding:4px;" align="center">Hình Ảnh</td>
@@ -176,7 +184,7 @@
 										</tr>
 									</table>
                                     <script>$("table[id='tblist'] tr:odd").css("background-color", "#EFEFEF");</script>
-
+                                    -->
 								</div>
 							</div>
 						</td>

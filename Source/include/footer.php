@@ -82,10 +82,6 @@ rgb(33, 91, 135); text-align: center;">
                     </form>
                     <?php
                         //xu ly dang nhap
-                        include("../BUS/QuanBUS.php");
-                        $kq=QuanBUS::GetAllQuan();
-                        
-                        echo ($kq[0]['ten']);
                         include_once ("user/LoginProcessor.php");
                         ?>
                    

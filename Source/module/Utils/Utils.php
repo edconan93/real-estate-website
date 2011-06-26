@@ -25,7 +25,7 @@ class Utils
     			
     	if($totalProducts>$mxR)
     	{
-    		$paging="<br><table width='250' border='0' cellspacing='0' cellpadding='0' align='center'><tr> \n";
+    		$paging="<div align='center'><br><table width='250' border='0' cellspacing='0' cellpadding='0' align='center'><tr> \n";
     		if ($curPage==1)
     		{
     			$paging.="<td><img src='images/previous_disable.gif' border='0'></td> \n";
@@ -33,7 +33,7 @@ class Utils
     		else
     		{ 
     			$paging.=sprintf ("<td><a href='%spage=1' style='text-decoration:none'>Trang đầu</a></td> \n",$href);
-    			$paging.=sprintf ("<td><a href='%spage=%d'class='link_image'><img src='images/previous.gif' border='0'></a></td> \n",$href,$curPage-1);
+    			$paging.=sprintf ("<td><a href='%spage=%d'class='link_image'><img src='../images/prev.png' border='0'></a></td> \n",$href,$curPage-1);
     		}				 	 
     		for($i=1;$i<=$totalPages;$i++)
     		{	
@@ -48,12 +48,12 @@ class Utils
     		if ($curPage<$totalPages)
     		{
     			
-    			$paging.=sprintf ("<td><a href='%spage=%d' class='link_image'><img src='images/next.gif' border='0'></a></td> \n",$href,$curPage+1);
+    			$paging.=sprintf ("<td><a href='%spage=%d' class='link_image'><img src='../images/next.png' border='0'></a></td> \n",$href,$curPage+1);
     			$paging.=sprintf ("<td><a href='%spage=%d' style='text-decoration:none'>Trang cuối</a></td> \n",$href,$totalPages);
     		}
     		else
     			$paging.="<td><img src='images/next_disable.gif' border='0'></td> \n";
-    		$paging.="</tr></table> <br>";
+    		$paging.="</tr></table> <br></div>";
     	}
     	return $paging;
     }
