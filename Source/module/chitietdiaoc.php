@@ -69,26 +69,43 @@
 									<div style="clear:both;"></div>
 								</div>
 							</div>
+                            <?php
+                            $business=null;
+                            if(isset($_REQUEST['iddichvu'])) 
+                            {
+                                include_once ("../BUS/DichVuBUS.php");
+                                include_once ("../BUS/HinhAnhBUS.php");
+                                include_once ("../BUS/DonviDichVuBUS.php");
+                                include_once ("../BUS/DonViTienBUS.php");
+                                include_once ("../BUS/TinhBUS.php");
+                                include_once ("../BUS/QuanBUS.php");
+                                include_once ("../BUS/PhuongBUS.php");
+                                $business=DichVuBUS::select($_REQUEST['iddichvu']); 
+                                $quan=QuanBUS::GetAllQuanById($business['quan']);
+                                $phuong=PhuongBUS::GetAllPhuongById($business['phuong']);
+                                $tinh=TinhBUS::getTinhById($business['tinh']);                              
+                            }
+                            ?>
 							<div style="width: 686px; padding-top:20px;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29;">
-									Bán căn hộ the everich Q11 gia rẻ vào ở ngay</div>
-								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
+									<?php echo $business['tieude']; ?> </div>
+								<hr style="color: rgb(211, 232, 248);" width="680" size="1"/>
 								<div class="mid_content">
 									<div class="detail1">
 										<div class="map">
 											<div class="clearBoth">
 												<div style="visibility: visible;" id="SliderTab" class="ajax__tab_xp ajax__tab_container ajax__tab_default">
-													<div id="SliderTab_header" class="ajax__tab_header">
-														<span id="SliderTab_image_tab" class="ajax__tab_active">
+													<div id="SliderTab_header" class="ajax__tab_header" class="ajax__tab_active">
+														<span id="SliderTab_image_tab" >
 															<span class="ajax__tab_outer">
 																<span class="ajax__tab_inner">
-																	<span id="SliderTab_image" class="ajax__tab_tab">Hình ảnh </span></span></span></span>
-														<span id="SliderTab_tabmap_tab"	class="">
+																	<span id="SliderTab_image" class="ajax__tab_tab" onclick="changeTab(0)">Hình ảnh </span></span></span></span>
+														<span id="SliderTab_tabmap_tab" >
 															<span class="ajax__tab_outer">
 																<span class="ajax__tab_inner">
-																	<span id="SliderTab_tabmap"	class="ajax__tab_tab">
-																		<span onclick="initialize();showPoint();">Bản đồ </span></span></span></span></span>
+																	<span id="SliderTab_tabmap"	class="ajax__tab_tab" onclick="changeTab(1)">Bản đồ</span></span></span></span>
+																		
 													</div>
 													<div id="ctl00_MainContent_ctl00_SliderTab_body" class="ajax__tab_body">
 														<div id="ctl00_MainContent_ctl00_SliderTab_image" class="ajax__tab_panel" style="visibility: visible;">
@@ -129,13 +146,83 @@
 														</div>
 														<div style="display: none; visibility: hidden;" id="ctl00_MainContent_ctl00_SliderTab_tabmap"
 															class="ajax__tab_panel">
-															<div onmouseover="SizeFix()" style="width: 380px; height: 350px" id="map_canvas">
+                                                            <div>
+                                                    <input id="address" style="width: 250px;"  type="textbox" <?php echo "value='".$business['duong'].",".$phuong['ten'].",".$quan['ten'].",".$tinh['ten'].",viet nam"."'"; ?> />
+
+                                                    <input type="button" value="Refresh" onclick="codeAddress()">
+                                                             </div>
+															<div style="width: 380px; height: 350px; "id="map_canvas">
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-
+                                            	 <!-- google api -->
+                                            <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+                                            <script type="text/javascript">
+                                              var geocoder;
+                                              var map;
+                                              function initialize() {
+                                                geocoder = new google.maps.Geocoder();
+                                                var latlng = new google.maps.LatLng(10.79306, 106.62913);
+                                                var myOptions = {
+                                                  zoom: 15,
+                                                  center: latlng,
+                                                  mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                }
+                                                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+                                                var marker = new google.maps.Marker({
+                                                    position: latlng, 
+                                                    map: map,                                                  
+                                                }); 
+                                                //codeAddress();  
+                                              }
+                                              function codeAddress() {
+                                                var address = document.getElementById("address").value;
+                                                geocoder.geocode( { 'address': address}, function(results, status) {
+                                                  if (status == google.maps.GeocoderStatus.OK) {
+                                                    map.setCenter(results[0].geometry.location);
+                                                    var marker = new google.maps.Marker({
+                                                        map: map, 
+                                                        position: results[0].geometry.location
+                                                    });
+                                                  } else {
+                                                    alert("Geocode was not successful for the following reason: " + status);
+                                                  }
+                                                });
+                                              }
+                                            </script>
+                                            <script type="text/javascript">
+                                            function changeTab(tabindex)
+                                            {
+                                                switch(tabindex)
+                                                {
+                                                    case 0:   
+                                                    $('#SliderTab_image_tab').attr("class","ajax__tab_active");
+                                                    $('#SliderTab_tabmap_tab').attr("class","");                                                                                                       
+                                                    //document.getElementById("SliderTab_image_tab").className="ajax__tab_active";
+                                                    document.getElementById("ctl00_MainContent_ctl00_SliderTab_image").style.display="block";
+                                                    document.getElementById("ctl00_MainContent_ctl00_SliderTab_image").style.visibility="visible";
+                                                    document.getElementById("ctl00_MainContent_ctl00_SliderTab_tabmap").style.display="none";
+                                                    document.getElementById("ctl00_MainContent_ctl00_SliderTab_tabmap").style.visibility="hidden";
+                                                    break;
+                                                    
+                                                    case 1:                                                  
+                                                    $('#SliderTab_tabmap_tab').attr("class","ajax__tab_active");  
+                                                    $('#SliderTab_image_tab').attr("class","");                                                  
+                                                    //document.getElementById("SliderTab_tabmap_tab").className="ajax__tab_active";
+                                                    document.getElementById("ctl00_MainContent_ctl00_SliderTab_image").style.display="none";
+                                                    document.getElementById("ctl00_MainContent_ctl00_SliderTab_image").style.visibility="hidden";
+                                                    document.getElementById("ctl00_MainContent_ctl00_SliderTab_tabmap").style.display="block";
+                                                    document.getElementById("ctl00_MainContent_ctl00_SliderTab_tabmap").style.visibility="visible";
+                                                    initialize();
+                                                    break;
+                                                    default:
+                                                        document.write("Tab index is out of range");
+                                                }
+      
+                                            }
+                                            </script>
 											<script type="text/javascript">
 												var width = 250;
 												var height = 100;
@@ -198,7 +285,7 @@
 														picture = imgAr1.length-1
 												}
 											</script>
-
+                                           
 											<div class="clearBoth">
 											</div>
 										</div>
@@ -206,9 +293,15 @@
 											<div class="totalView">
 												Số lần xem: 12</div>
 											<div class="address">
-												Địa chỉ : <strong>Quận Tân Phú, TP Hồ Chí Minh</strong></div>
+												Địa chỉ : <strong><?php 
+                                                
+                                                echo $business['duong'].",".$phuong['ten'].",".$quan['ten'].",".$tinh['ten'].",viet nam"; ?></strong></div>
 											<div class="price">
-												Giá : 18.700.000 VNĐ / m²</div>
+												Giá : <?php 
+                                                 $donviDV=DonviDichVuBUS::selectId($business['donvidv']);
+                                                 $donviTien=DonviTienBUS::selectId($business['donvitien']);
+                                                 echo $business['giaban']." ".$donviTien['ten']."/".$donviDV['ten'];
+                                                 ?></div>
 											<div class="contact">
 												<div class="registerBuy">
 													Thông tin liên hệ</div>
@@ -226,7 +319,7 @@
 										<div class="clearBoth">
 										</div>
 									</div>
-									
+								
 									<div style="clear:both;"></div>
 								</div>
 								<fieldset>
