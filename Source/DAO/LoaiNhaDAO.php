@@ -1,5 +1,5 @@
 <?php
-/*Lớp LoaiNhhaDAO
+/*Lớp LoaiNhaDAO
 	
 */?>
 <?php 
@@ -7,7 +7,7 @@
 ?>
 
 <?php
-	class LoaiNhhaDAO
+	class LoaiNhaDAO
 	{
 		public static function GetAllLoaiNha()
 		{
@@ -15,8 +15,10 @@
 					from loainha";
             $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
-				return null;
-			return mysql_fetch_array ($result);	
+				 return null;
+			while($row = mysql_fetch_row($result))
+			    $temp[]= $row;
+			return $temp;	
 		}
     	
      	
