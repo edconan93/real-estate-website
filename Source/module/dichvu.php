@@ -106,7 +106,7 @@
 									CẦN MUA</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content">
-									<table width="100%" border="0" style="border:solid 1px #D3D3D3;" cellpadding="0" cellspacing="0">
+									<table id="tblist" width="100%" border="0" style="border:solid 1px #D3D3D3;" cellpadding="0" cellspacing="0">
 										<tr style="height:36px; font-weight:bold; font-size:13px; background:#8BC5F4;">
 											<td style="border-right:solid 1px #D3D3D3; padding:4px;" align="center">Hình Ảnh</td>
 											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Mô Tả</td>
@@ -114,7 +114,7 @@
 											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Ngày Cập Nhật</td>
 											<td style="padding:4px;" align="center">Giá</td>
 										</tr>
-										<tr style="background:#EFEFEF;">
+										<tr>
 											<td style="border-right:solid 1px #D3D3D3; padding:4px;" width="150px">
 												<a href="chitietdiaoc.php"><img src="../admin/upload/diaoc/thegioicanho (10).jpg" width="150px" /></a></td>
 											<td style="border-right:solid 1px #D3D3D3; padding:4px;">
@@ -144,7 +144,7 @@
 											<td style="border-right:solid 1px #D3D3D3; padding:4px;">22/06/2011</td>
 											<td style="padding:4px;">32.085.000 vnd/m²</td>
 										</tr>
-										<tr style="background:#EFEFEF;">
+										<tr>
 											<td style="border-right:solid 1px #D3D3D3; padding:4px;" width="150px">
 												<a href="chitietdiaoc.php"><img src="../admin/upload/diaoc/thegioicanho (13).jpg" width="150px" /></a></td>
 											<td style="border-right:solid 1px #D3D3D3; padding:4px;">
@@ -175,6 +175,8 @@
 											<td style="padding:4px;">32.085.000 vnd/m²</td>
 										</tr>
 									</table>
+                                    <script>$("table[id='tblist'] tr:odd").css("background-color", "#EFEFEF");</script>
+
 								</div>
 							</div>
 						</td>

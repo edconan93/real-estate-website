@@ -52,9 +52,9 @@ rgb(33, 91, 135); text-align: center;">
 					</div>
                     <!--div class='form_error' id="frmError"></div-->
 					<!--div  id="messRegister" name="messRegister" class="form_text" style="width:340px;float:left;"></div-->
-					 <form action="" method="POST" name="frmDangnhap"  onsubmit="return press_btLogin();">
+					 <form action="dichvu.php" method="POST" name="frmDangnhap"  onsubmit="return press_btLogin();">
 					<div class="form_box">
-						<div  id="messRegister" name="messRegister" class="form_text" style="width:340px;float:left;"></div>
+						<div  id="messRegister" class="form_text" style="width:340px;float:left;"></div>
 						<br><br>
 						<p class="form_text">
 							Tên đăng nhập</p>
@@ -82,33 +82,11 @@ rgb(33, 91, 135); text-align: center;">
                     </form>
                     <?php
                         //xu ly dang nhap
-                        if(isset($_POST["btn_Login"]))
-                        {   
-                            include("../BUS/UsersBUS.php");
-                            $user=$_POST["txtUsernameLogin"];
-                            $pass=$_POST["txtPasswordLogin"];
-                            //echo $user;
-                            //echo $pass;
-                            $result=UsersBus::Login($user,$pass);
-                            if($result==null)
-                            {
-                                $fLogin=false;
-                            }
-                            else
-                            {
-                                $_SESSION["curUser"] = $result;
-                                header("Location:thanhvien.php?id=".$result['id']);
-                            }
-                        }?>
-                       <?php
-                            if(isset($fLogin)&&$fLogin==false)
-                            {                            
-                                 echo "<script language='javascript' type='text/javascript'>";
-                                 echo "document.getElementById('messRegister').innerHTML='Bạn đã nhập sai tên hoặc mật khẩu';";
-                                 echo "document.getElementById('popup').style.visibility = 'visible';";
-                                 echo "</script>";
-                            }
-                               
+                        include("../BUS/QuanBUS.php");
+                        $kq=QuanBUS::GetAllQuan();
+                        
+                        echo ($kq[0]['ten']);
+                        include_once ("user/LoginProcessor.php");
                         ?>
                    
 				</div>
