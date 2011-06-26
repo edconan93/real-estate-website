@@ -1,5 +1,5 @@
 <?php
-/*Lớp TienIchDAO
+/*Lớp DonViTienDAO
 	
 */?>
 <?php 
@@ -7,27 +7,27 @@
 ?>
 
 <?php
-	class TienIchDAO
+	class DonViTienDAO
 	{
-    	public static function GetAllTienIch()
+    	public static function GetAllDonViTien()
 		{
-			$strSQL = "select * from tienich";
-			$result = DataProvider::Query($strSQL);
+			$strSQL = "select *
+					from donvitien";
+            $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
 				 return null;
 			while($row = mysql_fetch_row($result))
 			    $temp[]= $row;
 			return $temp;
 		}
-		
-		public static function GetAllTienIchId($id)
+		public static function GetAllDonViTienById($id)
 		{
 			$strSQL = "select *
-					   from tienich where id='$id'";
+					from donvitien where id='$id'";
             $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
 				return null;
-			return mysql_fetch_array ($result);
+			return mysql_fetch_array ($result);	
 		}
      	
 	}
