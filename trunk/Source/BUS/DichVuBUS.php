@@ -14,6 +14,14 @@ class DichVuBUS
     {
         return DichVuDAO::getAll($offset,$numrow);
     }
+    public static function countAll()
+    {
+        return DichVuDAO::countAll();
+    }
+    public static function find($sql)
+    {
+        return DichVuDAO::find($sql);
+    }
 }
 
 ?>
