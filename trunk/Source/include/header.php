@@ -9,9 +9,12 @@
 	<script type="text/javascript" src="../js/utilities.js"></script>
 	<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui-1.8.9.custom.min.js"></script>
+	<script type="text/javascript" src="../js/custom.js"></script>
 </head>
 <?php
    session_start ();
+   
+	
    include ("../DAO/config.php");
    	if(isset($_GET["do"])&&$_GET["do"]=="logout")
      {
