@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 26, 2011 at 09:36 AM
+-- Generation Time: Jun 26, 2011 at 11:28 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -72,14 +72,16 @@ CREATE TABLE IF NOT EXISTS `dichvu` (
   KEY `fk_dichvu_phuong` (`phuong`),
   KEY `fk_dichvu_phaply` (`phaply`),
   KEY `fk_dichvu_donvidv` (`donvidv`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `dichvu`
 --
 
 INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tinh`, `ngaydang`, `duong`, `rong`, `dai`, `tang`, `sophongngu`, `sophongtam`, `giaban`, `donvitien`, `status`, `thoihantin`, `loainha`, `phaply`, `huongnha`, `khuyenmai`, `loaidv`, `donvidv`, `x`, `y`) VALUES
-(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03', 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, 1, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 1, NULL, NULL);
+(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03', 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, 1, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 2, NULL, NULL),
+(3, 'Bán căn hộ the everich Q12 gia rẻ vào ở ngay', NULL, 2, 4, 3, 2, '2010-02-04', 'lac long quan', 7, 9, 10, 3, 2, 123214, 1, 1, 12, 2, 1, 2, NULL, 1, 1, NULL, NULL),
+(4, 'Bán căn hộ the everich Q10 gia rẻ vào ở ngay', NULL, 2, 3, 3, 3, NULL, NULL, 3, 4, 3, 3, 2, 43214100, 1, 1, 2, 1, 1, 1, 'Tặng nội thất vào ở ngay', 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -121,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `donvidichvu` (
 --
 
 INSERT INTO `donvidichvu` (`id`, `ten`) VALUES
-(1, 'm2'),
+(1, 'm²'),
 (2, 'Tổng diện tích'),
 (3, 'Tháng');
 
@@ -160,12 +162,16 @@ CREATE TABLE IF NOT EXISTS `hinhanh` (
   `iddichvu` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_hinhanh_thongtinnhadat` (`iddichvu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `hinhanh`
 --
 
+INSERT INTO `hinhanh` (`id`, `path`, `iddichvu`) VALUES
+(3, 'images/business/1.png', 2),
+(4, 'images/business/2.jpg', 3),
+(5, 'images/business/3.png', 4);
 
 -- --------------------------------------------------------
 
