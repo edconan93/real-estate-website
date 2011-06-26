@@ -1,14 +1,292 @@
 ﻿<?php
 	include("../include/header.php");
+	
 ?>
 <!--script -->
 <script src="../js/common.js" language="javascript" type="text/javascript"></script>
 <script src="../js/jquery-1.js" language="javascript" type="text/javascript"></script>
  <script type="text/javascript">
- function copy()
- { 
- document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
- }
+ //xu ly submit
+$(document).ready(function()
+{
+			// $("#frmDichVu").submit(function()
+			// {
+			// )};
+
+//xu ly tieu de
+	$("#txtTieuDeTin").blur(function ()
+	{
+			var strTieuDe = $("#txtTieuDeTin").attr("value");
+
+			if(strTieuDe.length < 1  )
+			{	
+
+				$("#messTieuDe").attr("innerHTML","Phải đặt tiêu đề tin");
+				$("#messTieuDe").css("color","red");
+			}
+			else
+			{
+				$("#messTieuDe").attr("innerHTML", "");
+				var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+				$("#messTieuDe").load(serverURL);
+			}
+	});
+	//check duong pho
+	$("#txtDuongPho").blur(function ()
+	{
+		var strTieuDe = $("#txtDuongPho").attr("value");
+
+		if(strTieuDe.length < 1  )
+		{	
+
+			$("#messDuongPho").attr("innerHTML","Phải thêm tên đường");
+			$("#messDuongPho").css("color","red");
+		}
+		else
+		{
+			$("#messDuongPho").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messDuongPho").load(serverURL);
+		}
+	});
+	//check so nha
+	$("#txtSoNha").blur(function ()
+	{
+		var strTieuDe = $("#txtSoNha").attr("value");
+		if(strTieuDe.length < 1  )
+		{	
+			$("#messSoNha").attr("innerHTML","Phải có số nhà");
+			$("#messSoNha").css("color","red");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			$("#messSoNha").attr("innerHTML","Số nhà ko hợp lệ");
+			$("#messSoNha").css("color","red");
+		}
+		else
+		{
+			$("#messSoNha").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messSoNha").load(serverURL);
+		}		
+	});
+	
+	//check gia
+	$("#txtGia").blur(function ()
+	{
+		var strTieuDe = $("#txtGia").attr("value");
+		if(strTieuDe.length < 1  )
+		{	
+			$("#messGia").attr("innerHTML","Phải thêm giá nhà");
+			$("#messGia").css("color","red");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			$("#messGia").attr("innerHTML","Hãy nhập số");
+			$("#messGia").css("color","red");
+		}
+		else
+		{
+			$("#messGia").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messGia").load(serverURL);
+		}
+	});
+	//check Dai
+	$("#txtDai").blur(function ()
+	{
+		var strTieuDeR = $("#txtRong").attr("value");
+		var strTieuDe = $("#txtDai").attr("value");
+		if(strTieuDe.length < 1 || strTieuDeR<1 )
+		{	
+			$("#messKichThuoc").attr("innerHTML","Nhập D-R");
+			$("#messKichThuoc").css("color","red");
+		}
+		else if(CheckPhoneNumber(strTieuDe) || CheckPhoneNumber(strTieuDeR))
+		{
+			$("#messKichThuoc").attr("innerHTML","Nhập số");
+			$("#messKichThuoc").css("color","red");
+		}
+		else
+		{
+			$("#messKichThuoc").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messKichThuoc").load(serverURL);
+		}
+	});
+	//check Rong
+	$("#txtRong").blur(function ()
+	{
+		var strTieuDe = $("#txtRong").attr("value");
+		var strTieuDeD = $("#txtDai").attr("value");
+		if(strTieuDe.length < 1  || strTieuDeD <1 )
+		{	
+			$("#messKichThuoc").attr("innerHTML","Nhập D-R");
+			$("#messKichThuoc").css("color","red");
+		}
+		else if(CheckPhoneNumber(strTieuDe) || CheckPhoneNumber(strTieuDeD))
+		{
+			$("#messKichThuoc").attr("innerHTML","Nhập số");
+			$("#messKichThuoc").css("color","red");
+		}
+		else
+		{
+			$("#messKichThuoc").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messKichThuoc").load(serverURL);
+		}
+	});
+	//check tang
+	$("#txtTang").blur(function ()
+	{
+		var strTieuDe = $("#txtTang").attr("value");
+		if(strTieuDe.length < 1 )
+		{	
+			$("#messTang").attr("innerHTML","Nhập D-R");
+			$("#messTang").css("color","red");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			$("#messTang").attr("innerHTML","Nhập số");
+			$("#messTang").css("color","red");
+		}
+		else
+		{
+			$("#messTang").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messTang").load(serverURL);
+		}
+	});
+	//check PhongTam
+	$("#txtPhongTam").blur(function ()
+	{
+		var strTieuDe = $("#txtPhongTam").attr("value");
+		if(strTieuDe.length < 1 )
+		{	
+			$("#messPhongTam").attr("innerHTML","Nhập D-R");
+			$("#messPhongTam").css("color","red");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			$("#messPhongTam").attr("innerHTML","Nhập số");
+			$("#messPhongTam").css("color","red");
+		}
+		else
+		{
+			$("#messPhongTam").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messPhongTam").load(serverURL);
+		}
+	});
+	//check txtPhongNgu
+	$("#txtPhongNgu").blur(function ()
+	{
+		var strTieuDe = $("#txtPhongNgu").attr("value");
+		if(strTieuDe.length < 1 )
+		{	
+			$("#messPhongNgu").attr("innerHTML","Nhập D-R");
+			$("#messPhongNgu").css("color","red");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			$("#messPhongNgu").attr("innerHTML","Nhập số");
+			$("#messPhongNgu").css("color","red");
+		}
+		else
+		{
+			$("#messPhongNgu").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messPhongNgu").load(serverURL);
+		}
+	});
+	//check cbbBatDongSan
+	$("#cbbBatDongSan").blur(function ()
+	{
+	//alert("cbbLoaiNha");
+		var strTieuDe = $("#cbbBatDongSan").attr("value");
+		//alert(strTieuDe);
+		if(strTieuDe == "-1" )
+		{	
+			$("#messLoaiBatDongSan").attr("innerHTML","Chọn loại nhà");
+			$("#messLoaiBatDongSan").css("color","red");
+		}
+		else
+		{
+			$("#messLoaiBatDongSan").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messLoaiBatDongSan").load(serverURL);
+		}
+		
+	});
+	//check cbbTinhTP
+	$("#cbbTinhTP").blur(function ()
+	{
+	//alert("cbbLoaiNha");
+		var strTieuDe = $("#cbbTinhTP").attr("value");
+		//alert(strTieuDe);
+		if(strTieuDe == "-1" )
+		{	
+			$("#messTinhTP").attr("innerHTML","Chọn tỉnh/ thành phố");
+			$("#messTinhTP").css("color","red");
+		}
+		else
+		{
+			$("#messTinhTP").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messTinhTP").load(serverURL);
+		}
+		
+	});
+	//check cbbQuanHuyen
+	$("#cbbQuanHuyen").blur(function ()
+	{
+		var strTieuDe = $("#cbbQuanHuyen").attr("value");
+		if(strTieuDe == "-1" )
+		{	
+			$("#messQuanHuyen").attr("innerHTML","Chọn quận/ huyện");
+			$("#messQuanHuyen").css("color","red");
+		}
+		else
+		{
+			$("#messQuanHuyen").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messQuanHuyen").load(serverURL);
+		}
+		
+	});
+	//check cbbPhuong
+	$("#cbbPhuong").blur(function ()
+	{
+	//alert("cbbLoaiNha");
+		var strTieuDe = $("#cbbPhuong").attr("value");
+		//alert(strTieuDe);
+		if(strTieuDe == "-1" )
+		{	
+			$("#messPhuong").attr("innerHTML","Chọn phường/xã");
+			$("#messPhuong").css("color","red");
+		}
+		else
+		{
+			$("#messPhuong").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messPhuong").load(serverURL);
+		}
+		
+	});
+	function CheckPhoneNumber(strText)
+	{
+		var strTemp="0123456789";
+		for (var i=0; i<strText.length; i++)
+		if (strTemp.indexOf (strText.charAt(i))==-1)//==-1 ko bao gio xay ra
+		{
+			return true;
+		}	
+		return false;
+
+	}
+	
+});
+		
  </script>
  
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
@@ -48,183 +326,220 @@
 											</ul>
 										</div>
 									</div>
-									<table class="table" width="100%" cellpadding="0" cellspacing="0" border="0">
+									<!--table class="table" width="100%" cellpadding="0" cellspacing="0" border="0"-->
+									<table cellspacing="2" cellpadding="4"   border="0" style="width:690px;">
 										<tr style="background:#00397C;height:30px;">
-<!--THÔNG TIN -->			<td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN</td>
+										      <td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN</td>
+									    </tr>
+										
+<!--THÔNG TIN -->
+	
+									
+										
+										<tr bgcolor="#F2F5F9">
+											<td style="width:60px;">Loại giao dịch:</td>
+											<td style="width:500px;">
+												<p id="messTenLoai" name="messTenLoai"><b>Cần bán</b>												
+											</td>
 										</tr>
-										<tr>
-											<td width="200px">Loại giao dịch:</td>
-											<td>
-												<p id="messTenLoai" name="messTenLoai"><b>Cần bán</b>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loại bđs :
-												<select id="cbbLoaiGiaoDich" name="cbbLoaiGiaoDich" class="DropDownList" >
-													<option value="1">Biệt Thự</option>
-													<option value="2" selected="selected">Căn hộ chung cư</option>
-													<option value="3">Căn hộ cao cấp</option>
-													<option value="4">Nhà Phố</option>
-													<option value="5">Văn phòng cho thuê</option>
+										<tr bgcolor="#F2F5F9">
+											<td width="200px"><b>Tiêu đề tin:</b><span style="color:red;"> *</span></td>
+											<td>											
+											<div style="width:310px;float:left;"><input name="txtTieuDeTin" id="txtTieuDeTin" type="text" style="width:300px;" value=""onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
+											<div id="messTieuDe" name="messTieuDe" style="width:150px;float:left;"></div>
+											</td>
+										</tr>
+										<tr bgcolor="#F2F5F9">
+											<td width="200px"><b>Loại bđs :</b><span style="color:red;"> *</span></td>
+											<td style="float:left;">
+											<div style="width:310px;float:left;">
+											<select id="cbbBatDongSan" name="cbbBatDongSan"  >
+											
+											<option value="-1">--Loại bất động sản--</option>
+<?php
+include("../BUS/LoaiNhaBUS.php");
+$rs=LoaiNhaBUS::GetAllLoaiNha();
+for($i=0;$i<count($rs);$i++)
+{		
+	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+}
+?>
 												</select>
+												</div>
+												<div id="messLoaiBatDongSan" name="messLoaiBatDongSan" style="width:150px;float:left;"></div>
 												</td>
 										</tr>
-										<tr>
-											<td width="200px"><b>Tiêu đề tin:</b><span style="color:red;"> *</span></td>
-											<td><input name="txtTieuDeTin" id="TieuDeTin" type="text" style="width:300px;" value=""></td>
-										</tr>
 										
-										<tr>
+										<tr bgcolor="#F2F5F9">
 											<td width="200px"><b>Tỉnh/Thành Phố:</b><span style="color:red;"> *</span></td>
-											<td>
-												<select id="cbbTinhTP" name="cbbTinhTP" class="DropDownList" onchange="javascript:setTimeout('__doPostBack(\'ddlCity\',\'\')', 0)" name="ddlCity">
-													<option value="1" selected="selected">TP Hồ Chí Minh</option>
-													<option value="2">Hà Nội</option>
-													<option value="6">Bình Dương</option>
-													<option value="11">Bình Thuận</option>
-													<option value="4">Cần Thơ</option>
-													<option value="3">Đà Nẵng</option>
-													<option value="10">Đăk Lăk</option>
-													<option value="8">Đồng Nai</option>
-													<option value="9">Lâm Đồng</option>
-													<option value="7">Vũng Tàu</option>
+											
+												<td style="float:left;">
+												<div style="width:310px;float:left;">
+												<select id="cbbTinhTP" name="cbbTinhTP" style="width:220px;" onchange=()>
+													<option value="-1" selected="selected">--Chọn Tỉnh/ Thành Phố--</option>
+<?php
+include("../BUS/TinhBUS.php");
+$rs=TinhBUS::GetAllTinh();
+for($i=0;$i<count($rs);$i++)
+{		
+	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+}
+?>												
 												</select>
+												</div>
+												<div id="messTinhTP" name="messTinhTP" style="width:150px;float:left;"></div>
 											</td>
 										</tr>
-										<tr>
+										<tr bgcolor="#F2F5F9">
 											<td width="200px"><b>Quận/Huyện:</b><span style="color:red;"> *</span></td>
 											<td>
-												<select id="cbbQuanHuyen" id="cbbQuanHuyen" class="DropDownList" name="ddlDistric">
+											<div style="width:310px;float:left;">
+												<select id="cbbQuanHuyen" name="cbbQuanHuyen" style="width:220px;" >
 													<option value="-1">Chọn quận/huyện</option>
-													<option value="7">Quận 1</option>
-													<option value="2">Quận 2 </option>
-													<option value="3">Quận 3</option>
-													<option value="4">Quận 4</option>
-													<option value="5">Quận 5</option>
-													<option value="6">Quận 6</option>
-													<option value="8">Quận 7</option>
-													<option value="9">Quận 8</option>
-													<option value="10">Quận 9</option>
-													<option value="11">Quận 10</option>
-													<option value="12">Quận 11</option>
-													<option value="13">Quận 12</option>
-													<option value="1">Huyện Bình Chánh</option>
-													<option value="20">Quận Bình Tân</option>
-													<option value="18">Quận Bình Thạnh</option>
-													<option value="22">Huyện Cần Giờ</option>
-													<option value="24">Huyện Củ Chi</option>
-													<option value="21">Quận Gò Vấp</option>
-													<option value="23">Huyện Hóc Môn</option>
-													<option value="29">Huyện Nhà Bè</option>
-													<option value="14">Quận Phú Nhuận</option>
-													<option value="19">Quận Tân Bình</option>
-													<option value="15">Quận Tân Phú</option>
-													<option value="17">Quận Thủ Đức</option>
-												</select>
+<?php
+include("../BUS/QuanBUS.php");
+$rs=QuanBUS::GetAllQuan();
+for($i=0;$i<count($rs);$i++)
+{		
+	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+}
+?>
+													
+													</select>
+													</div>
+												<div id="messQuanHuyen" name="messQuanHuyen" style="width:150px;float:left;"></div>
 											</td>
 										</tr>
-										<tr>
+										<tr bgcolor="#F2F5F9">
 											<td width="200px"><b>Phường/ Xã:</b><span style="color:red;"> *</span></td>
 											<td>
-												<select id="cbbPhuong" id="cbbPhuong" class="DropDownList" name="ddlDistric">
+											<div style="width:310px;float:left;">
+												<select id="cbbPhuong" name="cbbPhuong" style="width:220px;" >
 													<option value="-1">Chọn phường/xã</option>
-													<option value="7">Quận 1</option>
-													<option value="2">Quận 2 </option>
+<?php
+include("../BUS/PhuongBUS.php");
+$rs=PhuongBUS::GetAllPhuong();
+for($i=0;$i<count($rs);$i++)
+{		
+	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+}
+?>
+													
 													
 												</select>
+												</div>
+												<div id="messPhuong" name="messPhuong" style="width:150px;float:left;"></div>
 											</td>
 										</tr>
 										
-										<tr>
+										<tr bgcolor="#F2F5F9">
 											<td width="200px"><b>Đường/Phố:</b><span style="color:red;"> *</span></td>
 											<td>
-												<select id="cbbPhuong" id="cbbPhuong" class="DropDownList" name="ddlDistric">
-													<option value="-1">Chọn đường/phố</option>
-													<option value="2">Nguyễn Trãi</option>
-													<option value="1">Nguyễn Thị Minh Khai </option>
-													
-												</select>
+											<div style="width:310px;float:left;"> 
+												<input name="txtDuongPho" id="txtDuongPho" type="text" style="width:300px;" value="">
+												</div>
+												<div id="messDuongPho" name="messDuongPho" style="width:150px;float:left;"></div>
 											</td>
 										</tr>
-										<tr>
+										<tr bgcolor="#F2F5F9">
 											<td><b>Số nhà / Số lô:</b><span style="color:red;"> *</span></td>
-											<td><input name="txtSoNha" id="txtSoNha" type="text" style="width:300px;" value=""></td>
+											<td>
+												<div style="width:310px;float:left;"> 
+												<input  id="txtSoNha" name="txtSoNha" type="text" style="width:300px;" value="">
+												</div>
+												<div id="messSoNha" name="messSoNha" style="width:150px;float:left;"></div>
+											</td>
 										</tr>
-										<tr>
+										<tr bgcolor="#F2F5F9">
 											<td width="200px" ><b>Giá:</b><span style="color:red;"> *</span></td>
 											<td>
-												<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:150px;text-align: right;" onkeyup="this.value = FormatNumber(this.value);" >
-												<select id="cbbLoaiTien" class="DropDownList" name="cbbLoaiTien">
-													<option value="1" selected="selected">VNĐ</option>
-													<option value="2">USD</option>
-													<option value="3">SJC</option>
+											<div style="width:330px;float:left;">
+												<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:150px;text-align:left;" onkeyup="this.value = FormatNumber(this.value);" >
+											
+											
+												<select id="cbbDonViTien" class="DropDownList" name="cbbDonViTien">
+<?php
+include("../BUS/DonViTienBUS.php");
+$rs=DonViTienBUS::GetAllDonViTien();
+for($i=0;$i<count($rs);$i++)
+{		
+	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+}
+?>	
+													
 												</select>
-												<select id="cbbDonViTinh" name="cbbDonViTinh" class="DropDownList" >
-													<option value="1" selected="selected">m2</option>
-													<option value="2">Tháng</option>
-													<option value="3">Tổng diện tích</option>
+												<select id="cbbDonViDichVu" name="cbbDonViDichVu" class="DropDownList" >
+<?php
+include("../BUS/DonViDichVuBUS.php");
+$rs=DonViDichVuBUS::GetAllDonViDichVu();
+for($i=0;$i<count($rs);$i++)
+{		
+	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+}
+?>												
+
 												</select>
+												</div>
+												<div id="messGia" name="messGia" style="width:150px;float:left;"></div>
 											</td>
 										</tr>
-										<tr>
-											<td>Thời hạn đăng tin:</td>
-											<td>
-												<select id="cbbThoiGianThue" name="cbbThoiGianThue" class="DropDownList" onchange="javascript:setTimeout('__doPostBack(\'ddlExpireDate\',\'\')', 0)" >
-													<option value="10">10 ngày</option>
-													<option value="20">20 ngày</option>
-													<option value="30">30 ngày</option>
-													<option value="40">40 ngày</option>
-													<option value="50">50 ngày</option>
-													<option value="60" selected="selected">60 ngày</option>
-													<option value="70">70 ngày</option>
-													<option value="80">80 ngày</option>
-													<option value="90">90 ngày</option>
-												</select>
-											</td>
-										</tr>
-										<tr>
-											<td>Ngày hết hạn:</td>
-											<td><input type="text" id="txtNgayHetHan" name="txtNgayHetHan" style="width:70px;" value="" disabled="disabled"></td>
-										</tr>
-									</table><br>
+										
+										
+									</table>
 									<table class="table" width="100%" cellpadding="0" cellspacing="0">
 										<tr style="background:#00397C;height:30px;">
 <!--THÔNG TIN BẤT ĐỘNG SẢN -->				<td colspan="4" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN BẤT ĐỘNG SẢN</td>
-										</tr>
+										</tr><br>
 										<tr>
-											<td width="200px"><b>Diện tích:</b><span style="color:red;"> *</span></td>
+											<td width="200px" valign="button"><b>Kích thước:</b><span style="color:red;"> *</span></td>
 											<td>
-												<input id="txtDienTich" name="txtDienTich" class="Textbox" type="text" style="width:40px;" >
-													m<sup>2</sup>
+											<div style="width:110px;float:left;">
+											<b> D </b><input id="txtDai" name="txtDai" class="Textbox" type="text" style="width:25px;" >
+											<b> X </b>
+											<input id="txtRong" name="txtRong" class="Textbox" type="text" style="width:25px;" ><b> R </b>												
+											</div>
+											<div id="messKichThuoc" name="messKichThuoc" style="width:60px;float:left;"></div>
 											</td>
 											<td>
-												Tầng:<span style="color:red;"> *</span>
+												Tầng:<!--span style="color:red;"> *</span-->
 											</td>
 											<td>
+											   <div style="width:110px;float:left;">
 												<input id="txtTang" name="txtTang" class="Textbox" type="text" style="width:40px;" >
+												</div>
+												<div id="messTang" name="messTang" style="width:60px;float:left;"></div>
 											</td>
 										</tr>
 										<tr>
 											<td width="200px">Số phòng ngủ:</td>
 											<td>
+											 <div style="width:110px;float:left;">
 												<input id="txtPhongNgu" name="txtPhongNgu" class="Textbox" type="text" style="width:40px;" >
+												</div>
+												<div id="messPhongNgu" name="messPhongNgu" style="width:60px;float:left;"></div>
 											</td>
 											<td>
 												Số phòng WC/Tắm:
 											</td>
 											<td>
+											<div style="width:110px;float:left;">
 												<input id="txtPhongTam"  name="txtPhongTam" class="Textbox" type="text" style="width:40px;">
+											</div>
+											<div id="messPhongTam" name="messPhongTam" style="width:60px;float:left;"></div>
 											</td>
 										</tr>
 										<tr>
 											<td width="200px">Tình trạng pháp lý:</td>
 											<td>
 												<select id="cbbPhapLy" name="cbbPhapLy" class=" DropDownList" >
-													<option value="1">Chủ quyền tư nhân</option>
-													<option value="2">Đang hợp thức hoá</option>
-													<option value="3">Giấy tay</option>
-													<option value="4">Giấy tờ hợp lệ</option>
-													<option value="5">Hợp đồng</option>
-													<option value="6">Không xác định</option>
-													<option value="7">Sổ đỏ</option>
-													<option value="8">Sổ hồng</option>
+<?php
+include("../BUS/PhapLyBUS.php");
+$rs=PhapLyBUS::GetAllPhapLy();
+for($i=0;$i<count($rs);$i++)
+{		
+	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+}
+?>	
 												</select>
 											</td>
 											<td>
@@ -232,67 +547,51 @@
 											</td>
 											<td>
 												<select id="cbbHuongNha" name="cbbHuongNha" class="DropDownList" >
-													<option value="1">Đông</option>
-													<option value="2">Tây</option>
-													<option value="3">Nam</option>
-													<option value="4">Bắc</option>
-													<option value="5">Đông Bắc</option>
-													<option value="6">Đông Nam</option>
-													<option value="7">Tây Bắc</option>
-													<option value="8">Tây Nam</option>
-													<option value="9" selected>Không xác định</option>
+												<!--option value="-1" selected>--Lựa Chọn--</option-->
+<?php
+include("../BUS/HuongNhaBUS.php");
+$rs=HuongNhaBUS::GetAllHuongNha();
+for($i=0;$i<count($rs);$i++)
+{		
+	if($i == (count($rs)-1))
+		echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+	else
+		echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+}
+?>	
+													
 												</select>
 											</td>
 										</tr>
 									</table><br>
 									<table class="table" width="100%" cellpadding="0" cellspacing="0">
 										<tr style="background:#00397C;height:30px;">
-<?php
-include("../BUS/TienIchBUS.php");
-$tienich=TienIchBUS::GetAllTienIch();
-
-
-?>										
+										
 <!--CÁC TIỆN ÍCH -->					<td colspan="4" class="ButtonWithbackground">CÁC TIỆN ÍCH</td>
 										</tr>
-										<?php
-										for($i=0;$i<count($tienich);$i++)
-										{
-										?>
-										<tr>
-											<td>
-											<input id="cbTienNghi" type="checkbox" name="cbTienNghi">
-											<label for="cbTienNghi"> Đầy đủ tiện nghi</label>
-											</td>
-											<td>
-											<input id="cbChoDauXe" type="checkbox" name="cbChoDauXe">
-											<label for="cbChoDauXe"> Chỗ đậu xe hơi</label>
-											</td>
-											<td>
-											<input id="cbSanVuon" type="checkbox" name="cbSanVuon">
-											<label for="cbSanVuon"> Sân vườn</label>
-											</td>
-											<td>
-											<input id="cbHoBoi" type="checkbox" name="cbHoBoi">
-											<label for="cbHoBoi"> Hồ bơi</label>
-											</td>
-										</tr>
-										<?php } ?>
-									   <tr>
-									   <td>
-											<input id="cbGanCongVien" type="checkbox" name="cbGanCongVien">
-											<label for="cbGanCongVien"> Gần công viên</label>
-											</td>
-											<td>
-											<input id="cbDanTriCao" type="checkbox" name="cbDanTriCao">
-											<label for="cbDanTriCao"> Khu dân trí cao</label>
-											</td>
-											<td>
-											<input id="cbGanBenhVien" type="checkbox" name="cbGanBenhVien">
-											<label for="cbGanBenhVien"> Gần bệnh viện</label>
-											</td>
-											<td> </td>
-										</tr>
+<?php
+include("../BUS/TienIchBUS.php");
+$rs=TienIchBUS::GetAllTienIch();
+$dem=0;
+//echo "count=".count($rs);
+for($i=0;$i<count($rs);$i++)
+{		
+	if(($dem % 3) == 0)
+	{		
+	   echo "<tr>";
+	}
+	$dem++;
+	echo "<td><input id='".$dem."' type='checkbox' name='".$dem."'>";
+	echo "<label for='".$dem."' > ".$rs[$i][1]."</label>";											
+	echo "</td>";
+	if(($dem % 3) == 0)
+	{
+	   echo "</tr>";
+	}
+	
+}
+?>
+									   
 									</table><br>
 									<table class="table" width="100%" cellpadding="0" cellspacing="0">
 										<tr style="background:#00397C;height:30px;">
@@ -315,18 +614,13 @@ $tienich=TienIchBUS::GetAllTienIch();
 											</td>
 										</tr>
 									</table><br>
-									<table class="table" width="100%" cellpadding="2" cellspacing="2" border="0">
+									<table  cellspacing="2" cellpadding="2" width="98%"  border="0">
 									<!--table cellspacing="2" cellpadding="2" width="98%"-->
 <?php
 if($curUser != null)
 {
 	include("../BUS/UsersBUS.php");
 	$result=UsersBus::GetUserByEmail($curUserEmail);
-//	if($result == null)
-		//return false;
-		//echo $curUserEmail;
-		//echo $result;
-	//echo $result[2];
 }
 ?>										
 										<tr style="background:#00397C;height:30px;">
