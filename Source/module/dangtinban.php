@@ -9,9 +9,133 @@
  //xu ly submit
 $(document).ready(function()
 {
-			// $("#frmDichVu").submit(function()
-			// {
-			// )};
+	$("#frmDichVu").submit(function()
+	{
+		var flag=true;	
+		var strTieuDe = $("#txtTieuDeTin").attr("value");
+		if(strTieuDe.length < 1  )
+		{	
+			flag=false;
+			//alert("Phải đặt tiêu đề tin");
+			$("#messTieuDe").attr("innerHTML","Phải đặt tiêu đề tin");
+			$("#messTieuDe").css("color","red");
+		}
+		
+		var strTieuDe = $("#txtDuongPho").attr("value");
+		if(strTieuDe.length < 1  )
+		{	flag=false;
+		   // alert("Phải thêm tên đường");
+			$("#messDuongPho").attr("innerHTML","Phải thêm tên đường");
+			$("#messDuongPho").css("color","red");
+		}
+		var strTieuDe = $("#txtSoNha").attr("value");
+		if(strTieuDe.length < 1  )
+		{	flag=false;
+			// alert("Phải có số nhà");
+			$("#messSoNha").attr("innerHTML","Phải có số nhà");
+			$("#messSoNha").css("color","red");
+		}
+		var strTieuDe = $("#txtGia").attr("value");
+		if(strTieuDe.length < 1  )
+		{	flag=false;
+			// alert("Phải thêm giá nhà");
+			$("#messGia").attr("innerHTML","Phải thêm giá nhà");
+			$("#messGia").css("color","red");
+		}
+		if(CheckPhoneNumber(strTieuDe))
+		{	flag=false;
+			//alert("Hãy nhập số");
+			$("#messGia").attr("innerHTML","Nhập số giá nhà");
+			$("#messGia").css("color","red");
+		}
+		
+		var strTieuDeR = $("#txtRong").attr("value");
+		var strTieuDe = $("#txtDai").attr("value");
+		if(strTieuDe.length < 1 || strTieuDeR<1 )
+		{	flag=false;
+			//alert("Nhập D-R");
+			$("#messKichThuoc").attr("innerHTML","Nhập D-R");
+			$("#messKichThuoc").css("color","red");
+		}
+		if(CheckPhoneNumber(strTieuDe) || CheckPhoneNumber(strTieuDeR))
+		{	flag=false;
+			$("#messKichThuoc").attr("innerHTML","Nhập số");
+			$("#messKichThuoc").css("color","red");
+		}
+		
+		var strTieuDe = $("#txtTang").attr("value");
+		if(strTieuDe.length < 1 )
+		{	
+			$("#messTang").attr("innerHTML", "");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			flag=false;
+			//alert("Nhập số số lầu");
+			$("#messTang").attr("innerHTML","Nhập số");
+			$("#messTang").css("color","red");
+		}
+		
+		var strTieuDe = $("#txtPhongTam").attr("value");
+		if(strTieuDe.length < 1 )
+		{	
+			$("#messPhongTam").attr("innerHTML", "");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			flag=false;
+			//alert("Nhập số phòng tắm");
+			$("#messPhongTam").attr("innerHTML","Nhập số");
+			$("#messPhongTam").css("color","red");
+		}
+		
+		var strTieuDe = $("#txtPhongNgu").attr("value");
+		if(strTieuDe.length < 1 )
+		{	
+		$("#messPhongNgu").attr("innerHTML", "");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			flag=false;
+			//alert("Nhập số phòng ngủ");
+			$("#messPhongNgu").attr("innerHTML","Nhập số");
+			$("#messPhongNgu").css("color","red");
+		}
+		var strTieuDe = $("#cbbBatDongSan").attr("value");
+		if(strTieuDe == "-1" )
+		{	
+			flag=false;
+			$("#messLoaiBatDongSan").attr("innerHTML","Chọn loại nhà");
+			$("#messLoaiBatDongSan").css("color","red");
+		}
+		
+		var strTieuDe = $("#cbbTinhTP").attr("value");
+		if(strTieuDe == "-1" )
+		{	flag=false;
+			//alert("Chọn tỉnh/ thành phố");
+			$("#messTinhTP").attr("innerHTML","Chọn tỉnh/ thành phố");
+			$("#messTinhTP").css("color","red");
+		}
+		
+		var strTieuDe = $("#cbbQuanHuyen").attr("value");
+		if(strTieuDe == "-1" )
+		{	flag=false;
+			//alert("Chọn quận/ huyện");
+			$("#messQuanHuyen").attr("innerHTML","Chọn quận/ huyện");
+			$("#messQuanHuyen").css("color","red");
+		}
+		var strTieuDe = $("#cbbPhuong").attr("value");
+		if(strTieuDe == "-1" )
+		{	flag=false;
+			//alert("Chọn phường/xã");
+			$("#messPhuong").attr("innerHTML","Chọn phường/xã");
+			$("#messPhuong").css("color","red");
+		}
+		
+		if(flag==false)
+				alert ("Có lỗi trong thông tin đăng ký. Xin kiểm tra lại");
+		return flag;
+	});
 
 //xu ly tieu de
 	$("#txtTieuDeTin").blur(function ()
@@ -142,8 +266,7 @@ $(document).ready(function()
 		var strTieuDe = $("#txtTang").attr("value");
 		if(strTieuDe.length < 1 )
 		{	
-			$("#messTang").attr("innerHTML","Nhập D-R");
-			$("#messTang").css("color","red");
+			$("#messTang").attr("innerHTML", "");
 		}
 		else if(CheckPhoneNumber(strTieuDe))
 		{
@@ -163,8 +286,7 @@ $(document).ready(function()
 		var strTieuDe = $("#txtPhongTam").attr("value");
 		if(strTieuDe.length < 1 )
 		{	
-			$("#messPhongTam").attr("innerHTML","Nhập D-R");
-			$("#messPhongTam").css("color","red");
+			$("#messPhongTam").attr("innerHTML", "");
 		}
 		else if(CheckPhoneNumber(strTieuDe))
 		{
@@ -184,8 +306,7 @@ $(document).ready(function()
 		var strTieuDe = $("#txtPhongNgu").attr("value");
 		if(strTieuDe.length < 1 )
 		{	
-			$("#messPhongNgu").attr("innerHTML","Nhập D-R");
-			$("#messPhongNgu").css("color","red");
+		$("#messPhongNgu").attr("innerHTML", "");
 		}
 		else if(CheckPhoneNumber(strTieuDe))
 		{
@@ -202,9 +323,7 @@ $(document).ready(function()
 	//check cbbBatDongSan
 	$("#cbbBatDongSan").blur(function ()
 	{
-	//alert("cbbLoaiNha");
 		var strTieuDe = $("#cbbBatDongSan").attr("value");
-		//alert(strTieuDe);
 		if(strTieuDe == "-1" )
 		{	
 			$("#messLoaiBatDongSan").attr("innerHTML","Chọn loại nhà");
@@ -221,9 +340,7 @@ $(document).ready(function()
 	//check cbbTinhTP
 	$("#cbbTinhTP").blur(function ()
 	{
-	//alert("cbbLoaiNha");
 		var strTieuDe = $("#cbbTinhTP").attr("value");
-		//alert(strTieuDe);
 		if(strTieuDe == "-1" )
 		{	
 			$("#messTinhTP").attr("innerHTML","Chọn tỉnh/ thành phố");
@@ -257,9 +374,7 @@ $(document).ready(function()
 	//check cbbPhuong
 	$("#cbbPhuong").blur(function ()
 	{
-	//alert("cbbLoaiNha");
 		var strTieuDe = $("#cbbPhuong").attr("value");
-		//alert(strTieuDe);
 		if(strTieuDe == "-1" )
 		{	
 			$("#messPhuong").attr("innerHTML","Chọn phường/xã");
@@ -304,8 +419,9 @@ $(document).ready(function()
 							<?php include("../include/box_left_thanhvien.php"); ?>
 						</td>
 <!--BEGIN -->		
-<div id="frmDichVu" name ="frmDichVu">
-<form action="" method="post" name="frmDichVu" id="frmDichVu" >	
+<div id="frmDichVu1" name ="frmDichVu1">
+<form action="" method="post" id="frmDichVu" name="frmDichVu"  >
+
 						<td style="padding: 10px;" valign="top">						
 							<div style="width: 686px;">
 								<div id="messLoaiDangTin" name="messLoaiDangTin" style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;font-weight: bold; color:#890C29;">
@@ -659,7 +775,8 @@ if($curUser != null)
 									</table>								
 									<div class="submit" style="border-top: 1px solid #999; padding: 10px 0 0 0; margin: 15px 0 0 0;">
 									<center>
-										<input id="btnSubmit" class="ButtonWithbackground" type="submit" value="Đăng tin" name="btnSubmit">
+										<input id="btnSubmit" name="btnSubmit" class="ButtonWithbackground" type="submit" value="Đăng tin" >
+								
 									</center>
 								    </div>
 							</div>
