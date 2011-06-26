@@ -3,19 +3,9 @@
 ?>
 <script src="../js/common.js" language="javascript" type="text/javascript"></script>
 <script src="../js/jquery-1.js" language="javascript" type="text/javascript"></script>
- <script type="text/javascript">
- function copy()
- { 
- document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
- }
- </script>
+
 <script type="text/javascript">
 
-// function copy()
-	// {
-	//alert("copy");
-	 // document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
-	// }
 
 $(document).ready(function()
 	{
@@ -50,12 +40,7 @@ $(document).ready(function()
 				$("#messPassword").attr("innerHTML","Mật khẩu có chứa ký tự lạ");
 				$("#messPassword").css("color","red");
 			 }			
-			 // else
-			 // {
-				// $("#messPassword").attr("innerHTML", "");
-				 // var serverURL = "checkPassword.php?txtPassword=" + txtPassword;
-				// $("#messPassword").load(serverURL);
-			 // }
+
 			
 			if(strPassword != strRePassword)
 			{
@@ -79,11 +64,6 @@ $(document).ready(function()
 			{
 				var serverURL = "checkEmail.php?txtEmail=" + strEmail;
 				 $("#messEmail").load(serverURL);
-				// var checkMessEmail = $("#messEmail").attr("value");
-				// if(checkMessEmail == "Đã được sử dụng")
-				// {
-				//alert("Đã được sử dụng");
-				// }
 			}
 			
 			
@@ -242,6 +222,7 @@ $(document).ready(function()
 			}
 			else
 			{
+			document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
 				var serverURL = "checkEmail.php?txtEmail=" + strEmail;
 				$("#messEmail").load(serverURL);
 			}
@@ -461,7 +442,7 @@ $(document).ready(function()
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">	
 								
 							<div style="padding:20px;" id="frmRegister" name="frmRegister">
-<!--form -->							<form action="user/xulydangky.php" method="post" name="frmRegister" id="frmRegister" >
+<!--form -->					<form action="user/xulydangky.php" method="post" name="frmRegister" id="frmRegister" >
 								<table border="0" id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
 									<tr>
 										<td align="left" colspan="2">
@@ -525,7 +506,7 @@ $(document).ready(function()
 										</td>
 										<td align="left">
 											<div style="float:left;">
-												<input type="text" name="txtEmail" id="txtEmail" onkeyup="copy()" value="" style="width:280px;" maxlength="50">
+												<input type="text" name="txtEmail" id="txtEmail"  value="" style="width:280px;" maxlength="50">
 											</div>
 											<div id="messEmail" style="width:140px;float:left;" class="mess"></div>
 										<br>
