@@ -14,6 +14,10 @@ class DonViTienBUS
     {
         return DonviTienDAO::selectId($id);
     }
+	public static function GetAllDonViTien()
+    {
+        return DonviTienDAO::GetAllDonViTien();
+    }
 }
 
 ?>
