@@ -96,8 +96,8 @@
 										<div class="map">
 											<div class="clearBoth">
 												<div style="visibility: visible;" id="SliderTab" class="ajax__tab_xp ajax__tab_container ajax__tab_default">
-													<div id="SliderTab_header" class="ajax__tab_header" class="ajax__tab_active">
-														<span id="SliderTab_image_tab" >
+													<div id="SliderTab_header" class="ajax__tab_header">
+														<span id="SliderTab_image_tab"  class="ajax__tab_active">
 															<span class="ajax__tab_outer">
 																<span class="ajax__tab_inner">
 																	<span id="SliderTab_image" class="ajax__tab_tab" onclick="changeTab(0)">Hình ảnh </span></span></span></span>
@@ -147,9 +147,9 @@
 														<div style="display: none; visibility: hidden;" id="ctl00_MainContent_ctl00_SliderTab_tabmap"
 															class="ajax__tab_panel">
                                                             <div>
-                                                    <input id="address" style="width: 250px;"  type="textbox" <?php echo "value='".$business['duong'].",".$phuong['ten'].",".$quan['ten'].",".$tinh['ten'].",viet nam"."'"; ?> />
+                                                    <input id="address" style="width: 300px;"  type="textbox" <?php echo "value='".$business['duong'].",".$phuong['ten'].",".$quan['ten'].",".$tinh['ten'].",viet nam"."'"; ?> />
 
-                                                    <input type="button" value="Refresh" onclick="codeAddress()">
+                                                    <input type="button" value="Refresh" onclick="codeAddress()"/>
                                                              </div>
 															<div style="width: 380px; height: 350px; "id="map_canvas">
 															</div>
@@ -159,25 +159,25 @@
 											</div>
                                             	 <!-- google api -->
                                             <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-                                            <script type="text/javascript">
-                                              var geocoder;
-                                              var map;
+                                            <script type="text/javascript">                                                                                     
+                                              var latlng = new google.maps.LatLng(10.79306, 106.62913);
+                                              var geocoder = new google.maps.Geocoder();                                             
                                               function initialize() {
-                                                geocoder = new google.maps.Geocoder();
-                                                var latlng = new google.maps.LatLng(10.79306, 106.62913);
                                                 var myOptions = {
                                                   zoom: 15,
                                                   center: latlng,
                                                   mapTypeId: google.maps.MapTypeId.ROADMAP
-                                                }
-                                                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+                                                   }
+                                                                                                                                        
+                                               
+                                                var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
                                                 var marker = new google.maps.Marker({
                                                     position: latlng, 
                                                     map: map,                                                  
                                                 }); 
                                                 //codeAddress();  
                                               }
-                                              function codeAddress() {
+                                              function codeAddress(map) {
                                                 var address = document.getElementById("address").value;
                                                 geocoder.geocode( { 'address': address}, function(results, status) {
                                                   if (status == google.maps.GeocoderStatus.OK) {
@@ -191,6 +191,41 @@
                                                   }
                                                 });
                                               }
+                                              $(document).ready(function() {
+                                                    $('#btnMapClose').click(function() {
+                                        			$('.ui-widget-overlay').remove();
+                                        			return false;
+                                        		});
+                                                });
+                                              function showBigMap() {
+                                            		var docH = $(document).height();	
+                                            		var mouseX = $(window).width()/2 - 400;
+                                            		var mouseY = $(window).scrollTop();
+                                                    	
+                                            		$('body').append('<div class="ui-widget-overlay" style="height: '+docH+'px; display: block; z-index: 100000"></div>');
+                                            		
+                                                    $('.ui-widget-overlay').after('<div id="fullMap"><div><div style="float:left;">Xem b&#7843;n &#273;&#7891; l&#7899;n</div><div style="float:right;"><a  align="right" href="#" id="btnMapClose" ><img border="0" src="../images/action_delete2.png" width="16" height="16" alt="close" /></a></div></div><div id="fullMapDs"></div></div>');
+                                            		
+                                                    $('#fullMap').css({'display':'block','left':mouseX+'px','top':mouseY+'px'});
+                                            	
+                                                    //$.scrollTo('#fullMap',1000);
+                                                     var myOptions = {
+                                                  zoom: 15,
+                                                  center: latlng,
+                                                  mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                   }
+                                            		var map = new google.maps.Map(document.getElementById("fullMapDs"), myOptions);
+                                      	             var marker = new google.maps.Marker({
+                                                    position: latlng, 
+                                                    map: map,                                                  
+                                                    }); 
+                                            		
+                                            		$('#btnMapClose').click(function() {                                          
+                                            			$('.ui-widget-overlay').remove();
+                                            			$('#fullMap').remove();
+                                            			return false;
+                                            		});
+                                    	       }
                                             </script>
                                             <script type="text/javascript">
                                             function changeTab(tabindex)
@@ -205,6 +240,7 @@
                                                     document.getElementById("ctl00_MainContent_ctl00_SliderTab_image").style.visibility="visible";
                                                     document.getElementById("ctl00_MainContent_ctl00_SliderTab_tabmap").style.display="none";
                                                     document.getElementById("ctl00_MainContent_ctl00_SliderTab_tabmap").style.visibility="hidden";
+                                                    document.getElementById("linkShowBigMap").style.visibility="hidden";                                           
                                                     break;
                                                     
                                                     case 1:                                                  
@@ -215,6 +251,7 @@
                                                     document.getElementById("ctl00_MainContent_ctl00_SliderTab_image").style.visibility="hidden";
                                                     document.getElementById("ctl00_MainContent_ctl00_SliderTab_tabmap").style.display="block";
                                                     document.getElementById("ctl00_MainContent_ctl00_SliderTab_tabmap").style.visibility="visible";
+                                                    document.getElementById("linkShowBigMap").style.visibility="visible";
                                                     initialize();
                                                     break;
                                                     default:
@@ -285,7 +322,7 @@
 														picture = imgAr1.length-1
 												}
 											</script>
-                                           
+                                           <div><a style="visibility: hidden;" id="linkShowBigMap" onclick="showBigMap()" href="javascript:void(0)">Xem bản đồ lớn</a></div>
 											<div class="clearBoth">
 											</div>
 										</div>
@@ -295,7 +332,7 @@
 											<div class="address">
 												Địa chỉ : <strong><?php 
                                                 
-                                                echo $business['duong'].",".$phuong['ten'].",".$quan['ten'].",".$tinh['ten'].",viet nam"; ?></strong></div>
+                                                echo $business['duong'].",".$phuong['ten'].",".$quan['ten'].",".$tinh['ten']; ?></strong></div>
 											<div class="price">
 												Giá : <?php 
                                                  $donviDV=DonviDichVuBUS::selectId($business['donvidv']);
