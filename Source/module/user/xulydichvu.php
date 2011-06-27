@@ -5,8 +5,8 @@
 
 			 include ("../../BUS/DichVuBUS.php");
 
-			
-						
+			$summary=stripcslashes($_POST["summary"]);
+			echo "sum=".$summary;			
 			$password = $_POST["txtPassword"];
 			//$repassword = $_POST["txtRePassword"];
 			$username = $_POST["txtUsername"];
@@ -14,6 +14,8 @@
 			$dt2 = $_POST["txtMobile"];
 			$email = $_POST["txtEmail"];
 			$address = $_POST["txtAddress"];
+			
+			
 			
 			// $sex = (int) $_POST["lbSex"];
 			// $day = (int) $_POST["lbDay"];
