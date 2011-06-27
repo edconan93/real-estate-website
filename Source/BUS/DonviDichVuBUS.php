@@ -14,6 +14,10 @@ class DonViDichVuBUS
     {
         return DonviDichVuDAO::selectId($id);
     }
+	public static function GetAllDonViDichVu()
+    {
+        return DonviDichVuDAO::GetAllDonViDichVu();
+    }
 }
 
 ?>
