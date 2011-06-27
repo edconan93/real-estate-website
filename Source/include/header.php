@@ -12,9 +12,8 @@
 	<script type="text/javascript" src="../js/custom.js"></script>
 </head>
 <?php
-   session_start ();
-   
-	
+   //if(isset( session_start ()))
+		session_start ();
    include ("../DAO/config.php");
    	if(isset($_GET["do"])&&$_GET["do"]=="logout")
      {
