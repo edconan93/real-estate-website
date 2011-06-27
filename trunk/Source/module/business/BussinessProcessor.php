@@ -71,9 +71,9 @@ class BusinessProcessor
         $loaidv=LoaiDichVuBUS::getById($business[$i]['loaidv']);
   		$strResult.="<tr>";
   		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;' width='150px'>";
-  		$strResult.="<a href='chitietdiaoc.php'><img src='../".$images[0]['path']."' width='150px' /></a></td>";
+  		$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><img src='../".$images[0]['path']."' width='150px' /></a></td>";
   		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>";
-  		$strResult.="<a href='chitietdiaoc.php'><b style='color:blue;'>".$business[$i]['tieude']."</b></a><br>";
+  		$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><b style='color:blue;'>".$business[$i]['tieude']."</b></a><br>";
   		$strResult.="Vị trí: ".$business[$i]['duong'].", ".$business[$i]['phuong'].", ".$business[$i]['quan'].", ".$business[$i]['tinh']."<br>";
         $strResult.="Diện tích: ".$business[$i]['dai']." X ".$business[$i]['rong']."<br>";
   		$strResult.="Số phòng ngủ:".$business[$i]['sophongngu']."<br>";
