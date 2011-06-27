@@ -144,6 +144,9 @@ $(document).ready(function()
 //xu ly tieu de
 	$("#txtTieuDeTin").blur(function ()
 	{
+	alert("aaa"); //$summary=stripcslashes($_POST["summary"]);
+	var des = $("#txtTieuDeTin").attr("summary");
+	alert(des);
 			var strTieuDe = $("#txtTieuDeTin").attr("value");
 
 			if(strTieuDe.length < 1  )
