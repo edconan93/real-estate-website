@@ -20,14 +20,16 @@
 			    $temp[]= $row;
 			return $temp;
 		}
-		public static function GetAllQuanById($id)
+		public static function GetAllQuanById($id)//$id of TinhDAO
 		{
 			$strSQL = "select *
-					from quan where id='$id'";
+					from quan where idtinh='$id'";
             $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
-				return null;
-			return mysql_fetch_array ($result);	
+				 return null;
+			while($row = mysql_fetch_row($result))
+			    $temp[]= $row;
+			return $temp;
 		}
      	
 	}

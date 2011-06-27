@@ -600,7 +600,7 @@ $(document).ready(function()
 										<td align="right"></td>
 										<td align="left" style="padding-left:100px;">
 										<span class="action-button-left"></span>
-										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" name="btSubmit" name="btSubmit">
+										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" id="btSubmit" name="btSubmit">
 										<span class="action-button-right"></span>
 										</td>
 									</tr>
