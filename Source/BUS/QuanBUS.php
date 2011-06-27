@@ -8,12 +8,11 @@ Lớp QuanBUS
 <?php 
 	class QuanBUS
 	{
-
 		public static function GetAllQuan ()
 		{
 			return QuanDAO::GetAllQuan ();
 		}
-		public static function GetAllQuanById ($id)
+		public static function GetAllQuanById ($id)//$id of tinh
 		{
 			return QuanDAO::GetAllQuanById ($id);
 		}

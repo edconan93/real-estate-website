@@ -10,7 +10,11 @@
 $(document).ready(function()
 {
 	$("#frmDichVu").submit(function()
-	{
+	{ alert("a");
+	//	var oCell = document.getElementById('xEditingArea').value ;
+		var oEditor = FCKeditorAPI.GetInstance('instance') ;
+		var pageValue = oEditor.GetHTML();
+		alert(pageValue);
 		var flag=true;	
 		var strTieuDe = $("#txtTieuDeTin").attr("value");
 		if(strTieuDe.length < 1  )
@@ -341,6 +345,7 @@ $(document).ready(function()
 	$("#cbbTinhTP").blur(function ()
 	{
 		var strTieuDe = $("#cbbTinhTP").attr("value");
+		alert(strTieuDe);
 		if(strTieuDe == "-1" )
 		{	
 			$("#messTinhTP").attr("innerHTML","Chọn tỉnh/ thành phố");
@@ -349,7 +354,8 @@ $(document).ready(function()
 		else
 		{
 			$("#messTinhTP").attr("innerHTML", "");
-			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			$("#messQuanHuyen").attr("innerHTML", "");
+			var serverURL = "checkservice.php?cbbTinhTP=" + strTieuDe;
 			$("#messTinhTP").load(serverURL);
 		}
 		
@@ -490,6 +496,7 @@ for($i=0;$i<count($rs);$i++)
 											<td width="200px"><b>Tỉnh/Thành Phố:</b><span style="color:red;"> *</span></td>
 											
 												<td style="float:left;">
+												
 												<div style="width:310px;float:left;">
 												<select id="cbbTinhTP" name="cbbTinhTP" style="width:220px;" onchange=()>
 													<option value="-1" selected="selected">--Chọn Tỉnh/ Thành Phố--</option>
@@ -503,26 +510,17 @@ for($i=0;$i<count($rs);$i++)
 ?>												
 												</select>
 												</div>
+												
 												<div id="messTinhTP" name="messTinhTP" style="width:150px;float:left;"></div>
 											</td>
 										</tr>
 										<tr bgcolor="#F2F5F9">
 											<td width="200px"><b>Quận/Huyện:</b><span style="color:red;"> *</span></td>
 											<td>
-											<div style="width:310px;float:left;">
-												<select id="cbbQuanHuyen" name="cbbQuanHuyen" style="width:220px;" >
-													<option value="-1">Chọn quận/huyện</option>
-<?php
-include("../BUS/QuanBUS.php");
-$rs=QuanBUS::GetAllQuan();
-for($i=0;$i<count($rs);$i++)
-{		
-	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-}
-?>
-													
-													</select>
-													</div>
+											
+												<div style="width:310px;float:left;" id="messLoadQuan" name="messLoadQuan">
+												<input name="txtTieuDeTin" id="txtTieuDeTin" type="text" style="width:300px;" value="">
+												</div>
 												<div id="messQuanHuyen" name="messQuanHuyen" style="width:150px;float:left;"></div>
 											</td>
 										</tr>
