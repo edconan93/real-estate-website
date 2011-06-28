@@ -93,7 +93,7 @@ td{ padding:3px}
  					font-size:12px;border:1px solid #ccc;font-weight:600; color:#7E7E7E; border:1px solid #ccc; padding-top:3px ; padding-bottom:3px; cursor:pointer} 
 #news table { border-left:1px solid #ccc}
 #news td{ border-right:1px solid #ccc; border-bottom:1px solid #ccc; padding:3px}	
-#news  .title{ background:#f0f0f0; font-size:11px; font-weight:700;}		
+#news  .title{ background:#f0f0f0; font-size:11px;}		
 
 #toolbar {height:1%; margin:10px;}	
 .tl{ background:url(../images/j_crn_tl_light.png) left top; width:6px; height:6px; float:left}	
