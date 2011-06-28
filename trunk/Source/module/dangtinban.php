@@ -11,10 +11,6 @@ $(document).ready(function()
 {
 	$("#frmDichVu").submit(function()
 	{ 
-	//	var oCell = document.getElementById('xEditingArea').value ;
-		var oEditor = FCKeditorAPI.GetInstance('instance') ;
-		var pageValue = oEditor.GetHTML();
-		alert(pageValue);
 		var flag=true;	
 		var strTieuDe = $("#txtTieuDeTin").attr("value");
 		if(strTieuDe.length < 1  )
@@ -122,13 +118,14 @@ $(document).ready(function()
 		}
 		
 		var strTieuDe = $("#cbbQuanHuyen").attr("value");
+		
 		if(strTieuDe == "-1" )
 		{	flag=false;
 			//alert("Chọn quận/ huyện");
 			$("#messQuanHuyen").attr("innerHTML","Chọn quận/ huyện");
 			$("#messQuanHuyen").css("color","red");
 		}
-		var strTieuDe = $("#cbbPhuong").attr("value");
+		var strTieuDe = $("#cbbPhuongXa").attr("value");
 		if(strTieuDe == "-1" )
 		{	flag=false;
 			//alert("Chọn phường/xã");
@@ -577,7 +574,7 @@ for($i=0;$i<count($rs);$i++)
 											<td width="200px"><b>Phường/ Xã:</b><span style="color:red;"> *</span></td>
 											<td>
 											<div style="width:310px;float:left;" id="messLoadPhuong" name="messLoadPhuong" >
-												<select id="cbbPhuong" name="cbbPhuong" style="width:220px;" onchange="clickPhuongXa()">
+												<select id="cbbPhuongXa" name="cbbPhuongXa" style="width:220px;" onchange="clickPhuongXa()">
 													<option value="-1">Chọn phường/xã</option>
 
 													
