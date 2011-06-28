@@ -212,8 +212,14 @@
             return $temp[0];
 		}
 		
+		public static function getUsers ()
+		{
+			$strSQL = "	select * 
+						from user 
+						where role != 1";
+            $result = DataProvider::Query($strSQL);
+            return $result;
+		}
 
-
-		
 	}
 ?>
