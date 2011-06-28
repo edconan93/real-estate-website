@@ -17,7 +17,7 @@
 	<div class="left"></div>
 <div class="right"></div>
 <div class="mid">
-    	<div class="logo">ChickenBlog</div>
+    	<div class="logo">Administrator</div>
         <div class="mess"> </div> 
 </div>
 
