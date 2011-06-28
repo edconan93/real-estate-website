@@ -25,7 +25,7 @@ rgb(33, 91, 135); text-align: center;">
                         <a class="a_bottomlink" href="http://ankhanhjvc.com/index.php?menuid=150">TUYỂN DỤNG</a></div>
                 </div>
             </div>
-            <div style="width: 100%; height: 70px; background-image: url(&quot;images/bg_bottom.gif&quot;);
+            <div style="width: 100%; height: 70px; background-image: url('../images/bg_bottom.gif');
                 background-repeat: repeat-x; text-align: center; padding-top: 20px;">
                 <a class="a_bottomlink_b" href="http://www.ankhanhjvc.com/">AnKhanhJVC</a>&nbsp;<b
                     style="color: rgb(84, 114, 146);">|</b>&nbsp;<a class="a_bottomlink_b" href="http://diaoc.com/">Possco E&C</a>&nbsp;<b style="color: rgb(104, 135, 168);">|</b>&nbsp;<a class="a_bottomlink_b"
@@ -146,9 +146,5 @@ rgb(33, 91, 135); text-align: center;">
 			   return true; 
 		}
 	</script>
-    
-   
-
-
 </body>
 </html>
