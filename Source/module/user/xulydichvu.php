@@ -4,7 +4,7 @@
 		// {
 
 			 include ("../../BUS/DichVuBUS.php");
-
+echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 			$summary=stripcslashes($_POST["summary"]);
 			echo "sum=".$summary;			
 			$password = $_POST["txtPassword"];
