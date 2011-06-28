@@ -460,7 +460,7 @@ $(document).ready(function()
 										</td>
 									</tr>
 									<tr>
-										<td align="right">
+										<td align="right" valign="top" style="padding-top:6px;">
 										Họ và tên:<span style="color:red;"> (*)</span>
 										</td>
 										<td align="left">
