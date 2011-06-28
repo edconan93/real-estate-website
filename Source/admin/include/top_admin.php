@@ -1,16 +1,28 @@
 <div class="left"></div>
 <div class="right"></div>
 <div class="mid">
-    	<div class="logo">Administrator</div>
-        <div class="mess"></div>
+	<div class="logo">Administrator</div>
+	<div class="mess"></div>
 </div>
-<div style="padding:5px;border-left:1px solid #CCCCCC;border-right:1px solid #CCCCCC;text-align:right;">
-	<?php
-		if(isset($_SESSION["curUser"]) && $_SESSION["curUser"][8] == 1)
-			echo "<div id='greeting'>";
-		else
-			echo "<div id='greeting' style='visibility:hidden;'>";
-	?>
-	<div id="greeting">
-		Chào, <b style="color:#3E92E0;font-weight:bold;">Nguyễn Đức Thịnh</b> 
-		(<a href="" style="color:red;">Đăng xuất)</a></div></div>
+<?php
+	if(isset($_SESSION["curUser"]) && $_SESSION["curUser"][8] == 1)
+	{
+?>
+<div id="menu">
+	<ul>
+		<li><a href="index.php" class="item">Bảng điều khiển</a></li>
+		<li><a href="index.php?view=user" class="item">Quản lý thành viên</a></li>
+		<li><a href="index.php?view=article" class="item">Quản lý tin đăng</a></li>
+		<li><a href="index.php?view=statistics" class="item">Thống kê</a></li>
+		<li><a href="index.php?view=database" class="item">Sao lưu & Phục hồi</a></li>
+	</ul>
+	<div class="mess">
+		<img src="images/icon-16-frontpage.png" /> <a href="../index.php">Tiền sảnh</a>&nbsp;&nbsp;
+		<img src="images/icon-16-article.png" /> 6&nbsp;&nbsp;
+		<img src="images/icon-16-user.png" /> 7&nbsp;&nbsp;
+		<img src="images/icon-16-logout.png" /> <a href="index.php?do=logout">Thoát</a>
+	</div>
+</div>
+<?php
+	}
+?>
