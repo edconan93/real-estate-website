@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 26, 2011 at 11:28 AM
+-- Generation Time: Jun 28, 2011 at 04:52 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -35,7 +35,8 @@ CREATE TABLE IF NOT EXISTS `dichvu` (
   `phuong` int(11) DEFAULT NULL,
   `quan` int(11) DEFAULT NULL,
   `tinh` int(11) DEFAULT NULL,
-  `ngaydang` date DEFAULT NULL,
+  `ngaydang` datetime DEFAULT NULL,
+  `ngaycapnhat` datetime DEFAULT NULL,
   `duong` text COLLATE utf8_unicode_ci,
   `rong` float DEFAULT NULL,
   `dai` float DEFAULT NULL,
@@ -78,10 +79,10 @@ CREATE TABLE IF NOT EXISTS `dichvu` (
 -- Dumping data for table `dichvu`
 --
 
-INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tinh`, `ngaydang`, `duong`, `rong`, `dai`, `tang`, `sophongngu`, `sophongtam`, `giaban`, `donvitien`, `status`, `thoihantin`, `loainha`, `phaply`, `huongnha`, `khuyenmai`, `loaidv`, `donvidv`, `x`, `y`) VALUES
-(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03', 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, 1, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 2, NULL, NULL),
-(3, 'Bán căn hộ the everich Q12 gia rẻ vào ở ngay', NULL, 2, 4, 3, 2, '2010-02-04', 'lac long quan', 7, 9, 10, 3, 2, 123214, 1, 1, 12, 2, 1, 2, NULL, 1, 1, NULL, NULL),
-(4, 'Bán căn hộ the everich Q10 gia rẻ vào ở ngay', NULL, 2, 3, 3, 3, NULL, NULL, 3, 4, 3, 3, 2, 43214100, 1, 1, 2, 1, 1, 1, 'Tặng nội thất vào ở ngay', 1, 1, NULL, NULL);
+INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tinh`, `ngaydang`, `ngaycapnhat`, `duong`, `rong`, `dai`, `tang`, `sophongngu`, `sophongtam`, `giaban`, `donvitien`, `status`, `thoihantin`, `loainha`, `phaply`, `huongnha`, `khuyenmai`, `loaidv`, `donvidv`, `x`, `y`) VALUES
+(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03 00:00:00', NULL, 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, 1, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 2, NULL, NULL),
+(3, 'Bán căn hộ the everich Q12 gia rẻ vào ở ngay', NULL, 2, 4, 3, 2, '2010-02-04 00:00:00', NULL, 'lac long quan', 7, 9, 10, 3, 2, 123214, 1, 1, 12, 2, 1, 2, NULL, 1, 1, NULL, NULL),
+(4, 'Bán căn hộ the everich Q10 gia rẻ vào ở ngay', NULL, 2, 3, 3, 3, NULL, NULL, NULL, 3, 4, 3, 3, 2, 43214100, 1, 1, 2, 1, 1, 1, 'Tặng nội thất vào ở ngay', 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -137,6 +138,7 @@ DROP TABLE IF EXISTS `donvitien`;
 CREATE TABLE IF NOT EXISTS `donvitien` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tigia` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
@@ -144,10 +146,10 @@ CREATE TABLE IF NOT EXISTS `donvitien` (
 -- Dumping data for table `donvitien`
 --
 
-INSERT INTO `donvitien` (`id`, `ten`) VALUES
-(1, 'USD'),
-(2, 'VND'),
-(3, 'SJC');
+INSERT INTO `donvitien` (`id`, `ten`, `tigia`) VALUES
+(1, 'USD', 22000),
+(2, 'VND', 1),
+(3, 'SJC', 38000000);
 
 -- --------------------------------------------------------
 
@@ -531,6 +533,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role` int(11) DEFAULT NULL,
   `level` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `ngaycapnhat` datetime DEFAULT NULL,
+  `ip` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_taikhoan_role` (`role`),
   KEY `fk_taikhoan_level` (`level`)
@@ -540,9 +544,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `sdt1`, `sdt2`, `role`, `level`, `status`) VALUES
-(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc@gmail.com', 'phuc0903@gmail.com', b'0', 'gterte', '143242353425', '', 4, 4, 0),
-(3, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'FASFREWRWERW', b'0', 'fsadf', '1224324232', '', 4, 4, 0);
+INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `sdt1`, `sdt2`, `role`, `level`, `status`, `ngaycapnhat`, `ip`) VALUES
+(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc@gmail.com', 'phuc0903@gmail.com', b'0', 'gterte', '143242353425', '', 4, 4, 0, NULL, NULL),
+(3, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'FASFREWRWERW', b'0', 'fsadf', '1224324232', '', 4, 4, 0, NULL, NULL);
 
 --
 -- Constraints for dumped tables
@@ -552,7 +556,6 @@ INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `s
 -- Constraints for table `dichvu`
 --
 ALTER TABLE `dichvu`
-  ADD CONSTRAINT `fk_dichvu_user` FOREIGN KEY (`chusohuu`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu` FOREIGN KEY (`donvitien`) REFERENCES `donvitien` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_donvidv` FOREIGN KEY (`donvidv`) REFERENCES `donvidichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_huong` FOREIGN KEY (`huongnha`) REFERENCES `huongnha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -561,14 +564,15 @@ ALTER TABLE `dichvu`
   ADD CONSTRAINT `fk_dichvu_phaply` FOREIGN KEY (`phaply`) REFERENCES `tinhtrangphaply` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_phuong` FOREIGN KEY (`phuong`) REFERENCES `phuong` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_quan` FOREIGN KEY (`quan`) REFERENCES `quan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_dichvu_tinh` FOREIGN KEY (`tinh`) REFERENCES `tinh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_dichvu_tinh` FOREIGN KEY (`tinh`) REFERENCES `tinh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_user` FOREIGN KEY (`chusohuu`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `dichvu_tienich`
 --
 ALTER TABLE `dichvu_tienich`
-  ADD CONSTRAINT `fk_vdtienich_tienich` FOREIGN KEY (`idtienich`) REFERENCES `tienich` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_canhotienich_canho` FOREIGN KEY (`idcanho`) REFERENCES `dichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_canhotienich_canho` FOREIGN KEY (`idcanho`) REFERENCES `dichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_vdtienich_tienich` FOREIGN KEY (`idtienich`) REFERENCES `tienich` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `hinhanh`
