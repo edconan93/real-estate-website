@@ -20,19 +20,22 @@ td{ padding:3px}
 
 #menu, #menu ul, #menu li { margin: 0; padding: 0; border: 0 none; }
 #menu  {border-bottom:1px solid #CCC; height:25px; background:#F0F0F0 }
-#menu .mess {float:right; width:250px;  margin-right:20px; text-align:right }
+#menu .mess {float:right; width:250px;  margin-right:10px; text-align:right;margin-top:2px; }
 #menu .mess .logout { background:url(../images/icon-16-logout.png) left top no-repeat; padding-left:20px; padding-right:10px; }
+#menu .mess  img {height:14px;position:relative;top:2px;}
+#menu .mess a , a:hover {color:blue;}
 #menu .mess .user { background:url(../images/icon-16-user.png) left top no-repeat; padding-left:20px; padding-right:10px }
 #menu .mess .article { background:url(../images/icon-16-article.png) left top no-repeat; padding-left:20px; padding-right:10px }
 #menu .mess .frontpage { background:url(../images/icon-16-frontpage.png) left top no-repeat; padding-left:20px; padding-right:10px }
 
+#menu {border-left:1px solid #CCC;border-right:1px solid #CCC;}
 #menu li {
 	float:left;  position:relative; list-style: none; display: inline;
 	border-left: 1px solid #fff;
 	border-right: 1px solid #d8d8d8;
 	padding-top:5px
 }
-#menu ul    { border: 0.1em solid #ccc; }
+#menu ul    { border: 0.1em solid #ccc; border-left:1px solid #CCC;}
 
 
 #body {border:1px solid #CCC; padding-bottom:100px; text-align:left }
@@ -62,14 +65,14 @@ td{ padding:3px}
 .frmLogin ._bot { background:url(../images/bot_border2.png); height:9px;}
 .frmLogin ._content {border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC;}
 .frmLogin .p { padding-bottom:5px; padding-top:5px;}
-.frmLogin .text { width:120px; float:left; text-align:right;color: #666;
-				font-weight: bold; display:block; margin-left:20px; margin-right:20px; clear:both;}				
-.frmLogin .input{ width: 120px; border:1px solid #CCC }
+.frmLogin .text { width:100px; float:left; text-align:right;color: #666;
+				font-weight: bold; display:block; margin-right:10px; clear:both;}				
+.frmLogin .input{ width: 180px; border:1px solid #CCC }
 .frmLogin .bt{ width: 150px; float:right; margin-right:10px; }
 .frmLogin .bt .button{float:right;  border:none; background:url(../images/button1_left.png); height:26px; padding-left:10px;  font-weight:500; cursor:pointer}
 .frmLogin .bt .rightbutton{ float:right; width:26px; height:26px; display:block; background:url(../images/button1_next.png);}
 
-.error { border-top:3px solid #F35E43;  border-bottom:3px solid #F35E43; padding-top:10px; padding-bottom:10px; padding-left:30px; 
+.error { border:3px solid #F35E43; padding-top:10px; padding-bottom:10px; padding-left:30px; 
 		 font-weight:700; color:#A61B02; background:#E7C0C0 url(../images/notice-alert.png) left no-repeat; margin-bottom:5px; }
 .success{ border-top:3px solid #58BEBC;  border-bottom:3px solid #58BEBC; padding-top:10px; padding-bottom:10px; padding-left:30px; 
 		 font-weight:700; color:#fff; background: #B5EF7A url(../images/icon_32_backup.png) left no-repeat ;margin-bottom:5px;}

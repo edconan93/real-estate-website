@@ -1,5 +1,5 @@
-<?php session_start (); ?>
 <?php 
+	session_start();
  	$do="";
 	if (isset($_GET["do"]))
 		$do=$_GET["do"];
@@ -25,37 +25,37 @@
 	if(isset($_SESSION["curUser"]) && $_SESSION["curUser"][8] == 1)
 		$bodyFile="include/controlpanel.php";
 	else
-		$bodyFile= "include/login.php";
+		$bodyFile= "module/login.php";
 	
 	if(isset ($_GET["view"]))
 	{
 		switch ($_GET["view"])
 		{
-		case "user":
-		{
-			switch($do)
+			case "user":
 			{
-			case "add":
-				$bodyFile= "modules/forms/create_user.php";
-				break;
-			case "edit":
-				$bodyFile= "modules/forms/edit_user.php";
-				break;
-			default:
-				$bodyFile= "modules/user.php";
+				switch($do)
+				{
+					case "add":
+						$bodyFile= "module/create_user.php";
+						break;
+					case "edit":
+						$bodyFile= "module/edit_user.php";
+						break;
+					default:
+						$bodyFile= "module/user.php";
+						break;
+				}
 				break;
 			}
-		}
-			break;
-		case "article":
-			$bodyFile= "modules/article.php";
-			break;
-		case "statistics":
-			$bodyFile= "modules/statistics.php";
-			break;
-		case "database":
-			$bodyFile= "modules/database.php";
-			break;
+			case "article":
+				$bodyFile= "module/article.php";
+				break;
+			case "statistics":
+				$bodyFile= "module/statistics.php";
+				break;
+			case "database":
+				$bodyFile= "module/database.php";
+				break;
 		}
 	}
 ?>
@@ -72,11 +72,11 @@
 <body>
 <div id="container">
 <div id="header">
-	<?php include ("include/top_admin.php");?>
+	<?php include("include/top_admin.php");?>
 </div>
 <div id="body">
 <?php
-	include ($bodyFile);
+	include($bodyFile);
 ?>
 </div>
 <div id="footer">
