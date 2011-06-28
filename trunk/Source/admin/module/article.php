@@ -27,7 +27,7 @@
 <div class="tr"></div>
 <div class="tm"></div>
 <div class="mid">
-	<div class="title icon_article">Quản lý bài viết </div>
+	<div class="title icon_article">Quản lý tin đăng</div>
 
      <div class="icon">
     	<a href="#" id="aDelete">
@@ -57,6 +57,9 @@
 <div class="bm"></div>
 </div>
 <div style="margin:10px">
-<?php include_once ($PATH . "listArticle.php"); ?>
+<?php
+	$PATH = str_replace('//','/',dirname(__FILE__).'/');
+	include_once ($PATH . "listArticle.php");
+?>
 </div>
 

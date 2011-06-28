@@ -134,18 +134,18 @@
 		<input name="uid" id="uid" type="hidden" value="<?php echo $user[0]; ?>" />	
 		<table align="center" border="0" cellpadding="0" cellspacing="0">
 			<tr>
-				<td width="130px" class="title">Email đăng nhập <span style="color:red;">(*)</span></td>
+				<td width="130px">Email đăng nhập <span style="color:red;">(*)</span></td>
 				<td width="280px">
 					<input name="txtUsername" type="text" disabled id="txtUsername" style="font-weight:bold;width:270px;" value="vuongtieuho1002@yahoo.com"></td>
 				<td><div id="messUsername" class="mess"></div></td>
 			</tr>
 			<tr>
-				<td class="title">Họ tên <span style="color:red;">(*)</td>
+				<td>Họ tên <span style="color:red;">(*)</td>
 				<td><input name="txtEmail" type="text" id="txtEmail" value="<?php echo $user[3]; ?>" size="50"></td>
 				<td><div id="messEmail" class="mess"></div></td>
 			</tr>
 			<tr>
-				<td class="title">Giới tính</td>
+				<td>Giới tính</td>
 				<td>
 					<input type="radio" value="1" name="gender" checked="true"> Nam
 					<input type="radio" value="0" name="gender"> Nữ
@@ -153,82 +153,34 @@
 				<td><div id="messPassword" class="mess"></div></td>
 			</tr>
 			<tr>
-				<td class="title">Địa chỉ</td>
+				<td>Địa chỉ</td>
 				<td><input name="txtEmail" type="text" id="txtEmail" value="<?php echo $user[3]; ?>" size="50"></td>
 				<td><div id="messEmail" class="mess"></div></td>
 			</tr>
 			<tr>
-				<td class="title">Số ĐT 1</td>
+				<td>Số ĐT 1</td>
 				<td><input name="txtEmail" type="text" id="txtEmail" value="<?php echo $user[3]; ?>" size="50"></td>
 				<td><div id="messEmail" class="mess"></div></td>
 			</tr>
 			<tr>
-				<td class="title">Số ĐT 2</td>
+				<td>Số ĐT 2</td>
 				<td><input name="txtEmail" type="text" id="txtEmail" value="<?php echo $user[3]; ?>" size="50"></td>
 				<td><div id="messEmail" class="mess"></div></td>
 			</tr>
 			<tr>
-				<td class="title">Vai trò</td>
+				<td>Vai trò</td>
 				<td><input name="txtEmail" type="text" id="txtEmail" value="<?php echo $user[3]; ?>" size="50"></td>
 				<td><div id="messEmail" class="mess"></div></td>
 			</tr>
 			<tr>
-				<td class="title">Cấp độ</td>
+				<td>Cấp độ</td>
 				<td><input name="txtEmail" type="text" id="txtEmail" value="<?php echo $user[3]; ?>" size="50"></td>
 				<td><div id="messEmail" class="mess"></div></td>
 			</tr>
-		</table>
-		<br class="clr" />
-		<br />
-		<table width="570px" border="0" align="left" cellpadding="0" cellspacing="0">
 			<tr>
-				<td width="94"  class="title">Câu hỏi bí mật</td>
-				<td colspan="2">
-					<select name="lbSecurityQuestion" id="lbSecurityQuestion">
-						<option value="1" <?php echo $user[6]==1?"selected":""; ?>>Bạn muốn làm nghề nào nhất?</option>
-						<option value="2"<?php echo $user[6]==2?"selected":""; ?>>Người bạn thân nhất của bạn là ai?</option>
-						<option value="3" <?php echo $user[6]==3?"selected":""; ?>>Người bạn yêu quý nhất là ai?</option>
-						<option value="4" <?php echo $user[6]==4?"selected":""; ?>>Nơi đầu tiên bạn và người ấy gặp nhau?</option>
-						<option value="5" <?php echo $user[6]==5?"selected":""; ?>>Thú cưng của bạn tên gì?</option>
-					</select></td>
-			</tr>
-			<tr>
-				<td class="title">Trả lời</td>
-				<td width="220"><input name="txtAnswer" type="text" id="txtAnswer" size="50"  value="<?php echo $user[7]; ?>" ></td>
-				<td width=""><div id="messAnswer" class="mess"></div></td>
-			</tr>
-			<tr>
-				<td class="title">&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td class="title">Nhóm</td>
-				<td>
-					<select name="lbType" id="lbType">
-						<option value="0" <?php echo $user[10]==0?"selected":""; ?> >Thành viên</option>
-						<option value="1" <?php echo $user[10]==1?"selected":""; ?>>Quản trị</option>
-					</select></td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td class="title">Trạng thái</td>
-				<td>
-					<select name="lbStatus" id="lbStatus">
-						<option value="1"  <?php echo $user[9]==1?"selected":""; ?>>Bình thường</option>
-						<option value="0"  <?php echo $user[9]==0?"selected":""; ?>>Bị khóa</option>
-                    </select></td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td class="title">Ngày đăng ký</td>
-				<td> <?php //echo convert_time($user[5]) ?> </td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td class="title">Truy cập cuối</td>
-				<td> <?php //echo $user[8]=="0000-00-00 00:00:00"?"chưa đăng nhập bao giờ":convert_time($user[8]) ?> </td>
-				<td>&nbsp;</td>
+				<td>Ngày cập nhật</td>
+				<td>20-10-2011</td>
+				<td><div id="messEmail" class="mess"></div></td>
 			</tr>
 		</table>
     </form>
