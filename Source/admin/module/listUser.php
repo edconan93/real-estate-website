@@ -132,50 +132,66 @@
     <div class="list">
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr class="title">
-          <td width="3%"><div align="center">#</div></td>
-          <td width="3%"><label>
+          <td width="30px"><div align="center">#</div></td>
+          <td width="30px"><label>
             <div align="center">
               <input type="checkbox" name="cbAll" id="cbAll" />
               </div>
           </label></td>
-          <td width="15%"><div align="center">Tên đăng nhập</div></td>
-          <td width="7%"><div align="center">Trạng thái</div></td>
-          <td width="7%"><div align="center">Nhóm</div></td>
-          <td width="19%"><div align="center">Email</div></td>
-          <td width="14%"><div align="center">Lần truy cập cuối</div></td>
-          <td width="15%"><div align="center">Ngày tham gia</div></td>
-          <td width="13%"><div align="center">Số bài viết</div></td>
-          <td width="4%"><div align="center">ID</div></td>
+          <td><div align="center">Họ tên</div></td>
+          <td><div align="center">Email đăng nhập</div></td>
+          <td width="50px"><div align="center">Giới tính</div></td>
+          <td><div align="center">Địa chỉ</div></td>
+          <td width="80px"><div align="center">Số ĐT 1</div></td>
+          <td width="80px"><div align="center">Số ĐT 2</div></td>
+          <td><div align="center">Vai trò</div></td>
+          <td><div align="center">Cấp độ</div></td>
+		  <td><div align="center">Kích hoạt</div></td>
         </tr>
-        <?php  $i=$curItem+1; 
-		while ($user = mysql_fetch_array($users)) { ?>
-        <tr>
-          <td><div align="center"><?php echo $i++; ?></div></td>
-          <td><label>
-            <div align="center">
-              <input type="checkbox" name="cbId[]" id="cbId[]" value="<?php echo $user[0]; ?>" />
-              </div>
-          </label></td>
-          <td> <?php echo "<a href='index.php?view=user&do=edit&uid=$user[0]'>$user[1]</a>";  ?></td>
-          <td>
-            <div align="center">
-              <?php
-		  		if($user[9] == 1)
-					echo "<img src='images/tick.png' alt='Bình thường' />";
-				else 
-					echo "<img src='images/publish_x.png' alt='Bị khóa' />";
-		  ?>           
-            </div></td>
-          <td><div align="center">
-            <?php  echo $user[10]==0?"Thành viên":"Quản trị" ?>
-          </div></td>
-          <td><?php echo $user[3]; ?></td>
-          <td><div align="center"><?php echo $user[8]=="0000-00-00 00:00:00"?"chưa đăng nhập bao giờ":convert_time($user[8]) ?></div></td>
-          <td><div align="center"><?php echo convert_time($user[5]) ?></div></td>
-          <td><div align="center"><?php echo EntriesBUS::GetCountEntriesByPostedUser($user[0]); ?></div></td>
-          <td><div align="center"><?php echo $user[0] ?></div></td>
-        </tr>
-        <?php } ?>
+		<tr>
+			<td align="center">20</td>
+			<td></td>
+			<td>Nguyễn Thị Thanh Phương Đoàn</td>
+			<td>nguyenthithanhphuong@yahoo.com</td>
+			<td align="center">Nam</td>
+			<td>769/44/14 Phạm Thể Hiển, P4, Q.8, Tp.HCM</td>
+			<td>0934.100286</td>
+			<td>01934.100286</td>
+			<td align="center">Nhân viên</td>
+			<td align="center">Nhân viên cấp bậc 3</td>
+			<td></td>
+		</tr>
+        <?php
+			$i=$curItem+1; 
+			//while ($user = mysql_fetch_array($users)) 
+			{
+		?>
+        <!--<tr>
+			<td><div align="center"><?php echo $i++; ?></div></td>
+			<td><label>
+				<div align="center">
+					<input type="checkbox" name="cbId[]" id="cbId[]" value="<?php echo $user[0]; ?>" /></div></label></td>
+			<td><?php echo "<a href='index.php?view=user&do=edit&uid=$user[0]'>$user[1]</a>";  ?></td>
+			<td>
+				<div align="center">
+				<?php
+					if($user[9] == 1)
+						echo "<img src='images/tick.png' alt='Bình thường' />";
+					else 
+						echo "<img src='images/publish_x.png' alt='Bị khóa' />";
+				?>           
+				</div></td>
+			<td><div align="center">
+				<?php  echo $user[10]==0?"Thành viên":"Quản trị" ?></div></td>
+			<td><?php echo $user[3]; ?></td>
+			<td><div align="center"><?php echo $user[8]=="0000-00-00 00:00:00"?"chưa đăng nhập bao giờ":convert_time($user[8]) ?></div></td>
+			<td><div align="center"><?php echo convert_time($user[5]) ?></div></td>
+			<td><div align="center"><?php echo EntriesBUS::GetCountEntriesByPostedUser($user[0]); ?></div></td>
+			<td><div align="center"><?php echo $user[0] ?></div></td>
+        </tr>-->
+        <?php
+			}
+		?>
       </table>
     </div>
     <?php 
