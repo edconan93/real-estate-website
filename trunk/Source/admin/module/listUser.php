@@ -158,7 +158,7 @@
 					<tr>
 						<td align="center">20</td>
 						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
-						<td class="m_name"><a href="">Nguyễn Thị Thanh Phương Đoàn</a></td>
+						<td class="m_name"><a href="index.php?view=user&do=edit&uid=1">Nguyễn Thị Thanh Phương Đoàn</a></td>
 						<td style="color:blue;font-weight:bold;">nguyenthithanhphuong@yahoo.com</td>
 						<td align="center">Nam</td>
 						<td>769/44/14 Phạm Thể Hiển, P4, Q.8, Tp.HCM</td>
@@ -171,7 +171,7 @@
 					<tr>
 						<td align="center">20</td>
 						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
-						<td class="m_name"><a href="">Cao Thanh Tâm</a></td>
+						<td class="m_name"><a href="index.php?view=user&do=edit&uid=1">Cao Thanh Tâm</a></td>
 						<td style="color:blue;font-weight:bold;">nguyenthithanhphuong@yahoo.com</td>
 						<td align="center">Nam</td>
 						<td>769/44/14 Phạm Thể Hiển, P4, Q.8, Tp.HCM</td>
