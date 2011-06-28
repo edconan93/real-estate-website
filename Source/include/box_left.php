@@ -1,4 +1,5 @@
 <div class="box_left">
+<form action="dichvu.php" name="frmTimKiem" method="GET">
 	<table>
 		<tr>
 			<td width="30px">
@@ -10,98 +11,54 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<select style="width:226px;">
-					<option>---------- Chọn Loại Hình ----------</option>
-					<option>Cần Mua</option>
-					<option>Cần Bán</option>
-					<option>Cần Thuê</option>
-					<option>Cho Thuê</option>
+				<select style="width:220px;" name="cbbLoaiHinh">
+					<option value="-1">---------- Chọn Loại Hình ----------</option>
+					<?php
+                    include("../BUS/LoaiDichVuBUS.php");
+                    $loaidv=LoaiDichVuBUS::getALL();
+                    for($i=0;$i<count($loaidv);$i++)
+                        echo '<option value="'.$loaidv[$i]['id'].'">'.$loaidv[$i]['ten'].'</option>';
+                    ?>
 				</select>
+			</td>
+		</tr>
+        <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $('#cbbTinh').change(function(){
+                var serverURL = "checkservice.php?cbbTinhTP="+$(this).val();
+    			$("#cbbTMPQuan").load(serverURL);	
+            });
+        });
+          </script>
+		<tr style="height:24px;">
+			<td colspan="2">
+				<select style="width:220px;" id="cbbTinh"  name="cbbTinh">
+                <option value="-1" selected="selected">--Chọn Tỉnh/ Thành Phố--</option>
+				<?php
+                include("../BUS/TinhBUS.php");
+                $rs=TinhBUS::GetAllTinh();
+                for($i=0;$i<count($rs);$i++)
+                {		
+                	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+                }
+                ?>	
+				</select>
+			</td>
+		</tr>
+    
+		<tr style="height:24px;">
+			<td colspan="2">
+            <div id="cbbTMPQuan">
+				<select style="width:220px;" id="cbbQuan" name='cbbQuanHuyen'>
+					<option value="-1">-------- Chọn Quận/Huyện --------</option>					
+				</select>
+            </div>
 			</td>
 		</tr>
 		<tr style="height:24px;">
 			<td colspan="2">
-				<select style="width:226px;">
-					<option>------ Chọn Tỉnh/Thành phố ------</option>
-					<option value="27">An Giang</option>
-					<option value="44">Bà Rịa Vũng Tàu</option>
-					<option value="12">Bình Dương</option>
-					<option value="32">Bình phước</option>
-					<option value="39">Bình Thuận</option>
-					<option value="33">Bình Định</option>
-					<option value="26">Bạc Liêu</option>
-					<option value="35">Bắc Cạn</option>
-					<option value="20">Bắc Giang</option>
-					<option value="19">Bắc Ninh</option>
-					<option value="55">Bến Tre</option>
-					<option value="25">Cà Mau</option>
-					<option value="36">Cao Bằng</option>
-					<option value="6">Cần Thơ</option>
-					<option value="41">Gia Lai</option>
-					<option value="67">Hà Giang</option>
-					<option value="15">Hà Nam</option>
-					<option value="2">Hà Nội</option>
-					<option value="11">Hà Tĩnh</option>
-					<option value="51">Hòa Bình</option>
-					<option value="17">Hải Dương</option>
-					<option value="7">Hải Phòng</option>
-					<option value="52">Hậu Giang</option>
-					<option value="4">Huế</option>
-					<option value="18">Hưng Yên</option>
-					<option value="13">Khánh Hoà</option>
-					<option value="47">Kiên Giang</option>
-					<option value="66">Kon Tum</option>
-					<option value="43">Lâm Đồng</option>
-					<option value="70">Lào Cai</option>
-					<option value="34">Lạng Sơn</option>
-					<option value="24">Long An</option>
-					<option value="8">Nam Định</option>
-					<option value="9">Nghệ An</option>
-					<option value="16">Ninh Bình</option>
-					<option value="38">Ninh Thuận</option>
-					<option value="22">Phú Thọ</option>
-					<option value="54">Phú Yên</option>
-					<option value="65">Quảng Bình</option>
-					<option value="64">Quảng Nam</option>
-					<option value="57">Quảng Ngãi</option>
-					<option value="23">Quảng Ninh</option>
-					<option value="63">Quảng Trị</option>
-					<option value="46">Sóc Trăng</option>
-					<option value="62">Sơn La</option>
-					<option value="45">Tây Ninh</option>
-					<option value="59">Thái Bình</option>
-					<option value="58">Thái Nguyên</option>
-					<option value="10">Thanh Hoá</option>
-					<option value="48">Tiền Giang</option>
-					<option value="3">TP. Hồ Chí Minh</option>
-					<option value="56">Trà Vinh</option>
-					<option value="60">Tuyên Quang</option>
-					<option value="49">Vĩnh Long</option>
-					<option value="21">Vĩnh Phúc</option>
-					<option value="37">Yên Bái</option>
-					<option value="5">Đà Nẵng</option>
-					<option value="42">Đắc Lắc</option>
-					<option value="40">Đắc Nông</option>
-					<option value="50">Đồng Nai</option>
-					<option value="68">Đồng Tháp</option>
-					<option value="69">Điện Biên</option>
-				</select>
-			</td>
-		</tr>
-		<tr style="height:24px;">
-			<td colspan="2">
-				<select style="width:226px;">
-					<option>-------- Chọn Quận/Huyện --------</option>
-					<option>Quận 1</option>
-					<option>Quận 2</option>
-					<option>Quận 3</option>
-					<option>Quận Tân Bình</option>
-				</select>
-			</td>
-		</tr>
-		<tr style="height:24px;">
-			<td colspan="2">
-				<select style="width:226px;">
+				<select style="width:220px;">
 					<option>------------ Khoảng Giá ------------</option>
 					<option value="5.000.000">Dưới 5 Triệu</option>
 					<option value="50.000.000"> 5 Triệu - 50 Triệu</option>
@@ -116,10 +73,11 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center" style="padding-top:8px;">
-				<img src="../images/btSearch.png" />
+			<input  type="submit" name="btnSearch" style="background: url('../images/btSearch.png'); width:52px;height: 22px;" value=""/>
 			</td>
 		</tr>
 	</table>
+    </form>
 </div>
 <div class="box_left">
 	<table width="100%">

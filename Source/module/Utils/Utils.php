@@ -57,5 +57,16 @@ class Utils
     	}
     	return $paging;
     }
+    public static function getMoneyPerHouse($business)
+    {
+        //1.000.000 => 1
+        include("../BUS/DonviTienBUS.php");
+        $dvTien=DonViTienBUS::selectId($rate);
+        $money=$business['giaban'];
+        $money=$money*$dvTien['tigia'];
+        if($square==1)
+            $money*=$business['dai']*$business['rong'];
+        return $money;
+    }
 }
 ?>

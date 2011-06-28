@@ -1,3 +1,6 @@
+<?php 
+	include_once("DataProvider.php");
+?>
 <?php
 
 /**
@@ -15,6 +18,15 @@ class LoaiDichVuDAO
 			if(mysql_num_rows($result)==0)
 				return null;
             return mysql_fetch_row ($result,MYSQL_BOTH);
+    }
+    public static function getALL()
+    {
+         $strSQL = "select * from loaidichvu";					
+			
+            $result = DataProvider::Query($strSQL);
+			while($row=mysql_fetch_row ($result,MYSQL_BOTH))
+				$return[]=$row;
+            return $return;
     }
 }
 

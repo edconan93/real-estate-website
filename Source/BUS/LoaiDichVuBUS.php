@@ -14,5 +14,9 @@ class LoaiDichVuBUS
      {
         return LoaiDichVuDAO::getById($id);
      } 
+     public static function getALL()
+     {
+        return LoaiDichVuDAO::getALL();
+     } 
 }
 ?>
