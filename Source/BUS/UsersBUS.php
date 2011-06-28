@@ -134,6 +134,11 @@ Lớp UsersBUS
 			return UsersDAO::FindByEmail ($keyWord,$index,$limit);
 		}
 		
+		public static function getUsers ()
+		{
+			return UsersDAO::getUsers ();
+		}
+		
 		
 		// public static function countResultByEmail ($keyWord)
 		// {
@@ -165,14 +170,14 @@ Lớp UsersBUS
 		// {
 			// return UsersDAO::getNewUsers ($day,$limit);
 		// }
-		
-		// public static function getUsers ($index=0,$limit=15,$type=-1,$status=-1,$keyword="",$sort=0)
-		// {
-			// if($index<0)
-				// $index=0;
-			// $keyword=addslashes($keyword);
-			// return UsersDAO::getUsers ($index,$limit,$type,$status,$keyword,$sort);
-		// }
+		/*
+		public static function getUsers ($index=0,$limit=15,$type=-1,$status=-1,$keyword="",$sort=0)
+		{
+			if($index<0)
+				$index=0;
+			$keyword=addslashes($keyword);
+			return UsersDAO::getUsers ($index,$limit,$type,$status,$keyword,$sort);
+		}*/
 		
 		// public static function Delete ($user_id)
 		// {

@@ -123,3 +123,5 @@ td{ padding:3px}
 .incorrect { color:#FF0000}
 .h1 { font-size:16px; color:#1A4BD0; font-weight:600}
 .name {color:#4553FC; font-size:11px}
+.m_name {font-weight:bold;}
+.m_name a {color:#000;}
