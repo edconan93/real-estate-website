@@ -10,7 +10,7 @@
 $(document).ready(function()
 {
 	$("#frmDichVu").submit(function()
-	{ alert("a");
+	{ 
 	//	var oCell = document.getElementById('xEditingArea').value ;
 		var oEditor = FCKeditorAPI.GetInstance('instance') ;
 		var pageValue = oEditor.GetHTML();
@@ -144,9 +144,8 @@ $(document).ready(function()
 //xu ly tieu de
 	$("#txtTieuDeTin").blur(function ()
 	{
-	alert("aaa"); //$summary=stripcslashes($_POST["summary"]);
-	var des = $("#txtTieuDeTin").attr("summary");
-	alert(des);
+	//alert("aaa"); //$summary=stripcslashes($_POST["summary"]);
+	//var des = $("#txtTieuDeTin").attr("summary");
 			var strTieuDe = $("#txtTieuDeTin").attr("value");
 
 			if(strTieuDe.length < 1  )
@@ -166,10 +165,8 @@ $(document).ready(function()
 	$("#txtDuongPho").blur(function ()
 	{
 		var strTieuDe = $("#txtDuongPho").attr("value");
-
 		if(strTieuDe.length < 1  )
 		{	
-
 			$("#messDuongPho").attr("innerHTML","Phải thêm tên đường");
 			$("#messDuongPho").css("color","red");
 		}
@@ -348,7 +345,6 @@ $(document).ready(function()
 	$("#cbbTinhTP").blur(function ()
 	{
 		var strTieuDe = $("#cbbTinhTP").attr("value");
-		alert(strTieuDe);
 		if(strTieuDe == "-1" )
 		{	
 			$("#messTinhTP").attr("innerHTML","Chọn tỉnh/ thành phố");
@@ -357,27 +353,29 @@ $(document).ready(function()
 		else
 		{
 			$("#messTinhTP").attr("innerHTML", "");
-			$("#messQuanHuyen").attr("innerHTML", "");
-			var serverURL = "checkservice.php?cbbTinhTP=" + strTieuDe;
+			var serverURL = "checkservice.php?txtTieuDeTin=" + strTieuDe;
 			$("#messTinhTP").load(serverURL);
+			var serverURL = "checkservice.php?cbbTinhTP="+strTieuDe;
+			$("#messLoadQuan").load(serverURL);	
 		}
 		
 	});
 	//check cbbQuanHuyen
 	$("#cbbQuanHuyen").blur(function ()
 	{
+	alert("Quan Huynsssssssssssssssssssssssss");
 		var strTieuDe = $("#cbbQuanHuyen").attr("value");
-		if(strTieuDe == "-1" )
-		{	
-			$("#messQuanHuyen").attr("innerHTML","Chọn quận/ huyện");
-			$("#messQuanHuyen").css("color","red");
-		}
-		else
-		{
-			$("#messQuanHuyen").attr("innerHTML", "");
-			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
-			$("#messQuanHuyen").load(serverURL);
-		}
+		// if(strTieuDe == "-1" )
+		// {	
+			// $("#messQuanHuyen").attr("innerHTML","Chọn quận/ huyện");
+			// $("#messQuanHuyen").css("color","red");
+		// }
+		// else
+		// {
+			// $("#messQuanHuyen").attr("innerHTML", "");
+			// var serverURL = "checkservice.php?txtTieuDeTin=" + strTieuDe;
+			// $("#messQuanHuyen").load(serverURL);
+		// }
 		
 	});
 	//check cbbPhuong
@@ -397,6 +395,16 @@ $(document).ready(function()
 		}
 		
 	});
+	
+	
+	
+	function loadQuanHuyen()
+	{alert("aaaaaaaaaaa");
+			var strTieuDe = $("#cbbTinhTP").attr("value");
+			var serverURL = "checkservice.php?txtTieuDeTin=" + strTieuDe;
+			$("#messTinhTP").load(serverURL);
+	}
+	
 	function CheckPhoneNumber(strText)
 	{
 		var strTemp="0123456789";
@@ -412,7 +420,43 @@ $(document).ready(function()
 });
 		
  </script>
- 
+  <script type="text/javascript">
+    function clickQuanHuyen()
+	{
+	//alert("xxxxxxxxxxxxxxxxxxxxx");
+	var strTieuDe = $("#cbbQuanHuyen").attr("value");
+	//alert(strTieuDe);
+		if(strTieuDe == "-1" )
+		{	
+			$("#messQuanHuyen").attr("innerHTML","Chọn quận/ huyện");
+			$("#messQuanHuyen").css("color","red");
+		}
+		else
+		{
+			// $("#messQuanHuyen").attr("innerHTML", "");
+			var serverURL = "checkservice.php?cbbPhuongXa=" + strTieuDe;
+			$("#messLoadPhuong").load(serverURL);
+			var serverURL = "checkservice.php?txtTieuDeTin="+strTieuDe;
+			$("#messQuanHuyen").load(serverURL);
+		}
+	}
+	function clickPhuongXa()
+	{
+		alert("xxxxxxxxxxxxxxxxxxxxx");
+		var strTieuDe = $("#cbbPhuong").attr("value");
+		if(strTieuDe == "-1" )
+		{	
+			$("#messPhuong").attr("innerHTML","Chọn quận/ huyện");
+			$("#messPhuong").css("color","red");
+		}
+		else
+		{
+			// $("#messQuanHuyen").attr("innerHTML", "");
+			var serverURL = "checkservice.php?txtTieuDeTin="+strTieuDe;
+			$("#messPhuong").load(serverURL);
+		}
+	}
+  </script>
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
 			<td width="986">
@@ -501,7 +545,7 @@ for($i=0;$i<count($rs);$i++)
 												<td style="float:left;">
 												
 												<div style="width:310px;float:left;">
-												<select id="cbbTinhTP" name="cbbTinhTP" style="width:220px;" onchange=()>
+												<select id="cbbTinhTP" name="cbbTinhTP" style="width:220px;" onchange=(loadQuanHuyen();)>
 													<option value="-1" selected="selected">--Chọn Tỉnh/ Thành Phố--</option>
 <?php
 include("../BUS/TinhBUS.php");
@@ -522,7 +566,9 @@ for($i=0;$i<count($rs);$i++)
 											<td>
 											
 												<div style="width:310px;float:left;" id="messLoadQuan" name="messLoadQuan">
-												<input name="txtTieuDeTin" id="txtTieuDeTin" type="text" style="width:300px;" value="">
+												<select id="cbbQuanHuyen" name="cbbQuanHuyen" style="width:220px;" onchange="clickQuanHuyen()">
+													<option value="-1" selected="selected">--Chọn Quận/ Huyện--</option>	
+												</select>
 												</div>
 												<div id="messQuanHuyen" name="messQuanHuyen" style="width:150px;float:left;"></div>
 											</td>
@@ -530,17 +576,10 @@ for($i=0;$i<count($rs);$i++)
 										<tr bgcolor="#F2F5F9">
 											<td width="200px"><b>Phường/ Xã:</b><span style="color:red;"> *</span></td>
 											<td>
-											<div style="width:310px;float:left;">
-												<select id="cbbPhuong" name="cbbPhuong" style="width:220px;" >
+											<div style="width:310px;float:left;" id="messLoadPhuong" name="messLoadPhuong" >
+												<select id="cbbPhuong" name="cbbPhuong" style="width:220px;" onchange="clickPhuongXa()">
 													<option value="-1">Chọn phường/xã</option>
-<?php
-include("../BUS/PhuongBUS.php");
-$rs=PhuongBUS::GetAllPhuong();
-for($i=0;$i<count($rs);$i++)
-{		
-	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-}
-?>
+
 													
 													
 												</select>
