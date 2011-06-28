@@ -23,11 +23,13 @@
 		public static function GetAllPhuongById($id)
 		{
 			$strSQL = "select *
-					from phuong where id='$id'";
+					from phuong where idquan='$id'";
             $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
-				return null;
-			return mysql_fetch_array ($result);	
+				 return null;
+			while($row = mysql_fetch_row($result))
+			    $temp[]= $row;
+			return $temp;
 		}
      	
 	}
