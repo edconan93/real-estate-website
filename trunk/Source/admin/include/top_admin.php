@@ -13,8 +13,7 @@
 		<li><a href="index.php" class="item">Bảng điều khiển</a></li>
 		<li><a href="index.php?view=user" class="item">Quản lý thành viên</a></li>
 		<li><a href="index.php?view=article" class="item">Quản lý tin đăng</a></li>
-		<li><a href="index.php?view=statistics" class="item">Thống kê</a></li>
-		<li><a href="index.php?view=database" class="item">Sao lưu & Phục hồi</a></li>
+		<li><a href="index.php?view=business" class="item">Quản lý thu chi</a></li>
 	</ul>
 	<div class="mess">
 		<img src="images/icon-16-frontpage.png" /> <a href="../index.php">Tiền sảnh</a>&nbsp;&nbsp;
