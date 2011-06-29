@@ -120,16 +120,35 @@
 			<div class="list">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr class="title">
-						<td width="3%"><div align="center">#</div></td>
-						<td width="3%"><div align="center">
-							<input type="checkbox" name="cbAll" id="cbAll" />
-							</div></td>
-						<td width="29%"><div align="center">Tiêu đề</div></td>
-						<td width="11%"><div align="center">Trạng thái</div></td>
-						<td width="11%"> Ai được xem</td>
-						<td width="22%"><div align="center">Tác giả</div></td>
-						<td width="16%"><div align="center">Ngày đăng</div></td>
-						<td width="5%"><div align="center">ID</div></td>
+						<td width="30px" align="center">#</td>
+						<td width="30px" align="center">
+							<input type="checkbox" name="cbAll" id="cbAll" /></td>
+						<td align="center">Tiêu đề</td>
+						<td width="70px" align="center">Loại dịch vụ</td>
+						<td align="center">Địa chỉ</td>
+						<td>Thông tin chi tiết</td>
+						<td align="center">Giá bán</td>
+						<td width="70px" align="center">Ngày đăng</td>
+					</tr>
+					<tr>
+						<td align="center">1</td>
+						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
+						<td class="m_name"><a href="index.php?view=article&do=edit&aid=1">Bán căn hộ the everich Q12 gia rẻ vào ở ngay</a></td>
+						<td align="center">Cần cho thuê</td>
+						<td>144/28/13 Châu Văn Liêm, P.14, Q.5, Tp.HCM</td>
+						<td>12x24 m2, 2 phòng ngủ, 1 tầng</td>
+						<td align="right">4 tỷ (vnd)</td>
+						<td align="center">20-10-2011</td>
+					</tr>
+					<tr>
+						<td align="center">2</td>
+						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
+						<td class="m_name"><a href="index.php?view=article&do=edit&aid=1">Bán căn hộ the everich Q12 gia rẻ vào ở ngay</a></td>
+						<td align="center">Cần cho thuê</td>
+						<td>144/28/13 Châu Văn Liêm, P.14, Q.5, Tp.HCM</td>
+						<td>12x24 m2, 2 phòng ngủ, 1 tầng</td>
+						<td align="right">4 tỷ (vnd)</td>
+						<td align="center">20-10-2011</td>
 					</tr>
 					<?php  /*
 						$i=$curItem+1; 
