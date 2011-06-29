@@ -4,13 +4,7 @@
 		// {
 
 			 include ("../../BUS/UsersBUS.php");
-			// include ("BUS/User_Personal_InformationBUS.php");
-			// include ("BUS/User_Contact_InformationBUS.php");
-			// include ("BUS/User_Basic_InformationBUS.php");
-			// include ("BUS/User_StatusBUS.php");
-			// include ("BUS/AlbumsBUS.php");
-			// include ("BUS/PicturesBUS.php");
-			
+
 						
 			$password = $_POST["txtPassword"];
 			//$repassword = $_POST["txtRePassword"];
@@ -34,11 +28,6 @@
 			echo "id="+ $id;
 			if(!empty ($id))
 			{	
-				//User_Personal_InformationBUS::Add($user_id, null, null, null, null, null, null, null);
-				//User_Contact_InformationBUS::Add($user_id, null, null, null, null);
-				//User_Basic_InformationBUS::Add($user_id, null, null, null, $username, $sex, $birthday);
-				//User_StatusBUS::Add($user_id, null, $now,0);
-				//AlbumsBUS::Add("Avatar",null,$now,$user_id,null);
 				$fRegister="true";
 				header("Location:../dichvu.php?do=login");
 			}

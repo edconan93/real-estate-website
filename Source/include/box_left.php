@@ -1,5 +1,14 @@
+<script type="text/javascript">
+        $(document).ready(function()
+        {
+            $('#cbbTinh').change(function(){
+                var serverURL = "checkservice.php?cbbTinhTP="+$(this).val();
+    			$("#cbbTMPQuan").load(serverURL);	
+            });
+        });
+          </script>
 <div class="box_left">
-<form action="dichvu.php" name="frmTimKiem" method="GET">
+<form action="xulydichvu.php" name="frmTimKiem" method="GET">
 	<table>
 		<tr>
 			<td width="30px">
@@ -22,15 +31,7 @@
 				</select>
 			</td>
 		</tr>
-        <script type="text/javascript">
-        $(document).ready(function()
-        {
-            $('#cbbTinh').change(function(){
-                var serverURL = "checkservice.php?cbbTinhTP="+$(this).val();
-    			$("#cbbTMPQuan").load(serverURL);	
-            });
-        });
-          </script>
+        
 		<tr style="height:24px;">
 			<td colspan="2">
 				<select style="width:220px;" id="cbbTinh"  name="cbbTinh">
