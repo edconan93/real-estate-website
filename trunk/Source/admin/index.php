@@ -4,8 +4,11 @@
 	if (isset($_GET["do"]))
 		$do=$_GET["do"];
 	if($do=="logout")
+	{
 		unset($_SESSION["curUser"]);
-		
+		header("Location:../index.php");
+	}
+	
 	if (isset($_POST["btLogin"]))
 	{
 		include ("../BUS/UsersBUS.php");

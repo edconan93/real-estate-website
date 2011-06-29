@@ -2,43 +2,42 @@
 //echo "first";
 		// if(isset($_POST["btRegister"]))
 		// {
+			include ("../../BUS/DichVuBUS.php");
+			include ("../../BUS/DichVu_TienIchBUS.php");
+			$tieude = $_POST["txtTieuDeTin"];
+			$mota=stripcslashes($_POST["summary"]);
+			$chusohuu=(int) $_GET['id'];
 
-			 include ("../../BUS/DichVuBUS.php");
-			 include ("../../BUS/DichVu_TienIchBUS.php");
-			 $tieude = $_POST["txtTieuDeTin"];
-			 $mota=stripcslashes($_POST["summary"]);
-			 $chusohuu=(int) $_GET['id'];
-			 
-			 $tinh =(int) $_POST["cbbTinhTP"];
-			 echo "tinh=".$tinh;
-			 $quan =(int) $_POST['cbbQuanHuyen'];
-			 echo "quan="+$quan;
-			 $phuong =(int) $_POST['cbbPhuongXa'];
-			 echo "phuong=".$phuong;
+			$tinh =(int) $_POST["cbbTinhTP"];
+			echo "tinh=".$tinh;
+			$quan =(int) $_POST['cbbQuanHuyen'];
+			echo "quan="+$quan;
+			$phuong =(int) $_POST['cbbPhuongXa'];
+			echo "phuong=".$phuong;
 			// $quan =(int) $_POST["cbbQuanHuyen"];
 			// $tinh =(int) $_POST["cbbTinhTP"];
-			 $time = date('d-m-Y');
-			 $timeupdate = date('d-m-Y');
-			 $duong = $_POST["txtDuongPho"];
-			 $dai =(float) $_POST["txtDai"];
-			 $rong =(float) $_POST["txtRong"];
-			 $tang =(int) $_POST["txtTang"];
-			 $phongngu =(int) $_POST["txtPhongNgu"];
-			 $phongtam =(int) $_POST["txtPhongTam"];
-			 $giaban =(float) $_POST["txtGia"];
-			 $donvitien =(int) $_POST["cbbDonViTien"];
-			 $status =(int) "0";//
-			 $thoihandangtin= (int) "15";
-			 $loainha = (int)$_POST["cbbBatDongSan"];
-			 $phaply = (int)$_POST["cbbPhapLy"];
-			 $huongnha = (int)$_POST["cbbHuongNha"];
-			 $khuyenmai = $_POST["txtKhuyenMai"];
-			 $loaiDV = (int)$_POST["txtIDLoaiDV"];
-			 //echo "id=". $loaiDV;
-			 $donviDV = (int)$_POST["cbbDonViDichVu"];
-			 $X = "0";
-			 $Y = "0";
-			 DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y);
+			$time = date('d-m-Y');
+			$timeupdate = date('d-m-Y');
+			$duong = $_POST["txtDuongPho"];
+			$dai =(float) $_POST["txtDai"];
+			$rong =(float) $_POST["txtRong"];
+			$tang =(int) $_POST["txtTang"];
+			$phongngu =(int) $_POST["txtPhongNgu"];
+			$phongtam =(int) $_POST["txtPhongTam"];
+			$giaban =(float) $_POST["txtGia"];
+			$donvitien =(int) $_POST["cbbDonViTien"];
+			$status =(int) "0";//
+			$thoihandangtin= (int) "15";
+			$loainha = (int)$_POST["cbbBatDongSan"];
+			$phaply = (int)$_POST["cbbPhapLy"];
+			$huongnha = (int)$_POST["cbbHuongNha"];
+			$khuyenmai = $_POST["txtKhuyenMai"];
+			$loaiDV = (int)$_POST["txtIDLoaiDV"];
+			//echo "id=". $loaiDV;
+			$donviDV = (int)$_POST["cbbDonViDichVu"];
+			$X = "0";
+			$Y = "0";
+			DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y);
 			// $idcanho = DichVuBUS::GetIDDichVu();
 			 
 //add dichvu_tienich

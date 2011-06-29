@@ -1,4 +1,5 @@
 <?php 
+	return;
 	$PATH_BASE = str_replace('//','/',dirname(__FILE__).'/');
 	include_once ($PATH_BASE . '../BUS/QuanBUS.php');
 	include_once ($PATH_BASE . '../BUS/PhuongBUS.php');
