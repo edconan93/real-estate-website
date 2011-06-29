@@ -103,13 +103,13 @@
 										<tr>
 											<td>
 											<?php
-												$path = rtrim($_SERVER['PHP_SELF'],"e/module/dangtin.php/")."e/library/fckeditor/";
-												include("../library/fckeditor/fckeditor.php");
-												$summary = new FCKeditor("summary");
-												$summary->BasePath = $path;
-												$summary->Height=200;
-												$summary->Value = "";
-												$summary->Create();
+												// $path = rtrim($_SERVER['PHP_SELF'],"e/module/dangtin.php/")."e/library/fckeditor/";
+												// include("../library/fckeditor/fckeditor.php");
+												// $summary = new FCKeditor("summary");
+												// $summary->BasePath = $path;
+												// $summary->Height=200;
+												// $summary->Value = "";
+												// $summary->Create();
 											?>
 											</td>
 										</tr>

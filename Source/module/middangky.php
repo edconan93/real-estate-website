@@ -313,7 +313,7 @@ for($i=0;$i<count($rs);$i++)
 										<tr>
 											<td>
 											<?php
-												$path = rtrim($_SERVER['PHP_SELF'],"e/module/dangtinban.php/")."e/library/fckeditor/";
+												$path = rtrim($_SERVER['PHP_SELF'],"e/module/dangtindichvu.php/")."e/library/fckeditor/";
 												include("../library/fckeditor/fckeditor.php");
 												$summary = new FCKeditor("summary");
 												$summary->BasePath = $path;
