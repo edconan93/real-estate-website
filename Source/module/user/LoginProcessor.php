@@ -14,7 +14,7 @@
 		{
 			$_SESSION["curUser"] = $result;
 			//echo $resultl["role"];
-			if ($resultl["role"] == 1) //admin => log thang vao trang admin.php
+			if ($result["role"] == 1) //admin => log thang vao trang admin.php
 				header("Location:../admin/");
 			else
 				header("Location:thanhvien.php?id=".$result['id']);
