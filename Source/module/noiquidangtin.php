@@ -31,11 +31,19 @@
 												<br>
 												<p align="left">
 												<div align="Left" style="text-align:center;">
-													<a href="dangtinban.php">
+													<a href="dangtinban.php?loaidvcandang=1">
 													<b class="button_submit" style="padding:5px;">Đăng Tin Cần Bán</b>
 													</a>&nbsp;&nbsp;&nbsp;
-													<a href="dangtinmua.php">
+													<a href="dangtinmua.php?loaidvcandang=2">
 													<b class="button_submit" style="padding:5px;">Đăng Tin Cần Mua</b>
+													</a>
+													</a>&nbsp;&nbsp;&nbsp;
+													<a href="dangtinmua.php?loaidvcandang=4">
+													<b class="button_submit" style="padding:5px;">Đăng Tin Cần Thuê</b>
+													</a>
+													</a>&nbsp;&nbsp;&nbsp;
+													<a href="dangtinmua.php?loaidvcandang=3">
+													<b class="button_submit" style="padding:5px;">Đăng Tin Cho Thuê</b>
 													</a>
 													
 													</div>
