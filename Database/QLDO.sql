@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 28, 2011 at 04:52 PM
+-- Generation Time: Jun 29, 2011 at 03:18 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `dichvu` (
   `donvidv` int(11) DEFAULT NULL,
   `x` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `y` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `khanang` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_thongtinnhadat_phuong` (`phuong`),
   KEY `fk_thongtinhnhadat_khachhang` (`chusohuu`),
@@ -72,17 +73,18 @@ CREATE TABLE IF NOT EXISTS `dichvu` (
   KEY `fk_dichvu_quan` (`quan`),
   KEY `fk_dichvu_phuong` (`phuong`),
   KEY `fk_dichvu_phaply` (`phaply`),
-  KEY `fk_dichvu_donvidv` (`donvidv`)
+  KEY `fk_dichvu_donvidv` (`donvidv`),
+  KEY `fk_dichvu_khanang` (`khanang`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `dichvu`
 --
 
-INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tinh`, `ngaydang`, `ngaycapnhat`, `duong`, `rong`, `dai`, `tang`, `sophongngu`, `sophongtam`, `giaban`, `donvitien`, `status`, `thoihantin`, `loainha`, `phaply`, `huongnha`, `khuyenmai`, `loaidv`, `donvidv`, `x`, `y`) VALUES
-(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03 00:00:00', NULL, 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, 1, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 2, NULL, NULL),
-(3, 'Bán căn hộ the everich Q12 gia rẻ vào ở ngay', NULL, 2, 4, 3, 2, '2010-02-04 00:00:00', NULL, 'lac long quan', 7, 9, 10, 3, 2, 123214, 1, 1, 12, 2, 1, 2, NULL, 1, 1, NULL, NULL),
-(4, 'Bán căn hộ the everich Q10 gia rẻ vào ở ngay', NULL, 2, 3, 3, 3, NULL, NULL, NULL, 3, 4, 3, 3, 2, 43214100, 1, 1, 2, 1, 1, 1, 'Tặng nội thất vào ở ngay', 1, 1, NULL, NULL);
+INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tinh`, `ngaydang`, `ngaycapnhat`, `duong`, `rong`, `dai`, `tang`, `sophongngu`, `sophongtam`, `giaban`, `donvitien`, `status`, `thoihantin`, `loainha`, `phaply`, `huongnha`, `khuyenmai`, `loaidv`, `donvidv`, `x`, `y`, `khanang`) VALUES
+(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03 00:00:00', NULL, 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, 1, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 2, NULL, NULL, NULL),
+(3, 'Bán căn hộ the everich Q12 gia rẻ vào ở ngay', NULL, 2, 4, 3, 2, '2010-02-04 00:00:00', NULL, 'lac long quan', 7, 9, 10, 3, 2, 123214, 1, 1, 12, 2, 1, 2, NULL, 1, 1, NULL, NULL, NULL),
+(4, 'Bán căn hộ the everich Q10 gia rẻ vào ở ngay', NULL, 2, 3, 3, 3, NULL, NULL, NULL, 3, 4, 3, 3, 2, 43214100, 1, 1, 2, 1, 1, 1, 'Tặng nội thất vào ở ngay', 1, 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -202,6 +204,32 @@ INSERT INTO `huongnha` (`id`, `ten`) VALUES
 (7, 'Tây Bắc'),
 (8, 'Tây Nam'),
 (9, 'Không xác định');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `khanang`
+--
+
+DROP TABLE IF EXISTS `khanang`;
+CREATE TABLE IF NOT EXISTS `khanang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `khanang`
+--
+
+INSERT INTO `khanang` (`id`, `ten`) VALUES
+(1, 'Thấp'),
+(2, 'Cao'),
+(3, 'Trung bình'),
+(4, 'Đã mua 1'),
+(5, 'Đã mua 2'),
+(6, 'Đã bán 1'),
+(7, 'Đã bán 2');
 
 -- --------------------------------------------------------
 
@@ -556,6 +584,7 @@ INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `s
 -- Constraints for table `dichvu`
 --
 ALTER TABLE `dichvu`
+  ADD CONSTRAINT `fk_dichvu_khanang` FOREIGN KEY (`khanang`) REFERENCES `khanang` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu` FOREIGN KEY (`donvitien`) REFERENCES `donvitien` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_donvidv` FOREIGN KEY (`donvidv`) REFERENCES `donvidichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_huong` FOREIGN KEY (`huongnha`) REFERENCES `huongnha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
