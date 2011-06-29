@@ -1,4 +1,7 @@
-<?php 
+<?php
+	if($_SESSION["curUser"][8] != 1)
+		header("Location: index.php");
+		
 	$uid = (int) $_GET["uid"];
 	if(empty($uid))
 		return;

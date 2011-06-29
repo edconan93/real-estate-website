@@ -48,8 +48,18 @@
 				break;
 			}
 			case "article":
-				$bodyFile= "module/article.php";
+			{
+				switch($do)
+				{
+					case "edit":
+						$bodyFile= "module/edit_article.php";
+						break;
+					default:
+						$bodyFile= "module/article.php";
+						break;
+				}
 				break;
+			}
 			case "statistics":
 				$bodyFile= "module/statistics.php";
 				break;

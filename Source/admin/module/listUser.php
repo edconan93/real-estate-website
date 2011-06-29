@@ -141,19 +141,18 @@
 			<div class="list">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr class="title">
-						<td width="30px"><div align="center">#</div></td>
-						<td width="30px">
-							<div align="center">
-								<input type="checkbox" name="cbAll" id="cbAll" /></div></td>
-						<td><div align="center">Họ tên</div></td>
-						<td><div align="center">Email đăng nhập</div></td>
-						<td width="50px"><div align="center">Giới tính</div></td>
-						<td><div align="center">Địa chỉ</div></td>
-						<td width="80px"><div align="center">Số ĐT 1</div></td>
-						<td width="80px"><div align="center">Số ĐT 2</div></td>
-						<td><div align="center">Vai trò</div></td>
-						<td><div align="center">Cấp độ</div></td>
-						<td><div align="center">Kích hoạt</div></td>
+						<td width="30px" align="center">#</td>
+						<td width="30px" align="center">
+							<input type="checkbox" name="cbAll" id="cbAll" /></td>
+						<td align="center">Họ tên</td>
+						<td align="center">Email đăng nhập</td>
+						<td width="50px" align="center">Giới tính</td>
+						<td align="center">Địa chỉ</td>
+						<td width="80px" align="center">Số ĐT 1</td>
+						<td width="80px" align="center">Số ĐT 2</td>
+						<td align="center">Vai trò</td>
+						<td align="center">Cấp độ</td>
+						<td align="center">Kích hoạt</td>
 					</tr>
 					<tr>
 						<td align="center">20</td>
