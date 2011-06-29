@@ -51,7 +51,7 @@ rgb(33, 91, 135); text-align: center;">
 					</div>
                     <!--div class='form_error' id="frmError"></div-->
 					<!--div  id="messRegister" name="messRegister" class="form_text" style="width:340px;float:left;"></div-->
-					 <form action="dichvu.php" method="POST" name="frmDangnhap"  onsubmit="return press_btLogin();">
+					<form action="" method="POST" name="frmDangnhap" onsubmit="return press_btLogin();">
 					<div class="form_box">
 						<div  id="messRegister" class="form_text" style="width:340px;float:left;"></div>
 						<br><br>
@@ -75,7 +75,6 @@ rgb(33, 91, 135); text-align: center;">
 						</p>
 						<p style="text-align: right; padding: 0px 10px 0 0; float: right; width: 100px; position: relative;">
 							<a href="">	<img style="border:0;" onclick="return press_closeLogIn();" src="../images/fileclose.png" alt="" /></a>
-                                                   
 						</p>
 					</div>
                     </form>
@@ -133,17 +132,17 @@ rgb(33, 91, 135); text-align: center;">
         }
 		function press_btLogin()
 		{
-		      if(document.getElementById("txtUsernameLogin").value == "")
-		      {
-                    alert("Username không được để trống");
-                    return false;
-		      }
-              if(document.getElementById("txtPasswordLogin").value == "")
-		      {
-                    alert("Password không được để trống");
-                    return false;
-		      }
-			   return true; 
+		    if(document.getElementById("txtUsernameLogin").value == "")
+		    {
+                alert("Username không được để trống");
+                return false;
+		    }
+            if(document.getElementById("txtPasswordLogin").value == "")
+		    {
+                alert("Password không được để trống");
+                return false;
+		    }
+			return true; 
 		}
 	</script>
 </body>
