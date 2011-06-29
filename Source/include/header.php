@@ -25,6 +25,8 @@
    if(isset($_SESSION["curUser"]) && !empty($_SESSION["curUser"]))
    {
 		$curUserEmail=$_SESSION["curUser"][2];
+		$curUserId=$_SESSION["curUser"]["id"];
+		echo "current=".$curUserId;
         $curUser=$_SESSION["curUser"];
 	}
 	//echo "<script language=javascript>alert('zyz')</script>";	
