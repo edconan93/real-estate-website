@@ -78,6 +78,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/admin.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="../js/utilities.js"></script>
 <LINK REL="SHORTCUT ICON" HREF="images/icon.png">
 <title>Bảng điều khiển</title>
 </head>

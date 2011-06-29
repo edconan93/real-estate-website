@@ -472,7 +472,6 @@ $(document).ready(function()
 											</div>
 										</td>
 									</tr>
-									
 									<tr>
 										<td align="right">
 										Địa chỉ liên lạc:<span style="color:red;"> (*)</span>
