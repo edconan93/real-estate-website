@@ -12,36 +12,31 @@
 	<script type="text/javascript" src="../js/custom.js"></script>
 </head>
 <?php
-   //if(isset( session_start ()))
-		session_start ();
-   include ("../DAO/config.php");
+	session_start ();
+	include ("../DAO/config.php");
    	if(isset($_GET["do"])&&$_GET["do"]=="logout")
-     {
-           unset($_SESSION["curUser"]);
-     }
+        unset($_SESSION["curUser"]);
 	 
-   $curUser=null;
-   $curUserEmail=null;
-   if(isset($_SESSION["curUser"]) && !empty($_SESSION["curUser"]))
-   {
+	$curUser=null;
+	$curUserEmail=null;
+	if(isset($_SESSION["curUser"]) && !empty($_SESSION["curUser"]))
+	{
 		$curUserEmail=$_SESSION["curUser"][2];
 		$curUserId=$_SESSION["curUser"]["id"];
-		echo "current=".$curUserId;
         $curUser=$_SESSION["curUser"];
 	}
 	//echo "<script language=javascript>alert('zyz')</script>";	
 		//if(isset($_GET["do"]))
-	 if(isset($_GET["do"])&& $_GET["do"]=="login" && $curUser==null)
-	 {
+	if(isset($_GET["do"])&& $_GET["do"]=="login" && $curUser==null)
+	{
 		   //echo "<a href='' class='a_small' onclick='return press_DangNhap();'>Đăng Nhập</a>";
 		 //  echo "dichvu.php";
 		   //echo "<script> press_DangNhap(); </script>";
 		  // echo 'press_DangNhap()';
-		  echo"<body  onload='press_DangNhapRegister();'>";
+		echo"<body  onload='press_DangNhapRegister();'>";
 		  //echo"<body  onload='show_SuccessRegister();'>";
 		 // echo "<script language=javascript>alert('zyz')</script>";	
-	 }
-   
+	}
 ?>
 <body style="margin: 0pt; padding: 0pt;" bgcolor="#000c1c">
 	<div style="width: 100%; background-image: url(&quot;../images/bg_top.gif&quot;); background-repeat: repeat-x; text-align: center;">
@@ -73,23 +68,27 @@
 											<a href="dichvu.php" class="a_small">Home</a>&nbsp;&nbsp;&nbsp;
 											<img src="../images/kgpg_key1.png" style="vertical-align: middle;"/>
                                             <?php
-                                            if($curUser==null)                                      
+                                            if ($curUser == null)                                  
                                            	    echo "<a href='' class='a_small' onclick='return press_DangNhap();'>Đăng Nhập</a>";
                                             else
                                                 echo "<a href='dichvu.php?do=logout' class='a_small'>Đăng Xuất</a>";
-                                            ?>
-                                           &nbsp;&nbsp;&nbsp;
-										    <?php
-                                            if($curUser==null)                                      
+
+											echo "&nbsp;&nbsp;&nbsp;";
+                                            if ($curUser == null)                                      
 											{
-												echo "<img	src='../images/sign-up.png' style='vertical-align: middle;'/>";
-												echo "<a href='dangky.php' class='a_small'>Đăng Ký</a></div>";
-                                           	  //  echo "<a href='' class='a_small' onclick='return press_DangNhap();'>Đăng Nhập</a>";
+												echo "<img src='../images/sign-up.png' style='vertical-align: middle;'/>";
+												echo "<a href='dangky.php' class='a_small'> Đăng Ký</a>";
 											}
-                                           
+											else
+											{
+												if ($curUser["role"] == 1)
+												{
+													echo "<img src='../images/personal.png' style='vertical-align: middle;'/>";
+													echo "<a href='../admin/index.php' class='a_small'> Administrator</a>";
+												}
+											}
                                             ?>
-										   <!--img	src="../images/sign-up.png" style="vertical-align: middle;"/>
-											<a href="dangky.php" class="a_small">Đăng Ký</a></div-->
+										</div>
 									</td>
 								</tr>
                             </table>

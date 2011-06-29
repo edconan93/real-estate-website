@@ -294,6 +294,8 @@ $(document).ready(function()
     function clickQuanHuyen()
 	{
 		var strTieuDe = $("#cbbQuanHuyen").attr("value");
+		var tmp = document.getElementById("idQuan").value;
+		tmp.value = strTieuDe;
 		alert(strTieuDe);
 		if(strTieuDe == "-1" )
 		{	
@@ -312,6 +314,8 @@ $(document).ready(function()
 	function clickPhuongXa()
 	{	
 		var strTieuDe = $("#cbbPhuongXa").attr("value");
+		var tmp = document.getElementById("idPhuong").value;
+		tmp.value = strTieuDe;
 		alert("phuong="+strTieuDe);
 		if(strTieuDe == "-1" )
 		{	
@@ -720,6 +724,8 @@ if($curUser != null)
 			</td>
 		</tr>
 	</table>
+	<input type="hidden" id="idQuan" value="0" />
+	<input type="hidden" id="idPhuong" value="0" />
 <?php
 	include("../include/footer.php");
 ?>

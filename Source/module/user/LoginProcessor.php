@@ -9,13 +9,15 @@
 		//echo $pass;
 		$result=UsersBus::Login($user,$pass);
 		if($result==null)
-		{
 			$fLogin=false;
-		}
 		else
 		{
 			$_SESSION["curUser"] = $result;
-			header("Location:thanhvien.php?id=".$result['id']);
+			//echo $resultl["role"];
+			if ($resultl["role"] == 1) //admin => log thang vao trang admin.php
+				header("Location:../admin/");
+			else
+				header("Location:thanhvien.php?id=".$result['id']);
 		}  
 	}                     
 	if(isset($fLogin)&&$fLogin==false)
