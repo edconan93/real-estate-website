@@ -3,16 +3,15 @@
 	
 ?>
  <script type="text/javascript">
- // $("#frmDichVu").submit(function()
-	// { 
-		
-	// });
+
 </script>
 
 <div id="frmDichVu" name ="frmDichVu">
 <?php 
-
+if(isset($curUserId))
+{
 echo "<form action='user/xulydichvu.php?id=".$curUserId."' method='POST' id='frmDichVu' name='frmDichVu' >"; 
+}
 ?>
 
 
@@ -51,9 +50,13 @@ echo "<form action='user/xulydichvu.php?id=".$curUserId."' method='POST' id='frm
 											<td style="width:60px;">Loại giao dịch:</td>
 											<td style="width:500px;">
 											<?php 
-											$t= $_GET['loaidvcandang'];
+											if(isset($_GET['loaidvcandang']))
+											{
+											//$t= $_GET['loaidvcandang'];
 											//echo "loaidv=".$_GET['loaidvcandang'];
 											echo "<div id='idLoaiDV' name='idLoaiDV' value='".$_GET["loaidvcandang"]."'></div>";
+											
+											}
 											?>
 												<input name="txtIDLoaiDV" id="txtIDLoaiDV" type="text" style="width:300px;VISIBILITY:hidden;" value="1">
 												<div id="messTenLoai" name="messTenLoai"><b>Cần bán</b></div>											
@@ -327,10 +330,13 @@ for($i=0;$i<count($rs);$i++)
 									<table  cellspacing="2" cellpadding="2" width="98%"  border="0">
 									<!--table cellspacing="2" cellpadding="2" width="98%"-->
 <?php
-if($curUser != null)
+if(isset($curUser) && $curUser != null)
 {
-	include("../BUS/UsersBUS.php");
-	$result=UsersBus::GetUserByEmail($curUserEmail);
+	if(isset($curUserEmail))
+	{
+		include("../BUS/UsersBUS.php");
+		$result=UsersBus::GetUserByEmail($curUserEmail);
+	}
 }
 ?>										
 										<tr style="background:#00397C;height:30px;">
@@ -341,20 +347,33 @@ if($curUser != null)
 											<td align="left">Họ và Tên: </td>
 											<td align="left" colspan="3"><p id="infoHoTen" name="infoHoTen" value="">
 											<?php
-											echo $result['hoten'];
+											if(isset($curUserEmail))
+											{
+												echo $result['hoten'];
+											}
 											?></td>
 										</tr>
 										<tr bgcolor="#F2F5F9">
 											<td align="left">Địa chỉ liên lạc: </td>
-											<td align="left"><p id="infoDiaChi" name="infoDiaChi" value="">763/5/4/30 đường Trường Chinh,P.Tây Thạnh, Quận Tân Phú</p></td>
+											<td align="left"><p id="infoDiaChi" name="infoDiaChi" value="">
+											<?php
+											if(isset($curUserEmail))
+											{
+												echo $result['diachi'];
+											}
+											?>
+											</p></td>
 										</tr>
 										<tr bgcolor="#F2F5F9">
 											<td align="left">Số điện thoại: </td>
 											<td align="left" colspan="3"><p id="infoSDT" name="infoSDT" value="">
 											<?php
-											echo $result['sdt1'];
-											echo "- Mobile:";
-											echo $result['sdt2']; 
+											if(isset($curUserEmail))
+											{
+												echo $result['sdt1'];
+												echo "- Mobile:";
+												echo $result['sdt2']; 
+											}
 											?>
 											</p></td>
 										</tr>
@@ -362,7 +381,10 @@ if($curUser != null)
 											<td align="left">Email liên lạc: </td>
 											<td align="left"><p id="infoSDT" name="infoSDT" value="">
 											<?php
-											echo $result['email'];
+											if(isset($curUserEmail))
+											{
+												echo $result['email'];
+											}
 											?>
 											</p></td>
 										</tr>
