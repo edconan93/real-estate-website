@@ -1,5 +1,7 @@
 ﻿<?php
 	include("../include/header.php");
+	// $quan =(int) $_GET["cbbQuanHuyen"];
+	// echo "quan=".$quan;
 ?>
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
@@ -42,37 +44,7 @@
 								</table>
 							</div>
 							<?php include("../include/box_left.php"); ?>
-							<!--<div style="width: 270px; min-height: 500px; background-image: url(&quot;images/menubg_top.jpg&quot;);
-								background-repeat: no-repeat;">
-								<div style="width: 270px; min-height: 500px; background-image: url(&quot;images/sidebg.jpg&quot;);
-									background-repeat: no-repeat; background-position: center bottom;">
-									<div style="height: 20px;">
-									</div>
-									<div class="menulv1">
-										<a class="a_menu" href="http://ankhanhjvc.com/index.php?menuid=119">Introduction</a></div>
-									<div class="menulv2_active">
-										<a class="a_menu2" href="http://ankhanhjvc.com/index.php?menuid=123" style="color: rgb(0, 
-0, 0);">About the Company</a></div>
-									<div class="menulv2">
-										<a class="a_menu2" href="http://ankhanhjvc.com/index.php?menuid=122">Video Clips</a></div>
-								</div>
-							</div>
-							<div style="margin-top: 20px; padding-top: 18px; padding-left: 10px; width: 168px;
-								height: 86px; background-image: url(&quot;images/hitbg.gif&quot;); background-repeat: no-repeat;">
-								<div style="font-family: tahoma; font-size: 12px; font-weight: bold; color: rgb(14, 58, 95);"
-									title="Tính từ 14:15:46 - 21/08/2009">
-									Số lượt truy cập: <span id="hittotal" style="font-family: tahoma; font-size: 12px;
-										color: rgb(14, 58, 95);">74349</span></div>
-								<div style="font-family: tahoma; font-size: 12px; font-weight: bold; color: rgb(14, 58, 95);">
-									Hôm nay: <span id="hittoday" style="font-family: tahoma; font-size: 12px; color: rgb(118, 125, 152);">
-										60112</span></div>
-								<div style="font-family: tahoma; font-size: 11px; font-weight: normal; color: rgb(14, 58, 95);">
-									Có <span id="onlineloc" style="font-family: tahoma; font-size: 12px; color: rgb(14, 58, 95);">
-										5</span> người đang online</div>
-
-							</div>
-							<div style="height: 30px;">
-							</div>-->
+							
 						</td>
 						<td style="padding: 10px;" valign="top">
 							<div style="width: 686px;">

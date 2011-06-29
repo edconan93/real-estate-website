@@ -1,5 +1,4 @@
 <?php 
-	return;
 	$PATH_BASE = str_replace('//','/',dirname(__FILE__).'/');
 	include_once ($PATH_BASE . '../BUS/QuanBUS.php');
 	include_once ($PATH_BASE . '../BUS/PhuongBUS.php');
@@ -10,7 +9,7 @@
 		$id = $_REQUEST["cbbTinhTP"];
 		$rs=QuanBUS::GetAllQuanById($id);
 		
-		echo"<select id='cbbQuanHuyen' name='cbbQuanHuyen' style='width:220px;' onchange='clickQuanHuyen()'>";
+		echo"<select id='cbbQuanHuyen' name='cbbQuanHuyen' style='width:220px;' onchange='clickQuanHuyen();'>";
 			 echo"<option value='-1' selected>--Chọn quận/huyện--</option>";
 			 for($i=0;$i<count($rs);$i++)
 			 {		
@@ -25,7 +24,7 @@
 		
 		$rs=PhuongBUS::GetAllPhuongById($id);
 		//echo "id=".count($rs);
-		echo"<select id='cbbPhuongXa' name='cbbPhuongXa' style='width:220px;' onchange='clickPhuongXa()'>";
+		echo"<select id='cbbPhuongXa' name='cbbPhuongXa' style='width:220px;' onchange='clickPhuongXa();'>";
 			 echo"<option value='-1' selected>--Chọn Phường/ Xã--</option>";
 			 for($i=0;$i<count($rs);$i++)
 			 {		
