@@ -1,5 +1,27 @@
+<script>
+	function BASIC_GetCookie(Name){
+		var re=new RegExp(Name+"=[^;]+", "i"); //construct RE to search for target name/value pair
+		if (document.cookie.match(re)) //if cookie found
+			return document.cookie.match(re)[0].split("=")[1]; //return its value
+		return "";
+	}
+
+	function BASIC_SetCookie(name, value, days){
+		if (typeof days!="undefined"){ //if set persistent cookie
+			var expireDate = new Date();
+			var expstring=expireDate.setDate(expireDate.getDate()+days);
+			document.cookie = name+"="+value+"; expires="+expireDate.toGMTString();
+		}
+		else //else if this is a session only cookie
+			document.cookie = name+"="+value;
+	}
+	
+	//alert(BASIC_GetCookie("ccbQuanHuyen"));
+	//document.getElementById("ccbQuanHuyen").value = "3";//BASIC_GetCookie("ccbQuanHuyen");
+	//document.getElementById("ccbPhuongXa").value = BASIC_GetCookie("ccbPhuongXa");
+	//alert(BASIC_GetCookie("ccbPhuongXa"));
+</script>
 <?php
-		
 	include ("../../BUS/DichVuBUS.php");
 	include ("../../BUS/DichVu_TienIchBUS.php");
 	$tieude = $_POST["txtTieuDeTin"];
@@ -11,10 +33,10 @@
 	 
 	$tinh =(int) $_POST["cbbTinhTP"];
 	echo "<br>tinh=".$tinh;
-	$quan =(int) $_POST["cbbQuanHuyen"];
-	echo "<br>quan=".$quan;
-	$phuong= (int) $_POST["cbbPhuongXa"];
-	echo "<br>phuong=".$phuong;
+	//$quan =(int) $_POST["messQuanHuyen"];
+	echo "<br>quan=".$_COOKIE["ccbQuanHuyen"];
+	//$phuong= (int) $_POST["cbbPhuongXa"];
+	echo "<br>phuong=".$_COOKIE["ccbPhuongXa"];
 	$time = date('d-m-Y');
 	echo "<br>time=".$time;
 	$timeupdate = date('d-m-Y');

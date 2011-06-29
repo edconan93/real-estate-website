@@ -1,20 +1,8 @@
-﻿<?php
-	//include("../include/header.php");
-	
-?>
- <script type="text/javascript">
-
-</script>
-
-<div id="frmDichVu" name ="frmDichVu">
+﻿<div id="frmDichVu" name ="frmDichVu">
 <?php 
-if(isset($curUserId))
-{
-echo "<form action='user/xulydichvu.php?id=".$curUserId."' method='POST' id='frmDichVu' name='frmDichVu' >"; 
-}
+	if(isset($curUserId))
+		echo "<form action='user/xulydichvu.php?id=".$curUserId."' method='POST' id='frmDichVu' name='frmDichVu' >"; 
 ?>
-
-
 						<td style="padding: 10px;" valign="top">						
 							<div style="width: 686px;">
 								<div id="messLoaiDangTin" name="messLoaiDangTin" style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;font-weight: bold; color:#890C29;">
@@ -313,7 +301,7 @@ for($i=0;$i<count($rs);$i++)
 										<tr>
 											<td>
 											<?php
-												$path = rtrim($_SERVER['PHP_SELF'],"e/module/dangtindichvu.php/")."e/library/fckeditor/";
+												$path = rtrim($_SERVER['PHP_SELF'],"ce/module/dangtindichvu.php/")."ce/library/fckeditor/";
 												include("../library/fckeditor/fckeditor.php");
 												$summary = new FCKeditor("summary");
 												$summary->BasePath = $path;
