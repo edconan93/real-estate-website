@@ -45,7 +45,6 @@
 	}
 ?>
 </div>
-
 <div id="groupIcon">
 	<div class="icon">
     	<a href="index.php?view=user">
@@ -60,9 +59,9 @@
         </a>
     </div>
     <div class="icon">
-    	<a href="index.php?view=database">
-    	<img src="images/icon-48-trash.png" alt="Sao lưu & phục hồi" border="0" /><br />
-        <span>Sao lưu & phục hồi</span>
+    	<a href="index.php?view=business">
+    	<img src="images/Emblem-Money-48.png" alt="Quản lý thu chi" border="0" /><br />
+        <span>Quản lý thu chi</span>
         </a>
     </div>
      <div class="icon">
@@ -72,5 +71,4 @@
         </a>
     </div>
 </div>
-
 <br class="clr" />

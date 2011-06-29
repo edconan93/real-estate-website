@@ -60,9 +60,9 @@
         </a>
     </div>
     <div class="icon">
-    	<a href="index.php?view=database">
-    	<img border="0" alt="Sao lưu &amp; phục hồi" src="../images/icon-48-trash.png"><br>
-        <span>Sao lưu &amp; phục hồi</span>
+    	<a href="index.php?view=business">
+    	<img border="0" alt="Quản lý thu chi" src="../images/Emblem-Money-48.png"><br>
+        <span>Quản lý thu chi</span>
         </a>
     </div>
      <div class="icon">

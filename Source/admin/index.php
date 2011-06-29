@@ -63,11 +63,25 @@
 				}
 				break;
 			}
-			case "statistics":
-				$bodyFile= "module/statistics.php";
-				break;
-			case "database":
-				$bodyFile= "module/database.php";
+			case "business":
+				switch($do)
+				{
+					case "import":
+						$bodyFile= "module/importBusiness.php";
+						break;
+					case "export":
+						$bodyFile= "module/exportBusiness.php";
+						break;
+					case "reim":
+						$bodyFile= "module/exportBusiness.php";
+						break;
+					case "reex":
+						$bodyFile= "module/exportBusiness.php";
+						break;
+					default:
+						$bodyFile= "module/business.php";
+						break;
+				}
 				break;
 		}
 	}
@@ -75,12 +89,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="css/admin.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="../js/utilities.js"></script>
-<LINK REL="SHORTCUT ICON" HREF="images/icon.png">
-<title>Bảng điều khiển</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/admin.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.9.custom.css" />
+	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.9.custom.min.js"></script>
+	<script type="text/javascript" src="js/utilities.js"></script>
+	<LINK REL="SHORTCUT ICON" HREF="images/icon.png">
+	<title>Bảng điều khiển</title>
 </head>
 
 <body>

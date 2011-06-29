@@ -465,7 +465,7 @@ $(document).ready(function()
 										</td>
 										<td align="left">
 										<div style="float:left;">
-										<input type="text" style="width:280px;" value="" name="txtUsername" id="txtUsername" onkeyup="javascript:this.value=this.value.toUpperCase();" ></div>
+										<input type="text" style="width:280px;" value="" name="txtUsername" id="txtUsername" onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
 										<div id="messUsername" name="messUsername" class="mess"></div>
 										<div style="float:left;">
 												<span style="font-size:10px;">Họ tên phải lớn hơn 3 và nhỏ hơn 50 ký tự</span>
