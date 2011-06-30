@@ -86,6 +86,11 @@
 													echo "<img src='../images/personal.png' style='vertical-align: middle;'/>";
 													echo "<a href='../admin/index.php' class='a_small'> Administrator</a>";
 												}
+												else
+												{
+													echo "<img src='../images/personal.png' style='vertical-align: middle;'/>";
+													echo "<a href='thanhvien.php' class='a_small'> Thành viên</a>";
+												}
 											}
                                             ?>
 										</div>

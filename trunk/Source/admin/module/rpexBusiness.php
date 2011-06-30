@@ -1,0 +1,83 @@
+<div id="toolbar">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm"></div>
+	<div class="mid">
+		<div class="title icon_rpex">Thống kê chi phí</div>
+		<div class="icon">
+			<a href="index.php?view=business" id="aCancel">
+				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
+		<div class="icon" style="width:60px;">
+			<a href="" id="aSave">
+				<img src="images/trash-can-delete.png" alt="Xóa" border="0" title="Xóa" /><br />Xóa</a></div>
+		<div class="icon" style="width:60px;">
+			<a href="" id="aSave">
+				<img src="images/export_excel.png" alt="Xuất Excel" border="0" title="Xuất Excel" /><br />Xuất Excel</a></div>
+		<br class="clr" />
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+</div>
+<div id="listItem" style="margin:10px">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm"></div>
+	<div class="mid">
+		<form method="post" name="frmListItem" id="frmListItem">
+			<div style="text-align:center;">
+				Từ ngày:
+				<script>
+					$(function() {
+						$( "#datepickerTuNgay" ).datepicker({dateFormat:'dd/mm/yy', showButtonPanel: true});
+					});
+				</script>
+				<input id="datepickerTuNgay" type="text" style="width:70px;">&nbsp;&nbsp;
+				Đến ngày:
+				<script>
+					$(function() {
+						$( "#datepickerDenNgay" ).datepicker({dateFormat:'dd/mm/yy', showButtonPanel: true});
+					});
+				</script>
+				<input id="datepickerDenNgay" type="text" style="width:70px;">&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" value="Báo cáo" /><br><br><br>
+			</div>
+			<div class="list">
+				<table width="70%" border="0" align="center" cellspacing="0" cellpadding="0">
+					<tr class="title">
+						<td width="30px" align="center">#</td>
+						<td width="30px" align="center">
+							<input type="checkbox" name="cbAll" id="cbAll" /></td>
+						<td width="70px" align="center">Ngày chi</td>
+						<td align="center">Công việc</td>
+						<td width="20%">Người chi</td>
+						<td align="right" width="100px">Số tiền</td>
+					</tr>
+					<tr>
+						<td align="center">1</td>
+						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
+						<td align="center">20-10-2011</td>
+						<td>144/28/13 Châu Văn Liêm, P.14, Q.5, Tp.HCM</td>
+						<td>Nguyễn Thị Đoàn Thanh Phương</td>
+						<td align="right">20.000.000 vnd</td>
+					</tr>
+					<tr>
+						<td align="center">2</td>
+						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
+						<td align="center">20-10-2011</td>
+						<td>144/28/13 Châu Văn Liêm, P.14, Q.5, Tp.HCM</td>
+						<td>12x24 m2, 2 phòng ngủ, 1 tầng</td>
+						<td align="right">20.000.000 vnd</td>
+					</tr>
+					<tr>
+						<td align="right" colspan="5"><b>TỔNG CHI:</b></td>
+						<td align="right"><b>100.000.000 vnd</b></td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+</div>
