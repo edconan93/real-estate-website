@@ -116,6 +116,7 @@ td{ padding:3px}
 .icon_export{ background-image:url(../images/arrow-up-double.png);}
 .icon_rpim{ background-image:url(../images/table_money.png);}
 .icon_rpex{ background-image:url(../images/table_money.png);}
+.icon_rptotal{ background-image:url(../images/US-dollar.png);}
 #listItem { height:1%}
 
 #listItem .list { margin-top:10px;}

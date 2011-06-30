@@ -78,6 +78,9 @@
 					case "rpex":
 						$bodyFile= "module/rpexBusiness.php";
 						break;
+					case "total":
+						$bodyFile= "module/totalReport.php";
+						break;
 					default:
 						$bodyFile= "module/business.php";
 						break;
