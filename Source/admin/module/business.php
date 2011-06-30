@@ -5,12 +5,12 @@
 	<div class="mid">
 		<div class="title icon_business">Quản lý thu chi</div>
 		<div class="icon" style="width:60px;">
-			<a href="index.php?view=business&do=reex">
+			<a href="index.php?view=business&do=rpex">
 				 <img src="images/table_money.png" alt="Nhập thu" border="0" title="Nhập thu" />
 				 <br />Báo cáo chi</a>
 		</div>
 		<div class="icon" style="width:60px;">
-			<a href="index.php?view=business&do=reim">
+			<a href="index.php?view=business&do=rpim">
 				 <img src="images/table_money.png" alt="Nhập thu" border="0" title="Nhập thu" />
 				 <br />Báo cáo thu</a>
 		</div>

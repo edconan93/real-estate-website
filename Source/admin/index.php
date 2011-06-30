@@ -72,11 +72,11 @@
 					case "export":
 						$bodyFile= "module/exportBusiness.php";
 						break;
-					case "reim":
-						$bodyFile= "module/exportBusiness.php";
+					case "rpim":
+						$bodyFile= "module/rpimBusiness.php";
 						break;
-					case "reex":
-						$bodyFile= "module/exportBusiness.php";
+					case "rpex":
+						$bodyFile= "module/rpexBusiness.php";
 						break;
 					default:
 						$bodyFile= "module/business.php";

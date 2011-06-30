@@ -12,7 +12,7 @@
 	<div class="tr"></div>
 	<div class="tm"></div>
 	<div class="mid">
-		<div class="title icon_user">Nhập thu</div>
+		<div class="title icon_import">Nhập thu</div>
 		<div class="icon">
 			<a href="index.php?view=business" id="aCancel">
 				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
