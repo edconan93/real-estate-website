@@ -78,11 +78,31 @@
 					case "rpex":
 						$bodyFile= "module/rpexBusiness.php";
 						break;
-					case "total":
-						$bodyFile= "module/totalReport.php";
-						break;
 					default:
 						$bodyFile= "module/business.php";
+						break;
+				}
+				break;
+			case "statistic":
+				switch($do)
+				{
+					case "profit":
+						$bodyFile= "module/statistic_profit.php";
+						break;
+					case "evaluate":
+						$bodyFile= "module/statistic_evaluate.php";
+						break;
+					case "house":
+						$bodyFile= "module/statistic_house.php";
+						break;
+					case "vip":
+						$bodyFile= "module/statistic_vip.php";
+						break;
+					case "adv":
+						$bodyFile= "module/statistic_adv.php";
+						break;
+					default:
+						$bodyFile= "module/statistic.php";
 						break;
 				}
 				break;
