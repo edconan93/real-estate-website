@@ -25,6 +25,8 @@
 	include ("../../BUS/DichVuBUS.php");
 	include ("../../BUS/DichVu_TienIchBUS.php");
 	$tieude = $_POST["txtTieuDeTin"];
+	
+	
 	echo "<br>tieude=".$tieude;
 	$mota=stripcslashes($_POST["summary"]);
 	echo "<br>mota=".$mota;
@@ -37,8 +39,8 @@
 	echo "<br>quan=".$_COOKIE["ccbQuanHuyen"];
 	//$phuong= (int) $_POST["cbbPhuongXa"];
 	echo "<br>phuong=".$_COOKIE["ccbPhuongXa"];
-	$time = date('d-m-Y');
-	echo "<br>time=".$time;
+	$time = date('Y-m-d h:i:s');
+	echo "time=".$time;
 	$timeupdate = date('d-m-Y');
 	$duong = $_POST["txtDuongPho"];
 	echo "<br>duong=".$duong;

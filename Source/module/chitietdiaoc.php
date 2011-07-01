@@ -179,8 +179,12 @@
                                               }
                                               function codeAddress(map) {
                                                 var address = document.getElementById("address").value;
-                                                geocoder.geocode( { 'address': address}, function(results, status) {
-                                                  if (status == google.maps.GeocoderStatus.OK) {
+												alert("ad="+address);
+                                                geocoder.geocode( { 'address': address}, function(results, status)
+												{
+													///alert("status="+ google.maps.GeocoderStatus.OK+"status ="+status);
+                                                  if (status == google.maps.GeocoderStatus.OK) 
+												  {
                                                     map.setCenter(results[0].geometry.location);
                                                     var marker = new google.maps.Marker({
                                                         map: map, 

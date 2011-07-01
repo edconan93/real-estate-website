@@ -88,7 +88,7 @@ rgb(33, 91, 135); text-align: center;">
                    
 				</div>
 			</td>
-			<td class="transparent" style="width: 30%;">
+			<td class="transparent" style="width: 40%;">
 				&nbsp;
 			</td>
 		</tr>
