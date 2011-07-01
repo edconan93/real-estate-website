@@ -23,8 +23,9 @@
 			// $security_question = $_POST["lbSecurityQuestion"];
 			// $answer = $_POST["txtAnswer"];
 			$fRegister="false";
+			$time = date('Y-m-d');
 			
-			$id = UsersBUS::Add($password,$email,$username,null,$address,$dt1,$dt2,4,4,0);
+			$id = UsersBUS::Add($password,$email,$username,null,$address,$dt1,$dt2,4,4,0,$time);
 			echo "id="+ $id;
 			if(!empty ($id))
 			{	
