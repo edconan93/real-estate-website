@@ -209,7 +209,7 @@ $(document).ready(function()
 		
 	});
 	//check cbbTinhTP
-	$("#cbbTinhTP").blur(function ()
+	$("#cbbTinhTP").change(function ()
 	{
 		var strTieuDe = $("#cbbTinhTP").attr("value");
 		if(strTieuDe == "-1" )
@@ -226,49 +226,32 @@ $(document).ready(function()
 			$("#messLoadQuan").load(serverURL);	
 		}		
 	});
-	//check cbbQuanHuyen
-	$("#cbbQuanHuyen").blur(function ()
-	{
-	alert("Quan Huynsssssssssssssssssssssssss");
-		var strTieuDe = $("#cbbQuanHuyen").attr("value");
+	
+	//check cbbPhuong
+	// $("#cbbPhuong").blur(function ()
+	// {
+		// var strTieuDe = $("#cbbPhuong").attr("value");
 		// if(strTieuDe == "-1" )
 		// {	
-			// $("#messQuanHuyen").attr("innerHTML","Chọn quận/ huyện");
-			// $("#messQuanHuyen").css("color","red");
+			// $("#messPhuong").attr("innerHTML","Chọn phường/xã");
+			// $("#messPhuong").css("color","red");
 		// }
 		// else
 		// {
-			// $("#messQuanHuyen").attr("innerHTML", "");
-			// var serverURL = "checkservice.php?txtTieuDeTin=" + strTieuDe;
-			// $("#messQuanHuyen").load(serverURL);
+			// $("#messPhuong").attr("innerHTML", "");
+			// var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
+			// $("#messPhuong").load(serverURL);
 		// }
 		
-	});
-	//check cbbPhuong
-	$("#cbbPhuong").blur(function ()
-	{
-		var strTieuDe = $("#cbbPhuong").attr("value");
-		if(strTieuDe == "-1" )
-		{	
-			$("#messPhuong").attr("innerHTML","Chọn phường/xã");
-			$("#messPhuong").css("color","red");
-		}
-		else
-		{
-			$("#messPhuong").attr("innerHTML", "");
-			var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
-			$("#messPhuong").load(serverURL);
-		}
-		
-	});
+	// });
 	
 	
-	function loadQuanHuyen()
-	{alert("aaaaaaaaaaa");
-			var strTieuDe = $("#cbbTinhTP").attr("value");
-			var serverURL = "checkservice.php?txtTieuDeTin=" + strTieuDe;
-			$("#messTinhTP").load(serverURL);
-	}
+	// function loadQuanHuyen()
+	// {alert("aaaaaaaaaaa");
+			// var strTieuDe = $("#cbbTinhTP").attr("value");
+			// var serverURL = "checkservice.php?txtTieuDeTin=" + strTieuDe;
+			// $("#messTinhTP").load(serverURL);
+	// }
 	
 	function CheckPhoneNumber(strText)
 	{
@@ -317,10 +300,10 @@ $(document).ready(function()
 			$("#messPhuong").load(serverURL);
 		}
 	}
-	function changeCheck()
-	{
-		var strTieuDe = $("#cbId[]").attr("value");
-	}
+	// function changeCheck()
+	// {
+		// var strTieuDe = $("#cbId[]").attr("value");
+	// }
 	function BASIC_SetCookie(name, value, days)
 	{
 		if (typeof days!="undefined"){ //if set persistent cookie
@@ -441,6 +424,7 @@ $(document).ready(function()
 												<!--select id="cbbQuanHuyen" name="cbbQuanHuyen" style="width:220px;" onchange="clickQuanHuyen()">
 													<option value="-1" selected="selected">--Chọn Quận/ Huyện--</option>	
 												</select-->
+												<input name="txtQuanHuyen" id="txtQuanHuyen" type="text" style="width:300px;" value="">
 												</div>
 												<div id="messQuanHuyen" name="messQuanHuyen" style="width:150px;float:left;"></div>
 											</td>
@@ -449,9 +433,10 @@ $(document).ready(function()
 											<td width="200px"><b>Phường/Xã:</b><span style="color:red;"> *</span></td>
 											<td>
 											<div style="width:310px;float:left;" id="messLoadPhuong" name="messLoadPhuong" >
-												<select id="cbbPhuongXa" name="cbbPhuongXa" style="width:220px;" onchange="clickPhuongXa()">
+												<!--select id="cbbPhuongXa" name="cbbPhuongXa" style="width:220px;" onchange="clickPhuongXa()">
 													<option value="-1">--Chọn Phường/Xã--</option>	
-												</select>
+												</select-->
+												<input name="txtPhuongXa" id="txtPhuongXa" type="text" style="width:300px;" value="">
 												</div>
 												<div id="messPhuong" name="messPhuong" style="width:150px;float:left;"></div>
 											</td>
