@@ -3,7 +3,7 @@ Admin
 2.Phần quản lý nhà:
 + fai lam giống với trang dangtindichvu.php như hình.
 3.Phần thu chi:
-fai cho nhân viên kế toán nhập dữ liệu=> sau khi nhập xong press submit=> đưa vào database=> hiện ở dưới gồm các column
+fai cho nhân viên kế toán nhập dữ liệu=> sau khi nhập xong press submit=> đưa vào database=> hiện ở dưới button submit la 1 table: co nhung column
 
  ngày, số tiền, công việc, nhân viên địa ốc là 
  +nhân viên thu là kế toán
