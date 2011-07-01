@@ -35,9 +35,9 @@
 	 
 	$tinh =(int) $_POST["cbbTinhTP"];
 	echo "<br>tinh=".$tinh;
-	//$quan =(int) $_POST["messQuanHuyen"];
+	$quan =(int) $_COOKIE["ccbQuanHuyen"];
 	echo "<br>quan=".$_COOKIE["ccbQuanHuyen"];
-	//$phuong= (int) $_POST["cbbPhuongXa"];
+	$phuong= (int) $_COOKIE["ccbQuanHuyen"];
 	echo "<br>phuong=".$_COOKIE["ccbPhuongXa"];
 	$time = date('Y-m-d h:i:s');
 	echo "time=".$time;
@@ -58,7 +58,7 @@
 	echo "<br>giaban=".$giaban;
 	$donvitien =(int) $_POST["cbbDonViTien"];
 	echo "<br>donvitien=".$donvitien;
-	$status =(int) "0";//
+	$status =(int) "0";
 	$thoihandangtin= (int) "15";
 	$loainha = (int)$_POST["cbbBatDongSan"];
 	echo "<br>loainha=".$loainha;
@@ -75,17 +75,27 @@
 	echo "<br>donviDV=".$donviDV;
 	$X = "0";
 	$Y = "0";
+	$khanang=(int) "1";
+	$rs=DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang);
+	if($rs == false)
+	{
+		echo "Can't insert into database.Please check again!";
+	}
+	echo "<br>time so sanh =".$time;
+	$iddichvu = DichVuBUS::GetIdByViewDate($time);
+	if($iddichvu == false)
+		echo "<br>ko thay id";
+	echo "<br>idcanho=".$iddichvu;
 	if(isset($_POST["cbId"]))
 	{
 		$arraycheck = $_POST["cbId"];
 		 echo "<br>so=".count($arraycheck);
 		 for($i=0;$i<count($arraycheck);$i++)
 		 {
-				//DichVu_TienIchBUS::Add($idcanho,$i);
-				echo "<br>so=".$arraycheck[$i];
+				//DichVu_TienIchBUS::Add((int)$iddichvu,(int)$arraycheck[$i]);
+				//echo "<br>so=".$arraycheck[$i];
 		 }
 	}
-	//DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y);
     // $idcanho = DichVuBUS::GetIDDichVu();
 
 	

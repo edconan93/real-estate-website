@@ -5,9 +5,23 @@
 class DichVuDAO
 {
 	//lam
-	public static function Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$ngaydang,$ngayupdate,$duong,$rong,$dai,$tang,$sophongngu,$sophongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaidichvu,$donvidv,$X,$Y)
+	public static function Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$ngaydang,$ngayupdate,$duong,$rong,$dai,$tang,$sophongngu,$sophongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaidichvu,$donvidv,$X,$Y,$khanang)
     {
-		 $strSQL = "Insert into dichvu values (NULL, '$tieude', '$mota','$chusohuu','$phuong','$quan','$tinh','$ngaydang','$ngayupdate','$duong','$rong','$dai','$tang','$sophongngu','$sophongtam','$giaban','$donvitien','0','$thoihandangtin','$loainha','$phaply','$huongnha','$khuyenmai','$loaidichvu','$donvidv','$X','$Y')";
+		 $strSQL = "Insert into dichvu values (NULL, '$tieude', '$mota','$chusohuu','$phuong','$quan','$tinh','$ngaydang','$ngayupdate','$duong','$rong','$dai','$tang','$sophongngu','$sophongtam','$giaban','$donvitien','0','$thoihandangtin','$loainha','$phaply','$huongnha','$khuyenmai','$loaidichvu','$donvidv','$X','$Y',$khanang)";
+		    $cn = DataProvider::Open ();
+			DataProvider::MoreQuery ($strSQL,$cn);
+			
+			if(mysql_affected_rows () == 0)
+				$result=false;
+			else
+				$result=mysql_insert_id ();
+				
+			DataProvider::Close ($cn);
+            return $result;
+	}
+	public static function GetIdByViewDate($viewdate)
+	{
+		    $strSQL = "select id from dichvu where ngaydang='$viewdate'";
 		    $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			
