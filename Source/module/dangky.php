@@ -93,14 +93,15 @@ $(document).ready(function()
 			if(strUsername.length< 6 || strUsername.length > 50)
 			{				//alert(strUsername);
 				flag=false;
-				$("#messUsername").attr("innerHTML","Tên đăng nhập từ 6-50 ký tự");
+				$("#messUsername").attr("innerHTML","Nhập từ 6-50 ký tự");
 				$("#messUsername").css("color","red");
 			}		
 			else
 			{
 			  //  flag=true;
 			    $("#messUsername").attr("innerHTML","");
-				//$("#messUsername").css("color","red");
+				var serverURL = "checkPassword.php?txtPassword=" + strUsername;
+				$("#messUsername").load(serverURL);
 			}
 
 		});
