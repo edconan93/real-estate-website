@@ -39,7 +39,7 @@ Lớp UsersBUS
 <?php 
 	class UsersBUS
 	{
-		public static function Add($password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status,$updatedate)
+		public static function Add($password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status,$updatedate,$ip)
 		{
 			$password=trim($password);
 			$password = md5 ($password);
@@ -52,16 +52,16 @@ Lớp UsersBUS
 			// $role=addslashes($role);
 			// $level=addslashes($level);
 			
-			return UsersDAO::Add ($password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status,$updatedate);
+			return UsersDAO::Add ($password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status,$updatedate,$ip);
 			
 		}
 		
-		public static function Update($id,$password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status=1,$updatedate)
+		public static function Update($id,$password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status=1,$updatedate,$ip)
 		{
 		    $password = md5 ($password);
 			$email =addslashes($email);	
 			
-			return UsersDAO::Update ($id, $password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status,$updatedate);
+			return UsersDAO::Update ($id, $password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status,$updatedate,$ip);
 		}
 		
 		public static function SetStatus ($id, $status)

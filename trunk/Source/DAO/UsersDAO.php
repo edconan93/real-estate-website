@@ -40,9 +40,9 @@
 <?php
 	class UsersDAO
 	{
-    	public static function Add ($password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status,$updatedate)
+    	public static function Add ($password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status,$updatedate,$ip)
         {
-            $strSQL = "Insert into user values (NULL, '$password', '$email', '$hoten','$gioitinh', '$diachi','$sdt1','$sdt2','$role','$level','$status','$updatedate')";
+            $strSQL = "Insert into user values (NULL, '$password', '$email', '$hoten','$gioitinh', '$diachi','$sdt1','$sdt2','$role','$level','$status','$updatedate','$ip')";
 		    $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			
@@ -55,12 +55,12 @@
             return $result;
         }
 
-    	public static function Update ($id,$password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status,$updatedate)
+    	public static function Update ($id,$password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status,$updatedate,$ip)
         {
 
             $strSQL = "update khgiaodich set password='$password', email='$email',hoten='$hoten',gioitinh='$gioitinh',diachi='$diachi'
 						sdt1='$sdt1',sodt2='$sodt2', role='$role',
-			 			level='$level', status= '$status', ngaycapnhat='$updatedate'
+			 			level='$level', status= '$status', ngaycapnhat='$updatedate',$ip='$ip' 
 						where id=$id";
 		    $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
