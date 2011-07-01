@@ -1,0 +1,17 @@
+﻿1.search theo loai dia oc oh user and admin
+Admin
+2.Phần quản lý nhà:
++ fai lam giống với trang dangtindichvu.php như hình.
+3.Phần thu chi:
+fai cho nhân viên kế toán nhập dữ liệu=> sau khi nhập xong press submit=> đưa vào database=> hiện ở dưới gồm các column
+
+ ngày, số tiền, công việc, nhân viên địa ốc là 
+ +nhân viên thu là kế toán
+ +nhân viên địa ốc là nhân viên làm nhiệm vụ đó với số tiền lấy từ kế toán
+4.Phần báo cáo thu chi:
+ -phải có chức năng search theo tháng, theo năm =>lợi nhuận
+ -search tên nhân viên địa ốc để khen thưởng theo tháng hoặc quý or năm
+5. Bảng thống kê:
+ bảng lợi nhuận theo tháng, quý, năm.
+ những nhân viên thành tích tốt, đáng khen thưởng
+ thống kê nhà,Vip,thống kê quảng cáo
