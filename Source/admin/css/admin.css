@@ -112,11 +112,16 @@ td{ padding:3px}
 .icon_article{ background-image:url(../images/icon-48-article.png);}
 .icon_stats{ background-image:url(../images/icon-48-stats.png);}
 .icon_business{ background-image:url(../images/Emblem-Money-48.png);}
-.icon_import{ background-image:url(../images/arrow-down-double.png);}
-.icon_export{ background-image:url(../images/arrow-up-double.png);}
-.icon_rpim{ background-image:url(../images/table_money.png);}
-.icon_rpex{ background-image:url(../images/table_money.png);}
+.icon_import{ background-image:url(../images/arrow-down-48.png);}
+.icon_export{ background-image:url(../images/arrow-up-48.png);}
+.icon_rpim{ background-image:url(../images/chart.png);}
+.icon_rpex{ background-image:url(../images/chart.png);}
 .icon_rptotal{ background-image:url(../images/US-dollar.png);}
+.icon_statistic{ background-image:url(../images/statistics.png);}
+.icon_staff{ background-image:url(../images/user_group.png);}
+.icon_house{ background-image:url(../images/home.png);}
+.icon_vip{ background-image:url(../images/vip.png);}
+.icon_adv{ background-image:url(../images/kblogger.png);}
 #listItem { height:1%}
 
 #listItem .list { margin-top:10px;}

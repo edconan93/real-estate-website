@@ -25,22 +25,35 @@
 	<div class="tm"></div>
 	<div class="mid">
 		<form method="post" name="frmListItem" id="frmListItem">
-			<div style="text-align:center;">
-				Từ ngày:
-				<script>
-					$(function() {
-						$( "#datepickerTuNgay" ).datepicker({dateFormat:'dd/mm/yy', showButtonPanel: true});
-					});
-				</script>
-				<input id="datepickerTuNgay" type="text" style="width:70px;">&nbsp;&nbsp;
-				Đến ngày:
-				<script>
-					$(function() {
-						$( "#datepickerDenNgay" ).datepicker({dateFormat:'dd/mm/yy', showButtonPanel: true});
-					});
-				</script>
-				<input id="datepickerDenNgay" type="text" style="width:70px;">&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" value="Báo cáo" /><br><br><br>
+			<div style="text-align:center; padding-bottom:30px;">
+				<input type="radio" name="type" value="1" checked /> Tháng 
+					<select>
+						<option value="1"> 1 </option>
+						<option value="2"> 2 </option>
+						<option value="3"> 3 </option>
+						<option value="4"> 4 </option>
+						<option value="5"> 5 </option>
+						<option value="6"> 6 </option>
+						<option value="7"> 7 </option>
+						<option value="8"> 8 </option>
+						<option value="9"> 9 </option>
+						<option value="10"> 10 </option>
+						<option value="11"> 11 </option>
+						<option value="12"> 12 </option>
+					</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="type" value="2" /> Quý 
+					<select>
+						<option value="1"> 1 </option>
+						<option value="2"> 2 </option>
+						<option value="3"> 3 </option>
+						<option value="4"> 4 </option>
+					</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="type" value="3" /> Năm 
+				<input type="text" style="width:40px;" onkeypress="return keypress(event);" />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="submit" value="Xem" />
 			</div>
 			<div class="list">
 				<table width="70%" border="0" align="center" cellspacing="0" cellpadding="0">
