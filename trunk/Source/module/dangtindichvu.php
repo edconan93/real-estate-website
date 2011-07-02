@@ -331,7 +331,7 @@ $(document).ready(function()
 						</td>
 <!--BEGIN -->		
 <div id="frmDichVu1" name ="frmDichVu1">
-<?php echo "<form action='user/xulydichvu.php?id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu'>"; 
+<?php echo "<form action='user/xulydichvu.php?id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data'>"; 
 ?>
 <!--form action="user/xulydichvu.php?id='.$curUserId.' method="post" id="frmDichVu" name="frmDichVu" -->
 						<td style="padding: 10px;" valign="top">						
@@ -613,7 +613,7 @@ for($i=0;$i<count($rs);$i++)
 												$summary->Create();
 											?>
 											Hình ảnh (450px * 300px)
-												<input id="txtUpload" type="file" name="txtUpload" class="button_submit">
+												<input id="ffImage" type="file" name="ffImage" class="button_submit">
 												<input id="bttUpload" type="submit" value="Upload" name="bttUpload" class="ButtonWithbackground">
 											</td>
 										</tr>

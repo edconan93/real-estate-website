@@ -24,6 +24,7 @@
 <?php
 	include ("../../BUS/DichVuBUS.php");
 	include ("../../BUS/DichVu_TienIchBUS.php");
+	include ("../../BUS/HinhAnhBUS.php");
 	$tieude = $_POST["txtTieuDeTin"];
 	
 	
@@ -76,27 +77,72 @@
 	$X = "0";
 	$Y = "0";
 	$khanang=(int) "1";
+	$flagInsert = true;
+	//add new dichvu
 	$rs=DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang);
 	if($rs == false)
 	{
+		$flagInsert = false;
 		echo "Can't insert into database.Please check again!";
 	}
-	echo "<br>time so sanh =".$time;
-	$iddichvu = DichVuBUS::GetIdByViewDate($time);
-	if($iddichvu == false)
-		echo "<br>ko thay id";
-	echo "<br>idcanho=".$iddichvu;
+
 	if(isset($_POST["cbId"]))
 	{
 		$arraycheck = $_POST["cbId"];
 		 echo "<br>so=".count($arraycheck);
 		 for($i=0;$i<count($arraycheck);$i++)
 		 {
-				//DichVu_TienIchBUS::Add((int)$iddichvu,(int)$arraycheck[$i]);
-				//echo "<br>so=".$arraycheck[$i];
+				DichVu_TienIchBUS::Add((int)$rs,(int)$arraycheck[$i]);
 		 }
 	}
-    // $idcanho = DichVuBUS::GetIDDichVu();
+	//upload file
+	$flag = true;
+	if($_FILES["ffImage"]["error"] > 0 )	
+		$flag = false;
+	if($flag && $_FILES["ffImage"]["size"] == 0 || $_FILES["ffImage"]["size"] > 1024 * 1024)
+		$flag = false;
+	if($flag)
+	{
+	    echo "<br> file uploaded not failed";
+		$arrType = explode ("/",$_FILES["ffImage"]["type"]);
+		if($arrType[0]!="image")
+		{
+			$flagInsert = false;
+			$flag = false;
+			}
+	}
+	if($flag)
+	{
+		$PATH_BASE = str_replace("//","/",dirname(__FILE__)."/");
+		$random = rand (1,1000000);		
+		$path = $PATH_BASE . "../../images/upload";
+		if(!is_dir("$path/$chusohuu"))
+		{
+			mkdir("$path/$chusohuu");
+		}
+		if(!is_dir("$path/$chusohuu/Picture_House"))
+			mkdir("$path/$chusohuu/Picture_House");
+		$path = "$path/$chusohuu/Picture_House/";
+		move_uploaded_file($_FILES["ffImage"]["tmp_name"],$path.$random.$_FILES["ffImage"]["name"]);
+		$picture_path = "images/upload/$chusohuu/Picture_House/".$random.$_FILES["ffImage"]["name"];
+		echo "<br>path=".$picture_path;
+		$kq=HinhAnhBUS::insert($picture_path,(int)$rs);
+		if($kq == false)
+		{
+			$flagInsert = false;
+			echo "<br>Insert image = false";
+		}
+		else
+			echo "upload picture finish!";
+		
+	}
+	if($flag == true)
+	{
+		header("Location:../thanhvien.php?dangtin=successfully");
+	}
+	else
+	{
+	}
 
 	
 			
