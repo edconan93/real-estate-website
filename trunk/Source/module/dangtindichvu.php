@@ -8,7 +8,149 @@
  //xu ly submit
 $(document).ready(function()
 {
-	//xu ly tieu de
+	var strLoaiDV = $("#txtIDLoaiDV").attr("value");
+	$("#frmDichVu").submit(function()
+	{ 	
+		//alert(strLoaiDV);
+		var flag=true;
+		var strTieuDe = $("#txtTieuDeTin").attr("value");
+		if(strTieuDe.length < 1  )
+		{	
+			flag=false;
+			$("#messTieuDe").attr("innerHTML","Phải đặt tiêu đề tin");
+			$("#messTieuDe").css("color","red");
+		}
+		if(strLoaiDV == 1 || strLoaiDV == 3)
+		{
+			var strTieuDe = $("#txtDuongPho").attr("value");
+			if(strTieuDe.length < 1  )
+			{	flag=false;
+				$("#messDuongPho").attr("innerHTML","Phải thêm tên đường");
+				$("#messDuongPho").css("color","red");
+			}
+			var strTieuDe = $("#txtSoNha").attr("value");
+			if(strTieuDe.length < 1  )
+			{	flag=false;
+				$("#messSoNha").attr("innerHTML","Phải có số nhà");
+				$("#messSoNha").css("color","red");
+			}
+		}
+		
+		var strTieuDe = $("#txtGia").attr("value");
+		if(strTieuDe.length < 1  )
+		{	flag=false;
+			$("#messGia").attr("innerHTML","Phải thêm giá nhà");
+			$("#messGia").css("color","red");
+		}
+		if(CheckPhoneNumber(strTieuDe))
+		{	flag=false;
+			$("#messGia").attr("innerHTML","Nhập số giá nhà");
+			$("#messGia").css("color","red");
+		}
+		
+		var strTieuDeR = $("#txtRong").attr("value");
+		var strTieuDe = $("#txtDai").attr("value");
+		if(strLoaiDV == 1 || strLoaiDV == 3)
+		{
+			
+			if(strTieuDe.length < 1 || strTieuDeR<1 )
+			{	flag=false;
+				$("#messKichThuoc").attr("innerHTML","Nhập D-R");
+				$("#messKichThuoc").css("color","red");
+			}
+			if(CheckPhoneNumber(strTieuDe) || CheckPhoneNumber(strTieuDeR))
+			{	flag=false;
+				$("#messKichThuoc").attr("innerHTML","Nhập số");
+				$("#messKichThuoc").css("color","red");
+			}
+		}
+		else
+		{
+			if(strTieuDe.length < 1 || strTieuDeR<1 )
+			{	//flag=false;
+				$("#messKichThuoc").attr("innerHTML","");
+				//$("#messKichThuoc").css("color","red");
+			}
+			else if(CheckPhoneNumber(strTieuDe) || CheckPhoneNumber(strTieuDeR))
+			{	
+				flag=false;
+				$("#messKichThuoc").attr("innerHTML","Nhập số");
+				$("#messKichThuoc").css("color","red");
+			}
+		}
+		var strTieuDe = $("#txtTang").attr("value");
+		if(strTieuDe.length < 1 )
+		{	
+			$("#messTang").attr("innerHTML", "");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			flag=false;
+			$("#messTang").attr("innerHTML","Nhập số");
+			$("#messTang").css("color","red");
+		}
+		
+		var strTieuDe = $("#txtPhongTam").attr("value");
+		if(strTieuDe.length < 1 )
+		{	
+			$("#messPhongTam").attr("innerHTML", "");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			flag=false;
+			$("#messPhongTam").attr("innerHTML","Nhập số");
+			$("#messPhongTam").css("color","red");
+		}
+		
+		var strTieuDe = $("#txtPhongNgu").attr("value");
+		if(strTieuDe.length < 1 )
+		{	
+		$("#messPhongNgu").attr("innerHTML", "");
+		}
+		else if(CheckPhoneNumber(strTieuDe))
+		{
+			flag=false;
+			$("#messPhongNgu").attr("innerHTML","Nhập số");
+			$("#messPhongNgu").css("color","red");
+		}
+		var strTieuDe = $("#cbbBatDongSan").attr("value");
+		if(strTieuDe == "-1" )
+		{	
+			flag=false;
+			$("#messLoaiBatDongSan").attr("innerHTML","Chọn loại nhà");
+			$("#messLoaiBatDongSan").css("color","red");
+		}
+		
+		var strTieuDe = $("#cbbTinhTP").attr("value");
+		if(strTieuDe == "-1" )
+		{	flag=false;
+			$("#messTinhTP").attr("innerHTML","Chọn tỉnh/ thành phố");
+			$("#messTinhTP").css("color","red");
+		}
+		
+		var strTieuDe = $("#cbbQuanHuyen").attr("value");
+		if(strLoaiDV == 1 || strLoaiDV == 3)
+		{
+			if(strTieuDe == "-1" )
+			{	flag=false;
+				$("#messQuanHuyen").attr("innerHTML","Chọn quận/ huyện");
+				$("#messQuanHuyen").css("color","red");
+			}
+			var strTieuDe = $("#cbbPhuongXa").attr("value");
+			if(strTieuDe == "-1" )
+			{	flag=false;
+				$("#messPhuong").attr("innerHTML","Chọn phường/xã");
+				$("#messPhuong").css("color","red");
+			}
+		}
+		
+		if(flag==false)
+				alert ("Có lỗi trong thông tin đăng ký. Xin kiểm tra lại");
+		return flag;
+	});
+	
+	
+	//xu ly tieu de 	
 	$("#txtTieuDeTin").blur(function ()
 	{
 		//alert("aaa"); //$summary=stripcslashes($_POST["summary"]);
@@ -28,11 +170,12 @@ $(document).ready(function()
 			$("#messTieuDe").load(serverURL);
 		}
 	});
+
 	//check duong pho
 	$("#txtDuongPho").blur(function ()
 	{
 		var strTieuDe = $("#txtDuongPho").attr("value");
-		if(strTieuDe.length < 1  )
+		if(strTieuDe.length < 1 && (strLoaiDV == 1 || strLoaiDV == 3) )
 		{	
 			$("#messDuongPho").attr("innerHTML","Phải thêm tên đường");
 			$("#messDuongPho").css("color","red");
@@ -48,7 +191,7 @@ $(document).ready(function()
 	$("#txtSoNha").blur(function ()
 	{
 		var strTieuDe = $("#txtSoNha").attr("value");
-		if(strTieuDe.length < 1  )
+		if(strTieuDe.length < 1  && (strLoaiDV == 1 || strLoaiDV == 3))
 		{	
 			$("#messSoNha").attr("innerHTML","Phải có số nhà");
 			$("#messSoNha").css("color","red");
@@ -92,7 +235,7 @@ $(document).ready(function()
 	{
 		var strTieuDeR = $("#txtRong").attr("value");
 		var strTieuDe = $("#txtDai").attr("value");
-		if(strTieuDe.length < 1 || strTieuDeR<1 )
+		if(strTieuDe.length < 1 || strTieuDeR<1 && (strLoaiDV == 1 || strLoaiDV == 3))
 		{	
 			$("#messKichThuoc").attr("innerHTML","Nhập D-R");
 			$("#messKichThuoc").css("color","red");
@@ -114,7 +257,7 @@ $(document).ready(function()
 	{
 		var strTieuDe = $("#txtRong").attr("value");
 		var strTieuDeD = $("#txtDai").attr("value");
-		if(strTieuDe.length < 1  || strTieuDeD <1 )
+		if(strTieuDe.length < 1  || strTieuDeD <1 && (strLoaiDV == 1 || strLoaiDV == 3))
 		{	
 			$("#messKichThuoc").attr("innerHTML","Nhập D-R");
 			$("#messKichThuoc").css("color","red");
@@ -227,32 +370,7 @@ $(document).ready(function()
 		}		
 	});
 	
-	//check cbbPhuong
-	// $("#cbbPhuong").blur(function ()
-	// {
-		// var strTieuDe = $("#cbbPhuong").attr("value");
-		// if(strTieuDe == "-1" )
-		// {	
-			// $("#messPhuong").attr("innerHTML","Chọn phường/xã");
-			// $("#messPhuong").css("color","red");
-		// }
-		// else
-		// {
-			// $("#messPhuong").attr("innerHTML", "");
-			// var serverURL = "checkservice.php?txtTieuDeTin=" + "strTieuDe";
-			// $("#messPhuong").load(serverURL);
-		// }
-		
-	// });
-	
-	
-	// function loadQuanHuyen()
-	// {alert("aaaaaaaaaaa");
-			// var strTieuDe = $("#cbbTinhTP").attr("value");
-			// var serverURL = "checkservice.php?txtTieuDeTin=" + strTieuDe;
-			// $("#messTinhTP").load(serverURL);
-	// }
-	
+
 	function CheckPhoneNumber(strText)
 	{
 		var strTemp="0123456789";
@@ -266,6 +384,11 @@ $(document).ready(function()
 });	
 </script>
 <script type="text/javascript">
+    function clearCookie()
+	{
+		BASIC_SetCookie("ccbQuanHuyen", -1, 1);
+		BASIC_SetCookie("ccbPhuongXa", -1, 1);
+	}
     function clickQuanHuyen()
 	{
 		var strTieuDe = $("#cbbQuanHuyen").attr("value");
@@ -277,7 +400,6 @@ $(document).ready(function()
 		}
 		else
 		{
-			// $("#messQuanHuyen").attr("innerHTML", "");
 			var serverURL = "checkservice.php?cbbPhuongXa=" + strTieuDe;
 			$("#messLoadPhuong").load(serverURL);
 			var serverURL = "checkservice.php?txtTieuDeTin="+strTieuDe;
@@ -300,10 +422,6 @@ $(document).ready(function()
 			$("#messPhuong").load(serverURL);
 		}
 	}
-	// function changeCheck()
-	// {
-		// var strTieuDe = $("#cbId[]").attr("value");
-	// }
 	function BASIC_SetCookie(name, value, days)
 	{
 		if (typeof days!="undefined"){ //if set persistent cookie
@@ -332,12 +450,30 @@ $(document).ready(function()
 <!--BEGIN -->		
 <div id="frmDichVu1" name ="frmDichVu1">
 <?php echo "<form action='user/xulydichvu.php?id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data'>"; 
+if(isset($_GET['loaidvcandang']))
+	$loaitindichvu = $_GET['loaidvcandang'];
+else
+	 header("Location:noiquidangtin.php");
 ?>
 <!--form action="user/xulydichvu.php?id='.$curUserId.' method="post" id="frmDichVu" name="frmDichVu" -->
-						<td style="padding: 10px;" valign="top">						
+						<td style="padding: 10px;" valign="top">	
+						
 							<div style="width: 686px;">
 								<div id="messLoaiDangTin" name="messLoaiDangTin" style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;font-weight: bold; color:#890C29;">
-									Đăng Tin Cần Bán</div>
+								<?php
+								if($loaitindichvu == 1)
+									echo "Đăng Tin Cần Bán";
+								else if ($loaitindichvu == 2)
+								{
+									echo "Đăng tin cần mua";
+								}else if($loaitindichvu == 3)
+								{
+									echo "Đăng tin cho thuê";
+								}
+								else
+									echo "Đăng tin cần thuê";
+								?>
+								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content">
 									<div class="notice">
@@ -364,11 +500,29 @@ $(document).ready(function()
 											<td style="width:60px;">Loại giao dịch:</td>
 											<td style="width:500px;">
 												<?php 
+												if(isset($_GET['loaidvcandang']))
+												{
 													$t= $_GET['loaidvcandang'];
 													echo "<div id='idLoaiDV' name='idLoaiDV' value='".$_GET["loaidvcandang"]."'></div>";
+													echo "<input name='txtIDLoaiDV' id='txtIDLoaiDV' type='text' style='width:300px;display:none;'
+													value='".$loaitindichvu."'>";
+												}
 												?>
 												<input name="txtIDLoaiDV" id="txtIDLoaiDV" type="text" style="width:300px;display:none;" value="1">
-												<div id="messTenLoai" name="messTenLoai"><b>Cần bán</b></div>											
+												<div id="messTenLoai" name="messTenLoai"><b>
+												<?php
+												if($loaitindichvu == 1)
+													echo "Cần Bán";
+												else if ($loaitindichvu == 2)
+												{
+													echo "Cần mua";
+												}else if($loaitindichvu == 3)
+												{
+													echo "Cho thuê";
+												}
+												else
+													echo "Cần thuê";
+												?></b></div>											
 											</td>
 										</tr>
 										<tr bgcolor="#F2F5F9" height="30px">
@@ -402,7 +556,7 @@ $(document).ready(function()
 											<td width="200px"><b>Tỉnh/Thành Phố:</b><span style="color:red;"> *</span></td>
 											<td style="float:left;">
 												<div style="width:310px;float:left;">
-													<select id="cbbTinhTP" name="cbbTinhTP" style="width:220px;" onchange=(loadQuanHuyen();)>
+													<select id="cbbTinhTP" name="cbbTinhTP" style="width:220px;" onchange="clearCookie();">
 														<option value="-1" selected="selected">--Chọn Tỉnh/Thành Phố--</option>
 														<?php
 															include("../BUS/TinhBUS.php");
@@ -418,41 +572,78 @@ $(document).ready(function()
 											</td>
 										</tr>
 										<tr bgcolor="#F2F5F9" height="30px">
+											<?php 
+											if($loaitindichvu == 2 || $loaitindichvu == 4)
+											{
+												echo "<td width='200px'>Quận/Huyện:</td>";
+												
+											}
+											else
+											{
+											?>
 											<td width="200px"><b>Quận/Huyện:</b><span style="color:red;"> *</span></td>
+											<?php } ?>
 											<td>
 												<div style="width:310px;float:left;" id="messLoadQuan" name="messLoadQuan">
 												<!--select id="cbbQuanHuyen" name="cbbQuanHuyen" style="width:220px;" onchange="clickQuanHuyen()">
 													<option value="-1" selected="selected">--Chọn Quận/ Huyện--</option>	
 												</select-->
-												<input name="txtQuanHuyen" id="txtQuanHuyen" type="text" style="width:300px;" value="">
+												<input name="txtQuanHuyen" id="txtQuanHuyen" type="text" style="width:300px;" value="" disabled="disabled">
 												</div>
 												<div id="messQuanHuyen" name="messQuanHuyen" style="width:150px;float:left;"></div>
 											</td>
 										</tr>
 										<tr bgcolor="#F2F5F9" height="30px">
+										<?php 
+											if($loaitindichvu == 2 || $loaitindichvu == 4)
+											{
+												echo "<td width='200px'>Phường/Xã:</td>";
+											}
+											else
+											{
+											?>
 											<td width="200px"><b>Phường/Xã:</b><span style="color:red;"> *</span></td>
+											<?php }  ?>
 											<td>
 											<div style="width:310px;float:left;" id="messLoadPhuong" name="messLoadPhuong" >
 												<!--select id="cbbPhuongXa" name="cbbPhuongXa" style="width:220px;" onchange="clickPhuongXa()">
 													<option value="-1">--Chọn Phường/Xã--</option>	
 												</select-->
-												<input name="txtPhuongXa" id="txtPhuongXa" type="text" style="width:300px;" value="">
+												<input name="txtPhuongXa" id="txtPhuongXa" type="text" style="width:300px;" value="" disabled="disabled">
 												</div>
 												<div id="messPhuong" name="messPhuong" style="width:150px;float:left;"></div>
 											</td>
 										</tr>
 										
 										<tr bgcolor="#F2F5F9" height="30px">
+										<?php 
+											if($loaitindichvu == 2 || $loaitindichvu == 4)
+											{
+												echo "<td width='200px'>Đường/Phố:</td>";
+											}
+											else
+											{
+											?>
 											<td width="200px"><b>Đường/Phố:</b><span style="color:red;"> *</span></td>
+											<?php } ?>
 											<td>
 											<div style="width:310px;float:left;"> 
-												<input name="txtDuongPho" id="txtDuongPho" type="text" style="width:300px;" value="">
+												<input name="txtDuongPho" id="txtDuongPho" type="text" style="width:300px;" value="" >
 												</div>
 												<div id="messDuongPho" name="messDuongPho" style="width:150px;float:left;"></div>
 											</td>
 										</tr>
 										<tr bgcolor="#F2F5F9" height="30px">
+										<?php 
+										if($loaitindichvu == 2 || $loaitindichvu == 4)
+										{
+											echo "<td width='200px'>Số /Lô nhà:</td>";
+										}
+										else
+										{
+										?>
 											<td><b>Số nhà/Số lô:</b><span style="color:red;"> *</span></td>
+										<?php } ?>
 											<td>
 												<div style="width:310px;float:left;"> 
 												<input  id="txtSoNha" name="txtSoNha" type="text" style="width:300px;" value="">
@@ -506,7 +697,16 @@ for($i=0;$i<count($rs);$i++)
 <!--THÔNG TIN BẤT ĐỘNG SẢN -->				<td colspan="4" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN BẤT ĐỘNG SẢN</td>
 										</tr><br>
 										<tr>
+										<?php 
+										if($loaitindichvu == 2 || $loaitindichvu == 4)
+										{
+											echo "<td width='200px'>Kích thước:</td>";
+										}
+										else
+										{
+										?>
 											<td width="200px" valign="button"><b>Kích thước:</b><span style="color:red;"> *</span></td>
+										<?php } ?>
 											<td>
 												<div style="width:110px;float:left;">
 													<b>D </b><input id="txtDai" name="txtDai" class="Textbox" type="text" style="width:25px;" >
@@ -638,7 +838,7 @@ for($i=0;$i<count($rs);$i++)
 										</tr>
 										<tr bgcolor="#F2F5F9" height="30px">
 											<td>Địa chỉ liên lạc:</td>
-											<td><span id="infoDiaChi" name="infoDiaChi">763/5/4/30 đường Trường Chinh,P.Tây Thạnh, Quận Tân Phú</span></td>
+											<td><span id="infoDiaChi" name="infoDiaChi"><?php echo $curUserAddress;?></span></td>
 										</tr>
 										<tr bgcolor="#F2F5F9" height="30px">
 											<td>Số điện thoại: </td>
