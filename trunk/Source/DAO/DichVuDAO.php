@@ -110,6 +110,7 @@ class DichVuDAO
         $resultSet=mysql_fetch_array ($result);
         return $resultSet[0];
     }
+	
 }
 
 ?>
