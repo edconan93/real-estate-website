@@ -34,12 +34,7 @@
 	$chusohuu=(int) $_GET['id'];
 	echo "<br>chusohuu=".$chusohuu;
 	 
-	$tinh =(int) $_POST["cbbTinhTP"];
-	echo "<br>tinh=".$tinh;
-	$quan =(int) $_COOKIE["ccbQuanHuyen"];
-	echo "<br>quan=".$_COOKIE["ccbQuanHuyen"];
-	$phuong= (int) $_COOKIE["ccbQuanHuyen"];
-	echo "<br>phuong=".$_COOKIE["ccbPhuongXa"];
+	
 	$time = date('Y-m-d h:i:s');
 	echo "time=".$time;
 	$timeupdate = date('d-m-Y');
@@ -71,13 +66,32 @@
 	echo "<br>khuyenmai=".$khuyenmai;
 	$loaiDV = (int)$_POST["txtIDLoaiDV"];
 	echo "<br>loaiDV=".$loaiDV;
-	//echo "id=". $loaiDV;
 	$donviDV = (int)$_POST["cbbDonViDichVu"];
 	echo "<br>donviDV=".$donviDV;
 	$X = "0";
 	$Y = "0";
 	$khanang=(int) "1";
 	$flagInsert = true;
+	//process quan huyen tinh
+	$tinh =(int) $_POST["cbbTinhTP"];
+	echo "<br>tinh=".$tinh;
+	$quan =(int) $_COOKIE["ccbQuanHuyen"];
+	echo "<br>quan=".$_COOKIE["ccbQuanHuyen"];
+	$phuong= (int) $_COOKIE["ccbQuanHuyen"];
+	echo "<br>phuong=".$_COOKIE["ccbPhuongXa"];
+	if( $quan == -1)
+	{
+		$quan = 25;
+		$phuong = 23;
+	}
+	if( $phuong == -1)
+	{
+		//$quan = 25;
+		$phuong = 23;
+	}
+	
+	//xu ly loai dv cho or can thue
+	
 	//add new dichvu
 	$rs=DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang);
 	if($rs == false)
@@ -85,14 +99,15 @@
 		$flagInsert = false;
 		echo "Can't insert into database.Please check again!";
 	}
-
-	if(isset($_POST["cbId"]))
+	
+	
+	if(isset($_POST["cbId"]) && count($_POST["cbId"]) > 0 )
 	{
-		$arraycheck = $_POST["cbId"];
+		 $arraycheck = $_POST["cbId"];
 		 echo "<br>so=".count($arraycheck);
 		 for($i=0;$i<count($arraycheck);$i++)
 		 {
-				DichVu_TienIchBUS::Add((int)$rs,(int)$arraycheck[$i]);
+			DichVu_TienIchBUS::Add((int)$rs,(int)$arraycheck[$i]);
 		 }
 	}
 	//upload file
@@ -136,12 +151,14 @@
 			echo "upload picture finish!";
 		
 	}
-	if($flag == true)
+	echo "<br>flag = ".$flag;
+	if($flagInsert == true)
 	{
 		header("Location:../thanhvien.php?dangtin=successfully");
 	}
 	else
 	{
+	    header("Location:../dangtindichvu.php?dangtin=fail");
 	}
 
 	
