@@ -19,11 +19,13 @@
 	 
 	$curUser=null;
 	$curUserEmail=null;
+	$curUserAddress=null;
 	if(isset($_SESSION["curUser"]) && !empty($_SESSION["curUser"]))
 	{
 		$curUserEmail=$_SESSION["curUser"][2];
 		$curUserId=$_SESSION["curUser"]["id"];
         $curUser=$_SESSION["curUser"];
+		$curUserAddress = $_SESSION["curUser"]["diachi"];
 	}
 	//echo "<script language=javascript>alert('zyz')</script>";	
 		//if(isset($_GET["do"]))
