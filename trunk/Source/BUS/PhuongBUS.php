@@ -17,6 +17,9 @@ Lớp PhuongBUS
 		{
 			return PhuongDAO::GetAllPhuongById ($id);
 		}
-		
+		public static function getPhuongById($id)
+        {
+            return PhuongDAO::getPhuongById($id);
+        }
 	}
 ?>

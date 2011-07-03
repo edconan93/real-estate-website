@@ -81,8 +81,8 @@
                                 include_once ("../BUS/QuanBUS.php");
                                 include_once ("../BUS/PhuongBUS.php");
                                 $business=DichVuBUS::select($_REQUEST['iddichvu']); 
-                                $quan=QuanBUS::GetAllQuanById($business['quan']);
-                                $phuong=PhuongBUS::GetAllPhuongById($business['phuong']);
+                                $quan=QuanBUS::getQuanById($business['quan']);
+                                $phuong=PhuongBUS::getPhuongById($business['phuong']);
                                 $tinh=TinhBUS::getTinhById($business['tinh']);                              
                             }
                             ?>
@@ -161,7 +161,9 @@
                                             <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
                                             <script type="text/javascript">                                                                                     
                                               var latlng = new google.maps.LatLng(10.79306, 106.62913);
-                                              var geocoder = new google.maps.Geocoder();                                             
+                                              var geocoder = new google.maps.Geocoder();
+                                              var map;
+                                              var currentLatlng;                                             
                                               function initialize() {
                                                 var myOptions = {
                                                   zoom: 15,
@@ -170,16 +172,16 @@
                                                    }
                                                                                                                                         
                                                
-                                                var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+                                                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
                                                 var marker = new google.maps.Marker({
                                                     position: latlng, 
                                                     map: map,                                                  
                                                 }); 
-                                                //codeAddress();  
+                                                codeAddress();  
                                               }
-                                              function codeAddress(map) {
+                                              function codeAddress() {
                                                 var address = document.getElementById("address").value;
-												alert("ad="+address);
+												//alert("ad="+address);
                                                 geocoder.geocode( { 'address': address}, function(results, status)
 												{
 													///alert("status="+ google.maps.GeocoderStatus.OK+"status ="+status);
@@ -190,6 +192,8 @@
                                                         map: map, 
                                                         position: results[0].geometry.location
                                                     });
+                                                    currentLatlng=marker.getPosition();
+                                                   	//alert(currentLatlng.lat()+"_"+currentLatlng.lng());
                                                   } else {
                                                     alert("Geocode was not successful for the following reason: " + status);
                                                   }
@@ -215,15 +219,15 @@
                                                     //$.scrollTo('#fullMap',1000);
                                                      var myOptions = {
                                                   zoom: 15,
-                                                  center: latlng,
+                                                  center: currentLatlng,
                                                   mapTypeId: google.maps.MapTypeId.ROADMAP
                                                    }
                                             		var map = new google.maps.Map(document.getElementById("fullMapDs"), myOptions);
                                       	             var marker = new google.maps.Marker({
-                                                    position: latlng, 
-                                                    map: map,                                                  
+                                                    position: currentLatlng, 
+                                                    map: map                                                 
                                                     }); 
-                                            		
+                                            		//alert(currentLatlng.lat()+"_"+currentLatlng.lng());
                                             		$('#btnMapClose').click(function() {                                          
                                             			$('.ui-widget-overlay').remove();
                                             			$('#fullMap').remove();
