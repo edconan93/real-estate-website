@@ -102,15 +102,15 @@
 		<tr style="height:24px;">
 			<td colspan="2">
 				<select style="width:220px;" name="cbbGia">
-					<option>------------ Khoảng Giá ------------</option>
-					<option value="5.000.000">Dưới 5 Triệu</option>
-					<option value="50.000.000"> 5 Triệu - 50 Triệu</option>
-					<option value="500.000.000">50 Triệu - 500 Triệu</option>
-					<option value="1.000.000.000">500 Triệu - 1 Tỷ</option>
-					<option value="1.500.000.000">1 Tỷ - 1,5 Tỷ</option>
-					<option value="3.000.000.000">1,5 Tỷ - 3 Tỷ</option>
-					<option value="10.000.000.000">3 Tỷ - 10 Tỷ</option>
-					<option value="1">Trên 10 tỷ</option>
+					<option value="-1" selected>------------ Khoảng Giá ------------</option>
+					<option value="1" <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==1) echo "selected";?>>Dưới 5 Triệu</option>
+					<option value="2"  <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==2) echo "selected";?>> 5 Triệu - 50 Triệu</option>
+					<option value="3"  <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==3) echo "selected";?>>50 Triệu - 500 Triệu</option>
+					<option value="4"  <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==4) echo "selected";?>>500 Triệu - 1 Tỷ</option>
+					<option value="5"  <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==5) echo "selected";?>>1 Tỷ - 1,5 Tỷ</option>
+					<option value="6"  <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==6) echo "selected";?>>1,5 Tỷ - 3 Tỷ</option>
+					<option value="7"  <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==7) echo "selected";?>>3 Tỷ - 10 Tỷ</option>
+					<option value="8"  <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==8) echo "selected";?>>Trên 10 tỷ</option>
 				</select>
 			</td>
 			

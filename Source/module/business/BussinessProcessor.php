@@ -7,6 +7,7 @@
     include_once ("../BUS/TinhBUS.php");
     include_once ("../BUS/QuanBUS.php");
     include_once ("../BUS/PhuongBUS.php");
+    require_once("Utils/Utils.php");
 ?>
 <?php
 
@@ -18,7 +19,7 @@ class BusinessProcessor
 {
     public static function loadAllBusiness()
     {
-        
+        $strLink = "dichvu.php?";
         $curPage=1;   
         $totalItems =null;  
         $business = null; 
@@ -29,6 +30,7 @@ class BusinessProcessor
         $offset=($curPage-1)*$maxItems; 
         if(isset($_REQUEST['loaidv']))
         {
+            $strLink.="loaidv=".$_REQUEST['loaidv']."&";
             $totalItems=DichVuBUS::countAllDichVuByLoai($_REQUEST['loaidv']);
             $business=DichVuBUS::getALLDichVuByLoai($_REQUEST['loaidv'],$offset,$maxItems);
         }
@@ -38,19 +40,70 @@ class BusinessProcessor
             $business=DichVuBUS::getAll($offset,$maxItems);
         }
        
-        return BusinessProcessor::display($business,$totalItems,$curPage,$maxPages,$maxItems);
+        return BusinessProcessor::display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems);
     }
-    public static function findBusiness($strSQL)
+    public static function findPrice($business,$from,$to)
+    {
+        $array=array();
+        for($i=0;$i<count($business);$i++)
+        {
+            $money=Utils::getMoneyPerHouse($business[$i]);
+            if($from<=$money&&$money<=$to)
+                array_push($array,$business[$i]);
+        }
+        return $array;
+    }
+    public static function findBusiness($strLink,$strSQL)
     {
         $curPage=1;      
         if(isset($_REQUEST['page']))
               $curPage=$_REQUEST['page'];
-        $maxItems = 5;
+        $maxItems = 3;
     	$maxPages = 25;      
         $offset=($curPage-1)*$maxItems; 
-        $totalItems=DichVuBUS::countAllBySQL($strSQL);          
+        $strCountSQL=str_replace("*"," count(*) ",$strSQL);
+        $totalItems=DichVuBUS::countAllBySQL($strCountSQL); 
+        $strSQL.=" limit $offset,$maxItems";
+          
+        
         $business=DichVuBUS::getAllBySQL($strSQL);
-        return BusinessProcessor::display($business,$totalItems,$curPage,$maxPages,$maxItems);
+        if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']!=-1)
+        {           
+            $array=null;
+            switch($_REQUEST['cbbGia'])
+            {
+                case 1:
+                        $array=BusinessProcessor::findPrice($business,0,5000000);
+                break;
+                case 2:
+                        $array=BusinessProcessor::findPrice($business,5000000,50000000);
+                break;
+                case 3:
+                        $array=BusinessProcessor::findPrice($business,50000000,500000000);
+                break;
+                case 4:
+                        $array=BusinessProcessor::findPrice($business,500000000,1000000000);
+                break;
+                case 5:
+                        $array=BusinessProcessor::findPrice($business,1000000000,1500000000);
+                break;
+                case 6:
+                        $array=BusinessProcessor::findPrice($business,1500000000,3000000000);
+                break;
+                case 7:
+                        $array=BusinessProcessor::findPrice($business,3000000000,10000000000);
+                break;
+                case 8:
+                        $array=BusinessProcessor::findPrice($business,10000000000,999999999999999);
+                break;
+            }
+            
+                $business=$array;
+                $totalItems=count($business);
+            
+        }
+       
+        return BusinessProcessor::display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems);
     }
     public static function findBussiness()
     {
@@ -59,42 +112,41 @@ class BusinessProcessor
         if(isset($_REQUEST['btnSearch']))
         {
             
-            
+            $strLink= "dichvu.php?";
             $strSQL="select * from ";
             $strTable="dichvu";
             $strWhere=" where 1=1 ";
             
             if(isset($_REQUEST['cbbLoaidv'])&&$_REQUEST['cbbLoaidv']!=-1)
             {
-                echo"alibaba";
+                $strLink.="cbbLoaidv=".$_REQUEST['cbbLoaidv']."&";
                 $strWhere.=" and dichvu.loaidv=".$_REQUEST['cbbLoaidv'];
             }
             if(isset($_REQUEST['cbbLoaiBDS'])&&$_REQUEST['cbbLoaiBDS']!=-1)
             {
+                $strLink.="cbbLoaiBDS=".$_REQUEST['cbbLoaiBDS']."&";
                 $strWhere.=" and dichvu.loainha=".$_REQUEST['cbbLoaiBDS'];
             }
             if(isset($_REQUEST['cbbTinh'])&&$_REQUEST['cbbTinh']!=-1)
             {
+                $strLink.="cbbTinh=".$_REQUEST['cbbTinh']."&";
                 $strWhere.=" and dichvu.tinh=".$_REQUEST['cbbTinh'];
             }
             if(isset($_REQUEST['cbbQuanHuyen'])&&$_REQUEST['cbbQuanHuyen']!=-1)
             {
+                $strLink.="cbbQuanHuyen=".$_REQUEST['cbbQuanHuyen']."&";
                 $strWhere.=" and dichvu.quan=".$_REQUEST['cbbQuanHuyen'];
             }
-            /**
- * if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']=!-1)
- *             {
- *                 $strTable.=",gia";
- *                 $strWhere.=" and dichvu.tinh=tinh.id ";
- *             }
- */
+            
+            
+ 
             $strSQL.=$strTable.$strWhere;
-            echo $strSQL;
-            return BusinessProcessor::findBusiness($strSQL);
+            
+            return BusinessProcessor::findBusiness($strLink,$strSQL);
         } 
         return null;              
     }
-    public static function  display($business,$totalItems,$curPage,$maxPages,$maxItems)
+    public static function  display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems)
     {     
                
         $strResult="";
@@ -135,9 +187,10 @@ class BusinessProcessor
         $strResult.="</table>";
         $strResult.="<script>$(\"table[id='tblist'] tr:odd\").css('background-color', '#EFEFEF');</script>";
        
-        include_once("Utils/Utils.php");
-        $strLink = "dichvu.php?";
+        
+       
   		$strPaging =Utils::paging ($strLink,$totalItems,$curPage,$maxPages,$maxItems);
+        //echo $strPaging;
   		$strResult.=$strPaging; 
 
         return $strResult;
