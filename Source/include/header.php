@@ -26,6 +26,7 @@
 		$curUserId=$_SESSION["curUser"]["id"];
         $curUser=$_SESSION["curUser"];
 		$curUserAddress = $_SESSION["curUser"]["diachi"];
+		$curUserHoTen = $_SESSION["curUser"]["hoten"];
 	}
 	//echo "<script language=javascript>alert('zyz')</script>";	
 		//if(isset($_GET["do"]))

@@ -223,15 +223,21 @@
             $result = DataProvider::Query($strSQL);
             return $result;
 		}
-		public static function getUsers()
+		public static function checkPassword($password)
 		{
-			$strSQL = "select * from user";
+			$strSQL = "select * from user where password='$password'";
             $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
-				 return null;
-			while($row = mysql_fetch_row($result))
-			    $temp[]= $row;
-			return $temp;
+				return null;
+			return mysql_fetch_array ($result);	
+		}
+		public static function changePassword($id,$password)
+		{
+			$strSQL = "update user set password='$password' where id='$id'";
+            $result = DataProvider::Query($strSQL);
+			if(mysql_num_rows($result)==0)
+				return null;
+			return mysql_fetch_array ($result);
 		}
 
 	}
