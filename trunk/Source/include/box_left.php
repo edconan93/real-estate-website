@@ -21,7 +21,7 @@
 		<tr>
 			<td colspan="2">
 				<select style="width:220px;" name="cbbLoaiHinh">
-					<option value="-1">---------- Chọn Loại Hình ----------</option>
+					<option value="-1">-------- Chọn Loại Dịch Vụ --------</option>
 					<?php
                     include("../BUS/LoaiDichVuBUS.php");
                     $loaidv=LoaiDichVuBUS::getALL();
@@ -31,11 +31,28 @@
 				</select>
 			</td>
 		</tr>
+		
+		<tr>
+			<td colspan="2">
+				<select style="width:220px;" name="cbbLoaiHinh">
+					<option value="-1">------Chọn loại bất động sản -----</option>
+					<?php
+						include("../BUS/LoaiNhaBUS.php");
+						$rs=LoaiNhaBUS::GetAllLoaiNha();
+						for($i=0;$i<count($rs);$i++)
+						{		
+							echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+						}
+					?>
+					
+				</select>
+			</td>
+		</tr>
         
 		<tr style="height:24px;">
 			<td colspan="2">
 				<select style="width:220px;" id="cbbTinh"  name="cbbTinh">
-                <option value="-1" selected="selected">--Chọn Tỉnh/ Thành Phố--</option>
+                <option value="-1" selected="selected">------Chọn Tỉnh/ Thành Phố------</option>
 				<?php
                 include("../BUS/TinhBUS.php");
                 $rs=TinhBUS::GetAllTinh();
@@ -71,7 +88,9 @@
 					<option value="1">Trên 10 tỷ</option>
 				</select>
 			</td>
+			
 		</tr>
+		
 		<tr>
 			<td colspan="2" align="center" style="padding-top:8px;">
 			<input  type="submit" name="btnSearch" style="background: url('../images/btSearch.png'); width:52px;height: 22px;" value=""/>

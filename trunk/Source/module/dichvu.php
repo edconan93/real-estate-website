@@ -1,7 +1,6 @@
 ﻿<?php
 	include("../include/header.php");
-	// $quan =(int) $_GET["cbbQuanHuyen"];
-	// echo "quan=".$quan;
+
 ?>
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
@@ -81,7 +80,7 @@
                                     ?>
 								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
-								<div class="mid_content">
+								<div class="mid_content" id="loadAjax" name="loadAjax">
                                 <?php                         
                                 echo BusinessProcessor::loadAllBusiness();
                                 ?>

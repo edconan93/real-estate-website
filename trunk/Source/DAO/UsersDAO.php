@@ -220,6 +220,16 @@
             $result = DataProvider::Query($strSQL);
             return $result;
 		}
+		public static function getUsers()
+		{
+			$strSQL = "select * from user";
+            $result = DataProvider::Query($strSQL);
+			if(mysql_num_rows($result)==0)
+				 return null;
+			while($row = mysql_fetch_row($result))
+			    $temp[]= $row;
+			return $temp;
+		}
 
 	}
 ?>
