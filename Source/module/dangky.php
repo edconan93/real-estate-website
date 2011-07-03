@@ -116,7 +116,7 @@ $(document).ready(function()
 			{	
 			   // alert("<10");
 				flag=false;
-				$("#messPhone").attr("innerHTML","10<= SDT <=12");
+				$("#messPhone").attr("innerHTML","10 <= SDT <= 12");
 				$("#messPhone").css("color","red");
 			}
 			else if(CheckPhoneNumber(strPhone))
@@ -143,21 +143,23 @@ $(document).ready(function()
 			return false;
 
 		}
-
+	
 		$("#txtMobile").blur(function ()
 		{
 			//alert("mobile	!");
 			var strPhone = $("#txtPhone").attr("value");
 			var strMobile = $("#txtMobile").attr("value");
 			
+			if (strMobile == "")
+				return;
 			//alert(strPhone +" "+strMobile );
-			 if(strPhone.length<10 || strPhone.length > 12 || strMobile.length<10 || strMobile.length>12)
-			 {				//alert(strUsername);
-				 flag=false;
-				 $("#messPhone").attr("innerHTML","10<= SDT <=12");
-				 $("#messPhone").css("color","red");
-			 }
-			 else if(CheckPhoneNumber(strMobile))
+			if(strPhone.length<10 || strPhone.length > 12 || strMobile.length<10 || strMobile.length>12)
+			{				//alert(strUsername);
+				flag=false;
+				$("#messPhone").attr("innerHTML","10 <= SDT <= 12");
+				$("#messPhone").css("color","red");
+			}
+			else if(CheckPhoneNumber(strMobile))
 			{
 				flag=false;
 				$("#messPhone").attr("innerHTML", "Số điện thoại ko hợp lệ");
@@ -198,7 +200,7 @@ $(document).ready(function()
 			if(txtPassword != txtRePassword)
 			{				//alert(strUsername);
 				flag=false;
-				$("#messRePassword").attr("innerHTML","Sai password");
+				$("#messRePassword").attr("innerHTML","Mật khẩu không khớp !");
 				$("#messRePassword").css("color","red");
 			}
 			
@@ -444,15 +446,11 @@ $(document).ready(function()
 								
 							<div style="padding:20px;" id="frmRegister" name="frmRegister">
 <!--form -->					<form action="user/xulydangky.php" method="post" name="frmRegister" id="frmRegister" >
-								<table border="0" id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700"></br>
+								<table border="0" id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700">
 									<tr>
-										<td align="left" colspan="2">
-										<p></p>
-										<h5>
+										<td align="left" colspan="2" style="font-size:13px;">
 										Nếu bạn đã đăng ký tài khoản thành viên tại realestate_hoaphuong.com? 
 										<a style="color:red;" href="" onclick="return press_DangNhap();">Nhấn đăng nhập</a>
-										</h5>
-										<p></p>
 										</td>
 									</tr>
 									<tr>
@@ -491,9 +489,9 @@ $(document).ready(function()
 										</td>
 										<td align="left">
 										<div style="float:left;">
-											<input type="text" style="width:115px;" maxlength="15" value="" name="txtPhone" id="txtPhone">
+											<input type="text" style="width:115px;" maxlength="15" value="" name="txtPhone" id="txtPhone" onkeypress="return keypress(event);">
 											Di động:
-											<input type="text" style="width:102px;" maxlength="15" value="" name="txtMobile" id="txtMobile">											
+											<input type="text" style="width:102px;" maxlength="15" value="" name="txtMobile" id="txtMobile" onkeypress="return keypress(event);">											
 										</div>
 										<div id="messPhone" name="messPhone" style="width:140px;float:left;" class="mess"></div>
 										</td>
@@ -600,7 +598,8 @@ $(document).ready(function()
 										<td align="right"></td>
 										<td align="left" style="padding-left:100px;">
 										<span class="action-button-left"></span>
-										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" id="btSubmit" name="btSubmit">
+										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" id="btSubmit" name="btSubmit" 
+											onclick="return confirm('Bạn có muốn đăng ký thành viên với các thông tin trên?');">
 										<span class="action-button-right"></span>
 										</td>
 									</tr>

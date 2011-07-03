@@ -42,8 +42,11 @@
 	{
     	public static function Add ($password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status,$updatedate,$ip)
         {
+			//$this->setQuery("set names utf8");
             $strSQL = "Insert into user values (NULL, '$password', '$email', '$hoten','$gioitinh', '$diachi','$sdt1','$sdt2','$role','$level','$status','$updatedate','$ip')";
-		    $cn = DataProvider::Open ();
+		    echo $strSQL;
+			//return;
+			$cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			
 			if(mysql_affected_rows () == 0)
