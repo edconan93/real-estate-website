@@ -16,6 +16,9 @@ Lớp QuanBUS
 		{
 			return QuanDAO::GetAllQuanById ($id);
 		}
-		
+		public static function getQuanById($id)
+        {
+            return QuanDAO::getQuanById($id);
+        }
 	}
 ?>
