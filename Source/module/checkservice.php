@@ -2,8 +2,7 @@
 	$PATH_BASE = str_replace('//','/',dirname(__FILE__).'/');
 	include_once ($PATH_BASE . '../BUS/QuanBUS.php');
 	include_once ($PATH_BASE . '../BUS/PhuongBUS.php');
-	//echo"id=".$_REQUEST["cbbTinhTP"];
-	//echo"id=sá";//echo "aaaaaaaaaaaaaaaaaaaaaaaaa";
+
 	if(isset($_REQUEST["cbbTinhTP"]) && $_REQUEST["cbbTinhTP"] !="-1")
 	{
 		$id = $_REQUEST["cbbTinhTP"];
