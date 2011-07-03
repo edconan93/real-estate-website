@@ -1,17 +1,45 @@
 ﻿<?php
 	include("../include/header.php");
+	if(!isset($curUserId))
+		header("Location:dichvu.php");
 ?>
-	<script>
-		function checkSDT1()
+<script type="text/javascript">
+
+$(document).ready(function()
+{
+	$("#frmChange").submit(function()
+	{   
+		var flag = true;
+		var strOldPass = $("#txtOldPassword").attr("value");
+		var strNewPassword = $("#txtNewPassword").attr("value");
+		var strRePassword = $("#txtRePassword").attr("value");
+		// var id = $("#idUser").attr("value");
+		// alert(id);
+		if(strOldPass.length <1)
+
 		{
-			if (document.getElementById("sdt1").value != "")
-				document.getElementById("sdt2").disabled = false;
-			else
-			{
-				document.getElementById("sdt2").disabled = true;
-				document.getElementById("sdt2").value = "";
-			}
+			flag = false;
+			$("#messOldPassword").attr("innerHTML","Phải nhập password cũ");
+			$("#messOldPassword").css("color","red");
 		}
+		if(strNewPassword.length <1)
+		{
+			flag = false;
+			$("#messNewPassword").attr("innerHTML","Phải nhập password mới");
+			$("#messNewPassword").css("color","red");
+		}
+		if(strRePassword.length <1)
+		{
+			flag = false;
+			$("#messRePassword").attr("innerHTML","Phải nhập lại password mới");
+			$("#messRePassword").css("color","red");
+		}
+		if(flag == false)
+			alert ("Có lỗi trong thông tin đổi mật khẩu. Xin kiểm tra lại");
+		return flag;
+	});
+});
+
 	</script>
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
@@ -34,38 +62,80 @@
 									THAY ĐỔI MẬT KHẨU</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content">
-									<div align="left" style="padding:5px;margin-left:5px;background:#FFFFCC;border:solid 1px #CCCCCC;font-size:12px;color:#000000;font-weight:bold;">
-										- Chỉ các tài khoản thành viên đã được kích hoạt, mới có thể yêu cầu thay đổi mật khẩu.
+								
+									<div id="messError" align="left" style="padding:5px;margin-left:5px;background:#FFFFCC;border:solid 1px #CCCCCC;font-size:12px;color:#000000;font-weight:bold;">
+									<?php
+									if(isset($_GET['error']))
+										echo "-Kiểm tra lại password cũ hay mới không đúng";
+										else
+										echo"- Chỉ các tài khoản thành viên đã được kích hoạt, mới có thể yêu cầu thay đổi mật khẩu.";
+									?>
+									
+										
 										<br>
 									</div>
 									<center>
 										<br>
+<div style="padding:20px;" id="frmChange" name="frmChange">
+<form action="user/thaydoimatkhau.php" method="post" name="frmChangePassword" id="frmChangePassword" >
 										<table class="table" border="0">
 											<tr>
-												<td align="right">Email đăng nhập: <span style="color:red;">(*)</span></td>
-												<td style="padding-left:10px;">
-													<input type="text" style="width:300px;" value="" />
+												<td align="left">Họ tên:</td>
+												<td align="left">
+												<b><?php echo $curUserHoTen ;
+												echo "<input name='idUser' id='idUser' type='text' style='width:300px;display:none;' value='".$curUserId."'>";
+												?></b>
 												</td>
 											</tr>
 											<tr>
-												<td align="right" valign="top" style="padding-top:4px;">
-													Mã an toàn:<span style="color:red;"> (*)</span>
-												</td>
-												<td style="padding-left:10px;">
-													<img class="border" border="0" align="left" alt="Ma an toan" src="http://www.nhaban.com/member/security.php?rand=795392">
-													<input type="text" style="width:175px;margin-top:4px;" maxlength="5" value="" name="security" size="12">
-													<p><span style="font-size:10px;">Hãy điền năm chữ số của hình bên cạnh vào ô này</span></p>
+												<td align="left">Email:</td>
+												<td align="left">
+												<b><?php echo $curUserEmail; ?></b>
 												</td>
 											</tr>
+											<tr>
+												<td align="left">
+												Mật khẩu cũ:
+												<span style="color:red;">(*)</span>
+												</td>
+												<td align="left">
+												<input type="password" size="40" value="" name="txtOldPassword" id="txtOldPassword">
+												<div id="messOldPassword" name="messOldPassword" class="mess"></div>
+												
+												</td>
+											</tr>
+											<tr>
+												<td align="left">
+												Mật khẩu mới:
+												<span style="color:red;">(*)</span>
+												</td>
+												<td align="left">
+												<input type="password" size="40" value="" name="txtNewPassword" id="txtNewPassword">
+												<div id="messNewPassword" name="messNewPassword" class="mess"></div>
+												</td>
+											</tr>
+											<tr>
+												<td align="left">
+												Nhập lại mật khẩu mới:
+												<span style="color:red;">(*)</span>
+												</td>
+												<td align="left">
+												<input type="password" size="40" value="" name="txtRePassword" id="txtRePassword">
+												<div id="messRePassword" name="messRePassword" class="mess"></div>
+												</td>
+											</tr>
+										
 											<tr>
 												<td></td>
 												<td style="padding-left:10px;">
 													<span class="action-button-left"></span>
-													<input class="submitYellow" type="Submit" value="Gửi thông tin" name="submit_reminder">
+													<input class="submitYellow" type="Submit" value="Gửi thông tin" name="btnSubmitChangePass">
 													<span class="action-button-right"></span>
 												</td>
 											</tr>
 										</table>
+</form>
+</div>
 										<p style="font-size: 11px; color: #9F9F9F; text-align:center;">
 											<span style="color:red;">(*)</span> Thông tin không được để trống.</p>
 									</center>
