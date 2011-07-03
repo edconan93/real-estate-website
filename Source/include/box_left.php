@@ -118,8 +118,13 @@
 		
 		<tr>
 			<td colspan="2" align="center" style="padding-top:8px;">
-				<!--<a class="ovalbutton red" href="#"><span>Tìm</span></a>-->
-				<input type="submit" class="button" name="btnSearch" value="Tìm" />
+				<!--<a class="ovalbutton red" href="#"><span>Tìm</span></a>
+				<input type="submit" class="button" name="btnSearch" value="Tìm" />-->
+				<div style="width:50px;">
+					<span class="action-button-left"></span>
+					<input class="submitYellow" type="Submit" value="Tìm" id="btnSearch" name="btnSearch" />
+					<span class="action-button-right"></span>
+				</div>
 			</td>
 		</tr>
 	</table>

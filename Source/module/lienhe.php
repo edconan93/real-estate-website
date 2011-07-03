@@ -131,7 +131,16 @@
 																<td align="left">
 																<img class="border" border="0" align="left" alt="Ma an toan" src="http://www.nhaban.com/member/security.php?102336">
 																<input type="text" style="width:95px; height:28px;font-size:18px; font-wieght:bold;" maxlength="5" name="security" size="20">
-																<input class="button_submit" height="28px;" type="Submit" value="Gửi tin" name="submit_mailer">
+																</td>
+															</tr>
+															<tr style="height:80px;">
+																<td></td>
+																<td>
+																	<div style="width:80px;">
+																		<span class="action-button-left"></span>
+																		<input class="submitYellow" type="Submit" value="Gửi tin" id="btnGuiTin" name="btnGuiTin" />
+																		<span class="action-button-right"></span>
+																	</div>
 																</td>
 															</tr>
 														</tbody>
