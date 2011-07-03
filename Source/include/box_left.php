@@ -1,12 +1,12 @@
 <script type="text/javascript">
-        $(document).ready(function()
-        {
-            $('#cbbTinh').change(function(){
-                var serverURL = "checkservice.php?cbbTinhTP="+$(this).val();
-    			$("#cbbTMPQuan").load(serverURL);	
-            });
-        });
-          </script>
+	$(document).ready(function()
+	{
+		$('#cbbTinh').change(function(){
+			var serverURL = "checkservice.php?cbbTinhTP="+$(this).val();
+			$("#cbbTMPQuan").load(serverURL);	
+		});
+	});
+</script>
 <div class="box_left">
 <form action="dichvu.php" name="frmTimKiem" method="GET">
 	<table>
@@ -28,16 +28,13 @@
                     for($i=0;$i<count($loaidv);$i++)
                     {
                         if(isset($_REQUEST['cbbLoaidv'])&&$_REQUEST['cbbLoaidv']==$loaidv[$i]['id'])
-                        echo  "<option value='".$loaidv[$i]['id']."' selected>".$loaidv[$i]['ten']."</option>";
-                        else echo  "<option value='".$loaidv[$i]['id']."'>".$loaidv[$i]['ten']."</option>";
+                        echo "<option value='".$loaidv[$i]['id']."' selected>".$loaidv[$i]['ten']."</option>";
+                        else echo "<option value='".$loaidv[$i]['id']."'>".$loaidv[$i]['ten']."</option>";
                     }
-                    
-                        
                     ?>
 				</select>
 			</td>
 		</tr>
-		
 		<tr>
 			<td colspan="2">
 				<select style="width:220px;" name="cbbLoaiBDS">
@@ -52,11 +49,9 @@
                             else echo "<option value='".($i+1)."' >".$rs[$i][1]."</option>";
 						}
 					?>
-					
 				</select>
 			</td>
 		</tr>
-        
 		<tr style="height:24px;">
 			<td colspan="2">
 				<select style="width:220px;" id="cbbTinh"  name="cbbTinh">
@@ -75,26 +70,24 @@
 				</select>
 			</td>
 		</tr>
-    
 		<tr style="height:24px;">
 			<td colspan="2">
             <div id="cbbTMPQuan">
 				<select style="width:220px;" id="cbbQuan" name='cbbQuanHuyen'>
 					<option value="-1">-------- Chọn Quận/Huyện --------</option>
-                    	<?php
-                include("../BUS/QuanBUS.php");
-                if(isset($_REQUEST['cbbTinh'])&&$_REQUEST['cbbTinh']!=null)
-                {
-                    $rs=QuanBUS::GetAllQuanById($_REQUEST['cbbTinh']);
-                    for($i=0;$i<count($rs);$i++)
-                    {		
-                        if(isset($_REQUEST['cbbQuanHuyen'])&&$_REQUEST['cbbQuanHuyen']==$rs[$i]['id'])
-                    	   echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
-                           else
-                       	    echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-                    }
-                }
-                ?>						
+                    <?php
+					if(isset($_REQUEST['cbbTinh'])&&$_REQUEST['cbbTinh']!=null)
+					{
+						$rs=QuanBUS::GetAllQuanById($_REQUEST['cbbTinh']);
+						for($i=0;$i<count($rs);$i++)
+						{		
+							if(isset($_REQUEST['cbbQuanHuyen'])&&$_REQUEST['cbbQuanHuyen']==$rs[$i]['id'])
+								echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+							else
+								echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+						}
+					}
+					?>						
 				</select>
             </div>
 			</td>
@@ -113,9 +106,7 @@
 					<option value="8"  <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==8) echo "selected";?>>Trên 10 tỷ</option>
 				</select>
 			</td>
-			
 		</tr>
-		
 		<tr>
 			<td colspan="2" align="center" style="padding-top:8px;">
 				<!--<a class="ovalbutton red" href="#"><span>Tìm</span></a>

@@ -138,7 +138,7 @@
 																<td>
 																	<div style="width:80px;">
 																		<span class="action-button-left"></span>
-																		<input class="submitYellow" type="Submit" value="Gửi tin" id="btnGuiTin" name="btnGuiTin" />
+																		<input class="submitYellow" type="Submit" value="Gửi" id="btnGuiTin" name="btnGuiTin" />
 																		<span class="action-button-right"></span>
 																	</div>
 																</td>

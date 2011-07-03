@@ -413,7 +413,6 @@ $(document).ready(function()
 										</td>
 										
 									</tr>
-									
 									<tr>
 										<td align="right" valign="top" style="padding-top:10px;">
 										Mã an toàn:<span style="color:red;"> (*)</span>
@@ -424,18 +423,15 @@ $(document).ready(function()
 										<div style="position:relative; left:-100px;"><span style="font-size:10px;">Hãy điền năm chữ số của hình bên cạnh vào ô này</span></div>
 										</td>
 									</tr>
-									
 									<tr>
-										<td align="right"></td>
-										<td align="left">
+										<td colspan="2" style="padding-left:100px;">
 										<input type="checkbox" checked="" name="cbAgree" id="cbAgree">
-										<a onclick="Terms_Of_Service();" href="#">Tôi đồng ý với các quy định của realestate_hoaphuong.com</a>
+										Tôi đồng ý với các quy định của realestate_hoaphuong.com
 										</td>
 									</tr>
-									
 									<tr>
 										<td align="right"></td>
-										<td align="left" style="padding-left:100px;">
+										<td align="left" style="padding-left:30px;">
 										<span class="action-button-left"></span>
 										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" id="btSubmit" name="btSubmit" 
 											onclick="return confirm('Bạn có muốn đăng ký thành viên với các thông tin trên?');" />
