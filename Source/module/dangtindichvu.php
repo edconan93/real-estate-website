@@ -370,15 +370,13 @@ $(document).ready(function()
 		}		
 	});
 	
-
 	function CheckPhoneNumber(strText)
 	{
-		var strTemp="0123456789";
+		var strTemp="0123456789./-_()";
 		for (var i=0; i<strText.length; i++)
 		if (strTemp.indexOf (strText.charAt(i))==-1)//==-1 ko bao gio xay ra
-		{
 			return true;
-		}	
+
 		return false;
 	}
 });	
@@ -534,7 +532,7 @@ else
 											</td>
 										</tr>
 										<tr bgcolor="#F2F5F9" height="30px">
-											<td width="200px"><b>Loại bđs :</b><span style="color:red;"> *</span></td>
+											<td width="200px"><b>Loại bất động sản:</b><span style="color:red;"> *</span></td>
 											<td style="float:left;">
 												<div style="width:310px;float:left;">
 													<select id="cbbBatDongSan" name="cbbBatDongSan">
@@ -664,28 +662,26 @@ else
 											<td width="200px" ><b>Giá:</b><span style="color:red;"> *</span></td>
 											<td>
 											<div style="width:310px;float:left;">
-												<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:133px;text-align:left;" onkeyup="this.value = FormatNumber(this.value);" >
+												<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:123px;text-align:right;" onkeypress="return keypress(event);" />
 												<select id="cbbDonViTien" class="DropDownList" name="cbbDonViTien">
-<?php
-include("../BUS/DonViTienBUS.php");
-$rs=DonViTienBUS::GetAllDonViTien();
-for($i=0;$i<count($rs);$i++)
-{		
-	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-}
-?>	
-													
-												</select>
+												<?php
+													include("../BUS/DonViTienBUS.php");
+													$rs=DonViTienBUS::GetAllDonViTien();
+													for($i=0;$i<count($rs);$i++)
+													{		
+														echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+													}
+												?>
+												</select> / 
 												<select id="cbbDonViDichVu" name="cbbDonViDichVu" class="DropDownList" >
-<?php
-include("../BUS/DonViDichVuBUS.php");
-$rs=DonViDichVuBUS::GetAllDonViDichVu();
-for($i=0;$i<count($rs);$i++)
-{		
-	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-}
-?>												
-
+												<?php
+													include("../BUS/DonViDichVuBUS.php");
+													$rs=DonViDichVuBUS::GetAllDonViDichVu();
+													for($i=0;$i<count($rs);$i++)
+													{		
+														echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+													}
+												?>												
 												</select>
 												</div>
 												<div id="messGia" name="messGia" style="width:150px;float:left;"></div>
@@ -709,18 +705,18 @@ for($i=0;$i<count($rs);$i++)
 										<?php } ?>
 											<td>
 												<div style="width:110px;float:left;">
-													<b>D </b><input id="txtDai" name="txtDai" class="Textbox" type="text" style="width:25px;" >
+													D <input id="txtDai" name="txtDai" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" />
 													x
-													<input id="txtRong" name="txtRong" class="Textbox" type="text" style="width:25px;" ><b> R</b>												
+													<input id="txtRong" name="txtRong" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" /> R											
 												</div>
 											<div id="messKichThuoc" name="messKichThuoc" style="width:60px;float:left;"></div>
 											</td>
 											<td>
-												Tầng:
+												Số tầng:
 											</td>
 											<td>
 												<div style="width:110px;float:left;">
-												<input id="txtTang" name="txtTang" class="Textbox" type="text" style="width:40px;" >
+												<input id="txtTang" name="txtTang" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);" />
 												</div>
 											</td>
 										</tr>
@@ -728,13 +724,13 @@ for($i=0;$i<count($rs);$i++)
 											<td width="200px">Số phòng ngủ:</td>
 											<td>
 												<div style="width:110px;float:left;">
-													<input id="txtPhongNgu" name="txtPhongNgu" class="Textbox" type="text" style="width:40px;" >
+													<input id="txtPhongNgu" name="txtPhongNgu" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);" />
 												</div>
 											</td>
 											<td>Số phòng WC/Tắm:</td>
 											<td>
 												<div style="width:110px;float:left;">
-													<input id="txtPhongTam"  name="txtPhongTam" class="Textbox" type="text" style="width:40px;">
+													<input id="txtPhongTam"  name="txtPhongTam" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);">
 												</div>
 											</td>
 										</tr>
@@ -862,7 +858,7 @@ for($i=0;$i<count($rs);$i++)
 									<div class="submit" style="border-top: 1px solid #999; padding: 10px 0 0 0; margin: 15px 0 0 0;">
 									<center>
 										<input id="btnSubmit" name="btnSubmit" class="ButtonWithbackground" type="submit" value="Đăng tin" >
-								
+										<a class="ovalbutton red" href="#"><span>Submit</span></a>
 									</center>
 								    </div>
 							</div>

@@ -118,7 +118,8 @@
 		
 		<tr>
 			<td colspan="2" align="center" style="padding-top:8px;">
-			<input  type="submit" name="btnSearch" style="background: url('../images/btSearch.png'); width:52px;height: 22px;" value=""/>
+				<!--<a class="ovalbutton red" href="#"><span>Tìm</span></a>-->
+				<input type="submit" class="button" name="btnSearch" value="Tìm" />
 			</td>
 		</tr>
 	</table>

@@ -42,10 +42,7 @@
 	{
     	public static function Add ($password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status,$updatedate,$ip)
         {
-			//$this->setQuery("set names utf8");
             $strSQL = "Insert into user values (NULL, '$password', '$email', '$hoten','$gioitinh', '$diachi','$sdt1','$sdt2','$role','$level','$status','$updatedate','$ip')";
-		    echo $strSQL;
-			//return;
 			$cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			
@@ -223,6 +220,7 @@
             $result = DataProvider::Query($strSQL);
             return $result;
 		}
+
 		public static function checkPassword($password)
 		{
 			$strSQL = "select * from user where password='$password'";
@@ -231,6 +229,7 @@
 				return null;
 			return mysql_fetch_array ($result);	
 		}
+
 		public static function changePassword($id,$password)
 		{
 			$strSQL = "update user set password='$password' where id='$id'";
