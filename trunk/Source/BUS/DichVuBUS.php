@@ -46,6 +46,14 @@ class DichVuBUS
     {
         return DichVuDAO::countAllDichVuByLoai($idLoai);
     }
+    public static function getAllBySQL($strSQL)
+    {
+        return DichVuDAO::getAllBySQL($strSQL);
+    }
+    public static function countAllBySQL($strSQL)
+    {
+        return DichVuDAO::countAllBySQL($strSQL);
+    }
 }
 
 ?>
