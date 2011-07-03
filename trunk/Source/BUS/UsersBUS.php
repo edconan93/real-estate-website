@@ -56,6 +56,20 @@ Lớp UsersBUS
 			
 		}
 		
+		public static function checkPassword($password)
+		{
+			$password=trim($password);
+			$password = md5 ($password);
+			return UsersDAO::checkPassword($password);
+		}
+		
+		public static function changePassword($id,$password)
+		{
+			$password=trim($password);
+			$password = md5 ($password);
+			return UsersDAO::changePassword($id,$password);
+		}
+		
 		public static function Update($id,$password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status=1,$updatedate,$ip)
 		{
 		    $password = md5 ($password);
