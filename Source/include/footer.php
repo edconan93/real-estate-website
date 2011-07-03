@@ -41,7 +41,7 @@ rgb(33, 91, 135); text-align: center;">
 			</td>
 		</tr>
 		<tr>
-			<td class="transparent" style="width: 30%;">
+			<td class="transparent" style="width: 35%;">
 				&nbsp;
 			</td>
 			<td class="mid_transparent">
@@ -80,15 +80,12 @@ rgb(33, 91, 135); text-align: center;">
                     </form>
                     <?php
                         //xu ly dang nhap
-                        include("../BUS/QuanBUS.php");
                         $kq=QuanBUS::GetAllQuan();
-                        
                         include_once ("user/LoginProcessor.php");
                         ?>
-                   
 				</div>
 			</td>
-			<td class="transparent" style="width: 40%;">
+			<td class="transparent" style="width: 35%;">
 				&nbsp;
 			</td>
 		</tr>

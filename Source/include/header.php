@@ -15,6 +15,7 @@
 <?php
 	session_start ();
 	include ("../DAO/config.php");
+	include_once ("../BUS/QuanBUS.php");
    	if(isset($_GET["do"])&&$_GET["do"]=="logout")
         unset($_SESSION["curUser"]);
 	 

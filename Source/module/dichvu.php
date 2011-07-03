@@ -1,6 +1,5 @@
 ﻿<?php
 	include("../include/header.php");
-
 ?>
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
@@ -43,7 +42,6 @@
 								</table>
 							</div>
 							<?php include("../include/box_left.php"); ?>
-							
 						</td>
 						<td style="padding: 10px;" valign="top">
 							<div style="width: 686px;">
@@ -72,95 +70,21 @@
 								</div>
 							</div>
 							<div style="width: 686px; padding-top:20px;">
-								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
-									font-weight: bold; color:#890C29;">
+								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;font-weight: bold; color:#890C29;">
                                     <?php
-                                     include_once("/business/BussinessProcessor.php");
-                                     echo BusinessProcessor::getLoaiDichVu();       
+										include_once("/business/BussinessProcessor.php");
+										echo BusinessProcessor::getLoaiDichVu();
                                     ?>
 								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content" id="loadAjax" name="loadAjax">
-                                <?php 
-                                $result= BusinessProcessor::findBussiness();
-                                if($result!=null)
-                                    echo $result; 
-                                else                      
-                                    echo BusinessProcessor::loadAllBusiness();
-                                
-                                ?>
-                                <!--
-									<table id="tblist" width="100%" border="0" style="border:solid 1px #D3D3D3;" cellpadding="0" cellspacing="0">
-										<tr style="height:36px; font-weight:bold; font-size:13px; background:#8BC5F4;">
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;" align="center">Hình Ảnh</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Mô Tả</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Loại Hình</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Ngày Cập Nhật</td>
-											<td style="padding:4px;" align="center">Giá</td>
-										</tr>
-										<tr>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;" width="150px">
-												<a href="chitietdiaoc.php"><img src="../admin/upload/diaoc/thegioicanho (10).jpg" width="150px" /></a></td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">
-												<a href="chitietdiaoc.php"><b style="color:blue;">Bán căn hộ the everich Q11 gia rẻ vào ở ngay</b></a><br>
-												Vị trí: Quận 11, Tp.Hồ Chí Minh<br>
-												Diện tích: 115m²<br>
-												Số phòng ngủ:<br>
-												Tầng: 17<br><br>
-												<img src="../images/icon_promotion.gif" /> <span style="position:relative; top:-6px;">Tặng nội thất vào ở ngay</span>
-											</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Cần mua</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">22/06/2011</td>
-											<td style="padding:4px;">32.085.000 vnd/m²</td>
-										</tr>
-										<tr>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;" width="150px">
-												<a href="chitietdiaoc.php"><img src="../admin/upload/diaoc/thegioicanho (3).jpg" width="150px" /></a></td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">
-												<a href="chitietdiaoc.php"><b style="color:blue;">Bán căn hộ the everich Q11 gia rẻ vào ở ngay</b></a><br>
-												Vị trí: Quận 11, Tp.Hồ Chí Minh<br>
-												Diện tích: 115m²<br>
-												Số phòng ngủ:<br>
-												Tầng: 17<br><br>
-												<img src="../images/icon_promotion.gif" /> <span style="position:relative; top:-6px;">Tặng nội thất vào ở ngay</span>
-											</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Cần mua</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">22/06/2011</td>
-											<td style="padding:4px;">32.085.000 vnd/m²</td>
-										</tr>
-										<tr>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;" width="150px">
-												<a href="chitietdiaoc.php"><img src="../admin/upload/diaoc/thegioicanho (13).jpg" width="150px" /></a></td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">
-												<a href="chitietdiaoc.php"><b style="color:blue;">Bán căn hộ the everich Q11 gia rẻ vào ở ngay</b></a><br>
-												Vị trí: Quận 11, Tp.Hồ Chí Minh<br>
-												Diện tích: 115m²<br>
-												Số phòng ngủ:<br>
-												Tầng: 17<br><br>
-												<img src="../images/icon_promotion.gif" /> <span style="position:relative; top:-6px;">Tặng nội thất vào ở ngay</span>
-											</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Cần mua</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">22/06/2011</td>
-											<td style="padding:4px;">32.085.000 vnd/m²</td>
-										</tr>
-										<tr>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;" width="150px">
-												<a href="chitietdiaoc.php"><img src="../admin/upload/diaoc/thegioicanho (11).jpg" width="150px" /></a></td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">
-												<a href="chitietdiaoc.php"><b style="color:blue;">Bán căn hộ the everich Q11 gia rẻ vào ở ngay</b></a><br>
-												Vị trí: Quận 11, Tp.Hồ Chí Minh<br>
-												Diện tích: 115m²<br>
-												Số phòng ngủ:<br>
-												Tầng: 17<br><br>
-												<img src="../images/icon_promotion.gif" /> <span style="position:relative; top:-6px;">Tặng nội thất vào ở ngay</span>
-											</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">Cần mua</td>
-											<td style="border-right:solid 1px #D3D3D3; padding:4px;">22/06/2011</td>
-											<td style="padding:4px;">32.085.000 vnd/m²</td>
-										</tr>
-									</table>
-                                    <script>$("table[id='tblist'] tr:odd").css("background-color", "#EFEFEF");</script>
-                                    -->
+									<?php 
+										$result= BusinessProcessor::findBussiness();
+										if($result!=null)
+											echo $result; 
+										else                      
+											echo BusinessProcessor::loadAllBusiness();
+									?>
 								</div>
 							</div>
 						</td>
