@@ -4,6 +4,9 @@
     include_once ("../BUS/DonviDichVuBUS.php");
     include_once ("../BUS/DonViTienBUS.php");
     include_once ("../BUS/LoaiDichVuBUS.php");
+    include_once ("../BUS/TinhBUS.php");
+    include_once ("../BUS/QuanBUS.php");
+    include_once ("../BUS/PhuongBUS.php");
 ?>
 <?php
 
@@ -37,19 +40,59 @@ class BusinessProcessor
        
         return BusinessProcessor::display($business,$totalItems,$curPage,$maxPages,$maxItems);
     }
-    public static function findBussiness($strSQL)
+    public static function findBusiness($strSQL)
     {
-        include("../BUS/DichVuBUS.php");
         $curPage=1;      
         if(isset($_REQUEST['page']))
-            $curPage=$_REQUEST['page'];
+              $curPage=$_REQUEST['page'];
         $maxItems = 5;
-	    $maxPages = 25;      
+    	$maxPages = 25;      
         $offset=($curPage-1)*$maxItems; 
-        $totalItems=DichVuBUS::countAllBySQL($strSQL);
-        
+        $totalItems=DichVuBUS::countAllBySQL($strSQL);          
         $business=DichVuBUS::getAllBySQL($strSQL);
         return BusinessProcessor::display($business,$totalItems,$curPage,$maxPages,$maxItems);
+    }
+    public static function findBussiness()
+    {
+        //create string sql
+        
+        if(isset($_REQUEST['btnSearch']))
+        {
+            
+            
+            $strSQL="select * from ";
+            $strTable="dichvu";
+            $strWhere=" where 1=1 ";
+            
+            if(isset($_REQUEST['cbbLoaidv'])&&$_REQUEST['cbbLoaidv']!=-1)
+            {
+                echo"alibaba";
+                $strWhere.=" and dichvu.loaidv=".$_REQUEST['cbbLoaidv'];
+            }
+            if(isset($_REQUEST['cbbLoaiBDS'])&&$_REQUEST['cbbLoaiBDS']!=-1)
+            {
+                $strWhere.=" and dichvu.loainha=".$_REQUEST['cbbLoaiBDS'];
+            }
+            if(isset($_REQUEST['cbbTinh'])&&$_REQUEST['cbbTinh']!=-1)
+            {
+                $strWhere.=" and dichvu.tinh=".$_REQUEST['cbbTinh'];
+            }
+            if(isset($_REQUEST['cbbQuanHuyen'])&&$_REQUEST['cbbQuanHuyen']!=-1)
+            {
+                $strWhere.=" and dichvu.quan=".$_REQUEST['cbbQuanHuyen'];
+            }
+            /**
+ * if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']=!-1)
+ *             {
+ *                 $strTable.=",gia";
+ *                 $strWhere.=" and dichvu.tinh=tinh.id ";
+ *             }
+ */
+            $strSQL.=$strTable.$strWhere;
+            echo $strSQL;
+            return BusinessProcessor::findBusiness($strSQL);
+        } 
+        return null;              
     }
     public static function  display($business,$totalItems,$curPage,$maxPages,$maxItems)
     {     
@@ -69,12 +112,15 @@ class BusinessProcessor
         $donviDV=DonviDichVuBUS::selectId($business[$i]['donvidv']);
         $donviTien=DonviTienBUS::selectId($business[$i]['donvitien']);
         $loaidv=LoaiDichVuBUS::getById($business[$i]['loaidv']);
+        $tinh=TinhBUS::getTinhById($business[$i]['tinh']);
+        $quan=QuanBUS::getQuanById($business[$i]['quan']);
+        $phuong=PhuongBUS::getPhuongById($business[$i]['phuong']);
   		$strResult.="<tr>";
   		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;' width='150px'>";
   		$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><img src='../".$images[0]['path']."' width='150px' /></a></td>";
   		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>";
   		$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><b style='color:blue;'>".$business[$i]['tieude']."</b></a><br>";
-  		$strResult.="Vị trí: ".$business[$i]['duong'].", ".$business[$i]['phuong'].", ".$business[$i]['quan'].", ".$business[$i]['tinh']."<br>";
+  		$strResult.="Vị trí: ".$business[$i]['duong'].", ".$phuong['ten'].", ".$quan['ten'].", ".$tinh['ten']."<br>";
         $strResult.="Diện tích: ".$business[$i]['dai']." X ".$business[$i]['rong']."<br>";
   		$strResult.="Số phòng ngủ:".$business[$i]['sophongngu']."<br>";
         $strResult.="Tầng: ".$business[$i]['tang']."<br><br>";

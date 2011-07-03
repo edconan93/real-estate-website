@@ -14,7 +14,7 @@
 			 {		
 				 echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
 			 }
-	   echo "</select></div>";
+	   echo "</select>";
 	}
 	if(isset($_REQUEST["cbbPhuongXa"]) && $_REQUEST["cbbPhuongXa"] !="-1")
 	{
@@ -29,7 +29,7 @@
 			 {		
 				 echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
 			 }
-	   echo "</select></div>";
+	   echo "</select>";
 	}
 	
 	if(isset($_REQUEST["txtTieuDeTin"]) && !empty($_REQUEST["txtTieuDeTin"]))

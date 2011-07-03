@@ -81,8 +81,13 @@
 								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content" id="loadAjax" name="loadAjax">
-                                <?php                         
-                                echo BusinessProcessor::loadAllBusiness();
+                                <?php 
+                                $result= BusinessProcessor::findBussiness();
+                                if($result!=null)
+                                    echo $result; 
+                                else                      
+                                    echo BusinessProcessor::loadAllBusiness();
+                                
                                 ?>
                                 <!--
 									<table id="tblist" width="100%" border="0" style="border:solid 1px #D3D3D3;" cellpadding="0" cellspacing="0">
