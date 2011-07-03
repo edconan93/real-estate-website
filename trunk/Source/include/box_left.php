@@ -38,7 +38,7 @@
 		<tr>
 			<td colspan="2">
 				<select style="width:220px;" name="cbbLoaiBDS">
-					<option value="-1">------Chọn loại bất động sản -----</option>
+					<option value="-1">------Chọn Loại Bất Động Sản -----</option>
 					<?php
 						include("../BUS/LoaiNhaBUS.php");
 						$rs=LoaiNhaBUS::GetAllLoaiNha();
@@ -55,18 +55,18 @@
 		<tr style="height:24px;">
 			<td colspan="2">
 				<select style="width:220px;" id="cbbTinh"  name="cbbTinh">
-                <option value="-1" selected="selected">------Chọn Tỉnh/ Thành Phố------</option>
-				<?php
-                include("../BUS/TinhBUS.php");
-                $rs=TinhBUS::GetAllTinh();
-                for($i=0;$i<count($rs);$i++)
-                {		
-                    if(isset($_REQUEST['cbbTinh'])&&$_REQUEST['cbbTinh']==$rs[$i]['id'])
-                	   echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
-                       else
-                   	    echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-                }
-                ?>	
+					<option value="-1" selected="selected">------Chọn Tỉnh/Thành Phố------</option>
+					<?php
+						include("../BUS/TinhBUS.php");
+						$rs=TinhBUS::GetAllTinh();
+						for($i=0;$i<count($rs);$i++)
+						{		
+							if(isset($_REQUEST['cbbTinh'])&&$_REQUEST['cbbTinh']==$rs[$i]['id'])
+							   echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+							   else
+								echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+						}
+					?>	
 				</select>
 			</td>
 		</tr>

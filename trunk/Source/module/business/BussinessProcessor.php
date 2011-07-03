@@ -5,11 +5,8 @@
     include_once ("../BUS/DonViTienBUS.php");
     include_once ("../BUS/LoaiDichVuBUS.php");
     include_once ("../BUS/TinhBUS.php");
-    include_once ("../BUS/QuanBUS.php");
     include_once ("../BUS/PhuongBUS.php");
     require_once("Utils/Utils.php");
-?>
-<?php
 
 /**
  * @author panda
@@ -205,9 +202,5 @@ class BusinessProcessor
                
         return "TẤT CẢ CÁC LOẠI HÌNH";
     }
-    
 }
-
-
-
 ?>
