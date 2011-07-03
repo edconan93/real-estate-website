@@ -1,11 +1,6 @@
-<?php /*
-Lớp QuanBUS
-
-*/ ?>
 <?php 
 	include_once (str_replace("//","/",dirname(__FILE__)."/")  . "../DAO/QuanDAO.php");
-?>
-<?php 
+
 	class QuanBUS
 	{
 		public static function GetAllQuan ()
