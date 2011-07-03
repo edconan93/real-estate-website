@@ -60,12 +60,13 @@ class Utils
     public static function getMoneyPerHouse($business)
     {
         //1.000.000 => 1
-        include("../BUS/DonviTienBUS.php");
-        $dvTien=DonViTienBUS::selectId($rate);
+        require_once("../BUS/DonviTienBUS.php");
+        $dvTien=DonViTienBUS::selectId($business['donvitien']);
         $money=$business['giaban'];
         $money=$money*$dvTien['tigia'];
-        if($square==1)
-            $money*=$business['dai']*$business['rong'];
+        if($business['donvidv']==1)//so tien tren m2
+            $money=$money*$business['dai']*$business['rong'];
+    //    echo "alibaba".$money;
         return $money;
     }
 }
