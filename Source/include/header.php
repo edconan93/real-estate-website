@@ -32,7 +32,7 @@
 	}
 	//echo "<script language=javascript>alert('zyz')</script>";	
 		//if(isset($_GET["do"]))
-	if(isset($_GET["do"])&& $_GET["do"]=="login" && $curUser==null)
+	if(isset($_GET["do"])&& $_GET["do"]=="login")
 	{
 		   //echo "<a href='' class='a_small' onclick='return press_DangNhap();'>Đăng Nhập</a>";
 		 //  echo "dichvu.php";
