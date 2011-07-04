@@ -706,9 +706,9 @@ else
 										<?php } ?>
 											<td>
 												<div style="width:110px;float:left;">
-													D <input id="txtDai" name="txtDai" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" />
+													R <input id="txtRong" name="txtRong" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" />
 													x
-													<input id="txtRong" name="txtRong" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" /> R											
+													<input id="txtDai" name="txtDai" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" /> D											
 												</div>
 											<div id="messKichThuoc" name="messKichThuoc" style="width:60px;float:left;"></div>
 											</td>
@@ -811,7 +811,12 @@ else
 											?>
 											Hình ảnh (450px * 300px)
 												<input id="ffImage" type="file" name="ffImage" class="button_submit">
-												<input id="bttUpload" type="submit" value="Upload" name="bttUpload" class="ButtonWithbackground">
+												<div style="width:60px;position:relative;top:-26px;margin-left:390px;">
+													<span class="action-button-left"></span>
+													<input class="submitYellow" type="Submit" value="Upload" id="btnSearch" name="btnSearch" />
+													<span class="action-button-right"></span>
+												</div>
+												
 											</td>
 										</tr>
 									</table><br>
