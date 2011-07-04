@@ -22,16 +22,16 @@ $(document).ready(function()
 			$("#messOldPassword").attr("innerHTML","Phải nhập password cũ");
 			$("#messOldPassword").css("color","red");
 		}
-		if(strNewPassword.length <1)
+		if(strNewPassword.length <5)
 		{
 			flag = false;
-			$("#messNewPassword").attr("innerHTML","Phải nhập password mới");
+			$("#messNewPassword").attr("innerHTML","Phải nhập password mới và lơn hơn 5 kí tự");
 			$("#messNewPassword").css("color","red");
 		}
-		if(strRePassword.length <1)
+		if(strRePassword.length <5)
 		{
 			flag = false;
-			$("#messRePassword").attr("innerHTML","Phải nhập lại password mới");
+			$("#messRePassword").attr("innerHTML","Phải nhập lại password mới và lơn hơn 5 kí tự");
 			$("#messRePassword").css("color","red");
 		}
 		if(flag == false)
