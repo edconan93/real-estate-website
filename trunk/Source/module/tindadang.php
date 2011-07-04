@@ -15,11 +15,24 @@
 							background="1_files/menubg_all.jpg" valign="top" width="270">
 							<?php include("../include/box_left_thanhvien.php"); ?>
 						</td>
+<!--form -->
+<form action="user/xulytindv.php" method="post" name="frmXuLyTinDV" id="frmXuLyTinDV" >		
 						<td style="padding: 10px;" valign="top">
 							<div style="width: 686px;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
-									font-weight: bold; color:#890C29;">
-									CÁC TIN ĐÃ ĐĂNG</div>
+									font-weight: bold; color:#890C29;" id="messLoaiTinDang" name="messLoaiTinDang">
+									<?php
+											if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
+												echo "TIN ĐÃ DUYỆT.";
+											else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
+												echo "TIN CHỜ DUYỆT.";
+											else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
+												echo "TIN ĐÃ HẾT HẠN.";
+											else
+												echo "CÁC TIN ĐÃ ĐĂNG.";
+										?>
+									
+								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content">
 									<b>
@@ -36,8 +49,7 @@
 									</b>
 									<div class="bg_r" style="border: 1px solid rgb(172, 172, 172); padding: 0px; z-index: auto;">
 										<form name="sortby" method="post" action="http://www.nhaban.com/member/listing.php">
-										<table cellspacing="1" cellpadding="5" align="center" style="margin: 3px;">
-											<tbody>
+											<table cellspacing="1" cellpadding="5" align="center" style="margin: 3px;">
 												<tr>
 													<td>
 														Mã số tin<br>
@@ -57,88 +69,28 @@
 														Danh muc<br>
 														<select style="width: 150px;" name="category">
 															<option value="ANY">tất cả</option>
-															<option value="4">Biệt thự</option>
-															<option value="15">Các loại khác</option>
-															<option value="2">Cửa hàng, Văn phòng</option>
-															<option value="5">Chung cư, Căn hộ</option>
-															<option value="3">Mặt bằng</option>
-															<option value="10">Nhà cấp 4, Tập thể</option>
-															<option value="17">Nhà hàng, Khách sạn</option>
-															<option value="16">Nhà Phố</option>
-															<option value="19">Nhà Xưởng</option>
-															<option value="18">Phòng Trọ, Nhà Nghỉ</option>
-															<option value="9">Đất ở, Đất thổ cư</option>
-															<option value="6">Đất chia lô, Dự án</option>
-															<option value="12">Đất nông nghiệp</option>
-															<option value="11">Đất trang trại</option>
+															<?php
+																include("../BUS/LoaiNhaBUS.php");
+																$rs=LoaiNhaBUS::GetAllLoaiNha();
+																for($i=0;$i<count($rs);$i++)
+																{		
+																	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+																}
+															?>
 														</select>
 													</td>
 													<td>
 														Địa phương<br>
 														<select style="width: 120px;" name="location">
 															<option value="ANY">tất cả</option>
-															<option value="27">An Giang</option>
-															<option value="44">Bà Rịa Vũng Tàu</option>
-															<option value="12">Bình Dương</option>
-															<option value="32">Bình phước</option>
-															<option value="39">Bình Thuận</option>
-															<option value="33">Bình Định</option>
-															<option value="26">Bạc Liêu</option>
-															<option value="35">Bắc Cạn</option>
-															<option value="20">Bắc Giang</option>
-															<option value="19">Bắc Ninh</option>
-															<option value="55">Bến Tre</option>
-															<option value="25">Cà Mau</option>
-															<option value="36">Cao Bằng</option>
-															<option value="6">Cần Thơ</option>
-															<option value="41">Gia Lai</option>
-															<option value="67">Hà Giang</option>
-															<option value="15">Hà Nam</option>
-															<option value="2">Hà Nội</option>
-															<option value="11">Hà Tĩnh</option>
-															<option value="51">Hòa Bình</option>
-															<option value="17">Hải Dương</option>
-															<option value="7">Hải Phòng</option>
-															<option value="52">Hậu Giang</option>
-															<option value="4">Huế</option>
-															<option value="18">Hưng Yên</option>
-															<option value="13">Khánh Hoà</option>
-															<option value="47">Kiên Giang</option>
-															<option value="66">Kon Tum</option>
-															<option value="43">Lâm Đồng</option>
-															<option value="70">Lào Cai</option>
-															<option value="34">Lạng Sơn</option>
-															<option value="24">Long An</option>
-															<option value="8">Nam Định</option>
-															<option value="9">Nghệ An</option>
-															<option value="16">Ninh Bình</option>
-															<option value="38">Ninh Thuận</option>
-															<option value="22">Phú Thọ</option>
-															<option value="54">Phú Yên</option>
-															<option value="65">Quảng Bình</option>
-															<option value="64">Quảng Nam</option>
-															<option value="57">Quảng Ngãi</option>
-															<option value="23">Quảng Ninh</option>
-															<option value="63">Quảng Trị</option>
-															<option value="46">Sóc Trăng</option>
-															<option value="62">Sơn La</option>
-															<option value="45">Tây Ninh</option>
-															<option value="59">Thái Bình</option>
-															<option value="58">Thái Nguyên</option>
-															<option value="10">Thanh Hoá</option>
-															<option value="48">Tiền Giang</option>
-															<option value="3">TP. Hồ Chí Minh</option>
-															<option value="56">Trà Vinh</option>
-															<option value="60">Tuyên Quang</option>
-															<option value="49">Vĩnh Long</option>
-															<option value="21">Vĩnh Phúc</option>
-															<option value="37">Yên Bái</option>
-															<option value="5">Đà Nẵng</option>
-															<option value="42">Đắc Lắc</option>
-															<option value="40">Đắc Nông</option>
-															<option value="50">Đồng Nai</option>
-															<option value="68">Đồng Tháp</option>
-															<option value="69">Điện Biên</option>
+															<?php
+																include("../BUS/TinhBUS.php");
+																$rs=TinhBUS::GetAllTinh();
+																for($i=0;$i<count($rs);$i++)
+																{		
+																	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+																}
+															?>	
 														</select>
 													</td>
 													<td>
@@ -147,8 +99,7 @@
 															name="catsearch">
 													</td>
 												</tr>
-											</tbody>
-										</table>
+											</table>
 										</form>
 										<table width="100%" cellspacing="0" cellpadding="4" border="0">
 											<tr bgcolor="#e1e9f1">
@@ -168,7 +119,7 @@
 													for($i=0;$i<1;$i++)
 													{
 											?>
-														<tr bgcolor="#ffffff">
+														<!--tr bgcolor="#ffffff">
 															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
 																<b>677638</b>
 															</td>
@@ -204,7 +155,7 @@
 																		href="#">
 																		<img align="center" style="margin: 0px;position:relative;top:-4px;" src="../images/action_delete2.png"><b>Xóa tin</b></a></div>
 															</td>
-														</tr>
+														</tr-->
 											<?php
 													}
 												}
@@ -213,7 +164,7 @@
 													for($i=0;$i<3;$i++)
 													{
 											?>
-														<tr bgcolor="#ffffff">
+														<!--tr bgcolor="#ffffff">
 															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
 																<b>677638</b>
 															</td>
@@ -249,7 +200,7 @@
 																		href="#">
 																		<img align="center" style="margin: 0px;position:relative;top:-4px;" src="../images/action_delete2.png"><b>Xóa tin</b></a></div>
 															</td>
-														</tr>
+														</tr-->
 											<?php
 													}
 												}
@@ -258,7 +209,7 @@
 													for($i=0;$i<2;$i++)
 													{
 											?>
-														<tr bgcolor="#ffffff">
+														<!--tr bgcolor="#ffffff">
 															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
 																<b>677638</b>
 															</td>
@@ -294,16 +245,19 @@
 																		href="#">
 																		<img align="center" style="margin: 0px;position:relative;top:-4px;" src="../images/action_delete2.png"><b>Xóa tin</b></a></div>
 															</td>
-														</tr>
+														</tr-->
 											<?php
 													}
 												}
 												else
 												{
-													for($i=0;$i<6;$i++)
-													{
+													include_once("/user/xulycacloaitin.php");
+													echo MessageTypeProcessor::loadAllMessage();
+                                    
+													// for($i=0;$i<6;$i++)
+													// {
 											?>
-														<tr bgcolor="#ffffff">
+														<!--tr bgcolor="#ffffff">
 															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
 																<b>677638</b>
 															</td>
@@ -339,21 +293,18 @@
 																		href="#">
 																		<img align="center" style="margin: 0px;position:relative;top:-4px;" src="../images/action_delete2.png"><b>Xóa tin</b></a></div>
 															</td>
-														</tr>
+														</tr-->
 											<?php
-													}
+													//}
 												}
 											?>
 										</table>
-										<div align="center" id="pagenate">
-											<br>
-											<br>
-											<br>
-										</div>
 									</div>
 								</div>
 							</div>
 						</td>
+</form>
+<!-- End form -->
 					</tr>
 				</table>
 			</td>
