@@ -7,17 +7,18 @@
 		$oldpass=$_POST["txtOldPassword"];
 		$newpass=$_POST["txtNewPassword"];
 		$repass=$_POST["txtRePassword"];
-		
+		//header("Location:../dichvu.php?do=login");
 		$result=UsersBus::checkPassword($oldpass);
-		echo "<br>result=".$result;
+		// echo "<br>result=".$result;
 		if($result==null || $newpass != $repass)
 		{
 			header("Location:../doimatkhau.php?error=error");
 		}
 		else
 		{
-			$resultChange=UsersBus::changePassword($id,$newpass);
-			if($resultChange == null)
+			$resultChange=UsersBus::SetPassword($id,$newpass);
+			echo "<br>resultChange=".$resultChange;
+			if($resultChange == false)
 			{
 				header("Location:../doimatkhau.php?error=failed");
 			}
