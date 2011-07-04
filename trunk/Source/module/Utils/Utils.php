@@ -13,7 +13,7 @@ class Utils
     	return $time_out;
     }
 
-    public static function paging($href,$totalProducts,$curPage,$maxShowedPage=5,$maxProductPerPage=15)	  
+    public static function paging($href,$totalProducts,$curPage,$maxShowedPage=5,$maxProductPerPage=15)
     {			 				
     	$paging="";	         		 
     	$mxR = $maxProductPerPage;
@@ -25,7 +25,7 @@ class Utils
     			
     	if($totalProducts>$mxR)
     	{
-    		$paging="<div align='center'><br><table width='250' border='0' cellspacing='0' cellpadding='0' align='center'><tr> \n";
+    		$paging="<div align='center'><br><table border='0' cellspacing='0' cellpadding='0' align='center'><tr> \n";
     		if ($curPage==1)
     		{
     			$paging.="<td><img src='images/previous_disable.gif' border='0'></td> \n";
@@ -53,7 +53,7 @@ class Utils
     		}
     		else
     			$paging.="<td><img src='images/next_disable.gif' border='0'></td> \n";
-    		$paging.="</tr></table> <br></div>";
+    		$paging.="</tr></table><br></div>";
     	}
     	return $paging;
     }
