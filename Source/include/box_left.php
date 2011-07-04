@@ -18,10 +18,10 @@
 				<p style="font-size:20pt;"><b>TÌM KIẾM ĐỊA ỐC</b></p>
 			</td>
 		</tr>
-		<tr>
+		<tr style="height:24px;">
 			<td colspan="2">
 				<select style="width:220px;" name="cbbLoaidv">
-					<option value="-1">-------- Chọn Loại Dịch Vụ --------</option>
+					<option value="-1">-- Chọn Loại Dịch Vụ --</option>
 					<?php
                     include("../BUS/LoaiDichVuBUS.php");
                     $loaidv=LoaiDichVuBUS::getALL();
@@ -35,10 +35,10 @@
 				</select>
 			</td>
 		</tr>
-		<tr>
+		<tr style="height:24px;">
 			<td colspan="2">
 				<select style="width:220px;" name="cbbLoaiBDS">
-					<option value="-1">------Chọn Loại Bất Động Sản -----</option>
+					<option value="-1">-- Chọn Loại Bất Động Sản --</option>
 					<?php
 						include("../BUS/LoaiNhaBUS.php");
 						$rs=LoaiNhaBUS::GetAllLoaiNha();
@@ -55,7 +55,7 @@
 		<tr style="height:24px;">
 			<td colspan="2">
 				<select style="width:220px;" id="cbbTinh"  name="cbbTinh">
-					<option value="-1" selected="selected">------Chọn Tỉnh/Thành Phố------</option>
+					<option value="-1" selected="selected">-- Chọn Tỉnh/Thành Phố --</option>
 					<?php
 						include("../BUS/TinhBUS.php");
 						$rs=TinhBUS::GetAllTinh();
@@ -74,7 +74,7 @@
 			<td colspan="2">
             <div id="cbbTMPQuan">
 				<select style="width:220px;" id="cbbQuan" name='cbbQuanHuyen'>
-					<option value="-1">-------- Chọn Quận/Huyện --------</option>
+					<option value="-1">-- Chọn Quận/Huyện --</option>
                     <?php
 					if(isset($_REQUEST['cbbTinh'])&&$_REQUEST['cbbTinh']!=null)
 					{
@@ -95,7 +95,7 @@
 		<tr style="height:24px;">
 			<td colspan="2">
 				<select style="width:220px;" name="cbbGia">
-					<option value="-1" selected>------------ Khoảng Giá ------------</option>
+					<option value="-1" selected>-- Khoảng Giá --</option>
 					<option value="1" <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==1) echo "selected";?>>Dưới 5 Triệu</option>
 					<option value="2"  <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==2) echo "selected";?>> 5 Triệu - 50 Triệu</option>
 					<option value="3"  <?php if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']==3) echo "selected";?>>50 Triệu - 500 Triệu</option>
