@@ -23,7 +23,7 @@ $(document).ready(function()
 			{				//alert(strUsername);
 			
 				flag=false;
-				$("#messUsername").attr("innerHTML","tên đăng nhập từ 6-50 ký tự");
+				$("#messUsername").attr("innerHTML","Tên đăng nhập từ 6-50 ký tự");
 				$("#messUsername").css("color","red");
 				//alert ("Tên đăng nhập từ 6-50 ký tự");
 			}
@@ -134,7 +134,7 @@ $(document).ready(function()
 		
 		function CheckPhoneNumber(strText)
 		{
-			var strTemp="0123456789";
+			var strTemp="0123456789./\_-()";
 			for (var i=0; i<strText.length; i++)
 			if (strTemp.indexOf (strText.charAt(i))==-1)//==-1 ko bao gio xay ra
 			{
@@ -414,17 +414,7 @@ $(document).ready(function()
 										
 									</tr>
 									<tr>
-										<td align="right" valign="top" style="padding-top:10px;">
-										Mã an toàn:<span style="color:red;"> (*)</span>
-										</td>
-										<td align="left">
-										<img class="border" border="0" align="left" alt="Ma an toan" src="http://www.nhaban.com/member/security.php?rand=795392">
-										<input type="text" style="width:175px; height:18px;font-size:18px; font-wieght:bold;" maxlength="5" value="" name="security" size="12">
-										<div style="position:relative; left:-100px;"><span style="font-size:10px;">Hãy điền năm chữ số của hình bên cạnh vào ô này</span></div>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2" style="padding-left:100px;">
+										<td colspan="2">
 										<input type="checkbox" checked="" name="cbAgree" id="cbAgree">
 										Tôi đồng ý với các quy định của realestate_hoaphuong.com
 										</td>
@@ -433,8 +423,7 @@ $(document).ready(function()
 										<td align="right"></td>
 										<td align="left" style="padding-left:30px;">
 										<span class="action-button-left"></span>
-										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" id="btSubmit" name="btSubmit" 
-											onclick="return confirm('Bạn có muốn đăng ký thành viên với các thông tin trên?');" />
+										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" id="btSubmit" name="btSubmit" />
 										<span class="action-button-right"></span>
 										</td>
 									</tr>

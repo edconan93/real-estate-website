@@ -59,13 +59,6 @@
 											<td valign="top" style="padding-top:6px;">Nội dung liên hệ: <span style="color:red;">*</span></td>
 											<td><textarea name="message" style="width:300px;"></textarea></td>
 										</tr>
-										<tr>
-											<td valign="top" style="padding-top:6px;">Mã an toàn: <span style="color:red;">*</span></td>
-											<td>
-												<img class="border" border="0" align="left" alt="Ma an toan" src="http://www.nhaban.com/member/security.php?102336">
-												<input type="text" style="width:95px;font-wieght:bold;" maxlength="5" name="security" size="20">
-											</td>
-										</tr>
 										<tr style="height:80px;">
 											<td></td>
 											<td>

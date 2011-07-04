@@ -357,7 +357,7 @@ $(document).ready(function()
 		var strTieuDe = $("#cbbTinhTP").attr("value");
 		if(strTieuDe == "-1" )
 		{	
-			$("#messTinhTP").attr("innerHTML","Chọn tỉnh/ thành phố");
+			$("#messTinhTP").attr("innerHTML","Chọn tỉnh/thành phố");
 			$("#messTinhTP").css("color","red");
 		}
 		else
@@ -392,9 +392,10 @@ $(document).ready(function()
 		var strTieuDe = $("#cbbQuanHuyen").attr("value");
 		BASIC_SetCookie("ccbQuanHuyen", strTieuDe, 1);
 		if(strTieuDe == "-1" )
-		{	
+		{
 			$("#messQuanHuyen").attr("innerHTML","Chọn Quận/Huyện");
 			$("#messQuanHuyen").css("color","red");
+			clickPhuongXa();
 		}
 		else
 		{
@@ -536,7 +537,7 @@ else
 											<td style="float:left;">
 												<div style="width:310px;float:left;">
 													<select id="cbbBatDongSan" name="cbbBatDongSan">
-														<option value="-1">--Loại bất động sản--</option>
+														<option value="-1">-- Chọn Loại Bất Động Sản --</option>
 														<?php
 															include("../BUS/LoaiNhaBUS.php");
 															$rs=LoaiNhaBUS::GetAllLoaiNha();
@@ -555,7 +556,7 @@ else
 											<td style="float:left;">
 												<div style="width:310px;float:left;">
 													<select id="cbbTinhTP" name="cbbTinhTP" style="width:220px;" onchange="clearCookie();">
-														<option value="-1" selected="selected">--Chọn Tỉnh/Thành Phố--</option>
+														<option value="-1" selected="selected">-- Chọn Tỉnh/Thành Phố --</option>
 														<?php
 															include("../BUS/TinhBUS.php");
 															$rs=TinhBUS::GetAllTinh();
@@ -823,7 +824,7 @@ else
 										}
 										?>										
 										<tr style="background:#00397C;">
-<!--THÔNG TIN LIÊN HỆ -->					<td colspan="2" class="ButtonWithbackground">THÔNG TIN LIÊN HỆ</td>
+											<td colspan="2" class="ButtonWithbackground">THÔNG TIN LIÊN HỆ</td>
 										</tr>
 										<tr bgcolor="#F2F5F9" height="30px">
 											<td>Họ và Tên:</td>
@@ -841,8 +842,8 @@ else
 											<td><span id="infoSDT" name="infoSDT">
 											<?php
 												echo $result['sdt1'];
-												echo "- Mobile:";
-												echo $result['sdt2']; 
+												if ($result['sdt2'] != "")
+													echo " - ".$result['sdt2'];
 											?>
 											</span></td>
 										</tr>
@@ -855,11 +856,10 @@ else
 											</span></td>
 										</tr>
 									</table>								
-									<div class="submit" style="border-top: 1px solid #999; padding: 10px 0 0 0; margin: 15px 0 0 0;">
-									<center>
-										<input id="btnSubmit" name="btnSubmit" class="ButtonWithbackground" type="submit" value="Đăng tin" >
-										<a class="ovalbutton red" href="#"><span>Submit</span></a>
-									</center>
+									<div style="width:70px;padding:20px 0;margin-left:300px;">
+										<span class="action-button-left"></span>
+										<input class="submitYellow" type="Submit" value="Đăng tin" id="btnSubmit" name="btnSubmit" />
+										<span class="action-button-right"></span>
 								    </div>
 							</div>
 						</td>						

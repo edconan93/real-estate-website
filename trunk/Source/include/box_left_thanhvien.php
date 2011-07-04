@@ -9,7 +9,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td colspan="2" align="center">
             <?php
                 if($curUser==null)
                 {
@@ -25,7 +25,12 @@
 				    
                 }
 			?>
-            <p style="text-align:center;font-size:9px;margin:0;">( <a style="font-size:11px;" name="linkout" href="dichvu.php?do=logout">Thoát</a> )</p>
+			<a href="?do=logout">
+				<div style="width:50px;margin-top:20px;">
+					<span class="action-button-left"></span>
+					<input class="submitYellow" type="Submit" value="Thoát" id="btnGuiTin" name="btnGuiTin" />
+					<span class="action-button-right"></span>
+				</div></a>
             </td>
 		</tr>
 	</table>
@@ -43,14 +48,13 @@
 		<tr>
 			<td colspan="2" align="center">
 				<p class="menu_item">
-					<a href="thongtinkhachhang.php">Thông tin thành viên</a>
-				</p>
+					<a href="thongtinkhachhang.php">Thông tin thành viên</a></p>
 				<p class="menu_item">
-					<a href="doimatkhau.php">Thay đổi mật khẩu</a>
-				</p>
+					<a href="doimatkhau.php">Thay đổi mật khẩu</a></p>
 				<p class="menu_item">
-					<a href="noiquidangtin.php">Đăng tin nhà đất</a>
-				</p>
+					<a href="noiquidangtin.php">Đăng tin nhà đất</a></p>
+				<p class="menu_item">
+					<a href="nangcaptinvip.php">Nâng cấp tin VIP</a></p>
 				<p class="menu_item">
 					<a href="tindadang.php">Các tin đã đăng (6)</a><br>
 					<span>

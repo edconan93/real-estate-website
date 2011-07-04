@@ -27,13 +27,11 @@
 	include ("../../BUS/HinhAnhBUS.php");
 	$tieude = $_POST["txtTieuDeTin"];
 	
-	
 	echo "<br>tieude=".$tieude;
 	$mota=stripcslashes($_POST["summary"]);
 	echo "<br>mota=".$mota;
 	$chusohuu=(int) $_GET['id'];
 	echo "<br>chusohuu=".$chusohuu;
-	 
 	
 	$time = date('Y-m-d h:i:s');
 	echo "time=".$time;
@@ -100,15 +98,14 @@
 		echo "Can't insert into database.Please check again!";
 	}
 	
-	
 	if(isset($_POST["cbId"]) && count($_POST["cbId"]) > 0 )
 	{
-		 $arraycheck = $_POST["cbId"];
-		 echo "<br>so=".count($arraycheck);
-		 for($i=0;$i<count($arraycheck);$i++)
-		 {
+		$arraycheck = $_POST["cbId"];
+		echo "<br>so=".count($arraycheck);
+		for($i=0;$i<count($arraycheck);$i++)
+		{
 			DichVu_TienIchBUS::Add((int)$rs,(int)$arraycheck[$i]);
-		 }
+		}
 	}
 	//upload file
 	$flag = true;
@@ -124,7 +121,7 @@
 		{
 			$flagInsert = false;
 			$flag = false;
-			}
+		}
 	}
 	if($flag)
 	{
@@ -149,18 +146,14 @@
 		}
 		else
 			echo "upload picture finish!";
-		
 	}
 	echo "<br>flag = ".$flag;
 	if($flagInsert == true)
 	{
-		header("Location:../thanhvien.php?dangtin=successfully");
+		header("Location:../tindadang.php?type=2?dangtin=successfully");
 	}
 	else
 	{
 	    header("Location:../dangtindichvu.php?dangtin=fail");
 	}
-
-	
-			
 ?>

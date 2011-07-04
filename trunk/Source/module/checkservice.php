@@ -9,7 +9,7 @@
 		$rs=QuanBUS::GetAllQuanById($id);
 		
 		echo "<select id='cbbQuanHuyen' name='cbbQuanHuyen' style='width:220px;' onchange='clickQuanHuyen();'>";
-		echo "<option value='-1' selected>-------- Chọn Quận/Huyện --------</option>";
+		echo "<option value='-1' selected>-- Chọn Quận/Huyện --</option>";
 		for($i=0;$i<count($rs);$i++)
 		{		
 			echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
@@ -18,16 +18,8 @@
 	}
 	else if (isset($_REQUEST["cbbTinhTP"]) && $_REQUEST["cbbTinhTP"] == "-1")
 	{
-		$id = $_REQUEST["cbbTinhTP"];
-		$rs=QuanBUS::GetAllQuanById($id);
-		
-		echo "<select id='cbbQuanHuyen' name='cbbQuanHuyen' style='width:220px;' onchange='clickQuanHuyen();'>";
-		echo "<option value='-1' selected>-------- Chọn Quận/Huyện --------</option>";
-		for($i=0;$i<count($rs);$i++)
-		{		
-			echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-		}
-		echo "</select>";
+		echo "<select style='width:220px;' id='cbbQuan' name='cbbQuanHuyen'>
+				<option value='-1'>-- Chọn Quận/Huyện --</option>";
 	}
 	if(isset($_REQUEST["cbbPhuongXa"]) && $_REQUEST["cbbPhuongXa"] !="-1")
 	{
@@ -37,7 +29,7 @@
 		$rs=PhuongBUS::GetAllPhuongById($id);
 		//echo "id=".count($rs);
 		echo "<select id='cbbPhuongXa' name='cbbPhuongXa' style='width:220px;' onchange='clickPhuongXa();'>";
-		echo "<option value='-1' selected>--Chọn Phường/ Xã--</option>";
+		echo "<option value='-1' selected>-- Chọn Phường/Xã --</option>";
 		for($i=0;$i<count($rs);$i++)
 		{		
 			echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
