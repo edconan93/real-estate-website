@@ -350,13 +350,17 @@
 											<div class="contact">
 												<div class="registerBuy">
 													Thông tin liên hệ</div>
+                                    <?php
+                                     require_once("../BUS/UsersBUS.php");
+                                     $user=UsersBUS::GetUserByID($business['chusohuu']);
+                                    ?>
 												<div class="name">
-													Tên : <a href="../../../tv/lethaotgch/" id="ctl00_MainContent_ctl00_hpUserName">Le Thao</a>
+													Tên : <a href="" id="ctl00_MainContent_ctl00_hpUserName"><?php echo $user['hoten']; ?></a>
 												</div>
 												<div class="phone">
-													Điện thoại : 0902.581.089</div>
+													Điện thoại : <?php echo $user['sdt1']; ?></div>
 												<div class="email nonedisplay">
-													Email :<br>
+													Email : <?php echo $user['email']; ?><br>
 													<img style="border-width: 0px;" src="" id="ctl00_MainContent_ctl00_imEmail">
 												</div>
 											</div>
