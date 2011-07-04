@@ -152,7 +152,7 @@
             $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
 				return null;
-			return mysql_fetch_array ($result);	
+			return mysql_fetch_array ($result,MYSQL_BOTH);	
 		}
 		public static function GetUserByEmail ($email)
 		{
