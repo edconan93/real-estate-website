@@ -9,7 +9,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center">
+			<td colspan="2">
             <?php
                 if($curUser==null)
                 {
