@@ -94,7 +94,9 @@
 			DataProvider::MoreQuery ($strSQL,$cn);
 			
 			if(mysql_affected_rows () == 0)
+			{	
 				$result=false;
+				}
 			else
 				$result=true;
 				
@@ -230,14 +232,7 @@
 			return mysql_fetch_array ($result);	
 		}
 
-		public static function changePassword($id,$password)
-		{
-			$strSQL = "update user set password='$password' where id='$id'";
-            $result = DataProvider::Query($strSQL);
-			if(mysql_num_rows($result)==0)
-				return null;
-			return mysql_fetch_array ($result);
-		}
+	
 
 	}
 ?>
