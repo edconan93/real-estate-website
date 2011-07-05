@@ -13,6 +13,9 @@ Lớp HuongNhaBUS
 		{
 			return HuongNhaDAO::GetAllHuongNha ();
 		}
-		
+		public static function GetHuongNhaById($id)
+		{
+			return HuongNhaDAO::GetHuongNhaById (($id));
+		}
 	}
 ?>

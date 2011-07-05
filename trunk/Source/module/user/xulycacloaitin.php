@@ -1,5 +1,7 @@
 ﻿<?php 
 	include_once ("../BUS/DichVuBUS.php");
+	include_once ("../BUS/LoaiDichVuBUS.php");
+	include_once ("../BUS/HuongNhaBUS.php");
 	require_once("Utils/Utils.php");
 /**
  * @author sieudang
@@ -44,13 +46,17 @@ class MessageTypeProcessor
         {
 			$strResult.="<tr bgcolor='#ffffff'>";
 			$strResult.="<td width='60' valign='middle' align='center' style='border-bottom:solid 1px #CCCCCC;'>";
-			$strResult.="<b>677638</b></td>";//id
+			$strResult.="<b>".$business[$i][0]."</b></td>";//id
+			
 			$strResult.="<td valign='top' align='left' style='border-left: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);'>";
 			$strResult.="<span style='color: rgb(255, 0, 0);'>Tin đã duyệt</span><br>";//loai tin
-			$strResult.="<b>Bán nhà gấp</b><br>";//tên tiêu đề
-			$strResult.="- <a target='_blank' href='http://www.nhaban.com/nha-dat/?loaitin=1'>Cần Bán</a>";//tên loại dv
+			$strResult.="<b>".$business[$i][1]."</b><br>";//tên tiêu đề
+			$loaidv=LoaiDichVuBUS::getById($business[$i][19]);
+			$huongnha = HuongNhaBUS::GetHuongNhaById($business[$i][17]);
+			echo "<br>huong nha=".$huongnha[0];
+			$strResult.="- <a target='_blank' href='http://www.nhaban.com/nha-dat/?loaitin=1'>".$loaidv[1]."</a>";//tên loại dv
 			$strResult.="- <a target='_blank' href='http://www.nhaban.com/nha-dat/?category=2'>Cửa hàng, Văn phòng</a> - <a target='_blank' href='http://www.nhaban.com/nha-dat/?vt=7'>Mặt tiền</a>
-						- Hướng Bắc<br>";//Hướng nhà
+						- ".$huongnha[1]."<br>";//Hướng nhà
 			$strResult.="<b>- Giá:<b>7</b> Tỷ - KT: 4 x 20m - DTXD : 90 m<sup>2</sup> </b><br>";//giá nhà và kt
 			$strResult.="</td>";//giá nhà và kt
 			$strResult.="<td width='260' valign='top' style='border-left: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);'>";//column 3
