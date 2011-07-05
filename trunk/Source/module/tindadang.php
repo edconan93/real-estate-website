@@ -222,10 +222,10 @@
 													if(isset($_POST['btnSearch']))
 													{
 														//include_once("/business/BussinessProcessor.php");
-														//$result= MessageTypeProcessor::findSearchInContext();
-														echo MessageTypeProcessor::loadAllMessage();
-														// if($result!=null)
-															// echo $result; 
+														//echo MessageTypeProcessor::loadAllMessage();
+														$result= MessageTypeProcessor::findSearchInContext();
+														 if($result!=null)
+															echo $result; 
 														// else
 															// echo MessageTypeProcessor::loadAllMessage();
 													}
