@@ -431,6 +431,11 @@ $(document).ready(function()
 		else //else if this is a session only cookie
 			document.cookie = name+"="+value
 	}
+	function saveData()
+	{
+		var url = document.location.href;
+		BASIC_SetCookie("url", url, 1);
+	}
 </script>
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
@@ -446,31 +451,19 @@ $(document).ready(function()
 							background="1_files/menubg_all.jpg" valign="top" width="270">
 							<?php include("../include/box_left_thanhvien.php"); ?>
 						</td>
-<!--BEGIN -->		
-<div id="frmDichVu1" name ="frmDichVu1">
-<?php echo "<form action='user/xulydichvu.php?id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data'>"; 
-if(isset($_GET['loaidvcandang']))
-	$loaitindichvu = $_GET['loaidvcandang'];
-else
-	 header("Location:noiquidangtin.php");
-?>
-<!--form action="user/xulydichvu.php?id='.$curUserId.' method="post" id="frmDichVu" name="frmDichVu" -->
 						<td style="padding: 10px;" valign="top">	
-						
 							<div style="width: 686px;">
 								<div id="messLoaiDangTin" name="messLoaiDangTin" style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;font-weight: bold; color:#890C29;">
 								<?php
-								if($loaitindichvu == 1)
-									echo "Đăng Tin Cần Bán";
-								else if ($loaitindichvu == 2)
-								{
-									echo "Đăng tin cần mua";
-								}else if($loaitindichvu == 3)
-								{
-									echo "Đăng tin cho thuê";
-								}
-								else
-									echo "Đăng tin cần thuê";
+									$ltdv = $_GET['loaidvcandang'];
+									if ($ltdv == 1)
+										echo "Đăng Tin Cần Bán";
+									else if ($ltdv == 2)
+										echo "Đăng tin cần mua";
+									else if ($ltdv == 3)
+										echo "Đăng tin cho thuê";
+									else
+										echo "Đăng tin cần thuê";
 								?>
 								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
@@ -489,388 +482,465 @@ else
 											</ul>
 										</div>
 									</div>
-									<!--table class="table" width="100%" cellpadding="0" cellspacing="0" border="0"-->
-									<table cellspacing="0" cellpadding="4" border="0" style="width:690px;">
-										<tr style="background:#00397C;height:30px;">
-											<td colspan="2" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN</td>
-									    </tr>
-										<!--THÔNG TIN -->
-										<tr bgcolor="#F2F5F9">
-											<td style="width:60px;">Loại giao dịch:</td>
-											<td style="width:500px;">
-												<?php 
-												if(isset($_GET['loaidvcandang']))
+									<?php
+										if (isset($_GET["loaidvcandang"]) && ($_GET["loaidvcandang"] == 1 || $_GET["loaidvcandang"] == 3))
+										{
+									?>
+									<div style="margin:20px 0;">
+										<table width="80%" align="center">
+											<tr>
+											<?php
+												if ($_GET["step"] == 1)
 												{
-													$t= $_GET['loaidvcandang'];
-													echo "<div id='idLoaiDV' name='idLoaiDV' value='".$_GET["loaidvcandang"]."'></div>";
-													echo "<input name='txtIDLoaiDV' id='txtIDLoaiDV' type='text' style='width:300px;display:none;'
-													value='".$loaitindichvu."'>";
+											?>
+												<td width="32" height="32"><img width="32" height="32" style="border:none;" src="../images/step_1.png"></td>
+												<td class="step_selected">Bước 1 <br>Thông tin chung</td>
+												<td width="32" height="32"><img width="32" height="32" style="border:none;" src="../images/step_2.png"></td>
+												<td class="step">Bước 2 <br>Thông tin tiện ích</td>
+												<td width="32" height="32"><img width="32" height="32" style="border:none;" src="../images/step_3.png"></td>
+												<td class="step">Bước 3 <br>Đăng tin thành công</td>
+											<?php
 												}
-												?>
-												<input name="txtIDLoaiDV" id="txtIDLoaiDV" type="text" style="width:300px;display:none;" value="1">
-												<div id="messTenLoai" name="messTenLoai"><b>
-												<?php
-												if($loaitindichvu == 1)
-													echo "Cần Bán";
-												else if ($loaitindichvu == 2)
+												else if ($_GET["step"] == 2)
 												{
-													echo "Cần mua";
-												}else if($loaitindichvu == 3)
+											?>
+												<td width="32" height="32"><img width="32" height="32" style="border:none;" src="../images/step_1.png"></td>
+												<td class="step">Bước 1 <br>Thông tin chung</td>
+												<td width="32" height="32"><img width="32" height="32" style="border:none;" src="../images/step_2.png"></td>
+												<td class="step_selected">Bước 2 <br>Upload hình ảnh</td>
+												<td width="32" height="32"><img width="32" height="32" style="border:none;" src="../images/step_3.png"></td>
+												<td class="step">Bước 3 <br>Đăng tin thành công</td>
+											<?php
+												}
+												else if ($_GET["step"] == 3)
 												{
-													echo "Cho thuê";
+											?>
+												<td width="32" height="32"><img width="32" height="32" style="border:none;" src="../images/step_1.png"></td>
+												<td class="step">Bước 1 <br>Thông tin chung</td>
+												<td width="32" height="32"><img width="32" height="32" style="border:none;" src="../images/step_2.png"></td>
+												<td class="step">Bước 2 <br>Upload hình ảnh</td>
+												<td width="32" height="32"><img width="32" height="32" style="border:none;" src="../images/step_3.png"></td>
+												<td class="step_selected">Bước 3 <br>Đăng tin thành công</td>
+											<?php
+												}
+											?>
+											</tr>
+										</table>
+									</div>
+									<?php
+										}
+										if ($_GET["step"] == 1)
+										{
+											echo "<form action='user/xulydichvu.php?loaidvcandang=".$_GET["loaidvcandang"]."&step=1&id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data' onsubmit='saveData();'>"; 
+											if(isset($_GET['loaidvcandang']))
+												$loaitindichvu = $_GET['loaidvcandang'];
+											else
+												header("Location:noiquidangtin.php");
+										?>
+									<div><!-- Bước 1 -->
+										<table cellspacing="0" cellpadding="4" border="0" style="width:690px;">
+											<tr style="background:#00397C;height:30px;">
+												<td colspan="2" class="ButtonWithbackground">THÔNG TIN</td>
+											</tr>
+											<!--THÔNG TIN -->
+											<tr bgcolor="#F2F5F9">
+												<td style="width:60px;">Loại giao dịch:</td>
+												<td style="width:500px;">
+													<?php 
+													if(isset($_GET['loaidvcandang']))
+													{
+														$t= $_GET['loaidvcandang'];
+														echo "<div id='idLoaiDV' name='idLoaiDV' value='".$_GET["loaidvcandang"]."'></div>";
+														echo "<input name='txtIDLoaiDV' id='txtIDLoaiDV' type='text' style='width:300px;display:none;'
+														value='".$loaitindichvu."'>";
+													}
+													?>
+													<input name="txtIDLoaiDV" id="txtIDLoaiDV" type="text" style="width:300px;display:none;" value="1">
+													<div id="messTenLoai" name="messTenLoai"><b>
+													<?php
+													if($loaitindichvu == 1)
+														echo "Cần Bán";
+													else if ($loaitindichvu == 2)
+													{
+														echo "Cần mua";
+													}else if($loaitindichvu == 3)
+													{
+														echo "Cho thuê";
+													}
+													else
+														echo "Cần thuê";
+													?></b></div>											
+												</td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+												<td width="200px"><b>Tiêu đề tin:</b><span style="color:red;"> *</span></td>
+												<td>											
+													<div style="width:310px;float:left;">
+													<input name="txtTieuDeTin" id="txtTieuDeTin" type="text" style="width:300px;"></div>
+													<div id="messTieuDe" name="messTieuDe" style="width:150px;float:left;"></div>
+												</td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+												<td width="200px"><b>Loại bất động sản:</b><span style="color:red;"> *</span></td>
+												<td style="float:left;">
+													<div style="width:310px;float:left;">
+														<select id="cbbBatDongSan" name="cbbBatDongSan">
+															<option value="-1">-- Chọn Loại Bất Động Sản --</option>
+															<?php
+																include("../BUS/LoaiNhaBUS.php");
+																$rs=LoaiNhaBUS::GetAllLoaiNha();
+																for($i=0;$i<count($rs);$i++)
+																{		
+																	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+																}
+															?>
+														</select>
+													</div>
+													<div id="messLoaiBatDongSan" name="messLoaiBatDongSan" style="width:150px;float:left;"></div>
+												</td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+												<td width="200px"><b>Tỉnh/Thành Phố:</b><span style="color:red;"> *</span></td>
+												<td style="float:left;">
+													<div style="width:310px;float:left;">
+														<select id="cbbTinhTP" name="cbbTinhTP" style="width:220px;" onchange="clearCookie();">
+															<option value="-1" selected="selected">-- Chọn Tỉnh/Thành Phố --</option>
+															<?php
+																include("../BUS/TinhBUS.php");
+																$rs=TinhBUS::GetAllTinh();
+																for($i=0;$i<count($rs);$i++)
+																{		
+																	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+																}
+															?>												
+														</select>
+													</div>
+													<div id="messTinhTP" name="messTinhTP" style="width:150px;float:left;"></div>
+												</td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+												<?php 
+												if($loaitindichvu == 2 || $loaitindichvu == 4)
+												{
+													echo "<td width='200px'>Quận/Huyện:</td>";
 												}
 												else
-													echo "Cần thuê";
-												?></b></div>											
-											</td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-											<td width="200px"><b>Tiêu đề tin:</b><span style="color:red;"> *</span></td>
-											<td>											
-												<div style="width:310px;float:left;">
-												<input name="txtTieuDeTin" id="txtTieuDeTin" type="text" style="width:300px;"></div>
-												<div id="messTieuDe" name="messTieuDe" style="width:150px;float:left;"></div>
-											</td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-											<td width="200px"><b>Loại bất động sản:</b><span style="color:red;"> *</span></td>
-											<td style="float:left;">
-												<div style="width:310px;float:left;">
-													<select id="cbbBatDongSan" name="cbbBatDongSan">
-														<option value="-1">-- Chọn Loại Bất Động Sản --</option>
-														<?php
-															include("../BUS/LoaiNhaBUS.php");
-															$rs=LoaiNhaBUS::GetAllLoaiNha();
-															for($i=0;$i<count($rs);$i++)
-															{		
-																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
-															}
-														?>
-													</select>
-												</div>
-												<div id="messLoaiBatDongSan" name="messLoaiBatDongSan" style="width:150px;float:left;"></div>
-											</td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-											<td width="200px"><b>Tỉnh/Thành Phố:</b><span style="color:red;"> *</span></td>
-											<td style="float:left;">
-												<div style="width:310px;float:left;">
-													<select id="cbbTinhTP" name="cbbTinhTP" style="width:220px;" onchange="clearCookie();">
-														<option value="-1" selected="selected">-- Chọn Tỉnh/Thành Phố --</option>
-														<?php
-															include("../BUS/TinhBUS.php");
-															$rs=TinhBUS::GetAllTinh();
-															for($i=0;$i<count($rs);$i++)
-															{		
-																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
-															}
-														?>												
-													</select>
-												</div>
-												<div id="messTinhTP" name="messTinhTP" style="width:150px;float:left;"></div>
-											</td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-											<?php 
-											if($loaitindichvu == 2 || $loaitindichvu == 4)
-											{
-												echo "<td width='200px'>Quận/Huyện:</td>";
-												
-											}
-											else
-											{
-											?>
-											<td width="200px"><b>Quận/Huyện:</b><span style="color:red;"> *</span></td>
-											<?php } ?>
-											<td>
-												<div style="width:310px;float:left;" id="messLoadQuan" name="messLoadQuan">
-												<!--select id="cbbQuanHuyen" name="cbbQuanHuyen" style="width:220px;" onchange="clickQuanHuyen()">
-													<option value="-1" selected="selected">--Chọn Quận/ Huyện--</option>	
-												</select-->
-												<input name="txtQuanHuyen" id="txtQuanHuyen" type="text" style="width:300px;" value="" disabled="disabled">
-												</div>
-												<div id="messQuanHuyen" name="messQuanHuyen" style="width:150px;float:left;"></div>
-											</td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-										<?php 
-											if($loaitindichvu == 2 || $loaitindichvu == 4)
-											{
-												echo "<td width='200px'>Phường/Xã:</td>";
-											}
-											else
-											{
-											?>
-											<td width="200px"><b>Phường/Xã:</b><span style="color:red;"> *</span></td>
-											<?php }  ?>
-											<td>
-											<div style="width:310px;float:left;" id="messLoadPhuong" name="messLoadPhuong" >
-												<!--select id="cbbPhuongXa" name="cbbPhuongXa" style="width:220px;" onchange="clickPhuongXa()">
-													<option value="-1">--Chọn Phường/Xã--</option>	
-												</select-->
-												<input name="txtPhuongXa" id="txtPhuongXa" type="text" style="width:300px;" value="" disabled="disabled">
-												</div>
-												<div id="messPhuong" name="messPhuong" style="width:150px;float:left;"></div>
-											</td>
-										</tr>
-										
-										<tr bgcolor="#F2F5F9" height="30px">
-										<?php 
-											if($loaitindichvu == 2 || $loaitindichvu == 4)
-											{
-												echo "<td width='200px'>Đường/Phố:</td>";
-											}
-											else
-											{
-											?>
-											<td width="200px"><b>Đường/Phố:</b><span style="color:red;"> *</span></td>
-											<?php } ?>
-											<td>
-											<div style="width:310px;float:left;"> 
-												<input name="txtDuongPho" id="txtDuongPho" type="text" style="width:300px;" value="" >
-												</div>
-												<div id="messDuongPho" name="messDuongPho" style="width:150px;float:left;"></div>
-											</td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-										<?php 
-										if($loaitindichvu == 2 || $loaitindichvu == 4)
-										{
-											echo "<td width='200px'>Số /Lô nhà:</td>";
-										}
-										else
-										{
-										?>
-											<td><b>Số nhà/Số lô:</b><span style="color:red;"> *</span></td>
-										<?php } ?>
-											<td>
-												<div style="width:310px;float:left;"> 
-												<input  id="txtSoNha" name="txtSoNha" type="text" style="width:300px;" value="">
-												</div>
-												<div id="messSoNha" name="messSoNha" style="width:150px;float:left;"></div>
-											</td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-											<td>Khuyến mãi</td>
-											<td>
-												<div style="width:310px;float:left;"> 
-												<input  id="txtKhuyenMai" name="txtKhuyenMai" type="text" style="width:300px;" value="">
-												</div>
-												<div id="messSoNha" name="messSoNha" style="width:150px;float:left;"></div>
-											</td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-											<td width="200px" ><b>Giá:</b><span style="color:red;"> *</span></td>
-											<td>
-											<div style="width:310px;float:left;">
-												<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:123px;text-align:right;" onkeypress="return keypress(event);" />
-												<select id="cbbDonViTien" class="DropDownList" name="cbbDonViTien">
-												<?php
-													include("../BUS/DonViTienBUS.php");
-													$rs=DonViTienBUS::GetAllDonViTien();
-													for($i=0;$i<count($rs);$i++)
-													{		
-														echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-													}
-												?>
-												</select> / 
-												<select id="cbbDonViDichVu" name="cbbDonViDichVu" class="DropDownList" >
-												<?php
-													include("../BUS/DonViDichVuBUS.php");
-													$rs=DonViDichVuBUS::GetAllDonViDichVu();
-													for($i=0;$i<count($rs);$i++)
-													{		
-														echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-													}
-												?>												
-												</select>
-												</div>
-												<div id="messGia" name="messGia" style="width:150px;float:left;"></div>
-											</td>
-										</tr>
-									</table>
-									<table class="table" width="100%" cellpadding="0" cellspacing="0">
-										<tr style="background:#00397C;height:30px;">
-<!--THÔNG TIN BẤT ĐỘNG SẢN -->				<td colspan="4" style="color:#FFF;font-weight:bold;padding-left:4px;">THÔNG TIN BẤT ĐỘNG SẢN</td>
-										</tr><br>
-										<tr>
-										<?php 
-										if($loaitindichvu == 2 || $loaitindichvu == 4)
-										{
-											echo "<td width='200px'>Kích thước:</td>";
-										}
-										else
-										{
-										?>
-											<td width="200px" valign="button"><b>Kích thước:</b><span style="color:red;"> *</span></td>
-										<?php } ?>
-											<td>
-												<div style="width:110px;float:left;">
-													R <input id="txtRong" name="txtRong" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" />
-													x
-													<input id="txtDai" name="txtDai" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" /> D											
-												</div>
-											<div id="messKichThuoc" name="messKichThuoc" style="width:60px;float:left;"></div>
-											</td>
-											<td>
-												Số tầng:
-											</td>
-											<td>
-												<div style="width:110px;float:left;">
-												<input id="txtTang" name="txtTang" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);" />
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td width="200px">Số phòng ngủ:</td>
-											<td>
-												<div style="width:110px;float:left;">
-													<input id="txtPhongNgu" name="txtPhongNgu" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);" />
-												</div>
-											</td>
-											<td>Số phòng WC/Tắm:</td>
-											<td>
-												<div style="width:110px;float:left;">
-													<input id="txtPhongTam"  name="txtPhongTam" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);">
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td width="200px">Tình trạng pháp lý:</td>
-											<td>
-												<select id="cbbPhapLy" name="cbbPhapLy" class=" DropDownList" >
-												<?php
-													include("../BUS/PhapLyBUS.php");
-													$rs=PhapLyBUS::GetAllPhapLy();
-													for($i=0;$i<count($rs);$i++)
-													{		
-														echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-													}
-												?>	
-												</select>
-											</td>
-											<td>Hướng nhà:</td>
-											<td>
-												<select id="cbbHuongNha" name="cbbHuongNha" class="DropDownList" >
-												<!--option value="-1" selected>--Lựa Chọn--</option-->
-												<?php
-													include("../BUS/HuongNhaBUS.php");
-													$rs=HuongNhaBUS::GetAllHuongNha();
-													for($i=0;$i<count($rs);$i++)
-													{		
-														if($i == (count($rs)-1))
-															echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
-														else
-															echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-													}
-												?>	
-												</select>
-											</td>
-										</tr>
-									</table><br>
-									<table class="table" width="100%" cellpadding="0" cellspacing="0">
-										<tr style="background:#00397C;height:30px;">
-<!--CÁC TIỆN ÍCH -->						<td colspan="4" class="ButtonWithbackground">CÁC TIỆN ÍCH</td>
-										</tr>
-										<?php
-											include("../BUS/TienIchBUS.php");
-											$rs=TienIchBUS::GetAllTienIch();
-											$dem=0;
-											//echo "count=".count($rs);
-											for($i=0;$i<count($rs);$i++)
-											{		
-												if(($dem % 3) == 0)
-												{		
-												   echo "<tr>";
-												}
-												$dem++;
-												echo "<td><input id='cbId[]'  name='cbId[]' type='checkbox' value='".$dem."'>";
-												echo "<label for='".$dem."' > ".$rs[$i][1]."</label>";											
-												echo "</td>";
-												if(($dem % 3) == 0)
 												{
-												   echo "</tr>";
-												}
-											}
-										?>
-									</table><br>
-									<table class="table" width="100%" cellpadding="0" cellspacing="0">
-										<tr style="background:#00397C;height:30px;">
-<!--MÔ TẢ NGẮN (DƯỚI 500 KÝ TỰ) -->			<td colspan="4" class="ButtonWithbackground">MÔ TẢ NGẮN (DƯỚI 500 KÝ TỰ)</td>
-										</tr>
-										<tr>
-											<td>
-											<?php
-												$path = rtrim($_SERVER['PHP_SELF'],"ce/module/dangtindichvu.php/")."ce/library/fckeditor/";
-												include("../library/fckeditor/fckeditor.php");
-												$summary = new FCKeditor("summary");
-												$summary->BasePath = $path;
-												$summary->Height=300;
-												$summary->Value = "";
-												$summary->Create();
-											?>
-											Hình ảnh (450px * 300px)
-												<input id="ffImage" type="file" name="ffImage" class="button_submit">
-												<div style="width:60px;position:relative;top:-26px;margin-left:390px;">
-													<span class="action-button-left"></span>
-													<input class="submitYellow" type="Submit" value="Upload" id="btnSearch" name="btnSearch" />
-													<span class="action-button-right"></span>
-												</div>
-												
-											</td>
-										</tr>
-									</table><br>
-									<table cellspacing="0" cellpadding="2" width="98%" border="0">
-										<?php
-										if($curUser != null)
-										{
-											include("../BUS/UsersBUS.php");
-											$result=UsersBus::GetUserByEmail($curUserEmail);
-										}
-										?>										
-										<tr style="background:#00397C;">
-											<td colspan="2" class="ButtonWithbackground">THÔNG TIN LIÊN HỆ</td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-											<td>Họ và Tên:</td>
-											<td><span id="infoHoTen" name="infoHoTen">
+												?>
+												<td width="200px"><b>Quận/Huyện:</b><span style="color:red;"> *</span></td>
+												<?php } ?>
+												<td>
+													<div style="width:310px;float:left;" id="messLoadQuan" name="messLoadQuan">
+													<!--select id="cbbQuanHuyen" name="cbbQuanHuyen" style="width:220px;" onchange="clickQuanHuyen()">
+														<option value="-1" selected="selected">--Chọn Quận/ Huyện--</option>	
+													</select-->
+													<input name="txtQuanHuyen" id="txtQuanHuyen" type="text" style="width:300px;" value="" disabled="disabled">
+													</div>
+													<div id="messQuanHuyen" name="messQuanHuyen" style="width:150px;float:left;"></div>
+												</td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
 											<?php 
-												echo $result['hoten'];
-											?></span></td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-											<td>Địa chỉ liên lạc:</td>
-											<td><span id="infoDiaChi" name="infoDiaChi"><?php echo $curUserAddress;?></span></td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-											<td>Số điện thoại: </td>
-											<td><span id="infoSDT" name="infoSDT">
-											<?php
-												echo $result['sdt1'];
-												if ($result['sdt2'] != "")
-													echo " - ".$result['sdt2'];
+												if($loaitindichvu == 2 || $loaitindichvu == 4)
+												{
+													echo "<td width='200px'>Phường/Xã:</td>";
+												}
+												else
+												{
+												?>
+												<td width="200px"><b>Phường/Xã:</b><span style="color:red;"> *</span></td>
+												<?php }  ?>
+												<td>
+												<div style="width:310px;float:left;" id="messLoadPhuong" name="messLoadPhuong" >
+													<!--select id="cbbPhuongXa" name="cbbPhuongXa" style="width:220px;" onchange="clickPhuongXa()">
+														<option value="-1">--Chọn Phường/Xã--</option>	
+													</select-->
+													<input name="txtPhuongXa" id="txtPhuongXa" type="text" style="width:300px;" value="" disabled="disabled">
+													</div>
+													<div id="messPhuong" name="messPhuong" style="width:150px;float:left;"></div>
+												</td>
+											</tr>
+											
+											<tr bgcolor="#F2F5F9" height="30px">
+											<?php 
+												if($loaitindichvu == 2 || $loaitindichvu == 4)
+												{
+													echo "<td width='200px'>Đường/Phố:</td>";
+												}
+												else
+												{
+												?>
+												<td width="200px"><b>Đường/Phố:</b><span style="color:red;"> *</span></td>
+												<?php } ?>
+												<td>
+												<div style="width:310px;float:left;"> 
+													<input name="txtDuongPho" id="txtDuongPho" type="text" style="width:300px;" value="" >
+													</div>
+													<div id="messDuongPho" name="messDuongPho" style="width:150px;float:left;"></div>
+												</td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+											<?php 
+											if($loaitindichvu == 2 || $loaitindichvu == 4)
+											{
+												echo "<td width='200px'>Số /Lô nhà:</td>";
+											}
+											else
+											{
 											?>
-											</span></td>
-										</tr>
-										<tr bgcolor="#F2F5F9" height="30px">
-											<td>Email liên lạc:</td>
-											<td><span id="infoSDT" name="infoSDT">
-											<?php
-												echo $result['email'];
+												<td><b>Số nhà/Số lô:</b><span style="color:red;"> *</span></td>
+											<?php } ?>
+												<td>
+													<div style="width:310px;float:left;"> 
+													<input  id="txtSoNha" name="txtSoNha" type="text" style="width:300px;" value="">
+													</div>
+													<div id="messSoNha" name="messSoNha" style="width:150px;float:left;"></div>
+												</td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+												<td>Khuyến mãi</td>
+												<td>
+													<div style="width:310px;float:left;"> 
+													<input  id="txtKhuyenMai" name="txtKhuyenMai" type="text" style="width:300px;" value="">
+													</div>
+													<div id="messSoNha" name="messSoNha" style="width:150px;float:left;"></div>
+												</td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+												<td width="200px" ><b>Giá:</b><span style="color:red;"> *</span></td>
+												<td>
+												<div style="width:310px;float:left;">
+													<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:123px;text-align:right;" onkeypress="return keypress(event);" />
+													<select id="cbbDonViTien" class="DropDownList" name="cbbDonViTien">
+													<?php
+														include("../BUS/DonViTienBUS.php");
+														$rs=DonViTienBUS::GetAllDonViTien();
+														for($i=0;$i<count($rs);$i++)
+														{		
+															echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+														}
+													?>
+													</select> / 
+													<select id="cbbDonViDichVu" name="cbbDonViDichVu" class="DropDownList" >
+													<?php
+														include("../BUS/DonViDichVuBUS.php");
+														$rs=DonViDichVuBUS::GetAllDonViDichVu();
+														for($i=0;$i<count($rs);$i++)
+														{		
+															echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+														}
+													?>												
+													</select>
+													</div>
+													<div id="messGia" name="messGia" style="width:150px;float:left;"></div>
+												</td>
+											</tr>
+										</table>
+<!--THÔNG TIN BẤT ĐỘNG SẢN -->			<table class="table" width="100%" cellpadding="0" cellspacing="0">
+											<tr style="background:#00397C;height:30px;">
+												<td colspan="4" class="ButtonWithbackground">THÔNG TIN BẤT ĐỘNG SẢN</td>
+											</tr><br>
+											<tr>
+											<?php 
+											if($loaitindichvu == 2 || $loaitindichvu == 4)
+											{
+												echo "<td width='200px'>Kích thước:</td>";
+											}
+											else
+											{
 											?>
-											</span></td>
-										</tr>
-									</table>								
-									<div style="width:70px;padding:20px 0;margin-left:300px;">
-										<span class="action-button-left"></span>
-										<input class="submitYellow" type="Submit" value="Đăng tin" id="btnSubmit" name="btnSubmit" />
-										<span class="action-button-right"></span>
-								    </div>
+												<td width="200px" valign="button"><b>Kích thước:</b><span style="color:red;"> *</span></td>
+											<?php } ?>
+												<td>
+													<div style="width:110px;float:left;">
+														R <input id="txtRong" name="txtRong" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" />
+														x
+														<input id="txtDai" name="txtDai" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" /> D											
+													</div>
+												<div id="messKichThuoc" name="messKichThuoc" style="width:60px;float:left;"></div>
+												</td>
+												<td>
+													Số tầng:
+												</td>
+												<td>
+													<div style="width:110px;float:left;">
+													<input id="txtTang" name="txtTang" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td width="200px">Số phòng ngủ:</td>
+												<td>
+													<div style="width:110px;float:left;">
+														<input id="txtPhongNgu" name="txtPhongNgu" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);" />
+													</div>
+												</td>
+												<td>Số phòng WC/Tắm:</td>
+												<td>
+													<div style="width:110px;float:left;">
+														<input id="txtPhongTam"  name="txtPhongTam" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);">
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td width="200px">Tình trạng pháp lý:</td>
+												<td>
+													<select id="cbbPhapLy" name="cbbPhapLy" class=" DropDownList" >
+													<?php
+														include("../BUS/PhapLyBUS.php");
+														$rs=PhapLyBUS::GetAllPhapLy();
+														for($i=0;$i<count($rs);$i++)
+														{		
+															echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+														}
+													?>	
+													</select>
+												</td>
+												<td>Hướng nhà:</td>
+												<td>
+													<select id="cbbHuongNha" name="cbbHuongNha" class="DropDownList" >
+													<!--option value="-1" selected>--Lựa Chọn--</option-->
+													<?php
+														include("../BUS/HuongNhaBUS.php");
+														$rs=HuongNhaBUS::GetAllHuongNha();
+														for($i=0;$i<count($rs);$i++)
+														{		
+															if($i == (count($rs)-1))
+																echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+															else
+																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+														}
+													?>	
+													</select>
+												</td>
+											</tr>
+										</table><br>
+<!--CÁC TIỆN ÍCH -->					<table class="table" width="100%" cellpadding="0" cellspacing="0">
+											<tr style="background:#00397C;height:30px;">
+												<td colspan="4" class="ButtonWithbackground">CÁC TIỆN ÍCH</td>
+											</tr>
+											<?php
+												include("../BUS/TienIchBUS.php");
+												$rs=TienIchBUS::GetAllTienIch();
+												$dem=0;
+												//echo "count=".count($rs);
+												for($i=0;$i<count($rs);$i++)
+												{		
+													if(($dem % 3) == 0)
+													{		
+													   echo "<tr>";
+													}
+													$dem++;
+													echo "<td><input id='cbId[]'  name='cbId[]' type='checkbox' value='".$dem."'>";
+													echo "<label for='".$dem."' > ".$rs[$i][1]."</label>";											
+													echo "</td>";
+													if(($dem % 3) == 0)
+													{
+													   echo "</tr>";
+													}
+												}
+											?>
+										</table><br>
+<!--MÔ TẢ NGẮN (DƯỚI 500 KÝ TỰ) -->		<table class="table" width="100%" cellpadding="0" cellspacing="0">
+											<tr style="background:#00397C;height:30px;">
+												<td colspan="4" class="ButtonWithbackground">MÔ TẢ NGẮN (DƯỚI 500 KÝ TỰ)</td>
+											</tr>
+											<tr>
+												<td>
+												<?php
+													$path = rtrim($_SERVER['PHP_SELF'],"ce/module/dangtindichvu.php/")."ce/library/fckeditor/";
+													include("../library/fckeditor/fckeditor.php");
+													$summary = new FCKeditor("summary");
+													$summary->BasePath = $path;
+													$summary->Height=300;
+													$summary->Value = "";
+													$summary->Create();
+												?>
+												</td>
+											</tr>
+										</table><br>
+<!--THÔNG TIN LIÊN HỆ -->				<table cellspacing="0" cellpadding="2" width="100%" border="0">
+											<?php
+											if($curUser != null)
+											{
+												include("../BUS/UsersBUS.php");
+												$result=UsersBus::GetUserByEmail($curUserEmail);
+											}
+											?>										
+											<tr style="background:#00397C;">
+												<td colspan="2" class="ButtonWithbackground">THÔNG TIN LIÊN HỆ</td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+												<td>Họ và Tên:</td>
+												<td><span id="infoHoTen" name="infoHoTen">
+												<?php 
+													echo $result['hoten'];
+												?></span></td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+												<td>Địa chỉ liên lạc:</td>
+												<td><span id="infoDiaChi" name="infoDiaChi"><?php echo $curUserAddress;?></span></td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+												<td>Số điện thoại: </td>
+												<td><span id="infoSDT" name="infoSDT">
+												<?php
+													echo $result['sdt1'];
+													if ($result['sdt2'] != "")
+														echo " - ".$result['sdt2'];
+												?>
+												</span></td>
+											</tr>
+											<tr bgcolor="#F2F5F9" height="30px">
+												<td>Email liên lạc:</td>
+												<td><span id="infoSDT" name="infoSDT">
+												<?php
+													echo $result['email'];
+												?>
+												</span></td>
+											</tr>
+										</table>
+										<input type="hidden" id="tmp" value="1" />
+										<div style="width:70px;padding:20px 0;margin-left:300px;">
+											<span class="action-button-left"></span>
+											<input class="submitYellow" type="Submit" value="Đăng tin" id="btnSubmit" name="btnSubmit" />
+											<span class="action-button-right"></span>
+										</div>
+									</div><!-- End: Bước 1 -->
+									</form>									
+									<?php
+										}
+										else if ($_GET["step"] == 2 && (($_GET["loaidvcandang"] == 1) || ($_GET["loaidvcandang"] == 3)))
+										{
+											echo "<form action='user/xulydichvu.php?newid=".$_GET["newid"]."&id=".$curUserId."' method='post' enctype='multipart/form-data'>";
+									?>
+										<div><!-- Bước 2 -->
+											<table cellspacing="0" cellpadding="4" border="0" style="width:690px;">
+												<tr style="background:#00397C;height:30px;">
+													<td colspan="2" class="ButtonWithbackground">UPLOAD HÌNH ẢNH</td>
+												</tr>
+												<tr><td align="center"><input type="file" size="50" name="ffImage1"></td></tr>
+												<tr><td align="center"><input type="file" size="50" name="ffImage2"></td></tr>
+												<tr><td align="center"><input type="file" size="50" name="ffImage3"></td></tr>
+												<tr><td align="center"><input type="file" size="50" name="ffImage4"></td></tr>
+												<tr><td align="center"><input type="file" size="50" name="ffImage5"></td></tr>
+											</table>
+											<input type="hidden" name="newid" value='<?php echo $_GET["newid"] ?>' />
+											<div style="width:60px;margin:20px 0px 20px 300px;">
+												<span class="action-button-left"></span>
+												<input class="submitYellow" type="Submit" value="Upload" id="btnUpload" name="btnUpload" />
+												<span class="action-button-right"></span>
+											</div>
+										</div><!-- End: Bước 2 -->
+										</form>
+									<?php
+										}
+										else if ($_GET["step"] == 3 || isset($_GET["dangtin"]))
+											echo "<center><b style='color:blue;'>Quá trình đăng tin của bạn đã thành công. Vui lòng chờ admin xét duyệt.</b></center>";
+									?>
+								</div>
 							</div>
-						</td>						
-<!--END PROCESS-->
-</form>
-</div>
+						</td><!--END PROCESS-->
 					</tr>
 				</table>
 			</td>
