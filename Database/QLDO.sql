@@ -434,7 +434,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `role`
@@ -442,8 +442,8 @@ CREATE TABLE IF NOT EXISTS `role` (
 
 INSERT INTO `role` (`id`, `ten`) VALUES
 (1, 'Admin'),
-(2, 'User'),
-(4, 'Nhân viên');
+(2, 'Khách hàng'),
+(3, 'Nhân viên');
 
 -- --------------------------------------------------------
 
@@ -579,8 +579,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `sdt1`, `sdt2`, `role`, `level`, `status`, `ngaycapnhat`, `ip`) VALUES
-(1, 'e10adc3949ba59abbe56e057f20f883e', 'admin@yahoo.com', 'Administrator', b'1', '36/15 Bình Giã, P.13, Q.Tân Bình, Tp.HCM', '0934100286', '', 1, 0, 0, NULL, NULL),
-(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'FASFREWRWERW', b'0', 'fsadf', '1224324232', '', 4, 4, 0, NULL, NULL);
+(1, 'e10adc3949ba59abbe56e057f20f883e', 'admin@yahoo.com', 'Administrator', b'1', '36/15 Bình Giã, P.13, Q.Tân Bình, Tp.HCM', '0934100286', '', 1, 0, 1, NULL, NULL),
+(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'FASFREWRWERW', b'0', 'fsadf', '1224324232', '', 3, 3, 0, NULL, NULL);
 
 --
 -- Constraints for dumped tables

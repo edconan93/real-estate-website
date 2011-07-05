@@ -2,8 +2,9 @@
 	if($_SESSION["curUser"][8] != 1)
 		header("Location: index.php");
 
-	$PATH = str_replace('//','/',dirname(__FILE__).'/') ;
-	//include_once($PATH . "../../../BUS/UsersBUS.php");
+	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\UsersBUS.php");
+	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\RoleBUS.php");
+	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\LevelBUS.php");
 	//include_once($PATH . "../../../BUS/EntriesBUS.php");
 	//include_once($PATH . "common_functions.php");
 	$maxItems = 20;
@@ -44,7 +45,6 @@
 	$totalItems = 0;//UsersBUS::Count($type,$status,$kw);
 	$users = "";//UsersBUS::getUsers();
 ?>
-
 <div id="listItem">
 	<div class="tl"></div>
 	<div class="tr"></div>
@@ -150,36 +150,45 @@
 						<td align="center">Địa chỉ</td>
 						<td width="80px" align="center">Số ĐT 1</td>
 						<td width="80px" align="center">Số ĐT 2</td>
-						<td align="center">Vai trò</td>
-						<td align="center">Cấp độ</td>
-						<td align="center">Kích hoạt</td>
+						<td width="100px" align="center">Vai trò</td>
+						<td width="120px" align="center">Cấp độ</td>
+						<td width="70px" align="center">Kích hoạt</td>
 					</tr>
+					<?php
+						$listUsers = UsersBUS::getUsers();
+						for ($i=0;$i<count($listUsers);$i++)
+						{
+					?>
 					<tr>
-						<td align="center">20</td>
+						<td align="center"><?php echo $i+1; ?></td>
 						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
-						<td class="m_name"><a href="index.php?view=user&do=edit&uid=1">Nguyễn Thị Thanh Phương Đoàn</a></td>
-						<td style="color:blue;font-weight:bold;">nguyenthithanhphuong@yahoo.com</td>
-						<td align="center">Nam</td>
-						<td>769/44/14 Phạm Thể Hiển, P4, Q.8, Tp.HCM</td>
-						<td>0934.100286</td>
-						<td>01934.100286</td>
-						<td align="center" style="color:red;">Nhân viên</td>
-						<td align="center">Nhân viên cấp bậc 3</td>
-						<td align="center"><img src="images/icon_yes.png" alt="Đã kích hoạt" /></td>
+						<td class="m_name"><?php echo "<a href='index.php?view=user&do=edit&uid=".$listUsers[$i]["id"]."'>".$listUsers[$i]["hoten"]."</a>"; ?></td>
+						<td style="color:blue;font-weight:bold;"><?php echo $listUsers[$i]["email"]; ?></td>
+						<td align="center"><?php echo ($listUsers[$i]["gioitinh"]==1)?"Nam":"Nữ"; ?></td>
+						<td><?php echo $listUsers[$i]["diachi"]; ?></td>
+						<td align="right"><?php echo $listUsers[$i]["sdt1"]; ?></td>
+						<td align="right"><?php echo $listUsers[$i]["sdt2"]; ?></td>
+						<?php
+							$role = RoleBUS::GetRoleByID($listUsers[$i]["role"]);
+							if ($role[0] == 2)//Nhan vien
+								echo "<td align='center' style='color:red;'>".$role[1]."</td>";
+							else if ($role[0] == 3)//Khach hang
+								echo "<td align='center' style='color:#23776B;'>".$role[1]."</td>";
+							else
+								echo "<td></td>";
+
+							$level = LevelBUS::GetLevelByID($listUsers[$i]["level"]);
+							echo "<td align='center'>".$level[2]."</td>";
+							
+							if ($listUsers[$i]["status"] == 1)
+								echo "<td align='center'><img src='images/icon_yes.png' alt='Đã kích hoạt' /></td>";
+							else
+								echo "<td align='center'><img src='images/icon_no.png' alt='Đã bị khóa' /></td>";
+						?>
 					</tr>
-					<tr>
-						<td align="center">20</td>
-						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
-						<td class="m_name"><a href="index.php?view=user&do=edit&uid=1">Cao Thanh Tâm</a></td>
-						<td style="color:blue;font-weight:bold;">nguyenthithanhphuong@yahoo.com</td>
-						<td align="center">Nam</td>
-						<td>769/44/14 Phạm Thể Hiển, P4, Q.8, Tp.HCM</td>
-						<td>0934.100286</td>
-						<td>01934.100286</td>
-						<td align="center" style="color:#E59100;">User</td>
-						<td align="center">Tài khoản VIP</td>
-						<td align="center"><img src="images/icon_no.png" alt="Đã bị khóa" /></td>
-					</tr>
+					<?php
+						}
+					?>
 					<?php /*
 						$i=$curItem+1; 
 						//while ($user = mysql_fetch_array($users)) 

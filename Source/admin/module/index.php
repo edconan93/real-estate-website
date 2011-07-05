@@ -13,21 +13,15 @@
 </head>
 <body>
 	<div id="container">
-<div id="header">
-	<div class="left"></div>
-<div class="right"></div>
-<div class="mid">
-    	<div class="logo">Administrator</div>
-        <div class="mess"> </div> 
-</div>
-
-</div>
+		<div id="header">
+			<div class="left"></div>
+			<div class="right"></div>
+			<div class="mid">
+				<div class="logo">Administrator</div>
+				<div class="mess"></div> 
+			</div>
+		</div>
 <div id="body">
-<br>
- 
-
-
-
 <div id="menu">
 	<ul>
     <li><a class="item" href="index.php">Bảng điều khiển</a></li>

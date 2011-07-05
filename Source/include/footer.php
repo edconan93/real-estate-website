@@ -56,7 +56,7 @@ rgb(33, 91, 135); text-align: center;">
 						<div  id="messRegister" class="form_text" style="width:340px;float:left;"></div>
 						<br><br>
 						<p class="form_text">
-							Tên đăng nhập</p>
+							Email đăng nhập</p>
 						<p class="form_input_BG">
 							<input id="txtUsernameLogin" name="txtUsernameLogin" type="text"></p>
 						<p class="clear"></p>
