@@ -20,7 +20,7 @@
 			    $temp[]= $row;
 			return $temp;
 		}
-		public static function GetAllHuongNhaById($id)
+		public static function GetHuongNhaById($id)
 		{
 			$strSQL = "select *
 					from huongnha where id='$id'";
