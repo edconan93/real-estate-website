@@ -26,25 +26,25 @@
 										<table cellspacing="0" cellpadding="0" border="0" align="center" width="655">
 											<tr>
 												<td align="left" colspan="2" style="padding-top:15px;">
-													<a href="dangtindichvu.php?loaidvcandang=1">
+													<a href="dangtindichvu.php?loaidvcandang=1&step=1">
 														<div style="width:130px;float:left;margin-left:80px;">
 															<span class="action-button-left"></span>
 															<input class="submitYellow" type="Submit" value="Đăng Tin Cần Bán" />
 															<span class="action-button-right"></span>
 														</div></a>
-													<a href="dangtindichvu.php?loaidvcandang=2">
+													<a href="dangtindichvu.php?loaidvcandang=2&step=1">
 														<div style="width:130px;float:left;">
 															<span class="action-button-left"></span>
 															<input class="submitYellow" type="Submit" value="Đăng Tin Cần Mua" />
 															<span class="action-button-right"></span>
 														</div></a>
-													<a href="dangtindichvu.php?loaidvcandang=3">
+													<a href="dangtindichvu.php?loaidvcandang=3&step=1">
 														<div style="width:130px;float:left;">
 															<span class="action-button-left"></span>
 															<input class="submitYellow" type="Submit" value="Đăng Tin Cho Thuê" />
 															<span class="action-button-right"></span>
 														</div></a>
-													<a href="dangtindichvu.php?loaidvcandang=4">
+													<a href="dangtindichvu.php?loaidvcandang=4&step=1">
 														<div style="width:130px;float:left;">
 															<span class="action-button-left"></span>
 															<input class="submitYellow" type="Submit" value="Đăng Tin Cần Thuê" />

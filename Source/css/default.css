@@ -328,3 +328,13 @@ input.submitYellow {
 }
 
 #fullMapDs { width: 800px; height: 600px; }
+.step_selected {
+    border-bottom: 2px solid #ACACAC;
+    color: #000000;
+	font-weight:bold;
+}
+.step {
+    border-bottom: 2px solid #ACACAC;
+    color: #CCCCCC;
+	font-weight:bold;
+}
