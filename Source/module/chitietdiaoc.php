@@ -92,6 +92,12 @@
 									<?php echo $business['tieude']; ?> </div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1"/>
 								<div class="mid_content">
+									<p style="margin-top:0;">
+										<b style="padding-right:30px;">Mã số tin: id</b>
+										<span style="padding-right:30px;">Ngày đăng: 20-10-2011</span>
+										<span style="padding-right:30px;">Ngày cập nhật: 20-10-2011</span>
+										<span style="padding-right:30px;">Thời hạn tin: 20-10-2011</span>
+									</p>
 									<div class="detail1">
 										<div class="map">
 											<div class="clearBoth">
@@ -372,8 +378,52 @@
 									<div style="clear:both;"></div>
 								</div>
 								<fieldset>
-									<legend style="font-size:14px;font-weight:bold;color:Blue;">Thông Tin Tài Sản</legend>
-										sffdsfds
+									<legend style="font-size:14px;font-weight:bold;color:Blue;">Thông Tin Căn Hộ</legend>
+										<table cellpadding="0" cellspacing="0" width="100%" border="0">
+											<tr style="height:26px; background:#F1F1F1;">
+												<td width="130px">Loại dịch vụ:</td>
+												<td width="150px">Cần Bán</td>
+												<td width="100px">Diện tích:</td>
+												<td>4x10 m<sup>2</sup></td>
+												<td width="100px">Số tầng:</td>
+												<td width="30px">3</td>
+											</tr>
+											<tr style="height:26px">
+												<td>Tình trạng pháp lý:</td>
+												<td>abc</td>
+												<td>Hướng nhà:</td>
+												<td>Đông Nam</td>
+												<td>Số phòng ngủ:</td>
+												<td>4</td>
+											</tr>
+											<tr style="height:26px; background:#F1F1F1;">
+												<td>Giá căn hộ:</td>
+												<td>7000000 vnd</td>
+												<td>Loại nhà:</td>
+												<td>Biệt thự</td>
+												<td>Số phòng tắm:</td>
+												<td>2</td>
+											</tr>
+										</table>
+								</fieldset><br>
+								<fieldset>
+									<legend style="font-size:14px;font-weight:bold;color:Blue;">Đặc Điểm</legend>
+										<table cellpadding="0" cellspacing="0" width="100%" border="0">
+											<tr style="height:26px">
+												<td>_ Tiện ích: Đầy đủ tiện nghi - Sân vườn</td>
+											</tr>
+											<tr style="height:26px">
+												<td>_ Khuyến mãi: ABC</td>
+											</tr>
+										</table>
+								</fieldset><br>
+								<fieldset>
+									<legend style="font-size:14px;font-weight:bold;color:Blue;">Mô Tả Thêm</legend>
+										<table>
+											<tr>
+												<td>Load field "mota"</td>
+											</tr>
+										</table>
 								</fieldset>
 							</div>
 						</td>
