@@ -115,7 +115,7 @@
 													<img align="left" style="border: medium none;margin-top:2px;" src="../images/options3.png">&nbsp;<b>Quản lý</b>
 												</td>
 											</tr>
-											<div id="messLoadSearch" name="messLoadSearch">
+											<!--div id="messLoadSearch" name="messLoadSearch"-->
 											<?php
 												if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
 												{
@@ -218,16 +218,20 @@
 												}
 												else
 												{
+													include_once("/user/xulycacloaitin.php");
 													if(isset($_POST['btnSearch']))
 													{
-														include_once("/business/BussinessProcessor.php");
-														$result= BusinessProcessor::findSearchInContext();
-														if($result!=null)
-															echo $result; 
+														//include_once("/business/BussinessProcessor.php");
+														//$result= MessageTypeProcessor::findSearchInContext();
+														echo MessageTypeProcessor::loadAllMessage();
+														// if($result!=null)
+															// echo $result; 
+														// else
+															// echo MessageTypeProcessor::loadAllMessage();
 													}
 													else
 													{
-														include_once("/user/xulycacloaitin.php");
+														
 														//echo MessageTypeProcessor::loadAllMessage();
 													}
                                     
@@ -237,7 +241,7 @@
 													
 												}
 											?>
-											</div>
+											
 										</table>
 									</div>
 								</div>
