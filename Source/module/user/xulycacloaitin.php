@@ -39,57 +39,17 @@ class MessageTypeProcessor
 			// echo "<br>offset=".$offset;
 			 
             $business=DichVuBUS::getAll($offset,$maxItems);
+			echo "<br>".count($business);
+			//echo "<br>". MessageTypeProcessor::display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems);;
         // }
-       
+        
         return MessageTypeProcessor::display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems);
     }
-	public static function findBussiness()
-    {
-        //create string sql
-		if(isset($_POST['btnSearch']))
-		{
-			$messageID = $_POST["txtMessageID"];
-			$serviceType =(int) $_POST["cbbServiceType"];
-			$category =(int) $_POST["cbbCategory"];
-			$location =(int) $_POST["cbbLocation"];
-			echo "<br>messageID=".$messageID;
-			echo "<br>deviceType=".$serviceType;
-			echo "<br>category=".$category;
-			echo "<br>location=".$location;
-			$strLink= "tindadang.php?";
-			$strSQL="select * from ";
-			$strTable="dichvu";
-			$strWhere=" where 1=1 ";
-			if(isset($_POST["txtMessageID"]) && $_POST["txtMessageID"] != null)
-			{
-				$strLink.="txtMessageID=".$_POST["txtMessageID"]."&";
-				$strWhere.=" and dichvu.id=".$_POST["txtMessageID"];
-			}
-			if(isset($_POST["cbbCategory"])&& $category !=-1)
-			{
-				$strLink.="cbbLoaiBDS=".$category."&";
-				$strWhere.=" and dichvu.loainha=".$category;
-			}
-			if(isset($_POST["cbbLocation"])&& $_POST["cbbLocation"] !=-1)
-			{
-				$strLink.="cbbTinh=".$_POST["cbbLocation"]."&";
-				$strWhere.=" and dichvu.tinh=".$_POST["cbbLocation"];
-			}
-			if(isset($_POST["cbbServiceType"])&&$_POST["cbbServiceType"]!=-1)
-			{
-				$strLink.="cbbLoaidv=".$_POST["cbbServiceType"]."&";
-				$strWhere.=" and dichvu.loaidv=".$_POST["cbbServiceType"];
-			}
-			$strSQL.=$strTable.$strWhere;
-			return MessageTypeProcessor::findBusiness($strLink,$strSQL);
-		}
-		 return null;  
-	}
+
 
 	public static function display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems)
     {
 		$strResult="";
-		// echo "<br>business=".count($business);
 		for($i=0;$i<count($business);$i++)
         {
 			$strResult.="<tr bgcolor='#ffffff'>";
@@ -139,7 +99,6 @@ class MessageTypeProcessor
 		
 		$strPaging = Utils::paging ($strLink,$totalItems,$curPage,$maxPages,$maxItems);
   		$strResult.="<center>".$strPaging;
-		//echo "<br>business=".$strPaging;
         return $strResult;
 	}
 	//search
@@ -195,14 +154,7 @@ class MessageTypeProcessor
         $totalItems=DichVuBUS::countAllBySQL($strCountSQL); 
         $strSQL.=" limit $offset,$maxItems";
              
-        $business=DichVuBUS::getAllBySQL($strSQL);                
-        $totalItems=count($business); 
-		
-// echo "<br>strlink=".$strLink;		
-// echo "<br>totalItems=".$totalItems;		
-// echo "<br>curPage=".$curPage;		
-// echo "<br>strSQL=".$strSQL;
-
+        $business=DichVuBUS::getAllBySQL($strSQL);
         return MessageTypeProcessor::display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems);
 		
     }
