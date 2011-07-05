@@ -12,7 +12,7 @@ class LoaiDichVuDAO
 {
     public static function getById($id)
     {
-        $strSQL = "select * from loaidichvu where id=$id";					
+        $strSQL = "select * from loaidichvu where id='$id'";					
 			
             $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)

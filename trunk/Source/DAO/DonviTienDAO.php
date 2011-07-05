@@ -8,7 +8,7 @@
 class DonviTienDAO{
 	public static function selectId($id)
     {
-        $strSQL = "select * from donvitien where id=$id";
+        $strSQL = "select * from donvitien where id='$id'";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
             return null;
