@@ -13,6 +13,9 @@ Lớp LoaiNhaBUS
 		{
 			return LoaiNhaDAO::GetAllLoaiNha ();
 		}
-		
+		public static function getById($id)
+		{
+			return LoaiNhaDAO::getById($id);
+		}
 	}
 ?>
