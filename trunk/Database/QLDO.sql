@@ -572,15 +572,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   KEY `fk_taikhoan_role` (`role`),
   KEY `fk_taikhoan_level` (`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `sdt1`, `sdt2`, `role`, `level`, `status`, `ngaycapnhat`, `ip`) VALUES
-(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc@gmail.com', 'phuc0903@gmail.com', b'0', 'gterte', '143242353425', '', 4, 4, 0, NULL, NULL),
-(3, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'FASFREWRWERW', b'0', 'fsadf', '1224324232', '', 4, 4, 0, NULL, NULL);
+(1, 'e10adc3949ba59abbe56e057f20f883e', 'admin@yahoo.com', 'Administrator', b'1', '36/15 Bình Giã, P.13, Q.Tân Bình, Tp.HCM', '0934100286', '', 1, 0, 0, NULL, NULL),
+(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'FASFREWRWERW', b'0', 'fsadf', '1224324232', '', 4, 4, 0, NULL, NULL);
 
 --
 -- Constraints for dumped tables
