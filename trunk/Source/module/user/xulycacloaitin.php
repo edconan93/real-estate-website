@@ -39,7 +39,6 @@ class MessageTypeProcessor
 			// echo "<br>offset=".$offset;
 			 
             $business=DichVuBUS::getAll($offset,$maxItems);
-			echo "<br>".count($business);
 			//echo "<br>". MessageTypeProcessor::display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems);;
         // }
         
@@ -105,35 +104,35 @@ class MessageTypeProcessor
 	public static function findSearchInContext()
     {
         //create string sql
-		if(isset($_POST['btnSearch']))
+		if(isset($_GET['btnSearch']) || isset($_REQUEST["txtMessageID"])||isset($_REQUEST["cbbCategory"]) || isset($_REQUEST["cbbLocation"]) || isset($_REQUEST["cbbServiceType"]) )
 		{
-			$messageID = $_POST["txtMessageID"];
-			$serviceType =(int) $_POST["cbbServiceType"];
-			$category =(int) $_POST["cbbCategory"];
-			$location =(int) $_POST["cbbLocation"];
+			// $messageID = $_REQUEST["txtMessageID"];
+			// $serviceType =(int) $_REQUEST["cbbServiceType"];
+			// $category =(int) $_REQUEST["cbbCategory"];
+			// $location =(int) $_REQUEST["cbbLocation"];
 			$strLink= "tindadang.php?";
 			$strSQL="select * from ";
 			$strTable="dichvu";
 			$strWhere=" where 1=1 ";
-			if(isset($_POST["txtMessageID"]) && $_POST["txtMessageID"] != null)
+			if(isset($_REQUEST["txtMessageID"]) && $_REQUEST["txtMessageID"] != null)
 			{
-				$strLink.="txtMessageID=".$_POST["txtMessageID"]."&";
-				$strWhere.=" and dichvu.id=".$_POST["txtMessageID"];
+				$strLink.="txtMessageID=".$_REQUEST["txtMessageID"]."&";
+				$strWhere.=" and dichvu.id=".$_REQUEST["txtMessageID"];
 			}
-			if(isset($_POST["cbbCategory"])&& $category != -1)
+			if(isset($_REQUEST["cbbCategory"])&& $_REQUEST["cbbCategory"] != -1)
 			{
-				$strLink.="cbbLoaiBDS=".$category."&";
-				$strWhere.=" and dichvu.loainha=".$category;
+				$strLink.="cbbCategory=".$_REQUEST["cbbCategory"]."&";
+				$strWhere.=" and dichvu.loainha=".$_REQUEST["cbbCategory"];
 			}
-			if(isset($_POST["cbbLocation"])&& $_POST["cbbLocation"] != -1)
+			if(isset($_REQUEST["cbbLocation"])&& $_REQUEST["cbbLocation"] != -1)
 			{
-				$strLink.="cbbTinh=".$_POST["cbbLocation"]."&";
-				$strWhere.=" and dichvu.tinh=".$_POST["cbbLocation"];
+				$strLink.="cbbLocation=".$_REQUEST["cbbLocation"]."&";
+				$strWhere.=" and dichvu.tinh=".$_REQUEST["cbbLocation"];
 			}
-			if(isset($_POST["cbbServiceType"])&&$_POST["cbbServiceType"]!= -1)
+			if(isset($_REQUEST["cbbServiceType"])&&$_REQUEST["cbbServiceType"]!= -1)
 			{
-				$strLink.="cbbLoaidv=".$_POST["cbbServiceType"]."&";
-				$strWhere.=" and dichvu.loaidv=".$_POST["cbbServiceType"];
+				$strLink.="cbbServiceType=".$_REQUEST["cbbServiceType"]."&";
+				$strWhere.=" and dichvu.loaidv=".$_REQUEST["cbbServiceType"];
 			}
 			$strSQL.=$strTable.$strWhere;
 			return MessageTypeProcessor::findSearchContext2($strLink,$strSQL);
