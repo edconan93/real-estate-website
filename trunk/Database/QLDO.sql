@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 29, 2011 at 03:18 PM
+-- Generation Time: Jul 05, 2011 at 02:09 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -26,7 +26,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `dichvu`
 --
 
-DROP TABLE IF EXISTS `dichvu`;
 CREATE TABLE IF NOT EXISTS `dichvu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tieude` text COLLATE utf8_unicode_ci NOT NULL,
@@ -56,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `dichvu` (
   `x` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `y` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `khanang` int(11) DEFAULT NULL,
+  `rank` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_thongtinnhadat_phuong` (`phuong`),
   KEY `fk_thongtinhnhadat_khachhang` (`chusohuu`),
@@ -81,10 +81,10 @@ CREATE TABLE IF NOT EXISTS `dichvu` (
 -- Dumping data for table `dichvu`
 --
 
-INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tinh`, `ngaydang`, `ngaycapnhat`, `duong`, `rong`, `dai`, `tang`, `sophongngu`, `sophongtam`, `giaban`, `donvitien`, `status`, `thoihantin`, `loainha`, `phaply`, `huongnha`, `khuyenmai`, `loaidv`, `donvidv`, `x`, `y`, `khanang`) VALUES
-(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03 00:00:00', NULL, 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, 1, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 2, NULL, NULL, NULL),
-(3, 'Bán căn hộ the everich Q12 gia rẻ vào ở ngay', NULL, 2, 4, 3, 2, '2010-02-04 00:00:00', NULL, 'lac long quan', 7, 9, 10, 3, 2, 123214, 1, 1, 12, 2, 1, 2, NULL, 1, 1, NULL, NULL, NULL),
-(4, 'Bán căn hộ the everich Q10 gia rẻ vào ở ngay', NULL, 2, 3, 3, 3, NULL, NULL, NULL, 3, 4, 3, 3, 2, 43214100, 1, 1, 2, 1, 1, 1, 'Tặng nội thất vào ở ngay', 1, 1, NULL, NULL, NULL);
+INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tinh`, `ngaydang`, `ngaycapnhat`, `duong`, `rong`, `dai`, `tang`, `sophongngu`, `sophongtam`, `giaban`, `donvitien`, `status`, `thoihantin`, `loainha`, `phaply`, `huongnha`, `khuyenmai`, `loaidv`, `donvidv`, `x`, `y`, `khanang`, `rank`) VALUES
+(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03 00:00:00', NULL, 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, 1, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 2, NULL, NULL, NULL, NULL),
+(3, 'Bán căn hộ the everich Q12 gia rẻ vào ở ngay', NULL, 2, 4, 3, 2, '2010-02-04 00:00:00', NULL, 'lac long quan', 7, 9, 10, 3, 2, 123214, 1, 1, 12, 2, 1, 2, NULL, 1, 1, NULL, NULL, NULL, NULL),
+(4, 'Bán căn hộ the everich Q10 gia rẻ vào ở ngay', NULL, 2, 3, 3, 3, NULL, NULL, NULL, 3, 4, 3, 3, 2, 43214100, 1, 1, 2, 1, 1, 1, 'Tặng nội thất vào ở ngay', 1, 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,6 @@ INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tin
 -- Table structure for table `dichvu_tienich`
 --
 
-DROP TABLE IF EXISTS `dichvu_tienich`;
 CREATE TABLE IF NOT EXISTS `dichvu_tienich` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idcanho` int(11) DEFAULT NULL,
@@ -114,7 +113,6 @@ CREATE TABLE IF NOT EXISTS `dichvu_tienich` (
 -- Table structure for table `donvidichvu`
 --
 
-DROP TABLE IF EXISTS `donvidichvu`;
 CREATE TABLE IF NOT EXISTS `donvidichvu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -136,7 +134,6 @@ INSERT INTO `donvidichvu` (`id`, `ten`) VALUES
 -- Table structure for table `donvitien`
 --
 
-DROP TABLE IF EXISTS `donvitien`;
 CREATE TABLE IF NOT EXISTS `donvitien` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -159,7 +156,6 @@ INSERT INTO `donvitien` (`id`, `ten`, `tigia`) VALUES
 -- Table structure for table `hinhanh`
 --
 
-DROP TABLE IF EXISTS `hinhanh`;
 CREATE TABLE IF NOT EXISTS `hinhanh` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `path` text COLLATE utf8_unicode_ci,
@@ -183,7 +179,6 @@ INSERT INTO `hinhanh` (`id`, `path`, `iddichvu`) VALUES
 -- Table structure for table `huongnha`
 --
 
-DROP TABLE IF EXISTS `huongnha`;
 CREATE TABLE IF NOT EXISTS `huongnha` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -211,7 +206,6 @@ INSERT INTO `huongnha` (`id`, `ten`) VALUES
 -- Table structure for table `khanang`
 --
 
-DROP TABLE IF EXISTS `khanang`;
 CREATE TABLE IF NOT EXISTS `khanang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -237,7 +231,6 @@ INSERT INTO `khanang` (`id`, `ten`) VALUES
 -- Table structure for table `level`
 --
 
-DROP TABLE IF EXISTS `level`;
 CREATE TABLE IF NOT EXISTS `level` (
   `idlevel` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
@@ -262,7 +255,6 @@ INSERT INTO `level` (`idlevel`, `ten`, `chitiet`) VALUES
 -- Table structure for table `loaidichvu`
 --
 
-DROP TABLE IF EXISTS `loaidichvu`;
 CREATE TABLE IF NOT EXISTS `loaidichvu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -285,7 +277,6 @@ INSERT INTO `loaidichvu` (`id`, `ten`) VALUES
 -- Table structure for table `loainha`
 --
 
-DROP TABLE IF EXISTS `loainha`;
 CREATE TABLE IF NOT EXISTS `loainha` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -309,7 +300,6 @@ INSERT INTO `loainha` (`id`, `ten`) VALUES
 -- Table structure for table `nhanvien_quyenhan`
 --
 
-DROP TABLE IF EXISTS `nhanvien_quyenhan`;
 CREATE TABLE IF NOT EXISTS `nhanvien_quyenhan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
@@ -330,7 +320,6 @@ CREATE TABLE IF NOT EXISTS `nhanvien_quyenhan` (
 -- Table structure for table `phuong`
 --
 
-DROP TABLE IF EXISTS `phuong`;
 CREATE TABLE IF NOT EXISTS `phuong` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` text COLLATE utf8_unicode_ci NOT NULL,
@@ -373,7 +362,6 @@ INSERT INTO `phuong` (`id`, `ten`, `idquan`) VALUES
 -- Table structure for table `quan`
 --
 
-DROP TABLE IF EXISTS `quan`;
 CREATE TABLE IF NOT EXISTS `quan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` text COLLATE utf8_unicode_ci NOT NULL,
@@ -418,7 +406,6 @@ INSERT INTO `quan` (`id`, `ten`, `idtinh`) VALUES
 -- Table structure for table `quyenhansudung`
 --
 
-DROP TABLE IF EXISTS `quyenhansudung`;
 CREATE TABLE IF NOT EXISTS `quyenhansudung` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` text COLLATE utf8_unicode_ci NOT NULL,
@@ -443,7 +430,6 @@ INSERT INTO `quyenhansudung` (`id`, `ten`, `chitiet`) VALUES
 -- Table structure for table `role`
 --
 
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -462,10 +448,33 @@ INSERT INTO `role` (`id`, `ten`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `thuchi`
+--
+
+CREATE TABLE IF NOT EXISTS `thuchi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sotien` float NOT NULL,
+  `donvi` int(11) DEFAULT NULL,
+  `congviec` text COLLATE utf8_unicode_ci,
+  `ngaychi` date DEFAULT NULL,
+  `nhanvien` int(11) DEFAULT NULL,
+  `loai` bit(1) DEFAULT NULL COMMENT 'loai 0: thu\nloai 1: chi',
+  PRIMARY KEY (`id`),
+  KEY `fk_thuchi_user` (`nhanvien`),
+  KEY `fk_thuchi_donvi` (`donvi`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `thuchi`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tienich`
 --
 
-DROP TABLE IF EXISTS `tienich`;
 CREATE TABLE IF NOT EXISTS `tienich` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -492,7 +501,6 @@ INSERT INTO `tienich` (`id`, `ten`) VALUES
 -- Table structure for table `tinh`
 --
 
-DROP TABLE IF EXISTS `tinh`;
 CREATE TABLE IF NOT EXISTS `tinh` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -521,7 +529,6 @@ INSERT INTO `tinh` (`id`, `ten`) VALUES
 -- Table structure for table `tinhtrangphaply`
 --
 
-DROP TABLE IF EXISTS `tinhtrangphaply`;
 CREATE TABLE IF NOT EXISTS `tinhtrangphaply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -548,7 +555,6 @@ INSERT INTO `tinhtrangphaply` (`id`, `ten`) VALUES
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `password` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
@@ -584,10 +590,10 @@ INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `s
 -- Constraints for table `dichvu`
 --
 ALTER TABLE `dichvu`
-  ADD CONSTRAINT `fk_dichvu_khanang` FOREIGN KEY (`khanang`) REFERENCES `khanang` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu` FOREIGN KEY (`donvitien`) REFERENCES `donvitien` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_donvidv` FOREIGN KEY (`donvidv`) REFERENCES `donvidichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_huong` FOREIGN KEY (`huongnha`) REFERENCES `huongnha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_dichvu_khanang` FOREIGN KEY (`khanang`) REFERENCES `khanang` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_loaicanho` FOREIGN KEY (`loainha`) REFERENCES `loainha` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_loaidv` FOREIGN KEY (`loaidv`) REFERENCES `loaidichvu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_dichvu_phaply` FOREIGN KEY (`phaply`) REFERENCES `tinhtrangphaply` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -627,6 +633,13 @@ ALTER TABLE `phuong`
 --
 ALTER TABLE `quan`
   ADD CONSTRAINT `fk_quan_tinh` FOREIGN KEY (`idtinh`) REFERENCES `tinh` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `thuchi`
+--
+ALTER TABLE `thuchi`
+  ADD CONSTRAINT `fk_thuchi_donvi` FOREIGN KEY (`donvi`) REFERENCES `donvitien` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_thuchi_user` FOREIGN KEY (`nhanvien`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user`
