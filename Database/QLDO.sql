@@ -297,11 +297,11 @@ CREATE TABLE IF NOT EXISTS `loainha` (
 --
 
 INSERT INTO `loainha` (`id`, `ten`) VALUES
-(1, 'Biệt Thự'),
+(1, 'Biệt thự'),
 (2, 'Căn hộ chung cư'),
-(3, 'Căn hộ cao cấp'),
-(4, 'Nhà Phố'),
-(5, 'Văn phòng cho thuê');
+(3, 'Căn hộ cao cấp'),
+(4, 'Nhà phố'),
+(5, 'Văn phòng cho thuê');
 
 -- --------------------------------------------------------
 
