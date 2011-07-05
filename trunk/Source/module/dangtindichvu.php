@@ -472,7 +472,7 @@ $(document).ready(function()
 										<span class="badge"></span>
 										<div style="background-color: #FFFFFF; border: 1px solid #DDDDDD;margin: 10px; padding: 10px 20px;" class="innerBox">
 											<ul style="list-style: none outside none;padding-left:0;">
-												<li><b>Để sử dụng các tính năng nâng cao và dễ dàng quản lý tin đăng, xin vui lòng đăng nhập trước khi đăng tin.</b>
+												<li><b>Để sử dụng các tính năng nâng cao và dễ dàng quản lý tin đăng, xin vui lòng đăng nhập trước khi đăng tin.</b>
 												</li>
 												<li><b>Xin vui lòng tham khảo các <a href="noiquidangtin.php" style="text-decoration:underline;color:red;font-size:11px;"> 
 												   quy định đăng tin</a> trước khi đăng tin.</b></li>
@@ -936,7 +936,16 @@ $(document).ready(function()
 									<?php
 										}
 										else if ($_GET["step"] == 3 || isset($_GET["dangtin"]))
-											echo "<center><b style='color:blue;'>Quá trình đăng tin của bạn đã thành công. Vui lòng chờ admin xét duyệt.</b></center>";
+										{
+											echo "<center><b style='color:blue;'>Quá trình đăng tin của bạn đã thành công. Vui lòng chờ admin xét duyệt.</b></center><br>";
+									?>
+											<a href="tindadang.php?type=2"><div style="width:70px;margin-left:300px;">
+												<span class="action-button-left"></span>
+												<input class="submitYellow" type="Submit" value="Tiếp tục" />
+												<span class="action-button-right"></span>
+											</div></a>
+									<?php
+										}
 									?>
 								</div>
 							</div>
