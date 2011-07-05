@@ -48,21 +48,34 @@
 										?>
 									</b>
 									<div class="bg_r" style="border: 1px solid rgb(172, 172, 172); padding: 0px; z-index: auto;">
-<!--form process search -->	<form name="sortby" method="post" action="tindadang.php">
+<!--form process search -->	<form name="sortby" method="get" action="tindadang.php">
 											<table cellspacing="1" cellpadding="5" align="center" style="margin: 3px;">
 												<tr>
 													<td>
 														Mã số tin<br>
-														<input type="text" style="width: 100px;" value="" name="txtMessageID">
+														<?php
+														if(isset($_REQUEST['txtMessageID']))
+															echo "<input type='text' style='width: 100px;' value='".$_REQUEST['txtMessageID']."' name='txtMessageID'>";
+														else
+															echo "<input type='text' style='width: 100px;' value='' name='txtMessageID'>";
+														?>
 													</td>
 													<td>
 														Nhu cầu<br>
 														<select style="width: 120px;" name="cbbServiceType">
 															<option value="-1">tất cả</option>
-															<option value="1">Cần Bán</option>
-															<option value="2">Cần Mua</option>
-															<option value="5">Cần Thuê</option>
-															<option value="3">Cho Thuê</option>
+															
+															<?php
+															include("../BUS/LoaiDichVuBUS.php");
+															$loaidv=LoaiDichVuBUS::getALL();
+															for($i=0;$i<count($loaidv);$i++)
+															{
+																if(isset($_REQUEST['cbbServiceType'])&&$_REQUEST['cbbServiceType'] == $loaidv[$i]['id'])
+																	echo "<option value='".$loaidv[$i]['id']."' selected>".$loaidv[$i]['ten']."</option>";
+																else 
+																	echo "<option value='".$loaidv[$i]['id']."'>".$loaidv[$i]['ten']."</option>";
+															}
+															?>
 														</select>
 													</td>
 													<td>
@@ -73,8 +86,14 @@
 																include("../BUS/LoaiNhaBUS.php");
 																$rs=LoaiNhaBUS::GetAllLoaiNha();
 																for($i=0;$i<count($rs);$i++)
-																{		
-																	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+																{
+																	if(isset($_REQUEST['cbbCategory']) && $_REQUEST['cbbCategory'] == $rs[$i]['id'])
+																	{
+																		echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+																		
+																	}
+																	else
+																		echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
 																}
 															?>
 														</select>
@@ -87,8 +106,12 @@
 																include("../BUS/TinhBUS.php");
 																$rs=TinhBUS::GetAllTinh();
 																for($i=0;$i<count($rs);$i++)
-																{		
-																	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+																{	
+																	if(isset($_REQUEST['cbbLocation']) && $_REQUEST['cbbLocation'] == $rs[$i]['id'])
+																		echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+																	else
+																		echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+																	
 																}
 															?>	
 														</select>
@@ -117,10 +140,17 @@
 											</tr>
 											<!--div id="messLoadSearch" name="messLoadSearch"-->
 											<?php
-												if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
-												{
-													for($i=0;$i<1;$i++)
-													{
+												include_once("/user/xulycacloaitin.php");
+												$result= MessageTypeProcessor::findSearchInContext();
+												if($result!=null)
+													echo $result;
+												 else
+													 echo MessageTypeProcessor::loadAllMessage();
+													
+												// if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
+												// {
+													// for($i=0;$i<1;$i++)
+													// {
 											?>
 														<!--tr bgcolor="#ffffff">
 															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
@@ -160,12 +190,12 @@
 															</td>
 														</tr-->
 											<?php
-													}
-												}
-												else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
-												{
-													for($i=0;$i<3;$i++)
-													{
+													// }
+												// }
+												// else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
+												// {
+													// for($i=0;$i<3;$i++)
+													// {
 											?>
 														<!--tr bgcolor="#ffffff">
 															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
@@ -205,41 +235,41 @@
 															</td>
 														</tr-->
 											<?php
-													}
-												}
-												else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
-												{
-													for($i=0;$i<2;$i++)
-													{
+													// }
+												// }
+												// else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
+												// {
+													// for($i=0;$i<2;$i++)
+													// {
 											?>
 													
 											<?php
-													}
-												}
-												else
-												{
-													include_once("/user/xulycacloaitin.php");
-													if(isset($_POST['btnSearch']))
-													{
+													// }
+												// }
+												// else
+												// {
+													
+													// if(isset($_POST['btnSearch']))
+													// {
 														//include_once("/business/BussinessProcessor.php");
 														//echo MessageTypeProcessor::loadAllMessage();
-														$result= MessageTypeProcessor::findSearchInContext();
-														 if($result!=null)
-															echo $result; 
+														// $result= MessageTypeProcessor::findSearchInContext();
+														 // if($result!=null)
+															// echo $result; 
 														// else
 															// echo MessageTypeProcessor::loadAllMessage();
-													}
-													else
-													{
+													// }
+													// else
+													// {
 														
 														//echo MessageTypeProcessor::loadAllMessage();
-													}
+													// }
                                     
 											?>
 														
 											<?php
 													
-												}
+												// }
 											?>
 											
 										</table>

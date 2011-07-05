@@ -82,7 +82,7 @@ class Utils
     		$paging="<div align='center'><br><table border='0' cellspacing='0' cellpadding='0' align='center'><tr> \n";
     		if ($curPage==1)
     		{
-    			$paging.="<td><img src='images/previous_disable.gif' border='0'></td> \n";
+    			$paging.="<td><img src='../images/previous_disable.gif' border='0'></td> \n";
     		}
     		else
     		{ 
@@ -106,7 +106,7 @@ class Utils
     			$paging.=sprintf ("<td><a href='%spage=%d' style='text-decoration:none'>Trang cuối</a></td> \n",$href,$totalPages);
     		}
     		else
-    			$paging.="<td><img src='images/next_disable.gif' border='0'></td> \n";
+    			$paging.="<td><img src='../images/next_disable.gif' border='0'></td> \n";
     		$paging.="</tr></table><br></div>";
     	}
     	return $paging;

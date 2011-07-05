@@ -62,9 +62,7 @@ class BusinessProcessor
         $offset=($curPage-1)*$maxItems; 
         $strCountSQL=str_replace("*"," count(*) ",$strSQL);
         $totalItems=DichVuBUS::countAllBySQL($strCountSQL); 
-        $strSQL.=" limit $offset,$maxItems";
-          
-        
+        $strSQL.=" limit $offset,$maxItems";  
         $business=DichVuBUS::getAllBySQL($strSQL);
         if(isset($_REQUEST['cbbGia'])&&$_REQUEST['cbbGia']!=-1)
         {           
@@ -99,7 +97,7 @@ class BusinessProcessor
             
                 $business=$array;
                 $totalItems=count($business);
-            
+				
         }
        
         return BusinessProcessor::display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems);
