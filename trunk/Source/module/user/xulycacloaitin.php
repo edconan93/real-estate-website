@@ -25,14 +25,14 @@ class MessageTypeProcessor
         $maxItems = 2;
 	    $maxPages = 25;
         $offset=($curPage-1)*$maxItems; 
-        // if(isset($_REQUEST['loaidv']))
-        // {
+        if(isset($_REQUEST['type']))
+        {
             // $strLink.="loaidv=".$_REQUEST['loaidv']."&";
             // $totalItems=DichVuBUS::countAllDichVuByLoai($_REQUEST['loaidv']);
             // $business=DichVuBUS::getALLDichVuByLoai($_REQUEST['loaidv'],$offset,$maxItems);
-        // }
-        // else
-        // {
+        }
+        else
+        {
             $totalItems=DichVuBUS::countAll();
 			// echo "<br>totalItems=".$totalItems;
 			// echo "<br>offset=".$offset;
@@ -40,7 +40,7 @@ class MessageTypeProcessor
 			 
             $business=DichVuBUS::getAll($offset,$maxItems);
 			//echo "<br>". MessageTypeProcessor::display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems);;
-        // }
+        }
         
         return MessageTypeProcessor::display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems);
     }

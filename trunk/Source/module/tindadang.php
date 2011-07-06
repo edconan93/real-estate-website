@@ -141,16 +141,12 @@
 											<!--div id="messLoadSearch" name="messLoadSearch"-->
 											<?php
 												include_once("/user/xulycacloaitin.php");
-												$result= MessageTypeProcessor::findSearchInContext();
-												if($result!=null)
-													echo $result;
-												 else
-													 echo MessageTypeProcessor::loadAllMessage();
+												
 													
-												// if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
-												// {
-													// for($i=0;$i<1;$i++)
-													// {
+												if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
+												{
+													for($i=0;$i<1;$i++)
+													{
 											?>
 														<!--tr bgcolor="#ffffff">
 															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
@@ -190,12 +186,12 @@
 															</td>
 														</tr-->
 											<?php
-													// }
-												// }
-												// else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
-												// {
-													// for($i=0;$i<3;$i++)
-													// {
+													}
+												}
+												else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
+												{
+													for($i=0;$i<3;$i++)
+													{
 											?>
 														<!--tr bgcolor="#ffffff">
 															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
@@ -235,42 +231,27 @@
 															</td>
 														</tr-->
 											<?php
-													// }
-												// }
-												// else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
-												// {
-													// for($i=0;$i<2;$i++)
-													// {
-											?>
-													
-											<?php
-													// }
-												// }
-												// else
-												// {
-													
-													// if(isset($_POST['btnSearch']))
-													// {
-														//include_once("/business/BussinessProcessor.php");
-														//echo MessageTypeProcessor::loadAllMessage();
-														// $result= MessageTypeProcessor::findSearchInContext();
-														 // if($result!=null)
-															// echo $result; 
-														// else
-															// echo MessageTypeProcessor::loadAllMessage();
-													// }
-													// else
-													// {
+													}
+												}
+												else 
+												{
+													if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
+													{
+													}
+													else
+													{
+														$result= MessageTypeProcessor::findSearchInContext();
+														if($result!=null)
+															echo $result;
+														 else
+															 echo MessageTypeProcessor::loadAllMessage();
 														
-														//echo MessageTypeProcessor::loadAllMessage();
-													// }
+													}
+												}
                                     
 											?>
 														
-											<?php
-													
-												// }
-											?>
+										
 											
 										</table>
 									</div>
