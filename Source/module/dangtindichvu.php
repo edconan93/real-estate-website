@@ -531,7 +531,7 @@ $(document).ready(function()
 										}
 										if ($_GET["step"] == 1)
 										{
-											echo "<form action='user/xulydichvu.php?loaidvcandang=".$_GET["loaidvcandang"]."&step=1&id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data' onsubmit='saveData();'>"; 
+											echo "<form action='user/xulydichvu.php?loaidvcandang=".$_GET['loaidvcandang']."&step=1&id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data' onsubmit='saveData();'>"; 
 											if(isset($_GET['loaidvcandang']))
 												$loaitindichvu = $_GET['loaidvcandang'];
 											else
@@ -549,10 +549,11 @@ $(document).ready(function()
 													<?php 
 													if(isset($_GET['loaidvcandang']))
 													{
+													    echo "<br>loaidvcandang=".$_GET['loaidvcandang'];
 														$t= $_GET['loaidvcandang'];
 														echo "<div id='idLoaiDV' name='idLoaiDV' value='".$_GET["loaidvcandang"]."'></div>";
 														echo "<input name='txtIDLoaiDV' id='txtIDLoaiDV' type='text' style='width:300px;display:none;'
-														value='".$loaitindichvu."'>";
+														value='".$_GET['loaidvcandang']."'>";
 													}
 													?>
 													<input name="txtIDLoaiDV" id="txtIDLoaiDV" type="text" style="width:300px;display:none;" value="1">

@@ -66,7 +66,7 @@
 		echo "<br>huongnha=".$huongnha;
 		$khuyenmai = $_POST["txtKhuyenMai"];
 		echo "<br>khuyenmai=".$khuyenmai;
-		$loaiDV = (int)$_POST["txtIDLoaiDV"];
+		$loaiDV = (int)$_GET['loaidvcandang'];
 		echo "<br>loaiDV=".$loaiDV;
 		$donviDV = (int)$_POST["cbbDonViDichVu"];
 		echo "<br>donviDV=".$donviDV;

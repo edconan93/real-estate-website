@@ -145,8 +145,7 @@
 													
 												if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
 												{
-													for($i=0;$i<1;$i++)
-													{
+													echo MessageTypeProcessor::loadAllMessage();
 											?>
 														<!--tr bgcolor="#ffffff">
 															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
@@ -186,12 +185,11 @@
 															</td>
 														</tr-->
 											<?php
-													}
+													
 												}
 												else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
 												{
-													for($i=0;$i<3;$i++)
-													{
+													echo MessageTypeProcessor::loadAllMessage();
 											?>
 														<!--tr bgcolor="#ffffff">
 															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
@@ -231,12 +229,13 @@
 															</td>
 														</tr-->
 											<?php
-													}
+													
 												}
 												else 
 												{
 													if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
 													{
+														echo MessageTypeProcessor::loadAllMessage();
 													}
 													else
 													{

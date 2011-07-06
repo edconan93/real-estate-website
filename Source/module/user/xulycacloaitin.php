@@ -27,9 +27,9 @@ class MessageTypeProcessor
         $offset=($curPage-1)*$maxItems; 
         if(isset($_REQUEST['type']))
         {
-            // $strLink.="loaidv=".$_REQUEST['loaidv']."&";
-            // $totalItems=DichVuBUS::countAllDichVuByLoai($_REQUEST['loaidv']);
-            // $business=DichVuBUS::getALLDichVuByLoai($_REQUEST['loaidv'],$offset,$maxItems);
+             $strLink.="type=".$_REQUEST['type']."&";
+             $totalItems=DichVuBUS::countAllDichVuByStatus($_REQUEST['type']);
+             $business=  DichVuBUS::getALLDichVuByStatus($_REQUEST['type'],$offset,$maxItems);
         }
         else
         {
@@ -56,9 +56,34 @@ class MessageTypeProcessor
 			$strResult.="<b>".$business[$i][0]."</b></td>";//id
 			
 			$strResult.="<td valign='top' align='left' style='border-left: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);'>";
-			$strResult.="<span style='color: rgb(255, 0, 0);'>Tin đã duyệt</span><br>";//loai tin
-			$strResult.="<b>".$business[$i][1]."</b><br>";//tên tiêu đề
+			if($business[$i]['status'] == 0)
+			{
+				$strResult.="<div style='float:right;'><b style='color:#FF0000;'>Chờ duyệt</b></div><br>";//loai tin
+				$strResult.="<b>".$business[$i][1]."</b><br>";//tên tiêu đề
+			}
+			else 
+			{
+				if($business[$i]['status'] == 1)
+				{
+					$strResult.="<span style='color: rgb(255, 0, 0);'>Tin đã duyệt</span><div style='float:right;'><b style='color:#FF0000;'>Miễn Phí</b></div><br>";//loai tin
+					$strResult.="<b>".$business[$i][1]."</b><br>";//tên tiêu đề
+				}
+				else{
+					if($business[$i]['status'] == 2)
+					{
+						$strResult.="<div style='float:right;'><b style='color:#FF0000;'>Tin VIP</b></div><br>";//loai tin
+						$strResult.="<b>".$business[$i][1]."</b><br>";//tên tiêu đề
+					}
+					else
+					{
+						$strResult.="<div style='float:right;'><b style='color:#FF0000;'>Hết hạn</b></div><br>";//loai tin
+						$strResult.="<b>".$business[$i][1]."</b><br>";//tên tiêu đề
+					}
+				}
+			}
 			
+			
+			//load data
 			$loaidv=LoaiDichVuBUS::getById($business[$i][19]);
 			$huongnha = HuongNhaBUS::GetHuongNhaById($business[$i]['huongnha']);
 			$donvitien= DonViTienBUS::selectId($business[$i]['donvitien']);
@@ -74,14 +99,19 @@ class MessageTypeProcessor
 				$date ="00:00:00";
 				$declinetime ="00:00:00";
 			}
-			
+			//endload
 			$strResult.="- <b style='color: #0D5DA8;font-weight:bold;font-size:11px;text-decoration: none;'	>Loại nhà:".$loainha['ten']." </b><br> - <a target='_blank' href='#'>".$loaidv[1]."</a>";//tên loại dv
 			$strResult.="- Hướng nhà:".$huongnha[1]."<br>";//Hướng nhà
 			$strResult.="<b>- Giá:<b>".$business[$i]['giaban']."</b> ".$donvitien['ten']."/ ".$donvidv['ten']."  - Kích thước: ".$business[$i]['dai']." x ".$business[$i]['rong']."m<sup>2</sup> </b><br>";//giá nhà và kt
-			$strResult.="</td>";//giá nhà và kt
+			if($business[$i]['status'] == 1)
+			{
+				$strResult.="<div style='float:left; padding:3px; font-weight: bold;'><a style='color:red;' href='nangcaptinvip.php'><img align='left' src='../images/uprade.png'>Nâng cấp lên VIP 275.000 /tháng</a></div></td>";//giá nhà và kt
+			}
 			$strResult.="<td width='260' valign='top' style='border-left: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);'>";//column 3
 			$strResult.="<div style='margin-bottom: 5px; font-weight: normal; color: rgb(51, 51, 51);'>";
-			$strResult.="- 1 lượt xem tin <br>"; //so nguoi xem tin
+			
+			
+			//$strResult.="- 1 lượt xem tin <br>"; //so nguoi xem tin
 			$strResult.="- Ngày đăng: &nbsp;&nbsp;&nbsp;&nbsp;".$date."<br>"; //ngay dang
 			$strResult.="- Ngày hết hạn: ".$declinetime."<br>"; //ngay het han
 			$strResult.="</div>"; 

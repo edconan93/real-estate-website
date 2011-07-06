@@ -110,6 +110,34 @@ class DichVuDAO
         $resultSet=mysql_fetch_array ($result);
         return $resultSet[0];
     }
+	//hoaphuong0
+	public static function countAllDichVuByStatus($status)
+    {
+        $strSQL = "select count(*) from dichvu where status='$status'";
+        $result = DataProvider::Query($strSQL);
+        $resultSet=mysql_fetch_array ($result);
+        return $resultSet[0];
+    }
+	//hoaphuong0
+	public static function getALLDichVuByStatus($status,$offset,$numrow)
+    {
+        $strSQL = "select * from dichvu where status='$status' limit $offset,$numrow";
+         $result = DataProvider::Query($strSQL);
+         if(mysql_num_rows($result)==0)
+				return null;
+         while($row=mysql_fetch_row($result,MYSQL_BOTH))
+             $return[]=$row;
+         return $return;
+    }
+	//hoaphuong0
+	public static function countStatusType($status)
+    {
+        $strSQL = "select count(*) from dichvu where status='$status'";
+        $result = DataProvider::Query($strSQL);
+        $resultSet=mysql_fetch_array ($result);
+        return $resultSet[0];
+    }
+	
 	
 }
 
