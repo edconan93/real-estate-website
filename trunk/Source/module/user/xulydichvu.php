@@ -94,15 +94,37 @@
 		
 		//xu ly loai dv cho or can thue
 		
-		//add new dichvu
-		$rs=DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang);
+		echo "<br>update==".$_GET['update'];
+		//add or update into dichvu
+		if(isset($_GET['update']) && $_GET['update'] != null)
+		{
+			
+			$rs=DichVuBUS::Update($_GET['update'],$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang);
+			echo "<br>rs in update=".$rs;
+		}
+		else
+		{
+			
+			$rs=DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang);
+			echo "<br>rs in add=".$rs;
+		}
 		if($rs == false)
 		{
 			$flagInsert = false;
-			echo "Can't insert into database.Please check again!";
+			echo "Can't insert or update into database.Please check again!";
 		}
-		
-		if(isset($_POST["cbId"]) && count($_POST["cbId"]) > 0 )
+		//check and update or add into dichvu_tienich table
+		if(isset($_GET['update']) && $_GET['update'] != null)
+		{
+			include_once("../BUS/DichVu_TienIchBUS.php");
+			$dv_tienich = DichVu_TienIchBUS::getAllByIDDichVu($_GET['update']);
+			for($i=0;$i<count($dv_tienich);$i++)
+			{
+				DichVu_TienIchBUS::Delete($dv_tienich[0]);
+			}
+			$rs= $_GET['update'];
+		}
+		 if(isset($_POST["cbId"]) && count($_POST["cbId"]) > 0 )
 		{
 			$arraycheck = $_POST["cbId"];
 			echo "<br>so=".count($arraycheck);

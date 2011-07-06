@@ -355,6 +355,7 @@ $(document).ready(function()
 	$("#cbbTinhTP").change(function ()
 	{
 		var strTieuDe = $("#cbbTinhTP").attr("value");
+		//var div_capnhatdv = $("#div_capnhatdv").attr("value");
 		if(strTieuDe == "-1" )
 		{	
 			$("#messTinhTP").attr("innerHTML","Chọn tỉnh/thành phố");
@@ -366,7 +367,9 @@ $(document).ready(function()
 			var serverURL = "checkservice.php?txtTieuDeTin=" + strTieuDe;
 			$("#messTinhTP").load(serverURL);
 			var serverURL = "checkservice.php?cbbTinhTP="+strTieuDe;
-			$("#messLoadQuan").load(serverURL);	
+			$("#messLoadQuan").load(serverURL);			
+			var serverURL = "checkservice.php?cbbPhuongXa=" + '-1';
+			$("#messLoadPhuong").load(serverURL);
 		}		
 	});
 	
@@ -390,6 +393,7 @@ $(document).ready(function()
     function clickQuanHuyen()
 	{
 		var strTieuDe = $("#cbbQuanHuyen").attr("value");
+		//var div_capnhatdv = $("#div_capnhatdv").attr("value");
 		BASIC_SetCookie("ccbQuanHuyen", strTieuDe, 1);
 		if(strTieuDe == "-1" )
 		{
@@ -401,7 +405,7 @@ $(document).ready(function()
 		{
 			var serverURL = "checkservice.php?cbbPhuongXa=" + strTieuDe;
 			$("#messLoadPhuong").load(serverURL);
-			var serverURL = "checkservice.php?txtTieuDeTin="+strTieuDe;
+			var serverURL = "checkservice.php?txtTieuDeTin="+strTieuD;
 			$("#messQuanHuyen").load(serverURL);
 		}
 	}
@@ -456,14 +460,19 @@ $(document).ready(function()
 								<div id="messLoaiDangTin" name="messLoaiDangTin" style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;font-weight: bold; color:#890C29;">
 								<?php
 									$ltdv = $_GET['loaidvcandang'];
+									if(isset($_GET['update']) && $_GET['update']!= null)
+									{
+										echo "Cập Nhật ";
+										$capnhatDV = DichVuBUS::select($_GET['update']);
+									}
 									if ($ltdv == 1)
 										echo "Đăng Tin Cần Bán";
 									else if ($ltdv == 2)
-										echo "Đăng tin cần mua";
+										echo "Đăng Tin Cần Mua";
 									else if ($ltdv == 3)
-										echo "Đăng tin cho thuê";
+										echo "Đăng Tin Cho Thuê";
 									else
-										echo "Đăng tin cần thuê";
+										echo "Đăng Tin Cần Thuê";
 								?>
 								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
@@ -531,8 +540,13 @@ $(document).ready(function()
 										}
 										if ($_GET["step"] == 1)
 										{
-//form start step 1									
-											echo "<form action='user/xulydichvu.php?loaidvcandang=".$_GET['loaidvcandang']."&step=1&id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data' onsubmit='saveData();'>"; 
+//form start step 1							
+											if(isset($_GET['update']) && $_GET['update'] != null)
+											{
+												echo "<form action='user/xulydichvu.php?loaidvcandang=".$_GET['loaidvcandang']."&step=1&id=".$curUserId."&update=".$_GET['update']."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data' onsubmit='saveData();'>";
+											}
+											else
+												echo "<form action='user/xulydichvu.php?loaidvcandang=".$_GET['loaidvcandang']."&step=1&id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data' onsubmit='saveData();'>";
 											if(isset($_GET['loaidvcandang']))
 												$loaitindichvu = $_GET['loaidvcandang'];
 											else
@@ -550,7 +564,7 @@ $(document).ready(function()
 													<?php 
 													if(isset($_GET['loaidvcandang']))
 													{
-													    echo "<br>loaidvcandang=".$_GET['loaidvcandang'];
+													   // echo "<br>loaidvcandang=".$_GET['loaidvcandang'];
 														$t= $_GET['loaidvcandang'];
 														echo "<div id='idLoaiDV' name='idLoaiDV' value='".$_GET["loaidvcandang"]."'></div>";
 														echo "<input name='txtIDLoaiDV' id='txtIDLoaiDV' type='text' style='width:300px;display:none;'
@@ -578,7 +592,20 @@ $(document).ready(function()
 												<td width="200px"><b>Tiêu đề tin:</b><span style="color:red;"> *</span></td>
 												<td>											
 													<div style="width:310px;float:left;">
-													<input name="txtTieuDeTin" id="txtTieuDeTin" type="text" style="width:300px;"></div>
+													<?php
+													if(isset($_GET['update']) && $_GET['update'] != null)
+													{
+														echo "<input name='txtTieuDeTin' id='txtTieuDeTin' type='text' style='width:300px;' value='".$capnhatDV['tieude']."'>";
+														//echo "<div id='div_capnhatdv' name='div_capnhatdv' value='".$_GET['update']."'></div>";
+													}
+													else
+													{
+													?>
+													<input name="txtTieuDeTin" id="txtTieuDeTin" type="text" style="width:300px;">
+													
+													<?php } ?>
+													
+													</div>
 													<div id="messTieuDe" name="messTieuDe" style="width:150px;float:left;"></div>
 												</td>
 											</tr>
@@ -593,7 +620,12 @@ $(document).ready(function()
 																$rs=LoaiNhaBUS::GetAllLoaiNha();
 																for($i=0;$i<count($rs);$i++)
 																{		
-																	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+																	if(isset($_GET['update']) && $_GET['update'] != null && $capnhatDV['loainha'] == $rs[$i][0])
+																	{
+																		echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+																	}
+																	else
+																		echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
 																}
 															?>
 														</select>
@@ -611,8 +643,13 @@ $(document).ready(function()
 																include("../BUS/TinhBUS.php");
 																$rs=TinhBUS::GetAllTinh();
 																for($i=0;$i<count($rs);$i++)
-																{		
-																	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+																{	
+																	if(isset($_GET['update']) && $_GET['update'] != null && $capnhatDV['tinh'] == $rs[$i][0])
+																	{	
+																		echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";	
+																	}
+																	else
+																		echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
 																}
 															?>												
 														</select>
@@ -633,10 +670,31 @@ $(document).ready(function()
 												<?php } ?>
 												<td>
 													<div style="width:310px;float:left;" id="messLoadQuan" name="messLoadQuan">
-													<!--select id="cbbQuanHuyen" name="cbbQuanHuyen" style="width:220px;" onchange="clickQuanHuyen()">
-														<option value="-1" selected="selected">--Chọn Quận/ Huyện--</option>	
-													</select-->
+												<?php
+												if(isset($_GET['update']) && $_GET['update'] != null && $capnhatDV['quan'] != 25)
+												{
+													$PATH_BASE = str_replace('//','/',dirname(__FILE__).'/');
+													include_once ($PATH_BASE . '../BUS/QuanBUS.php');
+													include_once ($PATH_BASE . '../BUS/PhuongBUS.php');
+													$rs=QuanBUS::GetAllQuanById($capnhatDV['tinh']);
+		
+													echo "<select id='cbbQuanHuyen' name='cbbQuanHuyen' style='width:220px;' onchange='clickQuanHuyen();'>";
+													echo "<option value='-1' selected>-- Chọn Quận/Huyện --</option>";
+													for($i=0;$i<count($rs);$i++)
+													{	
+														if($capnhatDV['quan'] == $rs[$i][0])
+															echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+														else
+															echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+													}
+													echo "</select>";
+												}
+												else
+												{
+												
+												?>
 													<input name="txtQuanHuyen" id="txtQuanHuyen" type="text" style="width:300px;" value="" disabled="disabled">
+												<?php } ?>
 													</div>
 													<div id="messQuanHuyen" name="messQuanHuyen" style="width:150px;float:left;"></div>
 												</td>
@@ -654,10 +712,29 @@ $(document).ready(function()
 												<?php }  ?>
 												<td>
 												<div style="width:310px;float:left;" id="messLoadPhuong" name="messLoadPhuong" >
-													<!--select id="cbbPhuongXa" name="cbbPhuongXa" style="width:220px;" onchange="clickPhuongXa()">
-														<option value="-1">--Chọn Phường/Xã--</option>	
-													</select-->
+													<?php
+													if(isset($_GET['update']) && $_GET['update'] != null && $capnhatDV['phuong'] != 23)
+													{
+														$PATH_BASE = str_replace('//','/',dirname(__FILE__).'/');
+														include_once ($PATH_BASE . '../BUS/QuanBUS.php');
+														include_once ($PATH_BASE . '../BUS/PhuongBUS.php');
+														$rs=PhuongBUS::GetAllPhuongById($capnhatDV['quan']);
+														echo "<select id='cbbPhuongXa' name='cbbPhuongXa' style='width:220px;' onchange='clickPhuongXa();'>";
+														echo "<option value='-1' selected>-- Chọn Phường/Xã --</option>";
+														for($i=0;$i<count($rs);$i++)
+														{	
+															if($capnhatDV['phuong'] == $rs[$i][0])
+																echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+															else
+																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+														}
+														echo "</select>";
+													}
+													else
+													{
+													?>
 													<input name="txtPhuongXa" id="txtPhuongXa" type="text" style="width:300px;" value="" disabled="disabled">
+													<?php } ?>
 													</div>
 													<div id="messPhuong" name="messPhuong" style="width:150px;float:left;"></div>
 												</td>
@@ -676,7 +753,16 @@ $(document).ready(function()
 												<?php } ?>
 												<td>
 												<div style="width:310px;float:left;"> 
+												<?php
+													if(isset($_GET['update']) && $_GET['update'] != null)
+													{
+														echo "<input name='txtDuongPho' id='txtDuongPho' type='text' style='width:300px;' value='".$capnhatDV['duong']."' >";
+													}
+													else
+													{
+												?>
 													<input name="txtDuongPho" id="txtDuongPho" type="text" style="width:300px;" value="" >
+													<?php  } ?>
 													</div>
 													<div id="messDuongPho" name="messDuongPho" style="width:150px;float:left;"></div>
 												</td>
@@ -693,8 +779,17 @@ $(document).ready(function()
 												<td><b>Số nhà/Số lô:</b><span style="color:red;"> *</span></td>
 											<?php } ?>
 												<td>
-													<div style="width:310px;float:left;"> 
+													<div style="width:310px;float:left;">
+												<?php
+												if(isset($_GET['update']) && $_GET['update'] != null)
+												{
+													echo "<input name='txtSoNha' id='txtSoNha' type='text' style='width:300px;' value='".$capnhatDV['duong']."' >";
+												}
+												else
+												{
+												?>
 													<input  id="txtSoNha" name="txtSoNha" type="text" style="width:300px;" value="">
+												<?php } ?>
 													</div>
 													<div id="messSoNha" name="messSoNha" style="width:150px;float:left;"></div>
 												</td>
@@ -702,8 +797,17 @@ $(document).ready(function()
 											<tr bgcolor="#F2F5F9" height="30px">
 												<td>Khuyến mãi</td>
 												<td>
-													<div style="width:310px;float:left;"> 
+													<div style="width:310px;float:left;">
+													<?php
+													if(isset($_GET['update']) && $_GET['update'] != null)
+													{
+														echo "<input name='txtKhuyenMai' id='txtKhuyenMai' type='text' style='width:300px;' value='".$capnhatDV['khuyenmai']."' >";
+													}
+													else
+													{
+													?>
 													<input  id="txtKhuyenMai" name="txtKhuyenMai" type="text" style="width:300px;" value="">
+													<?php } ?>
 													</div>
 													<div id="messSoNha" name="messSoNha" style="width:150px;float:left;"></div>
 												</td>
@@ -712,14 +816,28 @@ $(document).ready(function()
 												<td width="200px" ><b>Giá:</b><span style="color:red;"> *</span></td>
 												<td>
 												<div style="width:310px;float:left;">
+													<?php
+													if(isset($_GET['update']) && $_GET['update'] != null)
+													{
+														echo "<input name='txtGia' id='txtGia' type='text' style='width:123px;text-align:right;' value='".$capnhatDV['giaban']."' onkeypress='return keypress(event);' >";
+													}
+													else
+													{
+													?>
 													<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:123px;text-align:right;" onkeypress="return keypress(event);" />
+													<?php } ?>
 													<select id="cbbDonViTien" class="DropDownList" name="cbbDonViTien">
 													<?php
 														include("../BUS/DonViTienBUS.php");
 														$rs=DonViTienBUS::GetAllDonViTien();
 														for($i=0;$i<count($rs);$i++)
-														{		
-															echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+														{	
+															if(isset($_GET['update']) && $_GET['update'] != null && $capnhatDV['donvitien']== $rs[$i][0])
+															{
+																echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+															}
+															else
+																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
 														}
 													?>
 													</select> / 
@@ -728,8 +846,13 @@ $(document).ready(function()
 														include("../BUS/DonViDichVuBUS.php");
 														$rs=DonViDichVuBUS::GetAllDonViDichVu();
 														for($i=0;$i<count($rs);$i++)
-														{		
-															echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+														{	
+															if(isset($_GET['update']) && $_GET['update'] != null && $capnhatDV['donvidv']== $rs[$i][0])
+															{
+																echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+															}
+															else
+																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
 														}
 													?>												
 													</select>
@@ -755,9 +878,17 @@ $(document).ready(function()
 											<?php } ?>
 												<td>
 													<div style="width:110px;float:left;">
+													<?php
+													if(isset($_GET['update']) && $_GET['update'] != null)
+													{
+														echo "R <input id='txtRong' name='txtRong' class='Textbox' type='text' style='width:25px;' onkeypress='return keypress(event);' value='".$capnhatDV['rong']."' /> x <input id='txtDai' name='txtDai' class='Textbox' type='text' style='width:25px;' onkeypress='return keypress(event);' value='".$capnhatDV['dai']."'/>D";
+													}
+													else
+													{
+													?>
 														R <input id="txtRong" name="txtRong" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" />
 														x
-														<input id="txtDai" name="txtDai" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" /> D											
+														<input id="txtDai" name="txtDai" class="Textbox" type="text" style="width:25px;" onkeypress="return keypress(event);" /> D													<?php } ?>
 													</div>
 												<div id="messKichThuoc" name="messKichThuoc" style="width:60px;float:left;"></div>
 												</td>
@@ -766,7 +897,16 @@ $(document).ready(function()
 												</td>
 												<td>
 													<div style="width:110px;float:left;">
+													<?php
+													if(isset($_GET['update']) && $_GET['update'] != null)
+													{
+														echo "<input id='txtTang' name='txtTang' class='Textbox' type='text' style='width:40px;' onkeypress='return keypress(event);' value='".$capnhatDV['tang']."'/>";
+													}
+													else
+													{
+													?>
 													<input id="txtTang" name="txtTang" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);" />
+													<?php } ?>
 													</div>
 												</td>
 											</tr>
@@ -774,13 +914,31 @@ $(document).ready(function()
 												<td width="200px">Số phòng ngủ:</td>
 												<td>
 													<div style="width:110px;float:left;">
+													<?php
+													if(isset($_GET['update']) && $_GET['update'] != null)
+													{
+														echo "<input id='txtPhongNgu' name='txtPhongNgu' class='Textbox' type='text' style='width:40px;' onkeypress='return keypress(event);' value='".$capnhatDV['sophongngu']."'/>";
+													}
+													else
+													{
+													?>
 														<input id="txtPhongNgu" name="txtPhongNgu" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);" />
+													<?php } ?>
 													</div>
 												</td>
 												<td>Số phòng WC/Tắm:</td>
 												<td>
 													<div style="width:110px;float:left;">
-														<input id="txtPhongTam"  name="txtPhongTam" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);">
+													<?php
+													if(isset($_GET['update']) && $_GET['update'] != null)
+													{
+														echo "<input id='txtPhongTam' name='txtPhongTam' class='Textbox' type='text' style='width:40px;' onkeypress='return keypress(event);' value='".$capnhatDV['sophongtam']."' />";
+													}
+													else
+													{
+													?>
+														<input id="txtPhongTam"  name="txtPhongTam" class="Textbox" type="text" style="width:40px;" onkeypress="return keypress(event);">	
+													<?php } ?>
 													</div>
 												</td>
 											</tr>
@@ -792,8 +950,13 @@ $(document).ready(function()
 														include("../BUS/PhapLyBUS.php");
 														$rs=PhapLyBUS::GetAllPhapLy();
 														for($i=0;$i<count($rs);$i++)
-														{		
-															echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+														{	
+															if(isset($_GET['update']) && $_GET['update'] != null && $capnhatDV['phaply']== $rs[$i][0])
+															{
+																echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+															}
+															else
+																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
 														}
 													?>	
 													</select>
@@ -801,14 +964,15 @@ $(document).ready(function()
 												<td>Hướng nhà:</td>
 												<td>
 													<select id="cbbHuongNha" name="cbbHuongNha" class="DropDownList" >
-													<!--option value="-1" selected>--Lựa Chọn--</option-->
 													<?php
 														include("../BUS/HuongNhaBUS.php");
 														$rs=HuongNhaBUS::GetAllHuongNha();
 														for($i=0;$i<count($rs);$i++)
 														{		
-															if($i == (count($rs)-1))
+															if(isset($_GET['update']) && $_GET['update'] != null && $capnhatDV['huongnha']== $rs[$i][0])
+															{
 																echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+															}
 															else
 																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
 														}
@@ -823,17 +987,40 @@ $(document).ready(function()
 											</tr>
 											<?php
 												include("../BUS/TienIchBUS.php");
+												if(isset($_GET['update']) && $_GET['update'] != null)
+												{
+													include_once("../BUS/DichVu_TienIchBUS.php");
+													$dv_tienich = DichVu_TienIchBUS::getAllByIDDichVu($capnhatDV[0]);
+												}
+												
 												$rs=TienIchBUS::GetAllTienIch();
+												
 												$dem=0;
 												//echo "count=".count($rs);
 												for($i=0;$i<count($rs);$i++)
-												{		
+												{	
 													if(($dem % 3) == 0)
 													{		
 													   echo "<tr>";
 													}
 													$dem++;
-													echo "<td><input id='cbId[]'  name='cbId[]' type='checkbox' value='".$dem."'>";
+													$flag = true;
+													if(isset($_GET['update']) && $_GET['update'] != null)
+													{
+														
+														for($j=0;$j<count($dv_tienich);$j++)
+														{
+															if($dv_tienich[$j][2] == $rs[$i][0])
+															{
+																echo "<td><input id='cbId[]'  name='cbId[]' type='checkbox' value='".$dem."' checked>";
+																
+																$flag = false;
+																break;
+															}
+														}
+													}
+													if($flag == true)
+														echo "<td><input id='cbId[]'  name='cbId[]' type='checkbox' value='".$dem."'>";
 													echo "<label for='".$dem."' > ".$rs[$i][1]."</label>";											
 													echo "</td>";
 													if(($dem % 3) == 0)
@@ -855,7 +1042,12 @@ $(document).ready(function()
 													$summary = new FCKeditor("summary");
 													$summary->BasePath = $path;
 													$summary->Height=300;
-													$summary->Value = "";
+													if(isset($_GET['update']) && $_GET['update'] != null)
+													{
+														$summary->Value = $capnhatDV['mota'];
+													}
+													else
+														$summary->Value = "";
 													$summary->Create();
 												?>
 												</td>

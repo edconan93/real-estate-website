@@ -18,16 +18,15 @@
 	}
 	else if (isset($_REQUEST["cbbTinhTP"]) && $_REQUEST["cbbTinhTP"] == "-1")
 	{
-		echo "<select style='width:220px;' id='cbbQuan' name='cbbQuanHuyen'>
-				<option value='-1'>-- Chọn Quận/Huyện --</option>";
+		echo "<input name='txtQuanHuyen' id='txtQuanHuyen' type='text' style='width:300px;' value='' disabled='disabled'>";
 	}
+	
 	if(isset($_REQUEST["cbbPhuongXa"]) && $_REQUEST["cbbPhuongXa"] !="-1")
 	{
 		$id = $_REQUEST["cbbPhuongXa"];
 		//echo "id=".$id;
 		
 		$rs=PhuongBUS::GetAllPhuongById($id);
-		//echo "id=".count($rs);
 		echo "<select id='cbbPhuongXa' name='cbbPhuongXa' style='width:220px;' onchange='clickPhuongXa();'>";
 		echo "<option value='-1' selected>-- Chọn Phường/Xã --</option>";
 		for($i=0;$i<count($rs);$i++)
@@ -36,6 +35,11 @@
 		}
 		echo "</select>";
 	}
+	else if(isset($_REQUEST["cbbPhuongXa"]) && $_REQUEST["cbbPhuongXa"] =="-1")
+	{
+		echo "<input name='txtPhuongXa' id='txtPhuongXa' type='text' style='width:300px;' value='' disabled='disabled'>";
+	}
+	
 	if(isset($_REQUEST["txtTieuDeTin"]) && !empty($_REQUEST["txtTieuDeTin"]))
 	{
 		echo "<img src='../images/user/valid.png' alt='Hợp lệ' title='Hợp lệ' width=20 height=20>";
