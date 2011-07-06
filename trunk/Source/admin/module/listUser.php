@@ -170,12 +170,10 @@
 						<td align="right"><?php echo $listUsers[$i]["sdt2"]; ?></td>
 						<?php
 							$role = RoleBUS::GetRoleByID($listUsers[$i]["role"]);
-							if ($role[0] == 2)//Nhan vien
+							if ($role[0] == 2)//Khach hang
 								echo "<td align='center' style='color:red;'>".$role[1]."</td>";
-							else if ($role[0] == 3)//Khach hang
-								echo "<td align='center' style='color:#23776B;'>".$role[1]."</td>";
 							else
-								echo "<td></td>";
+								echo "<td align='center' style='color:#23776B;'>".$role[1]."</td>";
 
 							$level = LevelBUS::GetLevelByID($listUsers[$i]["level"]);
 							echo "<td align='center'>".$level[2]."</td>";

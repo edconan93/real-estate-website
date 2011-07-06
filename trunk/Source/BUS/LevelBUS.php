@@ -7,5 +7,9 @@
 		{
 			return LevelDAO::GetLevelByID ($id);
 		}
+		public static function GetLevelByNhanVien()
+		{
+			return LevelDAO::GetLevelByNhanVien();
+		}
 	}
 ?>

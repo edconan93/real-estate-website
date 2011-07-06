@@ -26,8 +26,7 @@
 			$time = date('Y-m-d');
 			$ip="192.168.1.22";
 			
-			$id = UsersBUS::Add($password,$email,$username,null,$address,$dt1,$dt2,4,4,0,$time,$ip);
-			echo "id="+ $id;
+			$id = UsersBUS::Add($password,$email,$username,null,$address,$dt1,$dt2,2,4,0,$time,$ip);
 			if(!empty ($id))
 			{	
 				$fRegister="true";
