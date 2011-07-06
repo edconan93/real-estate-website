@@ -2,6 +2,8 @@
 	if($_SESSION["curUser"][8] != 1)
 		header("Location: index.php");
 ?>
+<div id="frmCreateUser" name="frmCreateUser">
+<form action="module/user/xulyuser.php?action=add" method="post">
 <div id="toolbar">
 	<div class="tl"></div>
 	<div class="tr"></div>
@@ -13,8 +15,8 @@
 				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a>
 		</div>
 		<div class="icon">
-			<a href="#" id="aSave">
-				<img src="images/icon_32_apply.png" alt="Lưu" border="0" title="Lưu" /><br />Lưu</a>
+			<input type="submit" value="Lưu" style="background:url('images/icon_32_apply.png') no-repeat;
+				cursor:pointer;border:0;height:46px;width:32px;padding-top:34px;" />
 		</div>
 		<br class="clr" />
 	</div>
@@ -27,6 +29,140 @@
     <div class="tr"></div>
     <div class="tm"></div>
     <div class="mid">
+	
+		<script src="../../js/common.js" language="javascript" type="text/javascript"></script>
+		<script src="../../js/jquery-1.js" language="javascript" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+			
+				$("#frmCreateUser").submit(function()
+				{
+					var strEmail = $("#txtEmail").attr("value");
+					var strPassword = $("#txtPassword").attr("value");
+					var strRePassword = $("#txtRePassword").attr("value");
+					
+					var flag=true;			
+					if (strPassword.length < 6 || strPassword.length > 50)
+					{
+						flag=false;
+						$("#messPassword").attr("innerHTML","6< Password <50");
+						$("#messPassword").css("color","red");
+					}
+					else if (HaveSpecialChar(strPassword))
+					{
+						flag=false;
+						$("#messPassword").attr("innerHTML","Mật khẩu có chứa ký tự lạ");
+						$("#messPassword").css("color","red");
+					}			
+					if (strPassword != strRePassword)
+					{
+						flag=false;
+						$("#messRePassword").attr("innerHTML","Mật khẩu nhập không khớp");
+						$("#messRePassword").css("color","red");
+					}			
+					else
+					 {
+						var serverURL = "checkPassword.php?txtRePassword=" + strRePassword;
+						$("#messRePassword").load(serverURL);
+					}
+					if (IsEmail(strEmail)==false)
+					{
+						flag=false;
+						$("#messEmail").attr("innerHTML","Email không hợp lệ");
+						$("#messEmail").css("color","red");
+					}
+					else
+					{
+						var serverURL = "checkEmail.php?txtEmail=" + strEmail;
+						$("#messEmail").load(serverURL);
+					}
+					
+					return flag;
+				});
+				
+				$("#txtPassword").blur(function ()
+				{
+					var txtPassword = $("#txtPassword").attr("value");
+					//alert(strUsername);
+					//alert("passwr	!"+txtPassword.length);
+					if(txtPassword.length <6 || txtPassword.length > 50)
+					{				//alert(strUsername);
+						flag=false;
+						$("#messPassword").attr("innerHTML","5< Password <50");
+						$("#messPassword").css("color","red");
+					}
+					
+					else
+					{
+						//$("#messPassword").attr("innerHTML", "");
+						var serverURL = "../../module/checkPassword.php?txtPassword=" + txtPassword;
+						$("#messPassword").load(serverURL);
+					}
+				});
+				$("#txtRePassword").blur(function ()
+				{
+					//alert("pass	!");
+					var txtPassword = $("#txtPassword").attr("value");
+					var txtRePassword = $("#txtRePassword").attr("value");
+					//alert(strUsername);
+					if(txtPassword != txtRePassword)
+					{				//alert(strUsername);
+						flag=false;
+						$("#messRePassword").attr("innerHTML","Mật khẩu không khớp !");
+						$("#messRePassword").css("color","red");
+					}
+					else
+					{
+						//$("#messPassword").attr("innerHTML", "");
+						var serverURL = "../module/checkPassword.php?txtRePassword=" + txtRePassword;
+						$("#messRePassword").load(serverURL);
+					}
+				});
+				
+				$("#txtEmail").blur(function ()
+				{
+					var strEmail = $("#txtEmail").attr("value");
+					
+					if(IsEmail(strEmail)==false)
+					{
+						flag=false;
+						$("#messEmail").attr("innerHTML","Email không hợp lệ");
+						$("#messEmail").css("color","red");
+					}
+					else
+					{
+						var strEmail = $("#txtEmail").attr("value");
+						var serverURL = "../module/checkEmail.php?txtEmail=" + strEmail;
+						$("#messEmail").load(serverURL);
+					}
+				});
+				
+				function IsEmail(email)
+				{
+					if (email=="")
+						return false;
+
+					if (email.indexOf ("@")==-1)
+						return false;
+					var i = 1;
+					var sLength = email.length;
+					if (email.indexOf (".")==-1)
+						return false;
+					if (email.indexOf ("..")!=-1)
+						return false;
+					if (email.indexOf ("@")!= email.lastIndexOf ("@"))
+						return false;
+					if (email.lastIndexOf (".")==sLength-1)
+						return false;
+					var str="abcdefghijklmnopqrstuvwxyz-@._1234567890";
+					for (var i=0;i<email.length;i++)
+						if (str.indexOf (email.charAt(i))==-1)
+							return false;
+					return true;
+				}
+			});
+		</script>
 		<script language="javascript">
 			function checkSDT1()
 			{
@@ -42,18 +178,11 @@
 			{
 				var oLoaiTV = document.getElementById("id_LoaiTV");
 				var oCDNV = document.getElementById("id_CapDoNV");
-				var oCDKH = document.getElementById("id_CapDoKH");
 
-				if (oLoaiTV.value == "0")
-				{
-					oCDNV.style.display = "inherit";
-					oCDKH.style.display = "none";
-				}
+				if (oLoaiTV.value == "3")
+					oCDNV.style.visibility = "inherit";
 				else
-				{
-					oCDNV.style.display = "none";
-					oCDKH.style.display = "inherit";
-				}
+					oCDNV.style.visibility = "hidden";
 				
 				return true;
 			}
@@ -88,35 +217,41 @@
 				 document.getElementById("passwordStrength").className = "strength" + score;
 			}
 		</script>
-		<form action="index.php?view=user" method="post" name="frmRegister" id="frmRegister" >
 			<div style="float:left;width:50%;">
 				<table width="90%" align="center" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="100px">Loại thành viên: <span style="color:red;">(*)</td>
 						<td>
-							<select id="id_LoaiTV" onchange="return press_LoaiThanhVien();">
-								<option value="0">Nhân viên</option>
-								<option value="1">Khách hàng</option>
+							<select id="id_LoaiTV" name="role" onchange="return press_LoaiThanhVien();">
+							<?php
+								include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\RoleBUS.php");
+								$listRole = RoleBUS::GetAllRole();
+								for ($i=0;$i<count($listRole);$i++)
+								{
+									echo "<option value='".$listRole[$i][0]."'>".$listRole[$i][1]."</option>";
+								}
+							?>
 							</select>
 						</td>
 					</tr>
-					<tr>
+					<tr id="id_CapDoNV" style="visibility:inherit;">
 						<td width="100px">Cấp độ: <span style="color:red;">(*)</td>
 						<td>
-							<select id="id_CapDoNV">
-								<option value="1">Cấp bậc 1</option>
-								<option value="2">Cấp bậc 2</option>
-								<option value="3">Cấp bậc 3</option>
-							</select>
-							<select id="id_CapDoKH" style="display:none;">
-								<option value="1">Tài khoản VIP</option>
-								<option value="0">Tài khoản thường</option>
+							<select name="level">
+							<?php
+								include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\LevelBUS.php");
+								$listLevel = LevelBUS::GetLevelByNhanVien();
+								for ($i=0;$i<count($listLevel);$i++)
+								{
+									echo "<option value='".$listLevel[$i][0]."'>".$listLevel[$i][2]."</option>";
+								}
+							?>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td width="100px">Họ tên: <span style="color:red;">(*)</td>
-						<td><input type="text" style="width:400px;" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+						<td><input type="text" name="txtHoten" style="width:400px;" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					</tr>
 					<tr>
 						<td>Giới tính:</td>
@@ -128,18 +263,18 @@
 					<tr>
 						<td>Số điện thoại 1: <span style="color:red;">(*)</span></td>
 						<td>
-							<input id="sdt1" style="width:100px;" type="text" value="" onkeypress="return keypress(event);" onkeyup="checkSDT1();" />
+							<input id="sdt1" name="sdt1" style="width:100px;" type="text" value="" onkeypress="return keypress(event);" onkeyup="checkSDT1();" />
 						</td>
 					</tr>
 					<tr>
 						<td>Số điện thoại 2:</td>
 						<td>
-							<input id="sdt2" style="width:100px;" type="text" value="" onkeypress="return keypress(event);" disabled="disabled" />
+							<input id="sdt2" name="sdt2" style="width:100px;" type="text" value="" onkeypress="return keypress(event);" disabled="disabled" />
 						</td>
 					</tr>
 					<tr>
 						<td>Địa chỉ:</td>
-						<td><input type="text" style="width:400px;"></td>
+						<td><input type="text" name="txtDiaChi" style="width:400px;"></td>
 					</tr>
 				</table>
 			</div>
@@ -148,14 +283,15 @@
 					<tr>
 						<td width="130px">Email đăng nhập: <span style="color:red;">(*)</span></td>
 						<td>
-							<input type="text" style="width:280px;"></td>
-						<td><div id="messUsername" class="mess"></div></td>
+							<input type="text" name="txtEmail" id="txtEmail" style="width:280px;">
+							<span id="messEmail" name="messEmail" class="mess"></span>
+						</td>
 					</tr>
 					<tr>
 						<td valign="top" style="padding-top:6px;">
 							Mật khẩu:<span style="color:red;"> (*)</span></td>
 						<td>
-							<input name="txtPassword" id="txtPassword" style="width:280px;" onkeyup="passwordStrength(this.value)" type="password">
+							<input name="txtPassword" style="width:280px;" onkeyup="passwordStrength(this.value)" type="password">
 							<div style="float:left;">
 								<span style="font-size:10px;font-weight:bold;">Mật khẩu truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
 							</div>
@@ -179,21 +315,13 @@
 							</div>
 						</td>
 					</tr>
-					<tr>
-						<td valign="top" style="padding-top:10px;">
-							Mã an toàn:<span style="color:red;"> (*)</span></td>
-						<td>
-							<img class="border" border="0" align="left" alt="Ma an toan" src="http://www.nhaban.com/member/security.php?rand=795392">
-							<input type="text" style="width:180px; font-weight:bold;">
-							<div style="position:relative; left:-100px;font-weight:bold;"><span style="font-size:10px;">Hãy điền năm chữ số của hình bên cạnh vào ô này</span></div>
-						</td>
-					</tr>
 				</table>
 			</div>
-		</form>
 		<br class="clr" />
     </div>
     <div class="bl"></div>
     <div class="br"></div>
     <div class="bm"></div>
+</div>
+</form>
 </div>

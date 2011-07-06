@@ -41,9 +41,9 @@ Lớp UsersBUS
 	{
 		public static function Add($password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status,$updatedate,$ip)
 		{
-			$password=trim($password);
+			$password = trim($password);
 			$password = md5 ($password);
-			$email =addslashes($email);
+			$email = addslashes($email);
 			// $hoten=addslashes($hoten);
 			// $gioitinh=addslashes($gioitinh);
 			// $diachi=addslashes($diachi);
@@ -53,7 +53,6 @@ Lớp UsersBUS
 			// $level=addslashes($level);
 			
 			return UsersDAO::Add ($password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status,$updatedate,$ip);
-			
 		}
 		
 		public static function checkPassword($password)
