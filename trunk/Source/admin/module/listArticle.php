@@ -2,7 +2,11 @@
 	if($_SESSION["curUser"][8] != 1)
 		header("Location: index.php");
 
-	$PATH = str_replace('//','/',dirname(__FILE__).'/') ;
+	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\TinDangBUS.php");
+	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\LoaiDVBUS.php");
+	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\TinhBUS.php");
+	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\DonviTienBUS.php");
+	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\module\Utils\Utils.php");
 	//include_once($PATH . "../../../BUS/UsersBUS.php");
 	//include_once($PATH . "../../../BUS/EntriesBUS.php");
 	//include_once($PATH . "common_functions.php");
@@ -99,19 +103,16 @@
 			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr>
 					<td width="69%">
-						<select name="type" id="type">
-							<option value="0" <?php echo $type==0?"selected":"" ?>>Tiêu đề</option>
-							<option value="1" <?php echo $type==1?"selected":"" ?>>Tác giả</option>
-						</select>
-						<input type="text" name="kw" id="kw" value="<?php echo $kw; ?>"  />
-						<input type="submit" name="btSearch" id="btSearch" value="Tìm" />
 					</td>
 					<td width="31%">
 						<div align="right">
-							<select name="status" id="status">
-								<option value="-1"  <?php echo $status==-1?"selected":""; ?>>- Chọn trạng thái - </option>
-								<option value="0" <?php echo $status==0?"selected":""; ?>>Bị khóa</option>
-								<option value="1" <?php echo $status==1?"selected":""; ?>>Bình thường</option>
+							<select name="type" id="type">
+								<option value="-2">-- Tất cả --</option>
+								<option value="-1">Tin đã xóa</option>
+								<option value="0">Tin chờ duyệt</option>
+								<option value="1">Tin đã duyệt</option>
+								<option value="2">Tin đăng VIP</option>
+								<option value="3">Tin hết hạn</option>
 							</select>
 						</div>
 					</td>
@@ -124,32 +125,60 @@
 						<td width="30px" align="center">
 							<input type="checkbox" name="cbAll" id="cbAll" /></td>
 						<td align="center">Tiêu đề</td>
-						<td width="70px" align="center">Loại dịch vụ</td>
+						<td width="100px" align="center">Loại dịch vụ</td>
 						<td align="center">Địa chỉ</td>
-						<td>Thông tin chi tiết</td>
-						<td align="center">Giá bán</td>
+						<td width="100px" align="center">Giá bán</td>
 						<td width="70px" align="center">Ngày đăng</td>
+						<td width="100px" align="center">Tình trạng tin</td>
 					</tr>
+					<?php
+						$listTinDang = TinDangBUS::GetAllTin();
+						for ($i=0;$i<count($listTinDang);$i++)
+						{
+					?>
 					<tr>
-						<td align="center">1</td>
+						<td align="center"><?php echo $i+1; ?></td>
 						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
-						<td class="m_name"><a href="index.php?view=article&do=edit&aid=1">Bán căn hộ the everich Q12 gia rẻ vào ở ngay</a></td>
-						<td align="center">Cần cho thuê</td>
-						<td>144/28/13 Châu Văn Liêm, P.14, Q.5, Tp.HCM</td>
-						<td>12x24 m2, 2 phòng ngủ, 1 tầng</td>
-						<td align="right">4 tỷ (vnd)</td>
-						<td align="center">20-10-2011</td>
+						<td class="m_name"><?php echo "<a href='index.php?view=article&do=edit&aid=".$listTinDang[$i]["id"]."'>".$listTinDang[$i]["tieude"]."</a>"; ?></td>
+						<?php
+							$loaidv = LoaiDVBUS::GetLoaiDVByID($listTinDang[$i]["loaidv"]);
+							echo "<td align='center'>".$loaidv[1]."</td>";
+							echo "<td>".$listTinDang[$i]["sonha"]." ".$listTinDang[$i]["duong"].", P.".$listTinDang[$i]["phuong"].", Q.".$listTinDang[$i]["quan"].", ";
+							$tinh = TinhBUS::getTinhById($listTinDang[$i]["tinh"]);
+							echo $tinh[1]."</td>";
+							$donviTien = DonViTienBUS::selectId($listTinDang[$i]["donvitien"]);
+							echo "<td align='right'>".number_format($listTinDang[$i]["giaban"])." $donviTien[1]</td>";
+							if ($listTinDang[$i]["ngaydang"] != null)
+							{
+								$date = Utils::convertTimeDMY($listTinDang[$i]["ngaydang"]);
+								echo "<td align='center'>".$date."</td>";
+							}
+							else
+								echo "<td></td>";
+							switch ($listTinDang[$i]["status"])
+							{
+								case -1: // đã xóa
+									echo "<td align='center' style='color:red;'>Tin đã xóa</td>";
+									break;
+								case 0: // đang chờ duyệt
+									echo "<td align='center' style='color:green;'>Tin chờ duyệt</td>";
+									break;
+								case 1: // đã duyệt đăng miễn phí
+									echo "<td align='center' style='color:blue;'>Tin đã duyệt</td>";
+									break;
+								case 2: // tin vip
+									echo "<td align='center' style='color:#B20751; font-weight:bold;'>Tin đăng VIP</td>";
+									break;
+								case 3: // tin hết hạn
+									echo "<td align='center' style='color:red;'>Tin hết hạn</td>";
+									break;
+							}
+						?>
+						
 					</tr>
-					<tr>
-						<td align="center">2</td>
-						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
-						<td class="m_name"><a href="index.php?view=article&do=edit&aid=1">Bán căn hộ the everich Q12 gia rẻ vào ở ngay</a></td>
-						<td align="center">Cần cho thuê</td>
-						<td>144/28/13 Châu Văn Liêm, P.14, Q.5, Tp.HCM</td>
-						<td>12x24 m2, 2 phòng ngủ, 1 tầng</td>
-						<td align="right">4 tỷ (vnd)</td>
-						<td align="center">20-10-2011</td>
-					</tr>
+					<?php
+						}
+					?>
 					<?php  /*
 						$i=$curItem+1; 
 						while ($article = mysql_fetch_array($articles)) 
