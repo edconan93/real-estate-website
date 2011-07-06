@@ -1,7 +1,5 @@
 <?php 
 	include_once (str_replace("//","/",dirname(__FILE__)."/")  . "../DAO/DonviTienDAO.php");
-?>
-<?php
 
 /**
  * @author panda
@@ -19,5 +17,4 @@ class DonViTienBUS
         return DonviTienDAO::GetAllDonViTien();
     }
 }
-
 ?>
