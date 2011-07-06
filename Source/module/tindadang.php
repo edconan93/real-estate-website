@@ -138,120 +138,19 @@
 													<img align="left" style="border: medium none;margin-top:2px;" src="../images/options3.png">&nbsp;<b>Quản lý</b>
 												</td>
 											</tr>
-											<!--div id="messLoadSearch" name="messLoadSearch"-->
 											<?php
-												include_once("/user/xulycacloaitin.php");
-												
-													
-												if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
-												{
+												include_once("/user/xulycacloaitin.php");												
+												if(isset($_REQUEST["type"]))
 													echo MessageTypeProcessor::loadAllMessage();
-											?>
-														<!--tr bgcolor="#ffffff">
-															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
-																<b>677638</b>
-															</td>
-															<td valign="top" align="left" style="border-left: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);">
-																<span style="color: rgb(255, 0, 0);">Tin đã duyệt</span><br>
-																<b>Bán nhà gấp</b>
-																<br>
-																- <a target="_blank" href="http://www.nhaban.com/nha-dat/?loaitin=1">Cần Bán</a>
-																- <a target="_blank" href="http://www.nhaban.com/nha-dat/?category=2">Cửa hàng, Văn
-																	phòng</a> - <a target="_blank" href="http://www.nhaban.com/nha-dat/?vt=7">Mặt tiền</a>
-																- Hướng Bắc<br>
-																<b>- Giá:
-
-																	<script type="text/javascript">document.write(NBO_Price("7000000000"))</script>
-
-																	<b>7</b> Tỷ - KT: 4 x 20m - DTXD : 90 m<sup>2</sup> </b>
-																<br>
-															</td>
-															<td width="260" valign="top" style="border-left: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);">
-																<div style="margin-bottom: 5px; font-weight: normal; color: rgb(51, 51, 51);">
-																	- 1 lượt xem tin
-																	<br>
-																	- Ngày đăng: &nbsp;&nbsp;&nbsp;&nbsp;23-06-2011<br>
-																	- Ngày hết hạn: 17-08-2011<br>
-																</div>
-																<div style="padding: 3px; background-color: rgb(242, 245, 249); border: 1px solid rgb(204, 204, 204);
-																	font-weight: bold;">
-																	<b title="23-06-2011" style="color: green;">
-																		<img align="center" style="margin: 0px;position:relative;top:-4px;" src="../images/action_check2.png">Đã cập nhật</b>&nbsp;&nbsp;
-																	<a href="http://www.nhaban.com/member/submit.php?id=677638&amp;act=nha&amp;step=1">
-																		<img align="center" style="margin: 0px;position:relative;top:-4px;" src="../images/edit.png"><b>Sửa tin</b></a>&nbsp;&nbsp;
-																	<a onclick="if(confirm('Bạn chắc chắn muốn xóa tin đăng này ?') ) document.location.href='http://www.nhaban.com/member/listing.php?id=677638&amp;act=delete'"
-																		href="#">
-																		<img align="center" style="margin: 0px;position:relative;top:-4px;" src="../images/action_delete2.png"><b>Xóa tin</b></a></div>
-															</td>
-														</tr-->
-											<?php
-													
-												}
-												else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
+												else
 												{
-													echo MessageTypeProcessor::loadAllMessage();
-											?>
-														<!--tr bgcolor="#ffffff">
-															<td width="60" valign="middle" align="center" style="border-bottom:solid 1px #CCCCCC;">
-																<b>677638</b>
-															</td>
-															<td valign="top" align="left" style="border-left: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);">
-																<span style="color: rgb(255, 0, 0);">Tin chờ duyệt</span><br>
-																<b>Bán nhà gấp</b>
-																<br>
-																- <a target="_blank" href="http://www.nhaban.com/nha-dat/?loaitin=1">Cần Bán</a>
-																- <a target="_blank" href="http://www.nhaban.com/nha-dat/?category=2">Cửa hàng, Văn
-																	phòng</a> - <a target="_blank" href="http://www.nhaban.com/nha-dat/?vt=7">Mặt tiền</a>
-																- Hướng Bắc<br>
-																<b>- Giá:
-
-																	<script type="text/javascript">document.write(NBO_Price("7000000000"))</script>
-
-																	<b>7</b> Tỷ - KT: 4 x 20m - DTXD : 90 m<sup>2</sup> </b>
-																<br>
-															</td>
-															<td width="260" valign="top" style="border-left: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);">
-																<div style="margin-bottom: 5px; font-weight: normal; color: rgb(51, 51, 51);">
-																	- 1 lượt xem tin
-																	<br>
-																	- Ngày đăng: &nbsp;&nbsp;&nbsp;&nbsp;23-06-2011<br>
-																	- Ngày hết hạn: 17-08-2011<br>
-																</div>
-																<div style="padding: 3px; background-color: rgb(242, 245, 249); border: 1px solid rgb(204, 204, 204);
-																	font-weight: bold;">
-																	<b title="23-06-2011" style="color: green;">
-																		<img align="center" style="margin: 0px;position:relative;top:-4px;" src="../images/action_check2.png">Đã cập nhật</b>&nbsp;&nbsp;
-																	<a href="http://www.nhaban.com/member/submit.php?id=677638&amp;act=nha&amp;step=1">
-																		<img align="center" style="margin: 0px;position:relative;top:-4px;" src="../images/edit.png"><b>Sửa tin</b></a>&nbsp;&nbsp;
-																	<a onclick="if(confirm('Bạn chắc chắn muốn xóa tin đăng này ?') ) document.location.href='http://www.nhaban.com/member/listing.php?id=677638&amp;act=delete'"
-																		href="#">
-																		<img align="center" style="margin: 0px;position:relative;top:-4px;" src="../images/action_delete2.png"><b>Xóa tin</b></a></div>
-															</td>
-														</tr-->
-											<?php
-													
-												}
-												else 
-												{
-													if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
-													{
+													$result= MessageTypeProcessor::findSearchInContext();
+													if($result!=null)
+														echo $result;
+													 else
 														echo MessageTypeProcessor::loadAllMessage();
-													}
-													else
-													{
-														$result= MessageTypeProcessor::findSearchInContext();
-														if($result!=null)
-															echo $result;
-														 else
-															 echo MessageTypeProcessor::loadAllMessage();
-														
-													}
 												}
-                                    
-											?>
-														
-										
-											
+											?>	
 										</table>
 									</div>
 								</div>
