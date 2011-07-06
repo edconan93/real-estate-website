@@ -14,7 +14,18 @@ class DichVu_TienIchBUS
     {
         return DichVu_TienIchDAO::Add($idcanho,$idtienich);
     }
-   
+	public static function getAllByIDDichVu ($idDichVu)
+    {
+		return DichVu_TienIchDAO::getAllByIDDichVu ($idDichVu);
+	}
+	public static function Update($id,$idcanho,$idtienich)
+	{
+		return DichVu_TienIchDAO::Update($id,$idcanho,$idtienich);
+	}
+	public static function Delete($id)
+	{
+		return DichVu_TienIchDAO::Delete($id);
+	}
 }
 
 ?>
