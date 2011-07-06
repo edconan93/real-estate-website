@@ -4,7 +4,7 @@
 <?php
 
 /**
- * @author panda
+ * @author hoaphuong
  * @copyright 2011
  */
 
@@ -14,6 +14,10 @@ class DichVuBUS
     {
         return DichVuDAO::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$ngaydang,$ngayupdate,$duong,$rong,$dai,$tang,$sophongngu,$sophongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaidichvu,$donvidv,$X,$Y,$khannang);
     }
+	public static function Update($id,$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$ngaydang,$ngayupdate,$duong,$rong,$dai,$tang,$sophongngu,$sophongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaidichvu,$donvidv,$X,$Y,$khannang)
+	{
+		return DichVuDAO::Update($id,$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$ngaydang,$ngayupdate,$duong,$rong,$dai,$tang,$sophongngu,$sophongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaidichvu,$donvidv,$X,$Y,$khannang);
+	}
 	public static function GetIdByViewDate($viewdate)
 	{
 		return DichVuDAO::GetIdByViewDate($viewdate);
