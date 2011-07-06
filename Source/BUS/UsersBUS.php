@@ -44,13 +44,6 @@ Lớp UsersBUS
 			$password = trim($password);
 			$password = md5 ($password);
 			$email = addslashes($email);
-			// $hoten=addslashes($hoten);
-			// $gioitinh=addslashes($gioitinh);
-			// $diachi=addslashes($diachi);
-			// $sdt1=addslashes($sdt1);
-			// $sdt2=addslashes($sdt2);
-			// $role=addslashes($role);
-			// $level=addslashes($level);
 			
 			return UsersDAO::Add ($password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status,$updatedate,$ip);
 		}
