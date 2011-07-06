@@ -5,9 +5,9 @@
 class DichVuDAO
 {
 	//lam
-	public static function Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$ngaydang,$ngayupdate,$duong,$rong,$dai,$tang,$sophongngu,$sophongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaidichvu,$donvidv,$X,$Y,$khanang)
+	public static function Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$ngaydang,$ngaycapnhat,$duong,$rong,$dai,$tang,$sophongngu,$sophongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaidichvu,$donvidv,$X,$Y,$khanang)
     {
-		 $strSQL = "Insert into dichvu values (NULL, '$tieude', '$mota','$chusohuu','$phuong','$quan','$tinh','$ngaydang','$ngayupdate','$duong','$rong','$dai','$tang','$sophongngu','$sophongtam','$giaban','$donvitien','0','$thoihandangtin','$loainha','$phaply','$huongnha','$khuyenmai','$loaidichvu','$donvidv','$X','$Y',$khanang)";
+		 $strSQL = "Insert into dichvu values (NULL, '$tieude', '$mota','$chusohuu','$phuong','$quan','$tinh','$ngaydang','$ngaycapnhat','$duong','$rong','$dai','$tang','$sophongngu','$sophongtam','$giaban','$donvitien','0','$thoihandangtin','$loainha','$phaply','$huongnha','$khuyenmai','$loaidichvu','$donvidv','$X','$Y',$khanang)";
 		    $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			
@@ -19,15 +19,14 @@ class DichVuDAO
 			DataProvider::Close ($cn);
             return $result;
 	}
-	public static function Update($id,$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$ngaydang,$ngayupdate,$duong,$rong,$dai,$tang,$sophongngu,$sophongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaidichvu,$donvidv,$X,$Y,$khanang)
+	public static function Update($id,$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$ngaydang,$ngaycapnhat,$duong,$rong,$dai,$tang,$sophongngu,$sophongtam,$giaban,$donvitien,$status,$thoihantin,$loainha,$phaply,$huongnha,$khuyenmai,$loaidv,$donvidv,$X,$Y,$khanang)
 	{
-		$strSQL = "update dichvu set 
-		tieude= '$tieude',mota= '$mota',chusohuu= '$chusohuu',phuong= '$phuong',quan= '$quan',tinh= '$tinh',
-		ngaydang '$ngaydang' ,ngayupdate= '$ngayupdate' ,duong= '$duong' ,rong= '$rong',dai= '$dai',tang= '$tang',
-		sophongngu= '$sophongngu',sophongtam= '$sophongtam',giaban= '$giaban',donvitien= '$donvitien',status= '$status',thoihandangtin= '$thoihandangtin',
-		loainha= '$loainha',phaply= '$phaply',huongnha= '$huongnha',khuyenmai= '$khuyenmai',loaidichvu= '$loaidichvu',donvidv= '$donvidv',
-		X= '$X',Y= '$Y',khanang= '$khanang' 
-		where id='$id'";
+		$strSQL = "update dichvu set  
+		tieude='$tieude',mota='$mota',chusohuu='$chusohuu',phuong= '$phuong',quan='$quan',tinh='$tinh',
+		ngaydang ='$ngaydang',ngaycapnhat='$ngaycapnhat',duong='$duong',rong='$rong',dai='$dai',tang='$tang',
+		sophongngu='$sophongngu',sophongtam='$sophongtam',giaban='$giaban',donvitien='$donvitien',status='$status',thoihantin='$thoihantin',
+		loainha='$loainha',phaply='$phaply',huongnha='$huongnha',khuyenmai='$khuyenmai',loaidv= '$loaidv',donvidv='$donvidv',
+		X='$X',Y='$Y',khanang='$khanang' where id='$id'";
 		
 		$cn = DataProvider::Open ();
 		DataProvider::MoreQuery ($strSQL,$cn);
