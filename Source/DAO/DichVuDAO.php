@@ -19,6 +19,25 @@ class DichVuDAO
 			DataProvider::Close ($cn);
             return $result;
 	}
+	public static function Update($id,$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$ngaydang,$ngayupdate,$duong,$rong,$dai,$tang,$sophongngu,$sophongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaidichvu,$donvidv,$X,$Y,$khanang)
+	{
+		$strSQL = "update dichvu set 
+		tieude= '$tieude',mota= '$mota',chusohuu= '$chusohuu',phuong= '$phuong',quan= '$quan',tinh= '$tinh',
+		ngaydang '$ngaydang' ,ngayupdate= '$ngayupdate' ,duong= '$duong' ,rong= '$rong',dai= '$dai',tang= '$tang',
+		sophongngu= '$sophongngu',sophongtam= '$sophongtam',giaban= '$giaban',donvitien= '$donvitien',status= '$status',thoihandangtin= '$thoihandangtin',
+		loainha= '$loainha',phaply= '$phaply',huongnha= '$huongnha',khuyenmai= '$khuyenmai',loaidichvu= '$loaidichvu',donvidv= '$donvidv',
+		X= '$X',Y= '$Y',khanang= '$khanang' 
+		where id='$id'";
+		
+		$cn = DataProvider::Open ();
+		DataProvider::MoreQuery ($strSQL,$cn);
+		if(mysql_affected_rows () == 0)
+			$result=false;
+		else
+			$result=true;		
+		DataProvider::Close ($cn);
+		return $result;
+	}
 	public static function GetIdByViewDate($viewdate)
 	{
 		    $strSQL = "select id from dichvu where ngaydang='$viewdate'";
@@ -35,8 +54,7 @@ class DichVuDAO
 	}
 	public static function UpdateStatus($id,$status)
 	{
-		$strSQL = "update dichvu set status= '$status' where id='$id'";
-		echo "update.........";
+			$strSQL = "update dichvu set status= '$status' where id='$id'";
             $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			if(mysql_affected_rows () == 0)
