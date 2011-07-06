@@ -245,9 +245,8 @@ CREATE TABLE IF NOT EXISTS `level` (
 INSERT INTO `level` (`idlevel`, `ten`, `chitiet`) VALUES
 (1, 'Level1', 'Nhân viên cấp bậc 1'),
 (2, 'Level2', 'Nhân viên cấp bậc 2'),
-(3, 'Level3', 'Nhân viên cấp bậc 3'),
-(4, 'VIP', 'Tài khoản VIP'),
-(5, 'Normal', 'Tài khoản thường');
+(3, 'VIP', 'Tài khoản VIP'),
+(4, 'Normal', 'Tài khoản thường');
 
 -- --------------------------------------------------------
 
@@ -434,7 +433,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `role`
@@ -443,7 +442,9 @@ CREATE TABLE IF NOT EXISTS `role` (
 INSERT INTO `role` (`id`, `ten`) VALUES
 (1, 'Admin'),
 (2, 'Khách hàng'),
-(3, 'Nhân viên');
+(3, 'Nhân viên'),
+(4, 'Quản lý'),
+(5, 'Kế toán');
 
 -- --------------------------------------------------------
 
@@ -572,7 +573,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   KEY `fk_taikhoan_role` (`role`),
   KEY `fk_taikhoan_level` (`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `user`
@@ -580,7 +581,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `sdt1`, `sdt2`, `role`, `level`, `status`, `ngaycapnhat`, `ip`) VALUES
 (1, 'e10adc3949ba59abbe56e057f20f883e', 'admin@yahoo.com', 'Administrator', b'1', '36/15 Bình Giã, P.13, Q.Tân Bình, Tp.HCM', '0934100286', '', 1, 0, 1, NULL, NULL),
-(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'FASFREWRWERW', b'0', 'fsadf', '1224324232', '', 3, 3, 0, NULL, NULL);
+(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'TRẦN THỊ KIM DUNG', b'0', 'fsadf', '1224324232', '', 2, 3, 0, NULL, NULL),
+(3, 'e10adc3949ba59abbe56e057f20f883e', 'thinh.nguyenduc2@gameloft.com', 'NGUYỄN ĐỨC THỊNH', b'1', '36/15 Bình Giã, P.13, Q.Tân Bình, Tp.HCM', '0934.100286', NULL, 3, 1, 1, '2011-07-14 15:32:46', NULL),
+(4, 'e10adc3949ba59abbe56e057f20f883e', 'lam.hoson@gameloft.com', 'HỒ SƠN LÂM', b'1', '123 Hồng Đào Phố Thị, Hà Nội', '01234567672', '0934887765', 4, 0, 1, '2011-07-30 15:38:16', NULL),
+(5, 'e10adc3949ba59abbe56e057f20f883e', 'phuong.dothithuy@yahoo.com', 'ĐỖ THỊ THỦY PHƯƠNG', b'0', '45/12/8 Phạm Ngọc Thạch, Q.1, Tp.HCM', '0908348399', NULL, 5, 0, 1, '2011-07-27 15:40:10', NULL);
 
 --
 -- Constraints for dumped tables
