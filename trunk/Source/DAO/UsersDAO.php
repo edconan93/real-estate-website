@@ -58,7 +58,7 @@
     	public static function Update ($id,$password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status,$updatedate,$ip)
         {
 
-            $strSQL = "update khgiaodich set password='$password', email='$email',hoten='$hoten',gioitinh='$gioitinh',diachi='$diachi'
+            $strSQL = "update user set password='$password', email='$email',hoten='$hoten',gioitinh='$gioitinh',diachi='$diachi'
 						sdt1='$sdt1',sodt2='$sodt2', role='$role',
 			 			level='$level', status= '$status', ngaycapnhat='$updatedate',$ip='$ip' 
 						where id=$id";
@@ -75,7 +75,7 @@
 
      	public static function SetStatus ($id, $status)
         {
-            $strSQL = "update khgiaodich set status= '$status' where id='$id'";
+            $strSQL = "update user set status= '$status' where id='$id'";
             $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			if(mysql_affected_rows () == 0)
