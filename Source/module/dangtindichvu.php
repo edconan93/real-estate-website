@@ -531,6 +531,7 @@ $(document).ready(function()
 										}
 										if ($_GET["step"] == 1)
 										{
+//form start step 1									
 											echo "<form action='user/xulydichvu.php?loaidvcandang=".$_GET['loaidvcandang']."&step=1&id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data' onsubmit='saveData();'>"; 
 											if(isset($_GET['loaidvcandang']))
 												$loaitindichvu = $_GET['loaidvcandang'];
@@ -908,7 +909,9 @@ $(document).ready(function()
 											<span class="action-button-right"></span>
 										</div>
 									</div><!-- End: Bước 1 -->
-									</form>									
+									</form>	
+<!--form end  step 1 -->
+<!--form start step 2 -->									
 									<?php
 										}
 										else if ($_GET["step"] == 2 && (($_GET["loaidvcandang"] == 1) || ($_GET["loaidvcandang"] == 3)))
@@ -934,6 +937,7 @@ $(document).ready(function()
 											</div>
 										</div><!-- End: Bước 2 -->
 										</form>
+<!-- form end step 2-->
 									<?php
 										}
 										else if ($_GET["step"] == 3 || isset($_GET["dangtin"]))
