@@ -56,12 +56,20 @@
 				<p class="menu_item">
 					<a href="nangcaptinvip.php">Nâng cấp tin VIP</a></p>
 				<p class="menu_item">
-					<a href="tindadang.php">Các tin đã đăng (6)</a><br>
-					<span>
-						<a href="tindadang.php?type=1">- Tin đã duyệt (1)</a><br>
-						<a href="tindadang.php?type=2">- Tin chờ duyệt (3)</a><br>
-						<a href="tindadang.php?type=3" style="color:red;">- Tin hết hạn (2)</a><br>
-					</span>
+<?php 
+include_once ("../BUS/DichVuBUS.php");
+$vip =(int) DichVuBUS::countStatusType(2);
+$daduyet =(int) DichVuBUS::countStatusType(1);
+$choduyet = (int)DichVuBUS::countStatusType(0);
+$hethan =(int) DichVuBUS::countStatusType(3);
+$tongcong = $vip+$daduyet+$choduyet+$hethan;
+echo "<a href='tindadang.php'>Các tin đã đăng (".$tongcong.")</a><br>";
+echo "<span><a href='tindadang.php?type=2'>- Tin VIP (".$vip.")</a><br>";
+echo "<a href='tindadang.php?type=1'>- Tin đã duyệt (".$daduyet.")</a><br>";
+echo "<a href='tindadang.php?type=0'>- Tin chờ duyệt (".$choduyet.")</a><br>";
+echo "<a href='tindadang.php?type=3' style='color:red;'>- Tin hết hạn (".$hethan.")</a><br></span>";
+?>
+					
 				</p>
 			</td>
 		</tr>

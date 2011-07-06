@@ -54,6 +54,18 @@ class DichVuBUS
     {
         return DichVuDAO::countAllBySQL($strSQL);
     }
+	public static function countAllDichVuByStatus($status)
+    {
+		 return DichVuDAO::countAllDichVuByStatus($status);
+	}
+	public static function getALLDichVuByStatus($status,$offset,$numrow)
+    {
+		return DichVuDAO::getALLDichVuByStatus($status,$offset,$numrow);
+	}
+	public static function countStatusType($status)
+    {
+		return DichVuDAO::countStatusType($status);
+	}
 }
 
 ?>
