@@ -225,7 +225,7 @@ $(document).ready(function()
 			}
 			else
 			{
-			document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
+				document.frmRegister.txtAccess.value = document.frmRegister.txtEmail.value;
 				var serverURL = "checkEmail.php?txtEmail=" + strEmail;
 				$("#messEmail").load(serverURL);
 			}

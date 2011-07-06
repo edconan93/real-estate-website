@@ -1,6 +1,25 @@
 ﻿<?php
 	include("../include/header.php");
+	
 ?>
+<script src="../js/common.js" language="javascript" type="text/javascript"></script>
+<script src="../js/jquery-1.js" language="javascript" type="text/javascript"></script>
+
+<script type="text/javascript">
+function xoatindang(idtin)
+{
+	if (confirm('Bạn chắc chắn muốn xóa tin đăng này ?')) 
+	{
+		var strUsername = $("#txtUsername").attr("value");
+		var serverURL = "user/xoadangtin.php?idtin=" + idtin;
+		$("#messEmailDelete").load(serverURL);
+		return true;
+	}
+	else
+		return false;
+}
+</script>
+
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
 			<td width="986">

@@ -36,6 +36,7 @@ class DichVuDAO
 	public static function UpdateStatus($id,$status)
 	{
 		$strSQL = "update dichvu set status= '$status' where id='$id'";
+		echo "update.........";
             $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			if(mysql_affected_rows () == 0)
@@ -46,6 +47,7 @@ class DichVuDAO
 			DataProvider::Close ($cn);
             return $result;
 	}
+	
     //phucnt3
     public static function getAll($offset,$numrow)
     {

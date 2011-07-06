@@ -117,11 +117,11 @@ class MessageTypeProcessor
 			$strResult.="</div>"; 
 			$strResult.="<div style='padding: 3px; background-color: rgb(242, 245, 249); border: 1px solid rgb(204, 204, 204);font-weight: bold;'>"; 
 			$strResult.="<b title='23-06-2011' style='color: green;'>"; 
-			$strResult.="<img align='center' style='margin: 0px;position:relative;top:-4px;' src='../images/action_check2.png'>Đã cập nhật</b>&nbsp;&nbsp;"; 
+			$strResult.="<img align='center' style='margin: 0px;position:relative;top:-4px;' src='../images/action_check2.png'>Đã cập nhật</b>&nbsp;&nbsp;"; //update
 			$strResult.="<a href='#' style='color: #0D5DA8;font-weight:bold;font-size:11px;text-decoration: none;'>"; 
-			$strResult.="<img align='center' style='margin: 0px;position:relative;top:-4px;' src='../images/edit.png'>Sửa tin</a>&nbsp;&nbsp;"; 
-			$strResult.="<a onclick='' href='#' style='color: #0D5DA8;font-weight:bold;font-size:11px;text-decoration: none;'>"; 
-			$strResult.="<img align='center' style='margin: 0px;position:relative;top:-4px;' src='../images/action_delete2.png'>Xóa tin</a></div>"; 
+			$strResult.="<img align='center' style='margin: 0px;position:relative;top:-4px;' src='../images/edit.png'>Sửa tin</a>&nbsp;&nbsp;"; //repare
+			$strResult.="<a onclick='return xoatindang(".$business[$i][0].");' href='' style='color: #0D5DA8;font-weight:bold;font-size:11px;text-decoration: none;'>"; 
+			$strResult.="<img align='center' style='margin: 0px;position:relative;top:-4px;' src='../images/action_delete2.png' >Xóa tin</a></div>"; //delete
 			$strResult.="</td></tr>"; 
 		}
 		$strResult.="</table>";
