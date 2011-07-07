@@ -10,7 +10,6 @@
 
     <script>
 		var fo2 = new FlashObject("../images/home.swf", "mymovie", "986", "529", "6", "#000000"); 
-		//var fo2 =new FlashObject("images/Intro.swf", "mymovie", "1018", "760", "6", "#000000"); 
 		fo2.addParam("loop", "true"); 
 		fo2.addParam("wmode", "transparent"); 
 		fo2.write("homeslide");
