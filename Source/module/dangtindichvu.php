@@ -543,7 +543,7 @@ $(document).ready(function()
 //form start step 1							
 											if(isset($_GET['update']) && $_GET['update'] != null)
 											{
-												echo "<form action='user/xulydichvu.php?loaidvcandang=".$_GET['loaidvcandang']."&step=1&id=".$curUserId."&update=".$_GET['update']."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data' onsubmit='saveData();'>";
+												echo "<form action='user/xulydichvu.php?loaidvcandang=".$_GET['loaidvcandang']."&id=".$curUserId."&update=".$_GET['update']."&step=1' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data' onsubmit='saveData();'>";
 											}
 											else
 												echo "<form action='user/xulydichvu.php?loaidvcandang=".$_GET['loaidvcandang']."&step=1&id=".$curUserId."' method='post' id='frmDichVu' name='frmDichVu' enctype='multipart/form-data' onsubmit='saveData();'>";
@@ -1108,7 +1108,12 @@ $(document).ready(function()
 										}
 										else if ($_GET["step"] == 2 && (($_GET["loaidvcandang"] == 1) || ($_GET["loaidvcandang"] == 3)))
 										{
-											echo "<form action='user/xulydichvu.php?newid=".$_GET["newid"]."&id=".$curUserId."' method='post' enctype='multipart/form-data'>";
+											if(isset($_GET['update']) && $_GET['update'] != null)
+											{
+												echo "<form action='user/xulydichvu.php?newid=".$_GET["newid"]."&update=".$_GET['update']."&id=".$curUserId."' method='post' enctype='multipart/form-data'>";
+											}
+											else
+												echo "<form action='user/xulydichvu.php?newid=".$_GET["newid"]."&id=".$curUserId."' method='post' enctype='multipart/form-data'>";
 									?>
 										<div><!-- Bước 2 -->
 											<table cellspacing="0" cellpadding="4" border="0" style="width:690px;">
@@ -1132,7 +1137,7 @@ $(document).ready(function()
 <!-- form end step 2-->
 									<?php
 										}
-										else if ($_GET["step"] == 3 || isset($_GET["dangtin"]))
+										else if ($_GET["step"] == 3 || (isset($_GET["dangtin"]) && $_GET["dangtin"] == "success"))
 										{
 											echo "<center><b style='color:blue;'>Quá trình đăng tin của bạn đã thành công. Vui lòng chờ admin xét duyệt.</b></center><br>";
 									?>
