@@ -35,7 +35,7 @@
 <div class="tr"></div>
 <div class="tm"></div>
 <div class="mid">
-	<div class="title icon_user">Thành viên: <span class="subTitle">[ Chỉnh sửa]</span> </div>
+	<div class="title icon_user">Thành viên:</div>
      <div class="icon">
    	  <a href="index.php?view=user" id="aCancel">
    	  <img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" />
@@ -147,102 +147,152 @@
 			}
 		});
 	});
-	</script>	
-		<input name="btUpdate" type="hidden" value="Cập nhật" />
-		<input name="uid" id="uid" type="hidden" value="<?php echo $user[0]; ?>" />	
-		<table align="center" border="0" cellpadding="0" cellspacing="0">
-			<tr style="height:30px;">
-				<td width="130px"><b>Email đăng nhập: </b><span style="color:red;">(*)</span></td>
-				<td width="280px">
-					<input name="txtUsername" type="text" disabled id="txtUsername" style="font-weight:bold;width:270px;" value="<?php echo $user["email"]; ?>"></td>
-			</tr>
-			<tr style="height:30px;">
-				<td><b>Họ tên:</b> <span style="color:red;">(*)</td>
-				<td><input name="txtHoten" type="text" id="txtHoten" value="<?php echo $user["hoten"]; ?>" size="50"></td>
-			</tr>
-			<tr style="height:30px;">
-				<td><b>Giới tính:</b></td>
-				<td>
-					<input type="radio" value="1" name="gender" <?php if ($user["gioitinh"]==1) echo "checked"; ?>> Nam
-					<input type="radio" value="0" name="gender" <?php if ($user["gioitinh"]==0) echo "checked"; ?>> Nữ
-				</td>
-			</tr>
-			<tr style="height:30px;">
-				<td><b>Địa chỉ:</b></td>
-				<td><input name="txtDiachi" type="text" id="txtDiachi" value="<?php echo $user["diachi"]; ?>" size="50"></td>
-			</tr>
-			<tr style="height:30px;">
-				<td><b>Số ĐT 1:</b> <span style="color:red;">(*)</td>
-				<td><input name="txtSdt1" type="text" id="txtSdt1" value="<?php echo $user["sdt1"]; ?>" size="50"></td>
-			</tr>
-			<tr style="height:30px;">
-				<td><b>Số ĐT 2:</b></td>
-				<td><input name="txtSdt2" type="text" id="txtSdt2" value="<?php echo $user["sdt2"]; ?>" size="50"></td>
-			</tr>
-			<tr style="height:30px;">
-				<td><b>Vai trò:</b></td>
-				<td>
-					<?php
-						if ($user["role"] == 2)
-							echo "Khách hàng";
-						else
-						{
-					?>
-					<select id="id_LoaiTV" name="role" onchange="return press_LoaiThanhVien();">
-					<?php
+	function passwordStrength(password)
+	{
+		var desc = new Array();
+		desc[0] = "Very Weak";
+		desc[1] = "Weak";
+		desc[2] = "Better";
+		desc[3] = "Medium";
+		desc[4] = "Strong";
+		desc[5] = "Strongest";
+
+		var score   = 0;
+
+		//if password bigger than 6 give 1 point
+		if (password.length > 6) score++;
+
+		//if password has both lower and uppercase characters give 1 point	
+		if ( ( password.match(/[a-z]/) ) && ( password.match(/[A-Z]/) ) ) score++;
+
+		//if password has at least one number give 1 point
+		if (password.match(/\d+/)) score++;
+
+		//if password has at least one special caracther give 1 point
+		if ( password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/) )	score++;
+
+		//if password bigger than 12 give another 1 point
+		if (password.length > 12) score++;
+
+		 document.getElementById("passwordDescription").innerHTML = desc[score];
+		 document.getElementById("passwordStrength").className = "strength" + score;
+	}
+	</script>
+		<fieldset style="width:500px;float:left;margin-left:50px;">
+			<legend style="font-weight:bold;font-size:15px;color:maroon;">Thông tin thành viên:</legend>
+			<table align="center" border="0" cellpadding="0" cellspacing="0">
+				<tr style="height:30px;">
+					<td width="130px"><b>Email đăng nhập:</td>
+					<td width="280px" style="font-weight:bold;color:blue;"><?php echo $user["email"]; ?></td>
+				</tr>
+				<tr style="height:30px;">
+					<td><b>Họ tên:</td>
+					<td><?php echo $user["hoten"]; ?></td>
+				</tr>
+				<tr style="height:30px;">
+					<td><b>Giới tính:</b></td>
+					<td><?php if ($user["gioitinh"]==1) echo "Nam"; else echo "Nữ"; ?></td>
+				</tr>
+				<tr style="height:30px;">
+					<td><b>Địa chỉ:</b></td>
+					<td><?php echo $user["diachi"]; ?></td>
+				</tr>
+				<tr style="height:30px;">
+					<td><b>Số ĐT 1:</b></td>
+					<td><?php echo $user["sdt1"]; ?></td>
+				</tr>
+				<tr style="height:30px;">
+					<td><b>Số ĐT 2:</b></td>
+					<td><?php echo $user["sdt2"]; ?></td>
+				</tr>
+				<tr style="height:30px;">
+					<td><b>Vai trò:</b></td>
+					<td>
+						<?php
 							include_once($PATH . "../../../BUS/RoleBUS.php");
-							$listRole = RoleBUS::GetAllRole();
-							for ($i=0;$i<count($listRole);$i++)
-							{
-								if ($listRole[$i][0] == $user["role"])
-									echo "<option value='".$listRole[$i][0]."' selected>".$listRole[$i][1]."</option>";
-								else
-									echo "<option value='".$listRole[$i][0]."'>".$listRole[$i][1]."</option>";
-							}
-						}
-					?>
-					</select>
-				</td>
-			</tr>
-			<?php
-				if ($user["role"] == 3)
-				{
-			?>
-			<tr style="height:30px;">
-				<td><b>Cấp độ:</b></td>
-				<td>
-					<select name="level">
-					<?php
-						include_once($PATH . "../../../BUS/LevelBUS.php");
-						$listLevel = LevelBUS::GetLevelByNhanVien();
-						for ($i=0;$i<count($listLevel);$i++)
-						{
-							if ($listLevel[$i][0] == $user["level"])
-								echo "<option value='".$listLevel[$i][0]."' selected>".$listLevel[$i][2]."</option>";
-							else
-								echo "<option value='".$listLevel[$i][0]."'>".$listLevel[$i][2]."</option>";
-						}
-					?>
-					</select>
-				</td>
-			</tr>
-			<?php
-				}
-			?>
-			<tr style="height:30px;">
-				<td><b>Ngày cập nhật:</b></td>
+							$role = RoleBUS::GetRoleByID($user["role"]);
+							echo $role[1];
+						?>
+					</td>
+				</tr>
 				<?php
-					if ($user["ngaycapnhat"] != null)
+					if ($user["role"] == 3)
 					{
-						include_once($PATH . "../../../module/Utils/Utils.php");
-						$date = Utils::convertTimeDMY($user["ngaycapnhat"]);
-						echo "<td>".$date."</td>";
-					}
-					else
-						echo "<td></td>";
 				?>
-			</tr>
-		</table>
+				<tr style="height:30px;">
+					<td><b>Cấp độ:</b></td>
+					<td>
+						<?php
+							include_once($PATH . "../../../BUS/LevelBUS.php");
+							$level = LevelBUS::GetLevelByID($user["level"]);
+							echo $level[2];
+						?>
+					</td>
+				</tr>
+				<?php
+					}
+				?>
+				<tr style="height:30px;">
+					<td><b>Ngày cập nhật:</b></td>
+					<?php
+						if ($user["ngaycapnhat"] != null)
+						{
+							include_once($PATH . "../../../module/Utils/Utils.php");
+							$date = Utils::convertTimeDMY($user["ngaycapnhat"]);
+							echo "<td>".$date."</td>";
+						}
+						else
+							echo "<td></td>";
+					?>
+				</tr>
+			</table>
+		</fieldset>
+		<fieldset style="width:500px;float:left;margin-left:50px;">
+			<legend style="font-weight:bold;font-size:15px;color:maroon;">Reset mật khẩu:</legend>
+			<table align="center" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="130px" valign="top" style="padding-top:4px;">
+						<b>Mật khẩu:</b><span style="color:red;"> (*)</span>
+					</td>
+					<td align="left">
+						<div style="float:left;">
+							<input name="txtPassword" id="txtPassword" style="width:280px;"  onkeyup="passwordStrength(this.value)" type="password">
+						</div>
+						<div id="messPassword" name="messPassword" style="width:140px;float:left;" class="mess"></div>
+						<br>
+						<div style="float:left;">
+							<span style="font-size:10px;">Mật khẩu truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" style="padding-top:4px;">
+						<b>Độ an toàn mật khẩu</b></td>
+					<td>
+						<div id="passwordDescription">Very Weak</div>
+						<div id="passwordStrength" class="strength0"></div>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" style="padding-top:4px;">
+						<b>Nhập lại mật khẩu:</b><span style="color:red;"> (*)</span>
+					</td>
+					<td align="left">
+						<div style="float:left;">
+							<input type="password" style="width:280px;" maxlength="50" name="txtRePassword" id="txtRePassword">
+						</div>
+						<div id="messRePassword" name="messRePassword" style="width:140px;float:left;" class="mess"></div>
+						<br>
+						<div style="float:left;width:300px;">
+							<span style="font-size:10px;">Nhập lại mật khẩu như đã điền ở ô trên</span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="color:red;" align="center"><i>Hệ thống sẽ tự động gửi mật khẩu mới vào email của thành viên.</i></td>
+				</tr>
+			</table>
+		</fieldset>
     <br class="clr" />
     </div>
     <div class="bl"></div>
