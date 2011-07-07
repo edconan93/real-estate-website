@@ -76,7 +76,7 @@ function Check_Click(objRef)
         }
         else
         {
-           row.style.backgroundColor = "#F7F7DE";
+           row.style.backgroundColor = "#EFF3FF";
         }
     }
 
@@ -138,7 +138,7 @@ function checkAll(objRef)
                 }
                 else
                 {
-                   row.style.backgroundColor = "#F7F7DE";
+                   row.style.backgroundColor = "#EFF3FF";
                 }
                 inputList[i].checked=false;
             }

@@ -97,22 +97,59 @@
 					 });
 				});
 			});
+			function loadTinDangTheoLoai()
+			{
+				var type = document.getElementById("type");
+				window.location = "index.php?view=article&type=" + type.value;
+			}
+			function checkAllTinDang()
+			{
+				var num=document.getElementById("max").value;	
+				var i=1;
+				
+				if (document.getElementById("xulyclick_all").checked==true)
+				{
+					for(i=1;i<=num;i++)
+					{
+						var t = "cb"+i; 
+						if(document.getElementById(t) != null)
+							document.getElementById(t).checked=true;
+					}
+				}
+				if (document.getElementById("xulyclick_all").checked==false)
+				{
+					for(i=1;i<=num;i++)
+					{
+						var t = "cb"+i;
+						if(document.getElementById(t)!= null)
+							document.getElementById(t).checked=false;
+					}
+				}
+			}
 		</script>
 		<form method="post" name="frmListItem" id="frmListItem">
 			<input name="page" type="hidden" value="<?php echo $curPage; ?>">
 			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr>
 					<td width="69%">
+						<?php
+							$type = "";
+							if (isset($_GET["type"]) && $_GET["type"] != -2)
+								$type = $_GET["type"];
+							else
+								$type = -2;
+							$listTinDang = TinDangBUS::GetAllTinByType($type);
+							echo "<b>Có ".count($listTinDang)." mẫu tin.</b>";
+						?>
 					</td>
 					<td width="31%">
 						<div align="right">
-							<select name="type" id="type">
+							<select name="type" id="type" onchange="return loadTinDangTheoLoai();">
 								<option value="-2">-- Tất cả --</option>
-								<option value="-1">Tin đã xóa</option>
-								<option value="0">Tin chờ duyệt</option>
-								<option value="1">Tin đã duyệt</option>
-								<option value="2">Tin đăng VIP</option>
-								<option value="3">Tin hết hạn</option>
+								<option value="0" <?php if (isset($_GET["type"]) && $_GET["type"] == 0) echo "selected"; ?>>Tin chờ duyệt</option>
+								<option value="1" <?php if (isset($_GET["type"]) && $_GET["type"] == 1) echo "selected"; ?>>Tin đã duyệt</option>
+								<option value="2" <?php if (isset($_GET["type"]) && $_GET["type"] == 2) echo "selected"; ?>>Tin đăng VIP</option>
+								<option value="3" <?php if (isset($_GET["type"]) && $_GET["type"] == 3) echo "selected"; ?>>Tin hết hạn</option>
 							</select>
 						</div>
 					</td>
@@ -123,7 +160,7 @@
 					<tr class="title">
 						<td width="30px" align="center">#</td>
 						<td width="30px" align="center">
-							<input type="checkbox" name="cbAll" id="cbAll" /></td>
+							<input type="checkbox" onclick="checkAll(this);" /></td>
 						<td align="center">Tiêu đề</td>
 						<td width="100px" align="center">Loại dịch vụ</td>
 						<td align="center">Địa chỉ</td>
@@ -132,13 +169,12 @@
 						<td width="100px" align="center">Tình trạng tin</td>
 					</tr>
 					<?php
-						$listTinDang = TinDangBUS::GetAllTin();
 						for ($i=0;$i<count($listTinDang);$i++)
 						{
 					?>
-					<tr>
+					<tr style="background:<?php echo ($i%2==0) ? "#EFF3FF" : "white"; ?>;">
 						<td align="center"><?php echo $i+1; ?></td>
-						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
+						<td align="center"><input type="checkbox" onclick="Check_Click(this)"></td>
 						<td class="m_name"><?php echo "<a href='index.php?view=article&do=edit&aid=".$listTinDang[$i]["id"]."'>".$listTinDang[$i]["tieude"]."</a>"; ?></td>
 						<?php
 							$loaidv = LoaiDVBUS::GetLoaiDVByID($listTinDang[$i]["loaidv"]);
@@ -157,9 +193,6 @@
 								echo "<td></td>";
 							switch ($listTinDang[$i]["status"])
 							{
-								case -1: // đã xóa
-									echo "<td align='center' style='color:red;'>Tin đã xóa</td>";
-									break;
 								case 0: // đang chờ duyệt
 									echo "<td align='center' style='color:green;'>Tin chờ duyệt</td>";
 									break;
@@ -174,70 +207,12 @@
 									break;
 							}
 						?>
-						
 					</tr>
 					<?php
 						}
 					?>
-					<?php  /*
-						$i=$curItem+1; 
-						while ($article = mysql_fetch_array($articles)) 
-						{ 
-							$user = UsersBUS::GetUserByID($article[1]);
-					?>
-					<tr>
-						<td><div align="center"><?php echo $i++; ?></div></td>
-						<td><div align="center">
-							<input type="checkbox" name="cbId[]" id="cbId[]" value="<?php echo $article[0]; ?>" />
-							</div></td>
-						<td><?php echo "<a href='../blog.php?uid=$article[1]&entry_id=$article[0]'>$article[3]</a>";  ?></td>
-						<td><div align="center">
-							<?php
-								if($article[7] == 1)
-									echo "<img src='images/tick.png' alt='Bình thường' title='Bình thường'/>";
-								else 
-									echo "<img src='images/publish_x.png' alt='Bị khóa' title='Bị khóa'/>";
-							?>
-							</div></td>
-						<td><?php
-								switch($article[5])
-								{		
-								case 0:
-									echo "mọi người";
-									break;
-								case 1:
-									echo "bạn bè";
-									break;
-								case 1:
-									echo "tác giả";
-									break;
-								}
-							?>
-						</td>
-						<td><div align="center">
-							<?php 
-								echo "<a href='index.php?view=user&uid=$user[0]&do=edit'>$user[1]</a>";
-							?>
-							</div></td>
-						<td><div align="center"><?php echo convert_time($article[2]) ?></div></td>
-						<td><div align="center"><?php echo $article[0] ?></div></td>
-					</tr>
-					<?php
-						}*/
-					?>
 				</table>
 			</div>
-			<?php /*
-				$strLink = "index.php?view=article&";
-				if($status!=-1)
-					$strLink .= "status=$status&";
-				if($type!=-1)
-					$strLink .= "type=$type&";
-				if($kw!="")
-					$strLink .= "kw=$kw&";
-				$strPaging = paging ($strLink,$totalItems,$curPage,$maxPages,$maxItems);
-				echo $strPaging; */
-			?>
 		</form>
 	</div>
 	<div class="bl"></div>

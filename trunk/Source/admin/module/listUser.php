@@ -143,7 +143,7 @@
 					<tr class="title">
 						<td width="30px" align="center">#</td>
 						<td width="30px" align="center">
-							<input type="checkbox" name="cbAll" id="cbAll" /></td>
+							<input type="checkbox" onclick="checkAll(this);" /></td>
 						<td align="center">Họ tên</td>
 						<td align="center">Email đăng nhập</td>
 						<td width="50px" align="center">Giới tính</td>
@@ -159,9 +159,9 @@
 						for ($i=0;$i<count($listUsers);$i++)
 						{
 					?>
-					<tr>
+					<tr style="background:<?php echo ($i%2==0) ? "#EFF3FF" : "white"; ?>;">
 						<td align="center"><?php echo $i+1; ?></td>
-						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
+						<td align="center"><input type="checkbox" onclick="Check_Click(this)"></td>
 						<td class="m_name"><?php echo "<a href='index.php?view=user&do=edit&uid=".$listUsers[$i]["id"]."'>".$listUsers[$i]["hoten"]."</a>"; ?></td>
 						<td style="color:blue;font-weight:bold;"><?php echo $listUsers[$i]["email"]; ?></td>
 						<td align="center"><?php echo ($listUsers[$i]["gioitinh"]==1)?"Nam":"Nữ"; ?></td>

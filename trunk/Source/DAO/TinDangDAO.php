@@ -3,10 +3,17 @@
 
 	class TinDangDAO
 	{
-		public static function GetAllTin()
+		public static function GetAllTinByType($type)
 		{
-			$strSQL = "	select * 
-						from dichvu";
+			$strSQL = "";
+			if ($type != -2)
+				$strSQL = "	select * 
+							from dichvu
+							where status=$type and status!=-1";
+			else
+				$strSQL = "	select * 
+							from dichvu
+							where status!=-1";
 			$result = DataProvider::Query($strSQL);
 			if (mysql_num_rows($result)==0)
 				return null;

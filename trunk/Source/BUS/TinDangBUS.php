@@ -3,9 +3,9 @@
 
 	class TinDangBUS
 	{
-		public static function GetAllTin()
+		public static function GetAllTinByType($type)
 		{
-			return TinDangDAO::GetAllTin();
+			return TinDangDAO::GetAllTinByType($type);
 		}
 	}
 ?>
