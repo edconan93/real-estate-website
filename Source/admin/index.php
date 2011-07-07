@@ -39,13 +39,13 @@
 				switch($do)
 				{
 					case "add":
-						$bodyFile= "module/create_user.php";
+						$bodyFile= "module/user/create_user.php";
 						break;
 					case "edit":
-						$bodyFile= "module/edit_user.php";
+						$bodyFile= "module/user/edit_user.php";
 						break;
 					default:
-						$bodyFile= "module/user.php";
+						$bodyFile= "module/user/user.php";
 						break;
 				}
 				break;

@@ -42,7 +42,7 @@
 	{
     	public static function Add ($password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status,$updatedate,$ip)
         {
-            $strSQL = "Insert into user values (NULL, '$password', '$email', '$hoten','$gioitinh', '$diachi','$sdt1','$sdt2','$role','$level','$status','$updatedate','$ip')";
+            $strSQL = "Insert into user values (NULL, '$password', '$email', '$hoten', $gioitinh, '$diachi','$sdt1','$sdt2','$role','$level','$status','$updatedate','$ip')";
 			$cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			
@@ -57,9 +57,8 @@
 
     	public static function Update ($id,$password, $email,$hoten, $gioitinh,$diachi,$sdt1,$sdt2,$role, $level, $status,$updatedate,$ip)
         {
-
-            $strSQL = "update user set password='$password', email='$email',hoten='$hoten',gioitinh='$gioitinh',diachi='$diachi'
-						sdt1='$sdt1',sodt2='$sodt2', role='$role',
+            $strSQL = "update user set password='$password', email='$email',hoten='$hoten',gioitinh=$gioitinh,diachi='$diachi',
+						sdt1='$sdt1',sdt2='$sdt2', role='$role',
 			 			level='$level', status= '$status', ngaycapnhat='$updatedate',$ip='$ip' 
 						where id=$id";
 		    $cn = DataProvider::Open ();
@@ -72,7 +71,7 @@
 			DataProvider::Close ($cn);
             return $result;
         }
-
+		
      	public static function SetStatus ($id, $status)
         {
             $strSQL = "update user set status= '$status' where id='$id'";

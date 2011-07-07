@@ -2,11 +2,11 @@
 	if($_SESSION["curUser"][8] != 1)
 		header("Location: index.php");
 
-	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\UsersBUS.php");
-	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\RoleBUS.php");
-	include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\LevelBUS.php");
-	//include_once($PATH . "../../../BUS/EntriesBUS.php");
-	//include_once($PATH . "common_functions.php");
+	$PATH = str_replace('//','/',dirname(__FILE__).'/');
+	include_once($PATH . "../../../BUS/UsersBUS.php");
+	include_once($PATH . "../../../BUS/RoleBUS.php");
+	include_once($PATH . "../../../BUS/LevelBUS.php");
+
 	$maxItems = 20;
 	$maxPages = 5;
 	$curPage = "";

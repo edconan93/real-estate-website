@@ -303,7 +303,7 @@ $(document).ready(function()
 										</td>
 										<td align="left">
 										<div style="float:left;">
-										<input type="text" style="width:280px;" value="" name="txtUsername" id="txtUsername" onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
+										<input type="text" style="width:280px;" name="txtUsername" id="txtUsername" onkeyup="javascript:this.value=this.value.toUpperCase();"></div>
 										<div id="messUsername" name="messUsername" class="mess"></div>
 										<div style="float:left;">
 												<span style="font-size:10px;">Họ tên phải lớn hơn 3 và nhỏ hơn 50 ký tự</span>
@@ -321,7 +321,6 @@ $(document).ready(function()
 										</div>
 										</td>
 									</tr>
-									
 									<tr>
 										<td align="right">
 										Điện thoại:<span style="color:red;"> (*)</span>
@@ -336,7 +335,6 @@ $(document).ready(function()
 										</td>
 										
 									</tr>
-									
 									<tr>
 										<td align="right" valign="top" style="padding-top:6px;">
 										E-mail liên lạc:<span style="color:red;"> (*)</span>
@@ -351,15 +349,21 @@ $(document).ready(function()
 										<span style="font-size:10px;float:left;">Hãy điền chính xác địa chỉ email để nhận được thư kích hoạt</span>
 										</div>
 										</td>
-										
 									</tr>
-									
+									<tr>
+										<td align="right" valign="top" style="padding-top:6px;">
+										Giới tính:</span>
+										</td>
+										<td align="left">
+											<input type="radio" value="1" name="gender" checked> Nam
+											<input type="radio" value="0" name="gender"> Nữ
+										</td>
+									</tr>
 									<tr>
 										<td align="left" colspan="2">
 										<h1>THÔNG TIN TÀI KHOẢN TRUY CẬP</h1>
 										</td>
 									</tr>
-									
 									<tr>
 										<td align="right" valign="top" style="padding-top:6px;">
 										Tên truy cập:<span style="color:red;"> (*)</span>
