@@ -129,8 +129,18 @@ $(document).ready(function()
 											<tr>
 												<td align="right">Giới tính:</td>
 												<td style="padding-left:10px;">
-													<input type="radio" value="1" name="gender" checked="true"> Nam
-													<input type="radio" value="0" name="gender"> Nữ
+												<?php 
+													if(isset($user) && $user['gioitinh'] == 1)
+													{
+														echo "<input type='radio' value='1' name='gender' checked='true'> Nam";
+														echo "<input type='radio' value='0' name='gender'> Nữ";
+													}
+													else
+													{
+												?>
+													<input type="radio" value="1" name="gender" > Nam
+													<input type="radio" value="0" name="gender" checked="true"> Nữ
+													<?php  } ?>
 												</td>
 											</tr>
 											<tr>
