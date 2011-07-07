@@ -148,6 +148,10 @@ Lớp UsersBUS
 			return UsersDAO::getUsers ();
 		}
 		
+		public static function GetUserByActive($active)
+		{
+			return UsersDAO::GetUserByActive($active);
+		}
 		
 		// public static function countResultByEmail ($keyWord)
 		// {

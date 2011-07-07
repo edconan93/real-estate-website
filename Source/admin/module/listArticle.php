@@ -145,10 +145,10 @@
 						<div align="right">
 							<select name="type" id="type" onchange="return loadTinDangTheoLoai();">
 								<option value="-2">-- Tất cả --</option>
-								<option value="0" <?php if (isset($_GET["type"]) && $_GET["type"] == 0) echo "selected"; ?>>Tin chờ duyệt</option>
-								<option value="1" <?php if (isset($_GET["type"]) && $_GET["type"] == 1) echo "selected"; ?>>Tin đã duyệt</option>
-								<option value="2" <?php if (isset($_GET["type"]) && $_GET["type"] == 2) echo "selected"; ?>>Tin đăng VIP</option>
-								<option value="3" <?php if (isset($_GET["type"]) && $_GET["type"] == 3) echo "selected"; ?>>Tin hết hạn</option>
+								<option value="0" <?php echo $type==0?"selected":""; ?>>Tin chờ duyệt</option>
+								<option value="1" <?php echo $type==1?"selected":""; ?>>Tin đã duyệt</option>
+								<option value="2" <?php echo $type==2?"selected":""; ?>>Tin đăng VIP</option>
+								<option value="3" <?php echo $type==3?"selected":""; ?>>Tin hết hạn</option>
 							</select>
 						</div>
 					</td>
