@@ -239,6 +239,24 @@
                 $return[]=$row;
             return $return;	
 		}
+		
+		public static function GetUserByActive($active)
+		{
+			$strSQL = "";
+			if ($active == -1)
+				$strSQL = "select * 
+						   from user";
+			else
+				$strSQL = "select * 
+						   from user
+						   where status=$active";
+			$result = DataProvider::Query($strSQL);
+			if (mysql_num_rows($result)==0)
+				return null;
+			while ($row= mysql_fetch_array ($result,MYSQL_BOTH))
+                $return[]=$row;
+            return $return;	
+		}
 
 		public static function checkPassword($password)
 		{

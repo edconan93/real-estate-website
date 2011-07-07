@@ -103,26 +103,37 @@
 					 });
 				});
 			});
+			function loadUserByActive()
+			{
+				var active = document.getElementById("status");
+				window.location = "index.php?view=user&active=" + active.value;
+			}
 		</script>
 		<form method="post" name="frmListItem" id="frmListItem">
 			<input name="page" type="hidden" value="<?php echo $curPage; ?>" />
 			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr>
-					<td width="69%">Từ khóa: 
+					<!--<td width="69%">Từ khóa: 
 						<input type="text" name="kw" id="kw" value="<?php echo $kw; ?>"  />
 						<input type="submit" name="btSearch" id="btSearch" value="Tìm" />
+					</td>-->
+					<td width="69%">
+						<?php
+							$active = "";
+							if (isset($_GET["active"]) && $_GET["active"] != -1)
+								$active = $_GET["active"];
+							else
+								$active = -1;
+							$listUsers = UsersBUS::GetUserByActive($active);
+							echo "<b>Có ".count($listUsers)." mẫu tin.</b>";
+						?>
 					</td>
 					<td width="31%">
 						<div align="right">
-							<select name="type" id="type">
-								<option value="-1" <?php echo $type==-1?"selected":""; ?>> - Nhóm thành viên - </option>
-								<option value="0"  <?php echo $type==0?"selected":""; ?>>Nhân viên</option>
-								<option value="1"  <?php echo $type==1?"selected":""; ?>>Khách hàng</option>
-							</select>
-							<select name="status" id="status">
-								<option value="-1" <?php echo $type==-1?"selected":""; ?>> - Chọn trạng thái - </option>
-								<option value="0"  <?php echo $type==0?"selected":""; ?>>Kích hoạt</option>
-								<option value="1"  <?php echo $type==1?"selected":""; ?>>Bị khóa</option>
+							<select id="status" onchange="return loadUserByActive();">
+								<option value="-1" <?php echo $active==-1?"selected":""; ?>> - Chọn trạng thái - </option>
+								<option value="1"  <?php echo $active==1?"selected":""; ?>>Kích hoạt</option>
+								<option value="0"  <?php echo $active==0?"selected":""; ?>>Bị khóa</option>
 							</select>
 					<!--<select name="type" id="type">
 					  <option value="-1" <?php echo $type==-1?"selected":""; ?>> - Nhóm thành viên - </option>
@@ -155,7 +166,7 @@
 						<td width="70px" align="center">Kích hoạt</td>
 					</tr>
 					<?php
-						$listUsers = UsersBUS::getUsers();
+						
 						for ($i=0;$i<count($listUsers);$i++)
 						{
 					?>
