@@ -22,8 +22,25 @@
 			$ip = "";
 			
 			$id = UsersBUS::Add($password,$email,$hoten,$gender,$diachi,$sdt1,$sdt2,$role,$level,1,$time,$ip);
-			if(!empty($id))
-				header("Location:../../index.php?view=user");
+			break;
+			
+		case "lock":
+			$uid = explode(',', $_GET["uid"]);
+			for ($i=0;$i<count($uid);$i++)
+				UsersBUS::SetStatus($uid[$i], 0);
+			break;
+			
+		case "unlock":
+			$uid = explode(',', $_GET["uid"]);
+			for ($i=0;$i<count($uid);$i++)
+				UsersBUS::SetStatus($uid[$i], 1);
+			break;
+		
+		case "delete":
+			$uid = explode(',', $_GET["uid"]);
+			for ($i=0;$i<count($uid);$i++)
+				UsersBUS::Delete($uid[$i]);
 			break;
 	}
+	header("Location:../../index.php?view=user");
 ?>

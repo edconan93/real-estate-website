@@ -88,7 +88,21 @@
 		
      	public static function SetStatus ($id, $status)
         {
-            $strSQL = "update user set status= '$status' where id='$id'";
+            $strSQL = "update user set status=$status where id='$id'";
+            $cn = DataProvider::Open ();
+			DataProvider::MoreQuery ($strSQL,$cn);
+			if(mysql_affected_rows () == 0)
+				$result=false;
+			else
+				$result=true;
+				
+			DataProvider::Close ($cn);
+            return $result;
+        }
+		
+		public static function Delete($id)
+        {
+            $strSQL = "update user set status=-1 where id='$id'";
             $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			if(mysql_affected_rows () == 0)
@@ -245,11 +259,12 @@
 			$strSQL = "";
 			if ($active == -1)
 				$strSQL = "select * 
-						   from user";
+						   from user
+						   where role!=1 and status!=-1";
 			else
 				$strSQL = "select * 
 						   from user
-						   where status=$active";
+						   where status=$active and role!=1 and status!=-1";
 			$result = DataProvider::Query($strSQL);
 			if (mysql_num_rows($result)==0)
 				return null;
@@ -266,8 +281,5 @@
 				return null;
 			return mysql_fetch_array ($result);	
 		}
-
-	
-
 	}
 ?>
