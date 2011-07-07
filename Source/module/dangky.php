@@ -419,7 +419,7 @@ $(document).ready(function()
 									</tr>
 									<tr>
 										<td colspan="2">
-										<input type="checkbox" checked="" name="cbAgree" id="cbAgree">
+										<input type="checkbox" name="cbAgree" id="cbAgree">
 										Tôi đồng ý với các quy định của realestate_hoaphuong.com
 										</td>
 									</tr>

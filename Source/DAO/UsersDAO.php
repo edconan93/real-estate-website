@@ -71,6 +71,20 @@
 			DataProvider::Close ($cn);
             return $result;
         }
+		public static function UpdateInfor ($id,$username,$radio_gender,$address,$dt1,$dt2,$time)
+        {
+            $strSQL = "update user set hoten='$username',gioitinh=$radio_gender,diachi='$address',
+						sdt1='$dt1',sdt2='$dt2', ngaycapnhat='$time' where id=$id";
+		    $cn = DataProvider::Open ();
+			DataProvider::MoreQuery ($strSQL,$cn);
+			
+			if(mysql_affected_rows () == 0)
+				$result=false;
+			else
+				$result=true;
+			DataProvider::Close ($cn);
+            return $result;
+        }
 		
      	public static function SetStatus ($id, $status)
         {
