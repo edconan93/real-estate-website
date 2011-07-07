@@ -153,6 +153,11 @@ Lớp UsersBUS
 			return UsersDAO::GetUserByActive($active);
 		}
 		
+		public static function Delete($user_id)
+		{
+			return UsersDAO::Delete($user_id);
+		}
+		
 		// public static function countResultByEmail ($keyWord)
 		// {
 			// $keyWord =addslashes($keyWord);
@@ -192,11 +197,7 @@ Lớp UsersBUS
 			return UsersDAO::getUsers ($index,$limit,$type,$status,$keyword,$sort);
 		}*/
 		
-		// public static function Delete ($user_id)
-		// {
-			// $user_id = (int) $user_id;
-			// return UsersDAO::Delete ($user_id);
-		// }
+		
 		
 		// public static function SetSecurityQuestion ($user_id, $security_question,$answer)
 		// {

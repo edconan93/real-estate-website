@@ -14,6 +14,7 @@
 		$curPage = (int) $_GET["page"];
     $curPage = $curPage>0?$curPage:1;
 	$curItem = ($curPage-1)*$maxItems;
+	
 	if(isset($_REQUEST["btDisable"]))
 	{
 		if($_REQUEST['cbId'])
@@ -172,7 +173,7 @@
 					?>
 					<tr style="background:<?php echo ($i%2==0) ? "#EFF3FF" : "white"; ?>;">
 						<td align="center"><?php echo $i+1; ?></td>
-						<td align="center"><input type="checkbox" onclick="Check_Click(this)"></td>
+						<td align="center"><input type="checkbox" name="cbUser" id="cbUser" value="<?php echo $listUsers[$i]["id"]; ?>" onclick="Check_Click(this)"></td>
 						<td class="m_name"><?php echo "<a href='index.php?view=user&do=edit&uid=".$listUsers[$i]["id"]."'>".$listUsers[$i]["hoten"]."</a>"; ?></td>
 						<td style="color:blue;font-weight:bold;"><?php echo $listUsers[$i]["email"]; ?></td>
 						<td align="center"><?php echo ($listUsers[$i]["gioitinh"]==1)?"Nam":"Nữ"; ?></td>
@@ -198,50 +199,8 @@
 					<?php
 						}
 					?>
-					<?php /*
-						$i=$curItem+1; 
-						//while ($user = mysql_fetch_array($users)) 
-						{
-					?>
-					<!--<tr>
-						<td><div align="center"><?php echo $i++; ?></div></td>
-						<td><label>
-							<div align="center">
-								<input type="checkbox" name="cbId[]" id="cbId[]" value="<?php echo $user[0]; ?>" /></div></label></td>
-						<td><?php echo "<a href='index.php?view=user&do=edit&uid=$user[0]'>$user[1]</a>";  ?></td>
-						<td>
-							<div align="center">
-							<?php
-								if($user[9] == 1)
-									echo "<img src='images/tick.png' alt='Bình thường' />";
-								else 
-									echo "<img src='images/publish_x.png' alt='Bị khóa' />";
-							?>           
-							</div></td>
-						<td><div align="center">
-							<?php  echo $user[10]==0?"Thành viên":"Quản trị" ?></div></td>
-						<td><?php echo $user[3]; ?></td>
-						<td><div align="center"><?php echo $user[8]=="0000-00-00 00:00:00"?"chưa đăng nhập bao giờ":convert_time($user[8]) ?></div></td>
-						<td><div align="center"><?php echo convert_time($user[5]) ?></div></td>
-						<td><div align="center"><?php echo EntriesBUS::GetCountEntriesByPostedUser($user[0]); ?></div></td>
-						<td><div align="center"><?php echo $user[0] ?></div></td>
-					</tr>-->
-					<?php
-						}*/
-					?>
 				</table>
 			</div>
-			<?php /*
-				$strLink = "index.php?view=user&";
-				if($status!=-1)
-					$strLink .= "status=$status&";
-				if($type!=-1)
-					$strLink .= "type=$type&";
-				if($kw!="")
-					$strLink .= "kw=$kw&";
-				$strPaging = paging ($strLink,$totalItems,$curPage,$maxPages,$maxItems);
-				echo $strPaging; */
-			?>
 		</form>
 	</div>
 	<div class="bl"></div>

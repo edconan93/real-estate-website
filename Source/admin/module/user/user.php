@@ -72,8 +72,67 @@
 			var data = $("#frmListItem").serialize() + "&btDelete=true";
 			$("#listItem").load(url,data);
 		});
-	
 	});
+	function lockUser()
+	{
+		if (confirm("Bạn có chắc muốn khóa các thành viên này?"))
+		{
+			var e = document.frmListItem.elements.length;
+			var cnt = 0;
+			var uid = new Array();
+			var i = 0;
+			for (cnt=0;cnt<e;cnt++)
+			{
+				if (document.frmListItem.elements[cnt].name=="cbUser")
+					if (document.frmListItem.elements[cnt].checked==true)
+						uid[i++] = document.frmListItem.elements[cnt].value;
+			}
+			window.location = "module/user/xulyuser.php?action=lock&uid=" + uid;
+			return true;
+		}
+		
+		return false;
+	}
+	function unlockUser()
+	{
+		if (confirm("Bạn có chắc muốn mở khóa các thành viên này?"))
+		{
+			var e = document.frmListItem.elements.length;
+			var cnt = 0;
+			var uid = new Array();
+			var i = 0;
+			for (cnt=0;cnt<e;cnt++)
+			{
+				if (document.frmListItem.elements[cnt].name=="cbUser")
+					if (document.frmListItem.elements[cnt].checked==true)
+						uid[i++] = document.frmListItem.elements[cnt].value;
+			}
+			window.location = "module/user/xulyuser.php?action=unlock&uid=" + uid;
+			return true;
+		}
+		
+		return false;
+	}
+	function deleteUser()
+	{
+		if (confirm("Bạn có chắc muốn xóa các thành viên này?"))
+		{
+			var e = document.frmListItem.elements.length;
+			var cnt = 0;
+			var uid = new Array();
+			var i = 0;
+			for (cnt=0;cnt<e;cnt++)
+			{
+				if (document.frmListItem.elements[cnt].name=="cbUser")
+					if (document.frmListItem.elements[cnt].checked==true)
+						uid[i++] = document.frmListItem.elements[cnt].value;
+			}
+			window.location = "module/user/xulyuser.php?action=delete&uid=" + uid;
+			return true;
+		}
+		
+		return false;
+	}
 </script>
 <div id="toolbar">
 <div class="tl"></div>
@@ -82,34 +141,17 @@
 <div class="mid">
 	<div class="title icon_user">Quản lý thành viên </div>
     <div class="icon">
-    	<a href="index.php?view=user&do=add" id="aAdd">
-        	 <img src="images/icon_32_new.png" alt="Thêm mới" border="0" title="Thêm mới" />
-             <br />
-             Thêm mới
-      </a>
-    </div>
-   
-     <div class="icon">
-    	<a href="#" id="aDelete">
-        	 <img src="images/icon_32_delete.png" alt="Xóa" border="0" title="Xóa" />
-             <br />
-             Xóa
-       </a>
-    </div>
-      <div class="icon">
-    	<a href="#" id="aDisable"> 
-        	 <img src="images/icon_32_cancel.png" alt="Khóa"  border="0" title="Khóa" />
-             <br />
-             Khóa
-        </a>
-    </div>
-      <div class="icon">
-    	<a href="#" id="aEnable">
-        	 <img src="images/icon_32_help.png" alt="Mở khóa" border="0" title="Mở khóa" />
-             <br />
-            Mở khóa
-        </a>
-    </div>
+    	<a href="index.php?view=user&do=add">
+        	<img src="images/icon_32_new.png" alt="Thêm mới" border="0" title="Thêm mới" /><br />Thêm mới</a></div>
+    <div class="icon">
+    	<a onclick="return deleteUser();">
+        	<img src="images/icon_32_delete.png" alt="Xóa" border="0" title="Xóa" /><br />Xóa</a></div>
+    <div class="icon">
+    	<a onclick="return lockUser();"> 
+        	<img src="images/icon_32_cancel.png" alt="Khóa" border="0" title="Khóa" /><br />Khóa</a></div>
+    <div class="icon">
+    	<a onclick="return unlockUser();">
+        	<img src="images/icon_32_help.png" alt="Mở khóa" border="0" title="Mở khóa" /><br />Mở khóa</a></div>
     <br class="clr" />
 </div>
 <div class="bl"></div>
