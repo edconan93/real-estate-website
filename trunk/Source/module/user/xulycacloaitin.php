@@ -118,7 +118,7 @@ class MessageTypeProcessor
 			$strResult.="<div style='padding: 3px; background-color: rgb(242, 245, 249); border: 1px solid rgb(204, 204, 204);font-weight: bold;'>"; 
 			$strResult.="<b title='23-06-2011' style='color: green;'>"; 
 			$strResult.="<img align='center' style='margin: 0px;position:relative;top:-4px;' src='../images/action_check2.png'>Đã cập nhật</b>&nbsp;&nbsp;"; //update
-			$strResult.="<a href='dangtindichvu.php?update=".$business[$i][0]."&step=".'1'."&loaidvcandang=".$business[$i]['loaidv']."' style='color: #0D5DA8;font-weight:bold;font-size:11px;text-decoration: none;'>"; 
+			$strResult.="<a href='dangtindichvu.php?update=".$business[$i][0]."&loaidvcandang=".$business[$i]['loaidv']."&step=".'1'."' style='color: #0D5DA8;font-weight:bold;font-size:11px;text-decoration: none;'>"; 
 			$strResult.="<img align='center' style='margin: 0px;position:relative;top:-4px;' src='../images/edit.png'>Sửa tin</a>&nbsp;&nbsp;"; //repare
 			$strResult.="<a onclick='return xoatindang(".$business[$i][0].");' href='' style='color: #0D5DA8;font-weight:bold;font-size:11px;text-decoration: none;'>"; 
 			$strResult.="<img align='center' style='margin: 0px;position:relative;top:-4px;' src='../images/action_delete2.png' >Xóa tin</a></div>"; //delete

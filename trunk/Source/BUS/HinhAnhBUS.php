@@ -17,6 +17,14 @@ class HinhAnhBUS
     {
         return HinhAnhDAO::getHinhAnhByDichVu($dichvu);
     }
+	public static function Delete($id)
+	{
+		return HinhAnhDAO::Delete($id);
+	}
+	public static function getAllHinhAnhByDichVuID ($iddichvu)
+	{
+		return HinhAnhDAO::getAllHinhAnhByDichVuID ($iddichvu);
+	}
 }
 
 

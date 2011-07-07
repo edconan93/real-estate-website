@@ -94,7 +94,7 @@
 		
 		//xu ly loai dv cho or can thue
 		
-		echo "<br>update==".$_GET['update'];
+	//	echo "<br>update==".$_GET['update'];
 		//add or update into dichvu
 		if(isset($_GET['update']) && $_GET['update'] != null)
 		{
@@ -116,11 +116,11 @@
 		//check and update or add into dichvu_tienich table
 		if(isset($_GET['update']) && $_GET['update'] != null)
 		{
-			include_once("../BUS/DichVu_TienIchBUS.php");
+			//include_once("../BUS/DichVu_TienIchBUS.php");
 			$dv_tienich = DichVu_TienIchBUS::getAllByIDDichVu($_GET['update']);
 			for($i=0;$i<count($dv_tienich);$i++)
 			{
-				DichVu_TienIchBUS::Delete($dv_tienich[0]);
+				$kqDelete =DichVu_TienIchBUS::Delete($dv_tienich[$i][0]);
 			}
 			$rs= $_GET['update'];
 		}
@@ -139,7 +139,14 @@
 			$url = $_COOKIE["url"];
 			$url[$length - 1] = 2;
 			if ($_GET["loaidvcandang"] == 1 || $_GET["loaidvcandang"] == 3)
-				header("Location:".$url."&newid=".$rs);
+			{
+				if(isset($_GET['update']) && $_GET['update'] != null)
+				{
+					header("Location:".$url."&update=".$_GET['update']."&newid=".$rs);
+				}
+				else
+					header("Location:".$url."&newid=".$rs);
+			}
 			else
 				header("Location:".$url."&dangtin=success");
 		}
@@ -151,6 +158,13 @@
 	//upload file
 	if (isset($_GET["newid"]))
 	{
+		if(isset($_GET['update']) && $_GET['update'] != null)
+		{
+			$hinhanh=HinhAnhBUS::getAllHinhAnhByDichVuID($_GET['update']);
+			echo "<br>so ha can delete=".count($hinhanh);
+			for($i=0;$i<count($hinhanh);$i++)
+				HinhAnhBUS::Delete($hinhanh[$i][0]);
+		}
 		for ($i=1;$i<=5;$i++)
 		{
 			$flag = true;

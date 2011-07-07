@@ -37,8 +37,7 @@
         }
 		public static function Update($id,$idcanho,$idtienich)
 		{
-			$strSQL = "update dichvu_tienich set idcanho= '$idcanho',idtienich= '$idtienich'
-			where id='$id'";
+			$strSQL = "update dichvu_tienich set idcanho= '$idcanho',idtienich= '$idtienich' where id='$id'";
 			
 			$cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
