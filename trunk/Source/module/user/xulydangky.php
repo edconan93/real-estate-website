@@ -1,13 +1,28 @@
-<?php
-//echo "first";
-		// if(isset($_POST["btRegister"]))
-		// {
-
+<?php		
+		if(isset($_POST["btnChangeInfoUser"]))
+		{
 			 include ("../../BUS/UsersBUS.php");
-
-						
+			 $id = $_GET["id"];
+			 $username = $_POST["txtUsername"];
+			 $address =  $_POST["txtAddress"];
+			 $dt1 = $_POST["txtTelephoneNumber"];
+			 if(isset($_POST["txtMobileNumber"]))
+				$dt2 = $_POST["txtMobileNumber"];
+			else
+			    $dt2 ="";
+			 $time = date('Y-m-d');
+			 $radio_gender = $_POST['gender'];
+			 echo "<br>radio=".$radio_gender;
+			 $rsUpdate=UsersBUS::UpdateInfor($id,$username,$radio_gender,$address,$dt1,$dt2,$time);
+			 if($rsUpdate == true)
+				header("Location:../thongtinkhachhang.php?update=success");
+			else
+			    header("Location:../thongtinkhachhang.php?update=failed");
+		}
+		if(isset($_POST["btRegister"]))
+		{
+			 include ("../../BUS/UsersBUS.php");						
 			$password = $_POST["txtPassword"];
-			//$repassword = $_POST["txtRePassword"];
 			$username = $_POST["txtUsername"];
 			$dt1 = $_POST["txtPhone"];
 			$dt2 = $_POST["txtMobile"];
@@ -39,5 +54,5 @@
 			}
 			
 			//$leftFile = "modules/home_modules/register_home.php";
-		//}	
+		}	
 ?>

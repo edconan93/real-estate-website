@@ -1139,7 +1139,12 @@ $(document).ready(function()
 										}
 										else if ($_GET["step"] == 3 || (isset($_GET["dangtin"]) && $_GET["dangtin"] == "success"))
 										{
-											echo "<center><b style='color:blue;'>Quá trình đăng tin của bạn đã thành công. Vui lòng chờ admin xét duyệt.</b></center><br>";
+											if(isset($_GET['update']) && $_GET['update'] != null)
+											{
+												echo "<center><b style='color:blue;'>Quá trình cập nhật đăng tin của bạn đã thành công.</b></center><br>";
+											}
+											else
+												echo "<center><b style='color:blue;'>Quá trình đăng tin của bạn đã thành công. Vui lòng chờ admin xét duyệt.</b></center><br>";
 									?>
 											<a href="tindadang.php?type=2"><div style="width:70px;margin-left:300px;">
 												<span class="action-button-left"></span>

@@ -69,7 +69,10 @@ Lớp UsersBUS
 			
 			return UsersDAO::Update ($id, $password, $email, $hoten, $gioitinh, $diachi, $sdt1, $sdt2,$role, $level, $status,$updatedate,$ip);
 		}
-		
+		public static function UpdateInfor($id,$username,$radio_gender,$address,$dt1,$dt2,$time)
+        {
+			return UsersDAO::UpdateInfor($id,$username,$radio_gender,$address,$dt1,$dt2,$time);
+		}
 		public static function SetStatus ($id, $status)
 		{
 			return UsersDAO::SetStatus ($id, $status);
