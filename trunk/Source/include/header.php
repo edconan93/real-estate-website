@@ -30,18 +30,8 @@
 		$curUserAddress = $_SESSION["curUser"]["diachi"];
 		$curUserHoTen = $_SESSION["curUser"]["hoten"];
 	}
-	//echo "<script language=javascript>alert('zyz')</script>";	
-		//if(isset($_GET["do"]))
 	if(isset($_GET["do"])&& $_GET["do"]=="login")
-	{
-		   //echo "<a href='' class='a_small' onclick='return press_DangNhap();'>Đăng Nhập</a>";
-		 //  echo "dichvu.php";
-		   //echo "<script> press_DangNhap(); </script>";
-		  // echo 'press_DangNhap()';
-		echo"<body  onload='press_DangNhapRegister();'>";
-		  //echo"<body  onload='show_SuccessRegister();'>";
-		 // echo "<script language=javascript>alert('zyz')</script>";	
-	}
+		echo"<body onload='press_DangNhapRegister();'>";
 ?>
 <body style="margin: 0pt; padding: 0pt;" bgcolor="#000c1c">
 	<div style="width: 100%; background-image: url(&quot;../images/bg_top.gif&quot;); background-repeat: repeat-x; text-align: center;">
@@ -58,14 +48,12 @@
 											<embed type="application/x-shockwave-flash" src="../images/slogan.swf" id="mymovie"
 												name="mymovie" bgcolor="#000000" quality="high" loop="true" wmode="transparent"
 												width="530" height="48"></div>
-
 										<script type="text/javascript">
 											var fo = new FlashObject("../images/slogan.swf", "mymovie", "600", "48", "6", "#000000"); 
 											fo.addParam("loop", "true"); 
 											fo.addParam("wmode", "transparent"); 
 											fo.write("slogan"); 
 										</script>
-
 									</td>
 									<td valign="bottom">
 										<div style="margin-bottom: 3px;">
@@ -130,4 +118,3 @@
                     </center>
                 </div>
                 <center>
-                

@@ -1,11 +1,11 @@
 <?php
+	include ("../../../BUS/UsersBUS.php");
 	$action = $_GET["action"];
 	switch ($action)
 	{
 		case "add":
-			include ("../../../BUS/UsersBUS.php");
 			$password = $_POST["txtPassword"];
-			$email = $_POST["txtUsername"];
+			$email = $_POST["txtEmail"];
 			$hoten = $_POST["txtHoten"];
 			$gender = $_POST["gender"];
 			$diachi = $_POST["txtDiaChi"];
@@ -23,13 +23,7 @@
 			
 			$id = UsersBUS::Add($password,$email,$hoten,$gender,$diachi,$sdt1,$sdt2,$role,$level,1,$time,$ip);
 			if(!empty($id))
-			{	
 				header("Location:../../index.php?view=user");
-			}
-			else
-			{
-				//header("Location:../dangky.php?do="$fRegister);
-			}
 			break;
 	}
 ?>

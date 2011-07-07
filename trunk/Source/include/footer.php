@@ -107,9 +107,9 @@ rgb(33, 91, 135); text-align: center;">
 		function press_DangNhapRegister()
         {
             document.getElementById("popup").style.visibility = "visible";
-            // document.getElementById("txtUsername").value = "";
-            // document.getElementById("txtPassword").value = "";
-            // document.getElementById("txtUsername").focus();
+            document.getElementById("txtUsernameLogin").value = "";
+            document.getElementById("txtPasswordLogin").value = "";
+            document.getElementById("txtUsernameLogin").focus();
 			$("#messRegister").attr("innerHTML","Đăng ký thành công.Mời bạn đăng nhập!");
 			$("#messRegister").css("color","blue");
 			

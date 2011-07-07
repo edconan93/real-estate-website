@@ -1,9 +1,54 @@
 <?php
 	if($_SESSION["curUser"][8] != 1)
 		header("Location: index.php");
+		
+	$PATH = str_replace('//','/',dirname(__FILE__).'/');
 ?>
+<script>
+	function validate()
+	{
+		if (document.getElementById("txtHoten").value == "")
+		{
+			alert("Bạn chưa điền họ tên. Vui lòng kiểm tra lại.");
+			document.getElementById("txtHoten").focus();
+			return false;
+		}
+		if (document.getElementById("sdt1").value == "")
+		{
+			alert("Số điện thoại 1 không được rỗng. Vui lòng kiểm tra lại.");
+			document.getElementById("sdt1").focus();
+			return false;
+		}
+		if (document.getElementById("txtEmail").value == "")
+		{
+			alert("Email đăng nhập không được rỗng. Vui lòng kiểm tra lại.");
+			document.getElementById("txtEmail").focus();
+			return false;
+		}
+		if (document.getElementById("txtPassword").value == "")
+		{
+			alert("Mật khẩu không được rỗng. Vui lòng kiểm tra lại.");
+			document.getElementById("txtPassword").focus();
+			return false;
+		}
+		if (document.getElementById("txtRePassword").value == "")
+		{
+			alert("Mật khẩu nhập lại không được rỗng. Vui lòng kiểm tra lại.");
+			document.getElementById("txtRePassword").focus();
+			return false;
+		}
+		if (document.getElementById("txtRePassword").value != document.getElementById("txtPassword").value)
+		{
+			alert("Mật khẩu nhập lại không khớp. Vui lòng kiểm tra lại.");
+			document.getElementById("txtRePassword").focus();
+			return false;
+		}
+		
+		return true;
+	}
+</script>
 <div id="frmCreateUser" name="frmCreateUser">
-<form action="module/user/xulyuser.php?action=add" method="post">
+<form action="module/user/xulyuser.php?action=add" method="post" onsubmit="return validate();">
 <div id="toolbar">
 	<div class="tl"></div>
 	<div class="tr"></div>
@@ -224,7 +269,7 @@
 						<td>
 							<select id="id_LoaiTV" name="role" onchange="return press_LoaiThanhVien();">
 							<?php
-								include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\RoleBUS.php");
+								include_once ($PATH . "../../../BUS/RoleBUS.php");
 								$listRole = RoleBUS::GetAllRole();
 								for ($i=0;$i<count($listRole);$i++)
 								{
@@ -239,7 +284,7 @@
 						<td>
 							<select name="level">
 							<?php
-								include_once(rtrim(dirname(__FILE__),"e\admin\module")."e\BUS\LevelBUS.php");
+								include_once ($PATH . "../../../BUS/LevelBUS.php");
 								$listLevel = LevelBUS::GetLevelByNhanVien();
 								for ($i=0;$i<count($listLevel);$i++)
 								{
@@ -251,7 +296,7 @@
 					</tr>
 					<tr>
 						<td width="100px">Họ tên: <span style="color:red;">(*)</td>
-						<td><input type="text" name="txtHoten" style="width:400px;" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
+						<td><input type="text" id="txtHoten" name="txtHoten" style="width:400px;" onkeyup="javascript:this.value=this.value.toUpperCase();"></td>
 					</tr>
 					<tr>
 						<td>Giới tính:</td>
@@ -291,7 +336,7 @@
 						<td valign="top" style="padding-top:6px;">
 							Mật khẩu:<span style="color:red;"> (*)</span></td>
 						<td>
-							<input name="txtPassword" style="width:280px;" onkeyup="passwordStrength(this.value)" type="password">
+							<input id="txtPassword" name="txtPassword" style="width:280px;" onkeyup="passwordStrength(this.value)" type="password">
 							<div style="float:left;">
 								<span style="font-size:10px;font-weight:bold;">Mật khẩu truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự</span>
 							</div>

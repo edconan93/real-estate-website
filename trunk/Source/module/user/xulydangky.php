@@ -13,6 +13,7 @@
 			$dt2 = $_POST["txtMobile"];
 			$email = $_POST["txtEmail"];
 			$address = $_POST["txtAddress"];
+			$gender = $_POST["gender"];
 			
 			// $sex = (int) $_POST["lbSex"];
 			// $day = (int) $_POST["lbDay"];
@@ -26,7 +27,7 @@
 			$time = date('Y-m-d');
 			$ip="192.168.1.22";
 			
-			$id = UsersBUS::Add($password,$email,$username,null,$address,$dt1,$dt2,2,4,0,$time,$ip);
+			$id = UsersBUS::Add($password,$email,$username,$gender,$address,$dt1,$dt2,2,4,0,$time,$ip);
 			if(!empty ($id))
 			{	
 				$fRegister="true";
