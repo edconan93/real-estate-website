@@ -14,6 +14,8 @@ class Utils
     }
 	public static function convertTimeDMY($time)
     {
+		if($time != null)
+		{
     	$arrDate = explode ("-", $time);
     	$d = (int) $arrDate[2];
     	$m = (int) $arrDate[1];
@@ -22,49 +24,55 @@ class Utils
     	
     	$time_out = $d."/".$m."/".$y;
     	return $time_out;
+		}
+		return null;
     }
 	public static function convertDecline_Time($time)
     {
-    	$arrDate = explode ("-", $time);
-    	$d = (int) $arrDate[2] + 15;
-    	$m = (int) $arrDate[1];
-		$y = (int) $arrDate[0];
-		if($m == 1 || $m == 3 ||$m == 5 ||$m == 7||$m == 8||$m == 10 || $m == 12)
+		if($time !=null)
 		{
-			if($d>31)
+			$arrDate = explode ("-", $time);
+			$d = (int) $arrDate[2] + 15;
+			$m = (int) $arrDate[1];
+			$y = (int) $arrDate[0];
+			if($m == 1 || $m == 3 ||$m == 5 ||$m == 7||$m == 8||$m == 10 || $m == 12)
 			{
-				$d=$d-31;
-				$m++;
-				if($m>12)
+				if($d>31)
 				{
-					$y++;
-					$m=1;
+					$d=$d-31;
+					$m++;
+					if($m>12)
+					{
+						$y++;
+						$m=1;
+					}
+				}
+					
+			}
+			else if($m == 4 || $m == 6 ||$m == 9 ||$m == 11)
+			{
+				if($d>30)
+				{
+					$d=$d-30;
+					$m++;			
 				}
 			}
-				
-		}
-		else if($m == 4 || $m == 6 ||$m == 9 ||$m == 11)
-		{
-			if($d>30)
+			else
 			{
-				$d=$d-30;
-				$m++;			
+				if($d>28)
+				{
+					$d=$d-28;
+					$m++;
+					
+				}
 			}
-		}
-		else
-		{
-			if($d>28)
-			{
-				$d=$d-28;
-				$m++;
-				
+			
+			//$arrTime = explode (":",substr($arrDate[2],2));
+			
+			$time_out = $d."/".$m."/".$y;
+			return $time_out;
 			}
-		}
-    	
-    	//$arrTime = explode (":",substr($arrDate[2],2));
-    	
-    	$time_out = $d."/".$m."/".$y;
-    	return $time_out;
+		return null;
     }
 
     public static function paging($href,$totalProducts,$curPage,$maxShowedPage=5,$maxProductPerPage=15)

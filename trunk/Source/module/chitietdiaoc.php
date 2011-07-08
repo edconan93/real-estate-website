@@ -147,7 +147,15 @@
 											<!--anh lơn-->		<div class="panel" style="width: 380px; height: 290px; position: absolute; top: 0px;
 																	left: 0px; overflow: hidden; background: none repeat scroll 0% 0% white; opacity: 1;
 																	display: block;">
-																	<img id="pic" name="pic" style="height: 290px; width: 380px; border-width: 0px;" src="../<?php echo $hinhanh[0]['path']?>">
+																	<?php if(count($hinhanh) >0){?>
+																			<img id="pic" name="pic" style="height: 290px; width: 380px; border-width: 0px;" src="../<?php echo $hinhanh[0]['path']?>">
+																			<?php }
+																			else
+																			{
+																				echo "<img id='pic' name='pic' style='height: 290px; width: 380px; border-width: 0px;' src='../images/user/1.png'>";
+																			}
+																			?>
+																	
 																	<div class="panel-overlay" style="position: absolute; z-index: 999; width: 360px;
 																		height: 1px; top: 289px; left: 0pt; padding: 0pt 10px; color: white; font-size: 1em;">
 																	</div>
@@ -163,10 +171,18 @@
 																		background: none repeat scroll 0% 0% transparent;">
 																		<li style="float: left; position: relative; height: 50px; z-index: 901; margin-top: 5px;
 																			margin-bottom: 0px; margin-right: 10px; padding: 0pt; cursor: pointer;">
+																			<?php if(count($hinhanh) >0){?>
 																			<img id="pic2" name="pic2" style="height: 50px; width: 50px; border: medium none;" src="../<?php echo $hinhanh[0]['path']?>">
+																			<?php }
+																			else
+																			{
+																				echo "<img id='pic2' name='pic2' style='height: 50px; width: 50px; border: medium none;' src='../images/user/1.png'>";
+																			}
+																			?>
 																		</li>
 																	</ul>
 																</div>
+												
 																<div id="pointer" style="position: absolute; z-index: 1000; cursor: pointer; top: 294px; left: 163px; height: 48px; width: 48px; display: block; overflow: visible; border: 2px solid black;"></div>
 																<img class="nav-next" src="../images/next.png" onclick="slideshow()"
 																	style="position: absolute; cursor: pointer; top: 309px; right: 133px;">
@@ -305,21 +321,29 @@
 			var width = 250;
 			var height = 100;
 			var imgAr1 = new Array();
-			var rImg1 = new Array();";		
-		echo"for(var j = 0; j < ".count($hinhanh)."; j++)
-			{
-				imgAr1[j] = new Image();
-				";
-				for($i=0;$i<count($hinhanh);$i++)
+			var rImg1 = new Array();
+			if(".count($hinhanh)." != 0)
+			{";
+			echo"for(var j = 0; j < ".count($hinhanh)."; j++)
 				{
-				
-					echo"if(j == ".$i.")
+					imgAr1[j] = new Image();
+					";
+					for($i=0;$i<count($hinhanh);$i++)
 					{
-						imgAr1[j].src = '../".$hinhanh[$i]['path']."';					
-					}";
-				}
+					
+						echo"if(j == ".$i.")
+						{
+							imgAr1[j].src = '../".$hinhanh[$i]['path']."';					
+						}";
+					}
 
 		echo"}
+			}
+			else
+			{
+				imgAr1[j].src = '../images/user/1.png';
+				alert(1);
+			}
 			for(var j = 0; j < imgAr1.length; j++)
 			{
 				rImg1[j] = new Image();
