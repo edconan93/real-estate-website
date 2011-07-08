@@ -94,7 +94,9 @@
 								$phaply = PhapLyBUS::GetPhapLyById($business['phaply']);
 								$huongnha = HuongNhaBUS::GetHuongNhaById($business['huongnha']);
 								$donvitien = DonViTienBUS::selectId($business['donvitien']);
-								
+								$hinhanh = HinhAnhBUS::getAllHinhAnhByDichVuID($business['id']);
+								// echo count($hinhanh);
+								// echo "<br>aaaaaaaaa=".$hinhanh[0]['path'];
                             }
                             ?>
 							<div style="width: 686px; padding-top:20px;">
@@ -141,10 +143,11 @@
 															<div class="galleryview" id="photos" style="visibility: visible; position: relative;
 																margin: 0pt; background: none repeat scroll 0% 0% transparent; border: 1px solid black;
 																width: 380px; height: 350px;">
-																<div class="panel" style="width: 380px; height: 290px; position: absolute; top: 0px;
+																
+											<!--anh lơn-->		<div class="panel" style="width: 380px; height: 290px; position: absolute; top: 0px;
 																	left: 0px; overflow: hidden; background: none repeat scroll 0% 0% white; opacity: 1;
 																	display: block;">
-																	<img id="pic" style="height: 290px; width: 380px; border-width: 0px;" src="../images/user/1.png">
+																	<img id="pic" name="pic" style="height: 290px; width: 380px; border-width: 0px;" src="../<?php echo $hinhanh[0]['path']?>">
 																	<div class="panel-overlay" style="position: absolute; z-index: 999; width: 360px;
 																		height: 1px; top: 289px; left: 0pt; padding: 0pt 10px; color: white; font-size: 1em;">
 																	</div>
@@ -153,14 +156,14 @@
 																		opacity: 0.6;">
 																	</div>
 																</div>
-																<div class="strip_wrapper" style="position: absolute; top: 290px; left: 165px; width: 50px;
+											<!--anh nho-->		<div class="strip_wrapper" style="position: absolute; top: 290px; left: 165px; width: 50px;
 																	height: 60px; overflow: hidden;">
 																	<ul class="filmstrip" style="list-style: none outside none; margin: 0pt; padding: 0pt;
 																		width: 60px; position: absolute; z-index: 900; top: 0pt; left: 0pt; height: 60px;
 																		background: none repeat scroll 0% 0% transparent;">
 																		<li style="float: left; position: relative; height: 50px; z-index: 901; margin-top: 5px;
 																			margin-bottom: 0px; margin-right: 10px; padding: 0pt; cursor: pointer;">
-																			<img id="pic2" style="height: 50px; width: 50px; border: medium none;" src="../images/user/1.png">
+																			<img id="pic2" name="pic2" style="height: 50px; width: 50px; border: medium none;" src="../<?php echo $hinhanh[0]['path']?>">
 																		</li>
 																	</ul>
 																</div>
@@ -296,68 +299,72 @@
       
                                             }
                                             </script>
-											<script type="text/javascript">
-												var width = 250;
-												var height = 100;
-												var imgAr1 = new Array();
-												var rImg1 = new Array();
+	<?php
+	$i=0;
+	echo "<script type='text/javascript'>;
+			var width = 250;
+			var height = 100;
+			var imgAr1 = new Array();
+			var rImg1 = new Array();
+			for(var j = 0; j < ".count($hinhanh)."; j++)
+			{
+				imgAr1[j] = new Image();
+				
+				imgAr1[j].src = '../".$hinhanh[$i]['path']."';
+				
+			}
+			for(var j = 0; j < imgAr1.length; j++)
+			{
+				rImg1[j] = new Image();
+				rImg1[j].src = imgAr1[j].src;
+			}
+			document.onload = setting();
 
-												imgAr1[0] = "../images/user/1.png";
-												imgAr1[1] = "../images/user/2.jpg";
-												imgAr1[2] = "../images/user/3.png";
-												imgAr1[3] = "../images/user/4.jpg";
-												for(var j = 0; j < imgAr1.length; j++)
-												{
-													rImg1[j] = new Image();
-														rImg1[j].src = imgAr1[j];
-												}
+			var slide;
+			var slide2;
+			function setting()
+			{
+				slide = document.getElementById('pic');
+				slide.src = imgAr1[0].src;
+				slide.setAttribute('width',width);
+				slide.setAttribute('height',height);
+				
+				slide2 = document.getElementById('pic2');
+				slide2.src = imgAr1[0].src;
+				slide2.setAttribute('width',50);
+				slide2.setAttribute('height',50);
+			}
 
-												document.onload = setting();
+			var picture = 0;
+			function slideshow(){
+				if(picture < imgAr1.length-1){
+					picture=picture+1;
+					slide.src = imgAr1[picture].src;
+					slide2.src = imgAr1[picture].src;
+				}
+			}
 
-												var slide;
-												var slide2;
-												function setting()
-												{
-													slide = document.getElementById('pic');
-													slide.src = imgAr1[0];
-													slide.setAttribute("width",width);
-													slide.setAttribute("height",height);
-													
-													slide2 = document.getElementById('pic2');
-													slide2.src = imgAr1[0];
-													slide2.setAttribute("width",50);
-													slide2.setAttribute("height",50);
-												}
+			function prev(){
+				if(picture > 0 ){
+					picture=picture-1;
+					slide.src = imgAr1[picture].src;
+					slide2.src = imgAr1[picture].src;
+				}
+			}
 
-												//Image or picture slide show using java script
-												//slideshow function
-												var picture = 0;
-												function slideshow(){
-													if(picture < imgAr1.length-1){
-														picture=picture+1;
-														slide.src = imgAr1[picture];
-														slide2.src = imgAr1[picture];
-													}
-												}
+			function start(){
+					slide.src = imgAr1[0].src;
+					picture = 0;
+			}
 
-												function prev(){
-													if(picture > 0 ){
-														picture=picture-1;
-														slide.src = imgAr1[picture];
-														slide2.src = imgAr1[picture];
-													}
-												}
+			function end(){
+					slide.src = imgAr1[imgAr1.length-1];
+					picture = imgAr1.length-1;
+			}
+			
+		</script>";
+	?>										
 
-												function start(){
-														slide.src = imgAr1[0];
-														picture = 0;
-												}
-
-												function end(){
-														slide.src = imgAr1[imgAr1.length-1];
-														picture = imgAr1.length-1
-												}
-											</script>
                                            <div><a style="visibility: hidden;" id="linkShowBigMap" onclick="showBigMap()" href="javascript:void(0)">Xem bản đồ lớn</a></div>
 											<div class="clearBoth">
 											</div>

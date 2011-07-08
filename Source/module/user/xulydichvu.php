@@ -176,6 +176,7 @@
 			if($flag)
 			{
 				$chusohuu =(int)$_GET['id'];
+				echo "<br>chu so huu=".$chusohuu;
 				echo "<br> file uploaded not failed";
 				$arrType = explode ("/",$_FILES["ffImage".$i]["type"]);
 				if($arrType[0]!="image")
