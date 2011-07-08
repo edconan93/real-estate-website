@@ -86,8 +86,8 @@ class Utils
     		}
     		else
     		{ 
-    			$paging.=sprintf ("<td><a href='%spage=1' style='text-decoration:none'>Trang đầu</a></td> \n",$href);
-    			$paging.=sprintf ("<td><a href='javascript:gotopage(%d)'class='link_image'><img src='../../images/prev.png' border='0'></a></td> \n",$curPage-1);
+    			$paging.=sprintf ("<td><a href='javascript:gotopage(%d)' style='text-decoration:none'>Trang đầu</a></td> \n",'1');
+    			$paging.=sprintf ("<td><a href='javascript:gotopage(%d)'class='link_image'><img src='../images/prev.png' border='0'></a></td> \n",$curPage-1);
     		}				 	 
     		for($i=1;$i<=$totalPages;$i++)
     		{	
@@ -102,7 +102,7 @@ class Utils
     		if ($curPage<$totalPages)
     		{
     			
-    			$paging.=sprintf ("<td><a href='%spage=%d' class='link_image'><img src='../../images/next.png' border='0'></a></td> \n",$href,$curPage+1);
+    			$paging.=sprintf ("<td><a href='javascript:gotopage(%d)' class='link_image'><img src='../images/next.png' border='0'></a></td> \n",$curPage+1);
     			$paging.=sprintf ("<td><a href='javascript:gotopage(%d)' style='text-decoration:none'>Trang cuối</a></td> \n",$totalPages);
     		}
     		else
