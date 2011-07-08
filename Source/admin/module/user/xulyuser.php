@@ -42,5 +42,7 @@
 				UsersBUS::Delete($uid[$i]);
 			break;
 	}
-	header("Location:../../index.php?view=user");
+	$status = isset($_REQUEST["status"])?$_REQUEST["status"]:-1;
+	$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-1;
+	header("Location:../../index.php?view=user&type=".$type."&status=".$status);
 ?>

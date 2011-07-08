@@ -1,6 +1,3 @@
-<script>
-	
-</script>
 <?php
 	include ("../../BUS/HinhAnhBUS.php");
 	

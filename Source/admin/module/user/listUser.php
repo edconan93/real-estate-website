@@ -104,6 +104,22 @@
 					 });
 				});
 			});
+			function BASIC_GetCookie(Name){
+				var re=new RegExp(Name+"=[^;]+", "i"); //construct RE to search for target name/value pair
+				if (document.cookie.match(re)) //if cookie found
+					return document.cookie.match(re)[0].split("=")[1]; //return its value
+				return "";
+			}
+
+			function BASIC_SetCookie(name, value, days){
+				if (typeof days!="undefined"){ //if set persistent cookie
+					var expireDate = new Date();
+					var expstring=expireDate.setDate(expireDate.getDate()+days);
+					document.cookie = name+"="+value+"; expires="+expireDate.toGMTString();
+				}
+				else //else if this is a session only cookie
+					document.cookie = name+"="+value;
+			}
 			function loadUsersByCondition()
 			{
 				var type = document.getElementById("type");
