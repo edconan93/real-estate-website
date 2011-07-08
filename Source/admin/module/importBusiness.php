@@ -14,8 +14,7 @@
 	<div class="mid">
 		<div class="title icon_import">Nhập thu</div>
 		<div class="icon">
-			<!--<a href="index.php?view=business" id="btnCancel">-->
-            <a href="#" id="btnCancel">
+			<a href="index.php?view=business" id="btnCancel">
 				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
 		<div class="icon">
 			<a href="#"  id="btnSave">
@@ -57,24 +56,23 @@
                     var nhanvien=$("#cbbNhanvien").val();
                     if(flag==false)
                     {
-                        alert("nhap day du thong tin");
+                        alert("Vui lòng nhập đủ thông tin có dấu (*)");
                         return false;
                     }
-                        
-                    url="module/thuchi/XLThuChi.php?view=business&do=import&action=add&loai=0&sotien="+sotien+
-                    "&congviec="+congviec+"&nhanvien="+nhanvien+"&ngay="+ngaythu+"&donvi="+dvTien;
-            
-                    $("#dsThuchi").load(url);
+                    var params = { 'view':'business', 'do':'import','action':'add','loai':'0','sotien':sotien,
+                    "congviec":congviec,"nhanvien":nhanvien,"ngay":ngaythu,"donvi":dvTien };    
+                    url="module/thuchi/XLThuChi.php";                   
+                    $("#dsThuchi").load(url,params);
 				});
-   	            $("#btnCancel").click(function(){
-   	               var values = new Array();
-                    $.each($("input[name='cbId[]']:checked"), function() {
-                     values.push($(this).val());
-        // or you can do something to the actual checked checkboxes by working directly with  'this'
-        // something like $(this).hide() (only something useful, probably) :P
-                        });
-                   alert(values);
-	           });
+   	            //$("#btnCancel").click(function(){
+//   	               var values = new Array();
+//                    $.each($("input[name='cbId[]']:checked"), function() {
+//                     values.push($(this).val());
+//        // or you can do something to the actual checked checkboxes by working directly with  'this'
+//        // something like $(this).hide() (only something useful, probably) :P
+//                        });
+//                   alert(values);
+//	           });
 			});
 		</script>
 		<form action="index.php?view=user" method="post" name="frmRegister" id="frmRegister" >
@@ -131,7 +129,6 @@
 			</table>
 		</form>
 		<div class="list" style="padding-top:20px;" id="dsThuchi">
-        
 		<!--	<table width="70%" border="0" align="center" cellspacing="0" cellpadding="0">
 				<tr class="title">
 					<td width="30px" align="center">#</td>

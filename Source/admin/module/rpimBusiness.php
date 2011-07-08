@@ -23,6 +23,28 @@
 	<div class="tl"></div>
 	<div class="tr"></div>
 	<div class="tm"></div>
+    <script language="javascript">
+            function gotopage(page)
+            {
+                var url="module/thuchi/XLThuChi.php?view=business&do=rpim&page="+page;           
+                $("#dsThuchi").load(url);
+            }
+			$(document).ready(function()
+			{
+                var url="module/thuchi/XLThuChi.php?view=business&do=rpim";          
+                $("#dsThuchi").load(url);
+				
+   	            //$("#btnCancel").click(function(){
+//   	               var values = new Array();
+//                    $.each($("input[name='cbId[]']:checked"), function() {
+//                     values.push($(this).val());
+//        // or you can do something to the actual checked checkboxes by working directly with  'this'
+//        // something like $(this).hide() (only something useful, probably) :P
+//                        });
+//                   alert(values);
+//	           });
+			});
+		</script>
 	<div class="mid">
 		<form method="post" name="frmListItem" id="frmListItem">
 			<div style="text-align:center; padding-bottom:30px;">
@@ -55,7 +77,8 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="submit" value="Xem" />
 			</div>
-			<div class="list">
+			<div class="list" id="dsThuchi">
+            <!--
 				<table width="70%" border="0" align="center" cellspacing="0" cellpadding="0">
 					<tr class="title">
 						<td width="30px" align="center">#</td>
@@ -87,6 +110,7 @@
 						<td align="right"><b>100.000.000 vnd</b></td>
 					</tr>
 				</table>
+                -->
 			</div>
 		</form>
 	</div>
