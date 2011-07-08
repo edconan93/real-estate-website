@@ -37,7 +37,16 @@
             var url="module/thuchi/XLThuChi.php?view=business&do=export&page="+page;           
             $("#dsThuchi").load(url);
         }
-			$(document).ready(function()
+		function checkALL()
+        {
+ 
+            var status=document.getElementById("cbAll").checked;
+            $.each($("input[name='cbId[]']"), function() {
+                    $(this).attr('checked',status);
+                        });
+
+        }
+        	$(document).ready(function()
 			{
 			var url="module/thuchi/XLThuChi.php?view=business&do=export";          
                 $("#dsThuchi").load(url);

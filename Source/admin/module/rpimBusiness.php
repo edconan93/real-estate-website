@@ -8,10 +8,10 @@
 			<a href="index.php?view=business" id="aCancel">
 				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
 		<div class="icon" style="width:60px;">
-			<a href="" id="aSave">
+			<a href="#" id="btnDelete">
 				<img src="images/trash-can-delete.png" alt="Xóa" border="0" title="Xóa" /><br />Xóa</a></div>
 		<div class="icon" style="width:60px;">
-			<a href="" id="aSave">
+			<a href="module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=0" id="btnExportExcel">
 				<img src="images/export_excel.png" alt="Xuất Excel" border="0" title="Xuất Excel" /><br />Xuất Excel</a></div>
 		<br class="clr" />
 	</div>
@@ -23,11 +23,20 @@
 	<div class="tl"></div>
 	<div class="tr"></div>
 	<div class="tm"></div>
+    <div id="divTemp"></div>
     <script language="javascript">
             function gotopage(page)
             {
                 var url="module/thuchi/XLThuChi.php?view=business&do=rpim&page="+page;           
                 $("#dsThuchi").load(url);
+            }
+            function checkALL()
+            { 
+            var status=document.getElementById("cbAll").checked;
+            $.each($("input[name='cbId[]']"), function() {
+                    $(this).attr('checked',status);
+                        });
+
             }
 			$(document).ready(function()
 			{
@@ -42,25 +51,49 @@
                             var thang=$("#cbbThang").val();
                             url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getMonth&month="+thang;
                              $("#dsThuchi").load(url);
+                            $('#btnExportExcel').attr('href','module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=0&action=getMonth&month='+thang);
                         break;
                         case "2":
                         var quy=$("#cbbQuy").val();
                             url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getQuy&quy="+quy;
                              $("#dsThuchi").load(url);
+                             $('#btnExportExcel').attr('href',"module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=0&action=getQuy&quy="+quy);
                         break;
                         case "3":
                         var nam=$("#txtNam").val();
                             url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getYear&year="+nam;
                              $("#dsThuchi").load(url);
+                             $('#btnExportExcel').attr('href',"module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=0&action=getYear&year="+nam);
                         break;
                         default:
                         var thang=$("#cbbThang").val();
                             url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getMonth&month="+thang;
                              $("#dsThuchi").load(url);
+                             $('#btnExportExcel').attr('href',"module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=0&action=getMonth&month="+thang);
                         break;
                     }
    	                
    	            });
+              $('#btnDelete').click(function(){
+                 var values ="";
+                $.each($("input[name='cbId[]']:checked"), function() {
+                    values+=$(this).val()+"|";
+                        });
+                if(values.length==0)
+                {
+                    alert("Bạn phải chọn hảng cần xóa");
+                    return false;
+                }
+                var answer = confirm ("Bạn có chắc xóa không?")
+                if (answer)
+                {
+                    
+                   
+                    values=values.substr(0,values.length-1);
+                    url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=remove&id="+values;
+                     $("#dsThuchi").load(url);
+                 }
+              }); 
 			});
 		</script>
 	<div class="mid">
@@ -130,6 +163,9 @@
 				</table>
                 -->
 			</div>
+            <?php
+           
+            ?>
 		</form>
 	</div>
 	<div class="bl"></div>
