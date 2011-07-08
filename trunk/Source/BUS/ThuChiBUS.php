@@ -16,5 +16,21 @@
         {
             return ThuChiDAO::count($type);
         }
+        public static function SumTongTien($type)
+        {
+            return ThuChiDAO::SumTongTien($type);
+        }
+        public static function SumTongTienByMonth($type,$monthFrom,$monthTo,$year)
+        {
+            return ThuChiDAO::SumTongTienByMonth($type,$monthFrom,$monthTo,$year);
+        }
+        public static function getAllByMonth($offset,$max,$type,$monthFrom,$monthTo,$year)
+        {
+            return ThuChiDAO::getAllByMonth($offset,$max,$type,$monthFrom,$monthTo,$year);
+        }
+        public static function countByMonth($type,$monthFrom,$monthTo,$year)
+        {
+             return ThuChiDAO::countByMonth($type,$monthFrom,$monthTo,$year);
+        }
     }
  ?>

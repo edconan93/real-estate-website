@@ -37,6 +37,15 @@
             var url="module/thuchi/XLThuChi.php?view=business&do=import&page="+page;           
             $("#dsThuchi").load(url);
         }
+        function checkALL()
+        {
+ 
+            var status=document.getElementById("cbAll").checked;
+            $.each($("input[name='cbId[]']"), function() {
+                    $(this).attr('checked',status);
+                        });
+
+        }
 			$(document).ready(function()
 			{
                 var url="module/thuchi/XLThuChi.php?view=business&do=import";          
@@ -73,6 +82,9 @@
 //                        });
 //                   alert(values);
 //	           });
+                //$('#cbAll').click(function(){
+//                   alert('ali'); 
+//                });
 			});
 		</script>
 		<form action="index.php?view=user" method="post" name="frmRegister" id="frmRegister" >
@@ -129,38 +141,7 @@
 			</table>
 		</form>
 		<div class="list" style="padding-top:20px;" id="dsThuchi">
-		<!--	<table width="70%" border="0" align="center" cellspacing="0" cellpadding="0">
-				<tr class="title">
-					<td width="30px" align="center">#</td>
-					<td width="30px" align="center">
-						<input type="checkbox" name="cbAll" id="cbAll" /></td>
-					<td width="70px" align="center">Ngày thu</td>
-					<td align="center">Công việc</td>
-					<td width="20%">Nhân viên thu</td>
-					<td align="right" width="100px">Số tiền</td>
-				</tr>
-				<tr>
-					<td align="center">1</td>
-					<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
-					<td align="center">20-10-2011</td>
-					<td>144/28/13 Châu Văn Liêm, P.14, Q.5, Tp.HCM</td>
-					<td>Nguyễn Thị Đoàn Thanh Phương</td>
-					<td align="right">20.000.000 vnd</td>
-				</tr>
-				<tr>
-					<td align="center">2</td>
-					<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
-					<td align="center">20-10-2011</td>
-					<td>144/28/13 Châu Văn Liêm, P.14, Q.5, Tp.HCM</td>
-					<td>12x24 m2, 2 phòng ngủ, 1 tầng</td>
-					<td align="right">20.000.000 vnd</td>
-				</tr>
-				<tr>
-					<td align="right" colspan="5"><b>TỔNG thu:</b></td>
-					<td align="right"><b>100.000.000 vnd</b></td>
-				</tr>
-			</table>
-            -->
+		
 		</div>
 		<br class="clr" />
     </div>

@@ -34,22 +34,40 @@
                 var url="module/thuchi/XLThuChi.php?view=business&do=rpim";          
                 $("#dsThuchi").load(url);
 				
-   	            //$("#btnCancel").click(function(){
-//   	               var values = new Array();
-//                    $.each($("input[name='cbId[]']:checked"), function() {
-//                     values.push($(this).val());
-//        // or you can do something to the actual checked checkboxes by working directly with  'this'
-//        // something like $(this).hide() (only something useful, probably) :P
-//                        });
-//                   alert(values);
-//	           });
+   	            $("#btnShow").click(function(){
+   	                var type=$("input[name='type']:checked").val();
+                    switch(type)
+                    {
+                        case "1":                       
+                            var thang=$("#cbbThang").val();
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getMonth&month="+thang;
+                             $("#dsThuchi").load(url);
+                        break;
+                        case "2":
+                        var quy=$("#cbbQuy").val();
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getQuy&quy="+quy;
+                             $("#dsThuchi").load(url);
+                        break;
+                        case "3":
+                        var nam=$("#txtNam").val();
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getYear&year="+nam;
+                             $("#dsThuchi").load(url);
+                        break;
+                        default:
+                        var thang=$("#cbbThang").val();
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getMonth&month="+thang;
+                             $("#dsThuchi").load(url);
+                        break;
+                    }
+   	                
+   	            });
 			});
 		</script>
 	<div class="mid">
 		<form method="post" name="frmListItem" id="frmListItem">
 			<div style="text-align:center; padding-bottom:30px;">
 				<input type="radio" name="type" value="1" checked /> Tháng 
-					<select>
+					<select id="cbbThang">
 						<option value="1"> 1 </option>
 						<option value="2"> 2 </option>
 						<option value="3"> 3 </option>
@@ -65,7 +83,7 @@
 					</select>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="radio" name="type" value="2" /> Quý 
-					<select>
+					<select id="cbbQuy">
 						<option value="1"> 1 </option>
 						<option value="2"> 2 </option>
 						<option value="3"> 3 </option>
@@ -73,9 +91,9 @@
 					</select>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="radio" name="type" value="3" /> Năm 
-				<input type="text" style="width:40px;" onkeypress="return keypress(event);" />
+				<input type="text" style="width:40px;" id="txtNam" />
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="submit" value="Xem" />
+				<input type="button" value="Xem" id="btnShow"/>
 			</div>
 			<div class="list" id="dsThuchi">
             <!--
