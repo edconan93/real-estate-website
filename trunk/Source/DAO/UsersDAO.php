@@ -281,5 +281,15 @@
 				return null;
 			return mysql_fetch_array ($result);	
 		}
+        public static function getUsersByRole ($role)
+		{
+		  $strSQL = "select * from user where role=$role";
+            $result = DataProvider::Query($strSQL);
+			if(mysql_num_rows($result)==0)
+				return null;
+			while ($row= mysql_fetch_array ($result,MYSQL_BOTH))
+                $return[]=$row;
+            return $return;	
+        }
 	}
 ?>
