@@ -83,9 +83,9 @@
 			var i = 0;
 			for (cnt=0;cnt<e;cnt++)
 			{
-				if (document.frmListItem.elements[cnt].name=="cbUser")
-					if (document.frmListItem.elements[cnt].checked==true)
-						uid[i++] = document.frmListItem.elements[cnt].value;
+				var tmp = document.frmListItem.elements[cnt];
+				if (tmp.name=="cbUser" && tmp.checked==true)
+					uid[i++] = document.frmListItem.elements[cnt].value;
 			}
 			window.location = "module/user/xulyuser.php?action=lock&uid=" + uid;
 			return true;
@@ -103,9 +103,9 @@
 			var i = 0;
 			for (cnt=0;cnt<e;cnt++)
 			{
-				if (document.frmListItem.elements[cnt].name=="cbUser")
-					if (document.frmListItem.elements[cnt].checked==true)
-						uid[i++] = document.frmListItem.elements[cnt].value;
+				var tmp = document.frmListItem.elements[cnt];
+				if (tmp.name=="cbUser" && tmp.checked==true)
+					uid[i++] = document.frmListItem.elements[cnt].value;
 			}
 			window.location = "module/user/xulyuser.php?action=unlock&uid=" + uid;
 			return true;
@@ -123,9 +123,9 @@
 			var i = 0;
 			for (cnt=0;cnt<e;cnt++)
 			{
-				if (document.frmListItem.elements[cnt].name=="cbUser")
-					if (document.frmListItem.elements[cnt].checked==true)
-						uid[i++] = document.frmListItem.elements[cnt].value;
+				var tmp = document.frmListItem.elements[cnt];
+				if (tmp.name=="cbUser" && tmp.checked==true)
+					uid[i++] = document.frmListItem.elements[cnt].value;
 			}
 			window.location = "module/user/xulyuser.php?action=delete&uid=" + uid;
 			return true;

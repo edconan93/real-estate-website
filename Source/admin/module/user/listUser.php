@@ -14,7 +14,6 @@
 		$curPage = (int) $_GET["page"];
     $curPage = $curPage>0?$curPage:1;
 	$curItem = ($curPage-1)*$maxItems;
-	
 	if(isset($_REQUEST["btDisable"]))
 	{
 		if($_REQUEST['cbId'])
@@ -104,48 +103,22 @@
 					 });
 				});
 			});
-			function loadUserByActive()
-			{
-				var active = document.getElementById("status");
-				window.location = "index.php?view=user&active=" + active.value;
-			}
 		</script>
 		<form method="post" name="frmListItem" id="frmListItem">
 			<input name="page" type="hidden" value="<?php echo $curPage; ?>" />
 			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr>
-					<!--<td width="69%">Từ khóa: 
+					<td width="69%">Từ khóa: 
 						<input type="text" name="kw" id="kw" value="<?php echo $kw; ?>"  />
 						<input type="submit" name="btSearch" id="btSearch" value="Tìm" />
-					</td>-->
-					<td width="69%">
-						<?php
-							$active = "";
-							if (isset($_GET["active"]) && $_GET["active"] != -1)
-								$active = $_GET["active"];
-							else
-								$active = -1;
-							$listUsers = UsersBUS::GetUserByActive($active);
-							echo "<b>Có ".count($listUsers)." mẫu tin.</b>";
-						?>
 					</td>
 					<td width="31%">
 						<div align="right">
-							<select id="status" onchange="return loadUserByActive();">
-								<option value="-1" <?php echo $active==-1?"selected":""; ?>> - Chọn trạng thái - </option>
-								<option value="1"  <?php echo $active==1?"selected":""; ?>>Kích hoạt</option>
-								<option value="0"  <?php echo $active==0?"selected":""; ?>>Bị khóa</option>
+							<select name="status" id="status">
+								<option value="-1" <?php echo $type==-1?"selected":""; ?>> - Chọn trạng thái - </option>
+								<option value="0"  <?php echo $type==0?"selected":""; ?>>Kích hoạt</option>
+								<option value="1"  <?php echo $type==1?"selected":""; ?>>Bị khóa</option>
 							</select>
-					<!--<select name="type" id="type">
-					  <option value="-1" <?php echo $type==-1?"selected":""; ?>> - Nhóm thành viên - </option>
-					  <option value="0"  <?php echo $type==0?"selected":""; ?>>Thành viên</option>
-					  <option value="1"  <?php echo $type==1?"selected":""; ?>>Quản trị</option>
-					</select>
-					<select name="status" id="status">
-					  <option value="-1"  <?php echo $status==-1?"selected":""; ?>>- Chọn trạng thái - </option>
-					  <option value="0" <?php echo $status==0?"selected":""; ?>>Bị khóa</option>
-					  <option value="1" <?php echo $status==1?"selected":""; ?>>Bình thường</option>
-					</select>-->
 						</div>
 					</td>
 				</tr>
@@ -167,13 +140,13 @@
 						<td width="70px" align="center">Kích hoạt</td>
 					</tr>
 					<?php
-						
+						$listUsers = UsersBUS::getUsers();
 						for ($i=0;$i<count($listUsers);$i++)
 						{
 					?>
 					<tr style="background:<?php echo ($i%2==0) ? "#EFF3FF" : "white"; ?>;">
 						<td align="center"><?php echo $i+1; ?></td>
-						<td align="center"><input type="checkbox" name="cbUser" id="cbUser" value="<?php echo $listUsers[$i]["id"]; ?>" onclick="Check_Click(this)"></td>
+						<td align="center"><input type="checkbox" name="cbUser" value="<?php echo $listUsers[$i]["id"] ?>" onclick="Check_Click(this)"></td>
 						<td class="m_name"><?php echo "<a href='index.php?view=user&do=edit&uid=".$listUsers[$i]["id"]."'>".$listUsers[$i]["hoten"]."</a>"; ?></td>
 						<td style="color:blue;font-weight:bold;"><?php echo $listUsers[$i]["email"]; ?></td>
 						<td align="center"><?php echo ($listUsers[$i]["gioitinh"]==1)?"Nam":"Nữ"; ?></td>
@@ -199,8 +172,50 @@
 					<?php
 						}
 					?>
+					<?php /*
+						$i=$curItem+1; 
+						//while ($user = mysql_fetch_array($users)) 
+						{
+					?>
+					<!--<tr>
+						<td><div align="center"><?php echo $i++; ?></div></td>
+						<td><label>
+							<div align="center">
+								<input type="checkbox" name="cbId[]" id="cbId[]" value="<?php echo $user[0]; ?>" /></div></label></td>
+						<td><?php echo "<a href='index.php?view=user&do=edit&uid=$user[0]'>$user[1]</a>";  ?></td>
+						<td>
+							<div align="center">
+							<?php
+								if($user[9] == 1)
+									echo "<img src='images/tick.png' alt='Bình thường' />";
+								else 
+									echo "<img src='images/publish_x.png' alt='Bị khóa' />";
+							?>           
+							</div></td>
+						<td><div align="center">
+							<?php  echo $user[10]==0?"Thành viên":"Quản trị" ?></div></td>
+						<td><?php echo $user[3]; ?></td>
+						<td><div align="center"><?php echo $user[8]=="0000-00-00 00:00:00"?"chưa đăng nhập bao giờ":convert_time($user[8]) ?></div></td>
+						<td><div align="center"><?php echo convert_time($user[5]) ?></div></td>
+						<td><div align="center"><?php echo EntriesBUS::GetCountEntriesByPostedUser($user[0]); ?></div></td>
+						<td><div align="center"><?php echo $user[0] ?></div></td>
+					</tr>-->
+					<?php
+						}*/
+					?>
 				</table>
 			</div>
+			<?php /*
+				$strLink = "index.php?view=user&";
+				if($status!=-1)
+					$strLink .= "status=$status&";
+				if($type!=-1)
+					$strLink .= "type=$type&";
+				if($kw!="")
+					$strLink .= "kw=$kw&";
+				$strPaging = paging ($strLink,$totalItems,$curPage,$maxPages,$maxItems);
+				echo $strPaging; */
+			?>
 		</form>
 	</div>
 	<div class="bl"></div>
