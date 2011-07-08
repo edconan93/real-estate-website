@@ -23,11 +23,51 @@
 	<div class="tl"></div>
 	<div class="tr"></div>
 	<div class="tm"></div>
+    <script language="javascript">
+            function gotopage(page)
+            {
+                var url="module/thuchi/XLThuChi.php?view=business&do=rpex&page="+page;           
+                $("#dsThuchi").load(url);
+            }
+			$(document).ready(function()
+			{
+                var url="module/thuchi/XLThuChi.php?view=business&do=rpex";          
+                $("#dsThuchi").load(url);
+				
+   	            $("#btnShow").click(function(){
+   	                var type=$("input[name='type']:checked").val();
+                    switch(type)
+                    {
+                        case "1":                       
+                            var thang=$("#cbbThang").val();
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getMonth&month="+thang;
+                             $("#dsThuchi").load(url);
+                        break;
+                        case "2":
+                        var quy=$("#cbbQuy").val();
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getQuy&quy="+quy;
+                             $("#dsThuchi").load(url);
+                        break;
+                        case "3":
+                        var nam=$("#txtNam").val();
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getYear&year="+nam;
+                             $("#dsThuchi").load(url);
+                        break;
+                        default:
+                        var thang=$("#cbbThang").val();
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getMonth&month="+thang;
+                             $("#dsThuchi").load(url);
+                        break;
+                    }
+   	                
+   	            });
+			});
+		</script>
 	<div class="mid">
 		<form method="post" name="frmListItem" id="frmListItem">
 			<div style="text-align:center; padding-bottom:30px;">
 				<input type="radio" name="type" value="1" checked /> Tháng 
-					<select>
+					<select id="cbbThang">
 						<option value="1"> 1 </option>
 						<option value="2"> 2 </option>
 						<option value="3"> 3 </option>
@@ -43,7 +83,7 @@
 					</select>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="radio" name="type" value="2" /> Quý 
-					<select>
+					<select id="cbbQuy">
 						<option value="1"> 1 </option>
 						<option value="2"> 2 </option>
 						<option value="3"> 3 </option>
@@ -51,42 +91,12 @@
 					</select>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="radio" name="type" value="3" /> Năm 
-				<input type="text" style="width:40px;" onkeypress="return keypress(event);" />
+				<input type="text" style="width:40px;" id="txtNam"/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="submit" value="Xem" />
+					<input type="button" value="Xem" id="btnShow"/>
 			</div>
-			<div class="list">
-				<table width="70%" border="0" align="center" cellspacing="0" cellpadding="0">
-					<tr class="title">
-						<td width="30px" align="center">#</td>
-						<td width="30px" align="center">
-							<input type="checkbox" name="cbAll" id="cbAll" /></td>
-						<td width="70px" align="center">Ngày chi</td>
-						<td align="center">Công việc</td>
-						<td width="20%">Người chi</td>
-						<td align="right" width="100px">Số tiền</td>
-					</tr>
-					<tr>
-						<td align="center">1</td>
-						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
-						<td align="center">20-10-2011</td>
-						<td>144/28/13 Châu Văn Liêm, P.14, Q.5, Tp.HCM</td>
-						<td>Nguyễn Thị Đoàn Thanh Phương</td>
-						<td align="right">20.000.000 vnd</td>
-					</tr>
-					<tr>
-						<td align="center">2</td>
-						<td align="center"><input type="checkbox" name="cbId[]" id="cbId[]" value=""></td>
-						<td align="center">20-10-2011</td>
-						<td>144/28/13 Châu Văn Liêm, P.14, Q.5, Tp.HCM</td>
-						<td>12x24 m2, 2 phòng ngủ, 1 tầng</td>
-						<td align="right">20.000.000 vnd</td>
-					</tr>
-					<tr>
-						<td align="right" colspan="5"><b>TỔNG CHI:</b></td>
-						<td align="right"><b>100.000.000 vnd</b></td>
-					</tr>
-				</table>
+			<div class="list" id="dsThuchi">
+				
 			</div>
 		</form>
 	</div>
