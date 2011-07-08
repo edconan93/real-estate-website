@@ -245,7 +245,7 @@
 		{
 			$strSQL = "	select * 
 						from user 
-						where role != 1";
+						where role!=1 and status>-1";
 			$result = DataProvider::Query($strSQL);
 			if (mysql_num_rows($result)==0)
 				return null;
