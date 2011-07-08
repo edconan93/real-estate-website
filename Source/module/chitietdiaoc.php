@@ -407,14 +407,22 @@
 										</table>
 								</fieldset><br>
 								<fieldset>
+<?php 
+include_once("../BUS/TienIchBUS.php");
+$rs=TienIchBUS::GetAllTienIch();
+?>
 									<legend style="font-size:14px;font-weight:bold;color:Blue;">Đặc Điểm</legend>
 										<table cellpadding="0" cellspacing="0" width="100%" border="0">
-											<tr style="height:26px">
-												<td>_ Tiện ích: Đầy đủ tiện nghi - Sân vườn</td>
-											</tr>
-											<tr style="height:26px">
-												<td>_ Khuyến mãi: ABC</td>
-											</tr>
+											
+												<tr style=";background-color: #F1F1F1;">
+													<td> Chỗ đậu xe hơi: </td>
+													<td>
+													<img id="ctl00_MainContent_ctl00_ImgChoDauXe" style="border-width:0px;" src="../../../Images/IconSet/checked.png">
+													</td>
+													<td> Gần trường: </td>
+													<td> </td>
+												</tr>
+											
 										</table>
 								</fieldset><br>
 								<fieldset>
