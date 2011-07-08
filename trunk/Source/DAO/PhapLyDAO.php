@@ -20,7 +20,7 @@
 			    $temp[]= $row;
 			return $temp;
 		}
-		public static function GetAllPhapLyById($id)
+		public static function GetPhapLyById($id)
 		{
 			$strSQL = "select *
 					from tinhtrangphaply where id='$id'";
