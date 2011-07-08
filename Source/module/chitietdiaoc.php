@@ -300,23 +300,30 @@
                                             }
                                             </script>
 	<?php
-	$i=0;
+	static $i = 0;
 	echo "<script type='text/javascript'>;
 			var width = 250;
 			var height = 100;
 			var imgAr1 = new Array();
-			var rImg1 = new Array();
-			for(var j = 0; j < ".count($hinhanh)."; j++)
+			var rImg1 = new Array();";		
+		echo"for(var j = 0; j < ".count($hinhanh)."; j++)
 			{
 				imgAr1[j] = new Image();
+				";
+				for($i=0;$i<count($hinhanh);$i++)
+				{
 				
-				imgAr1[j].src = '../".$hinhanh[$i]['path']."';
-				
-			}
+					echo"if(j == ".$i.")
+					{
+						imgAr1[j].src = '../".$hinhanh[$i]['path']."';					
+					}";
+				}
+
+		echo"}
 			for(var j = 0; j < imgAr1.length; j++)
 			{
 				rImg1[j] = new Image();
-				rImg1[j].src = imgAr1[j].src;
+				rImg1[j].src = imgAr1[j].src;			
 			}
 			document.onload = setting();
 
