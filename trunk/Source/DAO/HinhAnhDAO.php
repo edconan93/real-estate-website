@@ -22,7 +22,7 @@ class HinhAnhDAO
     }
     public static function getHinhAnhByDichVu($idDichVu)
     {
-        $strSQL = "select * from hinhanh where iddichvu=$idDichVu";
+        $strSQL = "select * from hinhanh where iddichvu='$idDichVu'";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result) == 0)
 				return null;
@@ -32,15 +32,13 @@ class HinhAnhDAO
     }
 	public static function getAllHinhAnhByDichVuID ($iddichvu)
 	{
-		$strSQL = "Select * from hinhanh where iddichvu='$iddichvu'";
+		$strSQL = "Select * from hinhanh where iddichvu=$iddichvu";
 		$result = DataProvider::Query($strSQL);
-		if (mysql_num_rows($result)==0)
+		if(mysql_num_rows($result)==0)
 			return null;
 		while ($row= mysql_fetch_array ($result,MYSQL_BOTH))
 			$return[]=$row;
-		return $return;
-		DataProvider::Close ($cn);
-		return $result;
+		return $return;	
 	}
 	public static function Delete($id)
 	{
