@@ -31,6 +31,15 @@
 			document.getElementById("txtPassword").focus();
 			return false;
 		}
+		else
+		{
+			if (document.getElementById("txtPassword").value.length < 6)
+			{
+				alert("Mật khẩu truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự!");
+				document.getElementById("txtPassword").focus();
+				return false;
+			}
+		}
 		if (document.getElementById("txtRePassword").value == "")
 		{
 			alert("Mật khẩu nhập lại không được rỗng. Vui lòng kiểm tra lại.");
