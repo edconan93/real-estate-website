@@ -32,5 +32,9 @@
         {
              return ThuChiDAO::countByMonth($type,$monthFrom,$monthTo,$year);
         }
+        public static function delete($id)
+        {
+            return ThuChiDAO::delete($id);
+        }
     }
  ?>

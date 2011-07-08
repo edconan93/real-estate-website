@@ -70,5 +70,13 @@ class ThuChiDAO
             return null;
         return mysql_fetch_row($result,MYSQL_BOTH);
     }
+    public static function delete($id)
+    {
+        $strSQL="delete from thuchi where id=$id";
+        $result = DataProvider::Query($strSQL);
+        if(mysql_affected_rows()==0)
+            return null;
+        return mysql_fetch_row($result,MYSQL_BOTH);
+    }
 }
 ?>
