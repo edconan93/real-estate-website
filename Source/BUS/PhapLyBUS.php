@@ -13,6 +13,9 @@ Lớp PhapLyBUS
 		{
 			return PhapLyDAO::GetAllPhapLy ();
 		}
-		
+		public static function GetPhapLyById($id)
+		{
+			return PhapLyDAO::GetPhapLyById($id);
+		}
 	}
 ?>

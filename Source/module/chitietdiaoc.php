@@ -80,10 +80,21 @@
                                 include_once ("../BUS/TinhBUS.php");
                                 include_once ("../BUS/QuanBUS.php");
                                 include_once ("../BUS/PhuongBUS.php");
+								include_once ("Utils/Utils.php");
+								include_once ("../BUS/LoaiDVBUS.php");
+								include_once ("../BUS/LoaiNhaBUS.php");
+								include_once ("../BUS/PhapLyBUS.php");
+								include_once ("../BUS/HuongNhaBUS.php");
                                 $business=DichVuBUS::select($_REQUEST['iddichvu']); 
                                 $quan=QuanBUS::getQuanById($business['quan']);
                                 $phuong=PhuongBUS::getPhuongById($business['phuong']);
-                                $tinh=TinhBUS::getTinhById($business['tinh']);                              
+                                $tinh=TinhBUS::getTinhById($business['tinh']);
+								$loaidichvu = LoaiDVBUS::GetLoaiDVByID($business['loaidv']);
+								$loainha = LoaiNhaBUS::getById($business['loainha']);
+								$phaply = PhapLyBUS::GetPhapLyById($business['phaply']);
+								$huongnha = HuongNhaBUS::GetHuongNhaById($business['huongnha']);
+								$donvitien = DonViTienBUS::selectId($business['donvitien']);
+								
                             }
                             ?>
 							<div style="width: 686px; padding-top:20px;">
@@ -93,10 +104,21 @@
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1"/>
 								<div class="mid_content">
 									<p style="margin-top:0;">
-										<b style="padding-right:30px;">Mã số tin: id</b>
-										<span style="padding-right:30px;">Ngày đăng: 20-10-2011</span>
-										<span style="padding-right:30px;">Ngày cập nhật: 20-10-2011</span>
-										<span style="padding-right:30px;">Thời hạn tin: 20-10-2011</span>
+										<b style="padding-right:10px;">Mã số tin: <?php echo $business[0]?></b>
+										<span style="padding-right:10px;">Ngày đăng: <?php 
+										if($business['ngaydang'] != null)
+											$ngaydang=Utils::convertTimeDMY($business['ngaydang']);
+										if($business['ngaycapnhat'] != null)
+											$ngaycapnhat=Utils::convertTimeDMY($business['ngaycapnhat']);
+										$ngayhh=Utils::convertDecline_Time($business['ngaydang']);
+										if(isset($ngaycapnhat))
+											echo $ngaydang ?></span>
+
+										<span style="padding-right:10px;">Ngày cập nhật: <?php
+										if(isset($ngaycapnhat))
+											echo $ngaycapnhat 
+										?></span>
+										<span style="padding-right:10px;">Thời hạn tin: <?php if(isset($ngaycapnhat)) echo $ngayhh ?></span>
 									</p>
 									<div class="detail1">
 										<div class="map">
@@ -377,43 +399,88 @@
 								
 									<div style="clear:both;"></div>
 								</div>
+								
 								<fieldset>
-									<legend style="font-size:14px;font-weight:bold;color:Blue;">Thông Tin Căn Hộ</legend>
+									<legend style="font-size:14px;font-weight:bold;color: #006DB9;">Thông Tin Căn Hộ</legend>
 										<table cellpadding="0" cellspacing="0" width="100%" border="0">
-											<tr style="height:26px; background:#F1F1F1;">
+											<tr style="height:26px; background:#F1F1F1;font-weight:bold">
 												<td width="130px">Loại dịch vụ:</td>
-												<td width="150px">Cần Bán</td>
+												<td width="150px"><?php echo $loaidichvu['ten'];?></td>
 												<td width="100px">Diện tích:</td>
-												<td>4x10 m<sup>2</sup></td>
+												<td><?php echo $business['rong']."x".$business['dai'].' ';?>m<sup>2</sup></td>
 												<td width="100px">Số tầng:</td>
-												<td width="30px">3</td>
+												<td width="30px"><?php echo $business['tang'];?></td>
 											</tr>
-											<tr style="height:26px">
+											<tr style="height:26px;font-weight:bold">
 												<td>Tình trạng pháp lý:</td>
-												<td>abc</td>
+												<td><?php echo $phaply['ten'];?></td>
 												<td>Hướng nhà:</td>
-												<td>Đông Nam</td>
+												<td><?php echo $huongnha['ten'];?></td>
 												<td>Số phòng ngủ:</td>
-												<td>4</td>
+												<td><?php echo $business['sophongngu'];?></td>
 											</tr>
-											<tr style="height:26px; background:#F1F1F1;">
+											<tr style="height:26px; background:#F1F1F1;font-weight:bold">
 												<td>Giá căn hộ:</td>
-												<td>7000000 vnd</td>
+												<td><?php echo $business['giaban']; echo ' '.$donvitien['ten'];?> </td>
 												<td>Loại nhà:</td>
-												<td>Biệt thự</td>
+												<td><?php echo $loainha['ten'];?></td>
 												<td>Số phòng tắm:</td>
-												<td>2</td>
+												<td><?php echo $business['sophongtam'];?></td>
 											</tr>
 										</table>
 								</fieldset><br>
 								<fieldset>
 <?php 
 include_once("../BUS/TienIchBUS.php");
+include_once("../BUS/DichVu_TienIchBUS.php");
+if(isset($_GET['iddichvu']))
+	$dv_tienich = DichVu_TienIchBUS::getAllByIDDichVu($_GET['iddichvu']);
+else
+	header("Location:dichvu.php");
 $rs=TienIchBUS::GetAllTienIch();
 ?>
-									<legend style="font-size:14px;font-weight:bold;color:Blue;">Đặc Điểm</legend>
+									<legend style="font-size:14px;font-weight:bold;color: #006DB9;">Đặc Điểm</legend>
 										<table cellpadding="0" cellspacing="0" width="100%" border="0">
-											
+											<?php
+											$dem=0;
+											$flag1=true;
+											for($i=0;$i<count($rs);$i++)
+											{
+												if(($dem % 2) == 0)
+												{	
+													
+													if($flag1==true)
+													{
+														echo "<tr style=';background-color: #F1F1F1;'>";
+														$flag1=false;
+													}
+													else
+													{
+														echo "<tr>";
+														$flag1=true;
+													}
+												}
+												$dem++;
+												$flag = true;
+												echo "<td style='width:150px'> ".$rs[$i][1].": </td>";
+												for($j=0;$j<count($dv_tienich);$j++)
+												{
+													if($dv_tienich[$j]['idtienich'] == $rs[$i][0])
+													{
+														$flag = false;
+														echo "<td><img id='ctl00_MainContent_ctl00_ImgChoDauXe' style='border-width:0px;' src='../images/checked.png'></td>";
+													}
+												}
+												if($flag == true)
+												{
+													echo "<td></td>";
+												}
+												if(($dem % 2) == 0)
+												{
+												   echo "</tr>";
+												}
+											}
+											?>
 												<tr style=";background-color: #F1F1F1;">
 													<td> Chỗ đậu xe hơi: </td>
 													<td>
@@ -426,10 +493,10 @@ $rs=TienIchBUS::GetAllTienIch();
 										</table>
 								</fieldset><br>
 								<fieldset>
-									<legend style="font-size:14px;font-weight:bold;color:Blue;">Mô Tả Thêm</legend>
+									<legend style="font-size:14px;font-weight:bold;color: #006DB9;">Mô Tả Thêm</legend>
 										<table>
-											<tr>
-												<td>Load field "mota"</td>
+											<tr style="background-color: #F1F1F1;">
+												<td><?php echo $business['mota'] ?></td>
 											</tr>
 										</table>
 								</fieldset>
