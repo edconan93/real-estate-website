@@ -272,7 +272,7 @@
                 $return[]=$row;
             return $return;	
 		}
-
+		
 		public static function checkPassword($password)
 		{
 			$strSQL = "select * from user where password='$password'";
@@ -283,7 +283,11 @@
 		}
         public static function getUsersByRole ($role)
 		{
-		  $strSQL = "select * from user where role=$role";
+			$strSQL = "";
+			if ($role == -1)
+				$strSQL = "select * from user where role>1 and status>-1";
+			else
+				$strSQL = "select * from user where role=$role and role>1 and status>-1";
             $result = DataProvider::Query($strSQL);
 			if(mysql_num_rows($result)==0)
 				return null;
@@ -291,5 +295,34 @@
                 $return[]=$row;
             return $return;	
         }
+		
+		public static function GetUsersByFilter($role, $status)
+		{
+			$strSQL = "";
+			if ($role == -1)
+			{
+				if ($status == -1)
+					$strSQL = "	select * from user 
+								where role!=1 and status!=-1";
+				else
+					$strSQL = "	select * from user 
+								where role!=1 and status=$status";
+			}
+			else
+			{
+				if ($status == -1)
+					$strSQL = "	select * from user 
+								where role=$role and status!=-1";
+				else
+					$strSQL = "	select * from user 
+								where role=$role and status=$status";
+			}
+			$result = DataProvider::Query($strSQL);
+			if (mysql_num_rows($result)==0)
+				return null;
+			while ($row= mysql_fetch_array ($result,MYSQL_BOTH))
+                $return[]=$row;
+            return $return;	
+		}
 	}
 ?>

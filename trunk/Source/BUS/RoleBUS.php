@@ -7,6 +7,10 @@
 		{
 			return RoleDAO::GetRoleByID ($id);
 		}
+		public static function GetRoleMember()
+		{
+			return RoleDAO::GetRoleMember();
+		}
 		public static function GetAllRole()
 		{
 			return RoleDAO::GetAllRole();
