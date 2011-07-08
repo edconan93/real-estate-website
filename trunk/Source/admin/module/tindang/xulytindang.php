@@ -50,6 +50,8 @@
 		$X = "0";
 		$Y = "0";
 		$khanang=(int) "1";
+		$rank=0;
+		$sonha=$_POST['txtSoNha'];
 		$flagInsert = true;
 		//process quan huyen tinh
 		$tinh =(int) $_POST["cbbTinhTP"];
@@ -76,13 +78,13 @@
 		if(isset($_GET['update']) && $_GET['update'] != null)
 		{
 			
-			$rs=DichVuBUS::Update($_GET['update'],$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang);
+			$rs=DichVuBUS::Update($_GET['update'],$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang,$rank,$sonha);
 			echo "<br>rs in update=".$rs;
 		}
 		else
 		{
 			
-			$rs=DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang);
+			$rs=DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang,$rank,$sonha);
 			echo "<br>rs in add=".$rs;
 		}
 		if($rs == false)

@@ -683,9 +683,9 @@ $(document).ready(function()
 													for($i=0;$i<count($rs);$i++)
 													{	
 														if($capnhatDV['quan'] == $rs[$i][0])
-															echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+															echo "<option value='".($rs[$i][0])."' selected>".$rs[$i][1]."</option>";
 														else
-															echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+															echo "<option value='".($rs[$i][0])."'>".$rs[$i][1]."</option>";
 													}
 													echo "</select>";
 												}
@@ -724,9 +724,9 @@ $(document).ready(function()
 														for($i=0;$i<count($rs);$i++)
 														{	
 															if($capnhatDV['phuong'] == $rs[$i][0])
-																echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+																echo "<option value='".($rs[$i][0])."' selected>".$rs[$i][1]."</option>";
 															else
-																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+																echo "<option value='".($rs[$i][0])."'>".$rs[$i][1]."</option>";
 														}
 														echo "</select>";
 													}
@@ -783,7 +783,7 @@ $(document).ready(function()
 												<?php
 												if(isset($_GET['update']) && $_GET['update'] != null)
 												{
-													echo "<input name='txtSoNha' id='txtSoNha' type='text' style='width:300px;' value='".$capnhatDV['duong']."' >";
+													echo "<input name='txtSoNha' id='txtSoNha' type='text' style='width:300px;' value='".$capnhatDV['sonha']."' >";
 												}
 												else
 												{
@@ -953,10 +953,10 @@ $(document).ready(function()
 														{	
 															if(isset($_GET['update']) && $_GET['update'] != null && $capnhatDV['phaply']== $rs[$i][0])
 															{
-																echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+																echo "<option value='".($rs[$i][0])."' selected>".$rs[$i][1]."</option>";
 															}
 															else
-																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+																echo "<option value='".($rs[$i][0])."'>".$rs[$i][1]."</option>";
 														}
 													?>	
 													</select>
@@ -971,10 +971,10 @@ $(document).ready(function()
 														{		
 															if(isset($_GET['update']) && $_GET['update'] != null && $capnhatDV['huongnha']== $rs[$i][0])
 															{
-																echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+																echo "<option value='".($rs[$i][0])."' selected>".$rs[$i][1]."</option>";
 															}
 															else
-																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+																echo "<option value='".($rs[$i][0])."'>".$rs[$i][1]."</option>";
 														}
 													?>	
 													</select>

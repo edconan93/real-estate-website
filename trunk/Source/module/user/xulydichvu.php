@@ -73,13 +73,15 @@
 		$X = "0";
 		$Y = "0";
 		$khanang=(int) "1";
+		$rank=0;
+		$sonha=$_POST["txtSoNha"];
 		$flagInsert = true;
 		//process quan huyen tinh
 		$tinh =(int) $_POST["cbbTinhTP"];
 		echo "<br>tinh=".$tinh;
 		$quan =(int) $_COOKIE["ccbQuanHuyen"];
 		echo "<br>quan=".$_COOKIE["ccbQuanHuyen"];
-		$phuong= (int) $_COOKIE["ccbQuanHuyen"];
+		$phuong= (int) $_COOKIE["ccbPhuongXa"];
 		echo "<br>phuong=".$_COOKIE["ccbPhuongXa"];
 		if( $quan == -1)
 		{
@@ -92,20 +94,17 @@
 			$phuong = 23;
 		}
 		
-		//xu ly loai dv cho or can thue
-		
-	//	echo "<br>update==".$_GET['update'];
 		//add or update into dichvu
 		if(isset($_GET['update']) && $_GET['update'] != null)
 		{
 			
-			$rs=DichVuBUS::Update($_GET['update'],$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang);
+			$rs=DichVuBUS::Update($_GET['update'],$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang,$rank,$sonha);
 			echo "<br>rs in update=".$rs;
 		}
 		else
 		{
 			
-			$rs=DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang);
+			$rs=DichVuBUS::Add($tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang,$rank,$sonha);
 			echo "<br>rs in add=".$rs;
 		}
 		if($rs == false)
@@ -116,7 +115,6 @@
 		//check and update or add into dichvu_tienich table
 		if(isset($_GET['update']) && $_GET['update'] != null)
 		{
-			//include_once("../BUS/DichVu_TienIchBUS.php");
 			$dv_tienich = DichVu_TienIchBUS::getAllByIDDichVu($_GET['update']);
 			for($i=0;$i<count($dv_tienich);$i++)
 			{
@@ -213,6 +211,6 @@
 		$url = $_COOKIE["url"];
 		$url[$length - 1] = 3;
 		header("Location:".$url);
-		//header("Location:../dangtindichvu.php?dangtin=success");
+
 	}
 ?>
