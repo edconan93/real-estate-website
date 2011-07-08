@@ -279,7 +279,7 @@
 							<select id="id_LoaiTV" name="role" onchange="return press_LoaiThanhVien();">
 							<?php
 								include_once ($PATH . "../../../BUS/RoleBUS.php");
-								$listRole = RoleBUS::GetAllRole();
+								$listRole = RoleBUS::GetRoleMember();
 								for ($i=0;$i<count($listRole);$i++)
 								{
 									echo "<option value='".$listRole[$i][0]."'>".$listRole[$i][1]."</option>";

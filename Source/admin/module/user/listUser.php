@@ -104,10 +104,11 @@
 					 });
 				});
 			});
-			function loadUserByActive()
+			function loadUsersByCondition()
 			{
-				var active = document.getElementById("status");
-				window.location = "index.php?view=user&active=" + active.value;
+				var type = document.getElementById("type");
+				var status = document.getElementById("status");
+				window.location = "index.php?view=user&type=" + type.value + "&status=" + status.value;
 			}
 		</script>
 		<form method="post" name="frmListItem" id="frmListItem">
@@ -120,32 +121,28 @@
 					</td>-->
 					<td width="69%">
 						<?php
-							$active = "";
-							if (isset($_GET["active"]) && $_GET["active"] != -1)
-								$active = $_GET["active"];
-							else
-								$active = -1;
-							$listUsers = UsersBUS::GetUserByActive($active);
+							$listRole = RoleBUS::GetAllRole();
+							$listUsers = UsersBUS::GetUsersByFilter($type, $status);
 							echo "<b>Có ".count($listUsers)." mẫu tin.</b>";
 						?>
 					</td>
 					<td width="31%">
 						<div align="right">
-							<select id="status" onchange="return loadUserByActive();">
-								<option value="-1" <?php echo $active==-1?"selected":""; ?>> - Chọn trạng thái - </option>
-								<option value="1"  <?php echo $active==1?"selected":""; ?>>Kích hoạt</option>
-								<option value="0"  <?php echo $active==0?"selected":""; ?>>Bị khóa</option>
+							<select id="type" onchange="return loadUsersByCondition();">
+								<option value="-1" <?php echo $type==-1?"selected":""; ?>> - Nhóm thành viên - </option>
+								<?php
+									for($i=0;$i<count($listRole);$i++)
+										if ($listRole[$i]["id"]==$type)
+											echo "<option value='".$listRole[$i]["id"]."' selected>".$listRole[$i]["ten"]."</option>";
+										else
+											echo "<option value='".$listRole[$i]["id"]."'>".$listRole[$i]["ten"]."</option>";
+								?>
 							</select>
-					<!--<select name="type" id="type">
-					  <option value="-1" <?php echo $type==-1?"selected":""; ?>> - Nhóm thành viên - </option>
-					  <option value="0"  <?php echo $type==0?"selected":""; ?>>Thành viên</option>
-					  <option value="1"  <?php echo $type==1?"selected":""; ?>>Quản trị</option>
-					</select>
-					<select name="status" id="status">
-					  <option value="-1"  <?php echo $status==-1?"selected":""; ?>>- Chọn trạng thái - </option>
-					  <option value="0" <?php echo $status==0?"selected":""; ?>>Bị khóa</option>
-					  <option value="1" <?php echo $status==1?"selected":""; ?>>Bình thường</option>
-					</select>-->
+							<select id="status" onchange="return loadUsersByCondition();">
+								<option value="-1" <?php echo $status==-1?"selected":""; ?>> - Chọn trạng thái - </option>
+								<option value="1"  <?php echo $status==1?"selected":""; ?>>Kích hoạt</option>
+								<option value="0"  <?php echo $status==0?"selected":""; ?>>Bị khóa</option>
+							</select>
 						</div>
 					</td>
 				</tr>

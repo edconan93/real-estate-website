@@ -157,9 +157,15 @@ Lớp UsersBUS
 		{
 			return UsersDAO::Delete($user_id);
 		}
+		
 		public static function getUsersByRole ($role)
 		{
 		  return UsersDAO::getUsersByRole($role);
+        }
+		
+		public static function GetUsersByFilter($type, $status)
+		{
+		  return UsersDAO::GetUsersByFilter($type, $status);
         }
 		// public static function countResultByEmail ($keyWord)
 		// {
