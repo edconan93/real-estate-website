@@ -25,12 +25,44 @@
 <div style="margin:10px">
     <div class="tl"></div>
     <div class="tr"></div>
+    <script>
+    $(document).ready(function()
+			{
+                var url="module/thongke/ProfitProcessor.php?view=statistic&do=profit&loai=-1";          
+                $("#lstProfit").load(url);
+				
+   	            $("#btnShow").click(function(){
+   	                var type=$("input[name='type']:checked").val();
+                    switch(type)
+                    {
+                        case "1":                       
+                            var thang=$("#cbbThang").val();
+                            url="module/thongke/ProfitProcessor.php?view=statistic&do=profit&loai=1&thang="+thang;
+                             $("#lstProfit").load(url);
+                        case "2":
+                        var quy=$("#cbbQuy").val();
+                            url="module/thongke/ProfitProcessor.php?view=statistic&do=profit&loai=2&quy="+quy;
+                             $("#lstProfit").load(url);
+
+                        break;
+                        case "3":
+                        var nam=$("#txtNam").val();
+                            url="module/thongke/ProfitProcessor.php?view=statistic&do=profit&loai=3&nam="+nam;
+                             $("#lstProfit").load(url);
+                            
+                        break;
+                    }
+   	                
+   	            });
+        });
+                
+    </script>
     <div class="tm"></div>
     <div class="mid">
 		<form action="index.php?view=user" method="post" name="frmRegister" id="frmRegister">
 			<div style="text-align:center; padding-bottom:30px;">
 				<input type="radio" name="type" value="1" checked /> Tháng 
-					<select>
+					<select id="cbbThang">
 						<option value="1"> 1 </option>
 						<option value="2"> 2 </option>
 						<option value="3"> 3 </option>
@@ -46,7 +78,7 @@
 					</select>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="radio" name="type" value="2" /> Quý 
-					<select>
+					<select  id="cbbQuy">
 						<option value="1"> 1 </option>
 						<option value="2"> 2 </option>
 						<option value="3"> 3 </option>
@@ -54,11 +86,13 @@
 					</select>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="radio" name="type" value="3" /> Năm 
-				<input type="text" style="width:40px;" onkeypress="return keypress(event);" />
+				<input type="text" style="width:40px;" id="txtNam" />
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" value="Thống kê" />
+				<input type="button" value="Thống kê" id='btnShow'/>
 			</div>
-			<table align="center" border="0" cellpadding="0" cellspacing="0" style="font-weight:bold;">
+            <div id="lstProfit">
+            <!--
+            	<table align="center" border="0" cellpadding="0" cellspacing="0" style="font-weight:bold;">
 				<tr>
 					<td colspan="2" style="color:red;">Thống kê tháng 4/2011:</td>
 				</tr>
@@ -75,6 +109,9 @@
 					<td align="right">20.000.000 vnd</td>
 				</tr>
 			</table>
+            -->
+            </div>
+		
 		</form>
 		<br class="clr" />
     </div>
