@@ -153,11 +153,6 @@ Lớp UsersBUS
 			return UsersDAO::GetUserByActive($active);
 		}
 		
-		public static function getUsersByRole($active)
-		{
-			return UsersDAO::GetUserByActive($active);
-		}
-		
 		public static function Delete($user_id)
 		{
 			return UsersDAO::Delete($user_id);
