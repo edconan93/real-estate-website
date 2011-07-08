@@ -6,12 +6,15 @@
 	{
 	   public static function add($sotien,$donvi,$congviec,$ngay,$nhanvien,$loai)
         {
-            $email = addslashes($email);
             return ThuChiDAO::Add($sotien,$donvi,$congviec,$ngay,$nhanvien,$loai);
         }
-        public static function getAll($offset,$max)
+        public static function getAll($offset,$max,$type)
         {
-            return ThuChiDAO::getAll($offset,$max);
+            return ThuChiDAO::getAll($offset,$max,$type);
+        }
+        public static function count($type)
+        {
+            return ThuChiDAO::count($type);
         }
     }
  ?>
