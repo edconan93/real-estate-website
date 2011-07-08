@@ -12,7 +12,7 @@
 		echo "<option value='-1' selected>-- Chọn Quận/Huyện --</option>";
 		for($i=0;$i<count($rs);$i++)
 		{		
-			echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+			echo "<option value='".($rs[$i][0])."'>".$rs[$i][1]."</option>";
 		}
 		echo "</select>";
 	}
@@ -31,7 +31,7 @@
 		echo "<option value='-1' selected>-- Chọn Phường/Xã --</option>";
 		for($i=0;$i<count($rs);$i++)
 		{		
-			echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+			echo "<option value='".($rs[$i][0])."'>".$rs[$i][1]."</option>";
 		}
 		echo "</select>";
 	}
