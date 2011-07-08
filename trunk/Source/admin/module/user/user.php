@@ -87,7 +87,9 @@
 				if (tmp.name=="cbUser" && tmp.checked==true)
 					uid[i++] = document.frmListItem.elements[cnt].value;
 			}
-			window.location = "module/user/xulyuser.php?action=lock&uid=" + uid;
+			var type = document.getElementById("type");
+			var status = document.getElementById("status");
+			window.location = "module/user/xulyuser.php?action=lock&uid=" + uid + "&type=" + type.value + "&status=" + status.value;
 			return true;
 		}
 		
@@ -107,7 +109,9 @@
 				if (tmp.name=="cbUser" && tmp.checked==true)
 					uid[i++] = document.frmListItem.elements[cnt].value;
 			}
-			window.location = "module/user/xulyuser.php?action=unlock&uid=" + uid;
+			var type = document.getElementById("type");
+			var status = document.getElementById("status");
+			window.location = "module/user/xulyuser.php?action=unlock&uid=" + uid + "&type=" + type.value + "&status=" + status.value;
 			return true;
 		}
 		
@@ -127,7 +131,9 @@
 				if (tmp.name=="cbUser" && tmp.checked==true)
 					uid[i++] = document.frmListItem.elements[cnt].value;
 			}
-			window.location = "module/user/xulyuser.php?action=delete&uid=" + uid;
+			var type = document.getElementById("type");
+			var status = document.getElementById("status");
+			window.location = "module/user/xulyuser.php?action=delete&uid=" + uid + "&type=" + type.value + "&status=" + status.value;
 			return true;
 		}
 		
