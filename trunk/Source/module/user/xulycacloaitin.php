@@ -105,7 +105,7 @@ class MessageTypeProcessor
 			$strResult.="<b>- Giá:<b>".$business[$i]['giaban']."</b> ".$donvitien['ten']."/ ".$donvidv['ten']."  - Kích thước: ".$business[$i]['dai']." x ".$business[$i]['rong']."m<sup>2</sup> </b><br>";//giá nhà và kt
 			if($business[$i]['status'] == 1)
 			{
-				$strResult.="<div style='float:left; padding:3px; font-weight: bold;'><a style='color:red;' href='nangcaptinvip.php'><img align='left' src='../images/uprade.png'>Nâng cấp lên VIP 275.000 /tháng</a></div></td>";//giá nhà và kt
+				$strResult.="<div style='float:left; padding:3px; font-weight: bold;'><a style='color:red;' href='nangcaptinvip.php?iddv=".$business[$i]['id']."'><img align='left' src='../images/uprade.png'>Nâng cấp lên VIP 275.000 /tháng</a></div></td>";//giá nhà và kt
 			}
 			$strResult.="<td width='260' valign='top' style='border-left: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);'>";//column 3
 			$strResult.="<div style='margin-bottom: 5px; font-weight: normal; color: rgb(51, 51, 51);'>";
