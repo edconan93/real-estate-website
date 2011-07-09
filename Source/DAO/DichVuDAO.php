@@ -156,8 +156,18 @@ class DichVuDAO
         $resultSet=mysql_fetch_array ($result);
         return $resultSet[0];
     }
-	
-	
+	public static function delete($id)
+	{
+		$strSQL = "update dichvu set status=-1 where id=$id";
+		
+		$cn = DataProvider::Open ();
+		DataProvider::MoreQuery ($strSQL,$cn);
+		if(mysql_affected_rows () == 0)
+			$result=false;
+		else
+			$result=true;		
+		DataProvider::Close ($cn);
+		return $result;
+	}
 }
-
 ?>
