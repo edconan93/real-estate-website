@@ -8,9 +8,10 @@
 			 $txtHoTen = $_POST["txtHoTen"];
 			 $txtEmail = $_POST["txtEmail"];
 			 $txtDiaChi = $_POST["txtDiaChi"];
-			 $date = date('d-m-Y');
+			 $date = date('Y-m-d');
 			 $status =0;
 			 $process = LienHeBUS::Add($txtHoTen,$txtDienThoai,$txtEmail,$txtDiaChi,$txtNoiDung,$date,$status);
+			  echo "<br>date=".$date;
 			  echo "<br>process=".$process;
 			 if($process != false)
 			 {
