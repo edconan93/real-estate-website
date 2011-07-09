@@ -70,6 +70,9 @@ class DichVuBUS
     {
 		return DichVuDAO::countStatusType($status);
 	}
+	public static function delete($id)
+    {
+		return DichVuDAO::delete($id);
+	}
 }
-
 ?>

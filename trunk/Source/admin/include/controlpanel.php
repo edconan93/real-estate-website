@@ -55,7 +55,7 @@
     <div class="icon">
     	<a href="index.php?view=article">
     	<img src="images/icon-48-article.png" alt="Quản lý bài viết" border="0" /><br />
-        <span>Quản lý bài viết</span>
+        <span>Quản lý tin đăng</span>
         </a>
     </div>
     <div class="icon">

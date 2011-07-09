@@ -1,10 +1,10 @@
 <?php
-	include ("../../BUS/HinhAnhBUS.php");
+	include ("../../../BUS/DichVuBUS.php");
 	
 	if (isset($_GET["step"]) && $_GET["step"] == 1)
 	{
-		include ("../../BUS/DichVuBUS.php");
-		include ("../../BUS/DichVu_TienIchBUS.php");
+		include ("../../../BUS/HinhAnhBUS.php");
+		include ("../../../BUS/DichVu_TienIchBUS.php");
 		
 		$tieude = $_POST["txtTieuDeTin"];
 		
@@ -95,7 +95,7 @@
 		//check and update or add into dichvu_tienich table
 		if(isset($_GET['update']) && $_GET['update'] != null)
 		{
-			include_once("../BUS/DichVu_TienIchBUS.php");
+			include_once("../../../BUS/DichVu_TienIchBUS.php");
 			$dv_tienich = DichVu_TienIchBUS::getAllByIDDichVu($_GET['update']);
 			for($i=0;$i<count($dv_tienich);$i++)
 			{
@@ -178,5 +178,19 @@
 		$url[$length - 1] = 3;
 		header("Location:".$url);
 		//header("Location:../dangtindichvu.php?dangtin=success");
+	}
+	if (isset($_GET["action"]))
+	{
+		$action = $_GET["action"];
+		switch ($action)
+		{
+			case "delete":
+				$uid = explode(',', $_GET["uid"]);
+				for ($i=0;$i<count($uid);$i++)
+					DichVuBUS::delete($uid[$i]);
+				break;
+		}
+		$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-1;
+		header("Location:../../index.php?view=article&type=".$type);
 	}
 ?>

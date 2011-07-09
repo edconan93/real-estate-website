@@ -75,66 +75,99 @@
 	});
 	function lockUser()
 	{
-		if (confirm("Bạn có chắc muốn khóa các thành viên này?"))
+		var flag = 0;
+		var e = document.frmListItem.elements.length;
+		var cnt = 0;
+		var uid = new Array();
+		var i = 0;
+		for (cnt=0;cnt<e;cnt++)
 		{
-			var e = document.frmListItem.elements.length;
-			var cnt = 0;
-			var uid = new Array();
-			var i = 0;
-			for (cnt=0;cnt<e;cnt++)
+			var tmp = document.frmListItem.elements[cnt];
+			if (tmp.name=="cbUser" && tmp.checked==true)
 			{
-				var tmp = document.frmListItem.elements[cnt];
-				if (tmp.name=="cbUser" && tmp.checked==true)
-					uid[i++] = document.frmListItem.elements[cnt].value;
+				uid[i++] = document.frmListItem.elements[cnt].value;
+				flag = 1;
 			}
-			var type = document.getElementById("type");
-			var status = document.getElementById("status");
-			window.location = "module/user/xulyuser.php?action=lock&uid=" + uid + "&type=" + type.value + "&status=" + status.value;
+		}
+		var type = document.getElementById("type");
+		var status = document.getElementById("status");
+		var url = "module/user/xulyuser.php?action=lock&uid=" + uid + "&type=" + type.value + "&status=" + status.value;
+		
+		if (flag == 1 && confirm("Bạn có chắc muốn khóa các thành viên này?"))
+		{
+			window.location = url;
 			return true;
+		}
+		else if (flag == 0)
+		{
+			alert("Bạn chưa chọn thành viên cần khóa!");
+			return false;
 		}
 		
 		return false;
 	}
 	function unlockUser()
 	{
-		if (confirm("Bạn có chắc muốn mở khóa các thành viên này?"))
+		var flag = 0;
+		var e = document.frmListItem.elements.length;
+		var cnt = 0;
+		var uid = new Array();
+		var i = 0;
+		for (cnt=0;cnt<e;cnt++)
 		{
-			var e = document.frmListItem.elements.length;
-			var cnt = 0;
-			var uid = new Array();
-			var i = 0;
-			for (cnt=0;cnt<e;cnt++)
+			var tmp = document.frmListItem.elements[cnt];
+			if (tmp.name=="cbUser" && tmp.checked==true)
 			{
-				var tmp = document.frmListItem.elements[cnt];
-				if (tmp.name=="cbUser" && tmp.checked==true)
-					uid[i++] = document.frmListItem.elements[cnt].value;
+				uid[i++] = document.frmListItem.elements[cnt].value;
+				flag = 1;
 			}
-			var type = document.getElementById("type");
-			var status = document.getElementById("status");
-			window.location = "module/user/xulyuser.php?action=unlock&uid=" + uid + "&type=" + type.value + "&status=" + status.value;
+		}
+		var type = document.getElementById("type");
+		var status = document.getElementById("status");
+		var url = "module/user/xulyuser.php?action=unlock&uid=" + uid + "&type=" + type.value + "&status=" + status.value;
+		
+		if (flag == 1 && confirm("Bạn có chắc muốn mở khóa các thành viên này?"))
+		{
+			window.location = url;
 			return true;
+		}
+		else if (flag == 0)
+		{
+			alert("Bạn chưa chọn thành viên cần mở khóa!");
+			return false;
 		}
 		
 		return false;
 	}
 	function deleteUser()
 	{
-		if (confirm("Bạn có chắc muốn xóa các thành viên này?"))
+		var flag = 0;
+		var e = document.frmListItem.elements.length;
+		var cnt = 0;
+		var uid = new Array();
+		var i = 0;
+		for (cnt=0;cnt<e;cnt++)
 		{
-			var e = document.frmListItem.elements.length;
-			var cnt = 0;
-			var uid = new Array();
-			var i = 0;
-			for (cnt=0;cnt<e;cnt++)
+			var tmp = document.frmListItem.elements[cnt];
+			if (tmp.name=="cbUser" && tmp.checked==true)
 			{
-				var tmp = document.frmListItem.elements[cnt];
-				if (tmp.name=="cbUser" && tmp.checked==true)
-					uid[i++] = document.frmListItem.elements[cnt].value;
+				uid[i++] = document.frmListItem.elements[cnt].value;
+				flag = 1;
 			}
-			var type = document.getElementById("type");
-			var status = document.getElementById("status");
-			window.location = "module/user/xulyuser.php?action=delete&uid=" + uid + "&type=" + type.value + "&status=" + status.value;
+		}
+		var type = document.getElementById("type");
+		var status = document.getElementById("status");
+		var url = "module/user/xulyuser.php?action=delete&uid=" + uid + "&type=" + type.value + "&status=" + status.value;
+		
+		if (flag == 1 && confirm("Bạn có chắc muốn xóa các thành viên này?"))
+		{
+			window.location = url;
 			return true;
+		}
+		else if (flag == 0)
+		{
+			alert("Bạn chưa chọn thành viên cần xóa!");
+			return false;
 		}
 		
 		return false;

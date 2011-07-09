@@ -3,11 +3,11 @@
 		header("Location: index.php");
 
 	$PATH = str_replace('//','/',dirname(__FILE__).'/');
-	include_once($PATH . "../../BUS/TinDangBUS.php");
-	include_once($PATH . "../../BUS/LoaiDVBUS.php");
-	include_once($PATH . "../../BUS/TinhBUS.php");
-	include_once($PATH . "../../BUS/DonviTienBUS.php");
-	include_once($PATH . "../../module/Utils/Utils.php");
+	include_once($PATH . "../../../BUS/TinDangBUS.php");
+	include_once($PATH . "../../../BUS/LoaiDVBUS.php");
+	include_once($PATH . "../../../BUS/TinhBUS.php");
+	include_once($PATH . "../../../BUS/DonviTienBUS.php");
+	include_once($PATH . "../../../module/Utils/Utils.php");
 
 	$maxItems = 20;
 	$maxPages = 5;
@@ -46,9 +46,6 @@
 	
 	$status = isset($_REQUEST["status"])?$_REQUEST["status"]:-1;
 	$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-1;
-	$kw = isset($_REQUEST["kw"])?$_REQUEST["kw"]:"";	
-	$totalItems = 0;//EntriesBUS::Count($status,$type,$kw);
-	$articles = "";//EntriesBUS::getEntries($curItem,$maxItems,$status,$type,$kw);
 ?>
 
 <div id="listItem">
@@ -173,7 +170,7 @@
 					?>
 					<tr style="background:<?php echo ($i%2==0) ? "#EFF3FF" : "white"; ?>;">
 						<td align="center"><?php echo $i+1; ?></td>
-						<td align="center"><input type="checkbox" onclick="Check_Click(this)"></td>
+						<td align="center"><input type="checkbox" name="cbTinDang" id="cbTinDang" value="<?php echo $listTinDang[$i]["id"]; ?>" onclick="Check_Click(this)"></td>
 						<td class="m_name"><?php echo "<a href='index.php?view=article&do=edit&aid=".$listTinDang[$i]["id"]."'>".$listTinDang[$i]["tieude"]."</a>"; ?></td>
 						<?php
 							$loaidv = LoaiDVBUS::GetLoaiDVByID($listTinDang[$i]["loaidv"]);

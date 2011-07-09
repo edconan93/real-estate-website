@@ -55,10 +55,10 @@
 				switch($do)
 				{
 					case "edit":
-						$bodyFile= "module/edit_article.php";
+						$bodyFile= "module/tindang/edit_article.php";
 						break;
 					default:
-						$bodyFile= "module/article.php";
+						$bodyFile= "module/tindang/article.php";
 						break;
 				}
 				break;
