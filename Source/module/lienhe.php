@@ -147,7 +147,7 @@ $(document).ready(function()
 										</tr>
 										<tr>
 											<td valign="top" style="padding-top:6px;"><b>Nội dung liên hệ:</b> <span style="color:red;">*</span></td>
-											<td><textarea name="message" style="width:300px;" id="txtNoiDung" name="txtNoiDung"></textarea>
+											<td><textarea  style="width:300px;" id="txtNoiDung" name="txtNoiDung"></textarea>
 											<div id="messNoiDung" name="messNoiDung" ></div></td>
 										</tr>
 										<tr style="height:80px;">
