@@ -3,7 +3,7 @@
 ?>
 <script src="../js/common.js" language="javascript" type="text/javascript"></script>
 <script src="../js/jquery-1.js" language="javascript" type="text/javascript"></script>
-	<script>
+<script>
 $(document).ready(function()
 {
 	$("#frmVIP").submit(function()

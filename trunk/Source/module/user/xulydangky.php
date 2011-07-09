@@ -1,4 +1,24 @@
 <?php	
+		if(isset($_POST["btnGuiTin"]))
+		{
+			 include_once("../../BUS/LienHeBUS.php");
+			
+			 $txtNoiDung = $_POST["txtNoiDung"];
+			 $txtDienThoai = $_POST["txtDienThoai"];
+			 $txtHoTen = $_POST["txtHoTen"];
+			 $txtEmail = $_POST["txtEmail"];
+			 $txtDiaChi = $_POST["txtDiaChi"];
+			 $date = date('d-m-Y');
+			 $status =0;
+			 $process = LienHeBUS::Add($txtHoTen,$txtDienThoai,$txtEmail,$txtDiaChi,$txtNoiDung,$date,$status);
+			  echo "<br>process=".$process;
+			 if($process != false)
+			 {
+				header("Location:../lienhe.php?send=success");
+			 }
+			 else
+				header("Location:../lienhe.php?send=failed");
+		}
 		if(isset($_POST["btnNangVip"]) && isset($_GET['iddv']))
 		{
 			 include_once("../../BUS/DichVuVIPBUS.php");
