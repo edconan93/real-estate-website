@@ -17,7 +17,7 @@
 			<a href="index.php?view=statistic" id="aCancel">
 				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
 		<div class="icon" style="width:60px;">
-			<a href="" id="aSave">
+			<a href="module/thongke/HouseProcessor.php?view=statistic&do=house&action=export&page=1" id="btnExport">
 				<img src="images/export_excel.png" alt="Xuất Excel" border="0" title="Xuất Excel" /><br />Xuất Excel</a></div>
 		<br class="clr" />
 	</div>
@@ -29,44 +29,56 @@
     <div class="tl"></div>
     <div class="tr"></div>
     <div class="tm"></div>
+    <script>
+    var url;
+     function gotopage(page)
+            {
+                var index=url.lastIndexOf("=");
+                url=url.substr(0,index+1); 
+                url+=page;           
+                $("#dsNha").load(url);
+            }
+    $(document).ready(function()
+			{
+                url="module/thongke/HouseProcessor.php?view=statistic&do=house&page=1";          
+                $("#dsNha").load(url);
+				
+   	            $("#btnShow").click(function(){
+   	                var type=$("#cbbType").val();
+                    if(type=="-1")
+                    {
+                        var url="module/thongke/HouseProcessor.php?view=statistic&do=house&page=1";          
+                        $("#dsNha").load(url);
+                        $('#btnExport').attr("href","module/thongke/HouseProcessor.php?view=statistic&do=house&action=export&page=1")
+                    }
+                    else
+                    {
+                        var url="module/thongke/HouseProcessor.php?view=statistic&do=house&action=view&loaidv="+type+"&page=1";          
+                        $("#dsNha").load(url);
+                        $('#btnExport').attr("href","module/thongke/HouseProcessor.php?view=statistic&do=house&action=export&loaidv="+type+"&page=1")
+                    }
+                    });
+                });
+    </script>
     <div class="mid">
 		<form action="index.php?view=user" method="post" name="frmRegister" id="frmRegister">
 			<div style="text-align:center;padding-bottom:30px;">
-				<select>
-					<option value="0"> Tất cả nhà </option>
-					<option value="1"> Cần bán </option>
-					<option value="2"> Cần mua </option>
-					<option value="2"> Cho thuê </option>
-					<option value="2"> Cần cho thuê </option>
+				<select id="cbbType">
+					<option value="-1"> Tất cả nhà </option>
+					<?php
+                    include("../BUS/LoaiDichVuBUS.php");
+                    $loaidv=LoaiDichVuBUS::getALL();
+                    for($i=0;$i<count($loaidv);$i++)
+                    {                     
+                        echo "<option value='".$loaidv[$i]['id']."'>".$loaidv[$i]['ten']."</option>";
+                    }
+                    ?>
 				</select>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" value="Thống kê" />
+				<input type="button" value="Thống kê" id='btnShow'/>
 			</div>
-			<div class="list">
-				<table align="center" border="0" cellspacing="0" cellpadding="0">
-					<tr><td colspan="5"><b>Có 5 mẫu tin</b></td></tr>
-					<tr class="title">
-							<td width="30px" align="center">#</td>
-							<td align="center">Loại nhà</td>
-							<td align="center">Địa chỉ</td>
-							<td align="center">Thời hạn đăng tin</td>
-							<td align="center">Loại dịch vụ</td>
-						</tr>
-						<tr>
-							<td align="center">1</td>
-							<td>Căn hộ chung cư</td>
-							<td>sdaf sdf sd fsad fasf </td>
-							<td align="center">20-10-2011</td>
-							<td align="center">Cần bán</td>
-						</tr>
-						<tr>
-							<td align="center">2</td>
-							<td>Biệt Thự</td>
-							<td>sdaf sdf sd fsad fasf </td>
-							<td align="center">20-10-2011</td>
-							<td align="center">Cần cho thuê</td>
-						</tr>
-				</table>
+			<div class="list" id="dsNha">
+				
 			</div>
 		</form>
 		<br class="clr" />

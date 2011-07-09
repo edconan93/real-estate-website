@@ -32,9 +32,10 @@
     <div class="mid">
 		<script src="js/common.js" language="javascript"></script>
 		<script language="javascript">
+        var url="";
         function gotopage(page)
         {
-            var url="module/thuchi/XLThuChi.php?view=business&do=import&page="+page;           
+            url="module/thuchi/XLThuChi.php?view=business&do=import&page="+page;           
             $("#dsThuchi").load(url);
         }
         function checkALL()
@@ -48,7 +49,7 @@
         }
 			$(document).ready(function()
 			{
-                var url="module/thuchi/XLThuChi.php?view=business&do=import";          
+                url="module/thuchi/XLThuChi.php?view=business&do=import";          
                 $("#dsThuchi").load(url);
 				$("#btnSave").click(function(){
 				    var flag=true;

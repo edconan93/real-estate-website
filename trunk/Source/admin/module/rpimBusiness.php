@@ -25,22 +25,25 @@
 	<div class="tm"></div>
     <div id="divTemp"></div>
     <script language="javascript">
+    var url="";
             function gotopage(page)
             {
-                var url="module/thuchi/XLThuChi.php?view=business&do=rpim&page="+page;           
+                var index=url.lastIndexOf("=");
+                url=url.substr(0,index+1); 
+                url+=page;
                 $("#dsThuchi").load(url);
             }
             function checkALL()
             { 
-            var status=document.getElementById("cbAll").checked;
-            $.each($("input[name='cbId[]']"), function() {
+                var status=document.getElementById("cbAll").checked;
+                $.each($("input[name='cbId[]']"), function() {
                     $(this).attr('checked',status);
                         });
 
             }
 			$(document).ready(function()
 			{
-                var url="module/thuchi/XLThuChi.php?view=business&do=rpim";          
+                url="module/thuchi/XLThuChi.php?view=business&do=rpim&page=1";          
                 $("#dsThuchi").load(url);
 				
    	            $("#btnShow").click(function(){
@@ -49,25 +52,25 @@
                     {
                         case "1":                       
                             var thang=$("#cbbThang").val();
-                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getMonth&month="+thang;
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getMonth&month="+thang+"&page=1";
                              $("#dsThuchi").load(url);
                             $('#btnExportExcel').attr('href','module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=0&action=getMonth&month='+thang);
                         break;
                         case "2":
                         var quy=$("#cbbQuy").val();
-                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getQuy&quy="+quy;
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getQuy&quy="+quy+"&page=1";
                              $("#dsThuchi").load(url);
                              $('#btnExportExcel').attr('href',"module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=0&action=getQuy&quy="+quy);
                         break;
                         case "3":
                         var nam=$("#txtNam").val();
-                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getYear&year="+nam;
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getYear&year="+nam+"&page=1";
                              $("#dsThuchi").load(url);
                              $('#btnExportExcel').attr('href',"module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=0&action=getYear&year="+nam);
                         break;
                         default:
                         var thang=$("#cbbThang").val();
-                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getMonth&month="+thang;
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=getMonth&month="+thang+"&page=1";
                              $("#dsThuchi").load(url);
                              $('#btnExportExcel').attr('href',"module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=0&action=getMonth&month="+thang);
                         break;
@@ -90,7 +93,7 @@
                     
                    
                     values=values.substr(0,values.length-1);
-                    url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=remove&id="+values;
+                    url="module/thuchi/XLThuChi.php?view=business&do=rpim&action=remove&id="+values+"&page=1";
                      $("#dsThuchi").load(url);
                  }
               }); 

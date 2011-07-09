@@ -24,9 +24,12 @@
 	<div class="tr"></div>
 	<div class="tm"></div>
     <script language="javascript">
+    var url;
             function gotopage(page)
             {
-                var url="module/thuchi/XLThuChi.php?view=business&do=rpex&page="+page;           
+                var index=url.lastIndexOf("=");
+                url=url.substr(0,index+1); 
+                url+=page;           
                 $("#dsThuchi").load(url);
             }
             function checkALL()
@@ -40,7 +43,7 @@
             }
 			$(document).ready(function()
 			{
-                var url="module/thuchi/XLThuChi.php?view=business&do=rpex";          
+                url="module/thuchi/XLThuChi.php?view=business&do=rpex&page=1";          
                 $("#dsThuchi").load(url);
 				
    	            $("#btnShow").click(function(){
@@ -49,25 +52,25 @@
                     {
                         case "1":                       
                             var thang=$("#cbbThang").val();
-                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getMonth&month="+thang;
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getMonth&month="+thang+"&page=1";
                              $("#dsThuchi").load(url);
                             $('#btnExportExcel').attr('href','module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=1&action=getMonth&month='+thang);
                         break;
                         case "2":
                         var quy=$("#cbbQuy").val();
-                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getQuy&quy="+quy;
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getQuy&quy="+quy+"&page=1";
                              $("#dsThuchi").load(url);
                              $('#btnExportExcel').attr('href',"module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=1&action=getQuy&quy="+quy);
                         break;
                         case "3":
                         var nam=$("#txtNam").val();
-                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getYear&year="+nam;
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getYear&year="+nam+"&page=1";
                              $("#dsThuchi").load(url);
                               $('#btnExportExcel').attr('href',"module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=1&action=getYear&year="+nam);
                         break;
                         default:
                         var thang=$("#cbbThang").val();
-                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getMonth&month="+thang;
+                            url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=getMonth&month="+thang+"&page=1";
                              $("#dsThuchi").load(url);
                         break;
                     }
@@ -87,7 +90,7 @@
                 if (answer)
                 {    
                     values=values.substr(0,values.length-1);
-                    url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=remove&id="+values;
+                    url="module/thuchi/XLThuChi.php?view=business&do=rpex&action=remove&id="+values+"&page=1";
                      $("#dsThuchi").load(url);
                 }
               }); 
