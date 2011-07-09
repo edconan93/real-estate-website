@@ -106,6 +106,19 @@
 						break;
 				}
 				break;
+			case "advertisement":
+			{
+				switch($do)
+				{
+					case "add":
+						$bodyFile= "module/quangcao/add_adv.php";
+						break;
+					default:
+						$bodyFile= "module/quangcao/advertisement.php";
+						break;
+				}
+				break;
+			}
 		}
 	}
 ?>
