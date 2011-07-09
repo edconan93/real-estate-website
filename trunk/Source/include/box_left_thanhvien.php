@@ -26,7 +26,7 @@
 			?>
 			<center>
 			<a href="?do=logout">
-				<div style="width:50px;margin-top:20px;">
+				<div style="width:60px;margin-top:20px;">
 					<span class="action-button-left"></span>
 					<input class="submitYellow" type="Submit" value="Thoát" id="btnGuiTin" name="btnGuiTin" />
 					<span class="action-button-right"></span>
