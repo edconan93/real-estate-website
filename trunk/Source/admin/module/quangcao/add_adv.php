@@ -4,60 +4,7 @@
 		
 	$PATH = str_replace('//','/',dirname(__FILE__).'/');
 ?>
-<script>
-	function validate()
-	{
-		if (document.getElementById("txtHoten").value == "")
-		{
-			alert("Bạn chưa điền họ tên. Vui lòng kiểm tra lại.");
-			document.getElementById("txtHoten").focus();
-			return false;
-		}
-		if (document.getElementById("sdt1").value == "")
-		{
-			alert("Số điện thoại 1 không được rỗng. Vui lòng kiểm tra lại.");
-			document.getElementById("sdt1").focus();
-			return false;
-		}
-		if (document.getElementById("txtEmail").value == "")
-		{
-			alert("Email đăng nhập không được rỗng. Vui lòng kiểm tra lại.");
-			document.getElementById("txtEmail").focus();
-			return false;
-		}
-		if (document.getElementById("txtPassword").value == "")
-		{
-			alert("Mật khẩu không được rỗng. Vui lòng kiểm tra lại.");
-			document.getElementById("txtPassword").focus();
-			return false;
-		}
-		else
-		{
-			if (document.getElementById("txtPassword").value.length < 6)
-			{
-				alert("Mật khẩu truy cập phải lớn hơn 5 và nhỏ hơn 50 ký tự!");
-				document.getElementById("txtPassword").focus();
-				return false;
-			}
-		}
-		if (document.getElementById("txtRePassword").value == "")
-		{
-			alert("Mật khẩu nhập lại không được rỗng. Vui lòng kiểm tra lại.");
-			document.getElementById("txtRePassword").focus();
-			return false;
-		}
-		if (document.getElementById("txtRePassword").value != document.getElementById("txtPassword").value)
-		{
-			alert("Mật khẩu nhập lại không khớp. Vui lòng kiểm tra lại.");
-			document.getElementById("txtRePassword").focus();
-			return false;
-		}
-		
-		return true;
-	}
-</script>
 <div id="frmCreateUser" name="frmCreateUser">
-<form action="module/quangcao/.php?action=add" method="post" onsubmit="return validate();">
 <div id="toolbar">
 	<div class="tl"></div>
 	<div class="tr"></div>
@@ -115,5 +62,4 @@
     <div class="br"></div>
     <div class="bm"></div>
 </div>
-</form>
 </div>
