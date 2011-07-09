@@ -14,6 +14,7 @@
 		<li><a href="index.php?view=user" class="item">Quản lý thành viên</a></li>
 		<li><a href="index.php?view=article" class="item">Quản lý tin đăng</a></li>
 		<li><a href="index.php?view=business" class="item">Quản lý thu chi</a></li>
+		<li><a href="index.php?view=advertisement" class="item">Quản lý quảng cáo</a></li>
 		<li><a href="index.php?view=statistic" class="item">Thống kê</a></li>
 	</ul>
 	<div class="mess">

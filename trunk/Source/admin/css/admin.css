@@ -122,6 +122,7 @@ td{ padding:3px}
 .icon_house{ background-image:url(../images/home.png);}
 .icon_vip{ background-image:url(../images/vip.png);}
 .icon_adv{ background-image:url(../images/kblogger.png);}
+.icon_advertisement{ background-image:url(../images/advertisement.png);}
 #listItem { height:1%}
 
 #listItem .list { margin-top:10px;}

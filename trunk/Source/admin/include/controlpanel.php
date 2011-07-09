@@ -64,6 +64,12 @@
         <span>Quản lý thu chi</span>
         </a>
     </div>
+	<div class="icon">
+    	<a href="index.php?view=advertisement">
+    	<img src="images/advertisement.png" alt="Quản lý quảng cáo" border="0" /><br />
+        <span>Quản lý quảng cáo</span>
+        </a>
+    </div>
      <div class="icon">
     	<a href="index.php?view=statistics">
     	<img src="images/icon-48-stats.png" alt="Thống kê" border="0" /><br />
