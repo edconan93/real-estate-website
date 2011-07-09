@@ -68,7 +68,7 @@ class DichVuDAO
     //phucnt3
     public static function getAll($offset,$numrow)
     {
-         $strSQL = "select * from dichvu where status !=-1 limit $offset,$numrow";
+         $strSQL = "select * from dichvu where status >-1 limit $offset,$numrow";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
 				return null;
@@ -78,7 +78,7 @@ class DichVuDAO
     }
     public static function select($id)
     {
-         $strSQL = "select * from dichvu where id='$id'";
+         $strSQL = "select * from dichvu where id='$id' and status >-1";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
 				return null;
@@ -113,7 +113,7 @@ class DichVuDAO
     //phucnt3
     public static function getDichVuByLoai($idLoai,$offset,$numrow)
     {
-        $strSQL = "select * from dichvu where loaidv=$idLoai limit $offset,$numrow";
+        $strSQL = "select * from dichvu where loaidv=$idLoai and status >-1 limit $offset,$numrow";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
 				return null;
@@ -124,7 +124,7 @@ class DichVuDAO
      //phucnt3
     public static function countAllDichVuByLoai($idLoai)
     {
-        $strSQL = "select count(*) from dichvu where loaidv=$idLoai";
+        $strSQL = "select count(*) from dichvu where loaidv=$idLoai and status >-1";
         $result = DataProvider::Query($strSQL);
         $resultSet=mysql_fetch_array ($result);
         return $resultSet[0];
