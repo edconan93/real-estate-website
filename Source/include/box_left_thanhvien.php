@@ -54,7 +54,7 @@
 				<p class="menu_item">
 					<a href="noiquidangtin.php">Đăng tin nhà đất</a></p>
 				<p class="menu_item">
-					<a href="nangcaptinvip.php">Nâng cấp tin VIP</a></p>
+					<a href="tindadang.php?type=1">Nâng cấp tin VIP</a></p>
 				<p class="menu_item">
 <?php 
 include_once ("../BUS/DichVuBUS.php");

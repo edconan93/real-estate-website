@@ -1,4 +1,22 @@
-<?php		
+<?php	
+		if(isset($_POST["btnNangVip"]) && isset($_GET['iddv']))
+		{
+			 include_once("../../BUS/DichVuVIPBUS.php");
+			 $iddv= $_GET['iddv'];
+			 $txtNoiDung = $_POST["txtNoiDung"];
+			 $cbbMonth =((int) $_POST["cbbMonth"])*30;
+			 $time_send   = date('Y-m-d');
+			 $time_update = date('Y-m-d');
+			 $status =0;
+			 echo "<br>ngayupdate=".$time_update;
+			 $process = DichVuVIPBUS::Add($iddv, $txtNoiDung, $time_send,$time_update,$cbbMonth,$status);
+			 if($process != false)
+			 {
+				header("Location:../nangcaptinvip.php?iddv=".$iddv."&send=success");
+			 }
+			 else
+				header("Location:../nangcaptinvip.php?iddv=".$iddv."&send=failed");
+		}
 		if(isset($_POST["btnChangeInfoUser"]))
 		{
 			 include ("../../BUS/UsersBUS.php");
@@ -30,14 +48,6 @@
 			$address = $_POST["txtAddress"];
 			$gender = $_POST["gender"];
 			
-			// $sex = (int) $_POST["lbSex"];
-			// $day = (int) $_POST["lbDay"];
-			// $month = (int) $_POST["lbMonth"];
-			// $year = (int) $_POST["lbYear"];
-			// $birthday = sprintf ("%d-%d-%d",$year,$month,$day);
-			// $now = date ("Y-m-d H:i:s");
-			// $security_question = $_POST["lbSecurityQuestion"];
-			// $answer = $_POST["txtAnswer"];
 			$fRegister="false";
 			$time = date('Y-m-d');
 			$ip="192.168.1.22";
