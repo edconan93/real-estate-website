@@ -8,7 +8,7 @@ require_once("../Utils/Utils.php");
 function display($business)
 {
     $str=null;
-    $str.='<table width="70%" border="0" align="center" cellspacing="0" cellpadding="0">';
+    $str.='<table width="70%" border="0" align="center" cellspacing="0" cellpadding="0" id="tblist">';
 	$str.='<tr class="title">';
 	$str.='<td width="30px" align="center">#</td>';
 	$str.='<td width="30px" align="center">';
@@ -31,7 +31,8 @@ function display($business)
     	$str.= '<td align="right">'.$business[$i]["sotien"].' '.$dvTien['ten'].'</td>';
     	$str.= '</tr>';
     }
-    echo '</table>';
+    $str.='</table>';
+    $str.="<script>$(\"table[id='tblist'] tr:even\").css('background-color', '#EFEFEF');</script>";
     return $str;
 }
 function displayWithSumRow($business,$loai,$monthFrom,$monthTo,$year)
@@ -39,7 +40,7 @@ function displayWithSumRow($business,$loai,$monthFrom,$monthTo,$year)
     
     
     $str=null;
-    $str.='<table width="70%" border="0" align="center" cellspacing="0" cellpadding="0">';
+    $str.='<table width="70%" border="0" align="center" cellspacing="0" cellpadding="0" id="tblist">';
 	$str.='<tr class="title">';
 	$str.='<td width="30px" align="center">#</td>';
 	$str.='<td width="30px" align="center">';
@@ -74,6 +75,7 @@ function displayWithSumRow($business,$loai,$monthFrom,$monthTo,$year)
 	$str.='<td align="right"><b>'.$sumRow[0].' vnd</b></td>';
 	$str.='</tr>';
     $str.='</table>';
+    $str.="<script>$(\"table[id='tblist'] tr:even\").css('background-color', '#EFEFEF');</script>";
     return $str;
 }
 function loadBusiness($loai)
