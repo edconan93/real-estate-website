@@ -74,5 +74,10 @@ class DichVuBUS
     {
 		return DichVuDAO::delete($id);
 	}
+	 //hoaphuong
+    public static function getCanHoNoiBat()
+    {
+		return DichVuDAO::getCanHoNoiBat();
+	}
 }
 ?>

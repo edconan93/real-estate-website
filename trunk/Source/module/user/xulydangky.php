@@ -11,8 +11,6 @@
 			 $date = date('Y-m-d');
 			 $status =0;
 			 $process = LienHeBUS::Add($txtHoTen,$txtDienThoai,$txtEmail,$txtDiaChi,$txtNoiDung,$date,$status);
-			  echo "<br>date=".$date;
-			  echo "<br>process=".$process;
 			 if($process != false)
 			 {
 				header("Location:../lienhe.php?send=success");
@@ -60,7 +58,7 @@
 		}
 		if(isset($_POST["btRegister"]))
 		{
-			 include ("../../BUS/UsersBUS.php");						
+			 include ("../../BUS/UsersBUS.php");				 
 			$password = $_POST["txtPassword"];
 			$username = $_POST["txtUsername"];
 			$dt1 = $_POST["txtPhone"];
@@ -81,7 +79,7 @@
 			}
 			else
 			{
-				//header("Location:../dangky.php?do="$fRegister);
+				header("Location:../dangky.php?do=failed");
 			}
 			
 			//$leftFile = "modules/home_modules/register_home.php";

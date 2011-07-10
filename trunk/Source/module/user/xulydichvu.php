@@ -37,7 +37,7 @@
 		$chusohuu=(int) $_GET['id'];
 		echo "<br>chusohuu=".$chusohuu;
 		
-		$time = date('Y-m-d h:i:s');
+		$time = date('Y-m-d');
 		echo "time=".$time;
 		$timeupdate = date('d-m-Y');
 		$duong = $_POST["txtDuongPho"];

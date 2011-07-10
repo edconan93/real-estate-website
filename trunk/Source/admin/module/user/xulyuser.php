@@ -20,7 +20,9 @@
 			$status = 1;
 			$time = date('Y-m-d');
 			$ip = "";
-			
+			echo "<br>role=".$role;
+			echo "<br>level=".$level;
+			echo "<br>";
 			$id = UsersBUS::Add($password,$email,$hoten,$gender,$diachi,$sdt1,$sdt2,$role,$level,1,$time,$ip);
 			break;
 			

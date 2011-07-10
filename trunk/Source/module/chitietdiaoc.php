@@ -13,62 +13,15 @@
 					<tr>
 						<td style="border-right: 1px solid rgb(180, 215, 232); background-repeat: repeat-y;"
 							background="1_files/menubg_all.jpg" valign="top" width="270">
-							<div class="box_left">
-								<table width="100%">
-									<tr>
-										<td width="30px">
-											<img src="../images/type.png">
-										</td>
-										<td>
-											<p style="font-size:20pt;"><b>LOẠI HÌNH</b></p>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2" align="center">
-											<p class="menu_item">
-												<a href="">Cần Mua</a>
-											</p>
-											<p class="menu_item">
-												<a href="">Cần Bán</a>
-											</p>
-											<p class="menu_item">
-												<a href="">Cần Thuê</a>
-											</p>
-											<p class="menu_item">
-												<a href="">Cho Thuê</a>
-											</p>
-										</td>
-									</tr>
-								</table>
-							</div>
+							
+							<!--search loai-->
+							<?php include("../include/searchloaidv.php"); ?>
+							<!--end search-->
 							<?php include("../include/box_left.php"); ?>
 						</td>
 						<td style="padding: 10px;" valign="top">
-							<div style="width: 686px;">
-								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
-									font-weight: bold; color:#890C29;">
-									CĂN HỘ NỔI BẬT</div>
-								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
-								<div class="mid_content">
-									<div style="width:170px;float:left;">
-										<a class="chnoibat" href=""><img src="../admin/upload/diaoc/94623_hoamai.tongthe.jpg" style="height:100px; width:160px;" /><br>
-										Căn hộ Sông Đà Riverside, LH 0906 766</a>
-									</div>
-									<div style="width:170px;float:left;">
-										<a class="chnoibat" href=""><img src="../admin/upload/diaoc/82696_phoi canh SD1.jpg" style="height:100px; width:160px;" /><br>
-										Căn hộ Petroland mark Q2 giá gốc CĐT</a>
-									</div>
-									<div style="width:170px;float:left;">
-										<a class="chnoibat" href=""><img src="../admin/upload/diaoc/92630_PV.jpg" style="height:100px; width:160px;" /><br>
-										Cần bán nhà sổ hồng Gò Ô Môi, P.Phú Thuận, Q7.</a>
-									</div>
-									<div style="width:170px;float:left;">
-										<a class="chnoibat" href=""><img src="../admin/upload/diaoc/94623_hoamai.tongthe.jpg" style="height:100px; width:160px;" /><br>
-										Bán Căn Hộ Cao Cấp SongDa Riverside</a>
-									</div>
-									<div style="clear:both;"></div>
-								</div>
-							</div>
+							
+								<?php include("../include/canhonoibat.php"); ?>
                             <?php
                             $business=null;
                             if(isset($_REQUEST['iddichvu'])) 
