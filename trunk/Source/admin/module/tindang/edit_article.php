@@ -16,7 +16,7 @@
 <div class="tr"></div>
 <div class="tm"></div>
 <div class="mid">
-	<div class="title icon_user">Tin đăng: <span class="subTitle">[ Chỉnh sửa]</span> </div>
+	<div class="title icon_user">Tin đăng: <span class="subTitle">[ Chỉnh sửa ]</span> </div>
      <div class="icon">
    	  <a href="index.php?view=user" id="aCancel">
    	  <img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" />

@@ -254,3 +254,21 @@ function mouseOverTextbox(objThis) {
 function mouseOutTextbox(objThis) {
     objThis.style.backgroundImage = "url(images/text-bg.gif)";
 }
+
+/* 5. Trim string */
+function lTrim(sString){
+	while (sString.substring(0,1) == ' '){
+		sString = sString.substring(1, sString.length);
+	}
+	return sString;
+}
+function rTrim(sString){
+	while (sString.substring(sString.length-1, sString.length) == ' '){
+		sString = sString.substring(0,sString.length-1);
+	}
+	return sString;
+}
+function Trim(sString){
+	sString = lTrim(sString);
+	return rTrim(sString);
+}
