@@ -122,12 +122,20 @@
 					}
 				}
 			}
+			function nhapMaSoTin(objMaSoTin)
+			{
+				var value = Trim(objMaSoTin.value);
+				if (value == "")
+					objMaSoTin.value = "-- Mã số tin --";
+				else
+					objMaSoTin.value = Trim(objMaSoTin.value);;
+			}
 		</script>
 		<form method="post" name="frmListItem" id="frmListItem">
 			<input name="page" type="hidden" value="<?php echo $curPage; ?>">
 			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr>
-					<td width="69%">
+					<td width="30%">
 						<?php
 							$type = "";
 							if (isset($_GET["type"]) && $_GET["type"] != -2)
@@ -138,16 +146,59 @@
 							echo "<b>Có ".count($listTinDang)." mẫu tin.</b>";
 						?>
 					</td>
-					<td width="31%">
-						<div align="right">
-							<select name="type" id="type" onchange="return loadTinDangTheoLoai();">
-								<option value="-2">-- Tất cả --</option>
-								<option value="0" <?php echo $type==0?"selected":""; ?>>Tin chờ duyệt</option>
-								<option value="1" <?php echo $type==1?"selected":""; ?>>Tin đã duyệt</option>
-								<option value="2" <?php echo $type==2?"selected":""; ?>>Tin đăng VIP</option>
-								<option value="3" <?php echo $type==3?"selected":""; ?>>Tin hết hạn</option>
-							</select>
-						</div>
+					<td width="70%" align="right">
+						<input type="text" style="width: 100px;" value="-- Mã số tin --" onfocus="select();" onblur="nhapMaSoTin(this);">
+						<select name="cbbServiceType">
+							<option value="-1">-- Loại dịch vụ --</option>
+							<?php
+							include("../BUS/LoaiDichVuBUS.php");
+							$loaidv=LoaiDichVuBUS::getALL();
+							for($i=0;$i<count($loaidv);$i++)
+							{
+								if(isset($_REQUEST['cbbServiceType'])&&$_REQUEST['cbbServiceType'] == $loaidv[$i]['id'])
+									echo "<option value='".$loaidv[$i]['id']."' selected>".$loaidv[$i]['ten']."</option>";
+								else 
+									echo "<option value='".$loaidv[$i]['id']."'>".$loaidv[$i]['ten']."</option>";
+							}
+							?>
+						</select>
+						<select name="cbbCategory">
+							<option value="-1">-- Loại căn hộ --</option>
+							<?php
+								include("../BUS/LoaiNhaBUS.php");
+								$rs=LoaiNhaBUS::GetAllLoaiNha();
+								for($i=0;$i<count($rs);$i++)
+								{
+									if(isset($_REQUEST['cbbCategory']) && $_REQUEST['cbbCategory'] == $rs[$i]['id'])
+									{
+										echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+										
+									}
+									else
+										echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
+								}
+							?>
+						</select>
+						<select name="cbbLocation">
+							<option value="-1">-- Tỉnh/Thành phố --</option>
+							<?php
+								$rs=TinhBUS::GetAllTinh();
+								for($i=0;$i<count($rs);$i++)
+								{	
+									if(isset($_REQUEST['cbbLocation']) && $_REQUEST['cbbLocation'] == $rs[$i]['id'])
+										echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
+									else
+										echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+								}
+							?>	
+						</select>
+						<select name="type" id="type" onchange="return loadTinDangTheoLoai();">
+							<option value="-2">-- Tình trạng tin --</option>
+							<option value="0" <?php echo $type==0?"selected":""; ?>>Tin chờ duyệt</option>
+							<option value="1" <?php echo $type==1?"selected":""; ?>>Tin đã duyệt</option>
+							<option value="2" <?php echo $type==2?"selected":""; ?>>Tin đăng VIP</option>
+							<option value="3" <?php echo $type==3?"selected":""; ?>>Tin hết hạn</option>
+						</select>
 					</td>
 				</tr>
 			</table>
@@ -159,6 +210,7 @@
 							<input type="checkbox" onclick="checkAll(this);" /></td>
 						<td align="center">Tiêu đề</td>
 						<td width="100px" align="center">Loại dịch vụ</td>
+						<td width="120px" align="center">Loại căn hộ</td>
 						<td align="center">Địa chỉ</td>
 						<td width="100px" align="center">Giá bán</td>
 						<td width="70px" align="center">Ngày đăng</td>
@@ -175,6 +227,8 @@
 						<?php
 							$loaidv = LoaiDVBUS::GetLoaiDVByID($listTinDang[$i]["loaidv"]);
 							echo "<td align='center'>".$loaidv[1]."</td>";
+							$loainha = LoaiNhaBUS::getById($listTinDang[$i]["loainha"]);
+							echo "<td align='center'>".$loainha[1]."</td>";
 							echo "<td>".$listTinDang[$i]["sonha"]." ".$listTinDang[$i]["duong"].", P.".$listTinDang[$i]["phuong"].", Q.".$listTinDang[$i]["quan"].", ";
 							$tinh = TinhBUS::getTinhById($listTinDang[$i]["tinh"]);
 							echo $tinh[1]."</td>";
