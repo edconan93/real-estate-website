@@ -338,3 +338,20 @@ input.submitYellow {
     color: #CCCCCC;
 	font-weight:bold;
 }
+
+#featuredpropertyv2 {
+    background: url("../images/FeatureProperty_BG.png") no-repeat scroll 0 0 transparent;
+    clear: both;
+    float: left;
+    height: 190px;
+    overflow: hidden;
+    width: 640px;
+}
+.featuredpropertyv2 {
+    background: url("../images/FeatureProperty_BG.png") no-repeat scroll 0 0 transparent;
+    clear: both;
+    float: left;
+    height: 190px;
+    overflow: hidden;
+    width: 640px;
+}

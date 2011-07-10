@@ -64,8 +64,18 @@ class DichVuDAO
 			DataProvider::Close ($cn);
             return $result;
 	}
-	
-    //phucnt3
+	 //hoaphuong
+    public static function getCanHoNoiBat()
+    {
+         $strSQL = "select * from dichvu where rank >=1";
+         $result = DataProvider::Query($strSQL);
+         if(mysql_num_rows($result)==0)
+				return null;
+         while($row=mysql_fetch_row($result,MYSQL_BOTH))
+             $return[]=$row;
+         return $return;
+    }
+    //hoaphuong3
     public static function getAll($offset,$numrow)
     {
          $strSQL = "select * from dichvu where status >-1 limit $offset,$numrow";
@@ -95,14 +105,14 @@ class DichVuDAO
              $return[]=$row;
          return $return;
     }
-    //phucnt3
+    //hoaphuong3
     public static function countAllBySQL($strSQL)
     {
         $result = DataProvider::Query($strSQL);
         $resultSet=mysql_fetch_array ($result);
         return $resultSet[0];
     }
-    //phucnt3
+    //hoaphuong3
     public static function countAll()
     {
         $strSQL = "select count(*) from dichvu";
@@ -110,7 +120,7 @@ class DichVuDAO
         $resultSet=mysql_fetch_array ($result);
         return $resultSet[0];
     }
-    //phucnt3
+    //hoaphuong3
     public static function getDichVuByLoai($idLoai,$offset,$numrow)
     {
         $strSQL = "select * from dichvu where loaidv=$idLoai and status >-1 limit $offset,$numrow";
@@ -121,7 +131,7 @@ class DichVuDAO
              $return[]=$row;
          return $return;
     }
-     //phucnt3
+     //hoaphuong3
     public static function countAllDichVuByLoai($idLoai)
     {
         $strSQL = "select count(*) from dichvu where loaidv=$idLoai and status >-1";

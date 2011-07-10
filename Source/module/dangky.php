@@ -427,7 +427,7 @@ $(document).ready(function()
 										<td align="right"></td>
 										<td align="left" style="padding-left:30px;">
 										<span class="action-button-left"></span>
-										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" id="btSubmit" name="btSubmit" />
+										<input class="submitYellow" type="Submit" value="Đăng ký thành viên" id="btRegister" name="btRegister" />
 										<span class="action-button-right"></span>
 										</td>
 									</tr>
