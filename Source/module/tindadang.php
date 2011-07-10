@@ -19,7 +19,6 @@ function xoatindang(idtin)
 		return false;
 }
 </script>
-
 	<table bgcolor="black" border="0" cellpadding="0" cellspacing="0" width="986">
 		<tr>
 			<td width="986">
@@ -41,16 +40,15 @@ function xoatindang(idtin)
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29;" id="messLoaiTinDang" name="messLoaiTinDang">
 									<?php
-											if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
-												echo "TIN ĐÃ DUYỆT.";
-											else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
-												echo "TIN CHỜ DUYỆT.";
-											else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
-												echo "TIN ĐÃ HẾT HẠN.";
-											else
-												echo "CÁC TIN ĐÃ ĐĂNG.";
-										?>
-									
+										if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
+											echo "TIN ĐÃ DUYỆT.";
+										else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
+											echo "TIN CHỜ DUYỆT.";
+										else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
+											echo "TIN ĐÃ HẾT HẠN.";
+										else
+											echo "CÁC TIN ĐÃ ĐĂNG.";
+									?>
 								</div>
 								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
 								<div class="mid_content">
@@ -67,7 +65,7 @@ function xoatindang(idtin)
 										?>
 									</b>
 									<div class="bg_r" style="border: 1px solid rgb(172, 172, 172); padding: 0px; z-index: auto;">
-<!--form process search -->	<form name="sortby" method="get" action="tindadang.php">
+<!--form process search -->				<form name="sortby" method="get" action="tindadang.php">
 											<table cellspacing="1" cellpadding="5" align="center" style="margin: 3px;">
 												<tr>
 													<td>
@@ -83,7 +81,6 @@ function xoatindang(idtin)
 														Nhu cầu<br>
 														<select style="width: 120px;" name="cbbServiceType">
 															<option value="-1">tất cả</option>
-															
 															<?php
 															include("../BUS/LoaiDichVuBUS.php");
 															$loaidv=LoaiDichVuBUS::getALL();
@@ -130,21 +127,21 @@ function xoatindang(idtin)
 																		echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
 																	else
 																		echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
-																	
 																}
 															?>	
 														</select>
 													</td>
 													<td>
 														<br>
-														<input type="submit" style="height: 20px;" class="button_submit" value="Tìm kiếm"
-															name="btnSearch">
+														<div style="width:70px;">
+															<span class="action-button-left"></span>
+															<input class="submitYellow" type="Submit" value="Tìm kiếm" id="btnGuiTin" name="btnSearch" />
+															<span class="action-button-right"></span>
+														</div>
 													</td>
 												</tr>
 											</table>
-<!--end form process search -->
-</form>
-										
+<!--end form process search -->			</form>
 										<table width="100%" cellspacing="0" cellpadding="4" border="0">
 											<tr bgcolor="#e1e9f1">
 												<td width="60" valign="top" align="center" style="border-top:1px solid #CCCCCC;">
@@ -166,7 +163,7 @@ function xoatindang(idtin)
 													$result= MessageTypeProcessor::findSearchInContext();
 													if($result!=null)
 														echo $result;
-													 else
+													else
 														echo MessageTypeProcessor::loadAllMessage();
 												}
 											?>	
