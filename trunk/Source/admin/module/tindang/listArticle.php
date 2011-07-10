@@ -44,7 +44,10 @@
 		}
 	}
 	
-	$status = isset($_REQUEST["status"])?$_REQUEST["status"]:-1;
+	$tukhoa = isset($_REQUEST["key"])?$_REQUEST["key"]:-1;
+	$loaidv = isset($_REQUEST["loaidv"])?$_REQUEST["loaidv"]:-1;
+	$loainha = isset($_REQUEST["loainha"])?$_REQUEST["loainha"]:-1;
+	$province = isset($_REQUEST["province"])?$_REQUEST["province"]:-1;
 	$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-1;
 ?>
 
@@ -54,45 +57,6 @@
 	<div class="tm"></div>
 	<div class="mid">
 		<script language="javascript">
-			$(document).ready(function ()
-			{
-				$("#frmListItem").submit (function ()
-				{
-					return false;
-				});
-				
-				$("#status").change (function ()
-				{
-					var url = "modules/forms/listArticle.php";
-					var status = $("#status").attr("value");
-					var type = $("#type").attr("value");
-					var kw = $("#kw").attr("value");
-					url += "?status=" + status ;
-					url += "&type=" + type ;
-					url += "&kw=" + kw ;;
-					$("#listItem").load(url);
-				});
-				$("#btSearch").click (function ()
-				{
-					var url = "modules/forms/listArticle.php";
-					var status = $("#status").attr("value");
-					var type = $("#type").attr("value");
-					var kw = $("#kw").attr("value");
-					url += "?status=" + status ;
-					url += "&type=" + type ;
-					url += "&kw=" + kw ;
-					$("#listItem").load(url);
-				});
-				
-				$("#cbAll").click (function ()
-				{
-					 var checked_status = this.checked;
-					 $("input[name=cbId[]]").each(function()
-					 {
-						 this.checked = checked_status;
-					 });
-				});
-			});
 			function loadTinDangTheoLoai()
 			{
 				var type = document.getElementById("type");
