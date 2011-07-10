@@ -441,29 +441,29 @@
 								<fieldset>
 									<legend style="font-size:14px;font-weight:bold;color: #006DB9;">Thông Tin Căn Hộ</legend>
 										<table cellpadding="0" cellspacing="0" width="100%" border="0">
-											<tr style="height:26px; background:#F1F1F1;font-weight:bold">
+											<tr style="height:26px; background:#F1F1F1;">
 												<td width="130px">Loại dịch vụ:</td>
-												<td width="150px"><?php echo $loaidichvu['ten'];?></td>
+												<td width="150px"><b><?php echo $loaidichvu['ten'];?></b></td>
 												<td width="100px">Diện tích:</td>
-												<td><?php echo $business['rong']."x".$business['dai'].' ';?>m<sup>2</sup></td>
+												<td><b><?php echo $business['rong']."x".$business['dai'].' ';?>m<sup>2</sup></b></td>
 												<td width="100px">Số tầng:</td>
-												<td width="30px"><?php echo $business['tang'];?></td>
+												<td width="30px"><b><?php echo $business['tang'];?></b></td>
 											</tr>
-											<tr style="height:26px;font-weight:bold">
+											<tr style="height:26px;">
 												<td>Tình trạng pháp lý:</td>
-												<td><?php echo $phaply['ten'];?></td>
+												<td><b><?php echo $phaply['ten'];?></b></td>
 												<td>Hướng nhà:</td>
-												<td><?php echo $huongnha['ten'];?></td>
+												<td><b><?php echo $huongnha['ten'];?></b></td>
 												<td>Số phòng ngủ:</td>
-												<td><?php echo $business['sophongngu'];?></td>
+												<td><b><?php echo $business['sophongngu'];?></b></td>
 											</tr>
-											<tr style="height:26px; background:#F1F1F1;font-weight:bold">
+											<tr style="height:26px; background:#F1F1F1;">
 												<td>Giá căn hộ:</td>
-												<td><?php echo $business['giaban']; echo ' '.$donvitien['ten'];?> </td>
+												<td><b><?php echo $business['giaban']; echo ' '.$donvitien['ten'];?></b></td>
 												<td>Loại nhà:</td>
-												<td><?php echo $loainha['ten'];?></td>
+												<td><b><?php echo $loainha['ten'];?></b></td>
 												<td>Số phòng tắm:</td>
-												<td><?php echo $business['sophongtam'];?></td>
+												<td><b><?php echo $business['sophongtam'];?></b></td>
 											</tr>
 										</table>
 								</fieldset><br>
