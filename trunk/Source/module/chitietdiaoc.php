@@ -52,7 +52,7 @@
 								// echo "<br>aaaaaaaaa=".$hinhanh[0]['path'];
                             }
                             ?>
-							<div style="width: 686px; padding-top:20px;">
+							<div style="width: 686px; padding-top:20px;float:left;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29;">
 									<?php echo $business['tieude']; ?> </div>
