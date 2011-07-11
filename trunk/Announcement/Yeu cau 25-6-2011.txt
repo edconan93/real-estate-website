@@ -1,1 +1,2 @@
 ﻿http://deepakssn.blogspot.com/2006/06/gmail-php-send-email-using-php-with.html
+http://www.phpclasses.org/blog/package/9/post/1-Sending-email-using-SMTP-servers-of-Gmail-Hotmail-or-Yahoo-with-PHP.html
