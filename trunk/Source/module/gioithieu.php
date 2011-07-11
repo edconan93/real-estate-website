@@ -14,7 +14,6 @@
 						<td style="border-right: 1px solid rgb(180, 215, 232); background-repeat: repeat-y;"
 							background="1_files/menubg_all.jpg" valign="top" width="270">
 							<?php include("../include/box_left.php"); ?>
-							
 						</td>
 						<td style="padding: 10px;" valign="top">
 							<div style="width: 686px;">
