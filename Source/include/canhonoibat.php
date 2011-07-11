@@ -20,7 +20,7 @@
 				echo "<div style='width:170px;float:left;'>";
 				echo "<a class='chnoibat' href='chitietdiaoc.php?iddichvu=".$canho[$i]['id']."'>";
 				echo "<img src='../".$hinhanh[0]['path']."' style='height:100px; width:160px;'/><br>";
-				echo "<b>".$canho[$i]['tieude']."</b>";
+				echo "<b style='color: #006DB9;'>".$canho[$i]['tieude']."</b>";
 				echo "</a></div>";
 			}
 			else
