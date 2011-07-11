@@ -1,4 +1,4 @@
-﻿<div style="width: 686px;" id="featuredpropertyv2">
+﻿<div style="width: 686px;float:left;" id="featuredpropertyv2">
 	<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 		font-weight: bold; color:#890C29;">
 		CĂN HỘ NỔI BẬT
