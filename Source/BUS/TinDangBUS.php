@@ -3,9 +3,13 @@
 
 	class TinDangBUS
 	{
-		public static function GetAllTinByType($type)
+		public static function GetAllTinByFilter($tukhoa, $loaidv, $loainha, $tinh, $type)
 		{
-			return TinDangDAO::GetAllTinByType($type);
+			return TinDangDAO::GetAllTinByFilter($tukhoa, $loaidv, $loainha, $tinh, $type);
+		}
+		public static function GetAllTinDang()
+		{
+			return TinDangDAO::GetAllTinDang();
 		}
 	}
 ?>

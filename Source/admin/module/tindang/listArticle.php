@@ -44,11 +44,11 @@
 		}
 	}
 	
-	$tukhoa = isset($_REQUEST["key"])?$_REQUEST["key"]:-1;
+	$tukhoa = isset($_REQUEST["tukhoa"])?$_REQUEST["tukhoa"]:-1;
 	$loaidv = isset($_REQUEST["loaidv"])?$_REQUEST["loaidv"]:-1;
 	$loainha = isset($_REQUEST["loainha"])?$_REQUEST["loainha"]:-1;
-	$province = isset($_REQUEST["province"])?$_REQUEST["province"]:-1;
-	$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-1;
+	$tinh = isset($_REQUEST["tinh"])?$_REQUEST["tinh"]:-1;
+	$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-2;
 ?>
 
 <div id="listItem">
@@ -57,10 +57,28 @@
 	<div class="tm"></div>
 	<div class="mid">
 		<script language="javascript">
-			function loadTinDangTheoLoai()
+			function loadTinDangByFilter()
 			{
-				var type = document.getElementById("type");
-				window.location = "index.php?view=article&type=" + type.value;
+				var tukhoa = document.getElementById("tukhoa").value == "-- Từ khóa --" ? -1 : Trim(document.getElementById("tukhoa").value);
+				var loaidv = document.getElementById("loaidv").value;
+				var loainha = document.getElementById("loainha").value;
+				var tinh = document.getElementById("tinh").value;
+				var type = document.getElementById("type").value;
+				
+				var url = "index.php?view=article";
+				if (tukhoa != -1)
+					url += "&tukhoa=" + tukhoa;
+				if (loaidv != -1)
+					url += "&loaidv=" + loaidv;
+				if (loainha != -1)
+					url += "&loainha=" + loainha;
+				if (tinh != -1)
+					url += "&tinh=" + tinh;
+				if (type != -2)
+					url += "&type=" + type;
+				
+				window.location = url;
+				return true;
 			}
 			function checkAllTinDang()
 			{
@@ -90,79 +108,135 @@
 			{
 				var value = Trim(objMaSoTin.value);
 				if (value == "")
-					objMaSoTin.value = "-- Mã số tin --";
+					objMaSoTin.value = "-- Từ khóa --";
 				else
 					objMaSoTin.value = Trim(objMaSoTin.value);;
 			}
 		</script>
 		<form method="post" name="frmListItem" id="frmListItem">
-			<input name="page" type="hidden" value="<?php echo $curPage; ?>">
 			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr>
 					<td width="30%">
 						<?php
-							$type = "";
-							if (isset($_GET["type"]) && $_GET["type"] != -2)
-								$type = $_GET["type"];
-							else
-								$type = -2;
-							$listTinDang = TinDangBUS::GetAllTinByType($type);
-							echo "<b>Có ".count($listTinDang)." mẫu tin.</b>";
+							//echo mb_strtolower("cần bán nhà gấp 1 căn nhà", 'UTF-8');
+							// $str = "Cần bán nhà";
+							// echo strpos($str, "Cần")>-1?strpos($str, "Cần"):-1;
+							// echo "AAA";
+							$listAllTinDang = TinDangBUS::GetAllTinDang();
+							$listTinDang = $listAllTinDang;
+							$j = 0;
+							if ($tukhoa != -1)
+							{
+								for ($i=0;$i<count($listAllTinDang);$i++)
+								{
+									$str1 = mb_strtolower($listAllTinDang[$i]["tieude"], 'UTF-8');
+									$str2 = mb_strtolower($tukhoa, 'UTF-8');
+									// echo $str1;
+									// echo "-";
+									// echo $str2."<br>";
+									$index = strpos($str1, $str1)>-1?strpos($str1, $str1):-1;
+									echo $index;
+									if ($index > -1)
+									{
+										$listTinDang[$j++] = $listAllTinDang[$i];
+									}
+								}
+							}
+							echo "<br>".$j."<br>";
+							// if ($j != 0)
+							// {
+								// for ($k=count($listAllTinDang)-1;$k>=$j;$k--)
+									// unset($listTinDang[$k]);
+							// }
+							//lam
+							// $str = "Cần bán nhà";
+							// echo strrpos($str, "Cần1")>-1?strrpos($str, "Cần1"):-1;
+							// echo "AAA";
+							/*$listAllTinDang = TinDangBUS::GetAllTinByFilter($tukhoa, $loaidv, $loainha, $tinh, $type);
+							$listAllTinDang = $listAllTinDang;
+							$j = 0;
+							if ($tukhoa != -1)
+							{
+								for ($i=0;$i<count($listAllTinDang);$i++)
+								{
+									$index = -1;
+									if (strrpos($listAllTinDang[$i]["tieude"], $tukhoa) == TRUE)
+									{
+										$index = strrpos($listAllTinDang[$i]["tieude"], $tukhoa);
+										echo $index;
+									}
+									//$index = (strrpos($listAllTinDang[$i]["tieude"], $tukhoa)==true)?strrpos($listAllTinDang[$i]["tieude"], $tukhoa):-1;
+									if ($index >= 0)
+									{
+										$listAllTinDang[$j++] = $listAllTinDang[$i];
+										echo "<br>THINHHHHHH".$listAllTinDang[$j]["tieude"];
+									}
+								}
+								//echo $j;
+							}
+							if ($j != 0)
+							{
+								for ($k=count($listAllTinDang)-1;$k>=$j;$k--)
+									unset($listAllTinDang[$k]);
+							}*/
+							//end
+							//$listAllTinDang = TinDangBUS::GetAllTinByFilter($tukhoa, $loaidv, $loainha, $tinh, $type);
+							echo "<b>Có ".count($listAllTinDang)." mẫu tin.</b>";
 						?>
 					</td>
 					<td width="70%" align="right">
-						<input type="text" style="width: 100px;" value="-- Mã số tin --" onfocus="select();" onblur="nhapMaSoTin(this);">
-						<select name="cbbServiceType">
+						<input id="tukhoa" type="text" style="width: 100px;" 
+							value="<?php if ($tukhoa == -1) echo '-- Từ khóa --'; else echo $tukhoa;?>" 
+							onfocus="select();" onblur="nhapMaSoTin(this);">
+						<select id="loaidv">
 							<option value="-1">-- Loại dịch vụ --</option>
 							<?php
 							include("../BUS/LoaiDichVuBUS.php");
 							$loaidv=LoaiDichVuBUS::getALL();
 							for($i=0;$i<count($loaidv);$i++)
 							{
-								if(isset($_REQUEST['cbbServiceType'])&&$_REQUEST['cbbServiceType'] == $loaidv[$i]['id'])
+								if(isset($_REQUEST['loaidv'])&&$_REQUEST['loaidv'] == $loaidv[$i]['id'])
 									echo "<option value='".$loaidv[$i]['id']."' selected>".$loaidv[$i]['ten']."</option>";
 								else 
 									echo "<option value='".$loaidv[$i]['id']."'>".$loaidv[$i]['ten']."</option>";
 							}
 							?>
 						</select>
-						<select name="cbbCategory">
+						<select id="loainha">
 							<option value="-1">-- Loại căn hộ --</option>
 							<?php
 								include("../BUS/LoaiNhaBUS.php");
 								$rs=LoaiNhaBUS::GetAllLoaiNha();
 								for($i=0;$i<count($rs);$i++)
 								{
-									if(isset($_REQUEST['cbbCategory']) && $_REQUEST['cbbCategory'] == $rs[$i]['id'])
-									{
+									if(isset($_REQUEST['loainha']) && $_REQUEST['loainha'] == $rs[$i]['id'])
 										echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
-										
-									}
 									else
 										echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";	
 								}
 							?>
 						</select>
-						<select name="cbbLocation">
+						<select id="tinh">
 							<option value="-1">-- Tỉnh/Thành phố --</option>
 							<?php
 								$rs=TinhBUS::GetAllTinh();
 								for($i=0;$i<count($rs);$i++)
 								{	
-									if(isset($_REQUEST['cbbLocation']) && $_REQUEST['cbbLocation'] == $rs[$i]['id'])
+									if(isset($_REQUEST['tinh']) && $_REQUEST['tinh'] == $rs[$i]['id'])
 										echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
 									else
 										echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
 								}
 							?>	
 						</select>
-						<select name="type" id="type" onchange="return loadTinDangTheoLoai();">
+						<select id="type">
 							<option value="-2">-- Tình trạng tin --</option>
 							<option value="0" <?php echo $type==0?"selected":""; ?>>Tin chờ duyệt</option>
 							<option value="1" <?php echo $type==1?"selected":""; ?>>Tin đã duyệt</option>
 							<option value="2" <?php echo $type==2?"selected":""; ?>>Tin đăng VIP</option>
 							<option value="3" <?php echo $type==3?"selected":""; ?>>Tin hết hạn</option>
-						</select>
+						</select>&nbsp;&nbsp;&nbsp;
+						<input type="button" value="Tìm" onclick="return loadTinDangByFilter();" />
 					</td>
 				</tr>
 			</table>
@@ -173,39 +247,39 @@
 						<td width="30px" align="center">
 							<input type="checkbox" onclick="checkAll(this);" /></td>
 						<td align="center">Tiêu đề</td>
-						<td width="100px" align="center">Loại dịch vụ</td>
-						<td width="120px" align="center">Loại căn hộ</td>
+						<td width="90px" align="center">Loại dịch vụ</td>
+						<td width="100px" align="center">Loại căn hộ</td>
 						<td align="center">Địa chỉ</td>
-						<td width="100px" align="center">Giá bán</td>
+						<td align="center">Giá bán</td>
 						<td width="70px" align="center">Ngày đăng</td>
-						<td width="100px" align="center">Tình trạng tin</td>
+						<td width="90px" align="center">Tình trạng tin</td>
 					</tr>
 					<?php
-						for ($i=0;$i<count($listTinDang);$i++)
+						for ($i=0;$i<count($listAllTinDang);$i++)
 						{
 					?>
 					<tr style="background:<?php echo ($i%2==0) ? "#EFF3FF" : "white"; ?>;">
 						<td align="center"><?php echo $i+1; ?></td>
-						<td align="center"><input type="checkbox" name="cbTinDang" id="cbTinDang" value="<?php echo $listTinDang[$i]["id"]; ?>" onclick="Check_Click(this)"></td>
-						<td class="m_name"><?php echo "<a href='index.php?view=article&do=edit&aid=".$listTinDang[$i]["id"]."'>".$listTinDang[$i]["tieude"]."</a>"; ?></td>
+						<td align="center"><input type="checkbox" name="cbTinDang" id="cbTinDang" value="<?php echo $listAllTinDang[$i]["id"]; ?>" onclick="Check_Click(this)"></td>
+						<td class="m_name"><?php echo "<a href='index.php?view=article&do=edit&aid=".$listAllTinDang[$i]["id"]."'>".$listAllTinDang[$i]["tieude"]."</a>"; ?></td>
 						<?php
-							$loaidv = LoaiDVBUS::GetLoaiDVByID($listTinDang[$i]["loaidv"]);
+							$loaidv = LoaiDVBUS::GetLoaiDVByID($listAllTinDang[$i]["loaidv"]);
 							echo "<td align='center'>".$loaidv[1]."</td>";
-							$loainha = LoaiNhaBUS::getById($listTinDang[$i]["loainha"]);
+							$loainha = LoaiNhaBUS::getById($listAllTinDang[$i]["loainha"]);
 							echo "<td align='center'>".$loainha[1]."</td>";
-							echo "<td>".$listTinDang[$i]["sonha"]." ".$listTinDang[$i]["duong"].", P.".$listTinDang[$i]["phuong"].", Q.".$listTinDang[$i]["quan"].", ";
-							$tinh = TinhBUS::getTinhById($listTinDang[$i]["tinh"]);
+							echo "<td>".$listAllTinDang[$i]["sonha"]." ".$listAllTinDang[$i]["duong"].", P.".$listAllTinDang[$i]["phuong"].", Q.".$listAllTinDang[$i]["quan"].", ";
+							$tinh = TinhBUS::getTinhById($listAllTinDang[$i]["tinh"]);
 							echo $tinh[1]."</td>";
-							$donviTien = DonViTienBUS::selectId($listTinDang[$i]["donvitien"]);
-							echo "<td align='right'>".number_format($listTinDang[$i]["giaban"])." $donviTien[1]</td>";
-							if ($listTinDang[$i]["ngaydang"] != null)
+							$donviTien = DonViTienBUS::selectId($listAllTinDang[$i]["donvitien"]);
+							echo "<td align='right'>".number_format($listAllTinDang[$i]["giaban"])." $donviTien[1]</td>";
+							if ($listAllTinDang[$i]["ngaydang"] != null)
 							{
-								$date = Utils::convertTimeDMY($listTinDang[$i]["ngaydang"]);
+								$date = Utils::convertTimeDMY($listAllTinDang[$i]["ngaydang"]);
 								echo "<td align='center'>".$date."</td>";
 							}
 							else
 								echo "<td></td>";
-							switch ($listTinDang[$i]["status"])
+							switch ($listAllTinDang[$i]["status"])
 							{
 								case 0: // đang chờ duyệt
 									echo "<td align='center' style='color:green;'>Tin chờ duyệt</td>";
