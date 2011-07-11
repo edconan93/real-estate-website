@@ -1,11 +1,1 @@
-﻿Phuc:
-	_ Cung` la trang dang tin thi dangtinmua.php phai co Ngay dang va Ngay het han giong ben dangtinban.php
-
-	Form Dang nhap press inform dangky press dangnhap tren top =>dang nhap loi (chứ ko báo là username ko được để trống)
-Thinh: 
-	_khi đang ở trang thành viên đi ra trang dich vụ => ko có link trở về trang thành viên. Đề nghị ở menu chính (Dich vu,Liên Hệ) thêm Menu Trang Thành viên.
-User:
-1.can ho noi bat
-2.Chi tiet can ho
-3.lien he
-4.nang cap vip
+﻿http://deepakssn.blogspot.com/2006/06/gmail-php-send-email-using-php-with.html
