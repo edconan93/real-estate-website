@@ -837,7 +837,12 @@ $(document).ready(function()
 																echo "<option value='".($i+1)."' selected>".$rs[$i][1]."</option>";
 															}
 															else
-																echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+															{
+																if($rs[$i][0] == 2)														
+																	echo "<option selected value='".($i+1)."'>".$rs[$i][1]."</option>";
+																else
+																	echo "<option value='".($i+1)."'>".$rs[$i][1]."</option>";
+															}
 														}
 													?>
 													</select> / 
