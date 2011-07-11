@@ -32,6 +32,37 @@
     <div class="tl"></div>
     <div class="tr"></div>
     <div class="tm"></div>
+    <script>
+     var url;
+     function gotopage(page)
+            {
+                var index=url.lastIndexOf("=");
+                url=url.substr(0,index+1); 
+                url+=page;           
+                $("#dsNhanvien").load(url);
+            }
+    $(document).ready(function()
+			{
+                url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
+                $("#dsNhanvien").load(url);
+				
+   	            $("#btnShow").click(function(){
+   	                var type=$("#cbbType").val();
+                    if(type=="-1")
+                    {
+                        var url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
+                        $("#dsNhanvien").load(url);
+                        $('#btnExport').attr("href","module/thongke/HouseProcessor.php?view=statistic&do=house&action=export&page=1")
+                    }
+                    else
+                    {
+                        var url="module/thongke/HouseProcessor.php?view=statistic&do=house&action=view&loaidv="+type+"&page=1";          
+                        $("#dsNhanvien").load(url);
+                        $('#btnExport').attr("href","module/thongke/HouseProcessor.php?view=statistic&do=house&action=export&loaidv="+type+"&page=1")
+                    }
+                    });
+                });
+    </script>
     <div class="mid">
 		<form action="index.php?view=user" method="post" name="frmRegister" id="frmRegister">
 			<div style="text-align:center;padding-bottom:30px;">
@@ -44,9 +75,9 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="button" value="Thống kê" />
 			</div>
-			<div class="list">
+			<div class="list" id="dsNhanvien">
 				<table align="center" border="0" cellspacing="0" cellpadding="0">
-					<tr><td colspan="7"><b>Có 5 mẫu tin</b></td></tr>
+					<tr><td colspan="7"><b>Có 3 mẫu tin</b></td></tr>
 					<tr class="title">
 							<td width="30px" align="center">#</td>
 							<td align="center">Nhân viên</td>
@@ -56,40 +87,45 @@
 							<td align="center" width="100px">Đạt thành tích</td>
 							<td align="center">Khen thưởng</td>
 						</tr>
-						<tr>
+                        
+						<!--
+<tr>
 							<td align="center">1</td>
-							<td class="m_name"><a href="index.php?view=user&do=edit&uid=1">Nguyễn Thị Thanh Phương Đoàn</a></td>
+							<td class="m_name"><a href="index.php?view=user&do=edit&uid=1">Nguy?n Th? Thanh Phuong Ðoàn</a></td>
 							<td style="color:blue;">nguyenthithanhphuong@yahoo.com</td>
 							<td align="center">Nam</td>
-							<td align="center">Cấp bậc 1</td>
+							<td align="center">C?p b?c 1</td>
 							<td align="center">
 								<select>
 									<option value="">Trung bình</option>
 									<option value="">Khá</option>
-									<option value="">Xuất sắc</option>
+									<option value="">Xu?t s?c</option>
 								</select>
 							</td>
 							<td>
 								<input type="text" style="width:300px;" />
 							</td>
 						</tr>
+                       
 						<tr>
 							<td align="center">2</td>
 							<td class="m_name"><a href="index.php?view=user&do=edit&uid=1">Cao Thanh Tâm</a></td>
 							<td style="color:blue;">nguyenthithanhphuong@yahoo.com</td>
 							<td align="center">Nam</td>
-							<td align="center">Cấp bậc 2</td>
+							<td align="center">C?p b?c 2</td>
 							<td align="center">
 								<select>
 									<option value="">Trung bình</option>
 									<option value="">Khá</option>
-									<option value="">Xuất sắc</option>
+									<option value="">Xu?t s?c</option>
 								</select>
 							</td>
 							<td>
 								<input type="text" style="width:300px;" />
 							</td>
 						</tr>
+-->
+                        
 				</table>
 			</div>
 		</form>

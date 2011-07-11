@@ -324,5 +324,21 @@
                 $return[]=$row;
             return $return;	
 		}
+		public static function getAllBySQL($strSQL)
+		{
+			 $result = DataProvider::Query($strSQL);
+			 if(mysql_num_rows($result)==0)
+					return null;
+			 while($row=mysql_fetch_row($result,MYSQL_BOTH))
+				 $return[]=$row;
+			 return $return;
+		}
+		//hoaphuong3
+		public static function countAllBySQL($strSQL)
+		{
+			$result = DataProvider::Query($strSQL);
+			$resultSet=mysql_fetch_array ($result);
+			return $resultSet[0];
+		}
 	}
 ?>

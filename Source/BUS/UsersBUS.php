@@ -167,6 +167,15 @@ Lớp UsersBUS
 		{
 		  return UsersDAO::GetUsersByFilter($type, $status);
         }
+		public static function getAllBySQL($strSQL)
+		{
+			 return UsersDAO::getAllBySQL($strSQL);
+		}
+		//hoaphuong3
+		public static function countAllBySQL($strSQL)
+		{
+			return UsersDAO::countAllBySQL($strSQL);
+		}
 		// public static function countResultByEmail ($keyWord)
 		// {
 			// $keyWord =addslashes($keyWord);
