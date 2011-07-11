@@ -3,11 +3,10 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2011 at 03:16 AM
+-- Generation Time: Jul 11, 2011 at 08:30 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
@@ -17,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `QLDO`
+-- Database: `qldo`
 --
 
 -- --------------------------------------------------------
@@ -26,7 +25,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `dichvu`
 --
 
-DROP TABLE IF EXISTS `dichvu`;
 CREATE TABLE IF NOT EXISTS `dichvu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tieude` text COLLATE utf8_unicode_ci NOT NULL,
@@ -77,16 +75,21 @@ CREATE TABLE IF NOT EXISTS `dichvu` (
   KEY `fk_dichvu_phaply` (`phaply`),
   KEY `fk_dichvu_donvidv` (`donvidv`),
   KEY `fk_dichvu_khanang` (`khanang`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `dichvu`
 --
 
 INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tinh`, `ngaydang`, `ngaycapnhat`, `duong`, `rong`, `dai`, `tang`, `sophongngu`, `sophongtam`, `giaban`, `donvitien`, `status`, `thoihantin`, `loainha`, `phaply`, `huongnha`, `khuyenmai`, `loaidv`, `donvidv`, `x`, `y`, `khanang`, `rank`, `sonha`) VALUES
-(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03 00:00:00', NULL, 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, -1, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 2, NULL, NULL, NULL, NULL, '100/100'),
+(2, 'Bán căn hộ the everich Q11 gia rẻ vào ở ngay', 'qua ngon', 2, 4, 4, 2, '2010-02-03 00:00:00', NULL, 'truong chinh', 10, 25, 17, 3, 4, 32085000, 1, 2, 10, 2, 1, 1, 'Tặng nội thất vào ở ngay', 1, 2, NULL, NULL, NULL, NULL, '100/100'),
 (3, 'Cần bán căn hộ Era Town Block B1 tầng 16, 67m2 giá 1,035 tỷ', NULL, 2, 4, 3, 2, '2010-02-04 00:00:00', NULL, 'lac long quan', 7, 9, 10, 3, 2, 123214, 1, 0, 12, 2, 1, 2, NULL, 1, 1, NULL, NULL, NULL, NULL, '100/100'),
-(4, 'Bán căn hộ Khánh Hội 3', NULL, 2, 3, 3, 3, NULL, NULL, NULL, 3, 4, 3, 3, 2, 43214100, 1, 1, 2, 1, 1, 1, 'Tặng nội thất vào ở ngay', 1, 1, NULL, NULL, NULL, NULL, '100/100');
+(4, 'Bán căn hộ Khánh Hội 3', '<p>abc</p>', 2, 14, 9, 1, '2011-07-09 01:27:33', '0000-00-00 00:00:00', 'Nguyễn Trãi', 15, 5, 5, 5, 5, 100000000, 2, -1, 15, 1, 8, 8, 'Tặng nội thất vào ở ngay', 1, 1, '0', '0', 1, 0, '5'),
+(7, 'Cần mua gấp 1 căn nhà', '<p>Mua gấp</p>', 2, 23, 25, 1, '2011-07-09 01:37:44', '0000-00-00 00:00:00', '', 0, 0, 0, 0, 0, 100000000000, 2, 1, 15, 1, 1, 1, '', 2, 1, '0', '0', 1, 0, ''),
+(8, 'Cần bán nhà gấp 1 căn nhà ', '<p>Cần b&aacute;n nh&agrave; gấp 1 căn nh&agrave; </p>', 4, 15, 9, 1, '2011-07-10 09:48:02', '0000-00-00 00:00:00', 'Nguyễn Trãi', 15, 5, 0, 0, 0, 100000000000, 2, 0, 15, 1, 8, 5, 'không có', 1, 1, '0', '0', 1, 0, '32'),
+(9, 'Cần cho  thuê nhà gấp', '<p>Cần cho&nbsp; thu&ecirc; nh&agrave; gấp</p>', 4, 17, 9, 1, '2011-07-10 10:40:36', '0000-00-00 00:00:00', 'Lê Văn Việt', 15, 5, 0, 0, 0, 100000000000, 2, 1, 15, 1, 1, 1, 'không có', 3, 1, '0', '0', 1, 0, '179/9'),
+(10, 'Bán biệt thự The Garland, Q9. Giá bán 9,8tỷ', '<p>Cần b&aacute;n biệt thự The Garland do tập đo&agrave;n VinaCapital l&agrave;m chủ đầu tư.<br />\r\n<br />\r\nBiệt thự nằm trong khu quy hoạch đồng bộ, d&acirc;n tr&iacute; cao với vị tr&iacute; chiến lược giao thong thuận lợi:</p>\r\n<p>- C&aacute;ch trung t&acirc;m Quận 1 khoảng 7km.<br />\r\n-&nbsp; Kế cận trung t&acirc;m đ&ocirc; thị mới Thủ Thi&ecirc;m, Q.2.<br />\r\n- Nằm gần ng&atilde; tư đường Xa Lộ V&agrave;nh Đai Trong (lộ giới 67m) v&agrave; đường Li&ecirc;n Phường (lộ giới 30m).<br />\r\n- Gần đường cao tốc Vũng T&agrave;u &ndash; Long Th&agrave;nh (lộ giới 120m).<br />\r\n- Gần Khu C&ocirc;ng Nghệ Cao, Trường Đại Học Kinh Tế, v&agrave; c&aacute;c dự &aacute;n tương lai như khu TDTT Rạch Chiếc, s&acirc;n golf&hellip;<br />\r\nDiện t&iacute;ch khu&ocirc;n vi&ecirc;n rộng 293m2, diện t&iacute;ch x&acirc;y dựng 310m2, &nbsp;1 trệt + 2  lầu, với 3 mặt tiền đường, view nh&igrave;n s&ocirc;ng tho&aacute;ng m&aacute;t, trong l&agrave;nh. Kh&ocirc;ng  gian sống b&ecirc;n trong được thiết kế một c&aacute;ch khoa học, hợp l&yacute; tạo n&ecirc;n sự  linh họat, tiện &iacute;ch. Mặt trước của biệt thự được thiết h&igrave;nh khối ấn  tượng bằng c&aacute;c chất liệu hiện đại tạo vẻ sang trọng cho ng&ocirc;i nh&agrave; giữa  một kh&ocirc;ng gian thi&ecirc;n nhi&ecirc;n h&agrave;i h&ograve;a. Mặt sau của ng&ocirc;i nh&agrave; với lớp k&iacute;nh  phủ đầy v&agrave; cao mang &aacute;nh s&aacute;ng thi&ecirc;n nhi&ecirc;n tr&agrave;n ngập căn nh&agrave; .<br />\r\nHạ tầng kỹ thuật ho&agrave;n chỉnh v&agrave; hiện đại:<br />\r\n- Hệ thống giao th&ocirc;ng nội bộ trải b&ecirc; t&ocirc;ng nhựa.<br />\r\n- Hệ thống cấp điện, c&aacute;p viễn th&ocirc;ng, ADSL, truyền h&igrave;nh c&aacute;p.<br />\r\n- Hệ thống nước sinh hoạt: nước m&aacute;y th&agrave;nh phố.<br />\r\n- Hệ thống chiếu s&aacute;ng c&ocirc;ng cộng, c&ocirc;ng vi&ecirc;n c&acirc;y xanh.<br />\r\n- Hệ thống xử l&yacute; nước thải.<br />\r\nGi&aacute; b&aacute;n 9,8tỷ đ&atilde; bao gồm VAT v&agrave; tặng to&agrave;n bộ nội thất cao cấp, sang trọng, đầy đủ đến mức chỉ cần đem vali v&agrave;o l&agrave; ở ngay.<br />\r\nB&agrave;n giao to&agrave;n bộ biệt thự v&agrave;o Qu&yacute; 2/2011. Li&ecirc;n hệ Duy Tr&acirc;m 0904.516.045 để đi xem vị tr&iacute;.</p>', 2, 17, 9, 1, '2011-07-10 00:00:00', '0000-00-00 00:00:00', 'Nguyễn Xiền', 20, 10, 2, 5, 5, 9.8, 2, 1, 15, 1, 8, 5, 'Khuyến mãi :Tặng toàn bộ nội thất cao cấp và sang trọng', 1, 1, '0', '0', 1, 1, '32'),
+(11, 'Phố liên kế MT Bến Mễ Cốc, P.1, Q.8 ', '<p>B&aacute;n 2 căn nh&agrave; liền nhau (c&oacute; thể b&aacute;n từng căn một) thuộc khu nh&agrave; phố li&ecirc;n  kế MT Bến Mễ Cốc, P.15, Q.8. Đối diện ĐL Đ&ocirc;ng T&acirc;y. Cạnh dự &aacute;n KDC Rạch  L&agrave;o. DT mỗi căn 95m2 (5x19m). 1 trệt, 2 lầu. Nh&agrave; mới x&acirc;y năm 2011, giao  th&ocirc;. Đường nội bộ 6m. Tiện mở văn ph&ograve;ng, kinh doanh ... Gi&aacute; 2,8 tỷ/căn.  T&igrave;nh trạng hợp đồng, đ&atilde; thanh to&aacute;n 70%. Bao thủ tục sang t&ecirc;n giấy tờ.  LH:0989.353.828 A.Học</p>', 2, 27, 8, 1, '2011-07-10 00:00:00', '0000-00-00 00:00:00', 'Phạm Thế Hiển', 15, 10, 3, 0, 0, 2.8, 2, 1, 15, 2, 7, 5, '', 1, 1, '0', '0', 1, 1, '21');
 
 -- --------------------------------------------------------
 
@@ -94,21 +97,28 @@ INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tin
 -- Table structure for table `dichvuvip`
 --
 
-DROP TABLE IF EXISTS `dichvuvip`;
 CREATE TABLE IF NOT EXISTS `dichvuvip` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `iddichvu` int(11) DEFAULT NULL,
-  `ngaydang` date DEFAULT NULL,
+  `noidung` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ngayguitin` date DEFAULT NULL,
+  `ngaynangcap` date DEFAULT NULL,
   `thoihan` int(11) DEFAULT NULL COMMENT 'ngaydang: thoi diem tin vip duoc kich hoat\nthoihan: so ngay ton tai',
   `status` int(11) DEFAULT NULL COMMENT '0: disable\n1: avalable\n2: removed',
   PRIMARY KEY (`id`),
   KEY `fk_vip_dichvu` (`iddichvu`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `dichvuvip`
 --
 
+INSERT INTO `dichvuvip` (`id`, `iddichvu`, `noidung`, `ngayguitin`, `ngaynangcap`, `thoihan`, `status`) VALUES
+(1, 7, 'Cần mua nhà gấp', '2011-07-09', '0000-00-00', 2, 0),
+(2, 7, 'Cần mua nhà gấp', '2011-07-09', '0000-00-00', 1, 0),
+(3, 7, 'Thanh toán trực tiếp tại văn phòng', '2011-07-09', '0000-00-00', 90, 0),
+(4, 7, 'Thanh toán trực tiếp tại văn phòng', '2011-07-09', '2011-07-09', 270, 0),
+(5, 7, 'Thanh toán trực tiếp tại văn phòng', '2011-07-10', '2011-07-10', 90, 0);
 
 -- --------------------------------------------------------
 
@@ -116,7 +126,6 @@ CREATE TABLE IF NOT EXISTS `dichvuvip` (
 -- Table structure for table `dichvu_tienich`
 --
 
-DROP TABLE IF EXISTS `dichvu_tienich`;
 CREATE TABLE IF NOT EXISTS `dichvu_tienich` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idcanho` int(11) DEFAULT NULL,
@@ -125,12 +134,35 @@ CREATE TABLE IF NOT EXISTS `dichvu_tienich` (
   KEY `fk_canhotienich_canho` (`idcanho`),
   KEY `fk_canhotienich_tienich` (`idtienich`),
   KEY `fk_vdtienich_tienich` (`idtienich`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `dichvu_tienich`
 --
 
+INSERT INTO `dichvu_tienich` (`id`, `idcanho`, `idtienich`) VALUES
+(15, 4, 7),
+(16, 4, 8),
+(17, 7, 2),
+(18, 7, 5),
+(19, 7, 8),
+(20, 8, 2),
+(21, 8, 5),
+(22, 8, 8),
+(23, 9, 2),
+(24, 9, 5),
+(25, 9, 8),
+(26, 10, 2),
+(27, 10, 3),
+(28, 10, 4),
+(29, 10, 5),
+(30, 10, 6),
+(31, 10, 8),
+(32, 11, 2),
+(33, 11, 3),
+(34, 11, 5),
+(35, 11, 6),
+(36, 11, 8);
 
 -- --------------------------------------------------------
 
@@ -138,7 +170,6 @@ CREATE TABLE IF NOT EXISTS `dichvu_tienich` (
 -- Table structure for table `donvidichvu`
 --
 
-DROP TABLE IF EXISTS `donvidichvu`;
 CREATE TABLE IF NOT EXISTS `donvidichvu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -160,7 +191,6 @@ INSERT INTO `donvidichvu` (`id`, `ten`) VALUES
 -- Table structure for table `donvitien`
 --
 
-DROP TABLE IF EXISTS `donvitien`;
 CREATE TABLE IF NOT EXISTS `donvitien` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -183,23 +213,33 @@ INSERT INTO `donvitien` (`id`, `ten`, `tigia`) VALUES
 -- Table structure for table `hinhanh`
 --
 
-DROP TABLE IF EXISTS `hinhanh`;
 CREATE TABLE IF NOT EXISTS `hinhanh` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `path` text COLLATE utf8_unicode_ci,
   `iddichvu` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_hinhanh_thongtinnhadat` (`iddichvu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `hinhanh`
 --
 
 INSERT INTO `hinhanh` (`id`, `path`, `iddichvu`) VALUES
-(3, 'images/business/1.png', 2),
-(4, 'images/business/2.jpg', 3),
-(5, 'images/business/3.png', 4);
+(6, 'images/upload/2/Picture_House/3344432.jpg', 4),
+(7, 'images/upload/2/Picture_House/9715583.png', 4),
+(8, 'images/upload/2/Picture_House/3390201.png', 4),
+(9, 'images/upload/4/Picture_House/6367193.png', 8),
+(10, 'images/upload/4/Picture_House/7790841.png', 8),
+(11, 'images/upload/4/Picture_House/311894.jpg', 8),
+(12, 'images/upload/4/Picture_House/5575873.png', 9),
+(13, 'images/upload/4/Picture_House/443121.png', 9),
+(14, 'images/upload/2/Picture_House/953553noibat4.jpg', 10),
+(15, 'images/upload/2/Picture_House/845185noibat4_1.jpg', 10),
+(16, 'images/upload/2/Picture_House/142457noibat4_2.jpg', 10),
+(17, 'images/upload/2/Picture_House/466950noibat4_3.jpg', 10),
+(18, 'images/upload/2/Picture_House/293549noibat3.jpg', 11),
+(19, 'images/upload/2/Picture_House/951661noibat1_1.JPG', 11);
 
 -- --------------------------------------------------------
 
@@ -207,7 +247,6 @@ INSERT INTO `hinhanh` (`id`, `path`, `iddichvu`) VALUES
 -- Table structure for table `huongnha`
 --
 
-DROP TABLE IF EXISTS `huongnha`;
 CREATE TABLE IF NOT EXISTS `huongnha` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -235,7 +274,6 @@ INSERT INTO `huongnha` (`id`, `ten`) VALUES
 -- Table structure for table `khanang`
 --
 
-DROP TABLE IF EXISTS `khanang`;
 CREATE TABLE IF NOT EXISTS `khanang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -261,7 +299,6 @@ INSERT INTO `khanang` (`id`, `ten`) VALUES
 -- Table structure for table `level`
 --
 
-DROP TABLE IF EXISTS `level`;
 CREATE TABLE IF NOT EXISTS `level` (
   `idlevel` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
@@ -277,7 +314,8 @@ INSERT INTO `level` (`idlevel`, `ten`, `chitiet`) VALUES
 (1, 'Level1', 'Nhân viên cấp bậc 1'),
 (2, 'Level2', 'Nhân viên cấp bậc 2'),
 (3, 'VIP', 'Tài khoản VIP'),
-(4, 'Normal', 'Tài khoản thường');
+(4, 'Normal', 'Tài khoản thường'),
+(5, 'Không có level', 'Không có level');
 
 -- --------------------------------------------------------
 
@@ -285,21 +323,25 @@ INSERT INTO `level` (`idlevel`, `ten`, `chitiet`) VALUES
 -- Table structure for table `lienhe`
 --
 
-DROP TABLE IF EXISTS `lienhe`;
 CREATE TABLE IF NOT EXISTS `lienhe` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `hoten` varchar(45) DEFAULT NULL,
-  `sdt` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `diachi` text,
-  `noidung` text,
+  `hoten` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sdt` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `diachi` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `noidung` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `ngayguitin` date DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `lienhe`
 --
 
+INSERT INTO `lienhe` (`id`, `hoten`, `sdt`, `email`, `diachi`, `noidung`, `ngayguitin`, `status`) VALUES
+(1, 'Hồ Sơn Lâm', '0976 937 118', 'sieudangf2@yahoo.com', 'tp Hồ Chí Minh', '', '0000-00-00', 0),
+(2, 'Nguyễn Thị Tuyết Phượng', '0976 937 118', 'phuong.nguyentuyet@yahoo.com', 'tp Hồ Chí Minh', '', '2011-07-10', 0);
 
 -- --------------------------------------------------------
 
@@ -307,7 +349,6 @@ CREATE TABLE IF NOT EXISTS `lienhe` (
 -- Table structure for table `loaidichvu`
 --
 
-DROP TABLE IF EXISTS `loaidichvu`;
 CREATE TABLE IF NOT EXISTS `loaidichvu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -330,7 +371,6 @@ INSERT INTO `loaidichvu` (`id`, `ten`) VALUES
 -- Table structure for table `loainha`
 --
 
-DROP TABLE IF EXISTS `loainha`;
 CREATE TABLE IF NOT EXISTS `loainha` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -354,7 +394,6 @@ INSERT INTO `loainha` (`id`, `ten`) VALUES
 -- Table structure for table `nhanvien_quyenhan`
 --
 
-DROP TABLE IF EXISTS `nhanvien_quyenhan`;
 CREATE TABLE IF NOT EXISTS `nhanvien_quyenhan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
@@ -375,14 +414,13 @@ CREATE TABLE IF NOT EXISTS `nhanvien_quyenhan` (
 -- Table structure for table `phuong`
 --
 
-DROP TABLE IF EXISTS `phuong`;
 CREATE TABLE IF NOT EXISTS `phuong` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` text COLLATE utf8_unicode_ci NOT NULL,
   `idquan` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_phuong_quan` (`idquan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=74 ;
 
 --
 -- Dumping data for table `phuong`
@@ -410,7 +448,23 @@ INSERT INTO `phuong` (`id`, `ten`, `idquan`) VALUES
 (19, 'PHƯỚC LONG B', 9),
 (20, 'TÂN PHÚ', 9),
 (21, 'PHƯỚC BÌNH', 9),
-(22, 'CÁC XÃ PHƯỜNG KHÁC', 9);
+(22, 'CÁC XÃ PHƯỜNG KHÁC', 9),
+(23, 'Không xác định', 25),
+(24, 'Phường 1', 8),
+(25, 'Phường 2', 8),
+(26, 'Phường 3', 8),
+(27, 'Phường 4', 8),
+(28, 'Phường 5', 8),
+(29, 'Phường 6', 8),
+(30, 'Phường 7', 8),
+(66, 'Phường 8', 8),
+(67, 'Phường 9', 8),
+(68, 'Phường 10', 8),
+(69, 'Phường 11', 8),
+(70, 'Phường 12', 8),
+(71, 'Phường 13', 8),
+(72, 'Phường 14', 8),
+(73, 'Phường 15', 8);
 
 -- --------------------------------------------------------
 
@@ -418,14 +472,13 @@ INSERT INTO `phuong` (`id`, `ten`, `idquan`) VALUES
 -- Table structure for table `quan`
 --
 
-DROP TABLE IF EXISTS `quan`;
 CREATE TABLE IF NOT EXISTS `quan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` text COLLATE utf8_unicode_ci NOT NULL,
   `idtinh` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_quan_tinh` (`idtinh`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `quan`
@@ -455,7 +508,8 @@ INSERT INTO `quan` (`id`, `ten`, `idtinh`) VALUES
 (21, 'Quận Phú Nhuận', 1),
 (22, 'Quận Tân Bình', 1),
 (23, 'Quận Tân Phú', 1),
-(24, 'Quận Thủ Đức', 1);
+(24, 'Quận Thủ Đức', 1),
+(25, 'Không xác định', 10);
 
 -- --------------------------------------------------------
 
@@ -463,7 +517,6 @@ INSERT INTO `quan` (`id`, `ten`, `idtinh`) VALUES
 -- Table structure for table `quangcao`
 --
 
-DROP TABLE IF EXISTS `quangcao`;
 CREATE TABLE IF NOT EXISTS `quangcao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hoten` varchar(45) DEFAULT NULL,
@@ -487,7 +540,6 @@ CREATE TABLE IF NOT EXISTS `quangcao` (
 -- Table structure for table `quyenhansudung`
 --
 
-DROP TABLE IF EXISTS `quyenhansudung`;
 CREATE TABLE IF NOT EXISTS `quyenhansudung` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` text COLLATE utf8_unicode_ci NOT NULL,
@@ -512,7 +564,6 @@ INSERT INTO `quyenhansudung` (`id`, `ten`, `chitiet`) VALUES
 -- Table structure for table `role`
 --
 
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -536,7 +587,6 @@ INSERT INTO `role` (`id`, `ten`) VALUES
 -- Table structure for table `thuchi`
 --
 
-DROP TABLE IF EXISTS `thuchi`;
 CREATE TABLE IF NOT EXISTS `thuchi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sotien` float NOT NULL,
@@ -548,12 +598,14 @@ CREATE TABLE IF NOT EXISTS `thuchi` (
   PRIMARY KEY (`id`),
   KEY `fk_thuchi_user` (`nhanvien`),
   KEY `fk_thuchi_donvi` (`donvi`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `thuchi`
 --
 
+INSERT INTO `thuchi` (`id`, `sotien`, `donvi`, `congviec`, `ngay`, `nhanvien`, `loai`) VALUES
+(2, 10000000, 2, 'Đăng quảng cáo', '2011-07-11', 11, b'0');
 
 -- --------------------------------------------------------
 
@@ -561,7 +613,6 @@ CREATE TABLE IF NOT EXISTS `thuchi` (
 -- Table structure for table `tienich`
 --
 
-DROP TABLE IF EXISTS `tienich`;
 CREATE TABLE IF NOT EXISTS `tienich` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -588,12 +639,11 @@ INSERT INTO `tienich` (`id`, `ten`) VALUES
 -- Table structure for table `tinh`
 --
 
-DROP TABLE IF EXISTS `tinh`;
 CREATE TABLE IF NOT EXISTS `tinh` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `tinh`
@@ -609,7 +659,8 @@ INSERT INTO `tinh` (`id`, `ten`) VALUES
 (7, 'Đăk Lăk'),
 (8, 'Đồng Nai'),
 (9, 'Lâm Đồng'),
-(10, 'Vũng Tàu');
+(10, 'Vũng Tàu'),
+(11, 'Không xác định');
 
 -- --------------------------------------------------------
 
@@ -617,7 +668,6 @@ INSERT INTO `tinh` (`id`, `ten`) VALUES
 -- Table structure for table `tinhtrangphaply`
 --
 
-DROP TABLE IF EXISTS `tinhtrangphaply`;
 CREATE TABLE IF NOT EXISTS `tinhtrangphaply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -644,7 +694,6 @@ INSERT INTO `tinhtrangphaply` (`id`, `ten`) VALUES
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `password` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
@@ -662,7 +711,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   KEY `fk_taikhoan_role` (`role`),
   KEY `fk_taikhoan_level` (`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `user`
@@ -670,9 +719,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `sdt1`, `sdt2`, `role`, `level`, `status`, `ngaycapnhat`, `ip`) VALUES
 (1, 'e10adc3949ba59abbe56e057f20f883e', 'admin@yahoo.com', 'Administrator', b'1', '36/15 Bình Giã, P.13, Q.Tân Bình, Tp.HCM', '0934100286', '', 1, 0, 1, NULL, NULL),
-(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'TRẦN THỊ KIM DUNG', b'0', 'fsadf', '1224324232', '', 2, 3, 0, NULL, NULL),
+(2, 'e10adc3949ba59abbe56e057f20f883e', 'phuc0903@gmail.com', 'TRẦN THỊ KIM DUNG', b'0', 'fsadf', '1224324232', '', 2, 3, 1, NULL, NULL),
 (3, 'e10adc3949ba59abbe56e057f20f883e', 'thinh.nguyenduc2@gameloft.com', 'NGUYỄN ĐỨC THỊNH', b'1', '36/15 Bình Giã, P.13, Q.Tân Bình, Tp.HCM', '0934.100286', NULL, 3, 1, 1, '2011-07-14 15:32:46', NULL),
-(4, 'e10adc3949ba59abbe56e057f20f883e', 'lam.hoson@gameloft.com', 'HỒ SƠN LÂM', b'1', '123 Hồng Đào Phố Thị, Hà Nội', '01234567672', '0934887765', 4, 0, 1, '2011-07-30 15:38:16', NULL),
+(4, 'e10adc3949ba59abbe56e057f20f883e', 'lam.hoson@gameloft.com', 'HỒ SƠN LÂM', b'1', '123 Hồng Đào Phố Thị, Hà Nội', '01234567672', '', 4, 0, 1, '2011-07-10 00:00:00', NULL),
 (5, 'e10adc3949ba59abbe56e057f20f883e', 'phuong.dothithuy@yahoo.com', 'ĐỖ THỊ THỦY PHƯƠNG', b'0', '45/12/8 Phạm Ngọc Thạch, Q.1, Tp.HCM', '0908348399', NULL, 5, 0, 1, '2011-07-27 15:40:10', NULL),
 (6, 'e10adc3949ba59abbe56e057f20f883e', 'ducthinh100286@yahoo.com', 'CAO THÁI SƠN', b'1', '45/12/8 Phạm Ngọc Thạch, Q.1, Tp.HCM', '0908348399', NULL, 3, 1, 1, '2011-07-27 15:40:10', NULL),
 (7, 'e10adc3949ba59abbe56e057f20f883e', 'xinkute@yahoo.com', 'JOHN HONG', b'1', '45/12/8 Phạm Ngọc Thạch, Q.1, Tp.HCM', '0908348399', NULL, 3, 1, 1, '2011-07-27 15:40:10', NULL),
@@ -683,7 +732,9 @@ INSERT INTO `user` (`id`, `password`, `email`, `hoten`, `gioitinh`, `diachi`, `s
 (12, 'e10adc3949ba59abbe56e057f20f883e', '45hh44_DD@yahoo.com', 'THÚY KIỀU', b'1', '45/12/8 Phạm Ngọc Thạch, Q.1, Tp.HCM', '0908348399', NULL, 2, 4, 1, '2011-07-27 15:40:10', NULL),
 (13, 'e10adc3949ba59abbe56e057f20f883e', 'thuy.dongphuong@yahoo.com', 'NGUYỄN THÁI HỌC', b'0', '45/12/8 Phạm Ngọc Thạch, Q.1, Tp.HCM', '0908348399', NULL, 5, 0, 1, '2011-07-27 15:40:10', NULL),
 (14, 'e10adc3949ba59abbe56e057f20f883e', 'nhahangdongkhanh@yahoo.com', 'TRẦN THỊ MỸ ÁI', b'0', '45/12/8 Phạm Ngọc Thạch, Q.1, Tp.HCM', '0908348399', NULL, 3, 1, 1, '2011-07-27 15:40:10', NULL),
-(15, 'e10adc3949ba59abbe56e057f20f883e', '__DD_DD@yahoo.com', 'KARATIMO MISSIBLE', b'0', '45/12/8 Phạm Ngọc Thạch, Q.1, Tp.HCM', '0908348399', NULL, 4, 0, 1, '2011-07-27 15:40:10', NULL);
+(15, 'e10adc3949ba59abbe56e057f20f883e', '__DD_DD@yahoo.com', 'KARATIMO MISSIBLE', b'0', '45/12/8 Phạm Ngọc Thạch, Q.1, Tp.HCM', '0908348399', NULL, 4, 0, 1, '2011-07-27 15:40:10', NULL),
+(18, 'e10adc3949ba59abbe56e057f20f883e', 'hoaphuonhtit@gmail.com', 'VŨ HÒA PHƯƠNG', b'0', '', '0976 937 118', '', 4, 5, 1, '2011-07-10 00:00:00', ''),
+(19, 'e10adc3949ba59abbe56e057f20f883e', 'abc@yahoo.com', 'HỒ SƠN LÂM', b'1', 'Trường CHinh', '1234567890', '', 2, 4, 0, '2011-07-10 00:00:00', '192.168.1.22');
 
 --
 -- Constraints for dumped tables
@@ -756,4 +807,3 @@ ALTER TABLE `thuchi`
 ALTER TABLE `user`
   ADD CONSTRAINT `fk_taikhoan_level` FOREIGN KEY (`level`) REFERENCES `level` (`idlevel`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_taikhoan_role` FOREIGN KEY (`role`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-SET FOREIGN_KEY_CHECKS=1;
