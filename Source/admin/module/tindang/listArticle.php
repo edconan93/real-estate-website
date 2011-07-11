@@ -118,70 +118,78 @@
 				<tr>
 					<td width="30%">
 						<?php
-							//echo mb_strtolower("cần bán nhà gấp 1 căn nhà", 'UTF-8');
-							// $str = "Cần bán nhà";
-							// echo strpos($str, "Cần")>-1?strpos($str, "Cần"):-1;
-							// echo "AAA";
-							$listAllTinDang = TinDangBUS::GetAllTinDang();
-							$listTinDang = $listAllTinDang;
-							$j = 0;
+							$listTinDang = TinDangBUS::GetAllTinDang();
+							
 							if ($tukhoa != -1)
 							{
-								for ($i=0;$i<count($listAllTinDang);$i++)
+								$listTemp = $listTinDang;
+								$j = 0;
+								for ($i=0;$i<count($listTinDang);$i++)
 								{
-									$str1 = mb_strtolower($listAllTinDang[$i]["tieude"], 'UTF-8');
+									$str1 = mb_strtolower($listTinDang[$i]["tieude"], 'UTF-8');
 									$str2 = mb_strtolower($tukhoa, 'UTF-8');
-									// echo $str1;
-									// echo "-";
-									// echo $str2."<br>";
-									$index = strpos($str1, $str1)>-1?strpos($str1, $str1):-1;
-									echo $index;
+									$index = strpos($str1, $str2)>-1?strpos($str1, $str2):-1;
 									if ($index > -1)
-									{
-										$listTinDang[$j++] = $listAllTinDang[$i];
-									}
+										$listTemp[$j++] = $listTinDang[$i];
 								}
+								$listTinDang = $listTemp;
+								for ($k=count($listTinDang)-1;$k>=$j;$k--)
+									unset($listTinDang[$k]);
 							}
-							echo "<br>".$j."<br>";
-							// if ($j != 0)
-							// {
-								// for ($k=count($listAllTinDang)-1;$k>=$j;$k--)
-									// unset($listTinDang[$k]);
-							// }
-							//lam
-							// $str = "Cần bán nhà";
-							// echo strrpos($str, "Cần1")>-1?strrpos($str, "Cần1"):-1;
-							// echo "AAA";
-							/*$listAllTinDang = TinDangBUS::GetAllTinByFilter($tukhoa, $loaidv, $loainha, $tinh, $type);
-							$listAllTinDang = $listAllTinDang;
-							$j = 0;
-							if ($tukhoa != -1)
+							if ($loaidv != -1)
 							{
-								for ($i=0;$i<count($listAllTinDang);$i++)
+								$listTemp = $listTinDang;
+								$j = 0;
+								for ($i=0;$i<count($listTinDang);$i++)
 								{
-									$index = -1;
-									if (strrpos($listAllTinDang[$i]["tieude"], $tukhoa) == TRUE)
-									{
-										$index = strrpos($listAllTinDang[$i]["tieude"], $tukhoa);
-										echo $index;
-									}
-									//$index = (strrpos($listAllTinDang[$i]["tieude"], $tukhoa)==true)?strrpos($listAllTinDang[$i]["tieude"], $tukhoa):-1;
-									if ($index >= 0)
-									{
-										$listAllTinDang[$j++] = $listAllTinDang[$i];
-										echo "<br>THINHHHHHH".$listAllTinDang[$j]["tieude"];
-									}
+									if ($listTinDang[$i]["loaidv"] == $loaidv)
+										$listTemp[$j++] = $listTinDang[$i];
 								}
-								//echo $j;
+								$listTinDang = $listTemp;
+								for ($k=count($listTinDang)-1;$k>=$j;$k--)
+									unset($listTinDang[$k]);
 							}
-							if ($j != 0)
+							if ($loainha != -1)
 							{
-								for ($k=count($listAllTinDang)-1;$k>=$j;$k--)
-									unset($listAllTinDang[$k]);
-							}*/
-							//end
-							//$listAllTinDang = TinDangBUS::GetAllTinByFilter($tukhoa, $loaidv, $loainha, $tinh, $type);
-							echo "<b>Có ".count($listAllTinDang)." mẫu tin.</b>";
+								$listTemp = $listTinDang;
+								$j = 0;
+								for ($i=0;$i<count($listTinDang);$i++)
+								{
+									if ($listTinDang[$i]["loainha"] == $loainha)
+										$listTemp[$j++] = $listTinDang[$i];
+								}
+								$listTinDang = $listTemp;
+								for ($k=count($listTinDang)-1;$k>=$j;$k--)
+									unset($listTinDang[$k]);
+							}
+							if ($tinh != -1)
+							{
+								$listTemp = $listTinDang;
+								$j = 0;
+								for ($i=0;$i<count($listTinDang);$i++)
+								{
+									if ($listTinDang[$i]["tinh"] == $tinh)
+										$listTemp[$j++] = $listTinDang[$i];
+								}
+								$listTinDang = $listTemp;
+								for ($k=count($listTinDang)-1;$k>=$j;$k--)
+									unset($listTinDang[$k]);
+							}
+							if ($type != -2)
+							{
+								$listTemp = $listTinDang;
+								$j = 0;
+								for ($i=0;$i<count($listTinDang);$i++)
+								{
+									if ($listTinDang[$i]["status"] == $type)
+										$listTemp[$j++] = $listTinDang[$i];
+								}
+								$listTinDang = $listTemp;
+								for ($k=count($listTinDang)-1;$k>=$j;$k--)
+									unset($listTinDang[$k]);
+							}
+							
+							echo "<b>Có ".count($listTinDang)." mẫu tin.</b>";
 						?>
 					</td>
 					<td width="70%" align="right">
@@ -255,31 +263,31 @@
 						<td width="90px" align="center">Tình trạng tin</td>
 					</tr>
 					<?php
-						for ($i=0;$i<count($listAllTinDang);$i++)
+						for ($i=0;$i<count($listTinDang);$i++)
 						{
 					?>
 					<tr style="background:<?php echo ($i%2==0) ? "#EFF3FF" : "white"; ?>;">
 						<td align="center"><?php echo $i+1; ?></td>
-						<td align="center"><input type="checkbox" name="cbTinDang" id="cbTinDang" value="<?php echo $listAllTinDang[$i]["id"]; ?>" onclick="Check_Click(this)"></td>
-						<td class="m_name"><?php echo "<a href='index.php?view=article&do=edit&aid=".$listAllTinDang[$i]["id"]."'>".$listAllTinDang[$i]["tieude"]."</a>"; ?></td>
+						<td align="center"><input type="checkbox" name="cbTinDang" id="cbTinDang" value="<?php echo $listTinDang[$i]["id"]; ?>" onclick="Check_Click(this)"></td>
+						<td class="m_name"><?php echo "<a href='index.php?view=article&do=edit&aid=".$listTinDang[$i]["id"]."'>".$listTinDang[$i]["tieude"]."</a>"; ?></td>
 						<?php
-							$loaidv = LoaiDVBUS::GetLoaiDVByID($listAllTinDang[$i]["loaidv"]);
+							$loaidv = LoaiDVBUS::GetLoaiDVByID($listTinDang[$i]["loaidv"]);
 							echo "<td align='center'>".$loaidv[1]."</td>";
-							$loainha = LoaiNhaBUS::getById($listAllTinDang[$i]["loainha"]);
+							$loainha = LoaiNhaBUS::getById($listTinDang[$i]["loainha"]);
 							echo "<td align='center'>".$loainha[1]."</td>";
-							echo "<td>".$listAllTinDang[$i]["sonha"]." ".$listAllTinDang[$i]["duong"].", P.".$listAllTinDang[$i]["phuong"].", Q.".$listAllTinDang[$i]["quan"].", ";
-							$tinh = TinhBUS::getTinhById($listAllTinDang[$i]["tinh"]);
+							echo "<td>".$listTinDang[$i]["sonha"]." ".$listTinDang[$i]["duong"].", P.".$listTinDang[$i]["phuong"].", Q.".$listTinDang[$i]["quan"].", ";
+							$tinh = TinhBUS::getTinhById($listTinDang[$i]["tinh"]);
 							echo $tinh[1]."</td>";
-							$donviTien = DonViTienBUS::selectId($listAllTinDang[$i]["donvitien"]);
-							echo "<td align='right'>".number_format($listAllTinDang[$i]["giaban"])." $donviTien[1]</td>";
-							if ($listAllTinDang[$i]["ngaydang"] != null)
+							$donviTien = DonViTienBUS::selectId($listTinDang[$i]["donvitien"]);
+							echo "<td align='right'>".number_format($listTinDang[$i]["giaban"])." $donviTien[1]</td>";
+							if ($listTinDang[$i]["ngaydang"] != null)
 							{
-								$date = Utils::convertTimeDMY($listAllTinDang[$i]["ngaydang"]);
+								$date = Utils::convertTimeDMY($listTinDang[$i]["ngaydang"]);
 								echo "<td align='center'>".$date."</td>";
 							}
 							else
 								echo "<td></td>";
-							switch ($listAllTinDang[$i]["status"])
+							switch ($listTinDang[$i]["status"])
 							{
 								case 0: // đang chờ duyệt
 									echo "<td align='center' style='color:green;'>Tin chờ duyệt</td>";
