@@ -590,13 +590,15 @@ INSERT INTO `quan` (`id`, `ten`, `idtinh`) VALUES
 DROP TABLE IF EXISTS `quangcao`;
 CREATE TABLE IF NOT EXISTS `quangcao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `hoten` varchar(45) DEFAULT NULL,
-  `sdt` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `diachi` text,
-  `noidung` text,
-  `thoihan` int(11) DEFAULT NULL COMMENT 'thoi han la so thang quang cao ton tai',
-  `status` int(11) DEFAULT NULL COMMENT 'status: 1: available\n0: disable\n2: remove',
+  `chusohuu` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sdt` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `diachi` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `ngaydang` date DEFAULT NULL,
+  `sothang` int(11) DEFAULT NULL COMMENT 'thoi han la so thang quang cao ton tai',
+  `hinhanh` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(200) NOT NULL,
+  `status` tinyint(11) DEFAULT NULL COMMENT 'status: 1-available, 0-disable, -1-remove',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
