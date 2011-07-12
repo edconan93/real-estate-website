@@ -8,9 +8,11 @@ class KhenThuongBUS
     {
         return KhenThuongDAO::insert($iduser,$loai,$khenthuong,$nam);
     }
-    public static function update($id,$iduser,$loai,$khenthuong,$nam)
+    public static function update($iduser,$loai,$khenthuong,$nam)
     {
-        return KhenThuongDAO::update($id,$iduser,$loai,$khenthuong,$nam);
+		if(KhenThuongDAO::selectByIdUser($iduser)==null)
+			return KhenThuongDAO::insert($iduser,$loai,$khenthuong,$nam);
+        return KhenThuongDAO::update($iduser,$loai,$khenthuong,$nam);
     }
     public static function select($offset,$max)
     {
@@ -20,5 +22,9 @@ class KhenThuongBUS
     {
         return KhenThuongDAO::count();
     }
+	public static function selectByIdUser($iduser)
+	{
+		return KhenThuongDAO::selectByIdUser(iduser);
+	}
 }
 ?>
