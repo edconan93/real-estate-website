@@ -112,6 +112,40 @@
 				else
 					objMaSoTin.value = Trim(objMaSoTin.value);;
 			}
+			function setNoiBat(id)
+			{
+				if (confirm("Bạn có chắc muốn thay đổi trạng thái nổi bật của căn hộ này?"))
+				{
+					var tukhoa = document.getElementById("tukhoa").value == "-- Từ khóa --" ? -1 : Trim(document.getElementById("tukhoa").value);
+					var loaidv = document.getElementById("loaidv").value;
+					var loainha = document.getElementById("loainha").value;
+					var tinh = document.getElementById("tinh").value;
+					var type = document.getElementById("type").value;
+					
+					var img = document.getElementById("imgNoiBat").src;
+					var index = img.indexOf("icon_yes.png");
+					var url = "module/tindang/xulytindang.php?action=";
+					if (index > 0)
+						url += "noibat0&idtin=" + id;
+					else
+						url += "noibat1&idtin=" + id;
+					if (tukhoa != -1)
+						url += "&tukhoa=" + tukhoa;
+					if (loaidv != -1)
+						url += "&loaidv=" + loaidv;
+					if (loainha != -1)
+						url += "&loainha=" + loainha;
+					if (tinh != -1)
+						url += "&tinh=" + tinh;
+					if (type != -2)
+						url += "&type=" + type;
+
+					window.location = url;
+					return true;
+				}
+				
+				return false;
+			}
 		</script>
 		<form method="post" name="frmListItem" id="frmListItem">
 			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -251,16 +285,18 @@
 			<div class="list">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr class="title">
-						<td width="30px" align="center">#</td>
-						<td width="30px" align="center">
+						<td width="20px" align="center">#</td>
+						<td width="20px" align="center">
 							<input type="checkbox" onclick="checkAll(this);" /></td>
 						<td align="center">Tiêu đề</td>
-						<td width="90px" align="center">Loại dịch vụ</td>
+						<td width="70px" align="center">Loại dịch vụ</td>
 						<td width="100px" align="center">Loại căn hộ</td>
 						<td align="center">Địa chỉ</td>
 						<td align="center">Giá bán</td>
-						<td width="70px" align="center">Ngày đăng</td>
-						<td width="90px" align="center">Tình trạng tin</td>
+						<td width="60px" align="center">Ngày đăng</td>
+						<td width="80px" align="center">Tình trạng tin</td>
+						<td width="90px" align="center">Đổi trạng thái</td>
+						<td width="40px" align="center">Nổi bật</td>
 					</tr>
 					<?php
 						for ($i=0;$i<count($listTinDang);$i++)
@@ -303,6 +339,17 @@
 									break;
 							}
 						?>
+						<td>
+							<select style="font-size:90%;">
+								<option value="0">Tin chờ duyệt</option>
+								<option value="1">Tin đã duyệt</option>
+								<option value="2">Tin đăng VIP</option>
+								<option value="3">Tin hết hạn</option>
+							</select>
+						</td>
+						<td align="center">
+							<img id="imgNoiBat" style="cursor:pointer;" src="images/icon_<?php echo ($listTinDang[$i]["rank"])?"yes":"no"; ?>.png" onclick="return setNoiBat(<?php echo $listTinDang[$i]["id"]; ?>);">
+						</td>
 					</tr>
 					<?php
 						}

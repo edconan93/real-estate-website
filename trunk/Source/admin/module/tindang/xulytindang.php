@@ -177,7 +177,6 @@
 		$url = $_COOKIE["url"];
 		$url[$length - 1] = 3;
 		header("Location:".$url);
-		//header("Location:../dangtindichvu.php?dangtin=success");
 	}
 	if (isset($_GET["action"]))
 	{
@@ -189,8 +188,35 @@
 				for ($i=0;$i<count($uid);$i++)
 					DichVuBUS::delete($uid[$i]);
 				break;
+			case "noibat1":
+				include ("../../../BUS/TinDangBUS.php");
+				$aid = $_GET["idtin"];
+				TinDangBUS::setTinDangNoiBat($aid, 1);
+				break;
+			case "noibat0":
+				include ("../../../BUS/TinDangBUS.php");
+				$aid = $_GET["idtin"];
+				TinDangBUS::setTinDangNoiBat($aid, 0);
+				break;
 		}
-		$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-1;
-		header("Location:../../index.php?view=article&type=".$type);
+		$tukhoa = isset($_REQUEST["tukhoa"])?$_REQUEST["tukhoa"]:-1;
+		$loaidv = isset($_REQUEST["loaidv"])?$_REQUEST["loaidv"]:-1;
+		$loainha = isset($_REQUEST["loainha"])?$_REQUEST["loainha"]:-1;
+		$tinh = isset($_REQUEST["tinh"])?$_REQUEST["tinh"]:-1;
+		$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-2;
+		$url = "index.php?view=article";
+		
+		if ($tukhoa != -1)
+			$url .= "&tukhoa=".$tukhoa;
+		if ($loaidv != -1)
+			$url .= "&loaidv=".$loaidv;
+		if ($loainha != -1)
+			$url .= "&loainha=".$loainha;
+		if ($tinh != -1)
+			$url .= "&tinh=".$tinh;
+		if ($type != -2)
+			$url .= "&type=".$type;
+		echo ($url);
+		header("Location:../../".$url);
 	}
 ?>

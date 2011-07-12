@@ -11,5 +11,9 @@
 		{
 			return TinDangDAO::GetAllTinDang();
 		}
+		public static function setTinDangNoiBat($aid, $value)
+		{
+			return TinDangDAO::setTinDangNoiBat($aid, $value);
+		}
 	}
 ?>
