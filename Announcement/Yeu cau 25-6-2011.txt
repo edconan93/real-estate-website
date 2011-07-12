@@ -1,2 +1,24 @@
 ﻿http://deepakssn.blogspot.com/2006/06/gmail-php-send-email-using-php-with.html
 http://www.phpclasses.org/blog/package/9/post/1-Sending-email-using-SMTP-servers-of-Gmail-Hotmail-or-Yahoo-with-PHP.html
+http://sotayweb.com/lap-trinh-thiet-ke-website/pro/ky-thuat-lap-trinh-website/item/137-gui-mail-tren-localhost-voi-smtp-cua-gmail.html
+http://sinhvienit.net/@forum/showthread.php?t=3241
+http://sinhvienit.net/@forum/showthread.php?t=25872
+http://stackoverflow.com/questions/3477766/phpmailer-smtp-error-could-not-connect-to-smtp-host
+
+http://www.phpclasses.org/blog/package/9/post/1-Sending-email-using-SMTP-servers-of-Gmail-Hotmail-or-Yahoo-with-PHP.html
+- Gmail
+
+smtp_host: smtp.gmail.com
+smtp_port: 465 or 587
+smtp_ssl: 1
+
+- Hotmail
+
+smtp_host: smtp.live.com
+smtp_port: 25 or 587
+smtp_start_tls: 1
+
+- Yahoo Mail Plus (currently a paid service)
+
+smtp_host: smtp.mail.yahoo.com
+smtp_port: 25
