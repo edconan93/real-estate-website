@@ -30,5 +30,20 @@
 			DataProvider::Close ($cn);
             return $result;
 		}
+		public static function setStatusTinDang($aid, $status)
+		{
+			$strSQL = "	update dichvu set status=$status
+						where id=$aid";
+			
+			$cn = DataProvider::Open ();
+			DataProvider::MoreQuery ($strSQL,$cn);
+			
+			if(mysql_affected_rows () == 0)
+				$result=false;
+			else
+				$result=true;
+			DataProvider::Close ($cn);
+            return $result;
+		}
 	}
 ?>

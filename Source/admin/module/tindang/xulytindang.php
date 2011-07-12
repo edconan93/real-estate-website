@@ -198,6 +198,12 @@
 				$aid = $_GET["idtin"];
 				TinDangBUS::setTinDangNoiBat($aid, 0);
 				break;
+			case "status":
+				include ("../../../BUS/TinDangBUS.php");
+				$aid = $_GET["aid"];
+				$status = $_GET["status"];
+				TinDangBUS::setStatusTinDang($aid, $status);
+				break;
 		}
 		$tukhoa = isset($_REQUEST["tukhoa"])?$_REQUEST["tukhoa"]:-1;
 		$loaidv = isset($_REQUEST["loaidv"])?$_REQUEST["loaidv"]:-1;
@@ -216,7 +222,7 @@
 			$url .= "&tinh=".$tinh;
 		if ($type != -2)
 			$url .= "&type=".$type;
-		echo ($url);
+
 		header("Location:../../".$url);
 	}
 ?>
