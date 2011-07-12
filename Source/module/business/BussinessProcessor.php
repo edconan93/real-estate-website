@@ -157,50 +157,58 @@ class BusinessProcessor
   		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;width:65px;'>Cập Nhật</td>";
   		$strResult.="<td style='padding:4px;' align='center'>Giá</td>";
   		$strResult.="</tr>";
-        for($i=0;$i<count($business);$i++)
-        {
-        $images=HinhAnhBUS::getAllHinhAnhByDichVu($business[$i]['id']);
-        $donviDV=DonviDichVuBUS::selectId($business[$i]['donvidv']);
-        $donviTien=DonviTienBUS::selectId($business[$i]['donvitien']);
-        $loaidv=LoaiDichVuBUS::getById($business[$i]['loaidv']);
-        $tinh=TinhBUS::getTinhById($business[$i]['tinh']);
-        $quan=QuanBUS::getQuanById($business[$i]['quan']);
-        $phuong=PhuongBUS::getPhuongById($business[$i]['phuong']);
-  		$strResult.="<tr>";
-  		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;' width='150px'>";
-		if($images[0]['path']!= null)
+		if(count($business)>0)
 		{
-			$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><img src='../".$images[0]['path']."' width='150px' /></a></td>";
+			for($i=0;$i<count($business);$i++)
+			{
+			$images=HinhAnhBUS::getAllHinhAnhByDichVu($business[$i]['id']);
+			$donviDV=DonviDichVuBUS::selectId($business[$i]['donvidv']);
+			$donviTien=DonviTienBUS::selectId($business[$i]['donvitien']);
+			$loaidv=LoaiDichVuBUS::getById($business[$i]['loaidv']);
+			$tinh=TinhBUS::getTinhById($business[$i]['tinh']);
+			$quan=QuanBUS::getQuanById($business[$i]['quan']);
+			$phuong=PhuongBUS::getPhuongById($business[$i]['phuong']);
+			$strResult.="<tr>";
+			$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;' width='150px'>";
+			if($images[0]['path']!= null)
+			{
+				$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><img src='../".$images[0]['path']."' width='150px' /></a></td>";
+			}
+			else
+			{
+				
+				$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><img src='../images/upload/minhhoa/minhhoa.png' width='150px' /></a></td>";
+			}
+			$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>";
+			$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><b style='color:blue;'>".$business[$i]['tieude']."</b></a><br>";
+			$strResult.="Vị trí: ".$business[$i]['duong'].", ".$phuong['ten'].", ".$quan['ten'].", ".$tinh['ten']."<br>";
+			$strResult.="Diện tích: ".$business[$i]['dai']." X ".$business[$i]['rong']."<br>";
+			$strResult.="Số phòng ngủ:".$business[$i]['sophongngu']."<br>";
+			$strResult.="Tầng: ".$business[$i]['tang']."<br><br>";
+			if($business[$i]['khuyenmai']!=null)
+			   $strResult.="<img src='../images/icon_promotion.gif' /> <span style='position:relative; top:-6px;'>".$business[$i]['khuyenmai']."</span>";
+			$strResult.="</td>";
+			$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>".$loaidv['ten']."</td>";
+			if($business[$i]['ngaydang'] != null)
+				$ngaycapnhat=Utils::convertTimeDMY($business[$i]['ngaydang']);
+			else
+				$ngaycapnhat=date('Y-m-d');
+			$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'><b style=''>".$ngaycapnhat."</br></td>";
+			if($business[$i]['giaban'] !=null)
+			{
+				$money = Utils::convert_Money($business[$i]['giaban']);
+			}
+			else
+				$money = "0,00";
+			$strResult.="<td style='padding:4px;'>".$money."<br>".$donviTien['ten']."/".$donviDV['ten']."</td>";
+			$strResult.="</tr>";
+			}
 		}
 		else
 		{
-			
-			$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><img src='../images/upload/minhhoa/minhhoa.png' width='150px' /></a></td>";
+			echo "<tr><td align='center' colspan='3'><h3 style='color: #336699; font-size: 14px;margin: 0;padding: 0;'>Chưa có tin đăng !</h3></td></tr>";
+			echo "<tr><td></td></tr>";
 		}
-  		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>";
-  		$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><b style='color:blue;'>".$business[$i]['tieude']."</b></a><br>";
-  		$strResult.="Vị trí: ".$business[$i]['duong'].", ".$phuong['ten'].", ".$quan['ten'].", ".$tinh['ten']."<br>";
-        $strResult.="Diện tích: ".$business[$i]['dai']." X ".$business[$i]['rong']."<br>";
-  		$strResult.="Số phòng ngủ:".$business[$i]['sophongngu']."<br>";
-        $strResult.="Tầng: ".$business[$i]['tang']."<br><br>";
-        if($business[$i]['khuyenmai']!=null)
-           $strResult.="<img src='../images/icon_promotion.gif' /> <span style='position:relative; top:-6px;'>".$business[$i]['khuyenmai']."</span>";
-  		$strResult.="</td>";
-  		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>".$loaidv['ten']."</td>";
-		if($business[$i]['ngaydang'] != null)
-			$ngaycapnhat=Utils::convertTimeDMY($business[$i]['ngaydang']);
-		else
-			$ngaycapnhat=date('Y-m-d');
-        $strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>".$ngaycapnhat."</td>";
-		if($business[$i]['giaban'] !=null)
-		{
-			$money = Utils::convert_Money($business[$i]['giaban']);
-		}
-		else
-			$money = "0,00";
-  		$strResult.="<td style='padding:4px;'>".$money."<br>".$donviTien['ten']."/".$donviDV['ten']."</td>";
-  		$strResult.="</tr>";
-        }
         $strResult.="</table>";
         $strResult.="<script>$(\"table[id='tblist'] tr:odd\").css('background-color', '#EFEFEF');</script>";
        

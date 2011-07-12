@@ -54,14 +54,14 @@ function xoatindang(idtin)
 								<div class="mid_content">
 									<b>
 										<?php
-											if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
-												echo "Có 1 tin đã duyệt.";
-											else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
-												echo "Có 3 tin chờ duyệt.";
-											else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
-												echo "Có 2 tin đã hết hạn.";
-											else
-												echo "Có 6 tin đã đăng.";
+											// if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 1)
+												// echo "Có 1 tin đã duyệt.";
+											// else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 2)
+												// echo "Có 3 tin chờ duyệt.";
+											// else if(isset($_REQUEST["type"]) && $_REQUEST["type"] == 3)
+												// echo "Có 2 tin đã hết hạn.";
+											// else
+												// echo "Có 6 tin đã đăng.";
 										?>
 									</b>
 									<div class="bg_r" style="border: 1px solid rgb(172, 172, 172); padding: 0px; z-index: auto;">
