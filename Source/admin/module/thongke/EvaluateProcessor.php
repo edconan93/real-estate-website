@@ -7,11 +7,11 @@ require_once("../Utils/Utils.php");
 <?php
 class EvaluateProcessor
 {
-    public static function display($nhanvien,$email,$gioitinh,$capdo,$thanhtich,$khenthuong)
+    public static function display($index,$id,$nhanvien,$email,$gioitinh,$capdo,$thanhtich,$khenthuong)
     {
-            $str="";
+            $str="<input type='hidden' name='txtID[]' value='".$id."'>";
             $str.="<tr>";
-    		$str.='<td align="center">1</td>';
+    		$str.='<td align="center">'.$index.'</td>';
     		$str.='<td class="m_name"><a href="index.php?view=user&do=edit&uid=1">'.$nhanvien.'</a></td>';
     		$str.='<td style="color:blue;">'.$email.'</td>';
     		$str.='<td align="center">';
@@ -22,14 +22,24 @@ class EvaluateProcessor
             $str.='</td>';
     		$str.='<td align="center">'.$capdo.'</td>';
     		$str.='<td align="center">';
-    		$str.='<select>';
-    		$str.='<option value="1">Trung bình</option>';
-    		$str.='<option value="2">Khá</option>';
-    		$str.='<option value="3">Xuất sắc</option>';
+    		$str.='<select id="cbbLoai_'.$id.'">';
+            $str.='<option value="-1" selected>---Chọn thành tích---</option>';
+            if($thanhtich==1)
+    		  $str.='<option value="1" selected>Trung bình</option>';
+              else
+              $str.='<option value="1">Trung bình</option>';
+            if($thanhtich==2)
+    		  $str.='<option value="2" selected>Khá</option>';
+              else
+              $str.='<option value="2">Khá</option>';
+            if($thanhtich==3)
+    		  $str.='<option value="3" selected>Xuất sắc</option>';
+              else
+              $str.='<option value="3">Xuất sắc</option>';
     		$str.='</select>';
     		$str.='</td>';
     		$str.='<td>';
-    		$str.='<input type="text" style="width:300px;" value="'.$khenthuong.'" />';
+    		$str.='<input id="txtKhenThuong_'.$id.'" type="text" style="width:300px;" value="'.$khenthuong.'" />';
     		$str.='</td>';
     		$str.='</tr>';  
             return $str;  
@@ -63,8 +73,8 @@ class EvaluateProcessor
         $maxPages = 25;      
         $offset=($curPage-1)*$maxItems; 
     
-        $users=UsersBUS::getAllBySQL("select * from user where role=3 and user.id not in (select id from khenthuong)  limit $offset,$maxItems");
-        $totalUsers=UsersBUS::countAllBySQL("select count(*) from user where role=3 and user.id not in (select id from khenthuong)");
+        $users=UsersBUS::getAllBySQL("select * from user where role=3 and user.id not in (select iduser from khenthuong)  limit $offset,$maxItems");
+        $totalUsers=UsersBUS::countAllBySQL("select count(*) from user where role=3 and user.id not in (select iduser from khenthuong)");
         $maxItems=$maxItems-count($users);
         $offset=$offset- $totalUsers;
         if($offset<0)
@@ -73,14 +83,17 @@ class EvaluateProcessor
         $totalEvaluate=KhenThuongBUS::count();
         $display="";
         $display.=EvaluateProcessor::displayHeader();
+        $index=0;
         for($i=0;$i<count($users);$i++)
         {
-            $display.=EvaluateProcessor::display($users[$i]['hoten'],$users[$i]['email'],$users[$i]['gioitinh'],$users[$i]['level'],"","");
+            $index++;
+            $display.=EvaluateProcessor::display($index,$users[$i]['id'],$users[$i]['hoten'],$users[$i]['email'],$users[$i]['gioitinh'],$users[$i]['level'],-1,"");
         } 
         for($i=0;$i<count($evaluate);$i++)
         {
-            $user=UsersBUS::GetUserByID($users[$i]['id']);
-            $display.=EvaluateProcessor::display($user['hoten'],$user['email'],$user['gioitinh'],$user['level'],$evaluate[$i]['loai'],$evaluate[$i]['khenthuong']);
+            $index++;
+            $user=UsersBUS::GetUserByID($evaluate[$i]['iduser']);
+            $display.=EvaluateProcessor::display($index,$evaluate[$i]['iduser'],$user['hoten'],$user['email'],$user['gioitinh'],$user['level'],$evaluate[$i]['loai'],$evaluate[$i]['thuong']);
         }
         $display.=EvaluateProcessor::displayFooter();
    
@@ -91,6 +104,13 @@ class EvaluateProcessor
 if(isset($_REQUEST['action'])&&$_REQUEST['action']=='show')
 {
     
+}
+elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='save')
+{
+    $id=$_REQUEST['id'];
+    $loai=$_REQUEST['loai'];
+    $khenthuong=$_REQUEST['khenthuong'];
+    KhenThuongBUS::update($id,$loai,$khenthuong,date('Y'));
 }
 else
 {

@@ -20,13 +20,13 @@
 			<a href="" id="aSave">
 				<img src="images/export_excel.png" alt="Xuất Excel" border="0" title="Xuất Excel" /><br />Xuất Excel</a></div>
 		<div class="icon">
-			<a href="#" id="aSave">
+			<a href="#" id="btnSave">
 				<img src="images/icon_32_apply.png" alt="Lưu" border="0" title="Lưu" /><br />Lưu</a></div>
 		<br class="clr" />
 	</div>
 	<div class="bl"></div>
 	<div class="br"></div>
-	<div class="bm"></div>
+	<div class="bm" id="dvTemp"></div>
 </div>
 <div id="listItem" style="margin:10px">
     <div class="tl"></div>
@@ -61,6 +61,25 @@
                         $('#btnExport').attr("href","module/thongke/HouseProcessor.php?view=statistic&do=house&action=export&loaidv="+type+"&page=1")
                     }
                     });
+                $('#btnSave').click(function(){
+                    var url="module/thongke/EvaluateProcessor.php";
+                    
+                     $.each($("input[name='txtID[]']"), function() {
+                        var id=$(this).val();
+                        var loai=$("#cbbLoai_"+id).val();
+                        var khenthuong=$("#txtKhenThuong_"+id).val();
+                        if(loai!="-1")
+                        {
+                            var params = { 'view':'statistic', 'do':'evaluate','action':'save','id':id,'loai':loai,'khenthuong':khenthuong};
+                            $('#dvTemp').load(url,params,function(){
+                              url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
+                $("#dsNhanvien").load(url); 
+                            });
+                        }                    
+                        });
+                //url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
+                //$("#dsNhanvien").load(url);
+                });
                 });
     </script>
     <div class="mid">
