@@ -51,7 +51,8 @@ class SMTP {
    *  SMTP server port
    *  @var int
    */
-  public $SMTP_PORT = 25;
+ // public $SMTP_PORT = 25;
+  public $SMTP_PORT = 465;
 
   /**
    *  SMTP reply line ending
@@ -116,7 +117,10 @@ class SMTP {
   public function Connect($host, $port = 0, $tval = 30) {
     // set the error val to null so there is no confusion
     $this->error = null;
-
+	// $host="ssl://smtp.gmail.com";
+	// $port=465;
+echo "<br>host=".$host;
+echo "<br>port=".$port."<br>";
     // make sure we are __not__ connected
     if($this->connected()) {
       // already connected, generate error
@@ -134,6 +138,8 @@ class SMTP {
                                  $errno,   // error number if any
                                  $errstr,  // error message if any
                                  $tval);   // give up after ? secs
+	 
+echo "<br>conn=".$this->smtp_conn."<br>";								 
     // verify we connected properly
     if(empty($this->smtp_conn)) {
       $this->error = array("error" => "Failed to connect to server",
