@@ -3,11 +3,10 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 11, 2011 at 04:52 PM
+-- Generation Time: Jul 12, 2011 at 09:37 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
@@ -17,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `QLDO`
+-- Database: `qldo`
 --
 
 -- --------------------------------------------------------
@@ -26,7 +25,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `dichvu`
 --
 
-DROP TABLE IF EXISTS `dichvu`;
 CREATE TABLE IF NOT EXISTS `dichvu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tieude` text COLLATE utf8_unicode_ci NOT NULL,
@@ -101,7 +99,6 @@ INSERT INTO `dichvu` (`id`, `tieude`, `mota`, `chusohuu`, `phuong`, `quan`, `tin
 -- Table structure for table `dichvuvip`
 --
 
-DROP TABLE IF EXISTS `dichvuvip`;
 CREATE TABLE IF NOT EXISTS `dichvuvip` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iddichvu` int(11) DEFAULT NULL,
@@ -131,7 +128,6 @@ INSERT INTO `dichvuvip` (`id`, `iddichvu`, `noidung`, `ngayguitin`, `ngaynangcap
 -- Table structure for table `dichvu_tienich`
 --
 
-DROP TABLE IF EXISTS `dichvu_tienich`;
 CREATE TABLE IF NOT EXISTS `dichvu_tienich` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idcanho` int(11) DEFAULT NULL,
@@ -187,7 +183,6 @@ INSERT INTO `dichvu_tienich` (`id`, `idcanho`, `idtienich`) VALUES
 -- Table structure for table `donvidichvu`
 --
 
-DROP TABLE IF EXISTS `donvidichvu`;
 CREATE TABLE IF NOT EXISTS `donvidichvu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -209,7 +204,6 @@ INSERT INTO `donvidichvu` (`id`, `ten`) VALUES
 -- Table structure for table `donvitien`
 --
 
-DROP TABLE IF EXISTS `donvitien`;
 CREATE TABLE IF NOT EXISTS `donvitien` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -232,7 +226,6 @@ INSERT INTO `donvitien` (`id`, `ten`, `tigia`) VALUES
 -- Table structure for table `hinhanh`
 --
 
-DROP TABLE IF EXISTS `hinhanh`;
 CREATE TABLE IF NOT EXISTS `hinhanh` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `path` text COLLATE utf8_unicode_ci,
@@ -275,7 +268,6 @@ INSERT INTO `hinhanh` (`id`, `path`, `iddichvu`) VALUES
 -- Table structure for table `huongnha`
 --
 
-DROP TABLE IF EXISTS `huongnha`;
 CREATE TABLE IF NOT EXISTS `huongnha` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -303,7 +295,6 @@ INSERT INTO `huongnha` (`id`, `ten`) VALUES
 -- Table structure for table `khanang`
 --
 
-DROP TABLE IF EXISTS `khanang`;
 CREATE TABLE IF NOT EXISTS `khanang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -329,7 +320,6 @@ INSERT INTO `khanang` (`id`, `ten`) VALUES
 -- Table structure for table `khenthuong`
 --
 
-DROP TABLE IF EXISTS `khenthuong`;
 CREATE TABLE IF NOT EXISTS `khenthuong` (
   `id` int(11) NOT NULL,
   `iduser` int(11) DEFAULT NULL,
@@ -351,7 +341,6 @@ CREATE TABLE IF NOT EXISTS `khenthuong` (
 -- Table structure for table `level`
 --
 
-DROP TABLE IF EXISTS `level`;
 CREATE TABLE IF NOT EXISTS `level` (
   `idlevel` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
@@ -376,7 +365,6 @@ INSERT INTO `level` (`idlevel`, `ten`, `chitiet`) VALUES
 -- Table structure for table `lienhe`
 --
 
-DROP TABLE IF EXISTS `lienhe`;
 CREATE TABLE IF NOT EXISTS `lienhe` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hoten` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -403,7 +391,6 @@ INSERT INTO `lienhe` (`id`, `hoten`, `sdt`, `email`, `diachi`, `noidung`, `ngayg
 -- Table structure for table `loaidichvu`
 --
 
-DROP TABLE IF EXISTS `loaidichvu`;
 CREATE TABLE IF NOT EXISTS `loaidichvu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -426,7 +413,6 @@ INSERT INTO `loaidichvu` (`id`, `ten`) VALUES
 -- Table structure for table `loainha`
 --
 
-DROP TABLE IF EXISTS `loainha`;
 CREATE TABLE IF NOT EXISTS `loainha` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -450,7 +436,6 @@ INSERT INTO `loainha` (`id`, `ten`) VALUES
 -- Table structure for table `nhanvien_quyenhan`
 --
 
-DROP TABLE IF EXISTS `nhanvien_quyenhan`;
 CREATE TABLE IF NOT EXISTS `nhanvien_quyenhan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iduser` int(11) NOT NULL,
@@ -471,7 +456,6 @@ CREATE TABLE IF NOT EXISTS `nhanvien_quyenhan` (
 -- Table structure for table `phuong`
 --
 
-DROP TABLE IF EXISTS `phuong`;
 CREATE TABLE IF NOT EXISTS `phuong` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` text COLLATE utf8_unicode_ci NOT NULL,
@@ -541,7 +525,6 @@ INSERT INTO `phuong` (`id`, `ten`, `idquan`) VALUES
 -- Table structure for table `quan`
 --
 
-DROP TABLE IF EXISTS `quan`;
 CREATE TABLE IF NOT EXISTS `quan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` text COLLATE utf8_unicode_ci NOT NULL,
@@ -587,7 +570,6 @@ INSERT INTO `quan` (`id`, `ten`, `idtinh`) VALUES
 -- Table structure for table `quangcao`
 --
 
-DROP TABLE IF EXISTS `quangcao`;
 CREATE TABLE IF NOT EXISTS `quangcao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `chusohuu` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -613,7 +595,6 @@ CREATE TABLE IF NOT EXISTS `quangcao` (
 -- Table structure for table `quyenhansudung`
 --
 
-DROP TABLE IF EXISTS `quyenhansudung`;
 CREATE TABLE IF NOT EXISTS `quyenhansudung` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` text COLLATE utf8_unicode_ci NOT NULL,
@@ -638,7 +619,6 @@ INSERT INTO `quyenhansudung` (`id`, `ten`, `chitiet`) VALUES
 -- Table structure for table `role`
 --
 
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -662,7 +642,6 @@ INSERT INTO `role` (`id`, `ten`) VALUES
 -- Table structure for table `thuchi`
 --
 
-DROP TABLE IF EXISTS `thuchi`;
 CREATE TABLE IF NOT EXISTS `thuchi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sotien` float NOT NULL,
@@ -691,7 +670,6 @@ INSERT INTO `thuchi` (`id`, `sotien`, `donvi`, `congviec`, `ngay`, `nhanvien`, `
 -- Table structure for table `tienich`
 --
 
-DROP TABLE IF EXISTS `tienich`;
 CREATE TABLE IF NOT EXISTS `tienich` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -718,7 +696,6 @@ INSERT INTO `tienich` (`id`, `ten`) VALUES
 -- Table structure for table `tinh`
 --
 
-DROP TABLE IF EXISTS `tinh`;
 CREATE TABLE IF NOT EXISTS `tinh` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -748,7 +725,6 @@ INSERT INTO `tinh` (`id`, `ten`) VALUES
 -- Table structure for table `tinhtrangphaply`
 --
 
-DROP TABLE IF EXISTS `tinhtrangphaply`;
 CREATE TABLE IF NOT EXISTS `tinhtrangphaply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -775,7 +751,6 @@ INSERT INTO `tinhtrangphaply` (`id`, `ten`) VALUES
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `password` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
@@ -888,4 +863,3 @@ ALTER TABLE `quan`
 ALTER TABLE `thuchi`
   ADD CONSTRAINT `fk_thuchi_donvi` FOREIGN KEY (`donvi`) REFERENCES `donvitien` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_thuchi_user` FOREIGN KEY (`nhanvien`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-SET FOREIGN_KEY_CHECKS=1;
