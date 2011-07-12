@@ -146,6 +146,67 @@
 				
 				return false;
 			}
+			function changeStatus(objThis, oldvalue, newvalue, idtin)
+			{
+				switch (objThis.value)
+				{
+					case "0":
+						document.getElementById(objThis.id).style.color = "green";
+						break;
+					case "1":
+						document.getElementById(objThis.id).style.color = "blue";
+						break;
+					case "2":
+						document.getElementById(objThis.id).style.color = "#B20751";
+						break;
+					case "3":
+						document.getElementById(objThis.id).style.color = "red";
+						break;
+				}
+				if (confirm("Bạn có chắc muốn thay đổi trạng thái tin đăng này?"))
+				{
+					var tukhoa = document.getElementById("tukhoa").value == "-- Từ khóa --" ? -1 : Trim(document.getElementById("tukhoa").value);
+					var loaidv = document.getElementById("loaidv").value;
+					var loainha = document.getElementById("loainha").value;
+					var tinh = document.getElementById("tinh").value;
+					var type = document.getElementById("type").value;
+					
+					var url = "module/tindang/xulytindang.php?action=status&aid=" + idtin + "&status=" + newvalue;
+					
+					if (tukhoa != -1)
+						url += "&tukhoa=" + tukhoa;
+					if (loaidv != -1)
+						url += "&loaidv=" + loaidv;
+					if (loainha != -1)
+						url += "&loainha=" + loainha;
+					if (tinh != -1)
+						url += "&tinh=" + tinh;
+					if (type != -2)
+						url += "&type=" + type;
+					
+					window.location = url;
+					return true;
+				}
+
+				document.getElementById(objThis.id).selectedIndex = oldvalue;
+				switch (oldvalue)
+				{
+					case 0:
+						document.getElementById(objThis.id).style.color = "green";
+						break;
+					case 1:
+						document.getElementById(objThis.id).style.color = "blue";
+						break;
+					case 2:
+						document.getElementById(objThis.id).style.color = "#B20751";
+						break;
+					case 3:
+						document.getElementById(objThis.id).style.color = "red";
+						break;
+				}
+				
+				return false;
+			}
 		</script>
 		<form method="post" name="frmListItem" id="frmListItem">
 			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -293,10 +354,10 @@
 						<td width="100px" align="center">Loại căn hộ</td>
 						<td align="center">Địa chỉ</td>
 						<td align="center">Giá bán</td>
-						<td width="60px" align="center">Ngày đăng</td>
-						<td width="80px" align="center">Tình trạng tin</td>
-						<td width="90px" align="center">Đổi trạng thái</td>
-						<td width="40px" align="center">Nổi bật</td>
+						<td width="70px" align="center">Ngày đăng</td>
+						<td width="90px" align="center">Tình trạng tin</td>
+						<!--<td width="90px" align="center">Đổi trạng thái</td>
+						<td width="50px" align="center">Nổi bật</td>-->
 					</tr>
 					<?php
 						for ($i=0;$i<count($listTinDang);$i++)
@@ -323,33 +384,50 @@
 							}
 							else
 								echo "<td></td>";
+							// switch ($listTinDang[$i]["status"])
+							// {
+								// case 0: // đang chờ duyệt
+									// echo "<td align='center' style='color:green;'>Tin chờ duyệt</td>";
+									// break;
+								// case 1: // đã duyệt đăng miễn phí
+									// echo "<td align='center' style='color:blue;'>Tin đã duyệt</td>";
+									// break;
+								// case 2: // tin vip
+									// echo "<td align='center' style='color:#B20751; font-weight:bold;'>Tin đăng VIP</td>";
+									// break;
+								// case 3: // tin hết hạn
+									// echo "<td align='center' style='color:red;'>Tin hết hạn</td>";
+									// break;
+							// }
+							$str = "<td><select id='status[$i]' style='font-size:96%;color:";
 							switch ($listTinDang[$i]["status"])
 							{
 								case 0: // đang chờ duyệt
-									echo "<td align='center' style='color:green;'>Tin chờ duyệt</td>";
+									$str .= "green";
 									break;
 								case 1: // đã duyệt đăng miễn phí
-									echo "<td align='center' style='color:blue;'>Tin đã duyệt</td>";
+									$str .= "blue";
 									break;
 								case 2: // tin vip
-									echo "<td align='center' style='color:#B20751; font-weight:bold;'>Tin đăng VIP</td>";
+									$str .= "#B20751";
 									break;
 								case 3: // tin hết hạn
-									echo "<td align='center' style='color:red;'>Tin hết hạn</td>";
+									$str .= "red";
 									break;
 							}
+							// $str .= ";' onchange='return changeStatus(this.id, ".$listTinDang[$i]["id"].", this, ".$listTinDang[$i]["status"].");'>";
+							$str .= ";' onchange='return changeStatus(this, ".$listTinDang[$i]["status"].", this.value, ".$listTinDang[$i]["id"].")';>";
+							echo $str;
 						?>
-						<td>
-							<select style="font-size:90%;">
-								<option value="0">Tin chờ duyệt</option>
-								<option value="1">Tin đã duyệt</option>
-								<option value="2">Tin đăng VIP</option>
-								<option value="3">Tin hết hạn</option>
+								<option value="0" <?php echo $listTinDang[$i]["status"]==0?"selected":"" ?> style="color:green;">Tin chờ duyệt</option>
+								<option value="1" <?php echo $listTinDang[$i]["status"]==1?"selected":"" ?> style="color:blue;">Tin đã duyệt</option>
+								<option value="2" <?php echo $listTinDang[$i]["status"]==2?"selected":"" ?> style="color:#B20751;">Tin đăng VIP</option>
+								<option value="3" <?php echo $listTinDang[$i]["status"]==3?"selected":"" ?> style="color:red;">Tin hết hạn</option>
 							</select>
 						</td>
-						<td align="center">
+						<!--<td align="center">
 							<img id="imgNoiBat" style="cursor:pointer;" src="images/icon_<?php echo ($listTinDang[$i]["rank"])?"yes":"no"; ?>.png" onclick="return setNoiBat(<?php echo $listTinDang[$i]["id"]; ?>);">
-						</td>
+						</td>-->
 					</tr>
 					<?php
 						}
