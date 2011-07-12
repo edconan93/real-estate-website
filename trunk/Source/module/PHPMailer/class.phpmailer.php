@@ -37,7 +37,7 @@
  * @version $Id: class.phpmailer.php 447 2009-05-25 01:36:38Z codeworxtech $
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-echo "aaaaaaaaaaaaaa";
+
 if (version_compare(PHP_VERSION, '5.0.0', '<') ) exit("Sorry, this version of PHPMailer will only run on PHP version 5 or greater!\n");
 
 class PHPMailer {
@@ -177,13 +177,15 @@ class PHPMailer {
    * Hosts will be tried in order.
    * @var string
    */
-  public $Host          = 'localhost';
+  public $Host          = "ssl://smtp.gmail.com";
+  // public $Host          = 'localhost';
 
   /**
    * Sets the default SMTP server port.
    * @var int
    */
-  public $Port          = 25;
+  // public $Port          = 25;
+  public $Port          = 465;
 
   /**
    * Sets the SMTP HELO of the message (Default is $Hostname).
