@@ -22,7 +22,7 @@ class MessageTypeProcessor
         $business = null;
         if(isset($_REQUEST['page']))
             $curPage=$_REQUEST['page'];
-        $maxItems = 2;
+        $maxItems = 5;
 	    $maxPages = 25;
         $offset=($curPage-1)*$maxItems; 
         if(isset($_REQUEST['type']))
