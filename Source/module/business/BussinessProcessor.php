@@ -24,7 +24,7 @@ class BusinessProcessor
         $business = null; 
         if(isset($_REQUEST['page']))
             $curPage=$_REQUEST['page'];
-        $maxItems = 3;
+        $maxItems = 5;
 	    $maxPages = 25;      
         $offset=($curPage-1)*$maxItems; 
         if(isset($_REQUEST['loaidv']))
@@ -57,7 +57,7 @@ class BusinessProcessor
         $curPage=1;      
         if(isset($_REQUEST['page']))
               $curPage=$_REQUEST['page'];
-        $maxItems = 3;
+        $maxItems = 5;
     	$maxPages = 25;      
         $offset=($curPage-1)*$maxItems; 
         $strCountSQL=str_replace("*"," count(*) ",$strSQL);
@@ -153,8 +153,8 @@ class BusinessProcessor
        	$strResult.= "<tr style='height:36px; font-weight:bold; font-size:13px; background:#8BC5F4;'>";
   		$strResult.= "<td style='border-right:solid 1px #D3D3D3; padding:4px;' align='center'>Hình Ảnh</td>";
         $strResult.= "<td style='border-right:solid 1px #D3D3D3; padding:4px;'>Mô Tả</td>";
-  		$strResult.= "<td style='border-right:solid 1px #D3D3D3; padding:4px;'>Loại Hình</td>";
-  		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>Ngày Cập Nhật</td>";
+  		$strResult.= "<td style='border-right:solid 1px #D3D3D3; padding:4px;width:65px;'>Loại Hình</td>";
+  		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;width:65px;'>Cập Nhật</td>";
   		$strResult.="<td style='padding:4px;' align='center'>Giá</td>";
   		$strResult.="</tr>";
         for($i=0;$i<count($business);$i++)
@@ -168,7 +168,15 @@ class BusinessProcessor
         $phuong=PhuongBUS::getPhuongById($business[$i]['phuong']);
   		$strResult.="<tr>";
   		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;' width='150px'>";
-  		$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><img src='../".$images[0]['path']."' width='150px' /></a></td>";
+		if($images[0]['path']!= null)
+		{
+			$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><img src='../".$images[0]['path']."' width='150px' /></a></td>";
+		}
+		else
+		{
+			
+			$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><img src='../images/upload/minhhoa/minhhoa.png' width='150px' /></a></td>";
+		}
   		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>";
   		$strResult.="<a href='chitietdiaoc.php?iddichvu=".$business[$i]['id']."'><b style='color:blue;'>".$business[$i]['tieude']."</b></a><br>";
   		$strResult.="Vị trí: ".$business[$i]['duong'].", ".$phuong['ten'].", ".$quan['ten'].", ".$tinh['ten']."<br>";
@@ -179,8 +187,18 @@ class BusinessProcessor
            $strResult.="<img src='../images/icon_promotion.gif' /> <span style='position:relative; top:-6px;'>".$business[$i]['khuyenmai']."</span>";
   		$strResult.="</td>";
   		$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>".$loaidv['ten']."</td>";
-        $strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>".$business[$i]['ngaydang']."</td>";
-  		$strResult.="<td style='padding:4px;'>".$business[$i]['giaban']."<br>".$donviTien['ten']."/".$donviDV['ten']."</td>";
+		if($business[$i]['ngaydang'] != null)
+			$ngaycapnhat=Utils::convertTimeDMY($business[$i]['ngaydang']);
+		else
+			$ngaycapnhat=date('Y-m-d');
+        $strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>".$ngaycapnhat."</td>";
+		if($business[$i]['giaban'] !=null)
+		{
+			$money = Utils::convert_Money($business[$i]['giaban']);
+		}
+		else
+			$money = "0,00";
+  		$strResult.="<td style='padding:4px;'>".$money."<br>".$donviTien['ten']."/".$donviDV['ten']."</td>";
   		$strResult.="</tr>";
         }
         $strResult.="</table>";

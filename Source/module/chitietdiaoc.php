@@ -364,7 +364,12 @@
 												Giá : <?php 
                                                  $donviDV=DonviDichVuBUS::selectId($business['donvidv']);
                                                  $donviTien=DonviTienBUS::selectId($business['donvitien']);
-                                                 echo $business['giaban']." ".$donviTien['ten']."/".$donviDV['ten'];
+												 if($business['giaban'] != null)
+													{
+														$money = Utils::convert_Money($business['giaban']);
+													}
+													else $money = "0,00";
+                                                 echo $money." ".$donviTien['ten']."/".$donviDV['ten'];
                                                  ?></div>
 											<div class="contact">
 												<div class="registerBuy">
@@ -412,7 +417,18 @@
 											</tr>
 											<tr style="height:26px; background:#F1F1F1;">
 												<td>Giá căn hộ:</td>
-												<td><b><?php echo $business['giaban']; echo ' '.$donvitien['ten'];?></b></td>
+												<td><b>
+												<?php 
+													include_once("Utils/Utils.php");
+													if($business['giaban'] != null)
+													{
+														$money = Utils::convert_Money($business['giaban']);
+													}
+													else $money = "0,00";
+													echo $money;
+													echo ' '.$donvitien['ten'];
+												?>
+												</b></td>
 												<td>Loại nhà:</td>
 												<td><b><?php echo $loainha['ten'];?></b></td>
 												<td>Số phòng tắm:</td>
