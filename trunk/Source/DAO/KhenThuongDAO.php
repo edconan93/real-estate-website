@@ -56,5 +56,23 @@ class KhenThuongDAO
             return null;
         return mysql_fetch_row($result,MYSQL_BOTH);
     }
+    public static function selectByUserLevel($offset,$max,$level)
+    {
+        $strSQL="select * from khenthuong,user where khenthuong.iduser=user.id and user.level=$level limit $offset,$max";
+         $result = DataProvider::Query($strSQL);
+         if(mysql_num_rows($result)==0)
+				return null;
+         while($row=mysql_fetch_row($result,MYSQL_BOTH))
+             $return[]=$row;
+         return $return;
+    }
+    public static function countByUserLevel($level)
+    {
+        $strSQL="select count(*) from khenthuong,user where khenthuong.iduser=user.id and user.level=$level";
+        $result = DataProvider::Query($strSQL);
+        if(mysql_num_rows($result)==0)
+            return null;
+        return mysql_fetch_row($result,MYSQL_BOTH);
+    }
 }
 ?>

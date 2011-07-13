@@ -44,11 +44,11 @@ class EvaluateProcessor
     		$str.='</tr>';  
             return $str;  
     }
-    public static function displayHeader()
+    public static function displayHeader($numRow)
     {
         $str="";
         $str.='<table align="center" border="0" cellspacing="0" cellpadding="0">';
-        $str.='<tr><td colspan="7"><b>Có 2 mẫu tin</b></td></tr>';
+        $str.='<tr><td colspan="7"><b>Có '.$numRow.' mẫu tin</b></td></tr>';
 		$str.='<tr class="title">';
 		$str.='<td width="30px" align="center">#</td>';
 		$str.='<td align="center">Nhân viên</td>';
@@ -64,7 +64,7 @@ class EvaluateProcessor
     {
         return '</table>';
     }
-    public static function load( $curPage)
+    public static function load( $curPage,$level)
     {  
         $totalItems =null;  
         $business = null; 
@@ -72,17 +72,33 @@ class EvaluateProcessor
         $maxItems = $constMaxItem;
         $maxPages = 25;      
         $offset=($curPage-1)*$maxItems; 
-    
-        $users=UsersBUS::getAllBySQL("select * from user where role=3 and user.id not in (select iduser from khenthuong)  limit $offset,$maxItems");
-        $totalUsers=UsersBUS::countAllBySQL("select count(*) from user where role=3 and user.id not in (select iduser from khenthuong)");
+        if($level>0)
+        {
+            $users=UsersBUS::getAllBySQL("select * from user where role=3 and level=$level and user.id not in (select iduser from khenthuong)  limit $offset,$maxItems");
+            $totalUsers=UsersBUS::countAllBySQL("select count(*) from user where role=3 and level=$level and user.id not in (select iduser from khenthuong)");
+        }else
+        {
+            $users=UsersBUS::getAllBySQL("select * from user where role=3  and user.id not in (select iduser from khenthuong)  limit $offset,$maxItems");
+            $totalUsers=UsersBUS::countAllBySQL("select count(*) from user where role=3 and user.id not in (select iduser from khenthuong)");
+        }
+        
         $maxItems=$maxItems-count($users);
         $offset=$offset- $totalUsers;
         if($offset<0)
             $offset=0;
-        $evaluate=KhenThuongBUS::select($offset,$maxItems);
-        $totalEvaluate=KhenThuongBUS::count();
+        if($level>0)
+        {
+            $evaluate=KhenThuongBUS::selectByUserLevel($offset,$maxItems,$level);
+            $totalEvaluate=KhenThuongBUS::countByUserLevel($level);
+        }
+        else
+        {
+            $evaluate=KhenThuongBUS::select($offset,$maxItems);
+            $totalEvaluate=KhenThuongBUS::count();
+        }
+        
         $display="";
-        $display.=EvaluateProcessor::displayHeader();
+        $display.=EvaluateProcessor::displayHeader($totalUsers+$totalEvaluate[0]);
         $index=0;
         for($i=0;$i<count($users);$i++)
         {
@@ -103,7 +119,9 @@ class EvaluateProcessor
 }
 if(isset($_REQUEST['action'])&&$_REQUEST['action']=='show')
 {
-    
+    $page=$_REQUEST['page'];
+    $level=$_REQUEST['level'];
+    echo EvaluateProcessor::load($page,$level);
 }
 elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='save')
 {
@@ -112,9 +130,70 @@ elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='save')
     $khenthuong=$_REQUEST['khenthuong'];
     KhenThuongBUS::update($id,$loai,$khenthuong,date('Y'));
 }
+elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='export')
+{
+   
+    $page=$_REQUEST['page'];
+    $level=$_REQUEST['level'];
+    $users=null;
+    $totalEvaluate=0;
+    $evaluate=null;
+     
+    if($level>0)
+        {
+            $users=UsersBUS::getAllBySQL("select * from user where role=3 and level=$level and user.id not in (select iduser from khenthuong)");
+            $totalEvaluate=KhenThuongBUS::countByUserLevel($level);
+            $evaluate=KhenThuongBUS::selectByUserLevel(0,$totalEvaluate[0],$level);
+        }
+        else
+        {
+            $users=UsersBUS::getAllBySQL("select * from user where role=3  and user.id not in (select iduser from khenthuong)");
+            $totalEvaluate=KhenThuongBUS::count();
+            $evaluate=KhenThuongBUS::select(0,$totalEvaluate[0]);           
+        }
+            $array=array();
+   
+            $array[0][0]="Nhân viên";
+            $array[0][1]="Email đăng nhập";
+            $array[0][2]="Giới tính";
+            $array[0][3]="Cấp độ";
+            $array[0][4]="Đạt thành tích";
+            $array[0][5]="Khen thưởng";
+    $index=0;
+       
+    for($i=0;$i<count($users);$i++)
+    {
+      
+        $index++;
+            $array[$index][0]=$users[$i]['hoten'];
+            $array[$index][1]=$users[$i]['email'];
+            $array[$index][2]=$users[$i]['gioitinh'];
+            $array[$index][3]=$users[$i]['level'];
+            $array[$index][4]="-1";
+            $array[$index][5]="Chưa duyệt";
+    }
+     for($i=0;$i<count($evaluate);$i++)
+        {
+            
+            $index++;
+            $user=UsersBUS::GetUserByID($evaluate[$i]['iduser']);
+            $array[$index][0]=$user['hoten'];
+            $array[$index][1]=$user['email'];
+            $array[$index][2]=$user['gioitinh'];
+            $array[$index][3]=$user['level'];
+            $array[$index][4]=$evaluate[$i]['loai'];
+            $array[$index][5]=$evaluate[$i]['thuong'];
+        }
+        require '../Utils/php-excel.class.php'; 
+            
+            // generate file (constructor parameters are optional) 
+            $xls = new Excel_XML('UTF-8', false, 'Workflow Management'); 
+            $xls->addArray($array); 
+            $xls->generateXML('Output_Report_WFM');   
+}
 else
 {
     $page=$_REQUEST['page'];
-    echo EvaluateProcessor::load($page);
+    echo EvaluateProcessor::load($page,-1);
 }
 ?>

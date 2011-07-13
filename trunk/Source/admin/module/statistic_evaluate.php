@@ -17,7 +17,7 @@
 			<a href="index.php?view=statistic" id="aCancel">
 				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
 		<div class="icon" style="width:60px;">
-			<a href="" id="aSave">
+			<a href="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=export&level=-1&page=1" id="btnExport">
 				<img src="images/export_excel.png" alt="Xuất Excel" border="0" title="Xuất Excel" /><br />Xuất Excel</a></div>
 		<div class="icon">
 			<a href="#" id="btnSave">
@@ -50,19 +50,19 @@
    	                var type=$("#cbbType").val();
                     if(type=="-1")
                     {
-                        var url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
-                        $("#dsNhanvien").load(url);
-                        $('#btnExport').attr("href","module/thongke/HouseProcessor.php?view=statistic&do=house&action=export&page=1")
+                        url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
+                        $("#dsNhanvien").load(url); 
+                        $('#btnExport').attr("href","module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=export&level=-1&page=1")
                     }
                     else
                     {
-                        var url="module/thongke/HouseProcessor.php?view=statistic&do=house&action=view&loaidv="+type+"&page=1";          
+                        url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=show&level="+type+"&page=1";          
                         $("#dsNhanvien").load(url);
-                        $('#btnExport').attr("href","module/thongke/HouseProcessor.php?view=statistic&do=house&action=export&loaidv="+type+"&page=1")
+                        $('#btnExport').attr("href","module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=export&level="+type+"&page=1")
                     }
                     });
                 $('#btnSave').click(function(){
-                    var url="module/thongke/EvaluateProcessor.php";
+                    url="module/thongke/EvaluateProcessor.php";
                     
                      $.each($("input[name='txtID[]']"), function() {
                         var id=$(this).val();
@@ -73,7 +73,7 @@
                             var params = { 'view':'statistic', 'do':'evaluate','action':'save','id':id,'loai':loai,'khenthuong':khenthuong};
                             $('#dvTemp').load(url,params,function(){
                               url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
-                $("#dsNhanvien").load(url); 
+                            $("#dsNhanvien").load(url); 
                             });
                         }                    
                         });
@@ -85,14 +85,14 @@
     <div class="mid">
 		<form action="index.php?view=user" method="post" name="frmRegister" id="frmRegister">
 			<div style="text-align:center;padding-bottom:30px;">
-				<select>
-					<option value="0"> Tất cả nhân viên </option>
+				<select id="cbbType">
+					<option value="-1"> Tất cả nhân viên </option>
 					<option value="1"> Nhân viên cấp bậc 1 </option>
 					<option value="2"> Nhân viên cấp bậc 2 </option>
 					<option value="3"> Nhân viên cấp bậc 3 </option>
 				</select>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" value="Thống kê" />
+				<input type="button" value="Thống kê" id="btnShow" />
 			</div>
 			<div class="list" id="dsNhanvien">
 				<table align="center" border="0" cellspacing="0" cellpadding="0">
