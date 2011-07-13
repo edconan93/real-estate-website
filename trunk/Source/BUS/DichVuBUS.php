@@ -30,11 +30,19 @@ class DichVuBUS
     {
         return DichVuDAO::getAll($offset,$numrow);
     }
+	public static function getAll0($chusohuu,$offset,$numrow)
+    {
+        return DichVuDAO::getAll0($chusohuu,$offset,$numrow);
+    }
     public static function select($id)
     {
         return DichVuDAO::select($id);
     }
-    public static function countAll()
+    public static function countAll0($chusohuu)
+    {
+        return DichVuDAO::countAll0($chusohuu);
+    }
+	public static function countAll()
     {
         return DichVuDAO::countAll();
     }
@@ -58,17 +66,17 @@ class DichVuBUS
     {
         return DichVuDAO::countAllBySQL($strSQL);
     }
-	public static function countAllDichVuByStatus($status)
+	public static function countAllDichVuByStatus0($status,$chusohuu)
     {
-		 return DichVuDAO::countAllDichVuByStatus($status);
+		 return DichVuDAO::countAllDichVuByStatus0($status,$chusohuu);
 	}
-	public static function getALLDichVuByStatus($status,$offset,$numrow)
+	public static function getALLDichVuByStatus0($status,$chusohuu,$offset,$numrow)
     {
-		return DichVuDAO::getALLDichVuByStatus($status,$offset,$numrow);
+		return DichVuDAO::getALLDichVuByStatus0($status,$chusohuu,$offset,$numrow);
 	}
-	public static function countStatusType($status)
+	public static function countStatusType($status,$user)
     {
-		return DichVuDAO::countStatusType($status);
+		return DichVuDAO::countStatusType($status,$user);
 	}
 	public static function delete($id)
     {
