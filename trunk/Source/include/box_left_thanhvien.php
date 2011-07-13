@@ -58,16 +58,23 @@
 				<p class="menu_item">
 <?php 
 include_once ("../BUS/DichVuBUS.php");
-$vip =(int) DichVuBUS::countStatusType(2);
-$daduyet =(int) DichVuBUS::countStatusType(1);
-$choduyet = (int)DichVuBUS::countStatusType(0);
-$hethan =(int) DichVuBUS::countStatusType(3);
-$tongcong = $vip+$daduyet+$choduyet+$hethan;
-echo "<a href='tindadang.php'>Các tin đã đăng (".$tongcong.")</a><br>";
-echo "<span><a href='tindadang.php?type=2'>- Tin VIP (".$vip.")</a><br>";
-echo "<a href='tindadang.php?type=1'>- Tin đã duyệt (".$daduyet.")</a><br>";
-echo "<a href='tindadang.php?type=0'>- Tin chờ duyệt (".$choduyet.")</a><br>";
-echo "<a href='tindadang.php?type=3' style='color:red;'>- Tin hết hạn (".$hethan.")</a><br></span>";
+if(isset($curUserId))
+{
+	$vip =(int) DichVuBUS::countStatusType(2,$curUserId);
+	$daduyet =(int) DichVuBUS::countStatusType(1,$curUserId);
+	$choduyet = (int)DichVuBUS::countStatusType(0,$curUserId);
+	$hethan =(int) DichVuBUS::countStatusType(3,$curUserId);
+	$tongcong = $vip+$daduyet+$choduyet+$hethan;
+	echo "<a href='tindadang.php'>Các tin đã đăng (".$tongcong.")</a><br>";
+	echo "<span><a href='tindadang.php?type=2'>- Tin VIP (".$vip.")</a><br>";
+	echo "<a href='tindadang.php?type=1'>- Tin đã duyệt (".$daduyet.")</a><br>";
+	echo "<a href='tindadang.php?type=0'>- Tin chờ duyệt (".$choduyet.")</a><br>";
+	echo "<a href='tindadang.php?type=3' style='color:red;'>- Tin hết hạn (".$hethan.")</a><br></span>";
+}
+else
+{
+	header("Location:dichvu.php");
+}
 ?>
 					
 				</p>
