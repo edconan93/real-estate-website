@@ -69,7 +69,7 @@ rgb(33, 91, 135); text-align: center;">
 						<input type="submit" name="btn_Login" value=""/>	
 							<br />
 							<br />
-							<a style="color:yellow;" href="">Quên mật khẩu?</a>
+							<a style="color:yellow;" href="forgetpassword.php">Quên mật khẩu?</a>
 							|
 							<a style="color:yellow;" href="dangky.php">Đăng ký thành viên</a>
 						</p>
