@@ -579,7 +579,7 @@ CREATE TABLE IF NOT EXISTS `quangcao` (
   `ngaydang` date DEFAULT NULL,
   `sothang` int(11) DEFAULT NULL COMMENT 'thoi han la so thang quang cao ton tai',
   `hinhanh` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `link` varchar(200) NOT NULL,
+  `link` varchar(300) NOT NULL,
   `status` tinyint(11) DEFAULT NULL COMMENT 'status: 1-available, 0-disable, -1-remove',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
