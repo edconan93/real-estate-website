@@ -219,7 +219,7 @@ echo "<br>conn=".$this->smtp_conn."<br>";
    */
   public function Authenticate($username, $password) {
     // Start authentication
-    fputs($this->smtp_conn,"AUTH LOGIN" . $this->CRLF);
+    @fputs($this->smtp_conn,"AUTH LOGIN" . $this->CRLF);
 
     $rply = $this->get_lines();
     $code = substr($rply,0,3);

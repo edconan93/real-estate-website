@@ -3,7 +3,7 @@ class SendEmail
 {
 	public static function send_Email($emailFrom,$password,$emailTo,$content_Subject,$content_Body)
 	{
-		include_once("PHPMailer/class.phpmailer.php");
+		include_once("class.phpmailer.php");
 		$mail = new PHPMailer();
 		$mail->IsSMTP(); // send via SMTP
 		//IsSMTP(); // send via SMTP

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 		if(isset($_POST["btnGuiTin"]))
 		{
 			 include_once("../../BUS/LienHeBUS.php");
@@ -82,6 +82,5 @@
 				header("Location:../dangky.php?do=failed");
 			}
 			
-			//$leftFile = "modules/home_modules/register_home.php";
 		}	
 ?>
