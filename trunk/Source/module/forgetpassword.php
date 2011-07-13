@@ -58,12 +58,12 @@ if(isset($curUserId))
 											<td align="left" valign="top" colspan="2">
 											<div align="left" style="padding:5px;margin-left:5px;background:#FFFFCC;border:solid 1px #CCCCCC;font-size:12px;color:#336699;font-weight:bold;">
 											<?php 
-											if(isset($_POST['send']) && $_POST['send'] == "success" && isset($_GET['email']))
+											if(isset($_POST['send']) && $_POST['send'] == "success")
 											{
 												echo "Chú ý :<br>Thư xác nhận yêu cầu thay đổi Mật khẩu mới đã được gửi tới hộp thư ".$_GET['email']."của quý khách.
 Vui lòng truy cập vào email và quí khách hãy lấy mật khẩu để đăng nhập lại website";
 											}
-											else if(isset($_POST['send']) && $_POST['send'] == "failed" && isset($_GET['email']))
+											else if(isset($_POST['send']) && $_POST['send'] == "failed")
 											{
 												echo "Chú ý :<br>Lỗi đã xảy ra trong quá trình cài đặt lại mật khẩu với địa chỉ email ".$_GET['email']." này. Xin quý khách thử lại.";
 											}
