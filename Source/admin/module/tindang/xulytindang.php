@@ -210,6 +210,9 @@
 		$loainha = isset($_REQUEST["loainha"])?$_REQUEST["loainha"]:-1;
 		$tinh = isset($_REQUEST["tinh"])?$_REQUEST["tinh"]:-1;
 		$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-2;
+		
+		$aid = isset($_REQUEST["idtin"])?$_REQUEST["idtin"]:-1;
+		
 		$url = "index.php?view=article";
 		
 		if ($tukhoa != -1)
@@ -222,6 +225,8 @@
 			$url .= "&tinh=".$tinh;
 		if ($type != -2)
 			$url .= "&type=".$type;
+		if ($aid != -1)
+			$url .= "&do=edit&aid=".$aid;
 
 		header("Location:../../".$url);
 	}

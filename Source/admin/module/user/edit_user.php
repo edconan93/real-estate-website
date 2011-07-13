@@ -35,7 +35,7 @@
 <div class="tr"></div>
 <div class="tm"></div>
 <div class="mid">
-	<div class="title icon_user">Thành viên:</div>
+	<div class="title icon_user">Thành viên: <span class="subTitle">[ Chi tiết ]</span></div>
      <div class="icon">
    	  <a href="index.php?view=user" id="aCancel">
    	  <img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" />
