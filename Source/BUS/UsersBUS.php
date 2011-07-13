@@ -115,7 +115,10 @@ Lớp UsersBUS
 		{
 			return UsersDAO::GetUserByEmail ($email);
 		}
-		
+		public static function GetUser_StatusByEmail ($email)
+		{
+			return UsersDAO::GetUser_StatusByEmail ($email);
+		}
 		public static function GetUserByName ($username)
 		{
 			return UsersDAO::GetUserByName ($username);
