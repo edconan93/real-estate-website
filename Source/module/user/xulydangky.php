@@ -11,20 +11,18 @@
 			if($checkstatus !== null)
 			{
 				$random = rand (1,1000000);
-				//$changePass = Users::SetPassword($checkstatus['id'],$random);
+				$changePass = UsersBUS::SetPassword($checkstatus['id'],$random);
 				if($changePass == true )
 				{
 					$tag="";
-					$content_Subject="Xác nhận thay đổi mật khẩu truy cập mới tại realestate_hoaphuong.com";
+					$content_Subject="RealEstate_HoaPhuong.com";
 					$content_Body="
 					<div id='yiv1540714745'>
-						Xin chào, Vo Minh Triet
+						Xin chào, ".$checkstatus['hoten']."
+						<br><br>
+						Website RealEstate_HoaPhuong.com có nhận được yêu cầu thay đổi mật khẩu cùa quý khách vào ngày ".date('d-m-Y , h:i:s')."
 						<br>
-						realestate_hoaphuong.com có nhận được yêu cầu thay đổi mật khẩu cùa quý khách vào ngày ".date('Y-m-d , h-i-s')."
-						<br>
-						Mật khẩu đã được thay đổi:
-						<br>
-						".$random."
+						Mật khẩu đã được thay đổi:<b style='color:#336699;'>".$random."</b>
 						<br>
 						<br>
 						Quí khách vui lòng quay trở lại trang web để đăng nhập lại.
@@ -55,12 +53,13 @@
 					echo "<br>tag=".$tag;
 					
 					$rs=SendEmail::send_Email($txtEmail,$content_Subject,$content_Body,$type);
-					// if($rs == true)
-					// {
-						// header("Location:../forgetpassword.php?email='".$txtEmail."'&send=success");
-					// }
-					// else
-						// header("Location:../forgetpassword.php?email='".$txtEmail."'&send=failed");
+					echo "<br>rs=".$rs;
+					if($rs == true)
+					{
+						header("Location:../forgetpassword.php?email='".$txtEmail."'&send=success");
+					}
+					else
+						header("Location:../forgetpassword.php?email='".$txtEmail."'&send=failed");
 				}
 				else
 				{

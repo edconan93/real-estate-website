@@ -51,8 +51,8 @@ class SMTP {
    *  SMTP server port
    *  @var int
    */
- // public $SMTP_PORT = 25;
-  public $SMTP_PORT = 465;
+  public $SMTP_PORT = 25;
+ // public $SMTP_PORT = 465;
 
   /**
    *  SMTP reply line ending

@@ -9,6 +9,8 @@ class SendEmail
 		//IsSMTP(); // send via SMTP
 		$mail->SMTPAuth = true; // turn on SMTP authentication
 		//$mail->Username = "sieudanglegend@gmail.com"; // SMTP username
+		echo "<br>emailTo=".$emailTo;
+		echo "<br>type=".$type;
 		if($type==1)
 		{
 			$mail->Username = "sieudangf2@yahoo.com"; // SMTP username
@@ -31,7 +33,7 @@ class SendEmail
 		//$email="sieudangf2@yahoo.com"; // Recipients email ID
 		$name="HoSonLam"; // Recipient's name
 		$mail->From = $webmaster_email;
-		$mail->FromName = "Webmaster";
+		$mail->FromName = "RealEstate_HoaPhuong.com";
 		$mail->AddAddress($emailTo,$name);//send to
 		$mail->AddReplyTo($webmaster_email,"Webmaster: realestate_hoaphuong.com");
 		$mail->WordWrap = 50; // set word wrap
@@ -48,12 +50,12 @@ class SendEmail
 		{
 			$flag = false;
 			echo "<br>Mailer Error: " . $mail->ErrorInfo;
-		//	return $flag;
+			return $flag;
 		}
 		else
 		{
 			echo "Message has been sent";
-			//return $flag;
+			return $flag;
 		}
 	}
 }
