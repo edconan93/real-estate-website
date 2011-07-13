@@ -67,7 +67,7 @@ class DichVuDAO
 	 //hoaphuong
     public static function getCanHoNoiBat()
     {
-         $strSQL = "select * from dichvu where rank >=1";
+         $strSQL = "select * from dichvu where rank >=1 and (status = 1 or status = 2)";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
 				return null;
@@ -79,6 +79,17 @@ class DichVuDAO
     public static function getAll($offset,$numrow)
     {
          $strSQL = "select * from dichvu where status >-1 limit $offset,$numrow";
+         $result = DataProvider::Query($strSQL);
+         if(mysql_num_rows($result)==0)
+				return null;
+         while($row=mysql_fetch_row($result,MYSQL_BOTH))
+             $return[]=$row;
+         return $return;
+    }
+	 //hoaphuong0
+    public static function getAll0($chusohuu,$offset,$numrow)
+    {
+         $strSQL = "select * from dichvu where status >-1 and chusohuu='$chusohuu' limit $offset,$numrow";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
 				return null;
@@ -112,7 +123,15 @@ class DichVuDAO
         $resultSet=mysql_fetch_array ($result);
         return $resultSet[0];
     }
-    //hoaphuong3
+    //hoaphuong0
+    public static function countAll0($chusohuu)
+    {
+        $strSQL = "select count(*) from dichvu where chusohuu='$chusohuu'";
+        $result = DataProvider::Query($strSQL);
+        $resultSet=mysql_fetch_array ($result);
+        return $resultSet[0];
+    }
+	//hoaphuong3
     public static function countAll()
     {
         $strSQL = "select count(*) from dichvu";
@@ -140,17 +159,17 @@ class DichVuDAO
         return $resultSet[0];
     }
 	//hoaphuong0
-	public static function countAllDichVuByStatus($status)
+	public static function countAllDichVuByStatus0($status,$chusohuu)
     {
-        $strSQL = "select count(*) from dichvu where status='$status'";
+        $strSQL = "select count(*) from dichvu where status='$status' and chusohuu='$chusohuu'";
         $result = DataProvider::Query($strSQL);
         $resultSet=mysql_fetch_array ($result);
         return $resultSet[0];
     }
 	//hoaphuong0
-	public static function getALLDichVuByStatus($status,$offset,$numrow)
+	public static function getALLDichVuByStatus0($status,$chusohuu,$offset,$numrow)
     {
-        $strSQL = "select * from dichvu where status='$status' limit $offset,$numrow";
+        $strSQL = "select * from dichvu where status='$status' and chusohuu='$chusohuu' limit $offset,$numrow";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
 				return null;
@@ -159,9 +178,9 @@ class DichVuDAO
          return $return;
     }
 	//hoaphuong0
-	public static function countStatusType($status)
+	public static function countStatusType($status,$user)
     {
-        $strSQL = "select count(*) from dichvu where status='$status'";
+        $strSQL = "select count(*) from dichvu where status='$status' and 	chusohuu='$user'";
         $result = DataProvider::Query($strSQL);
         $resultSet=mysql_fetch_array ($result);
         return $resultSet[0];
