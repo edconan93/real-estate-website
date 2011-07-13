@@ -3,48 +3,8 @@
 		header("Location: index.php");
 
 	$PATH = str_replace('//','/',dirname(__FILE__).'/');
-	include_once($PATH . "../../../BUS/UsersBUS.php");
-	include_once($PATH . "../../../BUS/RoleBUS.php");
-	include_once($PATH . "../../../BUS/LevelBUS.php");
-
-	$maxItems = 20;
-	$maxPages = 5;
-	$curPage = "";
-	if (isset($_GET["page"]))
-		$curPage = (int) $_GET["page"];
-    $curPage = $curPage>0?$curPage:1;
-	$curItem = ($curPage-1)*$maxItems;
 	
-	if(isset($_REQUEST["btDisable"]))
-	{
-		if($_REQUEST['cbId'])
-		{
-			$cb = $_REQUEST['cbId'];
-			foreach ($cb as $id)
-				UsersBUS::SetStatus($id,0);
-		}
-	}
-	if(isset($_REQUEST["btEnable"]))
-	{
-		if($_REQUEST['cbId'])
-		{
-			$cb = $_REQUEST['cbId'];
-			foreach ($cb as $id)
-				UsersBUS::SetStatus($id,1);
-		}
-	}
-	if(isset($_REQUEST["btDelete"]))
-	{
-	 	$cb = $_REQUEST['cbId'];
-		foreach ($cb as $id)
-			UsersBUS::Delete($id);
-	}
-	
-	$status = isset($_REQUEST["status"])?$_REQUEST["status"]:-1;
-	$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-1;
-	$kw = isset($_REQUEST["kw"])?$_REQUEST["kw"]:"";	
-	$totalItems = 0;//UsersBUS::Count($type,$status,$kw);
-	$users = "";//UsersBUS::getUsers();
+	$status = isset($_REQUEST["status"])?$_REQUEST["status"]:-2;
 ?>
 <div id="listItem">
 	<div class="tl"></div>
@@ -52,65 +12,12 @@
 	<div class="tm"></div>
 	<div class="mid">
 		<script language="javascript">
-			$(document).ready(function ()
-			{
-				$("#frmListItem").submit (function ()
-				{
-					return false;
-				});
-				
-				$("#status").change (function ()
-				{
-					var url = "modules/forms/listUser.php";
-					var status = $("#status").attr("value");
-					var type = $("#type").attr("value");
-					var kw = $("#kw").attr("value");
-					url += "?status=" + status ;
-					url += "&type=" + type ;
-					url += "&kw=" + kw ;;
-					$("#listItem").load(url);
-				});
-				
-				$("#type").change (function ()
-				{
-					var url = "modules/forms/listUser.php";
-					var status = $("#status").attr("value");
-					var type = $("#type").attr("value");
-					var kw = $("#kw").attr("value");
-					url += "?status=" + status ;
-					url += "&type=" + type ;
-					url += "&kw=" + kw ;
-					$("#listItem").load(url);
-				});
-				
-				$("#btSearch").click (function ()
-				{
-					var url = "modules/forms/listUser.php";
-					var status = $("#status").attr("value");
-					var type = $("#type").attr("value");
-					var kw = $("#kw").attr("value");
-					url += "?status=" + status ;
-					url += "&type=" + type ;
-					url += "&kw=" + kw ;
-					$("#listItem").load(url);
-				});
-				
-				$("#cbAll").click (function ()
-				{
-					 var checked_status = this.checked;
-					 $("input[name=cbId[]]").each(function()
-					 {
-						 this.checked = checked_status;
-					 });
-				});
-			});
 			function BASIC_GetCookie(Name){
 				var re=new RegExp(Name+"=[^;]+", "i"); //construct RE to search for target name/value pair
 				if (document.cookie.match(re)) //if cookie found
 					return document.cookie.match(re)[0].split("=")[1]; //return its value
 				return "";
 			}
-
 			function BASIC_SetCookie(name, value, days){
 				if (typeof days!="undefined"){ //if set persistent cookie
 					var expireDate = new Date();
@@ -120,25 +27,19 @@
 				else //else if this is a session only cookie
 					document.cookie = name+"="+value;
 			}
-			function loadUsersByCondition()
-			{
-				var type = document.getElementById("type");
-				var status = document.getElementById("status");
-				window.location = "index.php?view=user&type=" + type.value + "&status=" + status.value;
-			}
+			// function loadUsersByCondition()
+			// {
+				// var type = document.getElementById("type");
+				// var status = document.getElementById("status");
+				// window.location = "index.php?view=user&type=" + type.value + "&status=" + status.value;
+			// }
 		</script>
 		<form method="post" name="frmListItem" id="frmListItem">
-			<input name="page" type="hidden" value="<?php echo $curPage; ?>" />
 			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr>
-					<!--<td width="69%">Từ khóa: 
-						<input type="text" name="kw" id="kw" value="<?php echo $kw; ?>"  />
-						<input type="submit" name="btSearch" id="btSearch" value="Tìm" />
-					</td>-->
 					<td width="69%">
 						<?php
-							$listRole = RoleBUS::GetAllRole();
-							$listUsers = UsersBUS::GetUsersByFilter($type, $status);
+							$listAdv = QuangCaoBUS::GetAdvByType($status);
 							echo "<b>Có ".count($listUsers)." mẫu tin.</b>";
 						?>
 					</td>
@@ -180,7 +81,6 @@
 						<td width="70px" align="center">Kích hoạt</td>
 					</tr>
 					<?php
-						
 						for ($i=0;$i<count($listUsers);$i++)
 						{
 					?>
