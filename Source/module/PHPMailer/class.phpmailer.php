@@ -177,7 +177,9 @@ class PHPMailer {
    * Hosts will be tried in order.
    * @var string
    */
-  public $Host          = "ssl://smtp.gmail.com";
+
+ // public $Host          = "ssl://smtp.gmail.com";
+  public $Host          = "smtp.mail.yahoo.com";
   // public $Host          = 'localhost';
 
   /**
@@ -185,7 +187,8 @@ class PHPMailer {
    * @var int
    */
   // public $Port          = 25;
-  public $Port          = 465;
+  //public $Port          = 465;
+  public $Port          = 25;
 
   /**
    * Sets the SMTP HELO of the message (Default is $Hostname).
