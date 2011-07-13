@@ -14,7 +14,7 @@
 class MessageTypeProcessor
 {
 		
-    public static function loadAllMessage()
+    public static function loadAllMessage($curUserId)
     {
         $strLink = "tindadang.php?";
         $curPage=1;   
@@ -28,17 +28,17 @@ class MessageTypeProcessor
         if(isset($_REQUEST['type']))
         {
              $strLink.="type=".$_REQUEST['type']."&";
-             $totalItems=DichVuBUS::countAllDichVuByStatus($_REQUEST['type']);
-             $business=  DichVuBUS::getALLDichVuByStatus($_REQUEST['type'],$offset,$maxItems);
+             $totalItems=DichVuBUS::countAllDichVuByStatus0($_REQUEST['type'],$curUserId);
+             $business=  DichVuBUS::getALLDichVuByStatus0($_REQUEST['type'],$curUserId,$offset,$maxItems);
         }
         else
         {
-            $totalItems=DichVuBUS::countAll();
+            $totalItems=DichVuBUS::countAll0($curUserId);
 			// echo "<br>totalItems=".$totalItems;
 			// echo "<br>offset=".$offset;
 			// echo "<br>offset=".$offset;
 			 
-            $business=DichVuBUS::getAll($offset,$maxItems);
+            $business=DichVuBUS::getAll0($curUserId,$offset,$maxItems);
 			//echo "<br>". MessageTypeProcessor::display($strLink,$business,$totalItems,$curPage,$maxPages,$maxItems);;
         }
         
@@ -139,7 +139,7 @@ class MessageTypeProcessor
         return $strResult;
 	}
 	//search
-	public static function findSearchInContext()
+	public static function findSearchInContext($curUserId)
     {
         //create string sql
 		if(isset($_GET['btnSearch']) || isset($_REQUEST["txtMessageID"])||isset($_REQUEST["cbbCategory"]) || isset($_REQUEST["cbbLocation"]) || isset($_REQUEST["cbbServiceType"]) )
@@ -151,7 +151,7 @@ class MessageTypeProcessor
 			$strLink= "tindadang.php?";
 			$strSQL="select * from ";
 			$strTable="dichvu";
-			$strWhere=" where 1=1 ";
+			$strWhere=" where chusohuu=".$curUserId." ";
 			if(isset($_REQUEST["txtMessageID"]) && $_REQUEST["txtMessageID"] != null)
 			{
 				$strLink.="txtMessageID=".$_REQUEST["txtMessageID"]."&";

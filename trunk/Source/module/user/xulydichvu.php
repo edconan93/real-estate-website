@@ -52,7 +52,15 @@
 		echo "<br>phongngu=".$phongngu;
 		$phongtam =(int) $_POST["txtPhongTam"];
 		echo "<br>phongtam=".$phongtam;
-		$giaban =(float) $_POST["txtGia"];
+		$giaban = $_POST["txtGia"];
+		echo "<br>giaban=".$giaban;
+		$gia="";
+		for($i = 0;$i<strlen($giaban);$i++)
+		{
+			if($giaban[$i] != ',')
+				$gia.=$giaban[$i];
+		}
+		$giaban=(float)$gia;
 		echo "<br>giaban=".$giaban;
 		$donvitien =(int) $_POST["cbbDonViTien"];
 		echo "<br>donvitien=".$donvitien;
@@ -97,8 +105,8 @@
 		//add or update into dichvu
 		if(isset($_GET['update']) && $_GET['update'] != null)
 		{
-			
-			$rs=DichVuBUS::Update($_GET['update'],$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$status,$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang,$rank,$sonha);
+			$rank_Update=DichVuBUS::select($_GET['update']);
+			$rs=DichVuBUS::Update($_GET['update'],$tieude,$mota,$chusohuu,$phuong,$quan,$tinh,$time,$timeupdate,$duong,$dai,$rong,$tang,$phongngu,$phongtam,$giaban,$donvitien,$rank_Update['status'],$thoihandangtin,$loainha,$phaply,$huongnha,$khuyenmai,$loaiDV,$donviDV,$X,$Y,$khanang,$rank_Update['rank'],$sonha);
 			echo "<br>rs in update=".$rs;
 		}
 		else
@@ -131,11 +139,12 @@
 				DichVu_TienIchBUS::Add((int)$rs,(int)$arraycheck[$i]);
 			}
 		}
+		$length = strlen($_COOKIE["url"]);
+		$url = $_COOKIE["url"];
+		$url[$length - 1] = 2;
 		if($flagInsert == true)
 		{
-			$length = strlen($_COOKIE["url"]);
-			$url = $_COOKIE["url"];
-			$url[$length - 1] = 2;
+			
 			if ($_GET["loaidvcandang"] == 1 || $_GET["loaidvcandang"] == 3)
 			{
 				if(isset($_GET['update']) && $_GET['update'] != null)
@@ -150,7 +159,7 @@
 		}
 		else
 		{
-			header("Location:../dangtindichvu.php?dangtin=fail");
+			header("Location:".$url."&dangtin=fail&newid=".$rs);
 		}
 	}
 	//upload file
