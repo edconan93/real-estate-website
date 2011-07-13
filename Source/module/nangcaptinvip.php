@@ -57,8 +57,8 @@ $(document).ready(function()
 			{
 				strEnd+=convert[i];
 			}
-			$("#messTinhTien").attr("innerHTML",strEnd+" VND");
-			$("#messTinhTien").css("color","black");
+			$("#messTinhTien").attr("innerHTML","<b style='color:red;'>"+strEnd+" VND</b>");
+			$("#messTinhTien").css("color","red");
 		}
 	
 	});
@@ -165,7 +165,7 @@ $(document).ready(function()
 											<tr>
 												<td align="right">Thành tiền:</td>
 												<td align="left">
-												<b><div id="messTinhTien" name="messTinhTien">275,000 VND</div> </b>
+												<div id="messTinhTien" name="messTinhTien" ><b style="color: red;">275,000 VND</b></div>
 												</td>
 											</tr>
 											<tr>
