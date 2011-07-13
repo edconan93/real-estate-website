@@ -26,5 +26,13 @@ class KhenThuongBUS
 	{
 		return KhenThuongDAO::selectByIdUser(iduser);
 	}
+    public static function selectByUserLevel($offset,$max,$level)
+    {
+        return KhenThuongDAO::selectByUserLevel($offset,$max,$level);
+    }
+    public static function countByUserLevel($level)
+    {
+        return KhenThuongDAO::countByUserLevel($level);
+    }
 }
 ?>
