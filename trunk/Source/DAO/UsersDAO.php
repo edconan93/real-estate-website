@@ -192,6 +192,17 @@
 				return null;
             return mysql_fetch_array ($result);
 		}
+		public static function GetUser_StatusByEmail ($email)
+		{
+			$strSQL = "select * 
+						from user
+						where email='$email' and status='1' ";
+			
+            $result = DataProvider::Query($strSQL);
+			if(mysql_num_rows($result)==0)
+				return null;
+            return mysql_fetch_array ($result);
+		}
 		// public static function GetUserByName ($username)
 		// {
 			// $strSQL = "select id , hoten, email, gioitinh, sdt1, sdt2, loaikh, status 
