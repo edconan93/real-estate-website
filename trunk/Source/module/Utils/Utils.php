@@ -48,10 +48,11 @@ class Utils
     }
 	public static function convertDecline_Time($time)
     {
+		//include_once('config.php');
 		if($time !=null)
 		{
 			$arrDate = explode ("-", $time);
-			$d = (int) $arrDate[2] + 15;
+			$d = (int) $arrDate[2] + 30;
 			$m = (int) $arrDate[1];
 			$y = (int) $arrDate[0];
 			if($m == 1 || $m == 3 ||$m == 5 ||$m == 7||$m == 8||$m == 10 || $m == 12)
