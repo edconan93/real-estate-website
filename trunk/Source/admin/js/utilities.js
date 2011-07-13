@@ -64,7 +64,7 @@ function Check_Click(objRef)
     if(objRef.checked)
     {
         //If checked change color to Aqua
-        row.style.backgroundColor = "aqua";
+        row.style.backgroundColor = "#BFBFBF";
     }
     else
     {   
@@ -123,7 +123,7 @@ function checkAll(objRef)
                 //check all checkboxes
                 //and highlight all rows
 
-                row.style.backgroundColor = "aqua";
+                row.style.backgroundColor = "#BFBFBF";
                 inputList[i].checked=true;
             }
             else

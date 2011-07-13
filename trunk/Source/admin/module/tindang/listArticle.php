@@ -6,6 +6,8 @@
 	include_once($PATH . "../../../BUS/TinDangBUS.php");
 	include_once($PATH . "../../../BUS/LoaiDVBUS.php");
 	include_once($PATH . "../../../BUS/TinhBUS.php");
+	include_once($PATH . "../../../BUS/PhuongBUS.php");
+	include_once($PATH . "../../../BUS/QuanBUS.php");
 	include_once($PATH . "../../../BUS/DonviTienBUS.php");
 	include_once($PATH . "../../../module/Utils/Utils.php");
 
@@ -372,7 +374,9 @@
 							echo "<td align='center'>".$loaidv[1]."</td>";
 							$loainha = LoaiNhaBUS::getById($listTinDang[$i]["loainha"]);
 							echo "<td align='center'>".$loainha[1]."</td>";
-							echo "<td>".$listTinDang[$i]["sonha"]." ".$listTinDang[$i]["duong"].", P.".$listTinDang[$i]["phuong"].", Q.".$listTinDang[$i]["quan"].", ";
+							$phuong = PhuongBUS::getPhuongById($listTinDang[$i]["phuong"]);
+							$quan = QuanBUS::getQuanById($listTinDang[$i]["quan"]);
+							echo "<td>".$listTinDang[$i]["sonha"]." ".$listTinDang[$i]["duong"].", ".$phuong[1].", ".$quan[1].", ";
 							$tinh = TinhBUS::getTinhById($listTinDang[$i]["tinh"]);
 							echo $tinh[1]."</td>";
 							$donviTien = DonViTienBUS::selectId($listTinDang[$i]["donvitien"]);

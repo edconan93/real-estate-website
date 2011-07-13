@@ -150,5 +150,16 @@ class Utils
     //    echo "alibaba".$money;
         return $money;
     }
+	public static function calculateEndDate($startDate, $iThang)
+	{
+		$arr = explode('/', $startDate);
+		$arr[1] = $arr[1] + $iThang;
+		if ($arr[1] > 12)
+		{
+			$arr[1] = $arr[1] % 12;
+			$arr[2]++;
+		}
+		return $arr[0]."/".$arr[1]."/".$arr[2];
+	}
 }
 ?>
