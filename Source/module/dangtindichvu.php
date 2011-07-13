@@ -375,7 +375,7 @@ $(document).ready(function()
 	
 	function CheckPhoneNumber(strText)
 	{
-		var strTemp="0123456789./-_()";
+		var strTemp="0123456789.,/-_()";
 		for (var i=0; i<strText.length; i++)
 		if (strTemp.indexOf (strText.charAt(i))==-1)//==-1 ko bao gio xay ra
 			return true;
@@ -487,7 +487,10 @@ $(document).ready(function()
 												   quy định đăng tin</a> trước khi đăng tin.</b></li>
 												<li><b>Không đăng tin trùng lắp, lặp lại từ khóa nhiều lần trong bài viết.</b></li>
 												<li><b style="color:red;">Mọi trường hợp đăng tin không đúng quy định sẽ bị xóa mà không cần báo
-													trước.</b></li>
+													trước.</b>
+												</li>
+												<li><b style="color:#336699;font-size:14px;">Những tin đăng miễn phí mật định cho phép đăng trong 30 ngày.</b>
+												</li>
 											</ul>
 										</div>
 									</div>
@@ -819,12 +822,12 @@ $(document).ready(function()
 													<?php
 													if(isset($_GET['update']) && $_GET['update'] != null)
 													{
-														echo "<input name='txtGia' id='txtGia' type='text' style='width:123px;text-align:right;' value='".$capnhatDV['giaban']."' onkeypress='return keypress(event);' >";
+														echo "<input name='txtGia' id='txtGia' type='text' onkeypress='return keypress(event);' onkeyup='FormatCurrency(this);' style='width:123px;text-align:right;' value='".number_format($capnhatDV['giaban'])."'>";
 													}
 													else
 													{
 													?>
-													<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:123px;text-align:right;" onkeypress="return keypress(event);" />
+													<input id="txtGia" name="txtGia" class="Textbox" type="text" style="width:123px;text-align:right;" onkeypress="return keypress(event);" onkeyup="FormatCurrency(this);" />
 													<?php } ?>
 													<select id="cbbDonViTien" class="DropDownList" name="cbbDonViTien">
 													<?php

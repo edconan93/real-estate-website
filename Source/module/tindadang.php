@@ -155,16 +155,19 @@ function xoatindang(idtin)
 												</td>
 											</tr>
 											<?php
-												include_once("/user/xulycacloaitin.php");												
-												if(isset($_REQUEST["type"]))
-													echo MessageTypeProcessor::loadAllMessage();
-												else
+												include_once("/user/xulycacloaitin.php");
+												if(isset($curUserId))
 												{
-													$result= MessageTypeProcessor::findSearchInContext();
-													if($result!=null)
-														echo $result;
+													if(isset($_REQUEST["type"]))
+														echo MessageTypeProcessor::loadAllMessage($curUserId);
 													else
-														echo MessageTypeProcessor::loadAllMessage();
+													{
+														$result= MessageTypeProcessor::findSearchInContext($curUserId);
+														if($result!=null)
+															echo $result;
+														else
+															echo MessageTypeProcessor::loadAllMessage($curUserId);
+													}
 												}
 											?>	
 										</table>
