@@ -181,7 +181,7 @@
 		<fieldset style="width:500px;float:left;margin-left:50px;">
 			<legend style="font-weight:bold;font-size:15px;color:maroon;">Thông tin thành viên:</legend>
 			<table align="center" border="0" cellpadding="0" cellspacing="0">
-				<tr style="height:30px;">
+				<tr style="height:30px;background:#F1F1F1">
 					<td width="130px"><b>Email đăng nhập:</td>
 					<td width="280px" style="font-weight:bold;color:blue;"><?php echo $user["email"]; ?></td>
 				</tr>
@@ -189,7 +189,7 @@
 					<td><b>Họ tên:</td>
 					<td><?php echo $user["hoten"]; ?></td>
 				</tr>
-				<tr style="height:30px;">
+				<tr style="height:30px;background:#F1F1F1">
 					<td><b>Giới tính:</b></td>
 					<td><?php if ($user["gioitinh"]==1) echo "Nam"; else echo "Nữ"; ?></td>
 				</tr>
@@ -197,7 +197,7 @@
 					<td><b>Địa chỉ:</b></td>
 					<td><?php echo $user["diachi"]; ?></td>
 				</tr>
-				<tr style="height:30px;">
+				<tr style="height:30px;background:#F1F1F1">
 					<td><b>Số ĐT 1:</b></td>
 					<td><?php echo $user["sdt1"]; ?></td>
 				</tr>
@@ -205,7 +205,7 @@
 					<td><b>Số ĐT 2:</b></td>
 					<td><?php echo $user["sdt2"]; ?></td>
 				</tr>
-				<tr style="height:30px;">
+				<tr style="height:30px;background:#F1F1F1">
 					<td><b>Vai trò:</b></td>
 					<td>
 						<?php
@@ -232,7 +232,7 @@
 				<?php
 					}
 				?>
-				<tr style="height:30px;">
+				<tr style="height:30px;background:#F1F1F1">
 					<td><b>Ngày cập nhật:</b></td>
 					<?php
 						if ($user["ngaycapnhat"] != null)
