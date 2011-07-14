@@ -608,6 +608,10 @@ CREATE TABLE IF NOT EXISTS `quangcao` (
 -- Dumping data for table `quangcao`
 --
 
+INSERT INTO `quangcao` (`id`, `chusohuu`, `sdt`, `email`, `diachi`, `ngaydang`, `sothang`, `hinhanh`, `link`, `status`) VALUES
+(1, 'NGUYỄN ĐỨC THỊNH', '0934100286', 'ducthinh100286@yahoo.com', '36/15 Bình Giã, P.13, Q.Tân Bình', '2011-07-13', 2, 'ad1.swf', 'http://localhost/real_estate/Source/admin/', 1),
+(2, 'TRẦN TỐNG SANG', '045463465', 'kakalili@yahoo.com', '36/15 Bình Giã, P.13, Q.Tân Bình', '2011-05-14', 1, 'ad2.swf', 'http://localhost/real_estate/Source/', 1),
+(3, 'ĐỖ THỊ THỦY PHƯƠNG', '09236565432', 'phuong.dothi@gmail.com', '36/15 Bình Giã, P.13, Q.Tân Bình', '2011-06-14', 1, 'ad_noimage.jpg', 'sdf sd fsd fsd fsd fsdf sdf sdf s', 1);
 
 -- --------------------------------------------------------
 
