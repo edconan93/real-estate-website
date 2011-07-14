@@ -162,5 +162,25 @@ class Utils
 		}
 		return $arr[0]."/".$arr[1]."/".$arr[2];
 	}
+	public static function compareDate($date, $curDate) // 14-07-2011
+    {
+    	$arr1 = explode("-", $date);
+    	$arr2 = explode("-", $curDate);
+		
+		if ($arr1[2] < $arr2[2])
+			return 1;
+		else if ($arr1[2] > $arr2[2])
+			return 0;
+		else if ($arr1[1] < $arr2[1])
+			return 1;
+		else if ($arr1[1] > $arr2[1])
+			return 0;
+		else if ($arr1[0] < $arr2[0])
+			return 1;
+		else if ($arr1[0] > $arr2[0])
+			return 0;
+		
+    	return 0;
+    }
 }
 ?>

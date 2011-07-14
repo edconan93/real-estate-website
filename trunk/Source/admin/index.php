@@ -19,7 +19,6 @@
 		if($curUser != null && $curUser[8] == 1)
 		{
 			$now = date ("Y-m-d H-i-s");
-			//UsersBUS::SetLastVisited($curUser[0],$now);
 			$_SESSION["curUser"] = $curUser;
 		}
 		else

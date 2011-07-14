@@ -131,18 +131,21 @@
 				<p style="font-size:20pt;"><b>THÔNG TIN QUẢNG CÁO</b></p>
 			</td>
 		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<embed type="application/x-shockwave-flash" src="../admin/upload/quangcao/ad1.swf" id="mymovie"
-					name="mymovie" bgcolor="#000000" quality="high" loop="true" wmode="transparent" width="180px" height="160px">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<embed type="application/x-shockwave-flash" src="../admin/upload/quangcao/ad2.swf" id="mymovie"
-					name="mymovie" bgcolor="#000000" quality="high" loop="true" wmode="transparent" width="180px" height="160px">
-			</td>
-		</tr>
+		<?php
+			include_once("../BUS/QuangCaoBUS.php");
+			$listAdv = QuangCaoBUS::GetAdvByType(1);
+			for ($i=0;$i<count($listAdv);$i++)
+			{
+				$ext = substr($listAdv[$i]["hinhanh"], -3);
+				echo "<tr><td colspan='2' align='center'>";
+				if ($ext == "swf")
+					echo "<embed type='application/x-shockwave-flash' src='../admin/upload/quangcao/".$listAdv[$i]["hinhanh"]."' id='mymovie'
+						name='mymovie' bgcolor='#000000' quality='high' loop='true' wmode='transparent' width='180px' height='160px'>";
+				else
+					echo "<img src='upload/quangcao/".$listAdv[$i]["hinhanh"]."' />";
+				echo "</td></tr>";
+			}
+		?>
 		<tr>
 			<td colspan="2" align="center">
 				<img src="../admin/upload/quangcao/ad_noimage.jpg" />

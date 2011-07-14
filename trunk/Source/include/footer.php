@@ -7,22 +7,22 @@
                         color: rgb(125, 133, 170); text-align: left;">
                         Copyright© 2011 realestate_hoaphuong.com
                     </div>
-                    <div style="float: left; margin-top: 8px; margin-left: 340px; height: 20px; width: 50px;
+                    <div style="float: left; margin-top: 8px; margin-left: 340px; height: 20px; width: 70px;
                         background-color: rgb(56, 58, 71); border: 1px solid 
 rgb(33, 91, 135); text-align: center;">
-                        <a class="a_bottomlink" href="#">SALES</a></div>
-                    <div style="float: left; margin-top: 8px; margin-left: 10px; height: 20px; width: 50px;
+                        <a class="a_bottomlink" href="">BẢNG GIÁ</a></div>
+                    <div style="float: left; margin-top: 8px; margin-left: 10px; height: 20px; width: 80px;
                         background-color: rgb(56, 58, 71); border: 1px solid 
 rgb(33, 91, 135); text-align: center;">
-                        <a class="a_bottomlink" href="#">Q&amp;A</a></div>
-                    <div style="float: left; margin-top: 8px; margin-left: 10px; height: 20px; width: 50px;
+                        <a class="a_bottomlink" href="">PHONG THỦY</a></div>
+                    <div style="float: left; margin-top: 8px; margin-left: 10px; height: 20px; width: 70px;
                         background-color: rgb(56, 58, 71); border: 1px solid 
 rgb(33, 91, 135); text-align: center;">
-                        <a class="a_bottomlink" href="#">EMAIL</a></div>
+                        <a class="a_bottomlink" href="">KIẾN TRÚC</a></div>
                     <div style="float: left; margin-top: 8px; margin-left: 10px; height: 20px; padding-left: 5px;
                         padding-right: 5px; background-color: rgb(56, 
 58, 71); border: 1px solid rgb(33, 91, 135); text-align: center;">
-                        <a class="a_bottomlink" href="#">TUYỂN DỤNG</a></div>
+                        <a class="a_bottomlink" href="">TUYỂN DỤNG</a></div>
                 </div>
             </div>
             <div style="width: 100%; height: 70px; background-image: url('../images/bg_bottom.gif');

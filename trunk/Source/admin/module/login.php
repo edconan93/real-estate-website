@@ -2,10 +2,9 @@
 	<div class="top"></div>
     <div class="content">
     	<h1>Đăng nhập</h1>
-        <?php if(isset($login) && $login =="false")
-		{
-			echo "<p class='error'> Tên đăng nhập và mật khẩu không đúng</p>";
-		} 
+        <?php
+			if(isset($login) && $login =="false")
+				echo "<p class='error'> Tên đăng nhập và mật khẩu không đúng</p>";
 		?>
         <div class="frmLogin">
         	<div class="_top"></div>
@@ -20,7 +19,6 @@
 			  <div class="bt">
               <div class="rightbutton"></div>
                <input class="button" type="submit" name="btLogin" id="btLogin" value="Đăng nhập" />
-               
 			</div>
               </form>
               <br class="clr" />

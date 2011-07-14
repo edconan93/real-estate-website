@@ -91,27 +91,37 @@
 								</tr>
                             </table>
                         </div>
+						<?php
+							$url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+							$gioithieu = strpos($url, "gioithieu.php");
+							$phongthuy = strpos($url, "phongthuy.php");
+							$lienhe = strpos($url, "lienhe.php");
+							$dichvu = strpos($url, "dichvu.php");
+							$chitiet= strpos($url, "chitietdiaoc.php");
+							if ($chitiet > -1)
+								$dichvu = $chitiet;
+						?>
                         <table border="0" cellpadding="0" cellspacing="0">
 							<tr>
 								<td>
 									<a href="gioithieu.php" onmouseover='bt("t1","../images/menu1_on.gif")'
 										onmouseout='bt("t1","../images/menu1.gif")' onfocus="this.blur();">
-										<img src="../images/menu1.gif" id="t1" style="" border="0"></a>
+										<img src="../images/menu1<?php echo ($gioithieu>-1)?"_hover":""; ?>.gif" id="t1" style="" border="0"></a>
 								</td>
 								<td>
 									<a href="dichvu.php" onmouseover='bt("t2","../images/menu/e/menu2_on.gif")'
 										onmouseout='bt("t2","../images/menu2.gif")' onfocus="this.blur();">
-										<img src="../images/menu2.gif" id="t2" style="" border="0"></a>
+										<img src="../images/menu2<?php echo ($dichvu>-1)?"_hover":""; ?>.gif" id="t2" style="" border="0"></a>
 								</td>
 								<td>
 									<a href="phongthuy.php?" onmouseover='bt("t3","../images/menu/e/menu3_on.gif")'
 										onmouseout='bt("t3","../images/menu3.gif")' onfocus="this.blur();">
-										<img src="../images/menu3.gif" id="t3" style="" border="0"></a>
+										<img src="../images/menu3<?php echo ($phongthuy>-1)?"_hover":""; ?>.gif" id="t3" style="" border="0"></a>
 								</td>
 								<td>
 									<a href="lienhe.php" onmouseover='bt("t4","../images/menu4_on.gif")'
 										onmouseout='bt("t4","../images/menu4.gif")' onfocus="this.blur();">
-										<img src="../images/menu4.gif" id="t4" style="" border="0"></a>
+										<img src="../images/menu4<?php echo ($lienhe>-1)?"_hover":""; ?>.gif" id="t4" style="" border="0"></a>
 								</td>
 							</tr>
                         </table>
