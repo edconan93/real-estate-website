@@ -111,7 +111,7 @@
 					<td><?php echo $huongnha[1]; ?></td>
 				</tr>
 				<tr style="background:#F1F1F1;">
-					<td><b>Tình trạng pháp lý:</b></td>
+					<td style="width:120px;"><b>Tình trạng pháp lý:</b></td>
 					<td><?php echo $phaply[1]; ?></td>
 				</tr>
 				<tr>
