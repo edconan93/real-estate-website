@@ -18,6 +18,7 @@
 		<li><a href="index.php?view=statistic" class="item">Thống kê</a></li>
 	</ul>
 	<div class="mess">
+		<img src="images/info_staff.png" /> <a href="../admin/index.php?view=private_info"><?php echo $_SESSION["curUser"][3]; ?></a>&nbsp;&nbsp;
 		<img src="images/icon-16-frontpage.png" /> <a href="../index.php">Tiền sảnh</a>&nbsp;&nbsp;
 		<!--<img src="images/icon-16-article.png" /> 6&nbsp;&nbsp;
 		<img src="images/icon-16-user.png" /> 7&nbsp;&nbsp;-->

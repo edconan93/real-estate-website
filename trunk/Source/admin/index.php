@@ -118,6 +118,9 @@
 				}
 				break;
 			}
+			case "private_info":
+				$bodyFile= "module/staff_info.php";
+				break;
 		}
 	}
 ?>

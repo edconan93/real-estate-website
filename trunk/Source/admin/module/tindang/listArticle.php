@@ -9,6 +9,7 @@
 	include_once($PATH . "../../../BUS/PhuongBUS.php");
 	include_once($PATH . "../../../BUS/QuanBUS.php");
 	include_once($PATH . "../../../BUS/DonviTienBUS.php");
+	include_once($PATH . "../../../BUS/DichVuVIPBUS.php");
 	include_once($PATH . "../../../module/Utils/Utils.php");
 
 	$maxItems = 20;
@@ -357,6 +358,7 @@
 						<td align="center">Địa chỉ</td>
 						<td align="center">Giá bán</td>
 						<td width="70px" align="center">Ngày đăng</td>
+						<td width="50px" align="center">New VIP</td>
 						<td width="90px" align="center">Tình trạng tin</td>
 						<!--<td width="90px" align="center">Đổi trạng thái</td>
 						<td width="50px" align="center">Nổi bật</td>-->
@@ -388,21 +390,8 @@
 							}
 							else
 								echo "<td></td>";
-							// switch ($listTinDang[$i]["status"])
-							// {
-								// case 0: // đang chờ duyệt
-									// echo "<td align='center' style='color:green;'>Tin chờ duyệt</td>";
-									// break;
-								// case 1: // đã duyệt đăng miễn phí
-									// echo "<td align='center' style='color:blue;'>Tin đã duyệt</td>";
-									// break;
-								// case 2: // tin vip
-									// echo "<td align='center' style='color:#B20751; font-weight:bold;'>Tin đăng VIP</td>";
-									// break;
-								// case 3: // tin hết hạn
-									// echo "<td align='center' style='color:red;'>Tin hết hạn</td>";
-									// break;
-							// }
+							$tinvip = DichVuVIPBUS::GetTinVipById($listTinDang[$i]["id"]);
+							echo "<td>".$listTinDang[$i]["id"]."</td>";
 							$str = "<td><select id='status[$i]' style='font-size:96%;color:";
 							switch ($listTinDang[$i]["status"])
 							{
