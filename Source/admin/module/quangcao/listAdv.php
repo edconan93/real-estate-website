@@ -83,11 +83,29 @@
 						<td align="center"><?php echo $listAdv[$i]["sdt"]; ?></td>
 						<td style="color:blue;"><?php echo $listAdv[$i]["email"]; ?></td>
 						<td><?php echo $listAdv[$i]["diachi"]; ?></td>
-						<td align="center"><img src="images/upload/quangcao/<?php echo $listAdv[$i]["hinhanh"]; ?>" width="100px" /></td>
+						<td align="center">
+							<?php
+								$ext = substr($listAdv[$i]["hinhanh"], -3);
+								if ($ext == "swf")
+									echo "<embed width='180' height='160' wmode='transparent' loop='true' quality='high'
+										bgcolor='#000000' name='mymovie' src='upload/quangcao/".$listAdv[$i]["hinhanh"]."' type='application/x-shockwave-flash'>";
+								else
+									echo "<img src='upload/quangcao/".$listAdv[$i]["hinhanh"]."' />";
+							?></td>
 						<td><a href='<?php echo $listAdv[$i]["link"]; ?>'><?php echo $listAdv[$i]["link"]; ?></a></td>
 						<td align="center"><?php echo Utils::convertTimeDMY($listAdv[$i]["ngaydang"]); ?></td>
-						<td align="center">3</td>
-						<td align="center" style="color:red;font-weight:bold;"><?php echo "Đã hết hạn"; ?></td>
+						<td align="center"><?php echo $listAdv[$i]["sothang"]; ?></td>
+						<td align="center" style="color:red;font-weight:bold;">
+							<?php
+								$date1 = $listAdv[$i]["ngaydang"];
+								$sothang = $listAdv[$i]["sothang"];
+								$arr = explode("-", $date1);
+								$month = $arr[1] + $sothang;
+								$date2 = $arr[2]."-".$month."-".$arr[0];
+								$rs = Utils::compareDate($date2, date('d-m-Y'));
+								if ($rs == 1) // Đã hết hạn
+									echo "Đã hết hạn";
+							?></td>
 					</tr>
 					<?php
 						}
