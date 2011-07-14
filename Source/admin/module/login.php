@@ -16,10 +16,17 @@
                <div class="p"> <span class="text">Mật khẩu</span>
                <input type="password" class="input" id="txtPassword" name="txtPassword" />
                </div>
-			  <div class="bt">
-              <div class="rightbutton"></div>
-               <input class="button" type="submit" name="btLogin" id="btLogin" value="Đăng nhập" />
-			</div>
+
+			  <div class="bt" style="width:200px;">
+				<table>
+				<tr>
+				 <td> <div align="left" valign="button"><a href="#" >Quên mật khẩu</a></div></td>
+				 <td> <div class="rightbutton"></div>
+				   <input class="button" type="submit" name="btLogin" id="btLogin" value="Đăng nhập" /></td>
+				  </tr>
+               </table>
+			  </div>
+
               </form>
               <br class="clr" />
             </div>
