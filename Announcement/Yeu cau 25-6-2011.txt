@@ -28,15 +28,23 @@ smtp_port: 25
 
 3.phantrang in admin.
 6.thời gian time out
-7.chưa phân cấp nhân viên
+7.chưa phân cấp nhân viên => khi fan cap rui=> nhan vien dang nhap =>quen mat khau, cap nhat thong tin ca nha
 8.phần admin còn thiếu phần kế hoạch cho năm tới
 10.cái thống kê bản giá nhà đất.
-9.sửa tin cá nhân của admin
+9. Sửa tin cá nhân của admin
 11. Xử lý thời gian hết hạn.
 12.menu hover
 
+Thinh design gap:
+1.menu hover
+2.form cập nhật thông tin cua nhân viên.
+3.Khi admin đăng nhập admin phần chỉnh sửa thông tin cá nhân thì admin có thêm chức năng reset password với mục đích là khi thay đổi admin
+=> reset pass gửi đến email của admin mới
+4.design thêm fan nâng cấp vip
+
 Phúc
-danh gia nhan vien: ke toan, manage..
-Thống kê fai theo quí tháng năm: tháng + năm hay quí + năm
-Đánh giá nhân viên: thêm column loại nhân viên: kế toán, nhân viên ...
-Thống kê VIp,Quảng cáo
+1.danh gia nhan vien: ke toan, manage..
+2.Thống kê fai theo quí tháng năm: tháng + năm hay quí + năm
+3.Đánh giá nhân viên: thêm column loại nhân viên: kế toán, nhân viên ...
+4.Thống kê VIp,Quảng cáo
+5.Chức năng update status hết hạn của tiin dịch vụ.
