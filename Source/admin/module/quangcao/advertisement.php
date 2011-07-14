@@ -148,10 +148,10 @@
 	<div class="title icon_advertisement">Quản lý quảng cáo</div>
     <div class="icon">
     	<a href="index.php?view=advertisement&do=add">
-        	<img src="images/icon_32_new.png" alt="Thêm mới" border="0" title="Thêm mới" /><br />Thêm mới</a></div>
+        	<img src="images/icon_32_new.png" /><br />Thêm mới</a></div>
     <div class="icon">
     	<a onclick="return deleteUser();">
-        	<img src="images/icon_32_delete.png" alt="Xóa" border="0" title="Xóa" /><br />Xóa</a></div>
+        	<img src="images/trash-can-delete.png" /><br />Xóa</a></div>
     <br class="clr" />
 </div>
 <div class="bl"></div>

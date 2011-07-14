@@ -181,16 +181,16 @@
 	<div class="title icon_user">Quản lý thành viên </div>
     <div class="icon">
     	<a href="index.php?view=user&do=add">
-        	<img src="images/icon_32_new.png" alt="Thêm mới" border="0" title="Thêm mới" /><br />Thêm mới</a></div>
+        	<img src="images/icon_32_new.png" /><br />Thêm mới</a></div>
     <div class="icon">
     	<a onclick="return deleteUser();">
-        	<img src="images/icon_32_delete.png" alt="Xóa" border="0" title="Xóa" /><br />Xóa</a></div>
+        	<img src="images/trash-can-delete.png" /><br />Xóa</a></div>
     <div class="icon">
     	<a onclick="return lockUser();"> 
-        	<img src="images/icon_32_cancel.png" alt="Khóa" border="0" title="Khóa" /><br />Khóa</a></div>
+        	<img src="images/icon_32_lock.png" /><br />Khóa</a></div>
     <div class="icon">
     	<a onclick="return unlockUser();">
-        	<img src="images/icon_32_help.png" alt="Mở khóa" border="0" title="Mở khóa" /><br />Mở khóa</a></div>
+        	<img src="images/icon_32_help.png" /><br />Mở khóa</a></div>
     <br class="clr" />
 </div>
 <div class="bl"></div>

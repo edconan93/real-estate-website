@@ -15,7 +15,7 @@
 		<div class="title icon_rptotal">Thống kê lợi nhuận</div>
 		<div class="icon">
 			<a href="index.php?view=statistic" id="aCancel">
-				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
+				<img src="images/icon_32_cancel.png" /><br />Quay lại</a></div>
 		<br class="clr" />
 	</div>
 	<div class="bl"></div>

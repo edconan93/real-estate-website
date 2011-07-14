@@ -40,7 +40,7 @@
 	<div class="title icon_article">Quản lý tin đăng</div>
     <div class="icon">
     	<a onclick="return deleteTinDang();">
-        	<img src="images/icon_32_delete.png" alt="Xóa" border="0" title="Xóa" /><br />Xóa</a>
+        	<img src="images/trash-can-delete.png" /><br />Xóa</a>
     </div>
     <br class="clr" />
 </div>

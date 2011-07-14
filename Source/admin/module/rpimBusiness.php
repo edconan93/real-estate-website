@@ -6,13 +6,13 @@
 		<div class="title icon_rpim">Tổng kết doanh thu</div>
 		<div class="icon">
 			<a href="index.php?view=business" id="aCancel">
-				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
+				<img src="images/icon_32_cancel.png" /><br />Quay lại</a></div>
 		<div class="icon" style="width:60px;">
 			<a href="#" id="btnDelete">
-				<img src="images/trash-can-delete.png" alt="Xóa" border="0" title="Xóa" /><br />Xóa</a></div>
+				<img src="images/trash-can-delete.png" /><br />Xóa</a></div>
 		<div class="icon" style="width:60px;">
 			<a href="module/thuchi/XLThuChi.php?view=business&do=exExcel&loai=0" id="btnExportExcel">
-				<img src="images/export_excel.png" alt="Xuất Excel" border="0" title="Xuất Excel" /><br />Xuất Excel</a></div>
+				<img src="images/export_excel.png" /><br />Xuất Excel</a></div>
 		<br class="clr" />
 	</div>
 	<div class="bl"></div>

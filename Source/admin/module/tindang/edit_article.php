@@ -43,7 +43,7 @@
 	<div class="title icon_user">Tin đăng: <span class="subTitle">[ Chi tiết ]</span></div>
     <div class="icon">
 		<a href="index.php?view=article" id="aCancel">
-			<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
+			<img src="images/icon_32_cancel.png" border="0" /><br />Quay lại</a></div>
     <!--<div class="icon">
     	<a href="#" id="aSave">
         	<img src="images/icon_32_apply.png" alt="Lưu" border="0" title="Lưu" /><br />Lưu</a></div>-->

@@ -15,7 +15,7 @@
 		<div class="title icon_staff">Đánh giá nhân viên</div>
 		<div class="icon">
 			<a href="index.php?view=statistic" id="aCancel">
-				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
+				<img src="images/icon_32_cancel.png" /><br />Quay lại</a></div>
 		<div class="icon" style="width:60px;">
 			<a href="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=export&level=-1&page=1" id="btnExport">
 				<img src="images/export_excel.png" alt="Xuất Excel" border="0" title="Xuất Excel" /><br />Xuất Excel</a></div>
