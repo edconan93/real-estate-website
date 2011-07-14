@@ -28,7 +28,7 @@ function display($business)
     	$str.= '<td align="center">'.$business[$i]["ngay"].'</td>';
     	$str.= '<td>'.$business[$i]["congviec"].'</td>';
     	$str.= '<td>'.$user['hoten'].'</td>';
-    	$str.= '<td align="right">'.$business[$i]["sotien"].' '.$dvTien['ten'].'</td>';
+    	$str.= '<td align="right">'.number_format($business[$i]["sotien"]).' '.$dvTien['ten'].'</td>';
     	$str.= '</tr>';
     }
     $str.='</table>';
@@ -60,7 +60,7 @@ function displayWithSumRow($business,$loai,$monthFrom,$monthTo,$year)
     	$str.= '<td align="center">'.$business[$i]["ngay"].'</td>';
     	$str.= '<td>'.$business[$i]["congviec"].'</td>';
     	$str.= '<td>'.$user['hoten'].'</td>';
-    	$str.= '<td align="right">'.$business[$i]["sotien"].' '.$dvTien['ten'].'</td>';
+    	$str.= '<td align="right">'.number_format($business[$i]["sotien"]).' '.$dvTien['ten'].'</td>';
     	$str.= '</tr>';
         
         
@@ -143,7 +143,13 @@ if(isset($_REQUEST['do'])&&$_REQUEST['do']=="import")
     
     if(isset($_REQUEST['action'])&&$_REQUEST['action']=="add")
     {
-        $sotien=$_REQUEST['sotien'];
+        $sotien1=$_REQUEST['sotien'];
+		$sotien ="";
+		for($i=0;$i<strlen($sotien1);$i++)
+		{
+			if($sotien1[$i] != ",")
+				$sotien.=$sotien1[$i];
+		}
         $congviec=$_REQUEST['congviec'];
         $nhanvien=$_REQUEST['nhanvien'];
         $ngay=$_REQUEST['ngay'];
@@ -159,7 +165,13 @@ if(isset($_REQUEST['do'])&&$_REQUEST['do']=="export")
     
     if(isset($_REQUEST['action'])&&$_REQUEST['action']=="add")
     {
-        $sotien=$_REQUEST['sotien'];
+        $sotien1=$_REQUEST['sotien'];
+		$sotien ="";
+		for($i=0;$i<strlen($sotien1);$i++)
+		{
+			if($sotien1[$i] != ",")
+				$sotien.=$sotien1[$i];
+		}
         $congviec=$_REQUEST['congviec'];
         $nhanvien=$_REQUEST['nhanvien'];
         $ngay=$_REQUEST['ngay'];
