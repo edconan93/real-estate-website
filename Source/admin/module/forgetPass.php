@@ -10,19 +10,17 @@
         	<div class="_top"></div>
    			<div class="_content">
               <form id="form1" name="form1" method="post" action="">
-				<div class="p"> <span class="text">Tên đăng nhập</span>
+				<div class="p"> <span class="text">Email</span>
               		<input type="text" class="input" id="txtUsername" name="txtUsername" />
               	</div>
-               <div class="p"> <span class="text">Mật khẩu</span>
-               <input type="password" class="input" id="txtPassword" name="txtPassword" />
-               </div>
+               
 
 			  <div class="bt" style="width:200px;">
 				<table>
 				<tr>
-				 <td> <div align="left" valign="button"><a href="http://localhost/real_estate/Source/admin/do=forgetPass" >Quên mật khẩu</a></div></td>
+				 
 				 <td> <div class="rightbutton"></div>
-				   <input class="button" type="submit" name="btLogin" id="btLogin" value="Đăng nhập" /></td>
+				   <input class="button" type="submit" name="btLogin" id="btLogin" value="Gửi " /></td>
 				  </tr>
                </table>
 			  </div>

@@ -15,3 +15,4 @@ fai cho nhân viên kế toán nhập dữ liệu=> sau khi nhập xong press su
  bảng lợi nhuận theo tháng, quý, năm.
  những nhân viên thành tích tốt, đáng khen thưởng
  thống kê nhà,Vip,thống kê quảng cáo
+6.Lam them phan nhan vien nhan dinh khả năng dich vụ của khách hàng. đã làm lại database.

@@ -33,10 +33,8 @@ smtp_port: 25
 10.cái thống kê bản giá nhà đất.
 9. Sửa tin cá nhân của admin
 11. Xử lý thời gian hết hạn.
-12.menu hover
 
 Thinh design gap:
-1.menu hover
 2.form cập nhật thông tin cua nhân viên.
 3.Khi admin đăng nhập admin phần chỉnh sửa thông tin cá nhân thì admin có thêm chức năng reset password với mục đích là khi thay đổi admin
 => reset pass gửi đến email của admin mới
@@ -46,5 +44,5 @@ Phúc
 1.danh gia nhan vien: ke toan, manage..
 2.Thống kê fai theo quí tháng năm: tháng + năm hay quí + năm
 3.Đánh giá nhân viên: thêm column loại nhân viên: kế toán, nhân viên ...
-4.Thống kê VIp,Quảng cáo
+4.Thống kê Vip,Quảng cáo
 5.Chức năng update status hết hạn của tiin dịch vụ.
