@@ -7,12 +7,68 @@ require_once("../Utils/Utils.php");
 <?php
 class EvaluateProcessor
 {
-    public static function display($index,$id,$nhanvien,$email,$gioitinh,$capdo,$thanhtich,$khenthuong)
+    
+    public static function displayNewRow($index,$id,$nhanvien,$email,$gioitinh,$capdo,$thanhtich,$khenthuong,$ngay)
+    {
+        $str="<div id='trNewRow' align='center'>";
+        $str.='<table align="center" border="0" cellspacing="0" cellpadding="0">';
+           
+            $str.="<tr class='title'>";
+    		$str.="<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+    		$str.='<td>';
+            $str.='<select style="font-size:12px;width:150px;" id="cbbAddRow" onchange="selectUser()">';
+            $users=UsersBUS::getUsersByRole(3);
+            for($i=0;$i<count($users);$i++)
+                $str.="<option style='font-size:12px;' value='".$users[$i]['id']."'>".$users[$i]['hoten']."</option>";
+            $str.='</select>';
+            $str.='</td>';
+    		$str.='<td width="155px" style="color:blue;">'.$email.'</td>';
+    		$str.='<td align="center" width="50px">';
+            if($gioitinh==1)
+                $str.='Nam';
+                else
+                $str.='Nữ';
+            $str.='</td>';
+    		$str.='<td align="center" width="60px">'.$capdo.'</td>';
+    		$str.='<td align="center">';
+    		$str.='<select id="cbbLoai_'.$id.'">';
+            $str.='<option value="-1" selected>---Chọn thành tích---</option>';
+            if($thanhtich==1)
+    		  $str.='<option value="1" selected>Trung bình</option>';
+              else
+              $str.='<option value="1">Trung bình</option>';
+            if($thanhtich==2)
+    		  $str.='<option value="2" selected>Khá</option>';
+              else
+              $str.='<option value="2">Khá</option>';
+            if($thanhtich==3)
+    		  $str.='<option value="3" selected>Xuất sắc</option>';
+              else
+              $str.='<option value="3">Xuất sắc</option>';
+    		$str.='</select>';
+    		$str.='</td>';
+    		$str.='<td>';
+    		$str.='<input id="txtKhenThuong_'.$id.'" type="text" style="width:300px;" value="'.$khenthuong.'" />';
+    		$str.='</td>';
+            $str.='<td>';
+            $str.='<script>';
+			$str.='$(function() {';
+			$str.='$( "#txtDate_'.$id.'" ).datepicker({dateFormat:"yy-mm-dd", showButtonPanel: true})';
+			$str.='});';
+			$str.='</script>';
+			$str.='<input id="txtDate_'.$id.'" type="text" style="width:70px;" value="'.$ngay.'">';
+            $str.='</td>';
+    		$str.='</tr>'; 
+            $str.="</table>";
+            $str.="</div>"; 
+            return $str;  
+    }
+    public static function display($index,$id,$nhanvien,$email,$gioitinh,$capdo,$thanhtich,$khenthuong,$ngay)
     {
             $str="<input type='hidden' name='txtID[]' value='".$id."'>";
             $str.="<tr>";
     		$str.='<td align="center">'.$index.'</td>';
-    		$str.='<td class="m_name"><a href="index.php?view=user&do=edit&uid=1">'.$nhanvien.'</a></td>';
+    		$str.='<td class="m_name"><a href="index.php?view=user&do=edit&uid='.$id.'">'.$nhanvien.'</a></td>';
     		$str.='<td style="color:blue;">'.$email.'</td>';
     		$str.='<td align="center">';
             if($gioitinh==1)
@@ -41,22 +97,32 @@ class EvaluateProcessor
     		$str.='<td>';
     		$str.='<input id="txtKhenThuong_'.$id.'" type="text" style="width:300px;" value="'.$khenthuong.'" />';
     		$str.='</td>';
+            $str.='<td>';
+            $str.='<script>';
+			$str.='$(function() {';
+			$str.='$( "#txtDate_'.$id.'" ).datepicker({dateFormat:"yy-mm-dd", showButtonPanel: true})';
+			$str.='});';
+			$str.='</script>';
+			$str.='<input id="txtDate_'.$id.'" type="text" style="width:70px;" value="'.$ngay.'">';
+            $str.='</td>';
     		$str.='</tr>';  
             return $str;  
     }
+    
     public static function displayHeader($numRow)
     {
         $str="";
         $str.='<table align="center" border="0" cellspacing="0" cellpadding="0">';
-        $str.='<tr><td colspan="7"><b>Có '.$numRow.' mẫu tin</b></td></tr>';
+        $str.='<tr><td colspan="8"><b>Có '.$numRow.' mẫu tin</b></td></tr>';
 		$str.='<tr class="title">';
 		$str.='<td width="30px" align="center">#</td>';
-		$str.='<td align="center">Nhân viên</td>';
-		$str.='<td align="center">Email đăng nhập</td>';
+		$str.='<td align="center"  width="150px">Nhân viên</td>';
+		$str.='<td align="center" width="100px">Email đăng nhập</td>';
 		$str.='<td align="center" width="50px">Giới tính</td>';
 		$str.='<td align="center" width="60px">Cấp độ</td>';
 		$str.='<td align="center" width="100px">Đạt thành tích</td>';
 		$str.='<td align="center">Khen thưởng</td>';
+        $str.='<td align="center">Ngày duyệt</td>';
 		$str.='</tr>';
         return $str;
     }
@@ -103,32 +169,42 @@ class EvaluateProcessor
         for($i=0;$i<count($users);$i++)
         {
             $index++;
-            $display.=EvaluateProcessor::display($index,$users[$i]['id'],$users[$i]['hoten'],$users[$i]['email'],$users[$i]['gioitinh'],$users[$i]['level'],-1,"");
+            $display.=EvaluateProcessor::display($index,$users[$i]['id'],$users[$i]['hoten'],$users[$i]['email'],$users[$i]['gioitinh'],$users[$i]['level'],-1,"","");
         } 
         for($i=0;$i<count($evaluate);$i++)
         {
             $index++;
             $user=UsersBUS::GetUserByID($evaluate[$i]['iduser']);
-            $display.=EvaluateProcessor::display($index,$evaluate[$i]['iduser'],$user['hoten'],$user['email'],$user['gioitinh'],$user['level'],$evaluate[$i]['loai'],$evaluate[$i]['thuong']);
+            $display.=EvaluateProcessor::display($index,$evaluate[$i]['iduser'],$user['hoten'],$user['email'],$user['gioitinh'],$user['level'],$evaluate[$i]['loai'],$evaluate[$i]['thuong'],$evaluate[$i]['ngay']);
         }
+        
         $display.=EvaluateProcessor::displayFooter();
+        $display.=EvaluateProcessor::displayNewRow("","","","","","","","","");
    
         $strPaging =Utils::paging ('',$totalUsers+$totalEvaluate[0],$curPage,$maxPages,$constMaxItem);
         return $display.$strPaging;
     }
 }
+
 if(isset($_REQUEST['action'])&&$_REQUEST['action']=='show')
 {
     $page=$_REQUEST['page'];
     $level=$_REQUEST['level'];
     echo EvaluateProcessor::load($page,$level);
 }
+elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='loadrow')
+{
+    $id=$_REQUEST['id'];
+    $users=UsersBUS::GetUserByID($id);
+    echo EvaluateProcessor::displayNewRow("",$users['id'],$users['hoten'],$users['email'],$users['gioitinh'],$users['level'],-1,"","");
+}
 elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='save')
 {
     $id=$_REQUEST['id'];
     $loai=$_REQUEST['loai'];
     $khenthuong=$_REQUEST['khenthuong'];
-    KhenThuongBUS::update($id,$loai,$khenthuong,date('Y'));
+    $ngay=$_REQUEST['ngay'];
+    KhenThuongBUS::update($id,$loai,$khenthuong,$ngay);
 }
 elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='export')
 {

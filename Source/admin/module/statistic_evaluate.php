@@ -41,6 +41,11 @@
                 url+=page;           
                 $("#dsNhanvien").load(url);
             }
+    function selectUser()
+    {
+        var id=$('#cbbAddRow').val();
+        $('#trNewRow').load("module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=loadrow&id="+id+'&page=1');
+    }
     $(document).ready(function()
 			{
                 url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
@@ -68,9 +73,10 @@
                         var id=$(this).val();
                         var loai=$("#cbbLoai_"+id).val();
                         var khenthuong=$("#txtKhenThuong_"+id).val();
+                        var ngay=$("#txtDate_"+id).val();
                         if(loai!="-1")
                         {
-                            var params = { 'view':'statistic', 'do':'evaluate','action':'save','id':id,'loai':loai,'khenthuong':khenthuong};
+                            var params = { 'view':'statistic', 'do':'evaluate','action':'save','id':id,'loai':loai,'khenthuong':khenthuong,'ngay':ngay};
                             $('#dvTemp').load(url,params,function(){
                               url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
                             $("#dsNhanvien").load(url); 
@@ -80,6 +86,8 @@
                 //url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
                 //$("#dsNhanvien").load(url);
                 });
+                
+						
                 });
     </script>
     <div class="mid">
@@ -94,7 +102,10 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="button" value="Thống kê" id="btnShow" />
 			</div>
-			<div class="list" id="dsNhanvien">
+            <script>
+							
+			</script>
+			<div class="list" id="dsNhanvien" >
 				<table align="center" border="0" cellspacing="0" cellpadding="0">
 					<tr><td colspan="7"><b>Có 3 mẫu tin</b></td></tr>
 					<tr class="title">
@@ -147,6 +158,7 @@
                         
 				</table>
 			</div>
+            </div>
 		</form>
 		<br class="clr" />
     </div>
