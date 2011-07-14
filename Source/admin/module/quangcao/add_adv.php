@@ -31,7 +31,7 @@
 		return false;
 	}
 </script>
-<form action="module/quangcao/xulyquangcao.php" method="post">
+<form action="module/quangcao/xulyquangcao.php" method="post" enctype="multipart/form-data">
 <div id="toolbar">
 	<div class="tl"></div>
 	<div class="tr"></div>
@@ -81,7 +81,7 @@
 			</tr>
 			<tr>
 				<td>Hình ảnh:</td>
-				<td><input type="file" size="50" id="fupQuangCao" name="fupQuangCao"> Kích thước hình upload (180x180)</td>
+				<td><input type="file" size="50" id="fileUpQuangCao" name="fileUpQuangCao"> Kích thước hình upload (180x180)</td>
 			</tr>
 			<tr>
 				<td>Link:</td>
