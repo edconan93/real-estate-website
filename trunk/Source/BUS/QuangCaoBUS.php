@@ -7,5 +7,9 @@
 		{
 			return QuangCaoDAO::Add($chusohuu, $sdt, $email, $diachi, $ngaydang, $sothang, $hinhanh, $link, $status);
 		}
+		public static function GetAdvByType($status)
+		{
+			return QuangCaoDAO::GetAdvByType($status);
+		}
 	}
 ?>

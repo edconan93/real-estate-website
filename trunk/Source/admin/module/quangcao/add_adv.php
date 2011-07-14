@@ -5,7 +5,7 @@
 	$PATH = str_replace('//','/',dirname(__FILE__).'/');
 ?>
 <script>
-	function saveNewQuangCao()
+	function saveNewQuangCao1()
 	{
 		if (document.getElementById("txtChuSoHuu").value == "")
 		{
@@ -81,7 +81,7 @@
 			</tr>
 			<tr>
 				<td>Hình ảnh:</td>
-				<td><input type="file" size="50" name="fupQuangCao"></td>
+				<td><input type="file" size="50" id="fupQuangCao" name="fupQuangCao"> Kích thước hình upload (180x180)</td>
 			</tr>
 			<tr>
 				<td>Link:</td>

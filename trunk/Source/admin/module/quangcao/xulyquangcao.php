@@ -13,9 +13,11 @@
 				$diachi = $_POST["txtDiaChi"];
 				$ngaydang = date('Y-m-d');
 				$sothang = $_POST["txtThang"];
-				$hinhanh = null;
+				$hinhanh = $_POST["fupQuangCao"];
 				$link = $_POST["txtLink"];
 				$status = 1;
+				//upload banner
+				
 				QuangCaoBUS::Add($chusohuu, $sdt, $email, $diachi, $ngaydang, $sothang, $hinhanh, $link, $status);
 				break;
 		}
