@@ -101,13 +101,13 @@
 																	left: 0px; overflow: hidden; background: none repeat scroll 0% 0% white; opacity: 1;
 																	display: block;">
 																	<?php if(count($hinhanh) >0){?>
-																			<img id="pic" name="pic" style="height: 290px; width: 380px; border-width: 0px;" src="../<?php echo $hinhanh[0]['path']?>">
-																			<?php }
-																			else
-																			{
-																				echo "<img id='pic' name='pic' style='height: 290px; width: 380px; border-width: 0px;' src='../images/user/1.png'>";
-																			}
-																			?>
+																	<img id="pic" name="pic" style="height: 290px; width: 380px; border-width: 0px;" src="../<?php echo $hinhanh[0]['path']?>">
+																	<?php }
+																	else
+																	{
+																		echo "<img id='pic' name='pic' style='height: 290px; width: 380px; border-width: 0px;' src='../images/user/1.png'>";
+																	}
+																	?>
 																	
 																	<div class="panel-overlay" style="position: absolute; z-index: 999; width: 360px;
 																		height: 1px; top: 289px; left: 0pt; padding: 0pt 10px; color: white; font-size: 1em;">
@@ -136,7 +136,8 @@
 																	</ul>
 																</div>
 												
-																<div id="pointer" style="position: absolute; z-index: 1000; cursor: pointer; top: 294px; left: 163px; height: 48px; width: 48px; display: block; overflow: visible; border: 2px solid black;"></div>
+																<div id="pointer" style="position: absolute; z-index: 1000; cursor: pointer; top: 294px; left: 163px; height: 48px; width: 48px; display: block; overflow: visible; border: 2px solid black;">
+																</div>
 																<img class="nav-next" src="../images/next.png" onclick="slideshow()"
 																	style="position: absolute; cursor: pointer; top: 309px; right: 133px;">
 																<img class="nav-prev" src="../images/prev.png" onclick="prev()"
@@ -321,6 +322,7 @@
 
 			var picture = 0;
 			function slideshow(){
+			alert('picture='+picture);
 				if(picture < imgAr1.length-1){
 					picture=picture+1;
 					slide.src = imgAr1[picture].src;
