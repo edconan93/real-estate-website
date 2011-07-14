@@ -4,7 +4,6 @@ http://sotayweb.com/lap-trinh-thiet-ke-website/pro/ky-thuat-lap-trinh-website/it
 http://sinhvienit.net/@forum/showthread.php?t=3241
 http://sinhvienit.net/@forum/showthread.php?t=25872
 http://stackoverflow.com/questions/3477766/phpmailer-smtp-error-could-not-connect-to-smtp-host
-
 http://www.phpclasses.org/blog/package/9/post/1-Sending-email-using-SMTP-servers-of-Gmail-Hotmail-or-Yahoo-with-PHP.html
 - Gmail
 
@@ -25,9 +24,19 @@ smtp_port: 25
 
 
 1.nang cap VIP
-2.load picture in tindangchitiet.php
-3.phantrang in admin.
+5.reset password của nhân viên
 
-4.phần admin còn thiếu phần kế hoạch cho năm tới
-5.sửa tin cá nhân của admin
-6.cái thống kê bản giá nhà đất đó hả?
+3.phantrang in admin.
+6.thời gian time out
+7.chưa phân cấp nhân viên
+8.phần admin còn thiếu phần kế hoạch cho năm tới
+10.cái thống kê bản giá nhà đất.
+9.sửa tin cá nhân của admin
+11. Xử lý thời gian hết hạn.
+12.menu hover
+
+Phúc
+danh gia nhan vien: ke toan, manage..
+Thống kê fai theo quí tháng năm: tháng + năm hay quí + năm
+Đánh giá nhân viên: thêm column loại nhân viên: kế toán, nhân viên ...
+Thống kê VIp,Quảng cáo
