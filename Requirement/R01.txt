@@ -7,3 +7,10 @@
 7. Tạo kế hoạch cho manager
 8. Bản đồ ngôi nhà cần bán
 9. Phần admin: gồm nhiều chức năng.....
+
+
+<script>
+$(function() {
+	$( "#datepicker" ).datepicker({dateFormat:'dd/mm/yy', showButtonPanel: true});
+});
+</script>

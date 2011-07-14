@@ -22,6 +22,12 @@ smtp_start_tls: 1
 
 smtp_host: smtp.mail.yahoo.com
 smtp_port: 25
-phần admin còn thiếu phần kế hoạch cho năm tới
-sửa tin cá nhân của admin
-cái thống kê bản giá nhà đất đó hả?
+
+
+1.nang cap VIP
+2.load picture in tindangchitiet.php
+3.phantrang in admin.
+
+4.phần admin còn thiếu phần kế hoạch cho năm tới
+5.sửa tin cá nhân của admin
+6.cái thống kê bản giá nhà đất đó hả?
