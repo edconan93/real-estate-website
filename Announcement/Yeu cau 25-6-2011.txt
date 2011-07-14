@@ -21,17 +21,19 @@ smtp_start_tls: 1
 
 smtp_host: smtp.mail.yahoo.com
 smtp_port: 25
+http://longhunganh.com.vn/dia-oc/bang-gia-dat-2009.html
 
-
+9. Sửa tin cá nhân của admin
 1.nang cap VIP
 5.reset password của nhân viên
+6.thời gian time out
+10.cái thống kê bản giá nhà đất.
 
 3.phantrang in admin.
-6.thời gian time out
 7.chưa phân cấp nhân viên => khi fan cap rui=> nhan vien dang nhap =>quen mat khau, cap nhat thong tin ca nha
 8.phần admin còn thiếu phần kế hoạch cho năm tới
-10.cái thống kê bản giá nhà đất.
-9. Sửa tin cá nhân của admin
+
+
 11. Xử lý thời gian hết hạn.
 
 Thinh design gap:
