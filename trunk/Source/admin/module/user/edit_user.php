@@ -36,16 +36,13 @@
 <div class="tm"></div>
 <div class="mid">
 	<div class="title icon_user">Thành viên: <span class="subTitle">[ Chi tiết ]</span></div>
-     <div class="icon">
-   	  <a href="index.php?view=user" id="aCancel">
-   	  <img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" />
-             <br />
-            Hủy
-      </a>
+    <div class="icon">
+		<a href="index.php?view=user" id="aCancel">
+			<img src="images/icon_32_cancel.png" border="0" /><br />Quay lại</a>
     </div>
     <div class="icon">
 		<input type="submit" value="Lưu" style="background:url('images/icon_32_apply.png') no-repeat;
-			cursor:pointer;border:0;height:50px;width:32px;padding-top:36px;" />
+			cursor:pointer;border:0;height:46px;width:32px;padding-top:34px;" />
 	</div>
     <br class="clr" />
 </div>

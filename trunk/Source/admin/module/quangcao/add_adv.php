@@ -40,7 +40,7 @@
 		<div class="title icon_user">Quảng cáo: <span class="subTitle">[ Thêm mới ]</span></div>
 		<div class="icon">
 			<a href="index.php?view=advertisement">
-				<img src="images/icon_32_cancel.png" alt="Hủy" border="0" title="Hủy" /><br />Hủy</a>
+				<img src="images/icon_32_cancel.png" /><br />Quay lại</a>
 		</div>
 		<div class="icon">
 			<input type="submit" value="Lưu" style="background:url('images/icon_32_apply.png') no-repeat;

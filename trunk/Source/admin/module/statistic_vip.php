@@ -15,7 +15,7 @@
 		<div class="title icon_vip">Thống kê khách hàng VIP</div>
 		<div class="icon">
 			<a href="index.php?view=statistic" id="aCancel">
-				<img src="images/icon_32_cancel.png" alt="Hủy"  border="0" title="Hủy" /><br />Hủy</a></div>
+				<img src="images/icon_32_cancel.png" /><br />Quay lại</a></div>
 		<div class="icon" style="width:60px;">
 			<a href="" id="aSave">
 				<img src="images/export_excel.png" alt="Xuất Excel" border="0" title="Xuất Excel" /><br />Xuất Excel</a></div>
