@@ -4,9 +4,9 @@
 <?php
 class KhenThuongDAO
 {
-    public static function insert($iduser,$loai,$khenthuong,$nam)
+    public static function insert($iduser,$loai,$khenthuong,$ngay)
     {
-            $strSQL = "Insert into khenthuong values (NULL, $iduser, $loai,'$khenthuong','$nam')";
+            $strSQL = "Insert into khenthuong values (NULL, $iduser, $loai,'$khenthuong','$ngay')";
 		    $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			
@@ -20,7 +20,7 @@ class KhenThuongDAO
     }
     public static function update($iduser,$loai,$khenthuong,$nam)
     {
-            $strSQL = "update khenthuong set loai=$loai,thuong='$khenthuong', nam='$nam' where iduser=$iduser";
+            $strSQL = "update khenthuong set loai=$loai,thuong='$khenthuong', ngay='$ngay' where iduser=$iduser";
 		    $cn = DataProvider::Open ();
     		DataProvider::MoreQuery ($strSQL,$cn);
     		if(mysql_affected_rows () == 0)
