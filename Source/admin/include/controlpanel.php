@@ -71,7 +71,7 @@
         </a>
     </div>
      <div class="icon">
-    	<a href="index.php?view=statistics">
+    	<a href="index.php?view=statistic">
     	<img src="images/icon-48-stats.png" alt="Thống kê" border="0" /><br />
         <span>Thống kê</span>
         </a>

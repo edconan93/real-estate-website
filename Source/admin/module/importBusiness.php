@@ -95,15 +95,19 @@
 				<tr>
 					<td width="130px">Số tiền: <span style="color:red;">(*)</span></td>
 					<td width="280px">
-						<input type="text" id="txtSotien"/>
+						<input type="text" id="txtSotien" onkeypress="return keypress(event);" onkeyup="FormatCurrency(this);"/>
                         <select id="cbbDvTien">
                         <?php 
                         include_once("../BUS/DonviTienBUS.php");
                         $dvTien=DonViTienBUS::GetAllDonViTien();
                         for($i=0;$i<count($dvTien);$i++)
                         {
-                            echo '<option value="'.$dvTien[$i]['id'].'">'.$dvTien[$i]['ten'].'</option>';
+							if($dvTien[$i]['id'] == 2)
+								echo '<option value="'.$dvTien[$i]['id'].'" selected>'.$dvTien[$i]['ten'].'</option>';
+							else
+								echo '<option value="'.$dvTien[$i]['id'].'">'.$dvTien[$i]['ten'].'</option>';
                         }
+						
                         ?>
                         </select>
                         </td>
