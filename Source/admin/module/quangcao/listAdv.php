@@ -3,6 +3,8 @@
 		header("Location: index.php");
 
 	$PATH = str_replace('//','/',dirname(__FILE__).'/');
+	include_once($PATH . "../../../BUS/QuangCaoBUS.php");
+	include_once($PATH . "../../../module/Utils/Utils.php");
 	
 	$status = isset($_REQUEST["status"])?$_REQUEST["status"]:-2;
 ?>
@@ -40,25 +42,15 @@
 					<td width="69%">
 						<?php
 							$listAdv = QuangCaoBUS::GetAdvByType($status);
-							echo "<b>Có ".count($listUsers)." mẫu tin.</b>";
+							echo "<b>Có ".count($listAdv)." mẫu tin.</b>";
 						?>
 					</td>
 					<td width="31%">
 						<div align="right">
-							<select id="type" onchange="return loadUsersByCondition();">
-								<option value="-1" <?php echo $type==-1?"selected":""; ?>> - Nhóm thành viên - </option>
-								<?php
-									for($i=0;$i<count($listRole);$i++)
-										if ($listRole[$i]["id"]==$type)
-											echo "<option value='".$listRole[$i]["id"]."' selected>".$listRole[$i]["ten"]."</option>";
-										else
-											echo "<option value='".$listRole[$i]["id"]."'>".$listRole[$i]["ten"]."</option>";
-								?>
-							</select>
 							<select id="status" onchange="return loadUsersByCondition();">
-								<option value="-1" <?php echo $status==-1?"selected":""; ?>> - Chọn trạng thái - </option>
-								<option value="1"  <?php echo $status==1?"selected":""; ?>>Kích hoạt</option>
-								<option value="0"  <?php echo $status==0?"selected":""; ?>>Bị khóa</option>
+								<option value="-2" <?php echo $status==-1?"selected":""; ?>> - Chọn hiệu lực - </option>
+								<option value="1"  <?php echo $status==1?"selected":""; ?>>Còn hạn</option>
+								<option value="0"  <?php echo $status==0?"selected":""; ?>>Hết hạn</option>
 							</select>
 						</div>
 					</td>
@@ -70,44 +62,32 @@
 						<td width="30px" align="center">#</td>
 						<td width="30px" align="center">
 							<input type="checkbox" onclick="checkAll(this);" /></td>
-						<td align="center">Họ tên</td>
-						<td align="center">Email đăng nhập</td>
-						<td width="50px" align="center">Giới tính</td>
+						<td width="170px" align="center">Chủ sở hữu</td>
+						<td width="80px" align="center">Điện thoại</td>
+						<td align="center">Email</td>
 						<td align="center">Địa chỉ</td>
-						<td width="80px" align="center">Số ĐT 1</td>
-						<td width="80px" align="center">Số ĐT 2</td>
-						<td width="100px" align="center">Vai trò</td>
-						<td width="120px" align="center">Cấp độ</td>
-						<td width="70px" align="center">Kích hoạt</td>
+						<td width="180px" align="center">Banner quảng cáo</td>
+						<td align="center">Link</td>
+						<td width="80px" align="center">Ngày đăng ký</td>
+						<td width="80px" align="center">Số tháng Đ.K</td>
+						<td width="70px" align="center">Hiệu lực</td>
 					</tr>
 					<?php
-						for ($i=0;$i<count($listUsers);$i++)
+						for ($i=0;$i<count($listAdv);$i++)
 						{
 					?>
 					<tr style="background:<?php echo ($i%2==0) ? "#EFF3FF" : "white"; ?>;">
 						<td align="center"><?php echo $i+1; ?></td>
-						<td align="center"><input type="checkbox" name="cbUser" id="cbUser" value="<?php echo $listUsers[$i]["id"]; ?>" onclick="Check_Click(this)"></td>
-						<td class="m_name"><?php echo "<a href='index.php?view=user&do=edit&uid=".$listUsers[$i]["id"]."'>".$listUsers[$i]["hoten"]."</a>"; ?></td>
-						<td style="color:blue;font-weight:bold;"><?php echo $listUsers[$i]["email"]; ?></td>
-						<td align="center"><?php echo ($listUsers[$i]["gioitinh"]==1)?"Nam":"Nữ"; ?></td>
-						<td><?php echo $listUsers[$i]["diachi"]; ?></td>
-						<td align="right"><?php echo $listUsers[$i]["sdt1"]; ?></td>
-						<td align="right"><?php echo $listUsers[$i]["sdt2"]; ?></td>
-						<?php
-							$role = RoleBUS::GetRoleByID($listUsers[$i]["role"]);
-							if ($role[0] == 2)//Khach hang
-								echo "<td align='center' style='color:red;'>".$role[1]."</td>";
-							else
-								echo "<td align='center' style='color:#23776B;'>".$role[1]."</td>";
-
-							$level = LevelBUS::GetLevelByID($listUsers[$i]["level"]);
-							echo "<td align='center'>".$level[2]."</td>";
-							
-							if ($listUsers[$i]["status"] == 1)
-								echo "<td align='center'><img src='images/icon_yes.png' alt='Đã kích hoạt' /></td>";
-							else
-								echo "<td align='center'><img src='images/icon_no.png' alt='Đã bị khóa' /></td>";
-						?>
+						<td align="center"><input type="checkbox" name="cbUser" id="cbUser" value="<?php echo $listAdv[$i]["id"]; ?>" onclick="Check_Click(this)"></td>
+						<td class="m_name"><?php echo "<a href='index.php?view=user&do=edit&uid=".$listAdv[$i]["id"]."'>".$listAdv[$i]["chusohuu"]."</a>"; ?></td>
+						<td align="center"><?php echo $listAdv[$i]["sdt"]; ?></td>
+						<td style="color:blue;"><?php echo $listAdv[$i]["email"]; ?></td>
+						<td><?php echo $listAdv[$i]["diachi"]; ?></td>
+						<td align="center"><img src="images/upload/quangcao/<?php echo $listAdv[$i]["hinhanh"]; ?>" width="100px" /></td>
+						<td><a href='<?php echo $listAdv[$i]["link"]; ?>'><?php echo $listAdv[$i]["link"]; ?></a></td>
+						<td align="center"><?php echo Utils::convertTimeDMY($listAdv[$i]["ngaydang"]); ?></td>
+						<td align="center">3</td>
+						<td align="center" style="color:red;font-weight:bold;"><?php echo "Đã hết hạn"; ?></td>
 					</tr>
 					<?php
 						}

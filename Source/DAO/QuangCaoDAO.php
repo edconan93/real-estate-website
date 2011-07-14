@@ -17,5 +17,23 @@
 			DataProvider::Close($cn);
             return $result;
         }
+		public static function GetAdvByType($status)
+		{
+			$strSQL = "";
+			if ($status == -2)
+				$strSQL = "select * from quangcao
+						   where status!=-1
+						   order by ngaydang desc";
+			else
+				$strSQL = "select * from quangcao
+						   where status=$status
+						   order by ngaydang desc";
+			$result = DataProvider::Query($strSQL);
+			if (mysql_num_rows($result)==0)
+				return null;
+			while ($row= mysql_fetch_array ($result,MYSQL_BOTH))
+                $return[]=$row;
+            return $return;	
+		}
 	}
 ?>
