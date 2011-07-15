@@ -15,5 +15,9 @@
 		{
 			return DichVuVIPDAO::GetTinVipById($id);
 		}
+		public static function SetStatusTinVIP($iddv, $value)
+		{
+			return DichVuVIPDAO::SetStatusTinVIP($iddv, $value);
+		}
 	}
 ?>

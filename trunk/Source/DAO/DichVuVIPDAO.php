@@ -34,7 +34,20 @@
 		public static function GetTinVipById($id)
         {
             $strSQL = "select * from dichvuvip
-					   where id='$id'";
+					   where iddichvu='$id' and status=0";
+			
+		    $result = DataProvider::Query($strSQL);
+			if (mysql_num_rows($result)==0)
+				return null;
+			while ($row= mysql_fetch_array ($result,MYSQL_BOTH))
+                $return[]=$row;
+            return $return;	
+        }
+		public static function SetStatusTinVIP($iddv, $value)
+        {
+            $strSQL = "	update dichvuvip set status=$value
+						where iddichvu=$iddv";
+						
 		    $cn = DataProvider::Open ();
 			DataProvider::MoreQuery ($strSQL,$cn);
 			
