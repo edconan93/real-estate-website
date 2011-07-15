@@ -17,13 +17,12 @@
 			}
 			else
 			{
-				$timeout = 3;
-				ini_set('session.gc_maxlifetime', $timeout);
-				echo ini_get("session.gc_maxlifetime");
-				$start=time(); 
-				$_SESSION["time_start"]=$start;
-				$_SESSION["timeout"]=false;
-				//$flag_Timeout =false;
+				//xet timeout in file php.ini search words: session.gc_maxlifetime
+				// $timeout = 600;
+				// ini_set('session.gc_maxlifetime', $timeout);
+				// echo ini_get("session.gc_maxlifetime");
+				$_SESSION["time_start"]=time();
+				$_SESSION["flag"]=true;
 				header("Location:thanhvien.php?id=".$result['id']);
 			}
 		}  

@@ -103,6 +103,7 @@ rgb(33, 91, 135); text-align: center;">
             document.getElementById("txtUsernameLogin").value = "";
             document.getElementById("txtPasswordLogin").value = "";
             document.getElementById("txtUsernameLogin").focus();
+			$("#messRegister").attr("innerHTML","");
             return false;
         }
 		function timeOut()
@@ -114,7 +115,6 @@ rgb(33, 91, 135); text-align: center;">
             document.getElementById("txtUsernameLogin").focus();
 			$("#messRegister").attr("innerHTML","Mời bạn đăng nhập lại!");
 			$("#messRegister").css("color","blue");
-			
             return false;
         }
 		function press_DangNhapRegister()
@@ -128,13 +128,7 @@ rgb(33, 91, 135); text-align: center;">
 			
             return false;
         }
-		// function show_SuccessRegister()
-		// {
-		//alert("sucess");
-			// $("#messRegister").attr("innerHTML","Đăng ký thành công.Mời bạn đăng nhập!");
-			// $("#messRegister").css("color","blue");
-			// return false;
-		// }
+
         function press_closeLogIn()
         {
             document.getElementById("popup").style.visibility = "hidden";
@@ -154,6 +148,7 @@ rgb(33, 91, 135); text-align: center;">
 		    }
 			return true; 
 		}
+
 	</script>
 </body>
 </html>
