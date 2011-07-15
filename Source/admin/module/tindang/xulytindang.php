@@ -200,9 +200,12 @@
 				break;
 			case "status":
 				include ("../../../BUS/TinDangBUS.php");
+				include ("../../../BUS/DichVuVIPBUS.php");
 				$aid = $_GET["aid"];
 				$status = $_GET["status"];
 				TinDangBUS::setStatusTinDang($aid, $status);
+				if ($status == 2)
+					DichVuVIPBUS::SetStatusTinVIP($aid, 1);
 				break;
 		}
 		$tukhoa = isset($_REQUEST["tukhoa"])?$_REQUEST["tukhoa"]:-1;

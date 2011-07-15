@@ -54,29 +54,28 @@
 <div class="bm"></div>
 </div>
 <?php
-					include_once ("../BUS/DichVuBUS.php");
-					include_once ("../BUS/LoaiDVBUS.php");
-					include_once ("../BUS/TinhBUS.php");
-					include_once ("../BUS/QuanBUS.php");
-					include_once ("../BUS/PhuongBUS.php");
-					include_once ("../BUS/DonViTienBUS.php");
-					include_once ("../BUS/LoaiNhaBUS.php");
-					include_once ("../module/Utils/Utils.php");
-					include_once ("../BUS/HuongNhaBUS.php");
-					include_once ("../BUS/PhapLyBUS.php");
-					include_once ("../BUS/HinhAnhBUS.php");
-					$objCanHo = DichVuBUS::select($_REQUEST["aid"]); 
-					$loaidv = LoaiDVBUS::GetLoaiDVByID($objCanHo["loaidv"]);
-					$tinh = TinhBUS::getTinhById($objCanHo["tinh"]);
-					$quan = QuanBUS::getQuanById($objCanHo["quan"]);
-                    $phuong = PhuongBUS::getPhuongById($objCanHo["phuong"]);
-					$donvitien = DonViTienBUS::selectId($objCanHo["donvitien"]);
-					$loainha = LoaiNhaBUS::getById($objCanHo["loainha"]);
-					$huongnha = HuongNhaBUS::GetHuongNhaById($objCanHo["huongnha"]);
-					$phaply = PhapLyBUS::GetPhapLyById($objCanHo["phaply"]);
-					$hinhanh = HinhAnhBUS::getAllHinhAnhByDichVuID($objCanHo['id']);
-				?>
-				
+	include_once ("../BUS/DichVuBUS.php");
+	include_once ("../BUS/LoaiDVBUS.php");
+	include_once ("../BUS/TinhBUS.php");
+	include_once ("../BUS/QuanBUS.php");
+	include_once ("../BUS/PhuongBUS.php");
+	include_once ("../BUS/DonViTienBUS.php");
+	include_once ("../BUS/LoaiNhaBUS.php");
+	include_once ("../module/Utils/Utils.php");
+	include_once ("../BUS/HuongNhaBUS.php");
+	include_once ("../BUS/PhapLyBUS.php");
+	include_once ("../BUS/HinhAnhBUS.php");
+	$objCanHo = DichVuBUS::select($_REQUEST["aid"]); 
+	$loaidv = LoaiDVBUS::GetLoaiDVByID($objCanHo["loaidv"]);
+	$tinh = TinhBUS::getTinhById($objCanHo["tinh"]);
+	$quan = QuanBUS::getQuanById($objCanHo["quan"]);
+	$phuong = PhuongBUS::getPhuongById($objCanHo["phuong"]);
+	$donvitien = DonViTienBUS::selectId($objCanHo["donvitien"]);
+	$loainha = LoaiNhaBUS::getById($objCanHo["loainha"]);
+	$huongnha = HuongNhaBUS::GetHuongNhaById($objCanHo["huongnha"]);
+	$phaply = PhapLyBUS::GetPhapLyById($objCanHo["phaply"]);
+	$hinhanh = HinhAnhBUS::getAllHinhAnhByDichVuID($objCanHo['id']);
+?>
 <div style="margin:10px">
     <div class="tl"></div>
     <div class="tr"></div>

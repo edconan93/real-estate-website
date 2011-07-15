@@ -351,5 +351,26 @@
 			$resultSet=mysql_fetch_array ($result);
 			return $resultSet[0];
 		}
+		public static function Update2($id, $hoten, $gioitinh, $diachi, $sdt1, $sdt2, $newpass, $ngaycapnhat)
+        {
+			$strSQL = "";
+			if ($newpass != -1)
+				$strSQL = "	update user set hoten='$hoten', gioitinh=$gioitinh, diachi='$diachi',
+								sdt1='$sdt1', sdt2='$sdt2', password='$newpass', ngaycapnhat='$ngaycapnhat' 
+							where id=$id";
+			else
+				$strSQL = "	update user set hoten='$hoten', gioitinh=$gioitinh, diachi='$diachi',
+								sdt1='$sdt1', sdt2='$sdt2', ngaycapnhat='$ngaycapnhat' 
+							where id=$id";
+		    $cn = DataProvider::Open ();
+			DataProvider::MoreQuery ($strSQL,$cn);
+			
+			if(mysql_affected_rows () == 0)
+				$result=false;
+			else
+				$result=true;
+			DataProvider::Close ($cn);
+            return $result;
+        }
 	}
 ?>

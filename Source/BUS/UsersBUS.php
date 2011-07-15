@@ -83,8 +83,6 @@ Lớp UsersBUS
 			$newPassword=md5($newPassword);
 			return UsersDAO::SetPassword ($id, $newPassword);
 		}
-		
-		
 		public static function SetEmail ($id, $Email)
 		{
 			$email =addslashes($email);
@@ -178,6 +176,12 @@ Lớp UsersBUS
 		public static function countAllBySQL($strSQL)
 		{
 			return UsersDAO::countAllBySQL($strSQL);
+		}
+		public static function Update2($id, $hoten, $gioitinh, $diachi, $sdt1, $sdt2, $newpass, $ngaycapnhat)
+		{
+		    $newpass = md5($newpass);
+			
+			return UsersDAO::Update2($id, $hoten, $gioitinh, $diachi, $sdt1, $sdt2, $newpass, $ngaycapnhat);
 		}
 		// public static function countResultByEmail ($keyWord)
 		// {
