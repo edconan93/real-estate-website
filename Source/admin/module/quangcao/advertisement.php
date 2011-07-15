@@ -117,24 +117,34 @@
 		
 		return false;
 	}
-	function deleteUser()
+	function deleteQuangCao()
 	{
-		if (confirm("Bạn có chắc muốn xóa các thành viên này?"))
+		var flag = 0;
+		var e = document.frmListItem.elements.length;
+		var cnt = 0;
+		var uid = new Array();
+		var i = 0;
+		for (cnt=0;cnt<e;cnt++)
 		{
-			var e = document.frmListItem.elements.length;
-			var cnt = 0;
-			var uid = new Array();
-			var i = 0;
-			for (cnt=0;cnt<e;cnt++)
+			var tmp = document.frmListItem.elements[cnt];
+			if (tmp.name=="cbUser" && tmp.checked==true)
 			{
-				var tmp = document.frmListItem.elements[cnt];
-				if (tmp.name=="cbUser" && tmp.checked==true)
-					uid[i++] = document.frmListItem.elements[cnt].value;
+				uid[i++] = document.frmListItem.elements[cnt].value;
+				flag = 1;
 			}
-			var type = document.getElementById("type");
-			var status = document.getElementById("status");
-			window.location = "module/user/xulyuser.php?action=delete&uid=" + uid + "&type=" + type.value + "&status=" + status.value;
+		}
+		var status = document.getElementById("status");
+		var url = "module/quangcao/xulyquangcao.php?action=delete&advid=" + uid + "&status=" + status.value;
+		
+		if (flag == 1 && confirm("Bạn có chắc muốn xóa các quảng cáo này?"))
+		{
+			window.location = url;
 			return true;
+		}
+		else if (flag == 0)
+		{
+			alert("Bạn chưa chọn quảng cáo cần xóa!");
+			return false;
 		}
 		
 		return false;
@@ -150,7 +160,7 @@
     	<a href="index.php?view=advertisement&do=add">
         	<img src="images/icon_32_new.png" /><br />Thêm mới</a></div>
     <div class="icon">
-    	<a onclick="return deleteUser();">
+    	<a onclick="return deleteQuangCao();">
         	<img src="images/trash-can-delete.png" /><br />Xóa</a></div>
     <br class="clr" />
 </div>

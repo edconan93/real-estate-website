@@ -5,7 +5,7 @@
 	$PATH = str_replace('//','/',dirname(__FILE__).'/');
 ?>
 <script>
-	function saveNewQuangCao1()
+	function saveNewQuangCao()
 	{
 		if (document.getElementById("txtChuSoHuu").value == "")
 		{
