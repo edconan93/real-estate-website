@@ -95,6 +95,7 @@ rgb(33, 91, 135); text-align: center;">
 			</td>
 		</tr>
 	</table>
+	
 	<script language="javascript" type="text/javascript">
 		function press_DangNhap()
         {
@@ -102,6 +103,18 @@ rgb(33, 91, 135); text-align: center;">
             document.getElementById("txtUsernameLogin").value = "";
             document.getElementById("txtPasswordLogin").value = "";
             document.getElementById("txtUsernameLogin").focus();
+            return false;
+        }
+		function timeOut()
+        {
+			
+            document.getElementById("popup").style.visibility = "visible";
+            document.getElementById("txtUsernameLogin").value = "";
+            document.getElementById("txtPasswordLogin").value = "";
+            document.getElementById("txtUsernameLogin").focus();
+			$("#messRegister").attr("innerHTML","Mời bạn đăng nhập lại!");
+			$("#messRegister").css("color","blue");
+			
             return false;
         }
 		function press_DangNhapRegister()
