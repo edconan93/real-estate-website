@@ -354,7 +354,7 @@
 							<input type="checkbox" onclick="checkAll(this);" /></td>
 						<td align="center">Tiêu đề</td>
 						<td width="70px" align="center">Loại dịch vụ</td>
-						<td width="100px" align="center">Loại căn hộ</td>
+						<td width="120px" align="center">Loại căn hộ</td>
 						<td align="center">Địa chỉ</td>
 						<td align="center">Giá bán</td>
 						<td width="70px" align="center">Ngày đăng</td>
@@ -375,7 +375,10 @@
 							$loaidv = LoaiDVBUS::GetLoaiDVByID($listTinDang[$i]["loaidv"]);
 							echo "<td align='center'>".$loaidv[1]."</td>";
 							$loainha = LoaiNhaBUS::getById($listTinDang[$i]["loainha"]);
-							echo "<td align='center'>".$loainha[1]."</td>";
+							echo "<td align='center'>".$loainha[1];
+							if ($listTinDang[$i]["rank"] == 1)
+								echo "&nbsp;&nbsp;<img src='images/hot.gif' />";
+							echo "</td>";
 							$phuong = PhuongBUS::getPhuongById($listTinDang[$i]["phuong"]);
 							$quan = QuanBUS::getQuanById($listTinDang[$i]["quan"]);
 							echo "<td>".$listTinDang[$i]["sonha"]." ".$listTinDang[$i]["duong"].", ".$phuong[1].", ".$quan[1].", ";

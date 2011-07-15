@@ -11,5 +11,13 @@
 		{
 			return QuangCaoDAO::GetAdvByType($status);
 		}
+		public static function setStatusQuangCao($id, $status)
+		{
+			return QuangCaoDAO::setStatusQuangCao($id, $status);
+		}
+		public static function delete($id)
+		{
+			return QuangCaoDAO::delete($id);
+		}
 	}
 ?>

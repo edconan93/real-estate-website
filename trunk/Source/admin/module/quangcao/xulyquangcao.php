@@ -4,6 +4,7 @@
 	if (isset($_POST["action"]))
 	{
 		$action = $_POST["action"];
+		echo $action;return;
 		switch ($action)
 		{
 			case "add":
@@ -25,8 +26,8 @@
 				{	
 					echo "<br> file uploaded not failed";
 					$arrType = explode ("/",$_FILES["fileUpQuangCao"]["type"]);
-					echo "<br>array=".$arrType[0];
-					echo "<br>array=".$arrType[1];
+					// echo "<br>array=".$arrType[0];
+					// echo "<br>array=".$arrType[1];
 					
 					if($arrType[0]!="image" || $arrType[0]!="application" )
 					{
@@ -38,6 +39,7 @@
 					$path = $PATH_BASE . "../../upload";
 					$random = rand (1,1000000);		
 					$filename=$random.$_FILES["fileUpQuangCao"]["name"];
+					echo $filename;
 					if(!is_dir("$path"))
 					{
 						mkdir("$path");
@@ -47,20 +49,29 @@
 				    $path = "$path/quangcao/";
 					
 					move_uploaded_file($_FILES["fileUpQuangCao"]["tmp_name"],$path.$random.$_FILES["fileUpQuangCao"]["name"]);
-					$kq=QuangCaoBUS::Add($chusohuu, $sdt, $email, $diachi, $ngaydang, $sothang, $hinhanh, $link, $status);
+					$kq=QuangCaoBUS::Add($chusohuu, $sdt, $email, $diachi, $ngaydang, $sothang, $filename, $link, $status);
 					if($kq == false)
 					{
 						$flagInsert = false;
-						echo "<br>Insert image = false";
+						echo "<br>Insert image = false";	
 					}
 					else
 						echo "upload picture finish!";
-
 				}
-				//end processor banner
-			//	QuangCaoBUS::Add($chusohuu, $sdt, $email, $diachi, $ngaydang, $sothang, $hinhanh, $link, $status);
 				break;
-			    header("Location:../../index.php?view=advertisement&add=success");
 		}
 	}
+	if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "delete")
+	{
+		$advid = explode(',', $_GET["advid"]);
+		for ($i=0;$i<count($advid);$i++)
+			QuangCaoBUS::delete($advid[$i]);
+	}
+
+	$status = isset($_REQUEST["status"])?(int)$_REQUEST["status"]:-2;
+	$url = "index.php?view=advertisement";
+	if ($status != -2)
+		$url .= "&status=".$status;
+		
+	header("Location:../../".$url);
 ?>

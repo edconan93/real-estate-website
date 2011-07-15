@@ -60,6 +60,27 @@
 	
 	if(isset($_GET["do"])&& $_GET["do"]=="login")
 		echo"<body onload='press_DangNhapRegister();'>";
+		
+	// THINH: start
+	// Kiem tra tin quang cao moi lan mo trang web hang ngay xem het han chua?
+	// Cap nhat status quang cao
+	include_once("../BUS/QuangCaoBUS.php");
+	include_once("../module/Utils/Utils.php");
+	$listAdv = QuangCaoBUS::GetAdvByType(-2);
+	for ($i=0;$i<count($listAdv);$i++)
+	{
+		$date1 = $listAdv[$i]["ngaydang"];
+		$sothang = $listAdv[$i]["sothang"];
+		$arr = explode("-", $date1);
+		$month = $arr[1] + $sothang;
+		$date2 = $arr[2]."-".$month."-".$arr[0];
+		$rs = Utils::compareDate($date2, date('d-m-Y'));
+		if ($rs == 1) // Đã hết hạn: cap nhat bien status trong table QuangCao
+			QuangCaoBUS::setStatusQuangCao($listAdv[$i]["id"], 0);
+		else
+			QuangCaoBUS::setStatusQuangCao($listAdv[$i]["id"], 1);
+	}
+	// THINH: end
 ?>
 <body style="margin: 0pt; padding: 0pt;" bgcolor="#000c1c">
 	<div style="width: 100%; background-image: url(&quot;../images/bg_top.gif&quot;); background-repeat: repeat-x; text-align: center;">

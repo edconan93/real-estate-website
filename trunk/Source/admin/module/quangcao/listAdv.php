@@ -29,12 +29,11 @@
 				else //else if this is a session only cookie
 					document.cookie = name+"="+value;
 			}
-			// function loadUsersByCondition()
-			// {
-				// var type = document.getElementById("type");
-				// var status = document.getElementById("status");
-				// window.location = "index.php?view=user&type=" + type.value + "&status=" + status.value;
-			// }
+			function loadAdvByStatus()
+			{
+				var status = document.getElementById("status");
+				window.location = "index.php?view=advertisement&status=" + status.value;
+			}
 		</script>
 		<form method="post" name="frmListItem" id="frmListItem">
 			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -47,7 +46,7 @@
 					</td>
 					<td width="31%">
 						<div align="right">
-							<select id="status" onchange="return loadUsersByCondition();">
+							<select id="status" onchange="return loadAdvByStatus();">
 								<option value="-2" <?php echo $status==-1?"selected":""; ?>> - Chọn hiệu lực - </option>
 								<option value="1"  <?php echo $status==1?"selected":""; ?>>Còn hạn</option>
 								<option value="0"  <?php echo $status==0?"selected":""; ?>>Hết hạn</option>
@@ -90,21 +89,23 @@
 									echo "<embed width='180' height='160' wmode='transparent' loop='true' quality='high'
 										bgcolor='#000000' name='mymovie' src='upload/quangcao/".$listAdv[$i]["hinhanh"]."' type='application/x-shockwave-flash'>";
 								else
-									echo "<img src='upload/quangcao/".$listAdv[$i]["hinhanh"]."' />";
+									echo "<img src='upload/quangcao/".$listAdv[$i]["hinhanh"]."' width='180' height='160' />";
 							?></td>
 						<td><a href='<?php echo $listAdv[$i]["link"]; ?>'><?php echo $listAdv[$i]["link"]; ?></a></td>
 						<td align="center"><?php echo Utils::convertTimeDMY($listAdv[$i]["ngaydang"]); ?></td>
 						<td align="center"><?php echo $listAdv[$i]["sothang"]; ?></td>
 						<td align="center" style="color:red;font-weight:bold;">
 							<?php
-								$date1 = $listAdv[$i]["ngaydang"];
-								$sothang = $listAdv[$i]["sothang"];
-								$arr = explode("-", $date1);
-								$month = $arr[1] + $sothang;
-								$date2 = $arr[2]."-".$month."-".$arr[0];
-								$rs = Utils::compareDate($date2, date('d-m-Y'));
-								if ($rs == 1) // Đã hết hạn
+								if ($listAdv[$i]["status"] == 0)
 									echo "Đã hết hạn";
+								// $date1 = $listAdv[$i]["ngaydang"];
+								// $sothang = $listAdv[$i]["sothang"];
+								// $arr = explode("-", $date1);
+								// $month = $arr[1] + $sothang;
+								// $date2 = $arr[2]."-".$month."-".$arr[0];
+								// $rs = Utils::compareDate($date2, date('d-m-Y'));
+								// if ($rs == 1) // Đã hết hạn
+									// echo "Đã hết hạn";
 							?></td>
 					</tr>
 					<?php
