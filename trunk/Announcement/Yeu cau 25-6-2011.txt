@@ -26,8 +26,6 @@ include ("DAO/config.php"); in header
 http://longhunganh.com.vn/dia-oc/bang-gia-dat-2009.html
 
 9. Sửa tin cá nhân của admin
-1. nang cap VIP
-5. reset password của nhân viên
 6. thời gian time out  (session.gc_maxlifetime in php.ini)
 10.cái thống kê bản giá nhà đất.
 11.xet blood http://vn.360plus.yahoo.com/gugi.gugi_so24/article?mid=710
@@ -40,11 +38,15 @@ http://longhunganh.com.vn/dia-oc/bang-gia-dat-2009.html
 
 11. Xử lý thời gian hết hạn.
 
-Thinh design gap:
-2.form cập nhật thông tin cua nhân viên.
-3.Khi admin đăng nhập admin phần chỉnh sửa thông tin cá nhân thì admin có thêm chức năng reset password với mục đích là khi thay đổi admin
-=> reset pass gửi đến email của admin mới
-4.design thêm fan nâng cấp vip
+Thinh:
+_ Them moi quang cao: add hinh anh chua dc.
+_ Sort quang cao, xoa quang cao
+_ Thay doi file vip.gif
+_ Add image vao Loai biet thu (can ho noi bat)
+_ Phan cap: 
+  + Nhan vien 1, 2: Quan ly tin dang, Quan ly quang cao
+  + Ke toan: quan ly thu chi, loi nhuan
+  + Quan ly: quan ly tai khoan ( khong dc them ), danh gia nv, nha, vip, quang cao
 
 Phúc
 1.danh gia nhan vien: ke toan, manage..
@@ -58,3 +60,6 @@ Nhận xét báo cáo:
 + Vẽ use case sai
 +Có thể xem thêm nhều hình của ngôi nhà…
 +Khi click vào thêm mới, màn hình nhập suốt hiện.
+
+Lam:
+Roi, nhung chua co add code (Lam add code)

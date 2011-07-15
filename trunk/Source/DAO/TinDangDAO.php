@@ -6,7 +6,8 @@
 		public static function GetAllTinDang()
 		{
 			$strSQL = "	select * from dichvu
-						where status!=-1";
+						where status!=-1
+						order by ngaydang desc";
 			
 			$result = DataProvider::Query($strSQL);
 			if (mysql_num_rows($result)==0)
