@@ -358,7 +358,7 @@
 						<td align="center">Địa chỉ</td>
 						<td align="center">Giá bán</td>
 						<td width="70px" align="center">Ngày đăng</td>
-						<td width="50px" align="center">New VIP</td>
+						<td width="50px" align="center">Up VIP</td>
 						<td width="90px" align="center">Tình trạng tin</td>
 						<!--<td width="90px" align="center">Đổi trạng thái</td>
 						<td width="50px" align="center">Nổi bật</td>-->
