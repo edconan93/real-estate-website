@@ -13,15 +13,24 @@
 	<script type="text/javascript" src="../js/custom.js"></script>
 </head>
 <?php
-	session_start ();
+	session_start();
 	include ("../DAO/config.php");
 	include_once ("../BUS/QuanBUS.php");
    	if(isset($_GET["do"])&&$_GET["do"]=="logout")
+	{
         unset($_SESSION["curUser"]);
-	 
+		//session_destroy(); 
+	}
 	$curUser=null;
 	$curUserEmail=null;
 	$curUserAddress=null;
+	
+	
+	// if(isset($_SESSION["timeout"]) && $_SESSION["timeout"] == true ) 
+	// {
+		// unset($_SESSION["timeout"]);
+	// }
+	
 	if(isset($_SESSION["curUser"]) && !empty($_SESSION["curUser"]))
 	{
 		$curUserEmail=$_SESSION["curUser"][2];
@@ -29,11 +38,44 @@
         $curUser=$_SESSION["curUser"];
 		$curUserAddress = $_SESSION["curUser"]["diachi"];
 		$curUserHoTen = $_SESSION["curUser"]["hoten"];
+		//process timeout
+		$timeout=ini_get("session.gc_maxlifetime");
+		$current_time=time();
+		$time_start =$_SESSION["time_start"];
+		//echo "<br>".;
+		if(($time_start+ $timeout) -$current_time < 0 )
+		{
+			unset($_SESSION["curUser"]);
+			// echo  "<br>login again";
+			//$flag_Timeout =false;
+			$_SESSION["timeout"] = true;
+		    header("Location:dichvu.php");
+			//echo"<body onload='press_DangNhap();'>";
+		}
+		else
+			$_SESSION["time_start"] = time();
 	}
+	// if($flag_Timeout == null ||$flag_Timeout ==  false) 
+	// {		
+		//	echo"<body onload='timeOut();'>";
+			//$_SESSION["timeout"] == true;
+			//unset($_SESSION["timeout"]);
+			
+	// }
+	
+	if(isset($_SESSION["flag"]) && $_SESSION["flag"] == true ) 
+	{
+		//echo "<script>alert('Thinh');</script>";
+	    echo"<body onload='timeOut();'>";
+		//$_SESSION["timeout"] = true;
+	}
+
+	
 	if(isset($_GET["do"])&& $_GET["do"]=="login")
 		echo"<body onload='press_DangNhapRegister();'>";
 ?>
 <body style="margin: 0pt; padding: 0pt;" bgcolor="#000c1c">
+	<?php if($_SESSION["timeout"] == null) echo "flag_Timeout=".$_SESSION["timeout"]; ?>
 	<div style="width: 100%; background-image: url(&quot;../images/bg_top.gif&quot;); background-repeat: repeat-x; text-align: center;">
 		<center>
             <div style="clear: both; width: 1100px; text-align: center; background-image: url(&quot;../images/logo_top.gif&quot;);

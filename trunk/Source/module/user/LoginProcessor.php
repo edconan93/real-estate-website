@@ -12,9 +12,20 @@
 		{
 			$_SESSION["curUser"] = $result;
 			if ($result["role"] == 1) //admin => log thang vao trang admin.php
+			{
 				header("Location:../admin/");
+			}
 			else
+			{
+				$timeout = 3;
+				ini_set('session.gc_maxlifetime', $timeout);
+				echo ini_get("session.gc_maxlifetime");
+				$start=time(); 
+				$_SESSION["time_start"]=$start;
+				$_SESSION["timeout"]=false;
+				//$flag_Timeout =false;
 				header("Location:thanhvien.php?id=".$result['id']);
+			}
 		}  
 	}                     
 	if(isset($fLogin)&&$fLogin==false)

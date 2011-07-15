@@ -25,18 +25,13 @@ smtp_port: 25
 include ("DAO/config.php"); in header
 http://longhunganh.com.vn/dia-oc/bang-gia-dat-2009.html
 
-9. Sửa tin cá nhân của admin
-6. thời gian time out  (session.gc_maxlifetime in php.ini)
-10.cái thống kê bản giá nhà đất.
+
 11.xet blood http://vn.360plus.yahoo.com/gugi.gugi_so24/article?mid=710
 12. xet đăng nhập sai 3 lần
-
 3.phantrang in admin.
-7.chưa phân cấp nhân viên => khi fan cap rui=> nhan vien dang nhap =>quen mat khau, cap nhat thong tin ca nha
-8.phần admin còn thiếu phần kế hoạch cho năm tới
 
 
-11. Xử lý thời gian hết hạn.
+
 
 Thinh:
 _ Them moi quang cao: add hinh anh chua dc.
@@ -49,6 +44,7 @@ _ Phan cap:
   + Quan ly: quan ly tai khoan ( khong dc them ), danh gia nv, nha, vip, quang cao
 
 Phúc
+11. Xử lý thời gian hết hạn.
 1.danh gia nhan vien: ke toan, manage..
 2.Thống kê fai theo quí tháng năm: tháng + năm hay quí + năm
 3.Đánh giá nhân viên: thêm column loại nhân viên: kế toán, nhân viên ...
@@ -56,10 +52,14 @@ Phúc
 5.Chức năng update status hết hạn của tiin dịch vụ.
 6.Phúc chụp lại tấm ảnh csdl and loại bỏ các khóa ngoại quận,huyện,tỉnh, role<=level
 
-Nhận xét báo cáo:
-+ Vẽ use case sai
-+Có thể xem thêm nhều hình của ngôi nhà…
-+Khi click vào thêm mới, màn hình nhập suốt hiện.
 
 Lam:
+10.cái thống kê bản giá nhà đất.
+6. thời gian time out  (session.gc_maxlifetime in php.ini)
 Roi, nhung chua co add code (Lam add code)
+8.phần admin còn thiếu phần kế hoạch cho năm tới
+
+Nhận xét báo cáo:
++Khi click vào thêm mới, màn hình nhập suốt hiện.
++ Vẽ use case sai
++Có thể xem thêm nhều hình của ngôi nhà…
