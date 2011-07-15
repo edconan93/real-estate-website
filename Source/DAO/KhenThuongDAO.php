@@ -18,10 +18,10 @@ class KhenThuongDAO
 			DataProvider::Close ($cn);
             return $result;
     }
-    public static function update($iduser,$loai,$khenthuong,$nam)
+    public static function update($iduser,$loai,$khenthuong,$ngay)
     {
             $strSQL = "update khenthuong set loai=$loai,thuong='$khenthuong', ngay='$ngay' where iduser=$iduser";
-		    $cn = DataProvider::Open ();
+            $cn = DataProvider::Open ();
     		DataProvider::MoreQuery ($strSQL,$cn);
     		if(mysql_affected_rows () == 0)
     			$result=false;
@@ -30,6 +30,15 @@ class KhenThuongDAO
     		DataProvider::Close ($cn);
     		return $result;
     }
+   	public static function selectByIdSQL($strSQL)
+	{
+         $result = DataProvider::Query($strSQL);
+         if(mysql_num_rows($result)==0)
+				return null;
+         while($row=mysql_fetch_row($result,MYSQL_BOTH))
+             $return[]=$row;
+         return $return;
+	}
 	public static function selectByIdUser($id)
 	{
 		$strSQL="select * from khenthuong where iduser=$id";
@@ -47,6 +56,13 @@ class KhenThuongDAO
          while($row=mysql_fetch_row($result,MYSQL_BOTH))
              $return[]=$row;
          return $return;
+    }
+    public static function countBySQL($strSQL)
+    {
+        $result = DataProvider::Query($strSQL);
+        if(mysql_num_rows($result)==0)
+            return null;
+        return mysql_fetch_row($result,MYSQL_BOTH);
     }
     public static function count()
     {

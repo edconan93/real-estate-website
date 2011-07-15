@@ -17,7 +17,7 @@
 			<a href="index.php?view=statistic" id="aCancel">
 				<img src="images/icon_32_cancel.png" /><br />Quay lại</a></div>
 		<div class="icon" style="width:60px;">
-			<a href="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=export&level=-1&page=1" id="btnExport">
+			<a href="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=export&page=1" id="btnExport">
 				<img src="images/export_excel.png" alt="Xuất Excel" border="0" title="Xuất Excel" /><br />Xuất Excel</a></div>
 		<div class="icon">
 			<a href="#" id="btnSave">
@@ -46,25 +46,36 @@
         var id=$('#cbbAddRow').val();
         $('#trNewRow').load("module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=loadrow&id="+id+'&page=1');
     }
+    function addNew()
+    {
+        var id=$('#txtNewID').val();
+        var loai=$('#cbbNewThanhTich').val();
+        var khenthuong=$('#txtNewKhenThuong').val();
+        var ngay=$('#txtDate_New').val();
+        url="module/thongke/EvaluateProcessor.php"; 
+        var params = { 'view':'statistic', 'do':'evaluate','action':'add','id':id,'loai':loai,'khenthuong':khenthuong,'ngay':ngay};         
+        $("#dsNhanvien").load(url,params,function(){
+                              url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
+                            $("#dsNhanvien").load(url); 
+                            });
+    }
     $(document).ready(function()
 			{
                 url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
                 $("#dsNhanvien").load(url);
 				
    	            $("#btnShow").click(function(){
-   	                var type=$("#cbbType").val();
-                    if(type=="-1")
-                    {
-                        url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
-                        $("#dsNhanvien").load(url); 
-                        $('#btnExport').attr("href","module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=export&level=-1&page=1")
-                    }
-                    else
-                    {
-                        url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=show&level="+type+"&page=1";          
-                        $("#dsNhanvien").load(url);
-                        $('#btnExport').attr("href","module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=export&level="+type+"&page=1")
-                    }
+   	                var type=$("#cbbType").val();                    
+                    var nam=$('#cbbNam').val();
+                    var thang=$("#cbbThang").val();
+                    var quy=$("#cbbQuy").val();
+                     
+                    var radioType=$("input[name='radiotype']:checked").val();
+                    url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=show&radio="+radioType+"&loai="+type+"&nam="+nam+"&quy="+quy+"&thang="+thang+"&page=1";          
+                    $("#dsNhanvien").load(url); 
+                    $('#btnExport').attr("href","module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=export&radio="+radioType+"&loai="+type+"&nam="+nam+"&quy="+quy+"&thang="+thang+"&page=1")
+                    
+                    
                     });
                 $('#btnSave').click(function(){
                     url="module/thongke/EvaluateProcessor.php";
@@ -74,7 +85,8 @@
                         var loai=$("#cbbLoai_"+id).val();
                         var khenthuong=$("#txtKhenThuong_"+id).val();
                         var ngay=$("#txtDate_"+id).val();
-                        if(loai!="-1")
+    
+                        if(loai!="-1"&&khenthuong!=""&&ngay!="")
                         {
                             var params = { 'view':'statistic', 'do':'evaluate','action':'save','id':id,'loai':loai,'khenthuong':khenthuong,'ngay':ngay};
                             $('#dvTemp').load(url,params,function(){
@@ -86,13 +98,66 @@
                 //url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
                 //$("#dsNhanvien").load(url);
                 });
-                
+                $("input[name='radiotype']").change(function(){
+                    var value=$(this).val();
+                    if(value=='0')
+                    {
+                     
+                        $('#cbbThang').attr('disabled', 'disabled');
+                        $('#cbbQuy').removeAttr('disabled');
+
+                    }
+                    else
+                    {
+                         $('#cbbQuy').attr('disabled', 'disabled');
+                        $('#cbbThang').removeAttr('disabled');
+                    }
+                });
 						
                 });
     </script>
     <div class="mid">
 		<form action="index.php?view=user" method="post" name="frmRegister" id="frmRegister">
 			<div style="text-align:center;padding-bottom:30px;">
+            	<div style="text-align:center; padding-bottom:30px;">
+            Năm <select id="cbbNam" style="width:80px;">
+            <?php
+            for($i=date("Y");$i>=2009;$i--)
+                echo '<option value="'.$i.'">'.$i.'</option>';
+            ?>
+            </select>
+           	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="radiotype" value="0"/>
+             Quý 
+					<select id="cbbQuy" style="width:100px;">
+                        <option value="-1" selected>--Chọn quý--</option>
+						<option value="1"> 1 </option>
+						<option value="2"> 2 </option>
+						<option value="3"> 3 </option>
+						<option value="4"> 4 </option>
+					</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="radiotype" value="1"/>
+			 Tháng 
+					<select id="cbbThang" style="width:100px;">
+                        <option value="-1" selected>--Chọn tháng--</option>
+						<option value="1"> 1 </option>
+						<option value="2"> 2 </option>
+						<option value="3"> 3 </option>
+						<option value="4"> 4 </option>
+						<option value="5"> 5 </option>
+						<option value="6"> 6 </option>
+						<option value="7"> 7 </option>
+						<option value="8"> 8 </option>
+						<option value="9"> 9 </option>
+						<option value="10"> 10 </option>
+						<option value="11"> 11 </option>
+						<option value="12"> 12 </option>
+					</select>
+			
+			
+		
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<select id="cbbType">
 					<option value="-1"> Tất cả nhân viên </option>
 					<option value="1"> Nhân viên cấp bậc 1 </option>
