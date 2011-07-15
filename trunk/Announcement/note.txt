@@ -1,0 +1,22 @@
++ in php.ini
+ session.gc_maxlifetime only set in php.ini
+ date.timezone = Asia/Ho_Chi_Minh timezone in VN
+ mssql.datetimeconvert = On YYYY-MM-DD hh:mm:ss
+ mssql.charset = "ISO-8859-1"
++Port mail:
+- Gmail
+
+smtp_host: smtp.gmail.com
+smtp_port: 465 or 587
+smtp_ssl: 1
+
+- Hotmail
+
+smtp_host: smtp.live.com
+smtp_port: 25 or 587
+smtp_start_tls: 1
+
+- Yahoo Mail Plus (currently a paid service)
+
+smtp_host: smtp.mail.yahoo.com
+smtp_port: 25
