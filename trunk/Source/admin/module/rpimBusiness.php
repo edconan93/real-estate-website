@@ -104,7 +104,7 @@
 	<div class="mid">
 		<form method="post" name="frmListItem" id="frmListItem">
 			<div style="text-align:center; padding-bottom:30px;">
-            Năm <select id="cbbNam" style="width:50px;">
+            Năm <select id="cbbNam" style="width:80px;">
             <?php
             for($i=date("Y");$i>=2009;$i--)
                 echo '<option value="'.$i.'">'.$i.'</option>';

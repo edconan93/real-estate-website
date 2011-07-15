@@ -18,9 +18,17 @@ class KhenThuongBUS
     {
         return KhenThuongDAO::select($offset,$max);
     }
+    public static function selectByIdSQL($strSQL)
+	{
+	   return KhenThuongDAO::selectByIdSQL($strSQL);
+    }
     public static function count()
     {
         return KhenThuongDAO::count();
+    }
+    public static function countBySQL($strSQL)
+    {
+        return KhenThuongDAO::countBySQL($strSQL);
     }
 	public static function selectByIdUser($iduser)
 	{

@@ -10,16 +10,23 @@ class EvaluateProcessor
     
     public static function displayNewRow($index,$id,$nhanvien,$email,$gioitinh,$capdo,$thanhtich,$khenthuong,$ngay)
     {
-        $str="<div id='trNewRow' align='center'>";
-        $str.='<table align="center" border="0" cellspacing="0" cellpadding="0">';
+        //$str="<div id='trNewRow' align='center'>";
+       // $str.='<table align="center" border="0" cellspacing="0" cellpadding="0">';
            
-            $str.="<tr class='title'>";
-    		$str.="<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+            
+    		$str='<td><a href="#" onclick="addNew();"><img src="images/icon_32_new.png">';
+            $str.="<input type='hidden' id='txtNewID' value='".$id."'>";
+            $str.="</td>";
     		$str.='<td>';
             $str.='<select style="font-size:12px;width:150px;" id="cbbAddRow" onchange="selectUser()">';
             $users=UsersBUS::getUsersByRole(3);
             for($i=0;$i<count($users);$i++)
-                $str.="<option style='font-size:12px;' value='".$users[$i]['id']."'>".$users[$i]['hoten']."</option>";
+            {
+                if($users[$i]['id']==$id)
+                    $str.="<option selected style='font-size:12px;' value='".$users[$i]['id']."'>".$users[$i]['hoten']."</option>";
+                else
+                    $str.="<option style='font-size:12px;' value='".$users[$i]['id']."'>".$users[$i]['hoten']."</option>";
+            }
             $str.='</select>';
             $str.='</td>';
     		$str.='<td width="155px" style="color:blue;">'.$email.'</td>';
@@ -31,7 +38,7 @@ class EvaluateProcessor
             $str.='</td>';
     		$str.='<td align="center" width="60px">'.$capdo.'</td>';
     		$str.='<td align="center">';
-    		$str.='<select id="cbbLoai_'.$id.'">';
+    		$str.='<select id="cbbNewThanhTich">';
             $str.='<option value="-1" selected>---Chọn thành tích---</option>';
             if($thanhtich==1)
     		  $str.='<option value="1" selected>Trung bình</option>';
@@ -48,19 +55,19 @@ class EvaluateProcessor
     		$str.='</select>';
     		$str.='</td>';
     		$str.='<td>';
-    		$str.='<input id="txtKhenThuong_'.$id.'" type="text" style="width:300px;" value="'.$khenthuong.'" />';
+    		$str.='<input id="txtNewKhenThuong" type="text" style="width:300px;" value="'.$khenthuong.'" />';
     		$str.='</td>';
             $str.='<td>';
             $str.='<script>';
 			$str.='$(function() {';
-			$str.='$( "#txtDate_'.$id.'" ).datepicker({dateFormat:"yy-mm-dd", showButtonPanel: true})';
+			$str.='$( "#txtDate_New" ).datepicker({dateFormat:"yy-mm-dd", showButtonPanel: true})';
 			$str.='});';
 			$str.='</script>';
-			$str.='<input id="txtDate_'.$id.'" type="text" style="width:70px;" value="'.$ngay.'">';
+			$str.='<input id="txtDate_New" type="text" style="width:70px;" value="'.$ngay.'">';
             $str.='</td>';
-    		$str.='</tr>'; 
-            $str.="</table>";
-            $str.="</div>"; 
+    		 
+           // $str.="</table>";
+           // $str.="</div>"; 
             return $str;  
     }
     public static function display($index,$id,$nhanvien,$email,$gioitinh,$capdo,$thanhtich,$khenthuong,$ngay)
@@ -73,7 +80,7 @@ class EvaluateProcessor
     		$str.='<td align="center">';
             if($gioitinh==1)
                 $str.='Nam';
-                else
+            elseif($gioitinh==0)
                 $str.='Nữ';
             $str.='</td>';
     		$str.='<td align="center">'.$capdo.'</td>';
@@ -126,11 +133,27 @@ class EvaluateProcessor
 		$str.='</tr>';
         return $str;
     }
-    public static function displayFooter()
+    public static function displayFooter($index,$id,$nhanvien,$email,$gioitinh,$capdo,$thanhtich,$khenthuong,$ngay)
     {
-        return '</table>';
+        $footer="<tr class='title' id='trNewRow'>";
+        $footer.=EvaluateProcessor::displayNewRow($index,$id,$nhanvien,$email,$gioitinh,$capdo,$thanhtich,$khenthuong,$ngay);
+        $footer.='</tr>';
+        return $footer.'</table>';
     }
-    public static function load( $curPage,$level)
+    public static function getkhenthuongCondition($level,$nam,$thangfrom,$thangto)
+    {
+        $str="";
+        if($level>0)
+            $str.="and user.level=$level ";
+        if($nam>0)
+            $str.="and YEAR(khenthuong.ngay)=$nam ";
+        if($thangfrom>0)
+             $str.="and MONTH(khenthuong.ngay)>=$thangfrom ";
+        if($thangto>0)
+            $str.="and MONTH(khenthuong.ngay)<=$thangto ";
+        return $str;
+    }
+    public static function load( $curPage,$level,$nam,$thangfrom,$thangto)
     {  
         $totalItems =null;  
         $business = null; 
@@ -152,16 +175,12 @@ class EvaluateProcessor
         $offset=$offset- $totalUsers;
         if($offset<0)
             $offset=0;
-        if($level>0)
-        {
-            $evaluate=KhenThuongBUS::selectByUserLevel($offset,$maxItems,$level);
-            $totalEvaluate=KhenThuongBUS::countByUserLevel($level);
-        }
-        else
-        {
-            $evaluate=KhenThuongBUS::select($offset,$maxItems);
-            $totalEvaluate=KhenThuongBUS::count();
-        }
+        $condition=EvaluateProcessor::getkhenthuongCondition($level,$nam,$thangfrom,$thangto);
+        $strSQL="select * from khenthuong,user where khenthuong.iduser=user.id ".$condition." limit $offset,$maxItems";
+        $evaluate=KhenThuongBUS::selectByIdSQL($strSQL);
+        $strSQL="select count(*) from khenthuong,user where khenthuong.iduser=user.id ".$condition;
+        $totalEvaluate=KhenThuongBUS::countBySQL($strSQL);
+        
         
         $display="";
         $display.=EvaluateProcessor::displayHeader($totalUsers+$totalEvaluate[0]);
@@ -178,8 +197,8 @@ class EvaluateProcessor
             $display.=EvaluateProcessor::display($index,$evaluate[$i]['iduser'],$user['hoten'],$user['email'],$user['gioitinh'],$user['level'],$evaluate[$i]['loai'],$evaluate[$i]['thuong'],$evaluate[$i]['ngay']);
         }
         
-        $display.=EvaluateProcessor::displayFooter();
-        $display.=EvaluateProcessor::displayNewRow("","","","","","","","","");
+        $display.=EvaluateProcessor::displayFooter("","","","",-1,"","","","");
+        //$display.=EvaluateProcessor::displayNewRow("","","","",-1,"","","","");
    
         $strPaging =Utils::paging ('',$totalUsers+$totalEvaluate[0],$curPage,$maxPages,$constMaxItem);
         return $display.$strPaging;
@@ -189,8 +208,46 @@ class EvaluateProcessor
 if(isset($_REQUEST['action'])&&$_REQUEST['action']=='show')
 {
     $page=$_REQUEST['page'];
-    $level=$_REQUEST['level'];
-    echo EvaluateProcessor::load($page,$level);
+    $loai=$nam=$quy=$thang=$option=-1;
+    if(isset($_REQUEST['loai']))
+        $loai=$_REQUEST['loai'];
+    if(isset($_REQUEST['nam']))
+        $nam=$_REQUEST['nam'];
+    if(isset($_REQUEST['quy']))
+        $quy=$_REQUEST['quy'];
+    if(isset($_REQUEST['thang']))
+        $thang=$_REQUEST['thang'];
+    if(isset($_REQUEST['radio']))
+        $option=$_REQUEST['radio'];
+     if($option==1)
+            {
+                echo EvaluateProcessor::load($page,$loai,$nam,$thang,$thang);
+            }
+     elseif($option==0)
+        {
+            switch($quy)
+            {
+             case 1:
+            echo EvaluateProcessor::load($page,$loai,$nam,1,3);
+            break;
+            case 2:
+            echo EvaluateProcessor::load($page,$loai,$nam,4,6);
+            break;
+            case 3:
+            echo EvaluateProcessor::load($page,$loai,$nam,7,9);
+            break;
+            case 4:
+            echo EvaluateProcessor::load($page,$loai,$nam,10,12);
+            break;
+            default:
+             echo EvaluateProcessor::load($page,$loai,$nam,1,12);
+            break;
+            }
+         }
+        else
+        {
+            echo EvaluateProcessor::load($page,$loai,$nam,1,12);
+        }
 }
 elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='loadrow')
 {
@@ -206,27 +263,86 @@ elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='save')
     $ngay=$_REQUEST['ngay'];
     KhenThuongBUS::update($id,$loai,$khenthuong,$ngay);
 }
+elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='add')
+{
+    $id=$_REQUEST['id'];
+    $loai=$_REQUEST['loai'];
+    $khenthuong=$_REQUEST['khenthuong'];
+    $ngay=$_REQUEST['ngay'];
+    KhenThuongBUS::insert($id,$loai,$khenthuong,$ngay);
+}
 elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='export')
 {
    
     $page=$_REQUEST['page'];
-    $level=$_REQUEST['level'];
+    $loai=$nam=$quy=$thang=$option=-1;
+    if(isset($_REQUEST['loai']))
+        $loai=$_REQUEST['loai'];
+    if(isset($_REQUEST['nam']))
+        $nam=$_REQUEST['nam'];
+    if(isset($_REQUEST['quy']))
+        $quy=$_REQUEST['quy'];
+    if(isset($_REQUEST['thang']))
+        $thang=$_REQUEST['thang'];
+    if(isset($_REQUEST['radio']))
+        $option=$_REQUEST['radio'];
+        
     $users=null;
-    $totalEvaluate=0;
     $evaluate=null;
-     
-    if($level>0)
+     //load all user
+      if($loai>0)
         {
-            $users=UsersBUS::getAllBySQL("select * from user where role=3 and level=$level and user.id not in (select iduser from khenthuong)");
-            $totalEvaluate=KhenThuongBUS::countByUserLevel($level);
-            $evaluate=KhenThuongBUS::selectByUserLevel(0,$totalEvaluate[0],$level);
+            $users=UsersBUS::getAllBySQL("select * from user where role=3 and level=$loai and user.id not in (select iduser from khenthuong)");
+    
+        }else
+        {
+            $users=UsersBUS::getAllBySQL("select * from user where role=3  and user.id not in (select iduser from khenthuong)");        
         }
+        
+     if($option==1)
+            {
+                $condition=EvaluateProcessor::getkhenthuongCondition($loai,$nam,$thang,$thang);
+                $strSQL="select * from khenthuong,user where khenthuong.iduser=user.id ".$condition;
+                $evaluate=KhenThuongBUS::selectByIdSQL($strSQL);
+            }
+     elseif($option==0)
+        {
+            switch($quy)
+            {
+             case 1:
+            $condition=EvaluateProcessor::getkhenthuongCondition($loai,$nam,1,3);
+                $strSQL="select * from khenthuong,user where khenthuong.iduser=user.id ".$condition;
+                $evaluate=KhenThuongBUS::selectByIdSQL($strSQL);
+            break;
+            case 2:
+            $condition=EvaluateProcessor::getkhenthuongCondition($loai,$nam,4,6);
+                $strSQL="select * from khenthuong,user where khenthuong.iduser=user.id ".$condition;
+                $evaluate=KhenThuongBUS::selectByIdSQL($strSQL);
+            break;
+            case 3:
+            $condition=EvaluateProcessor::getkhenthuongCondition($loai,$nam,7,9);
+                $strSQL="select * from khenthuong,user where khenthuong.iduser=user.id ".$condition;
+                $evaluate=KhenThuongBUS::selectByIdSQL($strSQL);
+            break;
+            case 4:
+            $condition=EvaluateProcessor::getkhenthuongCondition($loai,$nam,10,12);
+                $strSQL="select * from khenthuong,user where khenthuong.iduser=user.id ".$condition;
+                $evaluate=KhenThuongBUS::selectByIdSQL($strSQL);
+            break;
+            default:
+             $condition=EvaluateProcessor::getkhenthuongCondition($loai,$nam,10,12);
+                $strSQL="select * from khenthuong,user where khenthuong.iduser=user.id ".$condition;
+                $evaluate=KhenThuongBUS::selectByIdSQL($strSQL);
+            break;
+            }
+         }
         else
         {
-            $users=UsersBUS::getAllBySQL("select * from user where role=3  and user.id not in (select iduser from khenthuong)");
-            $totalEvaluate=KhenThuongBUS::count();
-            $evaluate=KhenThuongBUS::select(0,$totalEvaluate[0]);           
-        }
+           $condition=EvaluateProcessor::getkhenthuongCondition($loai,$nam,1,12);
+                $strSQL="select * from khenthuong,user where khenthuong.iduser=user.id ".$condition;
+                echo $strSQL;
+                $evaluate=KhenThuongBUS::selectByIdSQL($strSQL);
+        }    
             $array=array();
    
             $array[0][0]="Nhân viên";
@@ -246,7 +362,7 @@ elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='export')
             $array[$index][2]=$users[$i]['gioitinh'];
             $array[$index][3]=$users[$i]['level'];
             $array[$index][4]="-1";
-            $array[$index][5]="Chưa duyệt";
+            $array[$index][5]="Chua duy?t";
     }
      for($i=0;$i<count($evaluate);$i++)
         {
@@ -262,7 +378,7 @@ elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='export')
         }
         require '../Utils/php-excel.class.php'; 
             
-            // generate file (constructor parameters are optional) 
+           //  generate file (constructor parameters are optional) ;
             $xls = new Excel_XML('UTF-8', false, 'Workflow Management'); 
             $xls->addArray($array); 
             $xls->generateXML('Output_Report_WFM');   
@@ -270,6 +386,6 @@ elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='export')
 else
 {
     $page=$_REQUEST['page'];
-    echo EvaluateProcessor::load($page,-1);
+    echo EvaluateProcessor::load($page,-1,-1,-1,-1);
 }
 ?>
