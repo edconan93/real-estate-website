@@ -33,10 +33,8 @@
 								<div class="mid_content" id="loadAjax" name="loadAjax">
 									<?php 
 										$result= BusinessProcessor::findBussiness();
-										if($result!=null)
 											echo $result; 
-										else                      
-											echo BusinessProcessor::loadAllBusiness();
+										
 									?>
 								</div>
 							</div>
