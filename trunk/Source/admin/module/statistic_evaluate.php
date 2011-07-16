@@ -44,13 +44,31 @@
     function selectUser()
     {
         var id=$('#cbbAddRow').val();
+        if(id=="-1")
+        return false;
         $('#trNewRow').load("module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=loadrow&id="+id+'&page=1');
     }
     function addNew()
     {
         var id=$('#txtNewID').val();
+        if(id=="-1")
+        {
+            $('#cbbAddRow').attr("style","font-size:12px;width:150px;text-align: center;background-color:red;");
+            return false;
+        }
         var loai=$('#cbbNewThanhTich').val();
+        if(loai=="-1")
+        {
+            $('#cbbNewThanhTich').attr("style","background-color:red;");
+            return false;
+        }
         var khenthuong=$('#txtNewKhenThuong').val();
+        if(khenthuong=="")
+        {
+            $('#txtNewKhenThuong').attr("style","width:300px;background-color:red;");
+            return false;
+        }
+            
         var ngay=$('#txtDate_New').val();
         url="module/thongke/EvaluateProcessor.php"; 
         var params = { 'view':'statistic', 'do':'evaluate','action':'add','id':id,'loai':loai,'khenthuong':khenthuong,'ngay':ngay};         
@@ -58,6 +76,21 @@
                               url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
                             $("#dsNhanvien").load(url); 
                             });
+    }
+    function update(id)
+    {
+        var loai=$("#cbbLoai_"+id).val();
+        var khenthuong=$("#txtKhenThuong_"+id).val();
+        var ngay=$("#txtDate_"+id).val();
+    
+        if(loai!="-1"&&khenthuong!=""&&ngay!="")
+        {
+             var params = { 'view':'statistic', 'do':'evaluate','action':'save','id':id,'loai':loai,'khenthuong':khenthuong,'ngay':ngay};
+             $('#dvTemp').load(url,params,function(){
+             url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
+             $("#dsNhanvien").load(url); 
+             });
+        }          
     }
     $(document).ready(function()
 			{

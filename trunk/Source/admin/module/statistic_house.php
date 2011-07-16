@@ -47,13 +47,13 @@
    	                var type=$("#cbbType").val();
                     if(type=="-1")
                     {
-                        var url="module/thongke/HouseProcessor.php?view=statistic&do=house&page=1";          
+                        url="module/thongke/HouseProcessor.php?view=statistic&do=house&page=1";          
                         $("#dsNha").load(url);
                         $('#btnExport').attr("href","module/thongke/HouseProcessor.php?view=statistic&do=house&action=export&page=1")
                     }
                     else
                     {
-                        var url="module/thongke/HouseProcessor.php?view=statistic&do=house&action=view&loaidv="+type+"&page=1";          
+                        url="module/thongke/HouseProcessor.php?view=statistic&do=house&action=view&loaidv="+type+"&page=1";          
                         $("#dsNha").load(url);
                         $('#btnExport').attr("href","module/thongke/HouseProcessor.php?view=statistic&do=house&action=export&loaidv="+type+"&page=1")
                     }
