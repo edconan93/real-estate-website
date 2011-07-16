@@ -30,6 +30,13 @@ function swapform()
 	document.getElementById('formLogIn').style.display='none';
 	
 }
+function swapform1()
+{
+	// document.getElementById('formForgotPassword').style.display='inherit';
+	// document.getElementById('formLogIn').style.display='none';
+	var url = "index.php";
+	window.location = url;	
+}
 function checkEmail()
 {
 	var strEmail = $("#txtEmail").attr("value");
@@ -197,8 +204,17 @@ else
 							<input type="text" class="input" id="txtEmail" name="txtEmail" />
 						</div>
 						<div class="bt" style="width:200px;">
-							<div class="rightbutton" style="margin-right:16px;"></div>
-								<input class="button" type="button" value="Gửi" id="btnForgetPass" name="btnForgetPass" onclick="return  checkEmail();"/>
+							<!--div class="rightbutton" style="margin-right:16px;"></div-->
+							<table>
+								<tr>
+									<td><div align="left" valign="button">
+										<a onclick="swapform1();">
+											Đăng nhập</a></div></td>
+									<td><div class="rightbutton"></div>
+										<input class="button" type="button" value="Gửi" id="btnForgetPass" name="btnForgetPass" onclick="return  checkEmail();"/>
+								</tr>
+							</table>
+								
 							<div id="messLoadEmail" name=="messLoadEmail"></div>
 						</div>
 					</form>
