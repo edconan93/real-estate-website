@@ -10,7 +10,7 @@
                     <div style="float: left; margin-top: 8px; margin-left: 340px; height: 20px; width: 70px;
                         background-color: rgb(56, 58, 71); border: 1px solid 
 rgb(33, 91, 135); text-align: center;">
-                        <a class="a_bottomlink" href="">BẢNG GIÁ</a></div>
+                        <a class="a_bottomlink" href="banggiadat.php">BẢNG GIÁ</a></div>
                     <div style="float: left; margin-top: 8px; margin-left: 10px; height: 20px; width: 80px;
                         background-color: rgb(56, 58, 71); border: 1px solid 
 rgb(33, 91, 135); text-align: center;">
