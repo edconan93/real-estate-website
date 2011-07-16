@@ -1,4 +1,6 @@
 <?php
+	if (!isset($_SESSION["curUser"]))
+		header("Location: index.php");
 	if($_SESSION["curUser"][8] != 2)
 		header("Location: index.php");
 		

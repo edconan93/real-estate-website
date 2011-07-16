@@ -1,5 +1,7 @@
 <?php
-$flag = 0;
+	if (!isset($_SESSION["curUser"]))
+		header("Location: index.php");
+	$flag = 0;
 	if ($_SESSION["curUser"][8] == 1) $flag = 1;
 	
 	if ($flag == 0) // Khong duoc phep di tiep
