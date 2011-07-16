@@ -43,6 +43,18 @@
 		include_once($PATH ."new_users.php");
 		include_once($PATH ."new_entries.php");
 	}
+	//process timeout
+	$timeout=ini_get("session.gc_maxlifetime");
+	$current_time=time();
+	$time_start =$_SESSION["time_start"];
+	if(($time_start + $timeout) -$current_time < 0 )
+	{
+		unset($_SESSION["curUser"]);
+		$_SESSION["flag"] = false;
+		header("Location:index.php");
+	}
+	else
+		$_SESSION["time_start"] = time();
 ?>
 </div>
 <div id="groupIcon">

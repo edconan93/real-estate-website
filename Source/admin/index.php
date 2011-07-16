@@ -21,12 +21,17 @@
 		{
 			$now = date ("Y-m-d H-i-s");
 			$_SESSION["curUser"] = $curUser;
+			
 		}
 		else
 			$login="false";
 	}
 	if(isset($_SESSION["curUser"]) && $_SESSION["curUser"][8] != 2)
+	{
+		$_SESSION["time_start"]=time();
+		$_SESSION["flag"]=true;
 		$bodyFile="include/controlpanel.php";
+	}
 	else
 		$bodyFile= "module/login.php";
 	
