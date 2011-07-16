@@ -1,4 +1,6 @@
 <?php
+	if (!isset($_SESSION["curUser"]))
+		header("Location: index.php");
 	$flag = 0;
 	if ($_SESSION["curUser"][8] == 1) $flag = 1;
 	if ($_SESSION["curUser"][8] == 4) $flag = 1;
@@ -249,7 +251,7 @@
 			</table>
 		</fieldset>
 		<fieldset style="width:500px;float:left;margin-left:50px;">
-			<legend style="font-weight:bold;font-size:15px;color:maroon;">Reset mật khẩu:</legend>
+			<legend style="font-weight:bold;font-size:15px;color:maroon;">Đổi mật khẩu:</legend>
 			<table align="center" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td width="130px" valign="top" style="padding-top:4px;">

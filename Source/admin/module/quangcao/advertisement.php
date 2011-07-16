@@ -1,4 +1,6 @@
 <?php
+	if (!isset($_SESSION["curUser"]))
+		header("Location: index.php");
 	$PATH = str_replace('//','/',dirname(__FILE__).'/');
 	if(isset($_POST["btRegister"]))
 	{

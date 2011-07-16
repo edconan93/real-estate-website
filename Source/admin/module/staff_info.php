@@ -1,5 +1,5 @@
 <?php
-	if($_SESSION["curUser"][8] != 2)
+	if (!isset($_SESSION["curUser"]))
 		header("Location: index.php");
 		
 	$PATH = str_replace('//','/',dirname(__FILE__).'/') ;

@@ -1,8 +1,7 @@
 <?php
 	include_once("../../../BUS/QuangCaoBUS.php");
 	require_once("../Utils/Utils.php");
-?>
-<?php
+
 class AdvertisementProcessor
 {
     public static function displayHeader($count)

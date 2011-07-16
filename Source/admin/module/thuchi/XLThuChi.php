@@ -3,8 +3,7 @@ include_once("../../../BUS/ThuChiBUS.php");
 include_once("../../../BUS/UsersBUS.php");
 include_once("../../../BUS/DonviTienBUS.php");
 require_once("../Utils/Utils.php");
-?>
-<?php
+
 function display($business)
 {
     $str=null;
