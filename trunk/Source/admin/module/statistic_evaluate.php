@@ -25,9 +25,7 @@
 		<div class="icon" style="width:60px;">
 			<a href="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&action=export&page=1" id="btnExport">
 				<img src="images/export_excel.png" alt="Xuất Excel" border="0" title="Xuất Excel" /><br />Xuất Excel</a></div>
-		<div class="icon">
-			<a href="#" id="btnSave">
-				<img src="images/icon_32_apply.png" alt="Lưu" border="0" title="Lưu" /><br />Lưu</a></div>
+		
 		<br class="clr" />
 	</div>
 	<div class="bl"></div>
@@ -116,27 +114,10 @@
                     
                     
                     });
-                $('#btnSave').click(function(){
-                    url="module/thongke/EvaluateProcessor.php";
-                    
-                     $.each($("input[name='txtID[]']"), function() {
-                        var id=$(this).val();
-                        var loai=$("#cbbLoai_"+id).val();
-                        var khenthuong=$("#txtKhenThuong_"+id).val();
-                        var ngay=$("#txtDate_"+id).val();
-    
-                        if(loai!="-1"&&khenthuong!=""&&ngay!="")
-                        {
-                            var params = { 'view':'statistic', 'do':'evaluate','action':'save','id':id,'loai':loai,'khenthuong':khenthuong,'ngay':ngay};
-                            $('#dvTemp').load(url,params,function(){
-                              url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
-                            $("#dsNhanvien").load(url); 
-                            });
-                        }                    
-                        });
+                
                 //url="module/thongke/EvaluateProcessor.php?view=statistic&do=evaluate&page=1";          
                 //$("#dsNhanvien").load(url);
-                });
+                
                 $("input[name='radiotype']").change(function(){
                     var value=$(this).val();
                     if(value=='0')

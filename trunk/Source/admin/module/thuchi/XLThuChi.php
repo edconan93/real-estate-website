@@ -288,28 +288,32 @@ if(isset($_REQUEST['do'])&&$_REQUEST['do']=="exExcel")
         }
     
     $array=array();
-    
-    $array[0][0]="Ngày thu";
-    $array[0][1]="Công việc";
-    $array[0][2]="Nhân viên thu";
-    $array[0][3]="Số tiền";
-    
+     require '../Utils/php-excel.class.php';     
+    $array[0]="Ngày thu";
+    $array[1]="Công việc";
+    $array[2]="Nhân viên thu";
+    $array[3]="Số tiền";
+    $headerColumn=new  TableHeaderColumn(null,$array);
+    $headerColumn->setColumnWidth(0,100);    
+    $headerColumn->setColumnWidth(1,300); 
+    $headerColumn->setColumnWidth(2,200); 
+    $headerColumn->setColumnWidth(3,100);    
+    $array=array(); 
    for($i=0;$i<count($business);$i++)
     {
         $user=UsersBUS::GetUserByID($business[$i]['nhanvien']);
         $dvTien=DonViTienBUS::selectId($business[$i]['donvi']);
         //$array[$i]=array();
-        $array[$i+1][0]=$business[$i]["ngay"];
-        $array[$i+1][1]=$business[$i]["congviec"];
-        $array[$i+1][2]=$user['hoten'];
-        $array[$i+1][3]=$business[$i]["sotien"].' '.$dvTien['ten'];    
+        $array[$i][0]=$business[$i]["ngay"];
+        $array[$i][1]=$business[$i]["congviec"];
+        $array[$i][2]=$user['hoten'];
+        $array[$i][3]=$business[$i]["sotien"].' '.$dvTien['ten'];    
     } 
-   // load library 
-require '../Utils/php-excel.class.php'; 
-
-// generate file (constructor parameters are optional) 
-$xls = new Excel_XML('UTF-8', false, 'Workflow Management'); 
-$xls->addArray($array); 
-$xls->generateXML('Output_Report_WFM');   
+  //  generate file (constructor parameters are optional) ;
+            $xls = new Excel_XML('UTF-8', false, 'Workflow Management');
+            $xls->setTableHeaderColumn($headerColumn); 
+            $xls->setTile("s57","Thống kê thu chi");
+            $xls->setAutoData($array);
+            $xls->getXML("Output_Report_WFM");
 }
 ?>
