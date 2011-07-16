@@ -58,7 +58,10 @@
 			return false;
 		}
 		
-		return true;
+		if (confirm("Bạn có chắc muốn lưu thông tin tài khoản này?"))
+			return true
+		
+		return false;
 	}
 </script>
 <div id="frmCreateUser" name="frmCreateUser">
