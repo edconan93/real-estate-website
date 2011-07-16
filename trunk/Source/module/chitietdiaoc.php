@@ -322,7 +322,6 @@
 
 			var picture = 0;
 			function slideshow(){
-			alert('picture='+picture);
 				if(picture < imgAr1.length-1){
 					picture=picture+1;
 					slide.src = imgAr1[picture].src;
