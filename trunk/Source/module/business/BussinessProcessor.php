@@ -193,7 +193,12 @@ class BusinessProcessor
 				$ngaycapnhat=Utils::convertTimeDMY($business[$i]['ngaydang']);
 			else
 				$ngaycapnhat=date('Y-m-d');
-			$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'><b style=''>".$ngaycapnhat."</br></td>";
+			$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>";
+			if($business[$i]['status'] == 2)
+			{
+				$strResult.="<img src='../images/vip.gif'/>";
+			}
+			$strResult.="<b style=''>".$ngaycapnhat."</br></td>";
 			if($business[$i]['giaban'] !=null)
 			{
 				$money = Utils::convert_Money($business[$i]['giaban']);
