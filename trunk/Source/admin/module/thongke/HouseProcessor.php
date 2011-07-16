@@ -163,7 +163,7 @@ class HouseProcessor
             // generate file (constructor parameters are optional) 
               $xls = new Excel_XML('UTF-8', false, 'Workflow Management');
             $xls->setTableHeaderColumn($headerColumn); 
-            $xls->setTile("s57","Thống kê đánh giá nhân viên");
+            $xls->setTile("s57","Thống kê nhà");
             $xls->setAutoData($array);
             $xls->getXML("Output_Report_WFM");
         }
