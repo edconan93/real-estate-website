@@ -106,8 +106,8 @@ class BusinessProcessor
     {
         //create string sql
         
-        if(isset($_REQUEST['btnSearch']))
-        {
+        //if(isset($_REQUEST['btnSearch']))
+        //{
             
             $strLink= "dichvu.php?";
             $strSQL="select * from ";
@@ -140,8 +140,8 @@ class BusinessProcessor
             $strSQL.=$strTable.$strWhere;
             
             return BusinessProcessor::findBusiness($strLink,$strSQL);
-        } 
-        return null;              
+        //} 
+        //return null;              
     }
 
 	
