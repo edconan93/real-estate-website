@@ -14,11 +14,12 @@ class EvaluateProcessor
        // $str.='<table align="center" border="0" cellspacing="0" cellpadding="0">';
            
             
-    		$str='<td><a href="#" onclick="addNew();"><img src="images/icon_32_new.png">';
+    		$str='<td>';
             $str.="<input type='hidden' id='txtNewID' value='".$id."'>";
             $str.="</td>";
     		$str.='<td>';
-            $str.='<select style="font-size:12px;width:150px;" id="cbbAddRow" onchange="selectUser()">';
+            $str.='<select style="font-size:12px;width:150px;text-align: center;" id="cbbAddRow" onchange="selectUser()">';
+            $str.='<option value="-1">---Chọn nhân viên---</option>';
             $users=UsersBUS::getUsersByRole(3);
             for($i=0;$i<count($users);$i++)
             {
@@ -33,7 +34,7 @@ class EvaluateProcessor
     		$str.='<td align="center" width="50px">';
             if($gioitinh==1)
                 $str.='Nam';
-                else
+            else
                 $str.='Nữ';
             $str.='</td>';
     		$str.='<td align="center" width="60px">'.$capdo.'</td>';
@@ -63,9 +64,12 @@ class EvaluateProcessor
 			$str.='$( "#txtDate_New" ).datepicker({dateFormat:"yy-mm-dd", showButtonPanel: true})';
 			$str.='});';
 			$str.='</script>';
-			$str.='<input id="txtDate_New" type="text" style="width:70px;" value="'.$ngay.'">';
+            if($ngay!="")
+			     $str.='<input id="txtDate_New" type="text" style="width:70px;" value="'.$ngay.'">';
+            else
+                $str.='<input id="txtDate_New" type="text" style="width:70px;" value="'.date("Y-m-d").'">';  
             $str.='</td>';
-    		 
+            $str.='<td><a href="#" onclick="addNew();"><img src="images/icon_32_new.png"></a></td>';
            // $str.="</table>";
            // $str.="</div>"; 
             return $str;  
@@ -112,7 +116,9 @@ class EvaluateProcessor
 			$str.='</script>';
 			$str.='<input id="txtDate_'.$id.'" type="text" style="width:70px;" value="'.$ngay.'">';
             $str.='</td>';
-    		$str.='</tr>';  
+            $str.='<td><a href="#" onclick="update('.$id.');"><img  src="images/icon_yes.png"></a></td>';
+    		$str.='</tr>'; 
+             
             return $str;  
     }
     
@@ -120,7 +126,7 @@ class EvaluateProcessor
     {
         $str="";
         $str.='<table align="center" border="0" cellspacing="0" cellpadding="0">';
-        $str.='<tr><td colspan="8"><b>Có '.$numRow.' mẫu tin</b></td></tr>';
+        $str.='<tr><td colspan="9" align="left"><b>Có '.$numRow.' mẫu tin</b></td></tr>';
 		$str.='<tr class="title">';
 		$str.='<td width="30px" align="center">#</td>';
 		$str.='<td align="center"  width="150px">Nhân viên</td>';
@@ -130,6 +136,7 @@ class EvaluateProcessor
 		$str.='<td align="center" width="100px">Đạt thành tích</td>';
 		$str.='<td align="center">Khen thưởng</td>';
         $str.='<td align="center">Ngày duyệt</td>';
+        $str.='<td align="center"></td>';
 		$str.='</tr>';
         return $str;
     }
@@ -161,20 +168,6 @@ class EvaluateProcessor
         $maxItems = $constMaxItem;
         $maxPages = 25;      
         $offset=($curPage-1)*$maxItems; 
-        if($level>0)
-        {
-            $users=UsersBUS::getAllBySQL("select * from user where role=3 and level=$level and user.id not in (select iduser from khenthuong)  limit $offset,$maxItems");
-            $totalUsers=UsersBUS::countAllBySQL("select count(*) from user where role=3 and level=$level and user.id not in (select iduser from khenthuong)");
-        }else
-        {
-            $users=UsersBUS::getAllBySQL("select * from user where role=3  and user.id not in (select iduser from khenthuong)  limit $offset,$maxItems");
-            $totalUsers=UsersBUS::countAllBySQL("select count(*) from user where role=3 and user.id not in (select iduser from khenthuong)");
-        }
-        
-        $maxItems=$maxItems-count($users);
-        $offset=$offset- $totalUsers;
-        if($offset<0)
-            $offset=0;
         $condition=EvaluateProcessor::getkhenthuongCondition($level,$nam,$thangfrom,$thangto);
         $strSQL="select * from khenthuong,user where khenthuong.iduser=user.id ".$condition." limit $offset,$maxItems";
         $evaluate=KhenThuongBUS::selectByIdSQL($strSQL);
@@ -183,24 +176,15 @@ class EvaluateProcessor
         
         
         $display="";
-        $display.=EvaluateProcessor::displayHeader($totalUsers+$totalEvaluate[0]);
-        $index=0;
-        for($i=0;$i<count($users);$i++)
-        {
-            $index++;
-            $display.=EvaluateProcessor::display($index,$users[$i]['id'],$users[$i]['hoten'],$users[$i]['email'],$users[$i]['gioitinh'],$users[$i]['level'],-1,"","");
-        } 
+        $display.=EvaluateProcessor::displayHeader($totalEvaluate[0]);
         for($i=0;$i<count($evaluate);$i++)
         {
-            $index++;
             $user=UsersBUS::GetUserByID($evaluate[$i]['iduser']);
-            $display.=EvaluateProcessor::display($index,$evaluate[$i]['iduser'],$user['hoten'],$user['email'],$user['gioitinh'],$user['level'],$evaluate[$i]['loai'],$evaluate[$i]['thuong'],$evaluate[$i]['ngay']);
+            $display.=EvaluateProcessor::display($i+1,$evaluate[$i]['iduser'],$user['hoten'],$user['email'],$user['gioitinh'],$user['level'],$evaluate[$i]['loai'],$evaluate[$i]['thuong'],$evaluate[$i]['ngay']);
         }
         
-        $display.=EvaluateProcessor::displayFooter("","","","",-1,"","","","");
-        //$display.=EvaluateProcessor::displayNewRow("","","","",-1,"","","","");
-   
-        $strPaging =Utils::paging ('',$totalUsers+$totalEvaluate[0],$curPage,$maxPages,$constMaxItem);
+        $display.=EvaluateProcessor::displayFooter("",-1,"","",-1,"","","","");
+        $strPaging =Utils::paging ('',$totalEvaluate[0],$curPage,$maxPages,$constMaxItem);
         return $display.$strPaging;
     }
 }
@@ -287,18 +271,8 @@ elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='export')
     if(isset($_REQUEST['radio']))
         $option=$_REQUEST['radio'];
         
-    $users=null;
     $evaluate=null;
-     //load all user
-      if($loai>0)
-        {
-            $users=UsersBUS::getAllBySQL("select * from user where role=3 and level=$loai and user.id not in (select iduser from khenthuong)");
     
-        }else
-        {
-            $users=UsersBUS::getAllBySQL("select * from user where role=3  and user.id not in (select iduser from khenthuong)");        
-        }
-        
      if($option==1)
             {
                 $condition=EvaluateProcessor::getkhenthuongCondition($loai,$nam,$thang,$thang);
@@ -351,19 +325,10 @@ elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='export')
             $array[0][3]="Cấp độ";
             $array[0][4]="Đạt thành tích";
             $array[0][5]="Khen thưởng";
-    $index=0;
-       
-    for($i=0;$i<count($users);$i++)
-    {
-      
-        $index++;
-            $array[$index][0]=$users[$i]['hoten'];
-            $array[$index][1]=$users[$i]['email'];
-            $array[$index][2]=$users[$i]['gioitinh'];
-            $array[$index][3]=$users[$i]['level'];
-            $array[$index][4]="-1";
-            $array[$index][5]="Chua duy?t";
-    }
+    
+    
+    $index=0;    
+   
      for($i=0;$i<count($evaluate);$i++)
         {
             

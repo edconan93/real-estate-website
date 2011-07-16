@@ -19,5 +19,13 @@
 		{
 			return QuangCaoDAO::delete($id);
 		}
+        public static function getBySQL($strSQL)
+        {
+            return QuangCaoDAO::getBySQL($strSQL);
+        }
+        public static function countBySQL($strSQL)
+        {
+            return QuangCaoDAO::countBySQL($strSQL);
+        }
 	}
 ?>

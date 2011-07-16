@@ -63,5 +63,22 @@
 			DataProvider::Close ($cn);
 			return $result;
 		}
+        public static function getBySQL($strSQL)
+        {
+            $result = DataProvider::Query($strSQL);
+			if (mysql_num_rows($result)==0)
+				return null;
+			while ($row= mysql_fetch_array ($result,MYSQL_BOTH))
+                $return[]=$row;
+            return $return;	
+        }
+        public static function countBySQL($strSQL)
+        {
+            $result = DataProvider::Query($strSQL);
+			if (mysql_num_rows($result)==0)
+				return null;
+			$return= mysql_fetch_array($result,MYSQL_BOTH);
+            return $return[0];
+        }
 	}
 ?>

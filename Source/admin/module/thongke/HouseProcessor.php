@@ -7,12 +7,10 @@ require_once("../Utils/Utils.php");
 <?php
 class HouseProcessor
 {
-    public static function display($business)
+    public static function displayHeader($count)
     {
-        
-        $str="";
-        $str.='<table align="center" border="0" cellspacing="0" cellpadding="0" id="tblist">';
-		$str.='<tr><td colspan="6"><b>Có '.count($business).' mẫu tin</b></td></tr>';
+        $str='<table align="center" border="0" cellspacing="0" cellpadding="0" id="tblist">';
+		$str.='<tr><td colspan="6"><b>Có '.$count.' mẫu tin</b></td></tr>';
 		$str.='<tr class="title">';
 		$str.='<td width="30px" align="center">#</td>';
 		$str.='<td align="center">Loại nhà</td>';
@@ -21,6 +19,18 @@ class HouseProcessor
 		$str.='<td align="center">Trạng thái</td>';
 		$str.='<td align="center">Loại dịch vụ</td>';
 		$str.='</tr>';
+        return $str;
+    }
+    public static function displayFooter()
+    {
+        $str="</table>";
+        $str.="<script>$(\"table[id='tblist'] tr:odd\").css('background-color', '#EFEFEF');</script>";
+        return $str;
+    }
+    public static function display($business)
+    {
+        
+        $str="";
         for($i=0;$i<count($business);$i++)
         {
             $loaidv=LoaiDichVuBUS::getById($business[$i]['loaidv']);
@@ -53,24 +63,8 @@ class HouseProcessor
     		$str.='<td align="center">'.$loaidv['ten'].'</td>';
     		$str.='</tr>';
 		}
-		$str.='</table>';
-        $str.="<script>$(\"table[id='tblist'] tr:odd\").css('background-color', '#EFEFEF');</script>";
+       
         return $str;
-    }
-    public static function load( $curPage)
-    {  
-        $totalItems =null;  
-        $business = null; 
-        $maxItems = 5;
-        $maxPages = 25;      
-        $offset=($curPage-1)*$maxItems; 
-    
-        $business=DichVuBUS::getAllBySQL("select * from dichvu limit $offset,$maxItems");
-        $totalItems=DichVuBUS::countAllBySQL("select count(*) from dichvu");
-        $display=HouseProcessor::display($business);
-        $strPaging =Utils::paging ('',$totalItems[0],$curPage,$maxPages,$maxItems);
-        
-        return $display.$strPaging;
     }
      public static function loadByType( $curPage,$type)
     {  
@@ -79,11 +73,20 @@ class HouseProcessor
         $maxItems = 5;
         $maxPages = 25;      
         $offset=($curPage-1)*$maxItems; 
-    
-        $business=DichVuBUS::getAllBySQL("select * from dichvu where loaidv=$type limit $offset,$maxItems");
-        $totalItems=DichVuBUS::countAllBySQL("select count(*) from dichvu where loaidv=$type");
-        $display=HouseProcessor::display($business,$type);
-        $strPaging =Utils::paging ('',$totalItems[0],$curPage,$maxPages,$maxItems);
+        if($type>0)
+        {
+            $business=DichVuBUS::getAllBySQL("select * from dichvu where loaidv=$type limit $offset,$maxItems");
+            $totalItems=DichVuBUS::countAllBySQL("select count(*) from dichvu where loaidv=$type");
+        }      
+        else{
+            $business=DichVuBUS::getAllBySQL("select * from dichvu limit $offset,$maxItems");
+            $totalItems=DichVuBUS::countAllBySQL("select count(*) from dichvu");
+        }
+        
+        $display=HouseProcessor::displayHeader($totalItems);
+        $display.=HouseProcessor::display($business);
+        $display.=HouseProcessor::displayFooter();
+        $strPaging =Utils::paging ('',$totalItems,$curPage,$maxPages,$maxItems);
         
         return $display.$strPaging;
     }
@@ -151,6 +154,6 @@ class HouseProcessor
             $xls->addArray($array); 
             $xls->generateXML('Output_Report_WFM');   
         }
-        else echo HouseProcessor::load($page);
+        else echo HouseProcessor::loadByType($page,-1);
  }
 ?>
