@@ -5,21 +5,20 @@
 $(document).ready(function()
 {
 	$("#formForgotPassword").submit(function()
+	{
+		var flag = true;
+		var strEmail = $("#txtEmail").attr("value");
+		if(IsEmail(strEmail)==false)
 		{
-
-			var flag = true;
-			var strEmail = $("#txtEmail").attr("value");
-			if(IsEmail(strEmail)==false)
-			{
-				flag=false;
-				$("#messLoadEmail").attr("innerHTML","Email không hợp lệ");
-				$("#messLoadEmail").css("color","red");
-				
-			}
-			if(flag==false)
-				alert ("Có lỗi trong thông tin đăng ký. Xin kiểm tra lại");
-			return flag;
-		});
+			flag=false;
+			$("#messLoadEmail").attr("innerHTML","Email không hợp lệ");
+			$("#messLoadEmail").css("color","red");
+			
+		}
+		if(flag==false)
+			alert ("Có lỗi trong thông tin đăng ký. Xin kiểm tra lại");
+		return flag;
+	});
 });
 </script>
 <script>
@@ -28,14 +27,20 @@ function swapform()
 {
 	document.getElementById('formForgotPassword').style.display='inherit';
 	document.getElementById('formLogIn').style.display='none';
-	
+	document.getElementById("txtEmail").focus();
 }
 function swapform1()
 {
-	// document.getElementById('formForgotPassword').style.display='inherit';
-	// document.getElementById('formLogIn').style.display='none';
-	var url = "index.php";
-	window.location = url;	
+	var errorLogIn = document.getElementById("errorLogIn");
+	if (errorLogIn != null)
+		document.getElementById("errorLogIn").style.display = "none";
+	document.getElementById("txtUsername").value = "";
+	document.getElementById("txtPassword").value = "";
+	document.getElementById('formForgotPassword').style.display='none';
+	document.getElementById('formLogIn').style.display='inherit';
+	document.getElementById("txtUsername").focus();
+	// var url = "index.php";
+	// window.location = url;	
 }
 function checkEmail()
 {
@@ -138,7 +143,7 @@ if(!isset($_GET['email']))
 			<h1>Đăng nhập</h1>
 			<?php
 				if(isset($login) && $login =="false")
-					echo "<p class='error'> Tên đăng nhập và mật khẩu không đúng</p>";
+					echo "<p id='errorLogIn' class='error'> Tên đăng nhập và mật khẩu không đúng</p>";
 			?>
 			<div class="frmLogin">
 				<div class="_top"></div>
@@ -166,7 +171,6 @@ if(!isset($_GET['email']))
 				</div>
 				<div class="_bot"></div>
 			</div>
-		
 			Dùng một tên đăng nhập và mật mã hợp lý để đăng nhập vào khu vực quản trị.
 			<img src="images/login_lock.jpg" alt="Login" />
 			<br class="clr">
@@ -192,10 +196,6 @@ else
 		<div class="top"></div>
 		<div class="content">
 			<h1>Quên mật khẩu</h1>
-			<?php
-				if(isset($login) && $login =="false")
-					echo "<p class='error'> Tên đăng nhập và mật khẩu không đúng</p>";
-			?>
 			<div class="frmLogin">
 				<div class="_top"></div>
 				<div class="_content">
@@ -207,7 +207,7 @@ else
 							<!--div class="rightbutton" style="margin-right:16px;"></div-->
 							<table>
 								<tr>
-									<td><div align="left" valign="button">
+									<td width="110px"><div align="right" valign="button">
 										<a onclick="swapform1();">
 											Đăng nhập</a></div></td>
 									<td><div class="rightbutton"></div>

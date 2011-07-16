@@ -1,5 +1,9 @@
 <?php
-	if($_SESSION["curUser"][8] != 1)
+	$flag = 0;
+	if ($_SESSION["curUser"][8] == 1) $flag = 1;
+	if ($_SESSION["curUser"][8] == 5) $flag = 1;
+	
+	if ($flag == 0) // Khong duoc phep di tiep
 		header("Location: index.php");
 		
 	$PATH = str_replace('//','/',dirname(__FILE__).'/') ;
