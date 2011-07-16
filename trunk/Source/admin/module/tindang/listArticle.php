@@ -395,7 +395,8 @@
 								echo "<td></td>";
 							$tinvip = DichVuVIPBUS::GetTinVipById($listTinDang[$i]["id"]);
 							if (count($tinvip) > 0)
-								echo "<td align='center'><img src='images/vip.gif' /></td>";
+								//echo "<td align='center'><img src='images/vip.gif' /></td>";
+								echo "<td align='center'><img style='width:16px;heigh:16px;' src='images/up.gif' /></td>";
 							else
 								echo "<td></td>";
 							$str = "<td><select id='status[$i]' style='font-size:96%;color:";
