@@ -128,56 +128,67 @@ class VipProcessor
             $condition=VipProcessor::getCondition($loaidv,$ngayfrom,$ngayto);        
             $business=DichVuBUS::getAllBySQL("select * from dichvu where status=2 ".$condition);
             
-            
+             // load library 
+            require '../Utils/php-excel.class.php'; 
             $array=array();
-            $array[0][0]="Khách hàng";
-            $array[0][1]="Tiêu đề";
-            $array[0][2]="Loại nhà";
-            $array[0][3]="Địa chỉ";
-            $array[0][4]="Thời gian đăng";
-            $array[0][5]="Thời hạn (ngày)";
-            $array[0][6]="Trạng thái";
-            $array[0][7]="Loại dịch vụ";
-            
+            $array[0]="Khách hàng";
+            $array[1]="Tiêu đề";
+            $array[2]="Loại nhà";
+            $array[3]="Địa chỉ";
+            $array[4]="Thời gian đăng";
+            $array[5]="Thời hạn (ngày)";
+            $array[6]="Trạng thái";
+            $array[7]="Loại dịch vụ";
+            $headerColumn=new  TableHeaderColumn(null,$array);
+            $headerColumn->setColumnWidth(0,200);    
+            $headerColumn->setColumnWidth(1,300); 
+            $headerColumn->setColumnWidth(2,100); 
+            $headerColumn->setColumnWidth(3,100); 
+            $headerColumn->setColumnWidth(4,150); 
+            $headerColumn->setColumnWidth(5,150); 
+            $headerColumn->setColumnWidth(6,100); 
+            $headerColumn->setColumnWidth(7,100);    
+            $array=array(); 
            for($i=0;$i<count($business);$i++)
             {
                 $loaidv=LoaiDichVuBUS::getById($business[$i]['loaidv']);
                 $loainha=LoaiNhaBUS::getById($business[$i]['loainha']);
                 $user=UsersBUS::GetUserByID($business[$i]['chusohuu']);
                 //$array[$i]=array();
-                $array[$i+1][0]=$user['hoten'];
-                $array[$i+1][1]=$business[$i]['tieude'];
-                $array[$i+1][2]=$loainha['ten'];
-                $array[$i+1][3]=$business[$i]['sonha'].'/'.$business[$i]['duong'].', '.$business[$i]['phuong'].', '.$business[$i]['quan'].', '.$business[$i]['tinh'];
-                $array[$i+1][4]=$business[$i]['ngaydang'];
-                $array[$i+1][5]=$business[$i]['thoihantin'];
+                $array[$i][0]=$user['hoten'];
+                $array[$i][1]=$business[$i]['tieude'];
+                $array[$i][2]=$loainha['ten'];
+                $array[$i][3]=$business[$i]['sonha'].'/'.$business[$i]['duong'].', '.$business[$i]['phuong'].', '.$business[$i]['quan'].', '.$business[$i]['tinh'];
+                $array[$i][4]=$business[$i]['ngaydang'];
+                $array[$i][5]=$business[$i]['thoihantin'];
                 switch($business[$i]['status'])
                 {
                 case 0:
-                $array[$i+1][6]="Tin chờ duyệt";
+                $array[$i][6]="Tin chờ duyệt";
                 break;
                 case 1:
-                $array[$i+1][6]="Tin đã duyệt";
+                $array[$i][6]="Tin đã duyệt";
                 break;
                 case 2:
-                $array[$i+1][6]="Tin đăng VIP";
+                $array[$i][6]="Tin đăng VIP";
                 break;
                 case 3:
-                $array[$i+1][6]="Tin hết hạn";
+                $array[$i][6]="Tin hết hạn";
                 break;
                 default:
-                $array[$i+1][6]="Tin bị xóa";
+                $array[$i][6]="Tin bị xóa";
                 break;
                 }
-                $array[$i+1][7]=$loaidv['ten'];    
+                $array[$i][7]=$loaidv['ten'];    
             } 
-           // load library 
-            require '../Utils/php-excel.class.php'; 
+          
             
             // generate file (constructor parameters are optional) 
-            $xls = new Excel_XML('UTF-8', false, 'Workflow Management'); 
-            $xls->addArray($array); 
-            $xls->generateXML('Output_Report_WFM');   
+           $xls = new Excel_XML('UTF-8', false, 'Workflow Management');
+            $xls->setTableHeaderColumn($headerColumn); 
+            $xls->setTile("s57","Thống kê tin VIP");
+            $xls->setAutoData($array);
+            $xls->getXML("Output_Report_WFM"); 
         }
         else echo VipProcessor::loadByType($page,$loaidv,$ngayfrom,$ngayto);
  }

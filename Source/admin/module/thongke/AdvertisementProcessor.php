@@ -104,43 +104,52 @@ elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=="export")
         {
             $advertisement=QuangCaoBUS::getBySQL("select * from quangcao where status=$loai ");
         }
+         require '../Utils/php-excel.class.php';    
     $array=array();
-    $array[0][0]="Chủ sở hữu";
-    $array[0][1]="Địa chỉ";
-    $array[0][2]="Đường dẫn banner";
-    $array[0][3]="Ngày đăng ký";
-    $array[0][4]="Trạng thái";
-            
+    $array[0]="Chủ sở hữu";
+    $array[1]="Địa chỉ";
+    $array[2]="Đường dẫn banner";
+    $array[3]="Ngày đăng ký";
+    $array[4]="Thời hạn (tháng)";
+    $array[5]="Trạng thái";
+       $headerColumn=new  TableHeaderColumn(null,$array);
+    $headerColumn->setColumnWidth(0,200);    
+    $headerColumn->setColumnWidth(1,300); 
+    $headerColumn->setColumnWidth(2,200); 
+    $headerColumn->setColumnWidth(3,100); 
+    $headerColumn->setColumnWidth(4,100); 
+    $headerColumn->setColumnWidth(5,100);    
+    $array=array();      
     for($i=0;$i<count($advertisement);$i++)
     { 
-        $array[$i+1][0]=$advertisement[$i]['chusohuu'];
-        $array[$i+1][1]=$advertisement[$i]['diachi'];
-        $array[$i+1][2]=$advertisement[$i]['hinhanh'];
-        $array[$i+1][3]=$advertisement[$i]['ngaydang'];
-        $array[$i+1][4]=$advertisement[$i]['sothang'];
+        $array[$i][0]=$advertisement[$i]['chusohuu'];
+        $array[$i][1]=$advertisement[$i]['diachi'];
+        $array[$i][2]=$advertisement[$i]['hinhanh'];
+        $array[$i][3]=$advertisement[$i]['ngaydang'];
+        $array[$i][4]=$advertisement[$i]['sothang'];
         switch($advertisement[$i]['status'])
         {
                 case 0:
-                $array[$i+1][5]="Tin hết hạn";
+                $array[$i][5]="Tin hết hạn";
                 break;
                 case 1:
-                $array[$i+1][5]="Tin đang hoạt động";
+                $array[$i][5]="Tin đang hoạt động";
                 break;
                 case 2:
-                $array[$i+1][5]="Tin bị xóa";
+                $array[$i][5]="Tin bị xóa";
                 break;
                 default:
-                $array[$i+1][5]="Tin bị xóa";
+                $array[$i][5]="Tin bị xóa";
                 break;
         }
         
     }
-    require '../Utils/php-excel.class.php'; 
-            
-            // generate file (constructor parameters are optional) 
-            $xls = new Excel_XML('UTF-8', false, 'Workflow Management'); 
-            $xls->addArray($array); 
-            $xls->generateXML('Output_Report_WFM');   
+     //  generate file (constructor parameters are optional) ;
+            $xls = new Excel_XML('UTF-8', false, 'Workflow Management');
+            $xls->setTableHeaderColumn($headerColumn); 
+            $xls->setTile("s57","Thống kê quảng cáo");
+            $xls->setAutoData($array);
+            $xls->getXML("Output_Report_WFM");
 }
 else
 {

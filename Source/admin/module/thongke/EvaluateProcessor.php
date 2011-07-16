@@ -76,7 +76,7 @@ class EvaluateProcessor
     }
     public static function display($index,$id,$nhanvien,$email,$gioitinh,$capdo,$thanhtich,$khenthuong,$ngay)
     {
-            $str="<input type='hidden' name='txtID[]' value='".$id."'>";
+            $str="<input type='hidden' name='txtID[]' value='".$index."'>";
             $str.="<tr>";
     		$str.='<td align="center">'.$index.'</td>';
     		$str.='<td class="m_name"><a href="index.php?view=user&do=edit&uid='.$id.'">'.$nhanvien.'</a></td>';
@@ -89,7 +89,7 @@ class EvaluateProcessor
             $str.='</td>';
     		$str.='<td align="center">'.$capdo.'</td>';
     		$str.='<td align="center">';
-    		$str.='<select id="cbbLoai_'.$id.'">';
+    		$str.='<select id="cbbLoai_'.$index.'">';
             $str.='<option value="-1" selected>---Chọn thành tích---</option>';
             if($thanhtich==1)
     		  $str.='<option value="1" selected>Trung bình</option>';
@@ -106,17 +106,17 @@ class EvaluateProcessor
     		$str.='</select>';
     		$str.='</td>';
     		$str.='<td>';
-    		$str.='<input id="txtKhenThuong_'.$id.'" type="text" style="width:300px;" value="'.$khenthuong.'" />';
+    		$str.='<input id="txtKhenThuong_'.$index.'" type="text" style="width:300px;" value="'.$khenthuong.'" />';
     		$str.='</td>';
             $str.='<td>';
             $str.='<script>';
 			$str.='$(function() {';
-			$str.='$( "#txtDate_'.$id.'" ).datepicker({dateFormat:"yy-mm-dd", showButtonPanel: true})';
+			$str.='$( "#txtDate_'.$index.'" ).datepicker({dateFormat:"yy-mm-dd", showButtonPanel: true})';
 			$str.='});';
 			$str.='</script>';
-			$str.='<input id="txtDate_'.$id.'" type="text" style="width:70px;" value="'.$ngay.'">';
+			$str.='<input id="txtDate_'.$index.'" type="text" style="width:70px;" value="'.$ngay.'">';
             $str.='</td>';
-            $str.='<td><a href="#" onclick="update('.$id.');"><img  src="images/icon_yes.png"></a></td>';
+            $str.='<td><a href="#" onclick="update('.$index.');"><img  src="images/icon_yes.png"></a></td>';
     		$str.='</tr>'; 
              
             return $str;  
@@ -317,36 +317,38 @@ elseif(isset($_REQUEST['action'])&&$_REQUEST['action']=='export')
                 echo $strSQL;
                 $evaluate=KhenThuongBUS::selectByIdSQL($strSQL);
         }    
-            $array=array();
-   
-            $array[0][0]="Nhân viên";
-            $array[0][1]="Email đăng nhập";
-            $array[0][2]="Giới tính";
-            $array[0][3]="Cấp độ";
-            $array[0][4]="Đạt thành tích";
-            $array[0][5]="Khen thưởng";
-    
-    
-    $index=0;    
-   
+       require '../Utils/php-excel.class.php';      
+            $array=array(); 
+            $array[0]="Nhân viên";
+            $array[1]="Email đăng nhập";
+            $array[2]="Giới tính";
+            $array[3]="Cấp độ";
+            $array[4]="Đạt thành tích";
+            $array[5]="Khen thưởng";
+    $headerColumn=new  TableHeaderColumn(null,$array);
+    $headerColumn->setColumnWidth(0,200);    
+    $headerColumn->setColumnWidth(1,300); 
+    $headerColumn->setColumnWidth(4,100); 
+    $headerColumn->setColumnWidth(5,100);    
+    $array=array(); 
      for($i=0;$i<count($evaluate);$i++)
         {
-            
-            $index++;
             $user=UsersBUS::GetUserByID($evaluate[$i]['iduser']);
-            $array[$index][0]=$user['hoten'];
-            $array[$index][1]=$user['email'];
-            $array[$index][2]=$user['gioitinh'];
-            $array[$index][3]=$user['level'];
-            $array[$index][4]=$evaluate[$i]['loai'];
-            $array[$index][5]=$evaluate[$i]['thuong'];
+            $array[$i][0]=$user['hoten'];
+            $array[$i][1]=$user['email'];
+            $array[$i][2]=$user['gioitinh'];
+            $array[$i][3]=$user['level'];
+            $array[$i][4]=$evaluate[$i]['loai'];
+            $array[$i][5]=$evaluate[$i]['thuong'];
         }
-        require '../Utils/php-excel.class.php'; 
+       
             
            //  generate file (constructor parameters are optional) ;
-            $xls = new Excel_XML('UTF-8', false, 'Workflow Management'); 
-            $xls->addArray($array); 
-            $xls->generateXML('Output_Report_WFM');   
+            $xls = new Excel_XML('UTF-8', false, 'Workflow Management');
+            $xls->setTableHeaderColumn($headerColumn); 
+            $xls->setTile("s57","Thống kê đánh giá nhân viên");
+            $xls->setAutoData($array);
+            $xls->getXML("Output_Report_WFM");
 }
 else
 {

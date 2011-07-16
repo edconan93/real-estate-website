@@ -18,9 +18,9 @@ class KhenThuongDAO
 			DataProvider::Close ($cn);
             return $result;
     }
-    public static function update($iduser,$loai,$khenthuong,$ngay)
+    public static function update($id,$loai,$khenthuong,$ngay)
     {
-            $strSQL = "update khenthuong set loai=$loai,thuong='$khenthuong', ngay='$ngay' where iduser=$iduser";
+            $strSQL = "update khenthuong set loai=$loai,thuong='$khenthuong', ngay='$ngay' where id=$id";
             $cn = DataProvider::Open ();
     		DataProvider::MoreQuery ($strSQL,$cn);
     		if(mysql_affected_rows () == 0)
