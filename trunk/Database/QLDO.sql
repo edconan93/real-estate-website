@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 16, 2011 at 07:08 PM
+-- Generation Time: Jul 16, 2011 at 07:16 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -334,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `khenthuong` (
   `iduser` int(11) DEFAULT NULL,
   `loai` int(11) DEFAULT NULL,
   `thuong` text,
-  `nam` int(11) DEFAULT NULL,
+  `ngay` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_khenthuong_user` (`iduser`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -343,8 +343,8 @@ CREATE TABLE IF NOT EXISTS `khenthuong` (
 -- Dumping data for table `khenthuong`
 --
 
-INSERT INTO `khenthuong` (`id`, `iduser`, `loai`, `thuong`, `nam`) VALUES
-(1, 3, 1, 'tew', 2011);
+INSERT INTO `khenthuong` (`id`, `iduser`, `loai`, `thuong`, `ngay`) VALUES
+(1, 3, 1, 'tew', '0000-00-00');
 
 -- --------------------------------------------------------
 
