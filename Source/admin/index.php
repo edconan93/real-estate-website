@@ -1,5 +1,6 @@
 <?php 
 	session_start();
+	// $_SESSION["formLogin"]=true;
  	$do="";
 	if (isset($_GET["do"]))
 		$do=$_GET["do"];
@@ -138,6 +139,7 @@
 </head>
 
 <body>
+
 <div id="container">
 <div id="header">
 	<?php include("include/top_admin.php");?>
