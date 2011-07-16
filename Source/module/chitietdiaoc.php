@@ -507,8 +507,14 @@ $rs=TienIchBUS::GetAllTienIch();
 											<tr style="background-color: #F1F1F1;">
 												<td><?php echo $business['mota'] ?></td>
 											</tr>
+											<tr >
+												<td  colspan="2" style="align:right;font-style: italic;text-decoration:underline;">
+												<a  href="dichvu.php" style="color:black;font-size:12px;font-style:intalic;"> &lt;&lt;Quay lại </a>
+												</td>
+									</tr>
 										</table>
 								</fieldset>
+								
 							</div>
 						</td>
 					</tr>

@@ -22,7 +22,7 @@ rgb(33, 91, 135); text-align: center;">
                     <div style="float: left; margin-top: 8px; margin-left: 10px; height: 20px; padding-left: 5px;
                         padding-right: 5px; background-color: rgb(56, 
 58, 71); border: 1px solid rgb(33, 91, 135); text-align: center;">
-                        <a class="a_bottomlink" href="">TUYỂN DỤNG</a></div>
+                        <a class="a_bottomlink" href="tuyendung.php">TUYỂN DỤNG</a></div>
                 </div>
             </div>
             <div style="width: 100%; height: 70px; background-image: url('../images/bg_bottom.gif');
