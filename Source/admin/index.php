@@ -17,7 +17,7 @@
 		$password = $_POST["txtPassword"];
 		$curUser = UsersBUS::Login($username,$password);
 
-		if($curUser != null && $curUser[8] == 1)
+		if($curUser != null && $curUser[8] != 2)
 		{
 			$now = date ("Y-m-d H-i-s");
 			$_SESSION["curUser"] = $curUser;
@@ -25,7 +25,7 @@
 		else
 			$login="false";
 	}
-	if(isset($_SESSION["curUser"]) && $_SESSION["curUser"][8] == 1)
+	if(isset($_SESSION["curUser"]) && $_SESSION["curUser"][8] != 2)
 		$bodyFile="include/controlpanel.php";
 	else
 		$bodyFile= "module/login.php";

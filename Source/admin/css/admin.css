@@ -20,7 +20,7 @@ td{ padding:3px}
 
 #menu, #menu ul, #menu li { margin: 0; padding: 0; border: 0 none; }
 #menu  {border-bottom:1px solid #CCC; height:25px; background:#F0F0F0 }
-#menu .mess {float:right; width:250px;  margin-right:10px; text-align:right;margin-top:2px; }
+#menu .mess {float:right; width:400px;  margin-right:10px; text-align:right;margin-top:2px; }
 #menu .mess .logout { background:url(../images/icon-16-logout.png) left top no-repeat; padding-left:20px; padding-right:10px; }
 #menu .mess  img {height:14px;position:relative;top:2px;}
 #menu .mess a , a:hover {color:blue;}

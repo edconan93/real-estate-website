@@ -179,10 +179,15 @@
 <div class="tm"></div>
 <div class="mid">
 	<div class="title icon_user">Quản lý thành viên </div>
+	<?php
+		if ($_SESSION["curUser"][8] == 1)
+		{
+	?>
     <div class="icon">
     	<a href="index.php?view=user&do=add">
         	<img src="images/icon_32_new.png" /><br />Thêm mới</a></div>
-    <div class="icon">
+    <?php } ?>
+	<div class="icon">
     	<a onclick="return deleteUser();">
         	<img src="images/trash-can-delete.png" /><br />Xóa</a></div>
     <div class="icon">
