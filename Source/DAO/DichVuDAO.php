@@ -78,7 +78,7 @@ class DichVuDAO
     //hoaphuong3
     public static function getAll($offset,$numrow)
     {
-         $strSQL = "select * from dichvu where status >-1 limit $offset,$numrow";
+         $strSQL = "select * from dichvu where status >-1 order by status=2 desc limit $offset,$numrow";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
 				return null;
@@ -142,7 +142,7 @@ class DichVuDAO
     //hoaphuong3
     public static function getDichVuByLoai($idLoai,$offset,$numrow)
     {
-        $strSQL = "select * from dichvu where loaidv=$idLoai and status >-1 limit $offset,$numrow";
+        $strSQL = "select * from dichvu where loaidv=$idLoai and status >-1 order by status=2 desc limit $offset,$numrow";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
 				return null;
