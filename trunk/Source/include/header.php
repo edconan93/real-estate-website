@@ -13,9 +13,6 @@
 	<script type="text/javascript" src="../js/jquery-ui-1.8.9.custom.min.js"></script>
 	<script type="text/javascript" src="../js/custom.js"></script>
 </head>
-<?php 
-
-?>
 <?php
 	session_start();
 	include ("../DAO/config.php");

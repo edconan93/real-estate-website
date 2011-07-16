@@ -7,7 +7,7 @@
 	if($do=="logout")
 	{
 		unset($_SESSION["curUser"]);
-		header("Location:index.php");
+		header("Location:../index.php");
 	}
 	
 	if (isset($_POST["btLogin"]))
