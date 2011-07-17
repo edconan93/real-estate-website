@@ -84,7 +84,7 @@
 					<tr style="background:<?php echo ($i%2==0) ? "#EFF3FF" : "white"; ?>;">
 						<td align="center"><?php echo $i+1; ?></td>
 						<td align="center"><input type="checkbox" name="cbUser" id="cbUser" value="<?php echo $listAdv[$i]["id"]; ?>" onclick="Check_Click(this)"></td>
-						<td class="m_name"><?php echo "<a href='index.php?view=user&do=edit&uid=".$listAdv[$i]["id"]."'>".$listAdv[$i]["chusohuu"]."</a>"; ?></td>
+						<td class="m_name"><?php echo "<a href=''>".$listAdv[$i]["chusohuu"]."</a>"; ?></td>
 						<td align="center"><?php echo $listAdv[$i]["sdt"]; ?></td>
 						<td style="color:blue;"><?php echo $listAdv[$i]["email"]; ?></td>
 						<td><?php echo $listAdv[$i]["diachi"]; ?></td>
