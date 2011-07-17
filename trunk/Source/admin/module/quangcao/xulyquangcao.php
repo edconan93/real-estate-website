@@ -4,7 +4,6 @@
 	if (isset($_POST["action"]))
 	{
 		$action = $_POST["action"];
-		echo $action;return;
 		switch ($action)
 		{
 			case "add":
