@@ -307,26 +307,26 @@
             return $return;	
         }
 		
-		public static function GetUsersByFilter($role, $status)
+		public static function GetUsersByFilter($role, $status,$offset,$max)
 		{
 			$strSQL = "";
 			if ($role == -1)
 			{
 				if ($status == -1)
 					$strSQL = "	select * from user 
-								where role!=1 and status!=-1";
+								where role!=1 and status!=-1 limit $offset,$max";
 				else
 					$strSQL = "	select * from user 
-								where role!=1 and status=$status";
+								where role!=1 and status=$status limit $offset,$max";
 			}
 			else
 			{
 				if ($status == -1)
 					$strSQL = "	select * from user 
-								where role=$role and status!=-1";
+								where role=$role and status!=-1 limit $offset,$max";
 				else
 					$strSQL = "	select * from user 
-								where role=$role and status=$status";
+								where role=$role and status=$status limit $offset,$max";
 			}
 			$result = DataProvider::Query($strSQL);
 			if (mysql_num_rows($result)==0)
@@ -334,6 +334,33 @@
 			while ($row= mysql_fetch_array ($result,MYSQL_BOTH))
                 $return[]=$row;
             return $return;	
+		}
+        public static function CountUsersByFilter($role, $status,$offset,$max)
+		{
+			$strSQL = "";
+			if ($role == -1)
+			{
+				if ($status == -1)
+					$strSQL = "	select count(*) from user 
+								where role!=1 and status!=-1";
+				else
+					$strSQL = "	select count(*) from user 
+								where role!=1 and status=$status";
+			}
+			else
+			{
+				if ($status == -1)
+					$strSQL = "	select count(*) from user 
+								where role=$role and status!=-1";
+				else
+					$strSQL = "	select count(*) from user 
+								where role=$role and status=$status";
+			}
+			$result = DataProvider::Query($strSQL);
+			if (mysql_num_rows($result)==0)
+				return null;
+			$row= mysql_fetch_array ($result,MYSQL_BOTH);
+            return $row[0];	
 		}
 		public static function getAllBySQL($strSQL)
 		{

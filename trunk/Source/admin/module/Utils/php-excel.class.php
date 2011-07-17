@@ -382,5 +382,38 @@ class Excel_XML
             echo $this->footer; 
         }
 } 
-
+/*how to use it:
+   require '../Utils/php-excel.class.php';      
+            $array=array(); 
+            $array[0]="Nhân viên";
+            $array[1]="Email dang nh?p";
+            $array[2]="Gi?i tính";
+            $array[3]="C?p d?";
+            $array[4]="Ð?t thành tích";
+            $array[5]="Khen thu?ng";
+    $headerColumn=new  TableHeaderColumn(null,$array);
+    $headerColumn->setColumnWidth(0,200);    
+    $headerColumn->setColumnWidth(1,300); 
+    $headerColumn->setColumnWidth(4,100); 
+    $headerColumn->setColumnWidth(5,100);    
+    $array=array(); 
+     for($i=0;$i<count($evaluate);$i++)
+        {
+            $user=UsersBUS::GetUserByID($evaluate[$i]['iduser']);
+            $array[$i][0]=$user['hoten'];
+            $array[$i][1]=$user['email'];
+            $array[$i][2]=$user['gioitinh'];
+            $array[$i][3]=$user['level'];
+            $array[$i][4]=$evaluate[$i]['loai'];
+            $array[$i][5]=$evaluate[$i]['thuong'];
+        }
+       
+            
+           //  generate file (constructor parameters are optional) ;
+            $xls = new Excel_XML('UTF-8', false, 'Workflow Management');
+            $xls->setTableHeaderColumn($headerColumn); 
+            $xls->setTile("s57","Th?ng kê dánh giá nhân viên");
+            $xls->setAutoData($array);
+            $xls->getXML("Output_Report_WFM");
+*/
 ?>

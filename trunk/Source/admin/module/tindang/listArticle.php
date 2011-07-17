@@ -58,6 +58,8 @@
 	$loainha = isset($_REQUEST["loainha"])?$_REQUEST["loainha"]:-1;
 	$tinh = isset($_REQUEST["tinh"])?$_REQUEST["tinh"]:-1;
 	$type = isset($_REQUEST["type"])?(int)$_REQUEST["type"]:-2;
+    
+    $strLink = "index.php?view=article&type=".$type."&tinh=".$tinh."&loainha=".$loainha."&loaidv=".$loaidv."&tukhoa=".$tukhoa."&";
 ?>
 
 <div id="listItem">
@@ -85,7 +87,7 @@
 					url += "&tinh=" + tinh;
 				if (type != -2)
 					url += "&type=" + type;
-				
+				alert(url);
 				window.location = url;
 				return true;
 			}
@@ -222,6 +224,7 @@
 				<tr>
 					<td width="30%">
 						<?php
+                     
 							$listTinDang = TinDangBUS::GetAllTinDang();
 							
 							if ($tukhoa != -1)
@@ -370,7 +373,19 @@
 						<td width="50px" align="center">Nổi bật</td>-->
 					</tr>
 					<?php
-						for ($i=0;$i<count($listTinDang);$i++)
+                   
+                        $curPage=1;   
+                        $totalItems =null;  
+                        $business = null; 
+                        if(isset($_REQUEST['page']))
+                            $curPage=$_REQUEST['page'];
+                        $maxItems = 5;
+                	    $maxPages = 25;      
+                        $offset=($curPage-1)*$maxItems; 
+                        $max=$offset+$maxItems;
+                        if($max>count($listTinDang))
+                            $max=count($listTinDang);
+						for ($i=$offset;$i<$max;$i++)
 						{
 					?>
 					<tr style="background:<?php echo ($i%2==0) ? "#EFF3FF" : "white"; ?>;">
@@ -439,6 +454,7 @@
 						}
 					?>
 				</table>
+                <?php  echo Utils::paging ($strLink,count($listTinDang),$curPage,$maxPages,$maxItems);?>
 			</div>
 		</form>
 	</div>

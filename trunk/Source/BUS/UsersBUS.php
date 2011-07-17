@@ -164,9 +164,13 @@ Lớp UsersBUS
 		  return UsersDAO::getUsersByRole($role);
         }
 		
-		public static function GetUsersByFilter($type, $status)
+		public static function GetUsersByFilter($type, $status,$offset,$max)
 		{
-		  return UsersDAO::GetUsersByFilter($type, $status);
+		  return UsersDAO::GetUsersByFilter($type, $status,$offset,$max);
+        }
+        public static function CountUsersByFilter($type, $status,$offset,$max)
+		{
+		  return UsersDAO::CountUsersByFilter($type, $status,$offset,$max);
         }
 		public static function getAllBySQL($strSQL)
 		{
