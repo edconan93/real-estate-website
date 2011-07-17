@@ -12,6 +12,7 @@
 	include_once($PATH . "../../../BUS/UsersBUS.php");
 	include_once($PATH . "../../../BUS/RoleBUS.php");
 	include_once($PATH . "../../../BUS/LevelBUS.php");
+    include_once($PATH . "../../../module/Utils/Utils.php");
 
 	$maxItems = 20;
 	$maxPages = 5;
@@ -143,9 +144,19 @@
 					</td>-->
 					<td width="69%">
 						<?php
-							$listRole = RoleBUS::GetAllRole();
-							$listUsers = UsersBUS::GetUsersByFilter($type, $status);
-							echo "<b>Có ".count($listUsers)." mẫu tin.</b>";
+                        $strLink = "index.php?view=user&type=".$type."&status=".$status."&";
+                        $curPage=1;   
+                        $totalItems =null;  
+                        $business = null; 
+                        if(isset($_REQUEST['page']))
+                            $curPage=$_REQUEST['page'];
+                        $maxItems = 5;
+                	    $maxPages = 25;      
+                        $offset=($curPage-1)*$maxItems; 
+					   $listRole = RoleBUS::GetAllRole();
+							$listUsers = UsersBUS::GetUsersByFilter($type, $status,$offset,$maxItems);
+                            $totalItems=UsersBUS::CountUsersByFilter($type, $status,$offset,$maxItems);
+							echo "<b>Có ".$totalItems." mẫu tin.</b>";
 						?>
 					</td>
 					<td width="31%">
@@ -217,8 +228,11 @@
 					</tr>
 					<?php
 						}
+                        
 					?>
 				</table>
+                <?php echo Utils::paging ($strLink,$totalItems,$curPage,$maxPages,$maxItems);
+                ?>
 			</div>
 		</form>
 	</div>
