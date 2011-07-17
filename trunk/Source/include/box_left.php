@@ -139,10 +139,10 @@
 				$ext = substr($listAdv[$i]["hinhanh"], -3);
 				echo "<tr><td colspan='2' align='center'>";
 				if ($ext == "swf")
-					echo "<embed type='application/x-shockwave-flash' src='../admin/upload/quangcao/".$listAdv[$i]["hinhanh"]."' id='mymovie'
-						name='mymovie' bgcolor='#000000' quality='high' loop='true' wmode='transparent' width='180px' height='160px'>";
+					echo "<a href='".$listAdv[$i]["link"]."'><embed type='application/x-shockwave-flash' src='../admin/upload/quangcao/".$listAdv[$i]["hinhanh"]."' id='mymovie'
+						name='mymovie' bgcolor='#000000' quality='high' loop='true' wmode='transparent' width='180px' height='160px'></a>";
 				else
-					echo "<img src='upload/quangcao/".$listAdv[$i]["hinhanh"]."' />";
+					echo "<a href='".$listAdv[$i]["link"]."'><img src='../admin/upload/quangcao/".$listAdv[$i]["hinhanh"]."' width='180' height='160' /></a>";
 				echo "</td></tr>";
 			}
 		?>
