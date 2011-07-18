@@ -1,4 +1,6 @@
-﻿http://deepakssn.blogspot.com/2006/06/gmail-php-send-email-using-php-with.html
+﻿id="formForgotPassword" style="display:none;"
+	<a onclick="document.getElementById('formForgotPassword').style.display='inherit';document.getElementById('formLogIn').style.display='none';">
+http://deepakssn.blogspot.com/2006/06/gmail-php-send-email-using-php-with.html
 http://www.phpclasses.org/blog/package/9/post/1-Sending-email-using-SMTP-servers-of-Gmail-Hotmail-or-Yahoo-with-PHP.html
 http://sotayweb.com/lap-trinh-thiet-ke-website/pro/ky-thuat-lap-trinh-website/item/137-gui-mail-tren-localhost-voi-smtp-cua-gmail.html
 http://sinhvienit.net/@forum/showthread.php?t=3241
@@ -12,8 +14,6 @@ http://longhunganh.com.vn/dia-oc/bang-gia-dat-2009.html
 
 
 11.xet blood http://vn.360plus.yahoo.com/gugi.gugi_so24/article?mid=710
-12. xet đăng nhập sai 3 lần
-3.phantrang in admin.
 
 
 
@@ -34,14 +34,16 @@ Phúc
 2.Thống kê fai theo quí tháng năm: tháng + năm hay quí + năm
 3.Đánh giá nhân viên: thêm column loại nhân viên: kế toán, nhân viên ...
 4.Thống kê Vip,Quảng cáo
-5.Chức năng update status hết hạn của tiin dịch vụ.
+5.Chức năng update status hết hạn của tin dịch vụ.
 6.Phúc chụp lại tấm ảnh csdl and loại bỏ các khóa ngoại quận,huyện,tỉnh, role<=level
 
 
 Lam:
 10.cái thống kê bản giá nhà đất.
-Roi, nhung chua co add code (Lam add code)
+12. xet đăng nhập sai 3 lần
+3.phantrang in admin.
 8.phần admin còn thiếu phần kế hoạch cho năm tới
+Kiem tra add lien he,nangcapvip gui lien tuc vao database
 
 Nhận xét báo cáo:
 +Khi click vào thêm mới, màn hình nhập suốt hiện.
