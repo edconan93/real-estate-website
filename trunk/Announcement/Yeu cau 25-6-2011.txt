@@ -11,41 +11,28 @@ http://www.phpclasses.org/blog/package/9/post/1-Sending-email-using-SMTP-servers
 ##########################################################
 include ("DAO/config.php"); in header
 http://longhunganh.com.vn/dia-oc/bang-gia-dat-2009.html
-
-
 11.xet blood http://vn.360plus.yahoo.com/gugi.gugi_so24/article?mid=710
 
 
-
+1.cau hinh lai file config.php chay duoc trong tat ca cac file
+3.dem so luong nguoi truy cap tren trang web
+4.xu ly xac nhan thong wa 1 tam anh.
+5.phan trang admin phan quang cao
+6.rss
+7.xu ly bao mat dang nhap 3 lan.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Thống kê lợi nhuận sao chưa có chức năng thống kê theo tháng + năm và chưa print excel
+Đánh giá thành viên bị lỗi.
+======================================================================================
+Phúc
+1. Xử lý thời gian hết hạn.
+2.Chức năng update status hết hạn của tin dịch vụ.
+3.Phúc chụp lại tấm ảnh csdl and loại bỏ các khóa ngoại quận,huyện,tỉnh, role<=level
 
 Thinh:
-_ Them moi quang cao: add hinh anh chua dc.
-_ Sort quang cao, xoa quang cao
-_ Thay doi file vip.gif
-_ Add image vao Loai biet thu (can ho noi bat)
-_ Phan cap: 
-  + Nhan vien 1, 2: Quan ly tin dang, Quan ly quang cao
-  + Ke toan: quan ly thu chi, loi nhuan
-  + Quan ly: quan ly tai khoan ( khong dc them ), danh gia nv, nha, vip, quang cao
-
-Phúc
-11. Xử lý thời gian hết hạn.
-1.danh gia nhan vien: ke toan, manage..
-2.Thống kê fai theo quí tháng năm: tháng + năm hay quí + năm
-3.Đánh giá nhân viên: thêm column loại nhân viên: kế toán, nhân viên ...
-4.Thống kê Vip,Quảng cáo
-5.Chức năng update status hết hạn của tin dịch vụ.
-6.Phúc chụp lại tấm ảnh csdl and loại bỏ các khóa ngoại quận,huyện,tỉnh, role<=level
-
-
+admin Quang cáo  cần có update và phân trang
 Lam:
-10.cái thống kê bản giá nhà đất.
-12. xet đăng nhập sai 3 lần
-3.phantrang in admin.
-8.phần admin còn thiếu phần kế hoạch cho năm tới
+2. xet đăng nhập sai 3 lần
+3.phần admin còn thiếu phần kế hoạch cho năm tới
 Kiem tra add lien he,nangcapvip gui lien tuc vao database
 
-Nhận xét báo cáo:
-+Khi click vào thêm mới, màn hình nhập suốt hiện.
-+ Vẽ use case sai
-+Có thể xem thêm nhều hình của ngôi nhà…
