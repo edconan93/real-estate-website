@@ -112,7 +112,7 @@ class BusinessProcessor
             $strLink= "dichvu.php?";
             $strSQL="select * from ";
             $strTable="dichvu";
-            $strWhere=" where 1=1 ";
+            $strWhere=" where 1=1 order by status=2 desc";
             
             if(isset($_REQUEST['cbbLoaidv'])&&$_REQUEST['cbbLoaidv']!=-1)
             {
