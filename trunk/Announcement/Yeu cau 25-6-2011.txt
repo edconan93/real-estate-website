@@ -32,7 +32,7 @@ Phúc
 Thinh:
 admin Quang cáo  cần có update và phân trang
 Lam:
-2. xet đăng nhập sai 3 lần
+2.xét đăng nhập sai 3 lần
 3.phần admin còn thiếu phần kế hoạch cho năm tới
 Kiem tra add lien he,nangcapvip gui lien tuc vao database
 
