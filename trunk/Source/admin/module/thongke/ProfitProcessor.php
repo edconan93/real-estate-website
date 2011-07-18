@@ -30,55 +30,86 @@ class ProfitProcessor
 }
 if(isset($_REQUEST['do'])&&$_REQUEST['do']=='profit')
 {
-    if(isset($_REQUEST['loai']))
+    if(isset($_REQUEST['action'])&&$_REQUEST['action']=='show')
     {
-        switch($_REQUEST['loai'])
-        {
-            case 1:
-            $thang=$_REQUEST['thang'];
-            $thu=ThuChiBUS::SumTongTienByMonth(0,$thang,$thang,date("Y"));
-            $chi=ThuChiBUS::SumTongTienByMonth(1,$thang,$thang,date("Y"));
-            echo ProfitProcessor::display('Thống kê tháng '.$thang.'/'.date('Y'),$chi[0],$thu[0],$thu[0]-$chi[0]);
-            break;
-            case 2:
+        $nam=$quy=$thang=$option=-1;
+        if(isset($_REQUEST['nam']))
+            $nam=$_REQUEST['nam'];
+        if(isset($_REQUEST['quy']))
             $quy=$_REQUEST['quy'];
+        if(isset($_REQUEST['thang']))
+            $thang=$_REQUEST['thang'];
+        if(isset($_REQUEST['radio']))
+            $option=$_REQUEST['radio'];    
+       if($option==1)
+                {
+                    $thu=ThuChiBUS::SumTongTienByMonth(0,$thang,$thang,$nam);
+                    $chi=ThuChiBUS::SumTongTienByMonth(1,$thang,$thang,$nam);
+                    $thu=$thu==null?0:$thu;
+                        $chi=$chi==null?0:$chi;
+                    echo ProfitProcessor::display('Thống kê tháng '.$thang.'/'.$nam,$chi,$thu,$thu-$chi);
+                }
+         elseif($option==0)
+            {     
+            
             switch($quy)
             {
-                case 1:
-                    $thu=ThuChiBUS::SumTongTienByMonth(0,1,3,date("Y"));
-                    $chi=ThuChiBUS::SumTongTienByMonth(1,1,3,date("Y"));
-                    echo ProfitProcessor::display('Thống kê quý '.$quy.'/'.date('Y'),$chi[0],$thu[0],$thu[0]-$chi[0]);
-                break;
-                case 2:
-                    $thu=ThuChiBUS::SumTongTienByMonth(0,4,6,date("Y"));
-                    $chi=ThuChiBUS::SumTongTienByMonth(1,4,6,date("Y"));
-                    echo ProfitProcessor::display('Thống kê quý '.$quy.'/'.date('Y'),$chi[0],$thu[0],$thu[0]-$chi[0]);
-                break;
-                case 3:
-                    $thu=ThuChiBUS::SumTongTienByMonth(0,7,9,date("Y"));
-                    $chi=ThuChiBUS::SumTongTienByMonth(1,7,9,date("Y"));
-                    echo ProfitProcessor::display('Thống kê quý '.$quy.'/'.date('Y'),$chi[0],$thu[0],$thu[0]-$chi[0]);
-                break;
-                    $thu=ThuChiBUS::SumTongTienByMonth(0,10,12,date("Y"));
-                    $chi=ThuChiBUS::SumTongTienByMonth(1,10,12,date("Y"));
-                    echo ProfitProcessor::display('Thống kê quý '.$quy.'/'.date('Y'),$chi[0],$thu[0],$thu[0]-$chi[0]);
-                case 4:
-                break;
+                    case 1:
+                        $thu=ThuChiBUS::SumTongTienByMonth(0,1,3,$nam);
+                        $chi=ThuChiBUS::SumTongTienByMonth(1,1,3,$nam);
+                        $thu=$thu==null?0:$thu;
+                        $chi=$chi==null?0:$chi;
+                        echo ProfitProcessor::display('Thống kê quý '.$quy.'/'.$nam,$chi,$thu,$thu-$chi);
+                    break;
+                    case 2:
+                        $thu=ThuChiBUS::SumTongTienByMonth(0,4,6,$nam);
+                        $chi=ThuChiBUS::SumTongTienByMonth(1,4,6,$nam);
+                        $thu=$thu==null?0:$thu;
+                        $chi=$chi==null?0:$chi;
+                        echo ProfitProcessor::display('Thống kê quý '.$quy.'/'.$nam,$chi,$thu,$thu-$chi);
+                    break;
+                    case 3:
+                        $thu=ThuChiBUS::SumTongTienByMonth(0,7,9,$nam);
+                        $chi=ThuChiBUS::SumTongTienByMonth(1,7,9,$nam);
+                        $thu=$thu==null?0:$thu;
+                        $chi=$chi==null?0:$chi;
+                        echo ProfitProcessor::display('Thống kê quý '.$quy.'/'.$nam,$chi,$thu,$thu-$chi);
+                    break;
+                    case 4:
+                        $thu=ThuChiBUS::SumTongTienByMonth(0,10,12,$nam);
+                        $chi=ThuChiBUS::SumTongTienByMonth(1,10,12,$nam);
+                        $thu=$thu==null?0:$thu;
+                        $chi=$chi==null?0:$chi;
+                        echo ProfitProcessor::display('Thống kê quý '.$quy.'/'.$nam,$chi,$thu,$thu-$chi);
+                   
+                    break;
+                    default:
+                    $thu=ThuChiBUS::SumTongTienByMonth(0,1,12,$nam);
+                    $chi=ThuChiBUS::SumTongTienByMonth(1,1,12,$nam);
+                    $thu=$thu==null?0:$thu;
+                    $chi=$chi==null?0:$chi;
+                    echo ProfitProcessor::display('Thống kê năm '.$nam,$chi,$thu,$thu-$chi);
+                    break;
+                }
             }
-            
-            break;
-            case 3:
-                $nam=$_REQUEST['nam'];
-                $thu=ThuChiBUS::SumTongTienByMonth(0,1,12,$nam);
-                $chi=ThuChiBUS::SumTongTienByMonth(1,1,12,$nam);
-                echo ProfitProcessor::display('Thống kê năm '.$nam,$chi[0],$thu[0],$thu[0]-$chi[0]);
-            break;
-            default:
-                $thu=ThuChiBUS::SumTongTienByMonth(0,1,12,date("Y"));
-                $chi=ThuChiBUS::SumTongTienByMonth(1,1,12,date("Y"));
-                echo ProfitProcessor::display('Thống kê năm '.date("Y"),$chi[0],$thu[0],$thu[0]-$chi[0]);
-            break;
-        }
+            else
+            {
+                    $thu=ThuChiBUS::SumTongTienByMonth(0,1,12,$nam);
+                    $chi=ThuChiBUS::SumTongTienByMonth(1,1,12,$nam);
+                    $thu=$thu==null?0:$thu;
+                    $chi=$chi==null?0:$chi;
+                    echo ProfitProcessor::display('Thống kê năm '.$nam,$chi,$thu,$thu-$chi);
+            }   
+                
     }
+     else
+            {
+                    $thu=ThuChiBUS::SumTongTienByMonth(0,1,12,date("Y"));
+                    $chi=ThuChiBUS::SumTongTienByMonth(1,1,12,date("Y"));
+                    $thu=$thu==null?0:$thu;
+                    $chi=$chi==null?0:$chi;
+                    echo ProfitProcessor::display('Thống kê năm '.date("Y"),$chi,$thu,$thu-$chi);
+            }      
+    
 }
 ?>

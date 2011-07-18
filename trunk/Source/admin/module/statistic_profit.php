@@ -34,30 +34,33 @@
     <script>
     $(document).ready(function()
 			{
-                var url="module/thongke/ProfitProcessor.php?view=statistic&do=profit&loai=-1";          
+			  var nam=$('#cbbNam').val();
+                var url="module/thongke/ProfitProcessor.php?view=statistic&do=profit&nam="+nam+"&thang=-1&quy=-1";          
                 $("#lstProfit").load(url);
-				
-   	            $("#btnShow").click(function(){
-   	                var type=$("input[name='type']:checked").val();
-                    switch(type)
+				$("input[name='radiotype']").change(function(){
+                    var value=$(this).val();
+                    if(value=='0')
                     {
-                        case "1":                       
-                            var thang=$("#cbbThang").val();
-                            url="module/thongke/ProfitProcessor.php?view=statistic&do=profit&loai=1&thang="+thang;
-                             $("#lstProfit").load(url);
-                        case "2":
-                        var quy=$("#cbbQuy").val();
-                            url="module/thongke/ProfitProcessor.php?view=statistic&do=profit&loai=2&quy="+quy;
-                             $("#lstProfit").load(url);
+                     
+                        $('#cbbThang').attr('disabled', 'disabled');
+                        $('#cbbQuy').removeAttr('disabled');
 
-                        break;
-                        case "3":
-                        var nam=$("#txtNam").val();
-                            url="module/thongke/ProfitProcessor.php?view=statistic&do=profit&loai=3&nam="+nam;
-                             $("#lstProfit").load(url);
-                            
-                        break;
                     }
+                    else
+                    {
+                         $('#cbbQuy').attr('disabled', 'disabled');
+                        $('#cbbThang').removeAttr('disabled');
+                    }
+                });
+   	            $("#btnShow").click(function(){  	                          
+                    var nam=$('#cbbNam').val();
+                    var thang=$("#cbbThang").val();
+                    var quy=$("#cbbQuy").val();
+                    if(thang=="-1")
+                        return false;
+                    var radioType=$("input[name='radiotype']:checked").val();
+                    url="module/thongke/ProfitProcessor.php?view=statistic&do=profit&action=show&radio="+radioType+"&nam="+nam+"&quy="+quy+"&thang="+thang+"&page=1";          
+                    $("#lstProfit").load(url); 
    	                
    	            });
         });
@@ -67,8 +70,27 @@
     <div class="mid">
 		<form action="index.php?view=user" method="post" name="frmRegister" id="frmRegister">
 			<div style="text-align:center; padding-bottom:30px;">
-				<input type="radio" name="type" value="1" checked /> Tháng 
-					<select id="cbbThang">
+				Năm <select id="cbbNam" style="width:80px;">
+            <?php
+            for($i=date("Y");$i>=2009;$i--)
+                echo '<option value="'.$i.'">'.$i.'</option>';
+            ?>
+            </select>
+           	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="radiotype" value="0"/>
+             Quý 
+					<select id="cbbQuy" style="width:100px;">
+                        <option value="-1" selected>--Chọn quý--</option>
+						<option value="1"> 1 </option>
+						<option value="2"> 2 </option>
+						<option value="3"> 3 </option>
+						<option value="4"> 4 </option>
+					</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="radiotype" value="1"/>
+			 Tháng 
+					<select id="cbbThang" style="width:100px;">
+                        <option value="-1" selected>--Chọn tháng--</option>
 						<option value="1"> 1 </option>
 						<option value="2"> 2 </option>
 						<option value="3"> 3 </option>
@@ -82,17 +104,9 @@
 						<option value="11"> 11 </option>
 						<option value="12"> 12 </option>
 					</select>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="radio" name="type" value="2" /> Quý 
-					<select  id="cbbQuy">
-						<option value="1"> 1 </option>
-						<option value="2"> 2 </option>
-						<option value="3"> 3 </option>
-						<option value="4"> 4 </option>
-					</select>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="radio" name="type" value="3" /> Năm 
-				<input type="text" style="width:40px;" id="txtNam" />
+			
+			
+		
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="button" value="Thống kê" id='btnShow'/>
 			</div>
