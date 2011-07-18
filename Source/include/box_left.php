@@ -135,7 +135,7 @@
 			<td colspan="2" align="center">
 				<a href="ymsgr:sendim?sieudangf2" style="text-decoration:none; font-size:9pt; line-height:24px;">
 					<div><img style="border:0px;" src="http://opi.yahoo.com/online?u=sieudangf2&m=g&t=1&l=us" /></div>
-					<div style="padding-bottom:10px;">Nguyễn Đức Thịnh</div>
+					<div style="padding-bottom:10px;">Hồ Sơn Lâm</div>
 				</a>
 			</td>
 		</tr>
