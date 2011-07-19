@@ -118,6 +118,9 @@
 					case "add":
 						$bodyFile= "module/quangcao/add_adv.php";
 						break;
+					case "edit":
+						$bodyFile= "module/quangcao/edit_adv.php";
+						break;
 					default:
 						$bodyFile= "module/quangcao/advertisement.php";
 						break;

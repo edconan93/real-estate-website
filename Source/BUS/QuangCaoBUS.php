@@ -27,5 +27,13 @@
         {
             return QuangCaoDAO::countBySQL($strSQL);
         }
+		public static function GetAdvByID($id)
+		{
+			return QuangCaoDAO::GetAdvByID($id);
+		}
+		public static function Update($id, $chusohuu, $sdt, $email, $diachi, $sothang, $filename, $link)
+		{
+			return QuangCaoDAO::Update($id, $chusohuu, $sdt, $email, $diachi, $sothang, $filename, $link);
+		}
 	}
 ?>
