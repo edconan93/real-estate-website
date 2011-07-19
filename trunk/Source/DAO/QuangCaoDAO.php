@@ -80,5 +80,36 @@
 			$return= mysql_fetch_array($result,MYSQL_BOTH);
             return $return[0];
         }
+		public static function GetAdvByID($id)
+		{
+			$strSQL = "	select * from quangcao
+						where id='$id'";
+            $result = DataProvider::Query($strSQL);
+			if(mysql_num_rows($result)==0)
+				return null;
+			return mysql_fetch_array ($result,MYSQL_BOTH);	
+		}
+		public static function Update($id, $chusohuu, $sdt, $email, $diachi, $sothang, $filename, $link)
+        {
+			$strSQL = "";
+			if ($filename != null)
+				$strSQL = "	update quangcao set chusohuu='$chusohuu', sdt='$sdt', email='$email', diachi='$diachi',
+							sothang=$sothang, hinhanh='$filename', link='$link'
+							where id=$id";
+			else
+				$strSQL = "	update quangcao set chusohuu='$chusohuu', sdt='$sdt', email='$email', diachi='$diachi',
+							sothang=$sothang, link='$link'
+							where id=$id";
+
+			$cn = DataProvider::Open ();
+			DataProvider::MoreQuery ($strSQL,$cn);
+			
+			if(mysql_affected_rows () == 0)
+				$result=false;
+			else
+				$result=true;
+			DataProvider::Close ($cn);
+            return $result;
+        }
 	}
 ?>

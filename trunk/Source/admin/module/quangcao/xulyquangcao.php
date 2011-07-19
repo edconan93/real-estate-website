@@ -58,6 +58,50 @@
 						echo "upload picture finish!";
 				}
 				break;
+				
+			case "update":
+				$id = $_POST["id"];
+				$chusohuu = $_POST["txtChuSoHuu"];
+				$sdt = $_POST["txtSDT"];
+				$email = $_POST["txtEmail"];
+				$diachi = $_POST["txtDiaChi"];
+				$sothang = $_POST["txtThang"];
+				$link = $_POST["txtLink"];
+				
+				//upload banner
+				$arrType = explode ("/",$_FILES["fileUpQuangCao"]["type"]);
+				$PATH_BASE = str_replace("//","/",dirname(__FILE__)."/");
+				$path = $PATH_BASE . "../../upload";
+				$random = rand (1,1000000);
+				if(!is_dir("$path"))
+				{
+					mkdir("$path");
+				}
+				if(!is_dir("$path/quangcao"))
+					mkdir("$path/quangcao");
+				$path = "$path/quangcao/";
+				
+				$filename;
+				if ($_FILES["fileUpQuangCao"]["name"] != "")
+				{
+					$filename = $random.$_FILES["fileUpQuangCao"]["name"];
+					move_uploaded_file($_FILES["fileUpQuangCao"]["tmp_name"],$path.$random.$_FILES["fileUpQuangCao"]["name"]);
+				}
+				else
+				{
+					$filename = null;
+				}
+				$kq = QuangCaoBUS::Update($id, $chusohuu, $sdt, $email, $diachi, $sothang, $filename, $link);
+				
+				
+				// if($kq == false)
+				// {
+					// $flagInsert = false;
+					// echo "<br>Insert image = false";	
+				// }
+				// else
+					// echo "upload picture finish!";
+				break;
 		}
 	}
 	if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "delete")
@@ -66,7 +110,7 @@
 		for ($i=0;$i<count($advid);$i++)
 			QuangCaoBUS::delete($advid[$i]);
 	}
-
+	
 	$status = isset($_REQUEST["status"])?(int)$_REQUEST["status"]:-2;
 	$url = "index.php?view=advertisement";
 	if ($status != -2)
