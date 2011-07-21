@@ -78,6 +78,10 @@
 			QuangCaoBUS::setStatusQuangCao($listAdv[$i]["id"], 1);
 	}
 	// THINH: end
+	// $ip = $_SERVER['REMOTE_ADDR'];
+	// echo "<br>AAAAAAAA".$ip;
+	// $seft = $_SERVER['PHP_SELF'];
+	// echo "<br>BBBBBB".$seft;
 ?>
 <body style="margin: 0pt; padding: 0pt;" bgcolor="#000c1c">
 	<div style="width: 100%; background-image: url(&quot;../images/bg_top.gif&quot;); background-repeat: repeat-x; text-align: center;">
@@ -160,7 +164,7 @@
 										<img src="../images/menu2<?php echo ($dichvu>-1)?"_hover":""; ?>.gif" id="t2" style="" border="0"></a>
 								</td>
 								<td>
-									<a href="phongthuy.php?" onmouseover='bt("t3","../images/menu/e/menu3_on.gif")'
+									<a href="phapluat.php?" onmouseover='bt("t3","../images/menu/e/menu3_on.gif")'
 										onmouseout='bt("t3","../images/menu3.gif")' onfocus="this.blur();">
 										<img src="../images/menu3<?php echo ($phongthuy>-1)?"_hover":""; ?>.gif" id="t3" style="" border="0"></a>
 								</td>
