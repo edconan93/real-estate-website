@@ -291,9 +291,7 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2" style="color:red;" align="center"><i>Hệ thống sẽ tự động gửi mật khẩu mới vào email của thành viên.</i></td>
-				</tr>
+				
 			</table>
 		</fieldset>
     <br class="clr" />

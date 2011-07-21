@@ -9,6 +9,9 @@ http://stackoverflow.com/questions/3477766/phpmailer-smtp-error-could-not-connec
 http://www.phpclasses.org/blog/package/9/post/1-Sending-email-using-SMTP-servers-of-Gmail-Hotmail-or-Yahoo-with-PHP.html
 
 ##########################################################
+MVC:http://www.qhonline.info/forum/showthread.php/392-khai-quat-ve-mo-hinh-mvc-trong-php
+module:http://thuviensinhhoc.com/phan-mem-thu-thuat/webmaster/2735-joomla-module-la-gia-dat-2009
+http://mp3.zing.vn/video-clip/Chot-La-Noi-Dau-Thuy-Tien/ZWZ97EUD.html
 include ("DAO/config.php"); in header
 http://longhunganh.com.vn/dia-oc/bang-gia-dat-2009.html
 11.xet blood http://vn.360plus.yahoo.com/gugi.gugi_so24/article?mid=710
@@ -20,6 +23,7 @@ http://longhunganh.com.vn/dia-oc/bang-gia-dat-2009.html
 5.phan trang admin phan quang cao
 6.rss
 7.xu ly bao mat dang nhap 3 lan.
+7.add csdl.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Thống kê lợi nhuận sao chưa có chức năng thống kê theo tháng + năm và chưa print excel
 Đánh giá thành viên bị lỗi.
@@ -29,8 +33,6 @@ Phúc
 2.Chức năng update status hết hạn của tin dịch vụ.
 3.Phúc chụp lại tấm ảnh csdl and loại bỏ các khóa ngoại quận,huyện,tỉnh, role<=level
 
-Thinh:
-admin Quang cáo  cần có update và phân trang
 Lam:
 2.xét đăng nhập sai 3 lần
 3.phần admin còn thiếu phần kế hoạch cho năm tới
