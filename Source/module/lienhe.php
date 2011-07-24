@@ -116,7 +116,7 @@ $(document).ready(function()
 											<b>
 											+ Bạn có thể liên hệ trực tiếp với chúng tôi qua điện thoại
 											<br>
-											+ Mobile: 0902 . 555 217 (Hoa Phượng) - (08) 38777999 - Fax: (08) 62602666
+											+ Mobile: 0933 . 167 695 (Vũ Hòa Phương) - (08) 38777999 - Fax: (08) 62602666
 											<br>
 											+ Thời gian làm việc: Thứ 2 - 6 (8h - 17h), Thứ 7 (8h - 12h)
 											<br>
