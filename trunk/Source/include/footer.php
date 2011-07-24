@@ -14,11 +14,11 @@ rgb(33, 91, 135); text-align: center;">
                     <div style="float: left; margin-top: 8px; margin-left: 10px; height: 20px; width: 80px;
                         background-color: rgb(56, 58, 71); border: 1px solid 
 rgb(33, 91, 135); text-align: center;">
-                        <a class="a_bottomlink" href="">PHONG THỦY</a></div>
+                        <a class="a_bottomlink" href="phongthuy.php">PHONG THỦY</a></div>
                     <div style="float: left; margin-top: 8px; margin-left: 10px; height: 20px; width: 70px;
                         background-color: rgb(56, 58, 71); border: 1px solid 
 rgb(33, 91, 135); text-align: center;">
-                        <a class="a_bottomlink" href="">KIẾN TRÚC</a></div>
+                        <a class="a_bottomlink" href="kientruc.php">KIẾN TRÚC</a></div>
                     <div style="float: left; margin-top: 8px; margin-left: 10px; height: 20px; padding-left: 5px;
                         padding-right: 5px; background-color: rgb(56, 
 58, 71); border: 1px solid rgb(33, 91, 135); text-align: center;">
