@@ -33,7 +33,7 @@ class kientrucBUS
 				
 				
 				$strResult.="<table>";
-				$strResult.="<tr><div><a href='chitietkientruc.php?idkientruc=".$business[$i]['id']."'><b style='font-size:14px;font-weight:bold;color: #006DB9;'>".$business[$i]['name']." </b></a></div></tr>";
+				$strResult.="<br><tr><div><a href='chitietkientruc.php?idkientruc=".$business[$i]['id']."'><b style='font-size:14px;font-weight:bold;color: #006DB9;'>".$business[$i]['name']." </b></a></div></tr>";
 				$strResult.="<tr>";
 				$strResult.="</br>";
 				
