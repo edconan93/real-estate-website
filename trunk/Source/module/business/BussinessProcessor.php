@@ -112,7 +112,7 @@ class BusinessProcessor
             $strLink= "dichvu.php?";
             $strSQL="select * from ";
             $strTable="dichvu";
-            $strWhere=" where status>0 order by status=2 desc";
+            $strWhere=" where status>0  ";
             
             if(isset($_REQUEST['cbbLoaidv'])&&$_REQUEST['cbbLoaidv']!=-1)
             {
@@ -137,7 +137,7 @@ class BusinessProcessor
             
             
  
-            $strSQL.=$strTable.$strWhere;
+            $strSQL.=$strTable.$strWhere." order by status desc";
             
             return BusinessProcessor::findBusiness($strLink,$strSQL);
         //} 
