@@ -104,7 +104,7 @@ class MessageTypeProcessor
 				//endload
 				$strResult.="- <b style='color: #0D5DA8;font-weight:bold;font-size:11px;text-decoration: none;'	>Loại nhà:".$loainha['ten']." </b><br> - <a target='_blank' href='#'>".$loaidv[1]."</a>";//tên loại dv
 				$strResult.="- Hướng nhà:".$huongnha[1]."<br>";//Hướng nhà
-				$strResult.="<b>- Giá:<b>".$business[$i]['giaban']."</b> ".$donvitien['ten']."/ ".$donvidv['ten']."  - Kích thước: ".$business[$i]['dai']." x ".$business[$i]['rong']."m<sup>2</sup> </b><br>";//giá nhà và kt
+				$strResult.="- Giá: <b>".number_format($business[$i]['giaban'])."</b> ".$donvitien['ten']."/".$donvidv['ten']."  - Kích thước: ".$business[$i]['dai']."x".$business[$i]['rong']." m<sup>2</sup> </b><br>";//giá nhà và kt
 				if($business[$i]['status'] == 1)
 				{
 					$strResult.="<div style='float:left; padding:3px; font-weight: bold;'><a style='color:red;' href='nangcaptinvip.php?iddv=".$business[$i]['id']."'><img align='left' src='../images/uprade.png'>Nâng cấp lên VIP 275.000 /tháng</a></div></td>";//giá nhà và kt
@@ -184,7 +184,7 @@ class MessageTypeProcessor
 		$business = null;		
         if(isset($_REQUEST['page']))
               $curPage=$_REQUEST['page'];
-        $maxItems = 2;
+        $maxItems = 5;
     	$maxPages = 25;      
         $offset=($curPage-1)*$maxItems; 
         $strCountSQL=str_replace("*"," count(*) ",$strSQL);

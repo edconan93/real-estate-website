@@ -67,7 +67,7 @@ class DichVuDAO
 	 //hoaphuong
     public static function getCanHoNoiBat()
     {
-         $strSQL = "select * from dichvu where rank >=1 and (status = 1 or status = 2)";
+         $strSQL = "select * from dichvu where rank >=1 and (status = 1 or status = 2) order by ngaydang desc";
          $result = DataProvider::Query($strSQL);
          if(mysql_num_rows($result)==0)
 				return null;
