@@ -17,13 +17,17 @@
 							
                             </td>
 						<td style="padding: 10px;" valign="top">
-							<div style="width: 686px;">
+						
+							<?php include("../include/canhonoibat.php"); ?>
+							<br>
+							
+							<div style="width: 686px;padding-top:20px;float:left;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29; text-transform:uppercase;">
 									PHONG THỦY
+								<hr style="color: rgb(211, 232, 248);" width="680" size="1"/>
 								</div>
-							</div>
-							<div>
+							
 									<?php
 										include("../BUS/phongthuyBUS.php");
 										 $rs=phongthuyBUS::getPhongThuy();
@@ -47,15 +51,7 @@
 										$strSQL.=" limit $offset,$maxItems";
 										//$strSQL1.=" limit $offset,$maxItems";
 										$business=phongthuyBUS::getAllBySQL($strSQL);
-										//$business1=phongthuyBUS::getAllBySQL($strSQL1);
-									// echo "<br>totalItems=".$totalItems;
-									// echo "<br>business=".count($business);
-									// echo "<br>strCountSQL=".$strCountSQL;
-										 // echo "<br>image=".$business[0]['HinhAnh1'];
-										 // echo "<br>id=".$business[0]['id'];
-										 // echo "<br>image=".$business[1]['HinhAnh1'];
-										 // echo "<br>image=".$business[2]['HinhAnh1'];
-										// echo "<br>image=".count($business);
+
 										echo  phongthuyBUS::display($strLink,$business,$totalItems, $curPage,$maxPages,$maxItems);
 										
 									?>

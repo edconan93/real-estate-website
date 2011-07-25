@@ -21,16 +21,13 @@
 						</td>
 						<td style="padding: 10px;" valign="top">
 							
-								<?php //include("../include/canhonoibat.php"); ?>
+								<?php include("../include/canhonoibat.php"); ?>
                             <?php
                             $business=null;
                             if(isset($_REQUEST['idphongthuy']) && $_REQUEST['idphongthuy']!=null) 
                             { 
 								include_once ("../BUS/phongthuyBUS.php");
                                 $phongthuy=phongthuyBUS::selectID($_REQUEST['idphongthuy']); 
-                                
-								//echo $phongthuy[1];
-								// echo "<br>aaaaaaaaa=".$hinhanh[0]['path'];
                             }
                             ?>
 							<div style="width: 686px; padding-top:20px;float:left;">
@@ -51,6 +48,13 @@
 									</tr>
 									<tr>
 										<td><?php echo $phongthuy["ChiTiet"];?>
+										</td>
+									</tr>
+									<tr>
+										<td>
+										<p><img width="400px" style="vertical-align: middle;" src="../images/phongthuy/<?php echo $phongthuy["HinhAnh1"];?>" heigh="300px"></p>
+
+										</em></p>
 										</td>
 									</tr>
 									<tr>

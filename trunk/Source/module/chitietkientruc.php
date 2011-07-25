@@ -21,7 +21,7 @@
 						</td>
 						<td style="padding: 10px;" valign="top">
 							
-								<?php //include("../include/canhonoibat.php"); ?>
+								<?php include("../include/canhonoibat.php"); ?>
                             <?php
                             $business=null;
                             if(isset($_REQUEST['idkientruc']) && $_REQUEST['idkientruc']!=null) 

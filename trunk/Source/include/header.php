@@ -144,7 +144,7 @@
 						<?php
 							$url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 							$gioithieu = strpos($url, "gioithieu.php");
-							$phongthuy = strpos($url, "phongthuy.php");
+							$phapluat = strpos($url, "phapluat.php");
 							$lienhe = strpos($url, "lienhe.php");
 							$dichvu = strpos($url, "dichvu.php");
 							$chitiet= strpos($url, "chitietdiaoc.php");
@@ -166,7 +166,7 @@
 								<td>
 									<a href="phapluat.php?" onmouseover='bt("t3","../images/menu/e/menu3_on.gif")'
 										onmouseout='bt("t3","../images/menu3.gif")' onfocus="this.blur();">
-										<img src="../images/menu3<?php echo ($phongthuy>-1)?"_hover":""; ?>.gif" id="t3" style="" border="0"></a>
+										<img src="../images/menu3<?php echo ($phapluat>-1)?"_hover":""; ?>.gif" id="t3" style="" border="0"></a>
 								</td>
 								<td>
 									<a href="lienhe.php" onmouseover='bt("t4","../images/menu4_on.gif")'
