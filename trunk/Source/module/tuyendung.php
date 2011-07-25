@@ -16,7 +16,8 @@
 							<?php include("../include/box_left.php"); ?>
 						</td>
 						<td style="padding: 10px;" valign="top">
-							<div style="width: 686px;">
+						<?php include("../include/canhonoibat.php"); ?>
+							<div style="width: 686px;float:left">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29; text-transform:uppercase;">
 									Tuyển dụng</div>
