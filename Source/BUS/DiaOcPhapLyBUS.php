@@ -36,7 +36,7 @@ Lớp DiaOcPhapLuatBUS
 					
 					
 					$strResult.="<table>";
-					$strResult.="<tr><div><a href='chitietdiaocphaply.php?iddiaocphaply=".$business[$i]['id']."'><b style='font-size:14px;font-weight:bold;color: #006DB9;'>".$business[$i]['tieude']." </b></a></div></tr>";
+					$strResult.="<br><tr><div><a href='chitietdiaocphaply.php?iddiaocphaply=".$business[$i]['id']."'><b style='font-size:14px;font-weight:bold;color: #006DB9;'>".$business[$i]['tieude']." </b></a></div></tr>";
 					$strResult.="<tr>";
 					$strResult.="</br>";
 					

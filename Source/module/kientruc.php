@@ -17,10 +17,12 @@
 							
                             </td>
 						<td style="padding: 10px;" valign="top">
-							<div style="width: 686px;">
+							<?php include("../include/canhonoibat.php"); ?>
+							<div style="width: 686px;padding-top:20px;float:left;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29; text-transform:uppercase;">
 									KIÊN TRÚC
+									<hr style="color: rgb(211, 232, 248);" width="680" size="1"/>
 								</div>
 							</div>
 							<div>

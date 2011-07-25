@@ -21,7 +21,7 @@
 						</td>
 						<td style="padding: 10px;" valign="top">
 							
-								<?php //include("../include/canhonoibat.php"); ?>
+								<?php include("../include/canhonoibat.php"); ?>
                             <?php
                             $business=null;
                             if(isset($_REQUEST['iddiaocphaply']) && $_REQUEST['iddiaocphaply']!=null) 
@@ -51,7 +51,10 @@
 										<td><?php echo $phaply["traloi"];?>
 										</td>
 									</tr>
-									
+									<tr>
+										<td align="right"><?php echo $phaply["tacgia"];?>
+										</td>
+									</tr>
 									<tr>
 										<td><a href="phapluat.php" style="align:right;font-style: italic;text-decoration:underline;colspan=2"> &lt;&lt;Quay lại </a></td>
 									</tr>

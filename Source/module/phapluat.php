@@ -17,7 +17,8 @@
 							
                             </td>
 						<td style="padding: 10px;" valign="top">
-							<div style="width: 686px;">
+						<?php include("../include/canhonoibat.php"); ?>
+							<div style="width: 686px;float:left">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29; text-transform:uppercase;">
 									Địa Ốc Pháp Luật
@@ -35,7 +36,7 @@
 										$maxItems = 5;
 										$maxPages = 25;      
 										$offset=($curPage-1)*$maxItems; 				
-										$strLink= "diaocphaply.php?";
+										$strLink= "phapluat.php?";
 										$strSQL="select * from diaocphaply";
 										$strCountSQL=str_replace("*"," count(*) ",$strSQL);
 										$totalItems=DiaOcPhapLyBUS::countAllBySQL($strCountSQL); 
