@@ -508,11 +508,29 @@ $rs=TienIchBUS::GetAllTienIch();
 											</tr>
 											<tr >
 												<td  colspan="2" style="align:right;font-style: italic;text-decoration:underline;">
-												<a  href="dichvu.php" style="color:black;font-size:12px;font-style:intalic;"> &lt;&lt;Quay lại </a>
+												
 												</td>
 									</tr>
 										</table>
 								</fieldset>
+								<!--thu-->
+								<div style="width: 686px; padding-top:20px;float:left;">
+								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;font-weight: bold; color:#890C29;">
+                                    <?php
+										include_once("/business/BussinessProcessor.php");
+										echo BusinessProcessor::getLoaiDichVuChiTiet();
+                                    ?>
+								</div>
+								<hr style="color: rgb(211, 232, 248);" width="680" size="1">
+								<div class="mid_content" id="loadAjax" name="loadAjax">
+									<?php 
+										$result= BusinessProcessor::findBussiness();
+											echo $result; 
+										
+									?>
+								</div>
+							</div>
+								<!--thu-->
 								
 							</div>
 						</td>

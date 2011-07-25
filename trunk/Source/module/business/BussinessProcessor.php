@@ -112,7 +112,7 @@ class BusinessProcessor
             $strLink= "dichvu.php?";
             $strSQL="select * from ";
             $strTable="dichvu";
-            $strWhere=" where 1=1 order by status=2 desc";
+            $strWhere=" where status>0 order by status=2 desc";
             
             if(isset($_REQUEST['cbbLoaidv'])&&$_REQUEST['cbbLoaidv']!=-1)
             {
@@ -193,12 +193,12 @@ class BusinessProcessor
 				$ngaycapnhat=Utils::convertTimeDMY($business[$i]['ngaydang']);
 			else
 				$ngaycapnhat=date('Y-m-d');
-			$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'>";
+			$strResult.="<td align='center' style='border-right:solid 1px #D3D3D3; padding:4px;'>";
 			if($business[$i]['status'] == 2)
 			{
 				$strResult.="<img src='../images/vip.gif'/>";
 			}
-			$strResult.="<b style=''>".$ngaycapnhat."</br></td>";
+			$strResult.=$ngaycapnhat."</br></td>";
 			if($business[$i]['giaban'] !=null)
 			{
 				$money = Utils::convert_Money($business[$i]['giaban']);
@@ -234,6 +234,17 @@ class BusinessProcessor
         }      
                
         return "TẤT CẢ CÁC LOẠI HÌNH";
+
+    }
+	public static function getLoaiDichVuChiTiet()
+    {
+        if(isset($_REQUEST['loaidv'])) 
+        {
+            $loaidv= LoaiDichVuBUS::getById($_REQUEST['loaidv'])   ;   
+            return $loaidv['ten'];
+        }      
+               
+        return "CÁC CĂN HỘ LIÊN QUAN";
     }
 }
 ?>
