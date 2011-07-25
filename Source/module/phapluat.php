@@ -14,37 +14,42 @@
 						<td style="border-right: 1px solid rgb(180, 215, 232); background-repeat: repeat-y;"
 							background="1_files/menubg_all.jpg" valign="top" width="270">
 							<?php include("../include/box_left.php"); ?>
-						</td>
+							
+                            </td>
 						<td style="padding: 10px;" valign="top">
 							<div style="width: 686px;">
 								<div style="margin-left: 10px; margin-top: 10px; font-family: tahoma; font-size: 18px;
 									font-weight: bold; color:#890C29; text-transform:uppercase;">
-									Địa Ốc Và Pháp Luật</div>
-								<hr style="color: rgb(211, 232, 248);" width="680" size="1">	
-							<div style="padding:20px;" id="frmRegister" name="frmRegister">
-<!--form -->					<form action="user/xulydangky.php" method="post" name="frmRegister" id="frmRegister" >
-								<table border="0" id="nhaban_box" cellspacing="0" cellpadding="5" border="0" width="700">
-									<tr>
-										<td align="left" colspan="2" style="font-size:13px;">
-										
-										
-										</td>
-									</tr>
-									
-										
-										
-										<td  colspan="2" style="align:right;font-style: italic;text-decoration:underline;>
-										<a  href="dichvu.php" style="color:red;font-size:10px;font-style:intalic;"> &lt;&lt;Quay lại </a>
-										</td>
-									</tr>
-									
-								</table><br>
-									</form>
+									Địa Ốc Pháp Luật
+								</div>
 							</div>
+							<div>
+									<?php
+										include("../BUS/DiaOcPhapLyBUS.php");
+										$rs=DiaOcPhapLyBUS::GetAllDiaOcPhapLy();
+										$curPage=1;
+										$totalItems =null;
+										$business = null;		
+										if(isset($_REQUEST['page']))
+											  $curPage=$_REQUEST['page'];
+										$maxItems = 5;
+										$maxPages = 25;      
+										$offset=($curPage-1)*$maxItems; 				
+										$strLink= "diaocphaply.php?";
+										$strSQL="select * from diaocphaply";
+										$strCountSQL=str_replace("*"," count(*) ",$strSQL);
+										$totalItems=DiaOcPhapLyBUS::countAllBySQL($strCountSQL); 
+										$strSQL.=" limit $offset,$maxItems";
+										$business=DiaOcPhapLyBUS::getAllBySQL($strSQL);
+										echo  DiaOcPhapLyBUS::display($strLink,$business,$totalItems, $curPage,$maxPages,$maxItems);
+										
+									?>
 							</div>
 						</td>
 					</tr>
 				</table>
+				<br>
+						
 			</td>
 		</tr>
 	</table>

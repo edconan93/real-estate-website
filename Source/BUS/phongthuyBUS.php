@@ -18,6 +18,10 @@ class phongthuyBUS
     {
 		return phongthuyDAO::countAllBySQL($strSQL);
 	}
+	public static function selectID($id)
+    {
+		return phongthuyDAO::selectID($id);
+	}
 	public static function getAllBySQL($strSQL)
     {
 		return phongthuyDAO::getAllBySQL($strSQL);
@@ -40,7 +44,7 @@ class phongthuyBUS
 				//					font-weight: bold; color:#890C29; text-transform:uppercase;">
 				
 				$strResult.="<table>";
-				$strResult.="<tr><div><a href='chitietphongthuy.php?id=".$business[$i]['id']."'><b style='font-size:14px;font-weight:bold;color: #006DB9;'>".$business[$i]['Name']." </b></a></div></tr>";
+				$strResult.="<tr><div><a href='chitietphongthuy.php?idphongthuy=".$business[$i]['id']."'><b style='font-size:14px;font-weight:bold;color: #006DB9;'>".$business[$i]['Name']." </b></a></div></tr>";
 				$strResult.="<tr>";
 				$strResult.="</br>";
 				//$strResult.="<tr>";
@@ -49,7 +53,7 @@ class phongthuyBUS
 				$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'> <img width='70px' heigh='70px' src='../images/phongthuy/".$business[$i]['HinhAnh1']."' style='vertical-align: middle;'/></td>";
 				//$strResult.= echo $business[$i]['HinhAnh'] ;
 				//$strResult.="<a href='chitietphongthuy.php?id=".$business[$i]['id']."'><img src='../".$images[0]['path']."' width='150px' /></a></td>";
-				$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;' width='450px'>".$business[$i]['NoiDung']." </td>";
+				$strResult.="<td style='padding:4px;' width='450px'>".$business[$i]['NoiDung']." </td>";
 				$strResult.="</tr>";
 				$strResult.="</table>";
 				$strResult.="</br>";

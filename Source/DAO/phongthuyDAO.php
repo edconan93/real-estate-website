@@ -27,6 +27,16 @@ class phongthuyDAO
 		return $temp;
 	}
 	*/
+	public static function selectID($id)
+	{
+		$strSQL = "select * from phongthuy where id='$id'";
+        $result = DataProvider::Query($strSQL);
+         if(mysql_num_rows($result)==0)
+				return null;
+         $row=mysql_fetch_row($result,MYSQL_BOTH);
+         return $row;
+	}
+	
 	public static function countAllBySQL($strSQL)
     {
         $result = DataProvider::Query($strSQL);

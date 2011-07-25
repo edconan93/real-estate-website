@@ -10,7 +10,10 @@ class kientrucBUS
 	{
 		return KienTrucDAO::getKienTruc ();
 	}
-	
+	public static function selectID($id)
+    {
+		return KienTrucDAO::selectID($id);
+	}
 	public static function countAllBySQL($strSQL)
     {
 		return kientrucDAO::countAllBySQL($strSQL);
@@ -30,13 +33,13 @@ class kientrucBUS
 				
 				
 				$strResult.="<table>";
-				$strResult.="<tr><div><b style='font-size:14px;font-weight:bold;color: #006DB9;'>".$business[$i]['name']." </b></div></tr>";
+				$strResult.="<tr><div><a href='chitietkientruc.php?idkientruc=".$business[$i]['id']."'><b style='font-size:14px;font-weight:bold;color: #006DB9;'>".$business[$i]['name']." </b></a></div></tr>";
 				$strResult.="<tr>";
 				$strResult.="</br>";
 				
-				$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;'  > <img width='70px'; heigh='70px'; src='../images/kientruc/".$business[$i]['hinhanh1']."' style='vertical-align: middle;'/></td>";
+				$strResult.="<td style=' padding:4px;'  > <img width='70px'; heigh='70px'; src='../images/kientruc/".$business[$i]['hinhanh1']."' style='vertical-align: middle;'/></td>";
 				
-				$strResult.="<td style='border-right:solid 1px #D3D3D3; padding:4px;' width='450px'>".$business[$i]['noidung']." </td>";
+				$strResult.="<td style=' padding:4px;' width='450px'>".$business[$i]['noidung']." </td>";
 				$strResult.="</tr>";
 				$strResult.="</table>";
 				$strResult.="</br>";
