@@ -33,22 +33,22 @@
 										$business = null;		
 										if(isset($_REQUEST['page']))
 											  $curPage=$_REQUEST['page'];
-										$maxItems = 3;
+										$maxItems = 5;
 										$maxPages = 25;      
 										$offset=($curPage-1)*$maxItems; 
 										
-										$strLink= "phongthuy.php?";
-										$strSQL="select * from phongthuy";
+										$strLink= "kientruc.php?";
+										$strSQL="select * from kientruc";
 									
 										$strCountSQL=str_replace("*"," count(*) ",$strSQL);
 								
-										$totalItems=phongthuyBUS::countAllBySQL($strCountSQL); 
+										$totalItems=kientrucBUS::countAllBySQL($strCountSQL); 
 										
 										$strSQL.=" limit $offset,$maxItems";
 										
-										$business=phongthuyBUS::getAllBySQL($strSQL);
+										$business=kientrucBUS::getAllBySQL($strSQL);
 										
-										echo  phongthuyBUS::display($strLink,$business,$totalItems, $curPage,$maxPages,$maxItems);
+										echo  kientrucBUS::display($strLink,$business,$totalItems, $curPage,$maxPages,$maxItems);
 										
 									?>
 							</div>
