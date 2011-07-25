@@ -122,6 +122,7 @@
     </form>
 </div>
 <div class="box_left">
+	
 	<table width="100%">
 		<tr>
 			<td width="30px">
@@ -135,15 +136,15 @@
 			<td colspan="2" align="center">
 				<a href="ymsgr:sendim?sieudangf2" style="text-decoration:none; font-size:9pt; line-height:24px;">
 					<div><img style="border:0px;" src="http://opi.yahoo.com/online?u=sieudangf2&m=g&t=1&l=us" /></div>
-					<div style="padding-bottom:10px;">Hồ Sơn Lâm</div>
+					<div style="padding-bottom:10px;color:#336699;font-size:14px;padding:2px;margin:5px;font-weight:bold;">Tư Vấn</div>
 				</a>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<a href="ymsgr:sendim?ducthinh_100286" style="text-decoration:none; font-size:9pt; line-height:24px;">
+				<a href="ymsgr:sendim?osaka1276" style="text-decoration:none; font-size:9pt; line-height:24px;">
 					<div><img style="border:0px;" src="http://opi.yahoo.com/online?u=ducthinh_100286&m=g&t=1&l=us" /></div>
-					<div>Nguyễn Đức Thịnh</div>
+					<div style="padding-bottom:10px;color:#336699;font-size:14px;padding:2px;margin:5px;font-weight:bold;">Tư Vấn</div>
 				</a>
 			</td>
 		</tr>
