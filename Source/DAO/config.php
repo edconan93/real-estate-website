@@ -2,7 +2,7 @@
 	$hostName = "localhost";
    	$databaseName = "qldo";
    	$username = "root";
-   	$password = "";	
+   	$password = "root";	
 	$maxPages = 5;
 	$maxItems = 1;
 	$amountDate = 30;
